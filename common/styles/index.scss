@@ -1,0 +1,36 @@
+@import './settings.css';
+@import './thematic.css';
+
+@import './scss/content';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 100%;
+} /*16px*/
+
+body {
+  font-variant: tabular-nums;
+  line-height: var(--body-line-height);
+  letter-spacing: 0.022em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: var(--heading-line-height);
+}

@@ -1,0 +1,68 @@
+{
+  "form_header": "",
+  "form_description": "森林關乎人類、野生動植物，以至整個地球的健康與福祉，<b>令企業與政府無法忽視我們的護林訴求，讓森林得到及時保護，請立即加入聯署！</b>",
+  "form_remind": "",
+  "signed_number": "已聯署人數",
+
+  "label_yes": "是",
+  "label_no": "否",
+  "label_name": "稱謂",
+  "label_first_name": "名字",
+  "label_last_name": "姓氏",
+  "label_title": "主題",
+  "label_email": "電子信箱",
+  "label_phone": "電話",
+  "label_phone_optional": "電話（選填）",
+  "label_year_of_birth": "出生年份",
+  "label_year_of_birth_optional": "出生年份（選填）",
+  "label_description": "作品標題",
+  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考私隱政策。",
+  "label_story": "作品說明（選填）",
+  "label_file": "圖片",
+
+  "placeholder_description": "作品標題（可包括拍攝地點、時間及其他相關資訊）",
+  "placeholder_story": "作品說明（可包括您堅守大嶼的原因）",
+
+  "select": "請選擇",
+  "category": "分類",
+
+  "empty_data_alert": "必填欄位",
+  "empty_select_data_alert": "請選擇",
+
+  "invalid_email_alert": "Email 格式錯誤",
+  "invalid_format_alert": "電話格式不正確，請輸入格式 0912345678 或 02-12345678",
+  "minimum_8_characters": "請輸入8位數字",
+
+  "submit_text": "立即聯署",
+  "upload_text": "上載作品",
+  "thanks_title": "",
+  "thanks_ask": "",
+  "thanks_content": "",
+  "share_button": "分享出去",
+  "donate_button": "立即捐款",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=fukushima&ref=fukushima-thankyou",
+  "shareMessage": "立即聯署與綠色和平一起敦促其長期、妥善地存置這批危害生態和人體的廢水，使大家的海洋免於進一步的破壞。👉 ",
+  "fbURL": "https://act.gp/3bLDMwF",
+  "mainURL": "https://act.gp/3uK2A0S",
+  "whatsappURL": "https://act.gp/3kzJzsY",
+
+  "donate_header": "",
+  "donate_description": [],
+  "donate_type": [
+    { "label": "每月捐款", "value": "monthly" },
+    { "label": "單次捐款", "value": "single" }
+  ],
+  "amount_onetime": [
+    { "label": "HKD 500", "value": 500 },
+    { "label": "HKD 700", "value": 700 },
+    { "label": "HKD 900", "value": 900 },
+    { "label": "其他金額", "value": "" }
+  ],
+  "amount_monthly": [
+    { "label": "HKD 100", "value": 100 },
+    { "label": "HKD 150", "value": 150 },
+    { "label": "HKD 200", "value": 200 },
+    { "label": "其他金額", "value": "" }
+  ],
+  "thanks_message": "您的捐款，將幫助綠色和平為環境問題找到出路，並在全球各地落實環保工作。謝謝！"
+}
