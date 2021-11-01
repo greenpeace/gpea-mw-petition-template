@@ -35,8 +35,9 @@ export default function Index({ content, bgImage }) {
                     {content.description.map((d, i) => (
                       <Text
                         key={i}
-                        fontSize={{ base: 'sm', md: 'md' }}
+                        fontSize={{ base: 'sm' }}
                         color={'#FFF'}
+                        dangerouslySetInnerHTML={{ __html: d }}
                       />
                     ))}
                   </>
@@ -53,7 +54,7 @@ export default function Index({ content, bgImage }) {
           right={0}
           left={0}
           bottom={0}
-          bgColor={'rgba(0,0,0,.5)'}
+          bgColor={'rgba(0,0,0,0.5)'}
         />
       </Box>
     </>

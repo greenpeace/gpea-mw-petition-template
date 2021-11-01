@@ -6,7 +6,6 @@ import {
   Image,
   Stack,
   Link,
-  Flex,
   Divider,
 } from '@chakra-ui/react';
 import { FooterBGBlue } from './footer.style';
@@ -18,11 +17,25 @@ const HKChinese = {
     '綠色和平是獨立的國際環保組織，通過科學研究、政策倡議及和平行動，揭露全球環境問題並提出相應解決方案。 我們從不接受任何政府、企業或政治團體的資助，只接受個人的直接捐款，以維持公正獨立。',
   ],
   link: [
-    { label: '主頁', value: '#' },
-    { label: '私隱政策與個人資料收集聲明', value: '#' },
-    { label: '版權', value: '#' },
-    { label: '聯絡我們', value: '#' },
-    { label: '關於綠色和平', value: '#' },
+    { label: '主頁', value: 'https://www.greenpeace.org/hongkong/' },
+    {
+      label: '私隱政策與個人資料收集聲明',
+      value:
+        'https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/',
+    },
+    {
+      label: '版權',
+      value:
+        'https://www.greenpeace.org/hongkong/policies/terms-and-conditions/',
+    },
+    {
+      label: '聯絡我們',
+      value: 'https://www.greenpeace.org/hongkong/about/contact/',
+    },
+    {
+      label: '關於綠色和平',
+      value: 'https://www.greenpeace.org/hongkong/about/overview/',
+    },
   ],
   rightContent: [
     '此頁面採用了 SSL 保安接層加密技術，可確保敏感資料（例如信用卡資料和個人資料）在您的瀏覽器和我們伺服器之間傳送時獲得保密處理。',

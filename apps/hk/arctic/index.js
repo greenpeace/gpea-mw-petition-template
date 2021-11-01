@@ -58,7 +58,7 @@ function Index({ status, theme, setFormContent }) {
                 link: '#',
               },
               {
-                shareComponent: <FaFacebookF fontSize={12} color={`#66cc00`} />,
+                shareComponent: <FaFacebook fontSize={12} color={`#66cc00`} />,
                 link: '#',
               },
               {
