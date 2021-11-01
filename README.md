@@ -38,6 +38,16 @@ src/
 6. Modify the local `.env.development` and `.env.production` files, the content is used to configure the development / build evironment.
 7. Try to run the `npm run dev` script to check if the app can be boosted successfully.
 
+## Pretty-quick
+
+We use Prettier with [pretty-quick](https://github.com/azz/pretty-quick) as the pre-commit tool. This can re-format your files that are marked as “staged” via git add before you commit.
+
+```
+npx husky-init
+npm install --save-dev pretty-quick
+npx husky set .husky/pre-commit "npx pretty-quick --staged"
+```
+
 ## Difference between the three .env files
 
 .env file will store the environment variables and its mainly used for the build script and node.js script. For this project, we also use it to store the project identity so we can fetch the project theme data from the [project schema spreadsheet](https://docs.google.com/spreadsheets/d/1_NziZSM1zHoQOzo_BgPS2apl7TLCqRRbO0ev1ykkl08/edit#gid=0).

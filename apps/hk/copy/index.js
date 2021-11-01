@@ -48,7 +48,7 @@ function Index({ status, theme, setFormContent }) {
         <ThanksBanner
           bgImage={heroBannerImage}
           content={{
-            title: 'Thank you for signing the petition, {SUPPORTER_FIRST_NAME}',
+            title: 'Thank you for signing the petition, {FIRST_NAME}',
             description: [
               "Do even more to protect the world's oceans by donating.",
             ],
