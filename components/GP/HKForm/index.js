@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
 import { numberFormat } from '@common/utils';
 import { validation } from './validation';
+import StepProgress from '@components/Progress/StepProgress';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
@@ -119,179 +120,184 @@ const MyForm = (props) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Stack spacing="4">
-        <Box>
-          <Box
-            borderRadius={4}
-            bgColor="#d2d2d2"
-            h={`10px`}
-            overflow={`hidden`}
-          >
-            {numberOfResponses && (
-              <Box
-                style={{ transition: `width 2s` }}
-                h={`10px`}
-                w={progressNumber}
-                borderRadius={4}
-                bgColor={`theme.${themeInterests}`}
-              />
-            )}
-          </Box>
-          <Box display={'none'}>
-            <Text fontSize={'base'} mt={2}>
-              {formContent.signed_number}:{' '}
-              <Text as="span" fontSize={'2xl'} fontWeight={700}>
-                {numberOfResponses && numberFormat(numberOfResponses)}{' '}
-              </Text>
-              /{' '}
-              {numberOfTarget
-                ? numberFormat(numberOfTarget)
-                : numberFormat(10000)}
-            </Text>
-          </Box>
-        </Box>
-        <Box>
-          <Heading
-            mt={2}
-            fontSize={'2xl'}
-            dangerouslySetInnerHTML={{ __html: formContent.form_header }}
-          />
-        </Box>
-        <Box>
-          <Text
-            as="p"
-            dangerouslySetInnerHTML={{ __html: formContent.form_description }}
-          />
-        </Box>
+    <Box>
+      <StepProgress />
 
-        <Stack direction={`row`}>
-          <Box flex={1}>
-            <Field
-              errors={errors.LastName}
-              touched={touched.LastName}
-              label={formContent.label_last_name}
-              name={'LastName'}
-              type={'text'}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-            />
-          </Box>
-
-          <Box flex={1}>
-            <Field
-              errors={errors.FirstName}
-              touched={touched.FirstName}
-              label={formContent.label_first_name}
-              name={'FirstName'}
-              type={'text'}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-            />
-          </Box>
-        </Stack>
-
-        <Box>
-          <FormControl id="email" isInvalid={errors.Email && touched.Email}>
-            <Input
-              name="Email"
-              type="email"
-              placeholder={formContent.label_email}
-              onChange={handleChange}
-              onBlur={(e) => {
-                // call the built-in handleBur
-                handleBlur(e);
-                // and do something about e
-                mailSuggestion(e.target.value);
-              }}
-              value={values.Email}
-              _placeholder={{ fontSize: 16 }}
-            />
-            <FormErrorMessage color="red">{errors.Email}</FormErrorMessage>
-            {suggestion && (
-              <Box
-                onClick={() => {
-                  setFieldValue('Email', suggestion);
-                  initSuggestion();
-                }}
-                pt={2}
-                pl={2}
-                cursor={`pointer`}
-              >
-                <Text fontSize={`sm`} color={`theme.${themeInterests}`}>
-                  {formContent.suggestion_message} <b>{suggestion}</b>
-                </Text>
-              </Box>
-            )}
-          </FormControl>
-        </Box>
-
-        <HStack align="flex-start">
+      <Form onSubmit={handleSubmit}>
+        <Stack spacing="4">
           <Box>
-            <FormControl id="mobileCountryCode">
-              <Select
-                name="MobileCountryCode"
-                onChange={handleChange}
-                fontSize={'sm'}
-              >
-                {(formContent.mobile_country_code || []).map((d) => (
-                  <option key={d.value} value={d.value}>
-                    {d.label}
-                  </option>
-                ))}
-              </Select>
-            </FormControl>
+            <Box
+              borderRadius={4}
+              bgColor="#d2d2d2"
+              h={`10px`}
+              overflow={`hidden`}
+            >
+              {numberOfResponses && (
+                <Box
+                  style={{ transition: `width 2s` }}
+                  h={`10px`}
+                  w={progressNumber}
+                  borderRadius={4}
+                  bgColor={`theme.${themeInterests}`}
+                />
+              )}
+            </Box>
+            <Box display={'none'}>
+              <Text fontSize={'base'} mt={2}>
+                {formContent.signed_number}:{' '}
+                <Text as="span" fontSize={'2xl'} fontWeight={700}>
+                  {numberOfResponses && numberFormat(numberOfResponses)}{' '}
+                </Text>
+                /{' '}
+                {numberOfTarget
+                  ? numberFormat(numberOfTarget)
+                  : numberFormat(10000)}
+              </Text>
+            </Box>
           </Box>
-          <Box flex={1}>
-            <Field
-              errors={errors.MobilePhone}
-              touched={touched.MobilePhone}
-              label={formContent.label_phone}
-              name={'MobilePhone'}
-              type="tel"
-              handleChange={handleChange}
-              handleBlur={handleBlur}
+          <Box>
+            <Heading
+              mt={2}
+              fontSize={'2xl'}
+              dangerouslySetInnerHTML={{ __html: formContent.form_header }}
             />
           </Box>
-        </HStack>
+          <Box>
+            <Text
+              as="p"
+              dangerouslySetInnerHTML={{ __html: formContent.form_description }}
+            />
+          </Box>
 
-        <Box>
-          <FormControl
-            id="Birthdate"
-            isInvalid={errors.Birthdate && touched.Birthdate}
-          >
-            <Select
-              placeholder={formContent.select}
-              onChange={handleChange}
-              fontSize={'16px'}
-              placeholder={formContent.empty_select_data_alert}
-            >
-              {birthDateYear &&
-                birthDateYear.map((d) => (
-                  <option key={d.value} value={`${d.value}-01-01`}>
-                    {d.value}
-                  </option>
-                ))}
-            </Select>
-            <FormErrorMessage color="red">{errors.Birthdate}</FormErrorMessage>
-          </FormControl>
-        </Box>
-
-        <Box py={4}>
-          <Flex direction={{ base: 'row' }} align={'flex-start'}>
-            <Box flex={1} mr={2} pt={1}>
-              <Checkbox
-                name="OptIn"
-                defaultChecked
-                // colorScheme={`${theme.ProjectName}`}
-                onChange={handleChange}
+          <Stack direction={`row`}>
+            <Box flex={1}>
+              <Field
+                errors={errors.LastName}
+                touched={touched.LastName}
+                label={formContent.label_last_name}
+                name={'LastName'}
+                type={'text'}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
               />
             </Box>
-            <Text fontSize="xs" color={'gray.700'}>
-              {formContent.label_newsletter}
-            </Text>
-          </Flex>
-          {/* <Flex direction={{ base: 'row' }} align={'center'}>
+
+            <Box flex={1}>
+              <Field
+                errors={errors.FirstName}
+                touched={touched.FirstName}
+                label={formContent.label_first_name}
+                name={'FirstName'}
+                type={'text'}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+              />
+            </Box>
+          </Stack>
+
+          <Box>
+            <FormControl id="email" isInvalid={errors.Email && touched.Email}>
+              <Input
+                name="Email"
+                type="email"
+                placeholder={formContent.label_email}
+                onChange={handleChange}
+                onBlur={(e) => {
+                  // call the built-in handleBur
+                  handleBlur(e);
+                  // and do something about e
+                  mailSuggestion(e.target.value);
+                }}
+                value={values.Email}
+                _placeholder={{ fontSize: 16 }}
+              />
+              <FormErrorMessage color="red">{errors.Email}</FormErrorMessage>
+              {suggestion && (
+                <Box
+                  onClick={() => {
+                    setFieldValue('Email', suggestion);
+                    initSuggestion();
+                  }}
+                  pt={2}
+                  pl={2}
+                  cursor={`pointer`}
+                >
+                  <Text fontSize={`sm`} color={`theme.${themeInterests}`}>
+                    {formContent.suggestion_message} <b>{suggestion}</b>
+                  </Text>
+                </Box>
+              )}
+            </FormControl>
+          </Box>
+
+          <HStack align="flex-start">
+            <Box>
+              <FormControl id="mobileCountryCode">
+                <Select
+                  name="MobileCountryCode"
+                  onChange={handleChange}
+                  fontSize={'sm'}
+                >
+                  {(formContent.mobile_country_code || []).map((d) => (
+                    <option key={d.value} value={d.value}>
+                      {d.label}
+                    </option>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
+            <Box flex={1}>
+              <Field
+                errors={errors.MobilePhone}
+                touched={touched.MobilePhone}
+                label={formContent.label_phone}
+                name={'MobilePhone'}
+                type="tel"
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+              />
+            </Box>
+          </HStack>
+
+          <Box>
+            <FormControl
+              id="Birthdate"
+              isInvalid={errors.Birthdate && touched.Birthdate}
+            >
+              <Select
+                placeholder={formContent.select}
+                onChange={handleChange}
+                fontSize={'16px'}
+                placeholder={formContent.empty_select_data_alert}
+              >
+                {birthDateYear &&
+                  birthDateYear.map((d) => (
+                    <option key={d.value} value={`${d.value}-01-01`}>
+                      {d.value}
+                    </option>
+                  ))}
+              </Select>
+              <FormErrorMessage color="red">
+                {errors.Birthdate}
+              </FormErrorMessage>
+            </FormControl>
+          </Box>
+
+          <Box py={4}>
+            <Flex direction={{ base: 'row' }} align={'flex-start'}>
+              <Box flex={1} mr={2} pt={1}>
+                <Checkbox
+                  name="OptIn"
+                  defaultChecked
+                  // colorScheme={`${theme.ProjectName}`}
+                  onChange={handleChange}
+                />
+              </Box>
+              <Text fontSize="xs" color={'gray.700'}>
+                {formContent.label_newsletter}
+              </Text>
+            </Flex>
+            {/* <Flex direction={{ base: 'row' }} align={'center'}>
             <Box flex={1} mr={4}>
               <Text fontSize={'xs'}>{formContent.label_newsletter}</Text>
             </Box>
@@ -310,21 +316,22 @@ const MyForm = (props) => {
               ))}
             </HStack>
           </Flex> */}
-        </Box>
+          </Box>
 
-        <Box>
-          <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
-            {formContent.submit_text}
-          </Button>
-        </Box>
+          <Box>
+            <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+              {formContent.submit_text}
+            </Button>
+          </Box>
 
-        {/* <Box pt={4} pb={4}>
+          {/* <Box pt={4} pb={4}>
           <Text fontSize="xs" color={'gray.700'}>
             {formContent.form_remind}
           </Text>
         </Box> */}
-      </Stack>
-    </Form>
+        </Stack>
+      </Form>
+    </Box>
   );
 };
 
