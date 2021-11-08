@@ -165,29 +165,31 @@ const MyForm = (props) => {
           />
         </Box>
 
-        <Box>
-          <Field
-            errors={errors.FirstName}
-            touched={touched.FirstName}
-            label={formContent.label_first_name}
-            name={'FirstName'}
-            type={'text'}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-        </Box>
+        <Stack direction={`row`}>
+          <Box flex={1}>
+            <Field
+              errors={errors.LastName}
+              touched={touched.LastName}
+              label={formContent.label_last_name}
+              name={'LastName'}
+              type={'text'}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
+          </Box>
 
-        <Box>
-          <Field
-            errors={errors.LastName}
-            touched={touched.LastName}
-            label={formContent.label_last_name}
-            name={'LastName'}
-            type={'text'}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-        </Box>
+          <Box flex={1}>
+            <Field
+              errors={errors.FirstName}
+              touched={touched.FirstName}
+              label={formContent.label_first_name}
+              name={'FirstName'}
+              type={'text'}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
+          </Box>
+        </Stack>
 
         <Box>
           <FormControl id="email" isInvalid={errors.Email && touched.Email}>
@@ -262,6 +264,7 @@ const MyForm = (props) => {
               placeholder={formContent.select}
               onChange={handleChange}
               fontSize={'16px'}
+              placeholder={formContent.empty_select_data_alert}
             >
               {birthDateYear &&
                 birthDateYear.map((d) => (
@@ -310,7 +313,9 @@ const MyForm = (props) => {
         </Box>
 
         <Box>
-          <Button {...OrangeCTA}>{formContent.submit_text}</Button>
+          <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+            {formContent.submit_text}
+          </Button>
         </Box>
 
         {/* <Box pt={4} pb={4}>

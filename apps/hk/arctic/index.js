@@ -11,10 +11,9 @@ import SignupForm from '@components/GP/HKForm';
 import DonateForm from '@components/GP/HKForm/donate';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { useMediaQuery } from '@chakra-ui/media-query';
 import { Box, Flex, Button } from '@chakra-ui/react';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
-import { FixedCTA } from '@components/GP/FixedCTA';
+import FixedCTA from '@components/GP/FixedCTA';
 import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -23,8 +22,6 @@ import heroBannerImage from './images/GP02HUY_High_res.jpg';
 
 function Index({ status, theme, setFormContent }) {
   const { submitted } = status;
-
-  const [isNotSmallerScreen] = useMediaQuery('(min-width:600px)');
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -110,9 +107,9 @@ function Index({ status, theme, setFormContent }) {
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
       {/* Pending */}
-      {/* {!isNotSmallerScreen && !inView && !submitted && (
+      {!inView && (
         <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
-      )} */}
+      )}
     </>
   );
 }

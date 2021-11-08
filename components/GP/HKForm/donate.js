@@ -59,8 +59,8 @@ const DonateForm = (props) => {
           />
         </Box>
       )}
-      {(donate_description || []).map((d) => (
-        <Box pb={4}>
+      {(donate_description || []).map((d, i) => (
+        <Box pb={4} key={i}>
           <Text
             fontSize={{ base: 'sm', xl: 'md' }}
             dangerouslySetInnerHTML={{ __html: d }}
@@ -78,7 +78,7 @@ const DonateForm = (props) => {
         >
           {(donate_type || []).map((d, i) => (
             <Button
-              key={d.value}
+              key={i}
               flex="1"
               h="40px"
               fontWeight="400"
@@ -104,7 +104,7 @@ const DonateForm = (props) => {
               return (
                 <GridItem colSpan={colSpan} key={i}>
                   <Button
-                    key={d.value}
+                    key={i}
                     flex="1"
                     border="1px"
                     borderColor="gray.100"
