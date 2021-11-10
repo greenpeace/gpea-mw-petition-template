@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
 import { numberFormat } from '@common/utils';
 import { validation } from './validation';
-import StepProgress from '@components/Progress/StepProgress';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
@@ -121,8 +120,6 @@ const MyForm = (props) => {
 
   return (
     <Box>
-      <StepProgress />
-
       <Form onSubmit={handleSubmit}>
         <Stack spacing="4">
           <Box>

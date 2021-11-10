@@ -12,9 +12,7 @@ const FormContainer = ({ children }) => {
         boxShadow="lg"
         overflow="hidden"
       >
-        <Box py="6" px="4">
-          {children}
-        </Box>
+        {children}
       </Box>
     </Box>
   );
