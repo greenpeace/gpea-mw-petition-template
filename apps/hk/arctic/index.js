@@ -106,10 +106,7 @@ function Index({ status, theme, setFormContent }) {
         </Box>
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
-      {/* Pending */}
-      {!inView && (
-        <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
-      )}
+      <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
     </>
   );
 }
