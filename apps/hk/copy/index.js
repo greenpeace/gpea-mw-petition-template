@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 import { useMediaQuery } from '@chakra-ui/media-query';
 import { Box, Flex, Button } from '@chakra-ui/react';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
-import { FixedCTA } from '@components/GP/FixedCTA';
+import FixedCTA from '@components/GP/FixedCTA';
 import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -108,10 +108,9 @@ function Index({ status, theme, setFormContent }) {
         </Box>
       </PageContainer>
       <PetitionFooter locale={'HKEnglish'} />
-      {/* Pending */}
-      {/* {!isNotSmallerScreen && !inView && !submitted && (
+      {!inView && (
         <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
-      )} */}
+      )}
     </>
   );
 }
