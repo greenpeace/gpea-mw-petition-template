@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const FixedCTA = ({ children, onClick, status }) => {
   const { submitted } = status;
-  const matches = useMediaQuery('(max-width:600px)');
+  const [matches] = useMediaQuery('(max-width:600px)');
 
   if (matches && !submitted) {
     return (
