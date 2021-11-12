@@ -4,7 +4,11 @@ import _ from 'lodash';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 
+import * as helper from '@common/utils/helper';
+
 export function* submitForm(actions) {
+  const state = yield select();
+  const { ProjectName } = state.theme.data;
   try {
     const response = yield call(() =>
       fetch(`${actions.endPoint}`, {
@@ -23,8 +27,8 @@ export function* submitForm(actions) {
       });
       yield put({ type: statusActions.SET_FORM_SUBMITTED, data: true });
       // Tracking
-      // console.log("submitted:", `${process.env.REACT_APP_PROJECT}`);
-      // helper.sendPetitionTracking(`${process.env.REACT_APP_PROJECT}`);
+      console.log('submitted:', `${ProjectName}`);
+      helper.sendPetitionTracking(`${ProjectName}`);
     } else {
     }
   } catch (e) {
