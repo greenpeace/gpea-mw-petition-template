@@ -17,6 +17,7 @@ import { OrangeCTA, buttonStyle } from '@common/styles/components/formStyle';
 const DonateForm = (props) => {
   const {
     formContent: {
+      default_amount,
       amount_monthly,
       amount_onetime,
       donateURL,
@@ -29,7 +30,7 @@ const DonateForm = (props) => {
     theme,
   } = props;
   const [donateType, setDonateType] = useState('monthly');
-  const [amount, setAmount] = useState(100);
+  const [amount, setAmount] = useState(default_amount);
   const [url, setURL] = useState({ type: donateType, amount: amount });
   const themeInterests = theme.interests;
   const amountOption =

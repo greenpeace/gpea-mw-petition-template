@@ -1,6 +1,6 @@
 {
-  "form_header": "Help reach our target of 1 million signatures",
-  "form_description": "I want to protect this beautiful, vital resource by adding my name.",
+  "form_header": "攜手成立全球海洋保護區 支持訂立《全球海洋公約》",
+  "form_description": "我願意聯署加入守護海洋行列！",
   "form_remind": "",
   "signed_number": "已聯署人數",
 
@@ -10,11 +10,11 @@
   "label_first_name": "名字",
   "label_last_name": "姓氏",
   "label_email": "電郵地址",
-  "label_phone": "手提號碼",
+  "label_phone": "手提號碼(接收活動SMS提示)",
   "label_phone_optional": "手提號碼（選填）",
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",
-  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考私隱政策。",
+  "label_newsletter": "登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://api.greenpeace.org.hk/2021/cop26/' target='_blank'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
 
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
@@ -24,12 +24,12 @@
   "minimum_8_characters": "請輸入8位數字",
   "suggestion_message": "您是否想輸入",
 
-  "submit_text": "YES, I support the Global Ocean Pact",
+  "submit_text": "立即聯署 守護海洋",
   "thanks_title": "",
   "thanks_ask": "",
   "thanks_content": "",
   "share_button": "分享出去",
-  "donate_button": "立即捐助",
+  "donate_button": "下一步",
   "donateURL": "https://dev-gpea.cs57.force.com/hk/s/donate/alt-layout?campaign=mw",
   "shareMessage": "",
   "fbURL": "",
@@ -45,10 +45,9 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "Yes, I'll help save the oceans",
-  "donate_description": [
-    "I want to protect this beautiful, vital resource by donating to Greenpeace."
-  ],
+  "donate_header": "我願意支持守護海洋工作",
+  "donate_description": ["我將以捐助方式參與保護海洋項目，令海洋回復健康。"],
+  "default_amount": 200,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -60,9 +59,9 @@
     { "label": "其他金額", "value": "" }
   ],
   "amount_monthly": [
-    { "label": "HKD 100", "value": 100 },
-    { "label": "HKD 150", "value": 150 },
     { "label": "HKD 200", "value": 200 },
+    { "label": "HKD 300", "value": 300 },
+    { "label": "HKD 400", "value": 400 },
     { "label": "其他金額", "value": "" }
   ],
   "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"

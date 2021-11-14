@@ -1,77 +1,67 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Box, Heading, Text, Image } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import contentB from './images/cd8ea365-cd8ea365-gp0sto55a_web_size_with_credit_line.jpg';
+import contentB from './images/GP1SV342_PressMedia.jpg';
+import contentC from './images/GP02K27_PressMedia.jpg';
 
 const Content = ({ theme }) => {
+  const themeInterests = theme.interests;
   return (
     <>
-      <Heading {...headingProps}>Sign the petition</Heading>
-
-      <Text as="p" {...paragraphProps}>
-        Your signature here can help get a third of the world’s oceans protected
-        in marine sanctuaries.
-      </Text>
-
-      <Text as="p" {...paragraphProps}>
-        Greenpeace is urging governments around the world to agree to the Global
-        Ocean Pact. It’s a breakthrough initiative that could put more than a
-        third of the world’s oceans in a network of marine sanctuaries and
-        ensure their long-term protection.
-      </Text>
-
-      <Heading {...headingProps}>
-        Will you join us and help save our oceans?
-        <br />
-        SIGN HERE NOW.
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+        聯署守護海洋
       </Heading>
+
+      <Text as="p" {...paragraphProps}>
+        你的聯署能幫助推動訂立《全球海洋公約》，2030年前成立至少30%海洋保護區！
+      </Text>
+
+      <Text as="p" {...paragraphProps}>
+        此刻，綠色和平正爭取訂立《全球海洋公約》，為海洋建立完善保護機制，以長久保護、維持、復育海洋健康，並在2030年前成立至少30%的海洋保護區。
+      </Text>
+
+      <Heading {...headingProps}>您願意聯署加入守護海洋行列嗎？</Heading>
 
       <Box {...paragraphProps}>
         <Image src={contentB} />
       </Box>
 
       <Heading {...headingProps}>
-        Be part of the solution. Help save our beautiful oceans.
+        海洋正向我們發出求救信號，我們需要予以拯救！
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        The ocean world is mysterious, beautiful, and home to countless
-        creatures. Oceans clean our air and provide food and jobs for billions
-        of people.
+        海洋孕育無數生物，亦提供地球50%的氧氣，更具調節全球氣候的功能，是我們的無上瑰寶。可惜，現時海洋受過度捕撈、深海採礦、塑膠污染等人類行為嚴重威脅，加上氣候危機影響下，海洋酸化、珊瑚白化問題愈趨嚴峻，海洋生態岌岌可危。
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        But oceans, and everything that depends on them are at risk from climate
-        change, plastics, mining and overfishing.
+        如我們未能及時挽救這場危機，海洋生態系統、生物多樣性將受到嚴重破壞，珊瑚及與其共生的魚類可能就此滅絕。如若海洋陷入困境，地球環境亦將難逃厄運。
       </Text>
 
-      <Text as="p" {...paragraphProps}>
-        If we don’t act now, it may be too late to save the world’s oceans from
-        a comprehensive ecological catastrophe.
-      </Text>
+      <Box {...paragraphProps}>
+        <Image src={contentC} />
+      </Box>
 
       <Text as="p" {...paragraphProps}>
-        Please join Greenpeace supporters all over the world and add your name
-        to the global call for a Global Ocean Pact.
-      </Text>
-
-      <Text as="p" {...paragraphProps}>
-        You can help make at least 30% of the world’s oceans marine protected
-        areas by 2030.
+        綠色和平正號召全球支持者加入海洋聯署，亦誠意邀請你參與聯署，壯大守護海洋力量。你的力量，是推動2030年前成立至少30%海洋保護區的關鍵。
       </Text>
 
       <Text as="p" {...paragraphProps}>
         <b>
-          Add your name here now and be part of the solution for the world’s
-          magnificent oceans.
+          請即聯署，向正受破壞的美麗大海伸出援手，支持訂立《全球海洋公約》！
         </b>
       </Text>
     </>
   );
 };
 
-export default Content;
+const mapStateToProps = ({ status, theme }) => {
+  return { status, theme: theme.data };
+};
+
+export default connect(mapStateToProps)(Content);

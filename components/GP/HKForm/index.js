@@ -290,9 +290,13 @@ const MyForm = (props) => {
                     onChange={handleChange}
                   />
                 </Box>
-                <Text fontSize="xs" color={'gray.700'}>
-                  {formContent.label_newsletter}
-                </Text>
+                <Text
+                  fontSize="xs"
+                  color={'gray.700'}
+                  dangerouslySetInnerHTML={{
+                    __html: formContent.label_newsletter,
+                  }}
+                />
               </Flex>
               {/* <Flex direction={{ base: 'row' }} align={'center'}>
             <Box flex={1} mr={4}>

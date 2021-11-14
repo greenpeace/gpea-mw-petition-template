@@ -14,20 +14,19 @@ const SEO = () => {
       </script>
       {/* title */}
       <title>
-        Sign the petition to PROTECT 30% OF THE WORLD's OCEANS. - Greenpeace
-        綠色和平 | 香港
+        請即聯署支持2030年前成立至少30%海洋保護區 - Greenpeace 綠色和平 | 香港
       </title>
       <meta
         property="og:title"
-        content="Sign the petition to PROTECT 30% OF THE WORLD's OCEANS. - Greenpeace 綠色和平 | 香港"
+        content="請即聯署支持2030年前成立至少30%海洋保護區 - Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"
-        content="Sign the petition to PROTECT 30% OF THE WORLD's OCEANS."
+        content="請即聯署支持2030年前成立至少30%海洋保護區"
       />
       <meta
         property="og:description"
-        content="Sign the petition to PROTECT 30% OF THE WORLD's OCEANS."
+        content="請即聯署支持2030年前成立至少30%海洋保護區"
       />
       <meta
         property="og:image"
