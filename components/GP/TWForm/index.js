@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
-import * as helper from '@common/utils/helper';
+import { numberFormat } from '@common/utils';
+import { validation } from './validation';
+import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
+import * as formActions from 'store/actions/action-types/form-actions';
 
 import {
   FormControl,
@@ -14,27 +17,37 @@ import {
   Flex,
   Text,
   HStack,
+  Stack,
   Select,
-  Progress,
+  Input,
+  Checkbox,
+  Heading,
 } from '@chakra-ui/react';
+import { OrangeCTA } from '@common/styles/components/formStyle';
 
 const MyForm = (props) => {
   const {
+    signup,
     touched,
     errors,
     handleChange,
     handleBlur,
     handleSubmit,
-    isSubmitting,
+    isLoading,
     setFieldValue,
-    setSubmitting,
-    submitted,
+    setWebStatus,
     values,
     formContent,
     theme,
+    setSuggestion,
+    initSuggestion,
+    suggestion,
+    numberOfResponses,
+    numberOfTarget,
   } = props;
-  const space = 4;
   const [birthDateYear, setBirthDateYear] = useState([]);
+  const [progressNumber, setProgressNumber] = useState(0);
+  const themeInterests = theme.interests;
 
   useEffect(() => {
     let optionYear = [];
@@ -47,162 +60,234 @@ const MyForm = (props) => {
       setBirthDateYear(optionYear);
     }
     fetchOptionYear(optionYear);
+    initSuggestion();
   }, []);
 
-  const newsletterButtons = [
-    {
-      label: formContent.label_yes,
-      value: true,
-    },
-    {
-      label: formContent.label_no,
-      value: false,
-    },
-  ];
+  useEffect(() => {
+    const currentNumber = numberOfResponses;
+    const currentNumberOfTarget = numberOfTarget ? numberOfTarget : 10000;
+    const number =
+      Math.round((currentNumber / currentNumberOfTarget) * 10000) / 100;
+    if (isNaN(number)) {
+      return;
+    }
+
+    const timer = () => setTimeout(() => setProgressNumber(`${number}%`), 1000);
+    const timerId = timer();
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [numberOfResponses]);
+
+  useEffect(() => {
+    if (signup.submitted) {
+      setWebStatus(true);
+    }
+  }, [signup.submitted]);
+
+  const mailSuggestion = (value) => {
+    const domains = [
+      'me.com',
+      'outlook.com',
+      'netvigator.com',
+      'cloud.com',
+      'live.hk',
+      'msn.com',
+      'gmail.com',
+      'hotmail.com',
+      'ymail.com',
+      'yahoo.com',
+      'yahoo.com.tw',
+      'yahoo.com.hk',
+    ];
+    const topLevelDomains = ['com', 'net', 'org'];
+
+    if (value) {
+      Mailcheck.run({
+        email: value,
+        domains: domains, // optional
+        topLevelDomains: topLevelDomains, // optional
+        // secondLevelDomains: secondLevelDomains, // optional
+        // distanceFunction: superStringDistance,  // optional
+        suggested: function (suggestion) {
+          if (value !== suggestion.full) {
+            setSuggestion(suggestion.full);
+          }
+        },
+      });
+    }
+  };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Flex direction="column">
-        <Box pb={space}>
-          <Progress
-            value={80}
+    <Box py="8" px="4">
+      <Stack spacing="4">
+        <Box>
+          <Box
             borderRadius={4}
-            colorScheme={`${theme.ProjectName}`}
-          />
-          <HStack>
-            <Text fontSize={12} color={`theme.${theme.ProjectName}`}>
-              {formContent.signed_number}:{' '}
-              <Text as="span" fontSize={24} fontWeight={700}>
-                4,588{' '}
-              </Text>
-              / 10,000
-            </Text>
-          </HStack>
-        </Box>
-
-        <Box pb={space} pb={6}>
-          <Text as="p">
-            <span
-              dangerouslySetInnerHTML={{ __html: formContent.form_description }}
-            />
-          </Text>
-        </Box>
-
-        <Box pb={space}>
-          <Field
-            errors={errors.FirstName}
-            touched={touched.FirstName}
-            label={formContent.label_first_name}
-            name={'FirstName'}
-            type={'text'}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-        </Box>
-
-        <Box pb={space}>
-          <Field
-            errors={errors.LastName}
-            touched={touched.LastName}
-            label={formContent.label_last_name}
-            name={'LastName'}
-            type={'text'}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-        </Box>
-
-        <Box pb={space}>
-          <Field
-            errors={errors.Email}
-            touched={touched.Email}
-            label={formContent.label_email}
-            name={'Email'}
-            type={'email'}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-        </Box>
-
-        <Box pb={space}>
-          <Flex direction={{ base: 'row' }} align={'center'}>
-            <Box flex={1} pr={{ base: 0, sm: 12 }}>
-              <Text fontSize={'sm'}>{formContent.label_newsletter}</Text>
-            </Box>
-            <HStack spacing={2}>
-              {newsletterButtons.map((d, i) => (
-                <Button
-                  key={i}
-                  bgColor={d.value === values.Newsletter ? '#66cc00' : '#FFF'}
-                  color={d.value === values.Newsletter ? '#FFF' : '#000'}
-                  variant={`outline`}
-                  fontSize={'sm'}
-                  onClick={() => setFieldValue('Newsletter', d.value)}
-                >
-                  {d.label}
-                </Button>
-              ))}
-            </HStack>
-          </Flex>
-        </Box>
-
-        <HStack align="flex-end">
-          <Box pb={space} flex={1}>
-            <Field
-              errors={errors.Phone}
-              touched={touched.Phone}
-              label={formContent.label_phone}
-              name={'Phone'}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-            />
+            bgColor="#d2d2d2"
+            h={`10px`}
+            overflow={`hidden`}
+          >
+            {numberOfResponses && (
+              <Box
+                style={{ transition: `width 2s` }}
+                h={`10px`}
+                w={progressNumber}
+                borderRadius={4}
+                bgColor={`theme.${themeInterests}`}
+              />
+            )}
           </Box>
-        </HStack>
-
-        <Box pb={space}>
-          <FormControl
-            id="Birthdate"
-            isInvalid={errors.Birthdate && touched.Birthdate}
-          >
-            <Select
-              placeholder={formContent.select}
-              onChange={handleChange}
-              fontSize={'sm'}
-            >
-              {birthDateYear &&
-                birthDateYear.map((d) => (
-                  <option key={d.value} value={`${d.value}-01-01`}>
-                    {d.value}
-                  </option>
-                ))}
-            </Select>
-            <FormErrorMessage color="red">{errors.Birthdate}</FormErrorMessage>
-          </FormControl>
+          <Box display={'none'}>
+            <Text fontSize={'base'} mt={2}>
+              {formContent.signed_number}:{' '}
+              <Text as="span" fontSize={'2xl'} fontWeight={700}>
+                {numberOfResponses && numberFormat(numberOfResponses)}{' '}
+              </Text>
+              /{' '}
+              {numberOfTarget
+                ? numberFormat(numberOfTarget)
+                : numberFormat(10000)}
+            </Text>
+          </Box>
         </Box>
-
-        <Box flex="1" pt={3} pb={3}>
-          <Button
-            w="100%"
-            isLoading={isSubmitting}
-            type="submit"
-            height="48px"
-            borderRadius="md"
-            fontSize="xl"
-            color="#FFF"
-            bg={`theme.${theme.ProjectName}`}
-            _hover={{ bg: 'campaign.climate' }}
-          >
-            {formContent.submit_text}
-          </Button>
+        <Box>
+          <Heading
+            mt={2}
+            fontSize={'2xl'}
+            dangerouslySetInnerHTML={{ __html: formContent.form_header }}
+          />
         </Box>
-
-        <Box pt={4} pb={4}>
-          <Text fontSize="xs" color={'gray.900'}>
-            {formContent.form_remind}
-          </Text>
+        <Box>
+          <Text
+            as="p"
+            dangerouslySetInnerHTML={{ __html: formContent.form_description }}
+          />
         </Box>
-      </Flex>
-    </Form>
+        <Form onSubmit={handleSubmit}>
+          <Stack spacing="4">
+            <Stack direction={`row`}>
+              <Box flex={1}>
+                <Field
+                  errors={errors.LastName}
+                  touched={touched.LastName}
+                  label={formContent.label_last_name}
+                  name={'LastName'}
+                  type={'text'}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+              </Box>
+
+              <Box flex={1}>
+                <Field
+                  errors={errors.FirstName}
+                  touched={touched.FirstName}
+                  label={formContent.label_first_name}
+                  name={'FirstName'}
+                  type={'text'}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+              </Box>
+            </Stack>
+
+            <Box>
+              <FormControl id="email" isInvalid={errors.Email && touched.Email}>
+                <Input
+                  name="Email"
+                  type="email"
+                  placeholder={formContent.label_email}
+                  onChange={handleChange}
+                  onBlur={(e) => {
+                    // call the built-in handleBur
+                    handleBlur(e);
+                    // and do something about e
+                    mailSuggestion(e.target.value);
+                  }}
+                  value={values.Email}
+                  _placeholder={{ fontSize: 16 }}
+                />
+                <FormErrorMessage color="red">{errors.Email}</FormErrorMessage>
+                {suggestion && (
+                  <Box
+                    onClick={() => {
+                      setFieldValue('Email', suggestion);
+                      initSuggestion();
+                    }}
+                    pt={2}
+                    cursor={`pointer`}
+                  >
+                    <Text fontSize={`sm`} color={`theme.${themeInterests}`}>
+                      {formContent.suggestion_message} <b>{suggestion}</b>
+                    </Text>
+                  </Box>
+                )}
+              </FormControl>
+            </Box>
+
+            <HStack align="flex-end">
+              <Box flex={1}>
+                <Field
+                  errors={errors.Phone}
+                  touched={touched.Phone}
+                  label={formContent.label_phone}
+                  name={'Phone'}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+              </Box>
+            </HStack>
+
+            <Box>
+              <FormControl
+                id="Birthdate"
+                isInvalid={errors.Birthdate && touched.Birthdate}
+              >
+                <Select
+                  placeholder={formContent.select}
+                  onChange={handleChange}
+                  fontSize={'16px'}
+                  placeholder={formContent.empty_select_data_alert}
+                >
+                  {birthDateYear &&
+                    birthDateYear.map((d) => (
+                      <option key={d.value} value={`${d.value}-01-01`}>
+                        {d.value}
+                      </option>
+                    ))}
+                </Select>
+                <FormErrorMessage color="red">
+                  {errors.Birthdate}
+                </FormErrorMessage>
+              </FormControl>
+            </Box>
+
+            <Box>
+              <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+                <Box flex={1} mr={2} pt={1}>
+                  <Checkbox
+                    name="OptIn"
+                    defaultChecked
+                    // colorScheme={`${theme.ProjectName}`}
+                    onChange={handleChange}
+                  />
+                </Box>
+                <Text fontSize="xs" color={'gray.700'}>
+                  {formContent.label_newsletter}
+                </Text>
+              </Flex>
+            </Box>
+
+            <Box>
+              <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+                {formContent.submit_text}
+              </Button>
+            </Box>
+          </Stack>
+        </Form>
+      </Stack>
+    </Box>
   );
 };
 
@@ -218,115 +303,65 @@ const MyEnhancedForm = withFormik({
 
   validate: async (values, props) => {
     const { formContent } = props;
-    const errors = {};
 
-    if (!values.Email) {
-      errors.Email = formContent.empty_data_alert;
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)
-    ) {
-      errors.Email = formContent.invalid_email_alert;
-    }
-
-    if (!values.FirstName) {
-      errors.FirstName = formContent.empty_data_alert;
-    }
-
-    if (!values.LastName) {
-      errors.LastName = formContent.empty_data_alert;
-    }
-
-    if (!values.Phone) {
-      console.log(`values.Phone-`, values.Phone);
-      errors.Phone = formContent.empty_data_alert;
-    }
-
-    if (!values.Birthdate) {
-      errors.Birthdate = formContent.empty_data_alert;
-    }
-
-    if (values.Phone) {
-      const phoneReg6 = new RegExp(/^(0|886|\+886)?(9\d{8})$/).test(
-        values.Phone,
-      );
-      const phoneReg7 = new RegExp(/^(0|886|\+886){1}[3-8]-?\d{6,8}$/).test(
-        values.Phone,
-      );
-      const phoneReg8 = new RegExp(/^(0|886|\+886){1}[2]-?\d{8}$/).test(
-        values.Phone,
-      );
-
-      if (phoneReg6 || phoneReg7 || phoneReg8) {
-        return;
-      } else {
-        errors.Phone = formContent.invalid_format_alert;
-      }
-    }
-
-    return errors;
+    return validation(values, formContent);
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const { signup, setStatus, theme } = props;
-    const themeData = theme;
+    const { signup, theme, hiddenFormData } = props;
     const fallbackValue = (d) => (d ? d : '');
-    const hiddenFormData = props.hiddenForm.data;
-    const FORM_URL = helper.getPostURL();
-    const CAMPAIGN_ID =
-      process.env.NODE_ENV === 'production'
-        ? helper.getCampaignID()
-        : '7012u000000OxDYAA0';
-    const getHiddenFields = document.querySelectorAll(
-      'input[value][type="hidden"]:not([value=""])',
-    );
-    const hiddenFormValue = [...getHiddenFields].reduce(
-      (obj, e) => ({ ...obj, [e.name]: e.value }),
-      {},
-    );
 
     const formData = {
-      ...hiddenFormValue,
+      ...hiddenFormData,
       ...values,
-      // TODO: Match values from hidden from
       UtmMedium: fallbackValue(hiddenFormData.utm_medium),
       UtmSource: fallbackValue(hiddenFormData.utm_source),
       UtmCampaign: fallbackValue(hiddenFormData.utm_campaign),
       UtmContent: fallbackValue(hiddenFormData.utm_content),
       UtmTerm: fallbackValue(hiddenFormData.utm_term),
-      CampaignId: themeData.CampaignId,
+      CampaignId:
+        process.env.NODE_ENV === 'production'
+          ? theme.CampaignId
+          : '7012u000000OxDYAA0',
     };
 
-    alert(JSON.stringify(formData, null, '\t'));
-
-    // FAKE SUBMIT
-    signup(formData);
-    setStatus(true);
+    setSubmitting(true);
+    signup(formData, theme.EndpointURL);
   },
 
   displayName: 'SignupForm',
 })(MyForm);
 
-const mapStateToProps = ({ user, signup, hiddenForm, form, theme }) => {
+const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
   return {
-    user,
     signup,
-    hiddenForm,
+    hiddenFormData: hiddenForm.data,
+    isLoading: signup.lastAction === signupActions.SIGN_UP,
     formContent: form.content,
+    numberOfResponses: form.signupNumbers.hk?.NumberOfResponses,
+    numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
     theme: theme.data,
+    suggestion: form.suggestion,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (data) => {
-      dispatch({ type: signupActions.SIGN_UP, data });
+    signup: (data, endPoint) => {
+      dispatch({ type: signupActions.SIGN_UP, data, endPoint });
     },
-    setStatus: (bol) => {
+    setWebStatus: (bol) => {
       dispatch({ type: statusActions.SET_FORM_SUBMITTED, data: bol });
+    },
+    setSuggestion: (value) => {
+      dispatch({ type: formActions.SET_SUGGESTION, data: value });
+    },
+    initSuggestion: () => {
+      dispatch({ type: formActions.INIT_SUGGESTION });
     },
   };
 };
 
-connect(null, mapDispatchToProps)(MyForm);
+connect(mapStateToProps, mapDispatchToProps)(MyForm);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyEnhancedForm);
