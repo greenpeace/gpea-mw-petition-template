@@ -20,8 +20,9 @@ import * as formActions from 'store/actions/action-types/form-actions';
 
 import heroBannerImage from './images/e0d0bb1a-e0d0bb1a-gp0storn2_web_size_with_credit_line.jpg';
 
-function Index({ status, theme, setFormContent }) {
+function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
+  const { FirstName } = signup;
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -43,7 +44,7 @@ function Index({ status, theme, setFormContent }) {
         <ThanksBanner
           bgImage={heroBannerImage}
           content={{
-            title: 'Thank you for signing the petition, {FIRST_NAME}',
+            title: `Thank you for signing the petition, ${FirstName}`,
             description: [
               "Do even more to protect the world's oceans by donating.",
             ],
@@ -110,8 +111,8 @@ function Index({ status, theme, setFormContent }) {
   );
 }
 
-const mapStateToProps = ({ status, theme }) => {
-  return { status, theme: theme.data };
+const mapStateToProps = ({ status, theme, signup }) => {
+  return { status, theme: theme.data, signup: signup.data };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,15 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Heading, Text, Image } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-const Thankyou = () => {
+const Thankyou = ({ theme, signup }) => {
+  const themeInterests = theme.interests;
+  const { FirstName } = signup;
   return (
     <>
       <Heading {...headingProps}>
-        Thank you for signing the petition to support a Global Oceans Pact.
+        {FirstName}, Thank you for signing the petition to support a Global
+        Oceans Pact.
       </Heading>
 
       <Text as="p" {...paragraphProps}>
@@ -42,4 +46,8 @@ const Thankyou = () => {
   );
 };
 
-export default Thankyou;
+const mapStateToProps = ({ status, theme, signup }) => {
+  return { status, theme: theme.data, signup: signup.data };
+};
+
+export default connect(mapStateToProps)(Thankyou);
