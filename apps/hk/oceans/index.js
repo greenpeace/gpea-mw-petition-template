@@ -11,17 +11,18 @@ import SignupForm from '@components/GP/HKForm';
 import DonateForm from '@components/GP/HKForm/donate';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Flex, Button } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
-import FixedCTA from '@components/GP/FixedCTA';
 import SEO from './SEO';
+import FixedCTA from '@components/GP/FixedCTA';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/GP02HUY_High_res.jpg';
+import heroBannerImage from './images/GP1SUB1C_PressMedia.jpg';
 
-function Index({ status, theme, setFormContent }) {
+function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
+  const { FirstName } = signup;
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -43,10 +44,9 @@ function Index({ status, theme, setFormContent }) {
         <ThanksBanner
           bgImage={heroBannerImage}
           content={{
-            title: '感謝您的加入！',
+            title: `${FirstName} 感謝您加入守護海洋行列！`,
             description: [
-              '綠色和平堅持以行動守護北極，揭露並制止企業與政府，在北極鑽油與過度捕撈惡行、推動全球攜手淘汰化石能源，將升溫控制至1.5°C，守護北極，減輕北極熊生存壓力。',
-              '綠色和平堅持不接受政商界捐助，因為您，綠色和平得以維持環境工作的公正獨立性，懇請您今天就以每月$100（約每日$3）小額捐助，支持守護北極全球行動！',
+              "感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。<br/>您的聯署已經壯大了全球守護海洋力量，我們將一起實現保護、維持、復育海洋健康的理想。<br/><br/>此刻是拯救海洋的關鍵時機——我們將推動各地領袖訂立《全球海洋公約》，並在2030年前成立全球海洋保護區，保護至少30%海洋。《全球海洋公約》與全球海洋保護區是保護海洋的完善機制，在保護區內，所有對海洋有害的活動都將被禁止，已受破壞的海洋生態系統與環境能夠休養並得以復育。人類社會與地球生態均依賴海洋運作，因此守護海洋，刻不容緩。<br/><br/>您的聯署為守護海洋工作提供了強大力量。我們邀請您繼續關注保護海洋議題，<a href='https://www.greenpeace.org/hongkong/issues/oceans/update/1706/' target='_blank'><u>了解更多《全球海洋公約》資訊</u></a>，以及透過專欄認識<a href='https://www.greenpeace.org/hongkong/issues/health/update/1287/%e9%bb%83%e5%bf%97%e4%bf%8a%ef%bc%9a%e5%bc%b1%e5%8b%a2%e6%b5%b7%e6%b4%8b%e8%a6%81%e5%a4%a7%e5%ae%b6%e7%99%bc%e8%81%b2%e5%ae%88%e8%ad%b7/' target='_blank'><u>更多守護海洋的同路人故事</u></a>。",
             ],
             inviteMessage: '邀請您的朋友一同參與:',
             shareLink: [
@@ -74,11 +74,8 @@ function Index({ status, theme, setFormContent }) {
         <HeroBanner
           bgImage={heroBannerImage}
           content={{
-            title: '守護北極，全球行動！',
-            description: [
-              '過去數十年，北極在全球暖化下，已損失三分之二的海冰體積，北極熊的數量亦減少近一半。失去海冰屏障，加上北極海洋不到1.5%範圍得到正式保護，石油公司、工業捕漁船可以不分季節，直入北極奪取資源。',
-              '綠色和平正爭取訂立「全球海洋公約」，將北極地區設為優先保護區，以嚴格管制、禁止各國進行鑽油、捕魚等活動，同時推動全球氣候改革以控制升溫於 1.5℃ 內。守護北極生態、北極熊的唯一棲所，請即加入聯署，為北極發聲！',
-            ],
+            title: '請即聯署<br/>支持2030年前<br/>成立至少30%海洋保護區',
+            description: [''],
           }}
         />
       )}
@@ -113,8 +110,8 @@ function Index({ status, theme, setFormContent }) {
   );
 }
 
-const mapStateToProps = ({ status, theme }) => {
-  return { status, theme: theme.data };
+const mapStateToProps = ({ status, theme, signup }) => {
+  return { status, theme: theme.data, signup: signup.data };
 };
 
 const mapDispatchToProps = (dispatch) => {

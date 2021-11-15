@@ -3,6 +3,7 @@ import * as themeActions from 'store/actions/action-types/theme-actions';
 const initState = {
   data: {
     ProjectName: '',
+    CampaignId: '',
     interests: '',
   },
 };

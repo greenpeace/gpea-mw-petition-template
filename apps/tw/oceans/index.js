@@ -7,21 +7,22 @@ import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 import Content from './Content';
 import Thankyou from './Thankyou';
-import SignupForm from '@components/GP/HKForm';
-import DonateForm from '@components/GP/HKForm/donate';
+import SignupForm from '@components/GP/TWForm';
+import DonateForm from '@components/GP/TWForm/donate';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Flex, Button } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
 import FixedCTA from '@components/GP/FixedCTA';
 import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/GP02HUY_High_res.jpg';
+import heroBannerImage from './images/e0d0bb1a-e0d0bb1a-gp0storn2_web_size_with_credit_line.jpg';
 
-function Index({ status, theme, setFormContent }) {
+function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
+  const { FirstName } = signup;
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -43,10 +44,9 @@ function Index({ status, theme, setFormContent }) {
         <ThanksBanner
           bgImage={heroBannerImage}
           content={{
-            title: '感謝您的加入！',
+            title: `Thank you for signing the petition, ${FirstName}`,
             description: [
-              '綠色和平堅持以行動守護北極，揭露並制止企業與政府，在北極鑽油與過度捕撈惡行、推動全球攜手淘汰化石能源，將升溫控制至1.5°C，守護北極，減輕北極熊生存壓力。',
-              '綠色和平堅持不接受政商界捐助，因為您，綠色和平得以維持環境工作的公正獨立性，懇請您今天就以每月$100（約每日$3）小額捐助，支持守護北極全球行動！',
+              "Do even more to protect the world's oceans by donating.",
             ],
             inviteMessage: '邀請您的朋友一同參與:',
             shareLink: [
@@ -74,11 +74,9 @@ function Index({ status, theme, setFormContent }) {
         <HeroBanner
           bgImage={heroBannerImage}
           content={{
-            title: '守護北極，全球行動！',
-            description: [
-              '過去數十年，北極在全球暖化下，已損失三分之二的海冰體積，北極熊的數量亦減少近一半。失去海冰屏障，加上北極海洋不到1.5%範圍得到正式保護，石油公司、工業捕漁船可以不分季節，直入北極奪取資源。',
-              '綠色和平正爭取訂立「全球海洋公約」，將北極地區設為優先保護區，以嚴格管制、禁止各國進行鑽油、捕魚等活動，同時推動全球氣候改革以控制升溫於 1.5℃ 內。守護北極生態、北極熊的唯一棲所，請即加入聯署，為北極發聲！',
-            ],
+            title:
+              "Sign the petition to <b>PROTECT 30% OF THE WORLD's OCEANS.</b>",
+            description: [''],
           }}
         />
       )}
@@ -105,7 +103,7 @@ function Index({ status, theme, setFormContent }) {
           </Flex>
         </Box>
       </PageContainer>
-      <PetitionFooter locale={'HKChinese'} />
+      <PetitionFooter locale={'HKEnglish'} />
       {!inView && (
         <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
       )}
@@ -113,8 +111,8 @@ function Index({ status, theme, setFormContent }) {
   );
 }
 
-const mapStateToProps = ({ status, theme }) => {
-  return { status, theme: theme.data };
+const mapStateToProps = ({ status, theme, signup }) => {
+  return { status, theme: theme.data, signup: signup.data };
 };
 
 const mapDispatchToProps = (dispatch) => {

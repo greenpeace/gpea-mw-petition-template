@@ -3,15 +3,14 @@ import { Box } from '@chakra-ui/react';
 
 const FormContainer = ({ children }) => {
   return (
-    <Box position="sticky" top="0">
+    <Box position="sticky" top="4px">
       <Box
-        boxShadow="lg"
-        py="6"
-        px="4"
-        bgColor="#FFF"
-        borderRadius={8}
         maxW="500px"
         mx="auto"
+        bgColor="white"
+        borderRadius={8}
+        boxShadow="lg"
+        overflow="hidden"
       >
         {children}
       </Box>
