@@ -17,7 +17,7 @@
   "label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考隱私保護政策。",
 
   "empty_data_alert": "請填寫資料",
-  "empty_select_data_alert": "請選擇",
+  "empty_select_data_alert": "出生年份",
 
   "invalid_email_alert": "請填上有效電子郵件",
   "invalid_format_alert": "請輸入有效格式",
@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "立即捐助",
-  "donateURL": "https://dev-gpea.cs57.force.com/hk/s/donate/alt-layout?campaign=mw",
+  "donateURL": "https://dev-gpea.cs57.force.com/tw/s/donate/alt-layout?campaign=oceans_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -52,39 +52,39 @@
   "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
   "default_amount": 600,
   "donate_type": [
-    { "label": "月捐", "value": "monthly" },
-    { "label": "單捐", "value": "single" }
+    { "label": "每月捐款", "value": "monthly" },
+    { "label": "單次捐款", "value": "single" }
   ],
   "amount_onetime": [
     {
-      "label": "NTD 2000",
+      "label": "新臺幣 2000",
       "value": 2000,
       "description": "支持綠色和平持續搜集第一手海洋真相，透過傳播媒體送到您與全球的眼前！"
     },
     {
-      "label": "NTD 3000",
+      "label": "新臺幣 3000",
       "value": 3000,
       "description": "支持綠色和平船艦調查所需裝備，監察破壞海洋的行為，需時前赴應對突發環境災難！"
     },
     {
-      "label": "NTD 5000",
+      "label": "新臺幣 5000",
       "value": 5000,
       "description": "支持綠色和平團隊聯同科學家，到各個海域進行實地考察與研究工作，並展開國際倡議行動！"
     }
   ],
   "amount_monthly": [
     {
-      "label": "NTD 600",
+      "label": "新臺幣 600",
       "value": 600,
       "description": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！"
     },
     {
-      "label": "NTD 800",
+      "label": "新臺幣 800",
       "value": 800,
       "description": "支持綠色和平船艦持績監察企業最新動向，及時阻止破壞海洋的行為。"
     },
     {
-      "label": "NTD 1200",
+      "label": "新臺幣 1200",
       "value": 1200,
       "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意制定「全球海洋公約」，推進守護30%海洋保護區目標！"
     }

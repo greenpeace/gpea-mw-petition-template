@@ -24,12 +24,10 @@ const Content = ({ theme }) => {
         此刻，綠色和平正持續推動各國政府攜手制定《全球海洋公約》，為浩瀚海洋建立完善且長久的保護機制。如果我們成功了，將是環保運動的重要里程碑，能讓至少三分之一以上的海洋生態不受人為干預，生生不息。
       </Text>
 
-      <Text as="p" {...paragraphProps} fontWeight={`bold`}>
+      <Text as="p" {...paragraphProps} fontSize={`xl`} fontWeight={`bold`}>
         您願意一起守護海洋嗎？
         <br />
-        <Text as="span" fontSize={`xl`}>
-          現在就連署！
-        </Text>
+        現在就連署！
       </Text>
 
       <Box {...paragraphProps}>
@@ -63,10 +61,8 @@ const Content = ({ theme }) => {
         讓枯竭的海洋喘口氣，就是我們所能提供最實質的幫助。
       </Text>
 
-      <Text as="p" {...paragraphProps} fontWeight={`bold`}>
-        <Text as="span" fontSize={`xl`}>
-          立即連署
-        </Text>
+      <Text as="p" {...paragraphProps} fontSize={`xl`} fontWeight={`bold`}>
+        立即連署
         <br />
         拯救脆弱海洋，有您有我
       </Text>
