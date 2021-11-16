@@ -7,8 +7,16 @@ const labelStyle = {
 };
 
 export const Field = (props) => {
-  const { name, type, errors, touched, label, handleChange, handleBlur } =
-    props;
+  const {
+    name,
+    type,
+    errors,
+    touched,
+    label,
+    handleChange,
+    handleBlur,
+    size = 'lg',
+  } = props;
 
   return (
     <FormControl id={name} isInvalid={errors && touched}>
@@ -20,6 +28,7 @@ export const Field = (props) => {
         onChange={handleChange}
         onBlur={handleBlur}
         _placeholder={{ fontSize: 16 }}
+        size={size}
       />
       <FormErrorMessage color="red">{errors}</FormErrorMessage>
     </FormControl>

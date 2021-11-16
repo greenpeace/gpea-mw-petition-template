@@ -114,10 +114,7 @@ const DonateForm = (props) => {
             <Flex direction="column">
               <Grid templateColumns="repeat(3, 1fr)" gap={2}>
                 {(amountOption || []).map((d, i) => {
-                  {
-                    /* const colSpan = amountOption.length === i + 1 ? 3 : 1; */
-                  }
-                  const colSpan = 1;
+                  const colSpan = amountOption.length === i + 1 ? 3 : 1;
                   return (
                     <GridItem colSpan={colSpan} key={i}>
                       <Button
