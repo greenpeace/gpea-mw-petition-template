@@ -1,68 +1,13 @@
 .content {
-  .arctic {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-weight: bold;
-      color: var(--arctic) !important;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--thematic-color) !important;
   }
-  .oceans {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-weight: bold;
-      color: var(--oceans) !important;
-    }
-  }
-  .health {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-weight: bold;
-      color: var(--health) !important;
-    }
-  }
-  .forests {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-weight: bold;
-      color: var(--forests) !important;
-    }
-  }
-  .climate {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-weight: bold;
-      color: var(--climate) !important;
-    }
-  }
-  .plastics {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-weight: bold;
-      color: var(--plastics) !important;
-    }
-  }
+}
+.social-share {
+  color: var(--thematic-color) !important;
 }

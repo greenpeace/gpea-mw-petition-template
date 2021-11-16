@@ -7,7 +7,7 @@ import {
   Text,
   Image,
 } from '@chakra-ui/react';
-import SocialButton from './socialButton';
+import SocialButton from '../SocialButton/socialButton';
 import { FooterBGBlue } from './footer.style';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
