@@ -47,22 +47,45 @@
 
   "donate_header": "我願意支持守護海洋工作",
   "donate_description": ["我將以捐助方式參與保護海洋項目，令海洋回復健康。"],
+  "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
   "default_amount": 200,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
   ],
   "amount_onetime": [
-    { "label": "HKD 500", "value": 500 },
-    { "label": "HKD 700", "value": 700 },
-    { "label": "HKD 900", "value": 900 },
-    { "label": "其他金額", "value": "" }
+    {
+      "label": "HKD 500",
+      "value": 500,
+      "description": "支持綠色和平持續搜集第一手海洋真相，透過傳播媒體送到您與全球的眼前！"
+    },
+    {
+      "label": "HKD 700",
+      "value": 700,
+      "description": "支持綠色和平船艦調查所需裝備，監察破壞海洋的行為，需時前赴應對突發環境災難！"
+    },
+    {
+      "label": "HKD 900",
+      "value": 900,
+      "description": "支持綠色和平團隊聯同科學家，到各個海域進行實地考察與研究工作，並展開國際倡議行動！"
+    }
   ],
   "amount_monthly": [
-    { "label": "HKD 200", "value": 200 },
-    { "label": "HKD 300", "value": 300 },
-    { "label": "HKD 400", "value": 400 },
-    { "label": "其他金額", "value": "" }
+    {
+      "label": "HKD 200",
+      "value": 200,
+      "description": "支持發起全球聯署行動，擴大要求制定「全球海洋公約」的聲音力量！"
+    },
+    {
+      "label": "HKD 300",
+      "value": 300,
+      "description": "支持綠色和平船艦持績監察企業最新動向，及時阻止破壞海洋的行為。"
+    },
+    {
+      "label": "HKD 400",
+      "value": 400,
+      "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意制定「全球海洋公約」，推進守護30%海洋保護區目標！"
+    }
   ],
   "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"
 }

@@ -50,7 +50,8 @@ function Index({ status, theme, setFormContent, signup }) {
             description: [
               '感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。',
             ],
-            inviteMessage: '邀請您的朋友一同參與:',
+            inviteMessage:
+              '<b>(Only for TY page without donate box.)</b><br/>您的聯署已經壯大了全球守護海洋力量，我們將一起實現保護、維持、復育海洋健康的理想。邀請您的朋友一同參與：',
             shareLink: [
               {
                 shareComponent: <FaInstagram />,
