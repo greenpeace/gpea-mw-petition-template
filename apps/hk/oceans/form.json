@@ -48,6 +48,7 @@
   "donate_header": "我願意支持守護海洋工作",
   "donate_description": ["我將以捐助方式參與保護海洋項目，令海洋回復健康。"],
   "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
+  "currency": "HKD",
   "default_amount": 200,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
@@ -68,6 +69,11 @@
       "label": "HKD 900",
       "value": 900,
       "description": "支持綠色和平團隊聯同科學家，到各個海域進行實地考察與研究工作，並展開國際倡議行動！"
+    },
+    {
+      "label": "其他金額",
+      "value": "other",
+      "description": ""
     }
   ],
   "amount_monthly": [
@@ -85,6 +91,11 @@
       "label": "HKD 400",
       "value": 400,
       "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意制定「全球海洋公約」，推進守護30%海洋保護區目標！"
+    },
+    {
+      "label": "其他金額",
+      "value": "other",
+      "description": ""
     }
   ],
   "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"
