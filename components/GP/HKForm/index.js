@@ -233,7 +233,8 @@ const MyForm = (props) => {
                   <Select
                     name="MobileCountryCode"
                     onChange={handleChange}
-                    fontSize={'sm'}
+                    fontSize={'md'}
+                    size={'lg'}
                   >
                     {(formContent.mobile_country_code || []).map((d) => (
                       <option key={d.value} value={d.value}>
