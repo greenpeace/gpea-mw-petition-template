@@ -14,24 +14,26 @@ const ButtonWithMessage = (props) => {
     handleSubmit,
     touched,
     errors,
+    description,
     values,
   } = props;
 
   return (
     <Box>
       <Form onSubmit={handleSubmit}>
-        <Stack py={4}>
-          <Field
-            label={currency}
-            name={'Donate'}
-            type="number"
-            errors={errors.Donate}
-            touched={touched.Donate}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-            size={'lg'}
-          />
-        </Stack>
+        <Field
+          label={currency}
+          name={'Donate'}
+          type="number"
+          errors={errors.Donate}
+          touched={touched.Donate}
+          handleChange={handleChange}
+          handleBlur={handleBlur}
+          size={'lg'}
+        />
+        <Box pb={6} pt={8}>
+          <Text fontSize={'md'}>{description}</Text>
+        </Box>
         <Box>
           <Button {...OrangeCTA} type={'submit'}>
             {donate_button}

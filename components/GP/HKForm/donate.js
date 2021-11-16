@@ -134,8 +134,14 @@ const DonateForm = (props) => {
                         color: '#fff',
                       }}
                       onClick={() => {
+                        const updateItem = {
+                          ...d,
+                          description: d.description
+                            ? d.description
+                            : item.description,
+                        };
                         setAmount(d.value);
-                        setItem(d);
+                        setItem(updateItem);
                       }}
                       w="100%"
                       {...buttonStyle}
@@ -146,18 +152,20 @@ const DonateForm = (props) => {
                 );
               })}
             </Grid>
-          </Box>
-
-          <Box>
-            {item && item.value === 'other' ? (
-              <ButtonWithField donateType={donateType} />
-            ) : (
-              <ButtonWithMessage
-                amount={amount}
-                donateType={donateType}
-                description={item ? item.description : default_message}
-              />
-            )}
+            <Box pt={2}>
+              {item && item.value === 'other' ? (
+                <ButtonWithField
+                  donateType={donateType}
+                  description={item ? item.description : default_message}
+                />
+              ) : (
+                <ButtonWithMessage
+                  amount={amount}
+                  donateType={donateType}
+                  description={item ? item.description : default_message}
+                />
+              )}
+            </Box>
           </Box>
         </Stack>
       </Box>
