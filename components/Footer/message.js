@@ -19,7 +19,7 @@ const HKEnglish = {
 const TWChinese = {
   messageTitle: '捐款查詢：',
   messageContact: [
-    '歡迎致電會員服務熱線 <a href="tel:+85228548318"><u>(852) 2854 8318</u></a>，或電郵至 <a href="mailto:donor.services.hk@greenpeace.org"><u>donor.services.hk@greenpeace.org</u></a>，以查詢捐款相關事宜。',
+    'Phone number: <a href="tel:+85228548318"><u>(+99) 012 345 678 900</u></a> | Email address: <a href="mailto:donor.services.hk@greenpeace.org"><u>info@greenpeace.org</u></a>',
   ],
 };
 
