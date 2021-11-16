@@ -207,6 +207,7 @@ const MyForm = (props) => {
                   }}
                   value={values.Email}
                   _placeholder={{ fontSize: 16 }}
+                  size={'lg'}
                 />
                 <FormErrorMessage color="red">{errors.Email}</FormErrorMessage>
                 {suggestion && (
@@ -267,6 +268,7 @@ const MyForm = (props) => {
                   onChange={handleChange}
                   fontSize={'16px'}
                   placeholder={formContent.empty_select_data_alert}
+                  size={'lg'}
                 >
                   {birthDateYear &&
                     birthDateYear.map((d) => (

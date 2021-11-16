@@ -51,7 +51,7 @@
   ],
   "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
   "currency": "新臺幣",
-  "default_amount": 200,
+  "default_amount": 600,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
