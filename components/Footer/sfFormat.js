@@ -74,11 +74,23 @@ const TWChinese = {
     '綠色和平致力於為地球發聲，我們的存在是因為脆弱的地球需要改變、需要行動。但保護地球的使命不能僅靠綠色和平來完成，「您」就是改變世界的力量！',
   ],
   link: [
-    { label: '主頁', value: '#' },
-    { label: '隱私保護政策', value: '#' },
-    { label: '版權聲明', value: '#' },
-    { label: '聯絡我們', value: '#' },
-    { label: '關於綠色和平', value: '#' },
+    { label: '主頁', value: 'https://www.greenpeace.org/taiwan/' },
+    {
+      label: '隱私保護政策',
+      value: 'https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/',
+    },
+    {
+      label: '版權聲明',
+      value: 'https://www.greenpeace.org/taiwan/policies/terms-and-conditions/',
+    },
+    {
+      label: '聯絡我們',
+      value: 'https://www.greenpeace.org/taiwan/about/contact/',
+    },
+    {
+      label: '關於綠色和平',
+      value: 'https://www.greenpeace.org/taiwan/about/overview/',
+    },
   ],
   rightContent: [
     '此頁面採用了 SSL 保安接層加密技術，可確保敏感資料（例如信用卡資料和個人資料）在您的瀏覽器和我們伺服器之間傳送時獲得保密處理。',

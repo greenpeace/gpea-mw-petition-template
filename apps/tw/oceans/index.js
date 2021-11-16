@@ -44,11 +44,11 @@ function Index({ status, theme, setFormContent, signup }) {
         <ThanksBanner
           bgImage={heroBannerImage}
           content={{
-            title: `Thank you for signing the petition, ${FirstName}`,
-            description: [
-              "Do even more to protect the world's oceans by donating.",
-            ],
-            inviteMessage: '邀請您的朋友一同參與:',
+            title: `${
+              FirstName ? FirstName : '綠色和平支持者'
+            }，謝謝你參與這次的連署`,
+            description: ['能更進一步支持我們的海洋行動嗎？'],
+            inviteMessage: '',
             shareLink: [
               {
                 shareComponent: <FaInstagram fontSize={12} color={`#66cc00`} />,
@@ -74,8 +74,7 @@ function Index({ status, theme, setFormContent, signup }) {
         <HeroBanner
           bgImage={heroBannerImage}
           content={{
-            title:
-              "Sign the petition to <b>PROTECT 30% OF THE WORLD's OCEANS.</b>",
+            title: '現在連署<br/><b>您能保護 30% 全球海洋</b>',
             description: [''],
           }}
         />
@@ -103,7 +102,7 @@ function Index({ status, theme, setFormContent, signup }) {
           </Flex>
         </Box>
       </PageContainer>
-      <PetitionFooter locale={'HKEnglish'} />
+      <PetitionFooter locale={'TWChinese'} />
       {!inView && (
         <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
       )}

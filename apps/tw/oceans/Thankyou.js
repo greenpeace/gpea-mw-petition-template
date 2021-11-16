@@ -1,6 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Heading, Text, Image } from '@chakra-ui/react';
+import {
+  Heading,
+  Text,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  Box,
+} from '@chakra-ui/react';
+
 import {
   headingProps,
   paragraphProps,
@@ -11,37 +21,45 @@ const Thankyou = ({ theme, signup }) => {
   const { FirstName } = signup;
   return (
     <>
-      <Heading {...headingProps}>
-        {FirstName}, Thank you for signing the petition to support a Global
-        Oceans Pact.
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+        感謝你加入連署，推動全球海洋保護區
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        You’ve joined tens of thousands of Greenpeace supporters fighting to
-        protect a third of the world’s oceans through marine sanctuaries.
+        每一個偉大的成就，背後都有無數人前仆後繼的努力。
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        Will you take your care for our oceans a step further? Donate here now
-        and help protect them in other powerful ways.
+        現在，恭喜你成為無數人之一，
+        <br />
+        我們都是守護脆弱海洋的重要力量！
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        If ever the world’s oceans needed you it’s now. They’re under threat
-        from climate change, overfishing, plastic pollution and more. Countless
-        marine species are at risk – and fragile ecosystems are close to
-        collapse.
+        因為有你的連署支持，綠色和平才能出席國際會議，以全球支持者為後盾，要求各國政治領袖必須制定《全球海洋公約》，有了國際法作為依歸，全球海洋保護區才能真正發揮影響力、確實執行，讓工業捕撈、商業活動撤出保護區範圍，讓海洋得以復甦，讓海底動物能稍稍喘息。
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        But with your help, and a donation to Greenpeace, we can create a
-        healthy, sustainable future for our oceans and everything that depends
-        on them.
+        能更進一步支持我們的海洋行動嗎？請捐款資助我們做更有力的行動！
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        <b>Be part of the solution for our beautiful oceans.</b>
+        捐款將幫助綠色和平做調查研究、阻止破壞行動、進行倡議，更重要的是，在
+        2030 年前，爭取成立「全球海洋公約」，推動至少 30% 海洋保護區。
       </Text>
+
+      <Box {...paragraphProps}>
+        全球海洋公約》所帶來的幫助：
+        <OrderedList>
+          <ListItem>守護海洋生態，維護生物多樣性</ListItem>
+          <ListItem>限制公海的人為活動</ListItem>
+          <ListItem>妥善監管、制定審議及處分機制</ListItem>
+          <ListItem>制定具有約束力的規範</ListItem>
+          <ListItem>填補現行公約漏洞，提升規範效益</ListItem>
+        </OrderedList>
+        <br />
+        你的捐款，將有助於推動這一切，一同守護蔚藍大海！
+      </Box>
     </>
   );
 };

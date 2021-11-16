@@ -17,7 +17,7 @@ const HKEnglish = {
 };
 
 const TWChinese = {
-  messageTitle: 'Do you have any questions, please call or mail us!',
+  messageTitle: '捐款查詢：',
   messageContact: [
     'Phone number: <a href="tel:+85228548318"><u>(+99) 012 345 678 900</u></a> | Email address: <a href="mailto:donor.services.hk@greenpeace.org"><u>info@greenpeace.org</u></a>',
   ],

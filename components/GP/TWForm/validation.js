@@ -15,8 +15,8 @@ export function validation(values, formContent) {
     errors.LastName = formContent.empty_data_alert;
   }
 
-  if (!values.MobilePhone) {
-    errors.MobilePhone = formContent.empty_data_alert;
+  if (!values.Phone) {
+    errors.Phone = formContent.empty_data_alert;
   }
 
   if (!values.Birthdate) {
@@ -33,7 +33,7 @@ export function validation(values, formContent) {
     );
 
     if (phoneReg6 || phoneReg7 || phoneReg8) {
-      return;
+      return errors;
     } else {
       errors.Phone = formContent.invalid_format_alert;
     }

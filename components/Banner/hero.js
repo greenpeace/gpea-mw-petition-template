@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Box, Text } from '@chakra-ui/react';
+import { Heading, Box, Text, Image } from '@chakra-ui/react';
 import PageContainer from '@containers/pageContainer';
 
 import { TextWrapper } from './Banner.style';
@@ -8,12 +8,12 @@ export default function Index({ content, bgImage }) {
   return (
     <>
       <Box
-        h={{ base: 'lg', md: 'xl' }}
+        minH={{ base: 'lg', md: 'xl' }}
         pos={'relative'}
-        bgImage={bgImage}
         zIndex={2}
         bgSize={`cover`}
         bgPos={`center center`}
+        paddingBottom={'4rem'}
       >
         <Box pos={'relative'} zIndex={3}>
           <PageContainer>
@@ -45,6 +45,16 @@ export default function Index({ content, bgImage }) {
               </TextWrapper>
             </Box>
           </PageContainer>
+        </Box>
+
+        <Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
+          <Image
+            src={bgImage}
+            h={'100%'}
+            w={'100%'}
+            objectFit={'cover'}
+            objectPosition={'center'}
+          />
         </Box>
 
         <Box
