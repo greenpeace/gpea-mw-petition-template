@@ -111,55 +111,53 @@ const DonateForm = (props) => {
           <Divider />
 
           <Box>
-            <Flex direction="column">
-              <Grid templateColumns="repeat(3, 1fr)" gap={2}>
-                {(amountOption || []).map((d, i) => {
-                  const colSpan = amountOption.length === i + 1 ? 3 : 1;
-                  if (item && item.value === 'other' && d.value === 'other') {
-                    return;
-                  }
-                  return (
-                    <GridItem colSpan={colSpan} key={i}>
-                      <Button
-                        key={i}
-                        flex="1"
-                        border="1px"
-                        borderColor="gray.100"
-                        bg={
-                          amount === d.value
-                            ? `theme.${themeInterests}`
-                            : '#fff'
-                        }
-                        color={amount === d.value ? '#fff' : 'gray.500'}
-                        borderRadius={'md'}
-                        _hover={{
-                          bg: `theme.${themeInterests}`,
-                          color: '#fff',
-                        }}
-                        onClick={() => {
-                          setAmount(d.value);
-                          setItem(d);
-                        }}
-                        w="100%"
-                        {...buttonStyle}
-                      >
-                        {d.label}
-                      </Button>
-                    </GridItem>
-                  );
-                })}
-              </Grid>
+            <Grid templateColumns="repeat(3, 1fr)" gap={2}>
+              {(amountOption || []).map((d, i) => {
+                const colSpan = amountOption.length === i + 1 ? 3 : 1;
+                if (item && item.value === 'other' && d.value === 'other') {
+                  return;
+                }
+                return (
+                  <GridItem colSpan={colSpan} key={i}>
+                    <Button
+                      key={i}
+                      flex="1"
+                      border="1px"
+                      borderColor="gray.100"
+                      bg={
+                        amount === d.value ? `theme.${themeInterests}` : '#fff'
+                      }
+                      color={amount === d.value ? '#fff' : 'gray.500'}
+                      borderRadius={'md'}
+                      _hover={{
+                        bg: `theme.${themeInterests}`,
+                        color: '#fff',
+                      }}
+                      onClick={() => {
+                        setAmount(d.value);
+                        setItem(d);
+                      }}
+                      w="100%"
+                      {...buttonStyle}
+                    >
+                      {d.label}
+                    </Button>
+                  </GridItem>
+                );
+              })}
+            </Grid>
+          </Box>
 
-              {item && item.value === 'other' ? (
-                <ButtonWithField donateType={donateType} />
-              ) : (
-                <ButtonWithMessage
-                  amount={amount}
-                  donateType={donateType}
-                  description={item ? item.description : default_message}
-                />
-              )}
-            </Flex>
+          <Box>
+            {item && item.value === 'other' ? (
+              <ButtonWithField donateType={donateType} />
+            ) : (
+              <ButtonWithMessage
+                amount={amount}
+                donateType={donateType}
+                description={item ? item.description : default_message}
+              />
+            )}
           </Box>
         </Stack>
       </Box>
