@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {
   Box,
@@ -12,7 +12,9 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import StepProgress from '@components/Progress/StepProgress';
-import { OrangeCTA, buttonStyle } from '@common/styles/components/formStyle';
+import ButtonWithMessage from './buttonWithMessage';
+import ButtonWithField from './ButtonWithField';
+import { buttonStyle } from '@common/styles/components/formStyle';
 
 const DonateForm = (props) => {
   const {
@@ -21,12 +23,9 @@ const DonateForm = (props) => {
       default_amount,
       amount_monthly,
       amount_onetime,
-      donateURL,
       donate_header,
       donate_description,
       donate_type,
-      thanks_message,
-      donate_button,
     },
     theme,
   } = props;
@@ -37,7 +36,6 @@ const DonateForm = (props) => {
   const themeInterests = theme.interests;
   const amountOption =
     donateType === 'monthly' ? amount_monthly : amount_onetime;
-  const message = item ? item.description : default_message;
   const handleSetDonateType = (value) => {
     setDonateType(value);
     setAmount(
@@ -46,11 +44,13 @@ const DonateForm = (props) => {
     setURL({ ...url, type: value });
   };
 
-  const targetDonateURL = donateURL;
-
-  const handleOpenLink = () => {
-    window.open(`${targetDonateURL}&donate_amt=${donateType}:${amount}`);
-  };
+  useEffect(() => {
+    if (!amount_monthly) {
+      return;
+    }
+    setItem(amount_monthly[0]);
+    setAmount(default_amount);
+  }, [amount_monthly]);
 
   return (
     <Box>
@@ -115,6 +115,9 @@ const DonateForm = (props) => {
               <Grid templateColumns="repeat(3, 1fr)" gap={2}>
                 {(amountOption || []).map((d, i) => {
                   const colSpan = amountOption.length === i + 1 ? 3 : 1;
+                  if (item && item.value === 'other' && d.value === 'other') {
+                    return;
+                  }
                   return (
                     <GridItem colSpan={colSpan} key={i}>
                       <Button
@@ -146,16 +149,16 @@ const DonateForm = (props) => {
                   );
                 })}
               </Grid>
-              <Box py={6}>
-                <Text fontSize={'md'}>
-                  {item ? item.description : default_message}
-                </Text>
-              </Box>
-              <Box>
-                <Button {...OrangeCTA} onClick={() => handleOpenLink()}>
-                  {donate_button}
-                </Button>
-              </Box>
+
+              {item && item.value === 'other' ? (
+                <ButtonWithField donateType={donateType} />
+              ) : (
+                <ButtonWithMessage
+                  amount={amount}
+                  donateType={donateType}
+                  description={item ? item.description : default_message}
+                />
+              )}
             </Flex>
           </Box>
         </Stack>
@@ -171,8 +174,4 @@ const mapStateToProps = ({ form, theme }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DonateForm);
+export default connect(mapStateToProps)(DonateForm);
