@@ -19,27 +19,27 @@ const StepProgress = ({ theme }) => {
   const stepStyle = {
     fontSize: 16,
     lineHeight: 6,
-    bgColor: `#d9e3f7`,
+    bgColor: 'rgb(236, 235, 234)',
     _after: {
       borderLeftType: `solid`,
       borderLeftWidth: '17px',
-      borderLeftColor: `#d9e3f7`,
+      borderLeftColor: 'rgb(236, 235, 234)',
     },
   };
 
   return (
     <Box className="arrow-steps clearfix">
       <Box className="step current" {...stepCurrentStyle}>
-        <Text as="span">Step 1</Text>
+        <Text as="span">選擇金額</Text>
       </Box>
       <Box className="step" {...stepStyle}>
         <Text as="span" display="none">
-          Step 2
+          填寫資料
         </Text>
       </Box>
       <Box className="step" {...stepStyle}>
         <Text as="span" display="none">
-          Step 3
+          捐款完成
         </Text>
       </Box>
     </Box>

@@ -11,7 +11,7 @@ const Thankyou = ({ theme, signup }) => {
   const { FirstName } = signup;
   return (
     <>
-      <Heading {...headingProps}>{FirstName}，感謝您加入守護海洋行列！</Heading>
+      <Heading {...headingProps}>感謝您加入守護海洋行列！</Heading>
 
       <Text as="p" {...paragraphProps}>
         為海洋多走一步，捐助支持保護海洋項目。
