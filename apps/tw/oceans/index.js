@@ -48,22 +48,23 @@ function Index({ status, theme, setFormContent, signup }) {
               FirstName ? FirstName : '綠色和平支持者'
             }，謝謝你參與這次的連署`,
             description: ['能更進一步支持我們的海洋行動嗎？'],
-            inviteMessage: '',
+            inviteMessage:
+              '<b>(Only for TY page without donate box.)</b><br/>能不能多幫海洋一個忙？<br/>邀請你的朋友、家人、同事一起支持全球海洋保護區',
             shareLink: [
               {
-                shareComponent: <FaInstagram fontSize={12} color={`#66cc00`} />,
+                shareComponent: <FaInstagram />,
                 link: '#',
               },
               {
-                shareComponent: <FaFacebook fontSize={12} color={`#66cc00`} />,
+                shareComponent: <FaFacebook />,
                 link: '#',
               },
               {
-                shareComponent: <FaWhatsapp fontSize={12} color={`#66cc00`} />,
+                shareComponent: <FaWhatsapp />,
                 link: '#',
               },
               {
-                shareComponent: <FaTwitter fontSize={12} color={`#66cc00`} />,
+                shareComponent: <FaTwitter />,
                 link: '#',
               },
             ],

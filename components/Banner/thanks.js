@@ -16,8 +16,9 @@ import { TextWrapper } from './Banner.style';
 const iconWrapProps = {
   bgColor: '#FFF',
   borderRadius: '50%',
-  w: 6,
-  h: 6,
+  w: 10,
+  h: 10,
+  fontSize: '16px',
 };
 
 export default function Index({ content, bgImage }) {
@@ -57,10 +58,17 @@ export default function Index({ content, bgImage }) {
                     ></Text>
                   ))}
                 </TextWrapper>
-                {/* <TextWrapper>
-                  <Stack direction="column" spacing={4}>
-                    <Text color={'#FFF'}>{content.inviteMessage}</Text>
-                    <Stack direction="row" spacing={4}>
+                <TextWrapper>
+                  <Stack direction="column" py={4} spacing={2}>
+                    {content.inviteMessage && (
+                      <Text
+                        color={'#FFF'}
+                        dangerouslySetInnerHTML={{
+                          __html: content.inviteMessage,
+                        }}
+                      />
+                    )}
+                    <Stack direction="row" spacing={6}>
                       {content.shareLink.map((d, i) => (
                         <Box key={i} {...iconWrapProps}>
                           <Link href={d.link} target={`_blank`}>
@@ -69,13 +77,13 @@ export default function Index({ content, bgImage }) {
                         </Box>
                       ))}
                     </Stack>
-                    <Box onClick={() => console.log('clicked')}>
+                    {/* <Box onClick={() => console.log('clicked')}>
                       <Text textDecoration={'underline'} color={'#FFF'}>
                         {content.inviteInfo}
                       </Text>
-                    </Box>
+                    </Box> */}
                   </Stack>
-                </TextWrapper> */}
+                </TextWrapper>
               </Flex>
             </Box>
           </PageContainer>
