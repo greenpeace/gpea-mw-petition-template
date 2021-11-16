@@ -17,6 +17,8 @@ import { OrangeCTA, buttonStyle } from '@common/styles/components/formStyle';
 const DonateForm = (props) => {
   const {
     formContent: {
+      default_message,
+      default_amount,
       amount_monthly,
       amount_onetime,
       donateURL,
@@ -29,11 +31,13 @@ const DonateForm = (props) => {
     theme,
   } = props;
   const [donateType, setDonateType] = useState('monthly');
-  const [amount, setAmount] = useState(100);
+  const [item, setItem] = useState();
+  const [amount, setAmount] = useState(default_amount);
   const [url, setURL] = useState({ type: donateType, amount: amount });
   const themeInterests = theme.interests;
   const amountOption =
     donateType === 'monthly' ? amount_monthly : amount_onetime;
+  const message = item ? item.description : default_message;
   const handleSetDonateType = (value) => {
     setDonateType(value);
     setAmount(
@@ -91,7 +95,12 @@ const DonateForm = (props) => {
                   }
                   color={donateType === d.value ? '#fff' : 'gray.500'}
                   _hover={{ bg: `theme.${themeInterests}`, color: '#fff' }}
-                  onClick={() => handleSetDonateType(d.value)}
+                  onClick={() => {
+                    d.value === 'single'
+                      ? setItem(amount_onetime[0])
+                      : setItem(amount_monthly[0]);
+                    handleSetDonateType(d.value);
+                  }}
                 >
                   {d.label}
                 </Button>
@@ -105,7 +114,10 @@ const DonateForm = (props) => {
             <Flex direction="column">
               <Grid templateColumns="repeat(3, 1fr)" gap={2}>
                 {(amountOption || []).map((d, i) => {
-                  const colSpan = amountOption.length === i + 1 ? 3 : 1;
+                  {
+                    /* const colSpan = amountOption.length === i + 1 ? 3 : 1; */
+                  }
+                  const colSpan = 1;
                   return (
                     <GridItem colSpan={colSpan} key={i}>
                       <Button
@@ -124,7 +136,10 @@ const DonateForm = (props) => {
                           bg: `theme.${themeInterests}`,
                           color: '#fff',
                         }}
-                        onClick={() => setAmount(d.value)}
+                        onClick={() => {
+                          setAmount(d.value);
+                          setItem(d);
+                        }}
                         w="100%"
                         {...buttonStyle}
                       >
@@ -135,7 +150,9 @@ const DonateForm = (props) => {
                 })}
               </Grid>
               <Box py={6}>
-                <Text fontSize={'md'}>{thanks_message}</Text>
+                <Text fontSize={'md'}>
+                  {item ? item.description : default_message}
+                </Text>
               </Box>
               <Box>
                 <Button {...OrangeCTA} onClick={() => handleOpenLink()}>

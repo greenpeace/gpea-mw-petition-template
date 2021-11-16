@@ -1,6 +1,6 @@
 {
-  "form_header": "Help reach our target of 1 million signatures",
-  "form_description": "I want to protect this beautiful, vital resource by adding my name.",
+  "form_header": "萬人齊聲，改變成真",
+  "form_description": "我支持成立全球海洋保護區！",
   "form_remind": "",
   "signed_number": "已聯署人數",
 
@@ -9,22 +9,22 @@
   "label_name": "稱謂",
   "label_first_name": "名字",
   "label_last_name": "姓氏",
-  "label_email": "電郵地址",
-  "label_phone": "手提號碼",
+  "label_email": "電子郵件",
+  "label_phone": "行動電話",
   "label_phone_optional": "手提號碼（選填）",
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",
-  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考私隱政策。",
+  "label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考隱私保護政策。",
 
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
 
-  "invalid_email_alert": "請填上有效電郵地址",
+  "invalid_email_alert": "請填上有效電子郵件",
   "invalid_format_alert": "請輸入有效格式",
   "minimum_8_characters": "請輸入8位數字",
   "suggestion_message": "您是否想輸入",
 
-  "submit_text": "I support the Global Ocean Pact",
+  "submit_text": "加入連署",
   "thanks_title": "",
   "thanks_ask": "",
   "thanks_content": "",
@@ -45,25 +45,49 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "Yes, I'll help save the oceans",
+  "donate_header": "是的！我想要守護大海",
   "donate_description": [
-    "I want to protect this beautiful, vital resource by donating to Greenpeace."
+    "目前僅不到1%的公海受到保護，支持成立《全球海洋公約》，保護這片蔚藍大海！"
   ],
+  "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
+  "default_amount": 600,
   "donate_type": [
-    { "label": "每月捐款", "value": "monthly" },
-    { "label": "單次捐款", "value": "single" }
+    { "label": "月捐", "value": "monthly" },
+    { "label": "單捐", "value": "single" }
   ],
   "amount_onetime": [
-    { "label": "HKD 500", "value": 500 },
-    { "label": "HKD 700", "value": 700 },
-    { "label": "HKD 900", "value": 900 },
-    { "label": "其他金額", "value": "" }
+    {
+      "label": "NTD 2000",
+      "value": 2000,
+      "description": "支持綠色和平持續搜集第一手海洋真相，透過傳播媒體送到您與全球的眼前！"
+    },
+    {
+      "label": "NTD 3000",
+      "value": 3000,
+      "description": "支持綠色和平船艦調查所需裝備，監察破壞海洋的行為，需時前赴應對突發環境災難！"
+    },
+    {
+      "label": "NTD 5000",
+      "value": 5000,
+      "description": "支持綠色和平團隊聯同科學家，到各個海域進行實地考察與研究工作，並展開國際倡議行動！"
+    }
   ],
   "amount_monthly": [
-    { "label": "HKD 100", "value": 100 },
-    { "label": "HKD 150", "value": 150 },
-    { "label": "HKD 200", "value": 200 },
-    { "label": "其他金額", "value": "" }
+    {
+      "label": "NTD 600",
+      "value": 600,
+      "description": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！"
+    },
+    {
+      "label": "NTD 800",
+      "value": 800,
+      "description": "支持綠色和平船艦持績監察企業最新動向，及時阻止破壞海洋的行為。"
+    },
+    {
+      "label": "NTD 1200",
+      "value": 1200,
+      "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意制定「全球海洋公約」，推進守護30%海洋保護區目標！"
+    }
   ],
   "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"
 }

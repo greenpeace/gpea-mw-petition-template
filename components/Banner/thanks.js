@@ -1,5 +1,13 @@
 import React from 'react';
-import { Heading, Box, Flex, Text } from '@chakra-ui/react';
+import {
+  Heading,
+  Box,
+  Flex,
+  Text,
+  Stack,
+  Link,
+  Center,
+} from '@chakra-ui/react';
 import PageContainer from '@containers/pageContainer';
 
 import { TextWrapper } from './Banner.style';
@@ -37,9 +45,8 @@ export default function Index({ content, bgImage }) {
                     fontWeight="bold"
                     lineHeight="1.3"
                     color={'white'}
-                  >
-                    {content.title}
-                  </Heading>
+                    dangerouslySetInnerHTML={{ __html: content.title }}
+                  />
                   {content.description.map((d, i) => (
                     <Text
                       key={i}
