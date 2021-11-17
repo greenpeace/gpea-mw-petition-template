@@ -123,15 +123,15 @@ const MyForm = (props) => {
       <Stack spacing="4">
         <Box>
           <Box
-            borderRadius={4}
+            borderRadius={'20px'}
             bgColor="#d2d2d2"
-            h={`10px`}
+            h={`14px`}
             overflow={`hidden`}
           >
             {numberOfResponses && (
               <Box
                 style={{ transition: `width 2s` }}
-                h={`10px`}
+                h={`14px`}
                 w={progressNumber}
                 borderRadius={4}
                 bgColor={`theme.${themeInterests}`}
