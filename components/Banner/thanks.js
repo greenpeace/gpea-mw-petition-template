@@ -26,7 +26,7 @@ export default function Index({ content, bgImage }) {
       >
         <Box pos={'relative'} zIndex={4}>
           <PageContainer>
-            <Box py={6} px={4} height="100%" maxW={{ base: '100%', md: '50%' }}>
+            <Box py={8} px={4} height="100%" maxW={{ base: '100%', md: '50%' }}>
               <Flex
                 height="100%"
                 direction="column"

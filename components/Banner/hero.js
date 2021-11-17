@@ -17,7 +17,7 @@ export default function Index({ content, bgImage }) {
       >
         <Box pos={'relative'} zIndex={3}>
           <PageContainer>
-            <Box py={6} px={4} maxW={{ base: '100%', md: '50%' }}>
+            <Box py={8} px={4} maxW={{ base: '100%', md: '50%' }}>
               <TextWrapper>
                 {content.title && (
                   <Heading
