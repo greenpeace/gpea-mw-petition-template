@@ -1,11 +1,11 @@
 import React from 'react';
-import { Container } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
 
 const PageContainer = ({ children }) => {
   return (
-    <Container height="100%" maxW="1200px">
+    <Box height="100%" maxW="1200px" mx="auto">
       {children}
-    </Container>
+    </Box>
   );
 };
 
