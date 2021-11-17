@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import HeroBanner from '@components/Banner/hero';
 import ThanksBanner from '@components/Banner/thanks';
 import PageContainer from '@containers/pageContainer';
+import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
@@ -81,12 +82,7 @@ function Index({ status, theme, setFormContent, signup }) {
         />
       )}
       <PageContainer>
-        <Box
-          py={{ base: 4 }}
-          mt={{ base: -20, md: -60 }}
-          pos={`relative`}
-          zIndex={3}
-        >
+        <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer theme={theme}>
@@ -101,7 +97,7 @@ function Index({ status, theme, setFormContent, signup }) {
               </FormContainer>
             </Box>
           </Flex>
-        </Box>
+        </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'TWChinese'} />
       {!inView && (

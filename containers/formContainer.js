@@ -3,7 +3,7 @@ import { Box, Container } from '@chakra-ui/react';
 
 const FormContainer = ({ children }) => {
   return (
-    <Container position="sticky" top="4px">
+    <Container zIndex="2" position="sticky" top="4px">
       <Box
         maxW="500px"
         mx="auto"
