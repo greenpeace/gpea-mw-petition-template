@@ -9,14 +9,16 @@ const FixedCTA = ({ children, onClick, status }) => {
   if (matches && !submitted) {
     return (
       <Box
-        pos={`fixed`}
-        px={6}
+        pos={'fixed'}
+        px={2}
         py={2}
         bottom={0}
         left={0}
         zIndex={99}
-        w={`100%`}
-        bg="rgba(255,255,255,0.95)"
+        w={'100%'}
+        bg="orange.500"
+        borderTopRightRadius="4px"
+        borderTopLeftRadius="4px"
       >
         <Button
           width="100%"
