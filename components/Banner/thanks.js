@@ -87,7 +87,7 @@ export default function Index({ content, bgImage }) {
             h={'100%'}
             w={'100%'}
             objectFit={'cover'}
-            objectPosition={'center'}
+            objectPosition={'top center'}
           />
         </Box>
 
