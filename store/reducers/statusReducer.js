@@ -1,7 +1,7 @@
 import * as statusActions from 'store/actions/action-types/status-actions';
 
 const initState = {
-  submitted: true,
+  submitted: false,
   lastAction: null,
 };
 
