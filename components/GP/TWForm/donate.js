@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {
   Box,
-  Button,
-  Flex,
   Text,
   Stack,
   Grid,
@@ -14,7 +12,6 @@ import {
 import StepProgress from '@components/Progress/StepProgress';
 import ButtonWithMessage from './buttonWithMessage';
 import ButtonWithField from './ButtonWithField';
-import { buttonStyle } from '@common/styles/components/formStyle';
 
 const DonateForm = (props) => {
   const {
@@ -75,35 +72,42 @@ const DonateForm = (props) => {
             </Box>
           ))}
           <Box>
-            <Stack
-              direction="row"
-              spacing={0}
-              border="1px"
-              borderColor="gray.100"
-              borderRadius={'md'}
-              overflow={'hidden'}
-            >
+            <Stack direction="row" spacing={1} overflow={'hidden'}>
               {(donate_type || []).map((d, i) => (
-                <Button
+                <Box
                   key={i}
-                  flex="1"
-                  h="40px"
-                  fontWeight="400"
-                  borderRadius={0}
-                  bg={
-                    donateType === d.value ? `theme.${themeInterests}` : '#fff'
+                  borderType={`solid`}
+                  borderWidth={`1px`}
+                  borderColor={
+                    donateType === d.value
+                      ? `theme.${themeInterests}`
+                      : 'gray.200'
                   }
-                  color={donateType === d.value ? '#fff' : 'gray.500'}
-                  _hover={{ bg: `theme.${themeInterests}`, color: '#fff' }}
+                  flex={1}
+                  fontWeight="400"
+                  lineHeight={`52px`}
+                  textAlign={`center`}
+                  pos={`relative`}
+                  overflow={`hidden`}
+                  borderRadius={'md'}
+                  _before={beforeProps}
+                  _after={{
+                    ...afterProps,
+                    backgroundColor:
+                      donateType === d.value
+                        ? `theme.${themeInterests}`
+                        : '#fff',
+                  }}
                   onClick={() => {
                     d.value === 'single'
                       ? setItem(amount_onetime[0])
                       : setItem(amount_monthly[0]);
                     handleSetDonateType(d.value);
                   }}
+                  cursor={`pointer`}
                 >
                   {d.label}
-                </Button>
+                </Box>
               ))}
             </Stack>
           </Box>
@@ -114,24 +118,37 @@ const DonateForm = (props) => {
             <Grid templateColumns="repeat(3, 1fr)" gap={2}>
               {(amountOption || []).map((d, i) => {
                 const colSpan = amountOption.length === i + 1 ? 3 : 1;
-                if (item && item.value === 'other' && d.value === 'other') {
+                const isOther = d.value === 'other';
+                if (item && item.value === 'other' && isOther) {
                   return;
                 }
                 return (
                   <GridItem colSpan={colSpan} key={i}>
-                    <Button
-                      key={i}
-                      flex="1"
+                    <Box
+                      textAlign={`center`}
                       border="1px"
-                      borderColor="gray.100"
-                      bg={
-                        amount === d.value ? `theme.${themeInterests}` : '#fff'
+                      borderColor={
+                        amount === d.value
+                          ? `theme.${themeInterests}`
+                          : isOther
+                          ? '#FFF'
+                          : 'gray.200'
                       }
-                      color={amount === d.value ? '#fff' : 'gray.500'}
                       borderRadius={'md'}
-                      _hover={{
-                        bg: `theme.${themeInterests}`,
-                        color: '#fff',
+                      fontWeight="400"
+                      position={'relative'}
+                      overflow={'hidden'}
+                      minH={'48px'}
+                      _before={{
+                        ...beforeProps,
+                        top: '-4px',
+                      }}
+                      _after={{
+                        ...afterProps,
+                        backgroundColor:
+                          amount === d.value
+                            ? `theme.${themeInterests}`
+                            : '#fff',
                       }}
                       onClick={() => {
                         const updateItem = {
@@ -143,11 +160,21 @@ const DonateForm = (props) => {
                         setAmount(d.value);
                         setItem(updateItem);
                       }}
-                      w="100%"
-                      {...buttonStyle}
+                      py={2}
+                      cursor={'pointer'}
                     >
-                      {d.label}
-                    </Button>
+                      <Text
+                        as={'span'}
+                        fontWeight={isOther ? 400 : 'bold'}
+                        fontSize={isOther ? 'md' : '24px'}
+                      >
+                        {d.label}
+                      </Text>
+                      <br />
+                      <Text as={'span'} fontWeight={400}>
+                        {d.currency}
+                      </Text>
+                    </Box>
                   </GridItem>
                 );
               })}
@@ -171,6 +198,26 @@ const DonateForm = (props) => {
       </Box>
     </Box>
   );
+};
+
+const beforeProps = {
+  content: `"✓"`,
+  position: 'absolute',
+  left: '4px',
+  top: '-16px',
+  fontSize: '1.2rem',
+  color: '#FFF',
+  zIndex: 2,
+};
+
+const afterProps = {
+  content: `""`,
+  position: 'absolute',
+  left: '-1.5rem',
+  top: '-1.5rem',
+  width: '3rem',
+  height: '3rem',
+  transform: 'rotate(-45deg)',
 };
 
 const mapStateToProps = ({ form, theme }) => {
