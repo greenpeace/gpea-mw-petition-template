@@ -9,7 +9,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import Content from './Content';
 import Thankyou from './Thankyou';
 import SignupForm from '@components/GP/HKForm';
-import DonateForm from '@components/GP/HKForm/donate';
+import DonateForm from '@components/GP/DonateForm';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Button } from '@chakra-ui/react';

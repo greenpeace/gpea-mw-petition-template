@@ -10,7 +10,7 @@ import Thankyou from './Thankyou';
 import Message from '@components/Footer/message';
 import OtherInformation from '@components/Footer/otherInformation';
 import SignupForm from '@components/GP/HKForm';
-import DonateForm from '@components/GP/HKForm/donate';
+import DonateForm from '@components/GP/DonateForm';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { useMediaQuery } from '@chakra-ui/media-query';
