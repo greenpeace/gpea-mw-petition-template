@@ -10,7 +10,7 @@ import Thankyou from './Thankyou';
 import Message from '@components/Footer/message';
 import OtherInformation from '@components/Footer/otherInformation';
 import SignupForm from '@components/GP/HKForm';
-import DonateForm from '@components/GP/HKForm/donate';
+import DonateForm from '@components/GP/DonateForm';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { useMediaQuery } from '@chakra-ui/media-query';
@@ -55,19 +55,19 @@ function Index({ status, theme, setFormContent }) {
             inviteMessage: '邀請您的朋友一同參與:',
             shareLink: [
               {
-                shareComponent: <FaInstagram fontSize={12} color={`#66cc00`} />,
+                shareComponent: <FaInstagram />,
                 link: '#',
               },
               {
-                shareComponent: <FaFacebook fontSize={12} color={`#66cc00`} />,
+                shareComponent: <FaFacebook />,
                 link: '#',
               },
               {
-                shareComponent: <FaWhatsapp fontSize={12} color={`#66cc00`} />,
+                shareComponent: <FaWhatsapp />,
                 link: '#',
               },
               {
-                shareComponent: <FaTwitter fontSize={12} color={`#66cc00`} />,
+                shareComponent: <FaTwitter />,
                 link: '#',
               },
             ],

@@ -17,7 +17,7 @@ export default function Index({ content, bgImage }) {
       >
         <Box pos={'relative'} zIndex={3}>
           <PageContainer>
-            <Box py={6} px={4} maxW={{ base: '100%', md: '50%' }}>
+            <Box py={8} px={4} maxW={{ base: '100%', md: '50%' }}>
               <TextWrapper>
                 {content.title && (
                   <Heading
@@ -53,7 +53,7 @@ export default function Index({ content, bgImage }) {
             h={'100%'}
             w={'100%'}
             objectFit={'cover'}
-            objectPosition={'center'}
+            objectPosition={'top center'}
           />
         </Box>
 
@@ -64,7 +64,7 @@ export default function Index({ content, bgImage }) {
           right={0}
           left={0}
           bottom={0}
-          bgColor={'rgba(0,0,0,0.5)'}
+          bgColor={'rgba(0,0,0,0.35)'}
         />
       </Box>
     </>

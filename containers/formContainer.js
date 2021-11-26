@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
 
 const FormContainer = ({ children }) => {
   return (
-    <Box position="sticky" top="4px">
+    <Container zIndex="2" position="sticky" top="4px">
       <Box
         maxW="500px"
         mx="auto"
@@ -14,7 +14,7 @@ const FormContainer = ({ children }) => {
       >
         {children}
       </Box>
-    </Box>
+    </Container>
   );
 };
 

@@ -123,15 +123,15 @@ const MyForm = (props) => {
       <Stack spacing="4">
         <Box>
           <Box
-            borderRadius={4}
+            borderRadius={'20px'}
             bgColor="#d2d2d2"
-            h={`10px`}
+            h={`14px`}
             overflow={`hidden`}
           >
             {numberOfResponses && (
               <Box
                 style={{ transition: `width 2s` }}
-                h={`10px`}
+                h={`14px`}
                 w={progressNumber}
                 borderRadius={4}
                 bgColor={`theme.${themeInterests}`}
@@ -207,6 +207,7 @@ const MyForm = (props) => {
                   }}
                   value={values.Email}
                   _placeholder={{ fontSize: 16 }}
+                  size={'lg'}
                 />
                 <FormErrorMessage color="red">{errors.Email}</FormErrorMessage>
                 {suggestion && (
@@ -233,7 +234,8 @@ const MyForm = (props) => {
                   <Select
                     name="MobileCountryCode"
                     onChange={handleChange}
-                    fontSize={'sm'}
+                    fontSize={'md'}
+                    size={'lg'}
                   >
                     {(formContent.mobile_country_code || []).map((d) => (
                       <option key={d.value} value={d.value}>
@@ -266,6 +268,7 @@ const MyForm = (props) => {
                   onChange={handleChange}
                   fontSize={'16px'}
                   placeholder={formContent.empty_select_data_alert}
+                  size={'lg'}
                 >
                   {birthDateYear &&
                     birthDateYear.map((d) => (

@@ -3,7 +3,9 @@ import { chakra, VisuallyHidden } from '@chakra-ui/react';
 export default function SocialButton({ children, label, href }) {
   return (
     <chakra.button
-      bg={'blackAlpha.100'}
+      className={'social-share'}
+      zIndex={1}
+      bg={'white'}
       rounded={'full'}
       w={10}
       h={10}
@@ -15,9 +17,6 @@ export default function SocialButton({ children, label, href }) {
       alignItems={'center'}
       justifyContent={'center'}
       transition={'background 0.3s ease'}
-      _hover={{
-        bg: 'whiteAlpha.200',
-      }}
     >
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}

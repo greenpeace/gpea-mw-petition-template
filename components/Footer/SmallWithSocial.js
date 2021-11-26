@@ -1,5 +1,5 @@
 import { Container, Stack, Text } from '@chakra-ui/react';
-import SocialButton from './socialButton';
+import SocialButton from '../SocialButton/socialButton';
 import { FooterBGDarkBlue } from './footer.style';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
@@ -29,13 +29,13 @@ export default function SmallWithSocial() {
           </SocialButton>
           <SocialButton
             label={'YouTube'}
-            href={'https://www.instagram.com/greenpeace_hk'}
+            href={'https://www.youtube.com/user/GreenpeaceChina'}
           >
             <FaYoutube />
           </SocialButton>
           <SocialButton
             label={'Instagram'}
-            href={'https://www.youtube.com/user/GreenpeaceChina'}
+            href={'https://www.instagram.com/greenpeace_hk'}
           >
             <FaInstagram />
           </SocialButton>

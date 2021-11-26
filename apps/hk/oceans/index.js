@@ -2,16 +2,17 @@ import React, { useEffect, useRef } from 'react';
 import HeroBanner from '@components/Banner/hero';
 import ThanksBanner from '@components/Banner/thanks';
 import PageContainer from '@containers/pageContainer';
+import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 import Content from './Content';
 import Thankyou from './Thankyou';
 import SignupForm from '@components/GP/HKForm';
-import DonateForm from '@components/GP/HKForm/donate';
+import DonateForm from '@components/GP/DonateForm';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Icon } from '@chakra-ui/react';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
 import SEO from './SEO';
 import FixedCTA from '@components/GP/FixedCTA';
@@ -23,6 +24,7 @@ import heroBannerImage from './images/GP1SUB1C_PressMedia.jpg';
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
   const { FirstName } = signup;
+  const themeInterests = theme.interests;
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -50,22 +52,31 @@ function Index({ status, theme, setFormContent, signup }) {
             description: [
               '感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。',
             ],
-            inviteMessage: '邀請您的朋友一同參與:',
+            inviteMessage:
+              '<b>(Only for TY page without donate box.)</b><br/>您的聯署已經壯大了全球守護海洋力量，我們將一起實現保護、維持、復育海洋健康的理想。邀請您的朋友一同參與：',
             shareLink: [
               {
-                shareComponent: <FaInstagram fontSize={12} color={`#66cc00`} />,
+                shareComponent: (
+                  <Icon as={FaInstagram} color={`theme.${themeInterests}`} />
+                ),
                 link: '#',
               },
               {
-                shareComponent: <FaFacebook fontSize={12} color={`#66cc00`} />,
+                shareComponent: (
+                  <Icon as={FaFacebook} color={`theme.${themeInterests}`} />
+                ),
                 link: '#',
               },
               {
-                shareComponent: <FaWhatsapp fontSize={12} color={`#66cc00`} />,
+                shareComponent: (
+                  <Icon as={FaWhatsapp} color={`theme.${themeInterests}`} />
+                ),
                 link: '#',
               },
               {
-                shareComponent: <FaTwitter fontSize={12} color={`#66cc00`} />,
+                shareComponent: (
+                  <Icon as={FaTwitter} color={`theme.${themeInterests}`} />
+                ),
                 link: '#',
               },
             ],
@@ -82,12 +93,7 @@ function Index({ status, theme, setFormContent, signup }) {
         />
       )}
       <PageContainer>
-        <Box
-          py={{ base: 4 }}
-          mt={{ base: -20, md: -60 }}
-          pos={`relative`}
-          zIndex={3}
-        >
+        <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer theme={theme}>
@@ -102,7 +108,7 @@ function Index({ status, theme, setFormContent, signup }) {
               </FormContainer>
             </Box>
           </Flex>
-        </Box>
+        </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
       {!inView && (
