@@ -31,27 +31,41 @@ const theme = extendTheme({
     orange: {
       300: 'var(--orange-300)',
       500: 'var(--orange-500)',
-      700: '#c55200',
+      700: 'var(--orange-700)',
     },
     default: {
+      100: 'var(--green-100)',
+      300: 'var(--green-300)',
       500: 'var(--green-500)',
     },
     arctic: {
+      100: 'var(--arctic-100)',
+      300: 'var(--arctic-300)',
       500: 'var(--arctic)',
     },
     health: {
+      100: 'var(--health-100)',
+      300: 'var(--health-300)',
       500: 'var(--health)',
     },
     climate: {
+      100: 'var(--climate-100)',
+      300: 'var(--climate-300)',
       500: 'var(--climate)',
     },
     plastics: {
+      100: 'var(--plastics-100)',
+      300: 'var(--plastics-300)',
       500: 'var(--plastics)',
     },
     forests: {
+      100: 'var(--forests-100)',
+      300: 'var(--forests-300)',
       500: 'var(--forests)',
     },
     oceans: {
+      100: 'var(--oceans-100)',
+      300: 'var(--oceans-300)',
       500: 'var(--oceans)',
     },
     theme: {

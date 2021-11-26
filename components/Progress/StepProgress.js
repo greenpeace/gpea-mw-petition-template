@@ -8,22 +8,22 @@ const StepProgress = ({ theme }) => {
     fontSize: 16,
     lineHeight: 6,
     color: '#FFF',
-    bgColor: `theme.${themeInterests}`,
+    bgColor: `${themeInterests}.500`,
     _after: {
       borderLeftType: `solid`,
       borderLeftWidth: '17px',
-      borderLeftColor: `theme.${themeInterests}`,
+      borderLeftColor: `${themeInterests}.500`,
     },
   };
 
   const stepStyle = {
     fontSize: 16,
     lineHeight: 6,
-    bgColor: 'rgb(236, 235, 234)',
+    bgColor: `${themeInterests}.100`,
     _after: {
       borderLeftType: `solid`,
       borderLeftWidth: '17px',
-      borderLeftColor: 'rgb(236, 235, 234)',
+      borderLeftColor: `${themeInterests}.100`,
     },
   };
 

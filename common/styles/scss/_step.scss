@@ -11,7 +11,7 @@
   text-align: center;
   color: #666;
   cursor: default;
-  padding: 6px;
+  padding: 8px;
   float: left;
   position: relative;
   // background-color: #d9e3f7;
@@ -27,8 +27,8 @@
   right: -17px;
   width: 0;
   height: 0;
-  border-top: 19px solid transparent;
-  border-bottom: 17px solid transparent;
+  border-top: 20px solid transparent;
+  border-bottom: 19px solid transparent;
   // border-left: 17px solid #d9e3f7;
   z-index: 2;
   transition: border-color 0.2s ease;
@@ -59,17 +59,12 @@
 
 .arrow-steps .step.done span:before {
   opacity: 1;
-  -webkit-transition: opacity 0.3s ease 0.5s;
-  -moz-transition: opacity 0.3s ease 0.5s;
-  -ms-transition: opacity 0.3s ease 0.5s;
   transition: opacity 0.3s ease 0.5s;
 }
 
 .arrow-steps .step.current {
   color: #fff;
-  // background-color: #23468c;
 }
 
 .arrow-steps .step.current:after {
-  // border-left: 17px solid #23468c;
 }
