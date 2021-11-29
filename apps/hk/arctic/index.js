@@ -49,26 +49,6 @@ function Index({ status, theme, setFormContent }) {
               '綠色和平堅持以行動守護北極，揭露並制止企業與政府，在北極鑽油與過度捕撈惡行、推動全球攜手淘汰化石能源，將升溫控制至1.5°C，守護北極，減輕北極熊生存壓力。',
               '綠色和平堅持不接受政商界捐助，因為您，綠色和平得以維持環境工作的公正獨立性，懇請您今天就以每月$100（約每日$3）小額捐助，支持守護北極全球行動！',
             ],
-            inviteMessage: '邀請您的朋友一同參與:',
-            shareLink: [
-              {
-                shareComponent: <FaInstagram />,
-                link: '#',
-              },
-              {
-                shareComponent: <FaFacebook />,
-                link: '#',
-              },
-              {
-                shareComponent: <FaWhatsapp />,
-                link: '#',
-              },
-              {
-                shareComponent: <FaTwitter />,
-                link: '#',
-              },
-            ],
-            inviteInfo: '點擊預覽分享內容',
           }}
         />
       ) : (
