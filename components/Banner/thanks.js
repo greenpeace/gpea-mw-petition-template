@@ -61,13 +61,14 @@ export default function Index({ content, bgImage }) {
                       />
                     )}
                     <Stack direction="row" spacing={6}>
-                      {content.shareLink.map((d, i) => (
-                        <Box key={i} {...iconWrapProps}>
-                          <SocialButton href={d.link}>
-                            {d.shareComponent}
-                          </SocialButton>
-                        </Box>
-                      ))}
+                      {content.inviteMessage &&
+                        content.shareLink.map((d, i) => (
+                          <Box key={i} {...iconWrapProps}>
+                            <SocialButton href={d.link}>
+                              {d.shareComponent}
+                            </SocialButton>
+                          </Box>
+                        ))}
                     </Stack>
                     {/* <Box onClick={() => console.log('clicked')}>
                       <Text textDecoration={'underline'} color={'#FFF'}>
