@@ -201,7 +201,7 @@ const DonateForm = (props) => {
 };
 
 const beforeProps = {
-  content: `"✓"`,
+  content: '"✓"',
   position: 'absolute',
   left: '4px',
   top: '-16px',
@@ -211,7 +211,7 @@ const beforeProps = {
 };
 
 const afterProps = {
-  content: `""`,
+  content: '""',
   position: 'absolute',
   left: '-1.5rem',
   top: '-1.5rem',
