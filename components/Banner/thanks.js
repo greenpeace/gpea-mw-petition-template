@@ -35,7 +35,7 @@ export default function Index({ content, bgImage }) {
                 <TextWrapper>
                   <Heading
                     as="h1"
-                    fontSize={{ base: '4xl', md: '5xl' }}
+                    fontSize={{ base: 'var(--text-xl)', md: 'var(--text-2xl)' }}
                     fontWeight="bold"
                     lineHeight="1.3"
                     color={'white'}
@@ -44,7 +44,7 @@ export default function Index({ content, bgImage }) {
                   {content.description.map((d, i) => (
                     <Text
                       key={i}
-                      fontSize={{ base: 'sm', md: 'md' }}
+                      fontSize="var(--text-base)"
                       color={'#FFF'}
                       dangerouslySetInnerHTML={{ __html: d }}
                     ></Text>
