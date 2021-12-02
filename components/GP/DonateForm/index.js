@@ -77,7 +77,7 @@ const DonateForm = (props) => {
                 <Box
                   key={i}
                   borderType={`solid`}
-                  borderWidth={`1px`}
+                  borderWidth={`2px`}
                   borderColor={
                     donateType === d.value
                       ? `theme.${themeInterests}`
@@ -85,7 +85,7 @@ const DonateForm = (props) => {
                   }
                   flex={1}
                   fontWeight="400"
-                  lineHeight={`52px`}
+                  lineHeight={`48px`}
                   textAlign={`center`}
                   pos={`relative`}
                   overflow={`hidden`}
@@ -126,7 +126,7 @@ const DonateForm = (props) => {
                   <GridItem colSpan={colSpan} key={i}>
                     <Box
                       textAlign={`center`}
-                      border="1px"
+                      border={`2px`}
                       borderColor={
                         amount === d.value
                           ? `theme.${themeInterests}`
@@ -166,12 +166,12 @@ const DonateForm = (props) => {
                       <Text
                         as={'span'}
                         fontWeight={isOther ? 400 : 'bold'}
-                        fontSize={isOther ? 'md' : '24px'}
+                        fontSize={isOther ? 'sm' : '2xl'}
                       >
                         {d.label}
                       </Text>
                       <br />
-                      <Text as={'span'} fontWeight={400}>
+                      <Text as={'span'} fontSize="sm" fontWeight={400}>
                         {d.currency}
                       </Text>
                     </Box>
@@ -179,7 +179,7 @@ const DonateForm = (props) => {
                 );
               })}
             </Grid>
-            <Box pt={2}>
+            <Box>
               {item && item.value === 'other' ? (
                 <ButtonWithField
                   donateType={donateType}
