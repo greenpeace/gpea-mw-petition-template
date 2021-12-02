@@ -49,7 +49,7 @@ const Thankyou = ({ theme, signup }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        全球海洋公約》所帶來的幫助：
+        《全球海洋公約》所帶來的幫助：
         <OrderedList>
           <ListItem>守護海洋生態，維護生物多樣性</ListItem>
           <ListItem>限制公海的人為活動</ListItem>
@@ -57,9 +57,11 @@ const Thankyou = ({ theme, signup }) => {
           <ListItem>制定具有約束力的規範</ListItem>
           <ListItem>填補現行公約漏洞，提升規範效益</ListItem>
         </OrderedList>
-        <br />
-        你的捐款，將有助於推動這一切，一同守護蔚藍大海！
       </Box>
+
+      <Text as="p" {...paragraphProps}>
+        你的捐款，將有助於推動這一切，一同守護蔚藍大海！
+      </Text>
     </>
   );
 };

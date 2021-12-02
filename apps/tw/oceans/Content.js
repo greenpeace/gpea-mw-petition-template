@@ -17,24 +17,24 @@ const Content = ({ theme }) => {
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        您的連署不只是一個簽名，而是照進深海的一道微光，能推動制定《全球海洋公約》，在2030年前成立至少30%海洋保護區，為萬千海洋生物找到庇蔭。
+        你的連署不只是一個簽名，而是照進深海的一道微光，能推動制定《全球海洋公約》，在2030年前成立至少30%海洋保護區，為萬千海洋生物找到庇蔭。
       </Text>
 
       <Text as="p" {...paragraphProps}>
         此刻，綠色和平正持續推動各國政府攜手制定《全球海洋公約》，為浩瀚海洋建立完善且長久的保護機制。如果我們成功了，將是環保運動的重要里程碑，能讓至少三分之一以上的海洋生態不受人為干預，生生不息。
       </Text>
 
-      <Text as="p" {...paragraphProps} fontSize={`xl`} fontWeight={`bold`}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         您願意一起守護海洋嗎？
         <br />
         現在就連署！
-      </Text>
+      </Heading>
 
       <Box {...paragraphProps}>
         <Image src={contentB} />
       </Box>
 
-      <Heading {...headingProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         蓬勃的海洋正凋萎...
         <br />
         需要你給大海最實質的幫助！
@@ -61,11 +61,11 @@ const Content = ({ theme }) => {
         讓枯竭的海洋喘口氣，就是我們所能提供最實質的幫助。
       </Text>
 
-      <Text as="p" {...paragraphProps} fontSize={`xl`} fontWeight={`bold`}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         立即連署
         <br />
         拯救脆弱海洋，有您有我
-      </Text>
+      </Heading>
     </>
   );
 };
