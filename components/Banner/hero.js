@@ -11,8 +11,6 @@ export default function Index({ content, bgImage }) {
         minH={{ base: 'lg', md: 'xl' }}
         pos={'relative'}
         zIndex={2}
-        bgSize={`cover`}
-        bgPos={`center center`}
         paddingBottom={'4rem'}
       >
         <Box pos={'relative'} zIndex={3}>
@@ -64,7 +62,7 @@ export default function Index({ content, bgImage }) {
           right={0}
           left={0}
           bottom={0}
-          bgColor={'rgba(0,0,0,0.35)'}
+          bgColor={'rgba(0,0,0,0.5)'}
         />
       </Box>
     </>

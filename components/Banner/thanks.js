@@ -20,8 +20,6 @@ export default function Index({ content, bgImage }) {
         minH={{ base: 'lg', md: 'xl' }}
         pos={'relative'}
         zIndex={2}
-        bgSize={`cover`}
-        bgPos={`center center`}
         paddingBottom={'4rem'}
       >
         <Box pos={'relative'} zIndex={4}>
