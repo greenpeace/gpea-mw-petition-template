@@ -19,7 +19,7 @@ import FixedCTA from '@components/GP/FixedCTA';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/petition_banner.jpg';
+import heroBannerImage from './images/R0032770_16_9.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
