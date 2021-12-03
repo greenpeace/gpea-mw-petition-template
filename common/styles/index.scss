@@ -21,7 +21,9 @@ html {
 } /*16px*/
 
 body {
+  font-family: 'Noto Sans TC', sans-serif !important;
   font-variant: tabular-nums;
+  font-size: var(--text-base);
   line-height: var(--body-line-height);
   letter-spacing: 0.022em;
 }
