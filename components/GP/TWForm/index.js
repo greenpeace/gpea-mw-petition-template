@@ -342,8 +342,8 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     hiddenFormData: hiddenForm.data,
     isLoading: signup.lastAction === signupActions.SIGN_UP,
     formContent: form.content,
-    numberOfResponses: form.signupNumbers.hk?.NumberOfResponses,
-    numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
+    numberOfResponses: form.signupNumbers.tw?.NumberOfResponses,
+    numberOfTarget: form.signupNumbers.tw?.Petition_Signup_Target__c,
     theme: theme.data,
     suggestion: form.suggestion,
   };
