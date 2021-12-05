@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Box, Button, Text, Stack } from '@chakra-ui/react';
 import { Form, withFormik } from 'formik';
-import { numberFormat } from '@common/utils';
 import { Field } from '@components/Field/fields';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 
@@ -15,22 +14,23 @@ const ButtonWithMessage = (props) => {
     touched,
     errors,
     description,
-    values,
   } = props;
 
   return (
     <Box>
       <Form onSubmit={handleSubmit}>
-        <Field
-          label={currency}
-          name={'Donate'}
-          type="number"
-          errors={errors.Donate}
-          touched={touched.Donate}
-          handleChange={handleChange}
-          handleBlur={handleBlur}
-          size={'lg'}
-        />
+        <Box mt={2}>
+          <Field
+            label={currency}
+            name={'Donate'}
+            type="number"
+            errors={errors.Donate}
+            touched={touched.Donate}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            size={'lg'}
+          />
+        </Box>
         <Box pb={6} pt={8}>
           <Text fontSize={'md'}>{description}</Text>
         </Box>
