@@ -138,12 +138,12 @@ const MyForm = (props) => {
               />
             )}
           </Box>
-          <Box display={'none'}>
-            <Text fontSize={'base'} mt={2}>
+          <Box>
+            <Text color={`theme.${themeInterests}`} fontSize={'sm'} mt={2}>
               {formContent.signed_number}:{' '}
-              <Text as="span" fontSize={'2xl'} fontWeight={700}>
-                {numberOfResponses && numberFormat(numberOfResponses)}{' '}
-              </Text>
+              <Text as="span" fontSize={'2xl'} fontWeight="bold">
+                {numberOfResponses && numberFormat(numberOfResponses)}
+              </Text>{' '}
               /{' '}
               {numberOfTarget
                 ? numberFormat(numberOfTarget)
