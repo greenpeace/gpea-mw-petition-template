@@ -297,7 +297,7 @@ const CardItem = ({ ranking, data, themeInterests }) => {
     if (isOpen) {
       setTimeout(() => contentEl.current.scrollIntoView(2000), 100);
     } else {
-      cardEl.current.scrollIntoView(2000);
+      // cardEl.current.scrollIntoView(2000);
     }
   }, [isOpen]);
   return (
@@ -394,7 +394,7 @@ const CardItem = ({ ranking, data, themeInterests }) => {
               詳細評分
             </Text>
             {Object.entries(data.evaluations).map(([key, value]) => (
-              <Text as={'p'} mb={4} fontSize={'sm'}>
+              <Text key={key} as={'p'} mb={4} fontSize={'sm'}>
                 <b>{evaluationsContent[key]}</b>: {value}
               </Text>
             ))}
@@ -618,7 +618,7 @@ const Content = ({ theme }) => {
           return (
             <CardItem
               ranking={i + 1}
-              key={d[0]}
+              key={i}
               data={d[1]}
               themeInterests={`theme.${themeInterests}`}
             />
