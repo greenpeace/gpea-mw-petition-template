@@ -6,7 +6,7 @@ const FixedCTA = ({ children, onClick, status }) => {
   const { submitted } = status;
   const [matches] = useMediaQuery('(max-width:600px)');
 
-  if (matches && !submitted) {
+  if (matches) {
     return (
       <Box
         pos={'fixed'}

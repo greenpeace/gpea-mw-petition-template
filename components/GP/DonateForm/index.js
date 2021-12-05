@@ -76,7 +76,7 @@ const DonateForm = (props) => {
               {(donate_type || []).map((d, i) => (
                 <Box
                   key={i}
-                  borderType={`solid`}
+                  bordertype={`solid`}
                   borderWidth={`2px`}
                   borderColor={
                     donateType === d.value
