@@ -50,10 +50,10 @@ function Index({ status, theme, setFormContent, signup }) {
               FirstName ? FirstName : '綠色和平支持者'
             }，感謝您加入守護海洋行列！`,
             description: [
-              '感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。',
+              '我們需要更多市民加入，加快超市走塑的步伐；一同表達消費者心聲，促成改變，實現走塑購物選項。',
             ],
             inviteMessage:
-              '<b>(Only for TY page without donate box.)</b><br/>您的聯署已經壯大了全球守護海洋力量，我們將一起實現保護、維持、復育海洋健康的理想。邀請您的朋友一同參與：',
+              '您願意分享給身邊的家人和朋友，擴大要求超市盡快淘汰無謂包裝的力量嗎？',
             shareLink: [
               {
                 shareComponent: (

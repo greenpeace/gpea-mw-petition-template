@@ -310,7 +310,7 @@ const CardItem = ({ ranking, data, themeInterests }) => {
     >
       <Flex direction={'column'}>
         <Box pos={'absolute'} top={2} right={2}>
-          {`#${ranking}`}
+          <Text fontWeight={700}>{`# ${ranking}`}</Text>
         </Box>
         <Flex
           direction={'row'}
@@ -321,7 +321,7 @@ const CardItem = ({ ranking, data, themeInterests }) => {
           border={'1px solid #F2F2F2'}
         >
           <Box flex={1}>
-            <Image src={data.logo} maxW={'180px'} />
+            <Image src={data.logo} maxW={'200px'} />
           </Box>
           <Box flex={1} textAlign={'right'}>
             <Text fontSize={'2xl'} fontWeight={700}>
@@ -338,7 +338,7 @@ const CardItem = ({ ranking, data, themeInterests }) => {
               <Text fontWeight={700}>整體得分</Text>
             </Box>
             <Box flex={1} px={2} py={1} textAlign={'right'}>
-              {data.score}/100
+              <Text fontWeight={700}>{data.score} / 100</Text>
             </Box>
           </Flex>
           <Box
@@ -409,10 +409,6 @@ const Content = ({ theme }) => {
   const themeInterests = theme.interests;
   return (
     <>
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        推動超市走塑 急需您我行動
-      </Heading>
-
       <Text as="p" {...paragraphProps}>
         每年，香港有至少112噸塑膠包裝垃圾流入海洋。超市即棄包裝是塑膠污染的主要源頭之一；這些垃圾入侵食物鏈，您我日常進食的海鮮、食鹽亦無一倖免，暗藏微塑膠！
       </Text>
@@ -643,12 +639,6 @@ const Content = ({ theme }) => {
           若想瞭解更多，請 點擊此處查看完整報告。 <br />
           <br />* 華潤、AEON、city'super及Marks &
           Spencer沒有回覆本次綠色和平發出的超市塑膠使用量問卷調查，本報告的資料大部分是來自於公開可取得之資訊。
-        </Text>
-
-        <Text as="p" {...paragraphProps}>
-          <b>
-            請即聯署，向正受破壞的美麗大海伸出援手，支持訂立《全球海洋公約》！
-          </b>
         </Text>
       </Box>
     </>

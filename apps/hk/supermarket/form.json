@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://dev-gpea.cs57.force.com/hk/s/donate/alt-layout?language=zh_HK&campaign=oceans_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=plastics",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -45,9 +45,11 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "我願意支持守護海洋工作",
-  "donate_description": ["我將以捐助方式參與保護海洋項目，令海洋回復健康。"],
-  "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
+  "donate_header": "建立無塑環境 需要您的支持",
+  "donate_description": [
+    "您的捐助，支持綠色和平以公正獨立的身份，持續推動塑膠項目工作！"
+  ],
+  "default_message": "您的捐助，支持綠色和平以公正獨立的身份，持續推動塑膠項目工作！",
   "currency": "HKD",
   "default_amount": 200,
   "donate_type": [
@@ -58,19 +60,19 @@
     {
       "label": "500",
       "value": 500,
-      "description": "支持綠色和平持續搜集第一手海洋真相，透過傳播媒體送到您與全球的眼前！",
+      "description": "支持綠色和平發起聯署行動，集合民眾力量向企業、政府發聲，要求減塑。",
       "currency": "HKD"
     },
     {
       "label": "700",
       "value": 700,
-      "description": "支持綠色和平船艦調查所需裝備，監察破壞海洋的行為，需時前赴應對突發環境災難！",
+      "description": "支持綠色和平推廣減塑議題，提高公眾對塑膠污染的意識和關注。",
       "currency": "HKD"
     },
     {
       "label": "900",
       "value": 900,
-      "description": "支持綠色和平團隊聯同科學家，到各個海域進行實地考察與研究工作，並展開國際倡議行動！",
+      "description": "支持綠色和平在全球搜集可行的減塑模式或替代方案，推動香港企業、政府參考及採納。",
       "currency": "HKD"
     },
     {
@@ -83,19 +85,19 @@
     {
       "label": "200",
       "value": 200,
-      "description": "支持發起全球聯署行動，擴大要求制定「全球海洋公約」的聲音力量！",
+      "description": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策。",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持綠色和平船艦持績監察企業最新動向，及時阻止破壞海洋的行為。",
+      "description": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
       "currency": "HKD"
     },
     {
       "label": "400",
       "value": 400,
-      "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意制定「全球海洋公約」，推進守護30%海洋保護區目標！",
+      "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策 ，全面減緩塑膠污染問題。",
       "currency": "HKD"
     },
     {

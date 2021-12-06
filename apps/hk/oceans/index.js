@@ -58,7 +58,7 @@ function Index({ status, theme, setFormContent, signup }) {
         <HeroBanner
           bgImage={heroBannerImage}
           content={{
-            title: '請即聯署<br/>將全球 30% 海洋<br/>納入保護區',
+            title: '請即聯署<br/>將全球 30% 海洋納入保護區',
             description: [''],
           }}
         />
