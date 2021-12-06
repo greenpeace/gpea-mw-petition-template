@@ -52,9 +52,11 @@ const MyForm = (props) => {
   useEffect(() => {
     let optionYear = [];
     async function fetchOptionYear() {
+      const minYear = 18;
+      const maxYear = 110;
       let nowYear = new Date().getFullYear();
-      let targetYear = nowYear - 110;
-      for (var i = nowYear - 18; i >= targetYear; i--) {
+      let targetYear = nowYear - maxYear;
+      for (var i = nowYear - minYear; i >= targetYear; i--) {
         await optionYear.push({ label: i, value: i.toString() });
       }
       setBirthDateYear(optionYear);
@@ -234,7 +236,7 @@ const MyForm = (props) => {
                   <Select
                     name="MobileCountryCode"
                     onChange={handleChange}
-                    fontSize={'md'}
+                    fontSize={'16px'}
                     size={'lg'}
                   >
                     {(formContent.mobile_country_code || []).map((d) => (
@@ -264,10 +266,9 @@ const MyForm = (props) => {
                 isInvalid={errors.Birthdate && touched.Birthdate}
               >
                 <Select
-                  placeholder={formContent.select}
                   onChange={handleChange}
                   fontSize={'16px'}
-                  placeholder={formContent.empty_select_data_alert}
+                  placeholder={formContent.label_year_of_birth}
                   size={'lg'}
                 >
                   {birthDateYear &&
