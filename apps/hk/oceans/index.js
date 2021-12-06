@@ -49,9 +49,7 @@ function Index({ status, theme, setFormContent, signup }) {
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
             }，感謝您加入守護海洋行列！`,
-            description: [
-              '感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。',
-            ],
+            description: ['為海洋多走一步，捐助支持保護海洋項目。'],
           }}
         />
       ) : (

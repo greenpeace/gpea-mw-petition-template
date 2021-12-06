@@ -21,6 +21,10 @@ const Thankyou = ({ theme, signup }) => {
         感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。
       </Text> */}
 
+      <Heading {...headingProps}>
+        感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。
+      </Heading>
+
       <Text as="p" {...paragraphProps}>
         您的聯署意義重大，我們將一起實現保護、維持、復育海洋健康的理想。
       </Text>
@@ -33,6 +37,10 @@ const Thankyou = ({ theme, signup }) => {
         您的捐款將直接資助我們的海上科研任務、揭露企業破壞海洋的行為、以及國際間的倡議工作，直接幫助達成
         2030年30%全球海洋保護區的目標。
       </Text>
+
+      <Heading {...headingProps}>
+        海洋正向我們發出求救信號，你可以施以援手！
+      </Heading>
 
       <Text as="p" {...paragraphProps}>
         海洋現正面臨多方面的威脅，包括過度捕魚、深海採礦、塑膠及鑽油污染等，不少生物面臨滅絕危機，生物多樣性瀕臨崩潰邊緣。
