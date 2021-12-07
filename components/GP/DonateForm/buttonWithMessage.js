@@ -14,6 +14,18 @@ const ButtonWithMessage = (props) => {
   const targetDonateURL = donateURL;
 
   const handleOpenLink = () => {
+    const { formContent, donateType } = props;
+    //
+    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer.push({
+      event: 'gaEvent',
+      eventCategory: 'donations',
+      eventAction: 'form_steps',
+      eventLabel: 'form_step:1_amount',
+      eventValue: eventValue,
+    });
+    //
     window.open(`${targetDonateURL}&donate_amt=${donateType}:${amount}`);
   };
 

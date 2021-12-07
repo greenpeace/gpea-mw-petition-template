@@ -62,6 +62,17 @@ const MyEnhancedForm = withFormik({
 
   handleSubmit: async (values, { props }) => {
     const { formContent, donateType } = props;
+    //
+    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer.push({
+      event: 'gaEvent',
+      eventCategory: 'donations',
+      eventAction: 'form_steps',
+      eventLabel: 'form_step:1_amount',
+      eventValue: eventValue,
+    });
+    //
     window.open(
       `${formContent.donateURL}&donate_amt=${donateType}:${values.Donate}`,
     );
