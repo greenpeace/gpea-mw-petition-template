@@ -27,10 +27,25 @@ const StepProgress = ({ theme }) => {
     },
   };
 
+  const arrowShadow = {
+    marginRight: '-20px',
+    marginTop: '-4px',
+    width: 0,
+    height: 0,
+    borderStyle: 'solid',
+    borderWidth: '24px 0 23px 20px',
+    borderColor: 'transparent transparent transparent #FFF',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    zIndex: 1,
+  };
+
   return (
     <Box className="arrow-steps clearfix">
       <Box className="step current" {...stepCurrentStyle}>
         <Text as="span">選擇金額</Text>
+        <Box {...arrowShadow} />
       </Box>
       <Box className="step" {...stepStyle}>
         <Text as="span" display="none">
@@ -46,7 +61,7 @@ const StepProgress = ({ theme }) => {
   );
 };
 
-const mapStateToProps = ({ theme }, props) => {
+const mapStateToProps = ({ theme }) => {
   return {
     theme: theme.data,
   };

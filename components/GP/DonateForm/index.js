@@ -10,8 +10,7 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import StepProgress from '@components/Progress/StepProgress';
-import ButtonWithMessage from './buttonWithMessage';
-import ButtonWithField from './ButtonWithField';
+import SubmitSection from './submitSection';
 
 const DonateForm = (props) => {
   const {
@@ -179,20 +178,16 @@ const DonateForm = (props) => {
                 );
               })}
             </Grid>
-            <Box>
-              {item && item.value === 'other' ? (
-                <ButtonWithField
-                  donateType={donateType}
-                  description={item ? item.description : default_message}
-                />
-              ) : (
-                <ButtonWithMessage
+            {item && (
+              <Box>
+                <SubmitSection
+                  submitType={item.value}
                   amount={amount}
                   donateType={donateType}
                   description={item ? item.description : default_message}
                 />
-              )}
-            </Box>
+              </Box>
+            )}
           </Box>
         </Stack>
       </Box>
