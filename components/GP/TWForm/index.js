@@ -145,12 +145,9 @@ const MyForm = (props) => {
               <Text color={`theme.${themeInterests}`} fontSize={'sm'} mt={2}>
                 {formContent.signed_number}:{' '}
                 <Text as="span" fontSize={'2xl'} fontWeight="bold">
-                  {numberOfResponses && numberFormat(numberOfResponses)}
+                  {numberFormat(numberOfResponses)}
                 </Text>{' '}
-                /{' '}
-                {numberOfTarget
-                  ? numberFormat(numberOfTarget)
-                  : numberFormat(10000)}
+                / {numberFormat(numberOfTarget)}
               </Text>
             </Box>
           </Box>

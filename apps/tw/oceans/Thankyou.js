@@ -45,7 +45,7 @@ const Thankyou = ({ theme, signup }) => {
 
       <Text as="p" {...paragraphProps}>
         捐款將幫助綠色和平做調查研究、阻止破壞行動、進行倡議，更重要的是，在
-        2030 年前，爭取成立「全球海洋公約」，推動至少 30% 海洋保護區。
+        2030 年前，爭取成立《全球海洋公約》，推動至少 30% 海洋保護區。
       </Text>
 
       <Box {...paragraphProps}>

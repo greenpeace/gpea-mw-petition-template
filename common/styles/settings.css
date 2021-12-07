@@ -71,11 +71,13 @@
 
   /* Shades Gray Colors */
   --shades-10: #fafafa;
-  --shades-50: #f8fafc;
+  --shades-50: #f8f9fa;
   --shades-100: #f1f3f5;
+  --shades-200: #e9ecef;
   --shades-300: #dee2e6;
   --shades-500: #adb5bd;
   --shades-700: #495057;
+  --shades-800: #343a40;
   --shades-900: #212529;
 
   /* line-height */

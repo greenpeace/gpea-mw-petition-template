@@ -123,36 +123,35 @@ const MyForm = (props) => {
   return (
     <Box py="8" px="4">
       <Stack spacing="4">
-        <Box>
-          <Box
-            borderRadius={'20px'}
-            bgColor="#d2d2d2"
-            h={`14px`}
-            overflow={`hidden`}
-          >
-            {numberOfResponses && (
-              <Box
-                style={{ transition: `width 2s` }}
-                h={`14px`}
-                w={progressNumber}
-                borderRadius={4}
-                bgColor={`theme.${themeInterests}`}
-              />
-            )}
-          </Box>
+        {numberOfResponses && numberOfTarget ? (
           <Box>
-            <Text color={`theme.${themeInterests}`} fontSize={'sm'} mt={2}>
-              {formContent.signed_number}:{' '}
-              <Text as="span" fontSize={'2xl'} fontWeight="bold">
-                {numberOfResponses && numberFormat(numberOfResponses)}
-              </Text>{' '}
-              /{' '}
-              {numberOfTarget
-                ? numberFormat(numberOfTarget)
-                : numberFormat(10000)}
-            </Text>
+            <Box
+              borderRadius={'20px'}
+              bgColor="#d2d2d2"
+              h={`14px`}
+              overflow={`hidden`}
+            >
+              {numberOfResponses && (
+                <Box
+                  style={{ transition: `width 2s` }}
+                  h={`14px`}
+                  w={progressNumber}
+                  borderRadius={4}
+                  bgColor={`theme.${themeInterests}`}
+                />
+              )}
+            </Box>
+            <Box>
+              <Text color={`theme.${themeInterests}`} fontSize={'sm'} mt={2}>
+                {formContent.signed_number}:{' '}
+                <Text as="span" fontSize={'2xl'} fontWeight="bold">
+                  {numberFormat(numberOfResponses)}
+                </Text>{' '}
+                / {numberFormat(numberOfTarget)}
+              </Text>
+            </Box>
           </Box>
-        </Box>
+        ) : null}
         <Box>
           <Heading
             fontSize={'2xl'}
