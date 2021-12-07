@@ -51,13 +51,13 @@ const MyForm = (props) => {
 
   useEffect(() => {
     let optionYear = [];
-    async function fetchOptionYear() {
+    function fetchOptionYear() {
       const minYear = 18;
       const maxYear = 110;
       let nowYear = new Date().getFullYear();
       let targetYear = nowYear - maxYear;
       for (var i = nowYear - minYear; i >= targetYear; i--) {
-        await optionYear.push({ label: i, value: i.toString() });
+        optionYear.push({ label: i, value: i.toString() });
       }
       setBirthDateYear(optionYear);
     }
@@ -155,7 +155,6 @@ const MyForm = (props) => {
         </Box>
         <Box>
           <Heading
-            mt={2}
             fontSize={'2xl'}
             dangerouslySetInnerHTML={{ __html: formContent.form_header }}
           />
