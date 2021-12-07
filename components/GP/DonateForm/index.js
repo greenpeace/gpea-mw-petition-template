@@ -63,16 +63,19 @@ const DonateForm = (props) => {
               />
             </Box>
           )}
+
           {(donate_description || []).map((d, i) => (
             <Box key={i}>
               <Text
+                as="p"
                 fontSize={{ base: 'sm', xl: 'md' }}
                 dangerouslySetInnerHTML={{ __html: d }}
               />
             </Box>
           ))}
+
           <Box>
-            <Stack direction="row" spacing={1} overflow={'hidden'}>
+            <Stack direction="row" spacing={2} overflow={'hidden'}>
               {(donate_type || []).map((d, i) => (
                 <Box
                   key={i}
@@ -85,11 +88,12 @@ const DonateForm = (props) => {
                   }
                   flex={1}
                   fontWeight="400"
-                  lineHeight={`48px`}
-                  textAlign={`center`}
-                  pos={`relative`}
-                  overflow={`hidden`}
-                  borderRadius={'md'}
+                  textAlign="center"
+                  height="auto"
+                  pos="relative"
+                  padding="12px 4px"
+                  overflow="hidden"
+                  borderRadius="md"
                   _before={beforeProps}
                   _after={{
                     ...afterProps,
@@ -201,13 +205,14 @@ const DonateForm = (props) => {
 };
 
 const beforeProps = {
+  zIndex: 1,
   content: '"✓"',
   position: 'absolute',
   left: '4px',
-  top: '-16px',
+  top: '-4px',
   fontSize: '1.2rem',
-  color: '#FFF',
-  zIndex: 2,
+  fontWeight: 'bold',
+  color: 'white',
 };
 
 const afterProps = {
