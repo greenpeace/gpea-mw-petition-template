@@ -23,7 +23,7 @@ const ButtonWithMessage = (props) => {
       eventCategory: 'donations',
       eventAction: 'form_steps',
       eventLabel: 'form_step:1_amount',
-      eventValue: eventValue,
+      eventValue: '',
     });
     //
     window.open(`${targetDonateURL}&donate_amt=${donateType}:${amount}`);
