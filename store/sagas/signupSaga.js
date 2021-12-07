@@ -29,7 +29,6 @@ export function* submitForm(actions) {
       // Tracking
       console.log('submitted:', `${ProjectName}`);
       helper.sendPetitionTracking(`${ProjectName}`);
-    } else {
     }
   } catch (e) {
     console.log(`e`, e);
