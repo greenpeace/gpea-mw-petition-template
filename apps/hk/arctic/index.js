@@ -83,9 +83,7 @@ function Index({ status, theme, setFormContent }) {
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
       {!inView && (
-        <FixedCTA onClick={executeScroll}>
-          {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}
-        </FixedCTA>
+        <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
       )}
     </>
   );
