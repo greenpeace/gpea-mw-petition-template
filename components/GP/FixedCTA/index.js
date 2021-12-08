@@ -5,6 +5,11 @@ import { connect } from 'react-redux';
 const FixedCTA = ({ children, onClick, status, form }) => {
   const { submitted } = status;
   const [matches] = useMediaQuery('(max-width:600px)');
+  const buttonText = !submitted
+    ? form.submit_text
+    : form.mobile_fixed_cta
+    ? form.mobile_fixed_cta
+    : '立即捐款';
 
   if (matches) {
     return (
@@ -31,11 +36,7 @@ const FixedCTA = ({ children, onClick, status, form }) => {
           _hover={{ bg: 'orange.300' }}
           onClick={onClick}
         >
-          {!submitted
-            ? form.submit_text
-            : form.mobile_fixed_cta
-            ? form.mobile_fixed_cta
-            : '立即捐款'}
+          {buttonText}
         </Button>
       </Box>
     );
@@ -45,7 +46,7 @@ const FixedCTA = ({ children, onClick, status, form }) => {
 };
 
 const mapStateToProps = ({ status, form }) => {
-  return { status, form };
+  return { status, form: form.content };
 };
 
 export default connect(mapStateToProps)(FixedCTA);
