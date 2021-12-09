@@ -51,6 +51,7 @@ export default function Index({ content, bgImage }) {
             w={'100%'}
             objectFit={'cover'}
             objectPosition={{ base: '20% top', md: 'center top' }}
+            priority
           />
         </Box>
 

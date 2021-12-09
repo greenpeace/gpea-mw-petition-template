@@ -20,10 +20,14 @@ const makeStore = (context) => {
 
   if (isClient) {
     const persistedReducer = persistReducer(persistConfig, rootReducer);
-    store = createStore(
-      persistedReducer,
-      applyMiddleware(sagaMiddleware, logger),
-    );
+    if (process.env.NODE_ENV === 'development') {
+      store = createStore(
+        persistedReducer,
+        applyMiddleware(sagaMiddleware, logger),
+      );
+    } else {
+      store = createStore(persistedReducer, applyMiddleware(sagaMiddleware));
+    }
     store.__PERSISTOR = persistStore(store);
   } else {
     store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger));

@@ -19,13 +19,6 @@ const MyApp = ({ Component, pageProps, props }) => {
 
   useEffect(async () => {
     let params = {};
-    const getHiddenFields = document.querySelectorAll(
-      'input[value][type="hidden"]:not([value=""])',
-    );
-    const hiddenFormValue = await [...getHiddenFields].reduce(
-      (obj, e) => ({ ...obj, [e.name]: e.value }),
-      {},
-    );
 
     await window.location.search
       .slice(1)
@@ -39,10 +32,7 @@ const MyApp = ({ Component, pageProps, props }) => {
 
     dispatch({
       type: hiddenFormActions.SET_HIDDEN_FORM,
-      data: {
-        ...hiddenFormValue,
-        ...params,
-      },
+      data: params,
     });
   }, []);
 
@@ -57,7 +47,7 @@ const MyApp = ({ Component, pageProps, props }) => {
 
 export default wrapper.withRedux(MyApp);
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const envProjectName = process.env.projectName;
   const fetchURLs = [
     process.env.themeEndpoint,

@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import HeroBanner from '@components/Banner/hero';
-import ThanksBanner from '@components/Banner/thanks';
-import PageContainer from '@containers/pageContainer';
+import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
@@ -20,6 +18,10 @@ import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
 import heroBannerImage from './images/GP1SUB1C_PressMedia.jpg';
+
+const HeroBanner = dynamic(() => import('@components/Banner/hero'));
+const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
+const PageContainer = dynamic(() => import('@containers/pageContainer'));
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
