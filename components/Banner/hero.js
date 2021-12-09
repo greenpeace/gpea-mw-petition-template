@@ -52,6 +52,7 @@ export default function Index({ content, bgImage }) {
             objectFit={'cover'}
             objectPosition={{ base: '20% top', md: 'center top' }}
             priority
+            alt={'Greenpeace 綠色和平'}
           />
         </Box>
 

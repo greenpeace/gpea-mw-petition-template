@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ChakraProvider, CSSReset } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { wrapper } from 'store/configureStore';
 import { useDispatch } from 'react-redux';
 import Router from 'next/router';
@@ -14,7 +14,7 @@ Router.events.on('routeChangeStart', nProgress.start);
 Router.events.on('routeChangeError', nProgress.done);
 Router.events.on('routeChangeComplete', nProgress.done);
 
-const MyApp = ({ Component, pageProps, props }) => {
+const MyApp = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
 
   useEffect(async () => {
@@ -39,7 +39,6 @@ const MyApp = ({ Component, pageProps, props }) => {
   const getLayout = Component.getLayout || ((page) => page);
   return (
     <ChakraProvider theme={theme}>
-      <CSSReset />
       {getLayout(<Component {...pageProps} />)}
     </ChakraProvider>
   );

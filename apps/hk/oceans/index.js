@@ -11,13 +11,12 @@ import DonateForm from '@components/GP/DonateForm';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Icon } from '@chakra-ui/react';
-import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
 import SEO from './SEO';
 import FixedCTA from '@components/GP/FixedCTA';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/GP1SUB1C_PressMedia.jpg';
+import heroBannerImage from './images/GP1SUB1C_PressMedia.webp';
 
 const HeroBanner = dynamic(() => import('@components/Banner/hero'));
 const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
@@ -26,7 +25,6 @@ const PageContainer = dynamic(() => import('@containers/pageContainer'));
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
   const { FirstName } = signup;
-  const themeInterests = theme.interests;
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });

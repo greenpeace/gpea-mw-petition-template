@@ -7,8 +7,6 @@ import {
 } from '@common/styles/components/contentStyle';
 
 import contentA from './images/GP0STU61Y_PressMedia.jpg';
-import contentB from './images/GP1SV342_PressMedia.jpg';
-import contentC from './images/GP02K27_PressMedia.jpg';
 import contentD from './images/GP01B4T_PressMedia.jpg';
 
 const Content = ({ theme }) => {
@@ -30,7 +28,7 @@ const Content = ({ theme }) => {
       <Heading {...headingProps}>您願意聯署加入守護海洋行列嗎？</Heading>
 
       <Box {...paragraphProps}>
-        <Image src={contentA} />
+        <Image src={contentA} layout="fill" alt={'Greenpeace 綠色和平'} />
       </Box>
 
       <Heading {...headingProps}>
@@ -46,7 +44,7 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <Image src={contentD} />
+        <Image src={contentD} layout="fill" alt={'Greenpeace 綠色和平'} />
       </Box>
 
       <Text as="p" {...paragraphProps}>
