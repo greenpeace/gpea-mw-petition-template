@@ -304,7 +304,7 @@ const MyEnhancedForm = withFormik({
     LastName: '',
     Phone: '',
     Birthdate: '',
-    Optin: true,
+    OptIn: true,
   }),
 
   validate: async (values, props) => {
