@@ -286,10 +286,10 @@ const MyForm = (props) => {
               <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
                 <Box flex={1} mr={2} pt={1}>
                   <Checkbox
+                    id="OptIn"
                     name="OptIn"
-                    defaultChecked
-                    // colorScheme={`${theme.ProjectName}`}
                     onChange={handleChange}
+                    defaultChecked
                   />
                 </Box>
                 <Text
@@ -300,25 +300,6 @@ const MyForm = (props) => {
                   }}
                 />
               </Flex>
-              {/* <Flex direction={{ base: 'row' }} align={'center'}>
-            <Box flex={1} mr={4}>
-              <Text fontSize={'xs'}>{formContent.label_newsletter}</Text>
-            </Box>
-            <HStack spacing={2}>
-              {(formContent.new_letter || []).map((d, i) => (
-                <Button
-                  key={i}
-                  bgColor={d.value === values.Newsletter ? '#66cc00' : '#FFF'}
-                  color={d.value === values.Newsletter ? '#FFF' : '#000'}
-                  variant={`outline`}
-                  fontSize={'sm'}
-                  onClick={() => setFieldValue('Newsletter', d.value)}
-                >
-                  {d.label}
-                </Button>
-              ))}
-            </HStack>
-          </Flex> */}
             </Box>
 
             <Box>
@@ -346,7 +327,7 @@ const MyEnhancedForm = withFormik({
     MobileCountryCode: '852',
     MobilePhone: '',
     Birthdate: '',
-    Newsletter: true,
+    Optin: true,
   }),
 
   validate: async (values, props) => {

@@ -273,10 +273,10 @@ const MyForm = (props) => {
               <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
                 <Box flex={1} mr={2} pt={1}>
                   <Checkbox
+                    id="OptIn"
                     name="OptIn"
-                    defaultChecked
-                    // colorScheme={`${theme.ProjectName}`}
                     onChange={handleChange}
+                    defaultChecked
                   />
                 </Box>
                 <Text fontSize="xs" color={'gray.700'}>
@@ -304,7 +304,7 @@ const MyEnhancedForm = withFormik({
     LastName: '',
     Phone: '',
     Birthdate: '',
-    Newsletter: true,
+    Optin: true,
   }),
 
   validate: async (values, props) => {
