@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
-import { numberFormat } from '@common/utils';
+import { numberFormat, capitalize } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
@@ -337,8 +337,10 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const { signup, theme, hiddenFormData } = props;
+    const { submitForm, theme, hiddenFormData } = props;
     const fallbackValue = (d) => (d ? d : '');
+
+    const LeadSource = `Petition - ${capitalize(theme.interests)}`;
 
     const formData = {
       ...hiddenFormData,
@@ -352,10 +354,12 @@ const MyEnhancedForm = withFormik({
         process.env.NODE_ENV === 'production'
           ? theme.CampaignId
           : '7012u000000OxDYAA0',
+      LeadSource: LeadSource,
+      [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
     };
 
     setSubmitting(true);
-    signup(formData, theme.EndpointURL);
+    submitForm(formData, theme.EndpointURL);
   },
 
   displayName: 'SignupForm',
@@ -376,7 +380,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (data, endPoint) => {
+    submitForm: (data, endPoint) => {
       dispatch({ type: signupActions.SIGN_UP, data, endPoint });
     },
     setWebStatus: (bol) => {
