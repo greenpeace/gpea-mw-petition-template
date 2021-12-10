@@ -32,7 +32,6 @@ const SubmitSection = (props) => {
       eventCategory: 'donations',
       eventAction: 'form_steps',
       eventLabel: 'form_step:1_amount',
-      eventValue: '',
     });
     //
     window.open(`${targetDonateURL}&donate_amt=${donateType}:${amount}`);
@@ -109,7 +108,6 @@ const MyEnhancedForm = withFormik({
       eventCategory: 'donations',
       eventAction: 'form_steps',
       eventLabel: 'form_step:1_amount',
-      eventValue: '',
     });
     //
     window.open(
