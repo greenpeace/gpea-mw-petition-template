@@ -39,6 +39,14 @@ function Index({ status, theme, setFormContent, signup }) {
     setFormContent(formContent);
   }, []);
 
+  useEffect(() => {
+    let dataLayer = (window.dataLayer = window.dataLayer || []);
+    dataLayer.push({
+      gCampaign: 'oceans',
+      gBasket: 'sanctuaries',
+    });
+  }, []);
+
   return (
     <>
       <SEO />
