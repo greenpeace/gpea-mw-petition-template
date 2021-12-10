@@ -7,8 +7,8 @@ const SEO = () => {
         {`
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'oceans',
-            gBasket: 'sanctuaries',
+            gCampaign: 'forests',
+            gBasket: 'global',
           });
         `}
       </script>
