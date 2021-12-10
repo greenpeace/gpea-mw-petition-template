@@ -36,3 +36,15 @@ h5,
 h6 {
   line-height: var(--heading-line-height);
 }
+
+a {
+  color: #1890ff;
+  &:hover {
+    color: #40a9ff;
+  }
+}
+
+b,
+strong {
+  font-weight: bold;
+}
