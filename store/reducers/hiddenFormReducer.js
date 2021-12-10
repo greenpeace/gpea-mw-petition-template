@@ -1,7 +1,20 @@
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 
 const initState = {
-  data: {},
+  data: {
+    LeadSource: 'Petition - Plastics',
+    Petition_Interested_In_Arctic__c: false,
+    Petition_Interested_In_Climate__c: false,
+    Petition_Interested_In_Forest__c: false,
+    Petition_Interested_In_Health__c: false,
+    Petition_Interested_In_Oceans__c: false,
+    Petition_Interested_In_Plastics__c: false,
+    CampaignData1__c: '',
+    CampaignData2__c: '',
+    CampaignData3__c: '',
+    CampaignData4__c: '',
+    CampaignData5__c: '',
+  },
   lastAction: null,
 };
 
@@ -16,7 +29,10 @@ const hiddenFormReducer = (state = initState, action) => {
     case hiddenFormActions.SET_HIDDEN_FORM:
       return {
         ...state,
-        data: action.data,
+        data: {
+          ...state.data,
+          ...action.data,
+        },
         lastAction: action.type,
       };
 
