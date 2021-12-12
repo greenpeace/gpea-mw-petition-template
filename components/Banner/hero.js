@@ -1,8 +1,25 @@
 import React from 'react';
 import { Heading, Box, Text, Image } from '@chakra-ui/react';
+// import NextImage from "next/image";
 import PageContainer from '@containers/pageContainer';
-
 import { TextWrapper } from './Banner.style';
+
+// const Image = chakra(NextImage, {
+//   baseStyle: { w: '100%', h: '100%' },
+//   shouldForwardProp: (prop) =>
+//     [
+//       "width",
+//       "height",
+//       "src",
+//       "alt",
+//       "quality",
+//       "placeholder",
+//       "blurDataURL",
+//       "loader ",
+//       "objectFit",
+//       "objectPosition"
+//     ].includes(prop),
+// });
 
 export default function Index({ content, bgImage }) {
   return (
@@ -47,8 +64,8 @@ export default function Index({ content, bgImage }) {
         <Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
           <Image
             src={bgImage}
-            h={'100%'}
-            w={'100%'}
+            height={'100%'}
+            width={'100%'}
             objectFit={'cover'}
             objectPosition={{ base: '20% top', md: 'center top' }}
             alt={'Greenpeace 綠色和平'}
