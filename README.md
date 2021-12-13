@@ -4,6 +4,10 @@ The MW petition template is built on React.js and Chakraui library.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## MW Petition Design Migration Schema
+
+[Petition theme data schema](https://docs.google.com/spreadsheets/d/1_NziZSM1zHoQOzo_BgPS2apl7TLCqRRbO0ev1ykkl08/edit#gid=0)
+
 ## Quick start
 
 1. Run `npm run install` in order to install the dependencies.
@@ -48,7 +52,7 @@ npm install --save-dev pretty-quick
 npx husky set .husky/pre-commit "npx pretty-quick --staged"
 ```
 
-## Difference between the three .env files
+## How to utilize the .env files
 
 .env file will store the environment variables and its mainly used for the build script and node.js script. For this project, we also use it to store the project identity so we can fetch the project theme data from the [project schema spreadsheet](https://docs.google.com/spreadsheets/d/1_NziZSM1zHoQOzo_BgPS2apl7TLCqRRbO0ev1ykkl08/edit#gid=0).
 There is the priority of the .env files and the machine will run the app based on the mode to get the corespinding env variables.
