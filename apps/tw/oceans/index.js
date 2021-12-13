@@ -48,7 +48,7 @@ function Index({ status, theme, setFormContent, signup }) {
           content={{
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
-            }，謝謝你參與這次的連署`,
+            }，謝謝您參與這次的連署`,
             description: ['能更進一步支持我們的海洋行動嗎？'],
           }}
         />

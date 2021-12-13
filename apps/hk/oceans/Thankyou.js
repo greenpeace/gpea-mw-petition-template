@@ -39,7 +39,7 @@ const Thankyou = ({ theme, signup }) => {
       </Text>
 
       <Heading {...headingProps}>
-        海洋正向我們發出求救信號，你可以施以援手！
+        海洋正向我們發出求救信號，您可以施以援手！
       </Heading>
 
       <Text as="p" {...paragraphProps}>

@@ -144,7 +144,7 @@ const Content = ({ theme, formContent }) => {
         </OrderedList>
         <br />
         <Text fontWeight={700}>
-          推動綠色政策需要你我力量達成！立即聯署，守護氣候。
+          推動綠色政策需要您我力量達成！立即聯署，守護氣候。
         </Text>
       </Text>
 

@@ -17,7 +17,7 @@ const Content = ({ theme }) => {
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        你的連署不只是一個簽名，而是照進深海的一道微光，能推動制定《全球海洋公約》，在2030年前成立至少30%海洋保護區，為萬千海洋生物找到庇蔭。
+        您的連署不只是一個簽名，而是照進深海的一道微光，能推動制定《全球海洋公約》，在2030年前成立至少30%海洋保護區，為萬千海洋生物找到庇蔭。
       </Text>
 
       <Text as="p" {...paragraphProps}>
@@ -37,7 +37,7 @@ const Content = ({ theme }) => {
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         蓬勃的海洋正凋萎...
         <br />
-        需要你給大海最實質的幫助！
+        需要您給大海最實質的幫助！
       </Heading>
 
       <Text as="p" {...paragraphProps}>
