@@ -338,6 +338,7 @@ const MyEnhancedForm = withFormik({
 
   handleSubmit: async (values, { setSubmitting, props }) => {
     const { submitForm, theme, hiddenFormData } = props;
+
     const fallbackValue = (d) => (d ? d : '');
 
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
@@ -356,6 +357,7 @@ const MyEnhancedForm = withFormik({
           : '7012u000000OxDYAA0',
       LeadSource: LeadSource,
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
+      CompletionURL: window.location.href ? window.location.href : '',
     };
 
     setSubmitting(true);
