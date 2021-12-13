@@ -19,7 +19,7 @@ const HKEnglish = {
 const TWChinese = {
   messageTitle: '捐款查詢：',
   messageContact: [
-    '歡迎致電會員服務熱線 <a href="tel:+8862236120258"><u>+886 (2) 2361 2025</u></a>，或電郵至 <a href="mailto:donor.services.tw@greenpeace.org"><u>donor.services.tw@greenpeace.org</u></a>，以查詢捐款相關事宜。',
+    '歡迎致電會員服務專線 <a href="tel:+8862236120258"><u>+886 (2) 2361 2025</u></a>，或來信到會員服務信箱 <a href="mailto:donor.services.tw@greenpeace.org"><u>donor.services.tw@greenpeace.org</u></a>以查詢捐款相關事宜。',
   ],
 };
 
