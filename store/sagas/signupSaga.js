@@ -8,7 +8,7 @@ import * as helper from '@common/utils/helper';
 
 export function* submitForm(actions) {
   const state = yield select();
-  const { ProjectName } = state.theme.data;
+  const { ProjectName, EventLabel } = state.theme.data;
   try {
     const response = yield call(() =>
       fetch(`${actions.endPoint}`, {
@@ -27,9 +27,12 @@ export function* submitForm(actions) {
       });
       yield put({ type: statusActions.SET_FORM_SUBMITTED, data: true });
       // Tracking
-      console.log('submitted:', `${ProjectName}`);
-      helper.sendPetitionTracking(`${ProjectName}`);
-    } else {
+      if (ProjectName || EventLabel) {
+        console.log('submitted:', `${EventLabel ? EventLabel : ProjectName}`);
+        helper.sendPetitionTracking(`${EventLabel ? EventLabel : ProjectName}`);
+      } else {
+        console.log('Project undefined');
+      }
     }
   } catch (e) {
     console.log(`e`, e);

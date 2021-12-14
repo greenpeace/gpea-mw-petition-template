@@ -11,8 +11,6 @@ export default function Index({ content, bgImage }) {
         minH={{ base: 'lg', md: 'xl' }}
         pos={'relative'}
         zIndex={2}
-        bgSize={`cover`}
-        bgPos={`center center`}
         paddingBottom={'4rem'}
       >
         <Box pos={'relative'} zIndex={3}>
@@ -22,9 +20,8 @@ export default function Index({ content, bgImage }) {
                 {content.title && (
                   <Heading
                     as="h1"
-                    fontSize={{ base: '4xl', md: '5xl' }}
-                    fontWeight="bold"
-                    lineHeight="1.3"
+                    fontSize={{ base: 'var(--text-xl)', md: 'var(--text-2xl)' }}
+                    lineHeight="1.2"
                     color={'white'}
                     mb={4}
                     dangerouslySetInnerHTML={{ __html: content.title }}
@@ -35,7 +32,7 @@ export default function Index({ content, bgImage }) {
                     {content.description.map((d, i) => (
                       <Text
                         key={i}
-                        fontSize={{ base: 'sm' }}
+                        fontSize="var(--text-base)"
                         color={'#FFF'}
                         dangerouslySetInnerHTML={{ __html: d }}
                       />
@@ -53,7 +50,7 @@ export default function Index({ content, bgImage }) {
             h={'100%'}
             w={'100%'}
             objectFit={'cover'}
-            objectPosition={'top center'}
+            objectPosition={{ base: '20% top', md: 'center top' }}
           />
         </Box>
 
@@ -64,7 +61,7 @@ export default function Index({ content, bgImage }) {
           right={0}
           left={0}
           bottom={0}
-          bgColor={'rgba(0,0,0,0.35)'}
+          bgColor={'rgba(0,0,0,0.5)'}
         />
       </Box>
     </>

@@ -10,3 +10,8 @@ export function usePrevious(value) {
 export function numberFormat(d) {
   return d.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
+
+export function capitalize(s) {
+  if (typeof s !== 'string') return '';
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}

@@ -18,13 +18,72 @@ class NextDocument extends Document {
           {/* Load google fonts */}
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap"
+            rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap"
+            as="font"
+          />
+          <link
             rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap"
           />
         </Head>
         <body>
           <Main />
           <NextScript />
+          {/* =============================== */}
+          {/* ========== Missing Hidden data ============ */}
+          {/* Petition - {Issue} */}
+          {/* {Issue} could be General, Arctic, Climate, Plastics, Oceans, Forests, Health */}
+          {/* <form
+            method="post"
+            action="https://cloud.greenhk.greenpeace.org/websign"
+            id="mc-form"
+            style={{ display: 'none' }}
+          >
+            <input
+              type="hidden"
+              name="LeadSource"
+              defaultValue="Petition - Plastics"
+            />
+            <input
+              type="hidden"
+              name="Petition_Interested_In_Arctic__c"
+              defaultValue="false"
+            />
+            <input
+              type="hidden"
+              name="Petition_Interested_In_Climate__c"
+              defaultValue="false"
+            />
+            <input
+              type="hidden"
+              name="Petition_Interested_In_Forest__c"
+              defaultValue="false"
+            />
+            <input
+              type="hidden"
+              name="Petition_Interested_In_Health__c"
+              defaultValue="false"
+            />
+            <input
+              type="hidden"
+              name="Petition_Interested_In_Oceans__c"
+              defaultValue="false"
+            />
+            <input
+              type="hidden"
+              name="Petition_Interested_In_Plastics__c"
+              defaultValue="false"
+            />
+            <input type="hidden" name="CampaignData1__c" defaultValue="" />
+            <input type="hidden" name="CampaignData2__c" defaultValue="" />
+            <input type="hidden" name="CampaignData3__c" defaultValue="" />
+            <input type="hidden" name="CampaignData4__c" defaultValue="" />
+            <input type="hidden" name="CampaignData5__c" defaultValue="" />
+          </form> */}
+          {/* =============================== */}
+          {/* =============================== */}
+          {/* =============================== */}
           {/** MC_FORM_STARTS  */}
           {/* <form
             method="post"
@@ -32,8 +91,6 @@ class NextDocument extends Document {
             id="mc-form"
             style={{ display: 'none' }}
           >
-            <input type="hidden" name="numSignupTarget" defaultValue="12345" />
-            <input type="hidden" name="numResponses" defaultValue="1234" />
             <input
               placeholder="FirstName"
               name="FirstName"
@@ -76,7 +133,6 @@ class NextDocument extends Document {
               type="checkbox"
               defaultValue=""
             />
-            <input type="hidden" name="req" defaultValue="post_data" />
             <input
               type="hidden"
               name="LeadSource"

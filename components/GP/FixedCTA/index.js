@@ -2,11 +2,16 @@ import { Box, Button } from '@chakra-ui/react';
 import { useMediaQuery } from '@chakra-ui/media-query';
 import { connect } from 'react-redux';
 
-const FixedCTA = ({ children, onClick, status }) => {
+const FixedCTA = ({ children, onClick, status, form }) => {
   const { submitted } = status;
   const [matches] = useMediaQuery('(max-width:600px)');
+  const buttonText = !submitted
+    ? form.submit_text
+    : form.mobile_fixed_cta
+    ? form.mobile_fixed_cta
+    : '立即捐款';
 
-  if (matches && !submitted) {
+  if (matches) {
     return (
       <Box
         pos={'fixed'}
@@ -31,7 +36,7 @@ const FixedCTA = ({ children, onClick, status }) => {
           _hover={{ bg: 'orange.300' }}
           onClick={onClick}
         >
-          {children}
+          {buttonText}
         </Button>
       </Box>
     );
@@ -40,8 +45,8 @@ const FixedCTA = ({ children, onClick, status }) => {
   return <Box></Box>;
 };
 
-const mapStateToProps = ({ status }) => {
-  return { status };
+const mapStateToProps = ({ status, form }) => {
+  return { status, form: form.content };
 };
 
 export default connect(mapStateToProps)(FixedCTA);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
-import { numberFormat } from '@common/utils';
+import { numberFormat, capitalize } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
@@ -51,11 +51,13 @@ const MyForm = (props) => {
 
   useEffect(() => {
     let optionYear = [];
-    async function fetchOptionYear() {
+    function fetchOptionYear() {
+      const minYear = 18;
+      const maxYear = 110;
       let nowYear = new Date().getFullYear();
-      let targetYear = nowYear - 110;
-      for (var i = nowYear - 18; i >= targetYear; i--) {
-        await optionYear.push({ label: i, value: i.toString() });
+      let targetYear = nowYear - maxYear;
+      for (var i = nowYear - minYear; i >= targetYear; i--) {
+        optionYear.push({ label: i, value: i.toString() });
       }
       setBirthDateYear(optionYear);
     }
@@ -121,39 +123,37 @@ const MyForm = (props) => {
   return (
     <Box py="8" px="4">
       <Stack spacing="4">
-        <Box>
-          <Box
-            borderRadius={'20px'}
-            bgColor="#d2d2d2"
-            h={`14px`}
-            overflow={`hidden`}
-          >
-            {numberOfResponses && (
-              <Box
-                style={{ transition: `width 2s` }}
-                h={`14px`}
-                w={progressNumber}
-                borderRadius={4}
-                bgColor={`theme.${themeInterests}`}
-              />
-            )}
-          </Box>
-          <Box display={'none'}>
-            <Text fontSize={'base'} mt={2}>
-              {formContent.signed_number}:{' '}
-              <Text as="span" fontSize={'2xl'} fontWeight={700}>
-                {numberOfResponses && numberFormat(numberOfResponses)}{' '}
+        {numberOfResponses && numberOfTarget ? (
+          <Box>
+            <Box
+              borderRadius={'20px'}
+              bgColor="#d2d2d2"
+              h={`14px`}
+              overflow={`hidden`}
+            >
+              {numberOfResponses && (
+                <Box
+                  style={{ transition: `width 2s` }}
+                  h={`14px`}
+                  w={progressNumber}
+                  borderRadius={4}
+                  bgColor={`theme.${themeInterests}`}
+                />
+              )}
+            </Box>
+            <Box>
+              <Text color={`theme.${themeInterests}`} fontSize={'sm'} mt={2}>
+                {formContent.signed_number}:{' '}
+                <Text as="span" fontSize={'2xl'} fontWeight="bold">
+                  {numberFormat(numberOfResponses)}
+                </Text>{' '}
+                / {numberFormat(numberOfTarget)}
               </Text>
-              /{' '}
-              {numberOfTarget
-                ? numberFormat(numberOfTarget)
-                : numberFormat(10000)}
-            </Text>
+            </Box>
           </Box>
-        </Box>
+        ) : null}
         <Box>
           <Heading
-            mt={2}
             fontSize={'2xl'}
             dangerouslySetInnerHTML={{ __html: formContent.form_header }}
           />
@@ -237,6 +237,11 @@ const MyForm = (props) => {
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                 />
+                <Box pt="1" pl="2">
+                  <Text color="gray.700" fontSize="sm" as="span">
+                    電話格式範例：0912345678 或 02-23612351
+                  </Text>
+                </Box>
               </Box>
             </HStack>
 
@@ -246,10 +251,9 @@ const MyForm = (props) => {
                 isInvalid={errors.Birthdate && touched.Birthdate}
               >
                 <Select
-                  placeholder={formContent.select}
                   onChange={handleChange}
                   fontSize={'16px'}
-                  placeholder={formContent.empty_select_data_alert}
+                  placeholder={formContent.label_year_of_birth}
                   size={'lg'}
                 >
                   {birthDateYear &&
@@ -269,10 +273,10 @@ const MyForm = (props) => {
               <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
                 <Box flex={1} mr={2} pt={1}>
                   <Checkbox
+                    id="OptIn"
                     name="OptIn"
-                    defaultChecked
-                    // colorScheme={`${theme.ProjectName}`}
                     onChange={handleChange}
+                    defaultChecked
                   />
                 </Box>
                 <Text fontSize="xs" color={'gray.700'}>
@@ -300,7 +304,7 @@ const MyEnhancedForm = withFormik({
     LastName: '',
     Phone: '',
     Birthdate: '',
-    Newsletter: true,
+    OptIn: true,
   }),
 
   validate: async (values, props) => {
@@ -310,8 +314,10 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const { signup, theme, hiddenFormData } = props;
+    const { submitForm, theme, hiddenFormData } = props;
     const fallbackValue = (d) => (d ? d : '');
+
+    const LeadSource = `Petition - ${capitalize(theme.interests)}`;
 
     const formData = {
       ...hiddenFormData,
@@ -325,10 +331,13 @@ const MyEnhancedForm = withFormik({
         process.env.NODE_ENV === 'production'
           ? theme.CampaignId
           : '7012u000000OxDYAA0',
+      LeadSource: LeadSource,
+      [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
+      CompletionURL: window.location.href ? window.location.href : '',
     };
 
     setSubmitting(true);
-    signup(formData, theme.EndpointURL);
+    submitForm(formData, theme.EndpointURL);
   },
 
   displayName: 'SignupForm',
@@ -340,8 +349,8 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     hiddenFormData: hiddenForm.data,
     isLoading: signup.lastAction === signupActions.SIGN_UP,
     formContent: form.content,
-    numberOfResponses: form.signupNumbers.hk?.NumberOfResponses,
-    numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
+    numberOfResponses: form.signupNumbers.tw?.NumberOfResponses,
+    numberOfTarget: form.signupNumbers.tw?.Petition_Signup_Target__c,
     theme: theme.data,
     suggestion: form.suggestion,
   };
@@ -349,7 +358,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (data, endPoint) => {
+    submitForm: (data, endPoint) => {
       dispatch({ type: signupActions.SIGN_UP, data, endPoint });
     },
     setWebStatus: (bol) => {

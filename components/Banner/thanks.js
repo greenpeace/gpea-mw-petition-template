@@ -20,8 +20,6 @@ export default function Index({ content, bgImage }) {
         minH={{ base: 'lg', md: 'xl' }}
         pos={'relative'}
         zIndex={2}
-        bgSize={`cover`}
-        bgPos={`center center`}
         paddingBottom={'4rem'}
       >
         <Box pos={'relative'} zIndex={4}>
@@ -35,16 +33,15 @@ export default function Index({ content, bgImage }) {
                 <TextWrapper>
                   <Heading
                     as="h1"
-                    fontSize={{ base: '4xl', md: '5xl' }}
-                    fontWeight="bold"
-                    lineHeight="1.3"
+                    fontSize={{ base: 'var(--text-xl)', md: 'var(--text-2xl)' }}
+                    lineHeight="1.2"
                     color={'white'}
                     dangerouslySetInnerHTML={{ __html: content.title }}
                   />
                   {content.description.map((d, i) => (
                     <Text
                       key={i}
-                      fontSize={{ base: 'sm', md: 'md' }}
+                      fontSize="var(--text-base)"
                       color={'#FFF'}
                       dangerouslySetInnerHTML={{ __html: d }}
                     ></Text>
@@ -61,13 +58,14 @@ export default function Index({ content, bgImage }) {
                       />
                     )}
                     <Stack direction="row" spacing={6}>
-                      {content.shareLink.map((d, i) => (
-                        <Box key={i} {...iconWrapProps}>
-                          <SocialButton href={d.link}>
-                            {d.shareComponent}
-                          </SocialButton>
-                        </Box>
-                      ))}
+                      {content.inviteMessage &&
+                        content.shareLink.map((d, i) => (
+                          <Box key={i} {...iconWrapProps}>
+                            <SocialButton href={d.link}>
+                              {d.shareComponent}
+                            </SocialButton>
+                          </Box>
+                        ))}
                     </Stack>
                     {/* <Box onClick={() => console.log('clicked')}>
                       <Text textDecoration={'underline'} color={'#FFF'}>
@@ -87,7 +85,7 @@ export default function Index({ content, bgImage }) {
             h={'100%'}
             w={'100%'}
             objectFit={'cover'}
-            objectPosition={'top center'}
+            objectPosition={{ base: '20% top', md: 'center top' }}
           />
         </Box>
 

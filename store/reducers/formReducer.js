@@ -8,6 +8,8 @@ const initState = {
     tw: '',
   },
   suggestion: '',
+  showMessage: false,
+  donateType: 'monthly',
   lastAction: null,
 };
 
@@ -50,6 +52,20 @@ const formReducer = (state = initState, action) => {
       return {
         ...state,
         signupNumbers: action.data,
+        lastAction: action.type,
+      };
+
+    case formActions.SET_SHOW_MESSAGE:
+      return {
+        ...state,
+        showMessage: action.data,
+        lastAction: action.type,
+      };
+
+    case formActions.SET_DONATE_TYPE:
+      return {
+        ...state,
+        donateType: action.data,
         lastAction: action.type,
       };
 

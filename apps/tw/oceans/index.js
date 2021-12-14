@@ -19,7 +19,7 @@ import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/e0d0bb1a-e0d0bb1a-gp0storn2_web_size_with_credit_line.jpg';
+import heroBannerImage from './images/GP1SUB1C_PressMedia.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
@@ -48,37 +48,8 @@ function Index({ status, theme, setFormContent, signup }) {
           content={{
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
-            }，謝謝你參與這次的連署`,
+            }，謝謝您參與這次的連署`,
             description: ['能更進一步支持我們的海洋行動嗎？'],
-            inviteMessage:
-              '<b>(Only for TY page without donate box.)</b><br/>能不能多幫海洋一個忙？<br/>邀請你的朋友、家人、同事一起支持全球海洋保護區',
-            shareLink: [
-              {
-                shareComponent: (
-                  <Icon as={FaInstagram} color={`theme.${themeInterests}`} />
-                ),
-                link: '#',
-              },
-              {
-                shareComponent: (
-                  <Icon as={FaFacebook} color={`theme.${themeInterests}`} />
-                ),
-                link: '#',
-              },
-              {
-                shareComponent: (
-                  <Icon as={FaWhatsapp} color={`theme.${themeInterests}`} />
-                ),
-                link: '#',
-              },
-              {
-                shareComponent: (
-                  <Icon as={FaTwitter} color={`theme.${themeInterests}`} />
-                ),
-                link: '#',
-              },
-            ],
-            inviteInfo: '點擊預覽分享內容',
           }}
         />
       ) : (

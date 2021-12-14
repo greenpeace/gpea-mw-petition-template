@@ -21,7 +21,9 @@ html {
 } /*16px*/
 
 body {
+  font-family: 'Noto Sans TC', sans-serif !important;
   font-variant: tabular-nums;
+  font-size: var(--text-base);
   line-height: var(--body-line-height);
   letter-spacing: 0.022em;
 }
@@ -33,4 +35,16 @@ h4,
 h5,
 h6 {
   line-height: var(--heading-line-height);
+}
+
+a {
+  color: #1890ff;
+  &:hover {
+    color: #40a9ff;
+  }
+}
+
+b,
+strong {
+  font-weight: bold;
 }

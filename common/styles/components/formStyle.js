@@ -11,6 +11,16 @@ export const OrangeCTA = {
   _hover: { bg: 'orange.300' },
 };
 
+export const OutlineCTA = {
+  width: '100%',
+  borderRadius: '4px',
+  fontSize: '20px',
+  fontWeight: '500',
+  minHeight: '56px',
+  py: '12px',
+  px: '4px',
+};
+
 export const buttonStyle = {
   h: '48px',
   fontWeight: '400',
