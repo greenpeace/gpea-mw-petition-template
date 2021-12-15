@@ -1,17 +1,21 @@
 import Head from 'next/head';
+import Script from 'next/script';
 
 const SEO = () => {
   return (
     <Head>
-      <script>
-        {`
+      <Script
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
             gCampaign: 'oceans',
             gBasket: 'sanctuaries',
           });
-        `}
-      </script>
+        `,
+        }}
+      />
       {/* title */}
       <title>現在連署 您能保護 30% 全球海洋 - Greenpeace 綠色和平 | 台灣</title>
       <meta

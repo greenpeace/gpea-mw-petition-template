@@ -1,10 +1,12 @@
 import Head from 'next/head';
+import Script from 'next/script';
 
 const SEO = () => {
   return (
     <Head>
       {/* campaign dataLayer */}
-      <script
+      <Script
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);

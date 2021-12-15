@@ -1,8 +1,23 @@
 import Head from 'next/head';
+import Script from 'next/script';
 
 const SEO = () => {
   return (
     <Head>
+      {/* campaign dataLayer */}
+      <Script
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+          var dataLayer = (window.dataLayer = window.dataLayer || []);
+          dataLayer.push({
+            gCampaign: 'oceans',
+            gBasket: 'sanctuaries',
+          });
+        `,
+        }}
+      />
+      {/* title */}
       <title>
         請即聯署支持2030年前成立至少30%海洋保護區 - Greenpeace 綠色和平 | 香港
       </title>
