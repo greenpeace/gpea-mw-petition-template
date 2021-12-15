@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Box, Text } from '@chakra-ui/react';
 
-const StepProgress = ({ theme }) => {
+const StepProgress = ({ theme, status }) => {
   const themeInterests = theme.interests;
+  const { submitted } = status;
   const stepCurrentStyle = {
     fontSize: 16,
     lineHeight: 6,
@@ -41,14 +42,19 @@ const StepProgress = ({ theme }) => {
     zIndex: 1,
   };
 
+  const stepProps = {
+    className: submitted ? 'step current' : 'step',
+    styles: submitted ? stepCurrentStyle : stepStyle,
+  };
+
   return (
     <Box className="arrow-steps clearfix">
       <Box className="step current" {...stepCurrentStyle}>
         <Text as="span">選擇金額</Text>
         <Box {...arrowShadow} />
       </Box>
-      <Box className="step" {...stepStyle}>
-        <Text as="span" display="none">
+      <Box className={stepProps.className} {...stepProps.styles}>
+        <Text as="span" d={submitted ? 'block' : 'none'} pl={4}>
           填寫資料
         </Text>
       </Box>
@@ -61,9 +67,10 @@ const StepProgress = ({ theme }) => {
   );
 };
 
-const mapStateToProps = ({ theme }) => {
+const mapStateToProps = ({ theme, status }) => {
   return {
     theme: theme.data,
+    status,
   };
 };
 

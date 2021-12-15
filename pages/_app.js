@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ChakraProvider, CSSReset } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { wrapper } from 'store/configureStore';
 import { useDispatch } from 'react-redux';
 import Router from 'next/router';
@@ -14,18 +14,11 @@ Router.events.on('routeChangeStart', nProgress.start);
 Router.events.on('routeChangeError', nProgress.done);
 Router.events.on('routeChangeComplete', nProgress.done);
 
-const MyApp = ({ Component, pageProps, props }) => {
+const MyApp = ({ Component, pageProps }) => {
   const dispatch = useDispatch();
 
   useEffect(async () => {
     let params = {};
-    const getHiddenFields = document.querySelectorAll(
-      'input[value][type="hidden"]:not([value=""])',
-    );
-    const hiddenFormValue = await [...getHiddenFields].reduce(
-      (obj, e) => ({ ...obj, [e.name]: e.value }),
-      {},
-    );
 
     await window.location.search
       .slice(1)
@@ -39,17 +32,13 @@ const MyApp = ({ Component, pageProps, props }) => {
 
     dispatch({
       type: hiddenFormActions.SET_HIDDEN_FORM,
-      data: {
-        ...hiddenFormValue,
-        ...params,
-      },
+      data: params,
     });
   }, []);
 
   const getLayout = Component.getLayout || ((page) => page);
   return (
     <ChakraProvider theme={theme}>
-      <CSSReset />
       {getLayout(<Component {...pageProps} />)}
     </ChakraProvider>
   );
@@ -57,7 +46,7 @@ const MyApp = ({ Component, pageProps, props }) => {
 
 export default wrapper.withRedux(MyApp);
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const envProjectName = process.env.projectName;
   const fetchURLs = [
     process.env.themeEndpoint,

@@ -126,8 +126,9 @@ const SFFormat = ({ locale }) => {
       <Container maxW={'1200px'} py={8} px={4}>
         <Box pt={4} pb={6}>
           <Image
-            src={`https://www.greenpeace.org/static/planet4-hongkong-stateless/2020/05/aa123dcd-gp-logo-2019-tc-white-web-01.png`}
-            maxW={`240px`}
+            src={'/images/footer-logo.webp'}
+            maxW={'240px'}
+            alt={'Greenpeace 綠色和平'}
           />
         </Box>
         {/* <Stack direction={`row`} color={`#FFF`} pb={6} alignItems={`center`}>
@@ -158,6 +159,7 @@ const SFFormat = ({ locale }) => {
                     href={d.value}
                     target={'_blank'}
                     style={{ textDecoration: 'underline' }}
+                    rel="noreferrer"
                   >
                     {d.label}
                   </Link>
