@@ -1,6 +1,4 @@
 import { call, put, select } from 'redux-saga/effects';
-import axios from 'axios';
-import _ from 'lodash';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 

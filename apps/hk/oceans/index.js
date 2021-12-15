@@ -1,30 +1,32 @@
 import React, { useEffect, useRef } from 'react';
-import HeroBanner from '@components/Banner/hero';
-import ThanksBanner from '@components/Banner/thanks';
-import PageContainer from '@containers/pageContainer';
+import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
-import Content from './Content';
-import Thankyou from './Thankyou';
-import SignupForm from '@components/GP/HKForm';
-import DonateForm from '@components/GP/DonateForm';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Flex, Icon } from '@chakra-ui/react';
-import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
-import SEO from './SEO';
-import FixedCTA from '@components/GP/FixedCTA';
+import { Box, Flex } from '@chakra-ui/react';
 import formContent from './form';
+import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/GP1SUB1C_PressMedia.jpg';
+import heroBannerImage from './images/GP1SUB1C_PressMedia.webp';
+
+const Content = dynamic(() => import('./Content'));
+const Thankyou = dynamic(() => import('./Thankyou'));
+
+const HeroBanner = dynamic(() => import('@components/Banner/hero'));
+const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
+const PageContainer = dynamic(() => import('@containers/pageContainer'));
+
+const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+const SignupForm = dynamic(() => import('@components/GP/HKForm'));
+const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
   const { FirstName } = signup;
-  const themeInterests = theme.interests;
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });

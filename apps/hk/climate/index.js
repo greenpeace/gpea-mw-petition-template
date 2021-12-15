@@ -110,9 +110,10 @@ function Index({ status, theme, setFormContent, signup }) {
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
-      {!inView && (
+      {/* {!inView && (
         <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
-      )}
+      )} */}
+      {!inView && <FixedCTA onClick={executeScroll} />}
     </>
   );
 }
