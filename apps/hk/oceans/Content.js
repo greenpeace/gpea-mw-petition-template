@@ -28,7 +28,7 @@ const Content = ({ theme }) => {
       <Heading {...headingProps}>您願意聯署加入守護海洋行列嗎？</Heading>
 
       <Box {...paragraphProps}>
-        <Image src={contentA} layout="fill" alt={'Greenpeace 綠色和平'} />
+        <Image src={contentA} layout="fill" alt="Greenpeace 綠色和平" />
       </Box>
 
       <Heading {...headingProps}>
@@ -44,7 +44,7 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <Image src={contentD} layout="fill" alt={'Greenpeace 綠色和平'} />
+        <Image src={contentD} layout="fill" alt="Greenpeace 綠色和平" />
       </Box>
 
       <Text as="p" {...paragraphProps}>
