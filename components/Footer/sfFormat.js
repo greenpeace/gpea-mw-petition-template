@@ -10,6 +10,8 @@ import {
 } from '@chakra-ui/react';
 import { FooterBGBlue } from './footer.style';
 
+import logo from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png';
+
 const HKChinese = {
   chinese: { label: '中文', value: '#' },
   english: { label: 'English', value: '#' },
@@ -125,11 +127,7 @@ const SFFormat = ({ locale }) => {
     <FooterBGBlue>
       <Container maxW={'1200px'} py={8} px={4}>
         <Box pt={4} pb={6}>
-          <Image
-            src={'/images/footer-logo.webp'}
-            maxW={'240px'}
-            alt={'Greenpeace 綠色和平'}
-          />
+          <Image src={logo} maxW={'220px'} alt={'Greenpeace 綠色和平'} />
         </Box>
         {/* <Stack direction={`row`} color={`#FFF`} pb={6} alignItems={`center`}>
           <Box><Link href={content.chinese.value}>{content.chinese.label}</Link></Box>
@@ -158,7 +156,7 @@ const SFFormat = ({ locale }) => {
                   <Link
                     href={d.value}
                     target={'_blank'}
-                    style={{ textDecoration: 'underline' }}
+                    textDecoration={'underline'}
                     rel="noreferrer"
                   >
                     {d.label}
@@ -177,7 +175,6 @@ const SFFormat = ({ locale }) => {
                   h="2px"
                   w="12px"
                   backgroundColor={'white'}
-                  opacity="1"
                 />
               </Box>
             ))}
