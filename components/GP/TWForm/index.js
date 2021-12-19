@@ -335,7 +335,7 @@ const MyEnhancedForm = withFormik({
     };
 
     setSubmitting(true);
-    submitForm(formData, theme.EndpointURL);
+    submitForm(formData, endPoint);
   },
 
   displayName: 'SignupForm',
