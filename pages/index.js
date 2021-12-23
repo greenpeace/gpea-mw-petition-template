@@ -75,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const envProjectName = process.env.projectName;
   const fetchURLs = [
     process.env.themeEndpoint,
@@ -89,15 +89,17 @@ export async function getStaticProps(context) {
         (d) => d.ProjectName === envProjectName,
       );
       const getSignupNumbersHK = res[1].data.find(
-        (d) => d.Id === getTheme.CampaignId,
+        (d) => d.Id === getTheme?.CampaignId,
       );
       const getSignupNumbersTW = res[2].data.find(
-        (d) => d.Id === getTheme.CampaignId,
+        (d) => d.Id === getTheme?.CampaignId,
       );
 
       return { getTheme, getSignupNumbersHK, getSignupNumbersTW };
     }),
   );
+
+  !result.getTheme && console.warn('PROJECT NAME NOT FOUND');
 
   return {
     props: {
