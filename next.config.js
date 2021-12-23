@@ -8,6 +8,7 @@ const nextConfig = {
     project: process.env.PROJECT,
     form: process.env.FORM,
     projectName: process.env.PROJECT_NAME,
+    projectMarket: process.env.MARKET,
     themeEndpoint: process.env.THEME_ENDPOINT,
     signupNumbersHK: process.env.SIGN_UP_NUMBERS_HK,
     signupNumbersTW: process.env.SIGN_UP_NUMBERS_TW,
