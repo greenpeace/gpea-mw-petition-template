@@ -126,7 +126,7 @@ const SFFormat = ({ locale }) => {
       <Container maxW={'1200px'} py={8} px={4}>
         <Box pt={4} pb={6}>
           <Image
-            src={'/images/footer-logo.webp'}
+            src={'https://www.greenpeace.org/taiwan/wp-content/themes/planet4-child-theme-taiwan/static/images/logo_zh_gp_w%20footer.svg'}
             maxW={'240px'}
             alt={'Greenpeace 綠色和平'}
           />
