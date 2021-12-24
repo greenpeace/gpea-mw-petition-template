@@ -77,7 +77,8 @@ const mapDispatchToProps = (dispatch) => {
 
 export async function getStaticProps() {
   const envProjectName = process.env.projectName;
-  const envProjectMarket = process.env.projectMarket;
+  const envMarket = process.env.MARKET;
+  console.log(process.env.MARKET);
   const fetchURLs = [
     process.env.themeEndpoint,
     process.env.signupNumbersHK,
@@ -87,8 +88,7 @@ export async function getStaticProps() {
   const result = await axios.all(fetchURLs.map((d) => axios.get(d))).then(
     axios.spread(async (...res) => {
       const getTheme = await res[0].data.records.find(
-        (d) =>
-          d.ProjectName === envProjectName && d.Market === envProjectMarket,
+        (d) => d.ProjectName === envProjectName && d.Market === envMarket,
       );
       const getSignupNumbersHK = res[1].data.find(
         (d) => d.Id === getTheme?.CampaignId,
