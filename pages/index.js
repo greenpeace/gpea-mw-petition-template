@@ -75,9 +75,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const envProjectName = process.env.projectName;
-  const envMarket = process.env.MARKET;
+  const envProjectMarket = process.env.projectMarket;
   console.log(process.env.MARKET);
   const fetchURLs = [
     process.env.themeEndpoint,
@@ -88,18 +88,21 @@ export async function getStaticProps(context) {
   const result = await axios.all(fetchURLs.map((d) => axios.get(d))).then(
     axios.spread(async (...res) => {
       const getTheme = await res[0].data.records.find(
-        (d) => d.ProjectName === envProjectName && d.Market === envMarket,
+        (d) =>
+          d.ProjectName === envProjectName && d.Market === envProjectMarket,
       );
       const getSignupNumbersHK = res[1].data.find(
-        (d) => d.Id === getTheme.CampaignId,
+        (d) => d.Id === getTheme?.CampaignId,
       );
       const getSignupNumbersTW = res[2].data.find(
-        (d) => d.Id === getTheme.CampaignId,
+        (d) => d.Id === getTheme?.CampaignId,
       );
 
       return { getTheme, getSignupNumbersHK, getSignupNumbersTW };
     }),
   );
+
+  !result.getTheme && console.warn('PROJECT NAME NOT FOUND');
 
   return {
     props: {

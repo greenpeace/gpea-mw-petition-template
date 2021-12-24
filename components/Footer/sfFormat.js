@@ -10,6 +10,8 @@ import {
 } from '@chakra-ui/react';
 import { FooterBGBlue } from './footer.style';
 
+import logo from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png';
+
 const HKChinese = {
   chinese: { label: '中文', value: '#' },
   english: { label: 'English', value: '#' },
@@ -158,7 +160,7 @@ const SFFormat = ({ locale }) => {
                   <Link
                     href={d.value}
                     target={'_blank'}
-                    style={{ textDecoration: 'underline' }}
+                    textDecoration={'underline'}
                     rel="noreferrer"
                   >
                     {d.label}
@@ -177,7 +179,6 @@ const SFFormat = ({ locale }) => {
                   h="2px"
                   w="12px"
                   backgroundColor={'white'}
-                  opacity="1"
                 />
               </Box>
             ))}

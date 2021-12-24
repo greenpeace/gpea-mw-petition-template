@@ -53,8 +53,8 @@ const StepProgress = ({ theme, status }) => {
         <Text as="span">選擇金額</Text>
         <Box {...arrowShadow} />
       </Box>
-      <Box className={stepProps.className} {...stepProps.styles}>
-        <Text as="span" d={submitted ? 'block' : 'none'} pl={4}>
+      <Box className="step" {...stepStyle}>
+        <Text as="span" display="none">
           填寫資料
         </Text>
       </Box>

@@ -6,20 +6,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## MW Petition Design Migration Schema
 
-[Petition theme data schema](https://docs.google.com/spreadsheets/d/1_NziZSM1zHoQOzo_BgPS2apl7TLCqRRbO0ev1ykkl08/edit#gid=0)
+The project will pull the basic campaign data based on the `MARKET` and `PROJECT_NAME` in the `env` from the schema endpoint.
+
+- [Petition theme data schema](https://docs.google.com/spreadsheets/d/1_NziZSM1zHoQOzo_BgPS2apl7TLCqRRbO0ev1ykkl08/edit#gid=0)
 
 ## Quick start
 
-1. Run `npm run install` in order to install the dependencies.
+1. Run `npm run install` to install the dependencies.
 2. Run `npm run dev` to start the localhost.
 3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## To deploy the page onto the ftp server
-
-1. Run `npm run build` to check if the react app can be built normally. (Optional if you have done it before)
-2. Run `npm run build-export` in order to build the app and export the static files.
-3. Now you should be able to find the output static files in the `out` folder.
-4. (Optional but preferred deploy option) Assuming you have configured the prerequisite of the ftp credientials. You can run `npm run deploy` to deploy the output to the destinated ftp server programmatically.
 
 ## Steps to follow: Cloning a petition page
 
@@ -42,6 +37,13 @@ src/
 6. Modify the local `.env.development` and `.env.production` files, the content is used to configure the development / build evironment.
 7. Try to run the `npm run dev` script to check if the app can be boosted successfully.
 
+## To deploy the page onto the ftp server
+
+1. Run `npm run build` to check if the react app can be built normally. (Optional if you have done it before)
+2. Run `npm run build-export` in order to build the app and export the static files.
+3. Now you should be able to find the output static files in the `out` folder.
+4. (Optional but preferred deploy option) Assuming you have configured the prerequisite of the ftp credientials. You can run `npm run deploy` to deploy the output to the destinated ftp server programmatically.
+
 ## Pretty-quick
 
 We use Prettier with [pretty-quick](https://github.com/azz/pretty-quick) as the pre-commit tool. This can re-format your files that are marked as “staged” via git add before you commit.
@@ -60,6 +62,40 @@ There is the priority of the .env files and the machine will run the app based o
 - `.env`: The default env file. We keep the value empty so it can be shared across the users and will not cause conflicts
 - `.env.development`: The env file designed for development mode. You only need to modify the project local path and project name in the file.
 - `.env.production`: The env file for production mode. You will need to provide all project configs PLUS the path configs and FTP configs in the file.
+
+## Folder structure
+
+apps
+
+- It contains the project folders split by market and standalone project.
+
+common
+
+- It contains the shared resources such as scss, json, images and functions.
+
+components
+
+- It contains the reusable components, such as header, footer and form.
+
+containers
+
+- It contains the shared parent wrappers and layout.
+
+out
+
+- It contains the output static files, deploy script will upload the outputs.
+
+public
+
+- It contains static files such as index.html, javascript library files, images, and other asset.
+
+store
+
+- It contains the redux files like actions, reducers & actionTypes.
+
+pages
+
+- It contains the component used in next.js to generate routing and pages.
 
 ## Learn More about Next.js
 

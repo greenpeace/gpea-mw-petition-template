@@ -363,10 +363,11 @@ const MyEnhancedForm = withFormik({
 
   handleSubmit: async (values, { setSubmitting, props }) => {
     const { submitForm, theme, hiddenFormData } = props;
-
+    const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
-
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
+    // TODO: Fix Access-Control-Allow-Origin issue
+    const endPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
 
     const formData = {
       ...hiddenFormData,
@@ -376,17 +377,14 @@ const MyEnhancedForm = withFormik({
       UtmCampaign: fallbackValue(hiddenFormData.utm_campaign),
       UtmContent: fallbackValue(hiddenFormData.utm_content),
       UtmTerm: fallbackValue(hiddenFormData.utm_term),
-      CampaignId:
-        process.env.NODE_ENV === 'production'
-          ? theme.CampaignId
-          : '7012u000000OxDYAA0',
+      CampaignId: isProd ? theme.CampaignId : '7012u000000OxDYAA0',
       LeadSource: LeadSource,
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: window.location.href ? window.location.href : '',
     };
 
     setSubmitting(true);
-    submitForm(formData, theme.EndpointURL);
+    submitForm(formData, endPoint);
   },
 
   displayName: 'SignupForm',

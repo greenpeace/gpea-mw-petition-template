@@ -21,7 +21,7 @@ const themeReducer = (state = initState, action) => {
         ...state,
         data: {
           ...action.data,
-          interests: action.data?.interests.toLowerCase(),
+          interests: action.data?.interests?.toLowerCase(),
         },
         lastAction: action.type,
       };

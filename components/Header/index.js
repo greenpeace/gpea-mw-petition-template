@@ -1,25 +1,20 @@
 import { Box, Flex, Image, Container, Link } from '@chakra-ui/react';
 import React from 'react';
 import { connect } from 'react-redux';
-import { useRouter } from 'next/router';
 
-import logoChinese from '../../common/images/logo_zh.png';
+import logoChinese from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png';
 
 const WithSubnavigation = ({ href }) => {
-  const router = useRouter();
   return (
     <Box bgColor={'brand.500'}>
-      <Flex minH={'56px'} py={{ base: 2 }} align={'center'}>
+      <Flex py={{ base: 2 }} align={'center'}>
         <Container maxW={'1200px'}>
-          <Link href={href ? href : '/'}>
+          <Link href={href ? href : null} isExternal="true">
             <Image
               src={logoChinese}
-              maxW={'220px'}
+              maxW="220px"
+              padding="2px"
               alt={'Greenpeace 綠色和平'}
-              loading="eager"
-              // onClick={() => {
-              //   router.push(`/`);
-              // }}
             />
           </Link>
         </Container>
