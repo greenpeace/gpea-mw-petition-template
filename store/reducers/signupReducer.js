@@ -22,6 +22,13 @@ const signupReducer = (state = initState, action) => {
         lastAction: action.type,
       };
 
+    case signupActions.SIGN_UP_FAILED:
+      return {
+        ...state,
+        submitted: true,
+        lastAction: action.type,
+      };
+
     default:
       return state;
   }
