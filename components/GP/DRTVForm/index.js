@@ -500,6 +500,7 @@ const MyEnhancedForm = withFormik({
       UtmContent: fallbackValue(hiddenFormData.utm_content),
       UtmTerm: fallbackValue(hiddenFormData.utm_term),
       MobileCountryCode: '886',
+      MobilePhone: values.Phone,
       CampaignId:
         process.env.NODE_ENV === 'production'
           ? theme.CampaignId
@@ -508,7 +509,8 @@ const MyEnhancedForm = withFormik({
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: window.location.href ? window.location.href : '',
     };
-
+    // delete formData.Email;
+    // delete formData.LastName;
     setSubmitting(true);
     submitForm(formData, theme.EndpointURL);
   },
