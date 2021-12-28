@@ -19,7 +19,7 @@ export function validation(values, formContent) {
     errors.MobilePhone = formContent.empty_data_alert;
   }
 
-  if (!values.Birthdate) {
+  if (!values.Birthdate && formContent.showBirthdate) {
     errors.Birthdate = formContent.empty_data_alert;
   }
 

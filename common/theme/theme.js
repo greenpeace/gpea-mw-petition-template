@@ -38,6 +38,11 @@ const theme = extendTheme({
       300: 'var(--green-300)',
       500: 'var(--green-500)',
     },
+    general: {
+      100: 'var(--green-100)',
+      300: 'var(--green-300)',
+      500: 'var(--green-500)',
+    },
     arctic: {
       100: 'var(--arctic-100)',
       300: 'var(--arctic-300)',
