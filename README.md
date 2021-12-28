@@ -48,7 +48,9 @@ src/
 
 We use Prettier with [pretty-quick](https://github.com/azz/pretty-quick) as the pre-commit tool. This can re-format your files that are marked as “staged” via git add before you commit.
 
-```
+[Installation guide](https://prettier.io/docs/en/precommit.html)
+
+```node
 npx husky-init
 npm install --save-dev pretty-quick
 npx husky set .husky/pre-commit "npx pretty-quick --staged"
