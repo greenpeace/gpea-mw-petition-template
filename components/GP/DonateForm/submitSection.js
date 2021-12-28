@@ -57,7 +57,7 @@ const SubmitSection = (props) => {
               size={'lg'}
             />
           </Box>
-          <Box pb={6} pt={8}>
+          <Box py={6}>
             <Text fontSize={'md'}>{description}</Text>
           </Box>
           <Box>
@@ -68,7 +68,7 @@ const SubmitSection = (props) => {
         </Form>
       ) : (
         <Box>
-          <Box pb={6} pt={8}>
+          <Box py={6}>
             <Text fontSize={'md'}>{description}</Text>
           </Box>
           <Box>
