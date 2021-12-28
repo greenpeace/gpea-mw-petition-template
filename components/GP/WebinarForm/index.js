@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
-import { numberFormat, capitalize } from '@common/utils';
+import { capitalize } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
@@ -14,13 +14,11 @@ import {
   FormErrorMessage,
   Button,
   Box,
-  Flex,
   Text,
   HStack,
   Stack,
   Select,
   Input,
-  Checkbox,
   Heading,
 } from '@chakra-ui/react';
 import { OrangeCTA } from '@common/styles/components/formStyle';
@@ -44,9 +42,6 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
-    showProcess = true, //TBC
-    showBirthdate = true, //TBC
-    showNewletter = true, //TBC
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -127,35 +122,6 @@ const MyForm = (props) => {
     <Box>
       <Box py="8" px="4">
         <Stack spacing="4">
-          {numberOfResponses && numberOfTarget ? (
-            <Box>
-              <Box
-                borderRadius={'20px'}
-                bgColor="#d2d2d2"
-                h={`14px`}
-                overflow={`hidden`}
-              >
-                {numberOfResponses && (
-                  <Box
-                    style={{ transition: `width 2s` }}
-                    h={`14px`}
-                    w={progressNumber}
-                    borderRadius={4}
-                    bgColor={`theme.${themeInterests}`}
-                  />
-                )}
-              </Box>
-              <Box>
-                <Text color={`theme.${themeInterests}`} fontSize={'sm'} mt={2}>
-                  {formContent.signed_number}:{' '}
-                  <Text as="span" fontSize={'2xl'} fontWeight="bold">
-                    {numberFormat(numberOfResponses)}
-                  </Text>{' '}
-                  / {numberFormat(numberOfTarget)}
-                </Text>
-              </Box>
-            </Box>
-          ) : null}
           <Box>
             <Heading
               fontSize={'2xl'}
@@ -265,68 +231,17 @@ const MyForm = (props) => {
                 </Box>
               </HStack>
 
+              {formContent.form_remind && (
                 <Box>
-                  <FormControl
-                    id="Birthdate"
-                    isInvalid={errors.Birthdate && touched.Birthdate}
-                  >
-                    <Select
-                      onChange={handleChange}
-                      fontSize={'16px'}
-                      placeholder={formContent.label_year_of_birth}
-                      size={'lg'}
-                    >
-                      {birthDateYear &&
-                        birthDateYear.map((d) => (
-                          <option key={d.value} value={`${d.value}-01-01`}>
-                            {d.value}
-                          </option>
-                        ))}
-                    </Select>
-                    <FormErrorMessage color="red">
-                      {errors.Birthdate}
-                    </FormErrorMessage>
-                  </FormControl>
+                  <Text
+                    fontSize="xs"
+                    color={'gray.700'}
+                    dangerouslySetInnerHTML={{
+                      __html: formContent.form_remind,
+                    }}
+                  />
                 </Box>
-
-                <Box>
-                  <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-                    <Box flex={1} mr={2} pt={1}>
-                      <Checkbox
-                        name="OptIn"
-                        defaultChecked
-                        // colorScheme={`${theme.ProjectName}`}
-                        onChange={handleChange}
-                      />
-                    </Box>
-                    <Text
-                      fontSize="xs"
-                      color={'gray.700'}
-                      dangerouslySetInnerHTML={{
-                        __html: formContent.label_newsletter,
-                      }}
-                    />
-                  </Flex>
-                </Box>
-              {/* <Flex direction={{ base: 'row' }} align={'center'}>
-            <Box flex={1} mr={4}>
-              <Text fontSize={'xs'}>{formContent.label_newsletter}</Text>
-            </Box>
-            <HStack spacing={2}>
-              {(formContent.new_letter || []).map((d, i) => (
-                <Button
-                  key={i}
-                  bgColor={d.value === values.Newsletter ? '#66cc00' : '#FFF'}
-                  color={d.value === values.Newsletter ? '#FFF' : '#000'}
-                  variant={`outline`}
-                  fontSize={'sm'}
-                  onClick={() => setFieldValue('Newsletter', d.value)}
-                >
-                  {d.label}
-                </Button>
-              ))}
-            </HStack>
-          </Flex> */}
+              )}
               <Box>
                 <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
                   {formContent.submit_text}
@@ -334,15 +249,6 @@ const MyForm = (props) => {
               </Box>
             </Stack>
           </Form>
-          {formContent.form_remind && (
-            <Box>
-              <Text
-                fontSize="xs"
-                color={'gray.700'}
-                dangerouslySetInnerHTML={{ __html: formContent.form_remind }}
-              />
-            </Box>
-          )}
         </Stack>
       </Box>
     </Box>
@@ -350,13 +256,12 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-  mapPropsToValues: ({props}) => ({
+  mapPropsToValues: () => ({
     Email: '',
     FirstName: '',
     LastName: '',
     MobileCountryCode: '852',
     MobilePhone: '',
-    OptIn: true,
   }),
 
   validate: async (values, props) => {

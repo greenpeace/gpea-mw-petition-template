@@ -19,10 +19,6 @@ export function validation(values, formContent) {
     errors.MobilePhone = formContent.empty_data_alert;
   }
 
-  if (!values.Birthdate) {
-    errors.Birthdate = formContent.empty_data_alert;
-  }
-
   if (
     values.MobilePhone.toString().length >= 8 &&
     values.MobileCountryCode === '852'
