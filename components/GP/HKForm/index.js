@@ -44,6 +44,9 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
+    showProcess = true, //TBC
+    showBirthdate = true, //TBC
+    showNewletter = true, //TBC
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -124,7 +127,7 @@ const MyForm = (props) => {
     <Box>
       <Box py="8" px="4">
         <Stack spacing="4">
-          {numberOfResponses && numberOfTarget ? (
+          {showProcess && numberOfResponses && numberOfTarget ? (
             <Box>
               <Box
                 borderRadius={'20px'}
@@ -204,9 +207,7 @@ const MyForm = (props) => {
                     placeholder={formContent.label_email}
                     onChange={handleChange}
                     onBlur={(e) => {
-                      // call the built-in handleBur
                       handleBlur(e);
-                      // and do something about e
                       mailSuggestion(e.target.value);
                     }}
                     value={values.Email}
@@ -264,49 +265,54 @@ const MyForm = (props) => {
                 </Box>
               </HStack>
 
-              <Box>
-                <FormControl
-                  id="Birthdate"
-                  isInvalid={errors.Birthdate && touched.Birthdate}
-                >
-                  <Select
-                    onChange={handleChange}
-                    fontSize={'16px'}
-                    placeholder={formContent.label_year_of_birth}
-                    size={'lg'}
+              {showBirthdate && (
+                <Box>
+                  <FormControl
+                    id="Birthdate"
+                    isInvalid={errors.Birthdate && touched.Birthdate}
                   >
-                    {birthDateYear &&
-                      birthDateYear.map((d) => (
-                        <option key={d.value} value={`${d.value}-01-01`}>
-                          {d.value}
-                        </option>
-                      ))}
-                  </Select>
-                  <FormErrorMessage color="red">
-                    {errors.Birthdate}
-                  </FormErrorMessage>
-                </FormControl>
-              </Box>
-
-              <Box>
-                <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-                  <Box flex={1} mr={2} pt={1}>
-                    <Checkbox
-                      name="OptIn"
-                      defaultChecked
-                      // colorScheme={`${theme.ProjectName}`}
+                    <Select
                       onChange={handleChange}
+                      fontSize={'16px'}
+                      placeholder={formContent.label_year_of_birth}
+                      size={'lg'}
+                    >
+                      {birthDateYear &&
+                        birthDateYear.map((d) => (
+                          <option key={d.value} value={`${d.value}-01-01`}>
+                            {d.value}
+                          </option>
+                        ))}
+                    </Select>
+                    <FormErrorMessage color="red">
+                      {errors.Birthdate}
+                    </FormErrorMessage>
+                  </FormControl>
+                </Box>
+              )}
+
+              {showNewletter && (
+                <Box>
+                  <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+                    <Box flex={1} mr={2} pt={1}>
+                      <Checkbox
+                        name="OptIn"
+                        defaultChecked
+                        // colorScheme={`${theme.ProjectName}`}
+                        onChange={handleChange}
+                      />
+                    </Box>
+                    <Text
+                      fontSize="xs"
+                      color={'gray.700'}
+                      dangerouslySetInnerHTML={{
+                        __html: formContent.label_newsletter,
+                      }}
                     />
-                  </Box>
-                  <Text
-                    fontSize="xs"
-                    color={'gray.700'}
-                    dangerouslySetInnerHTML={{
-                      __html: formContent.label_newsletter,
-                    }}
-                  />
-                </Flex>
-                {/* <Flex direction={{ base: 'row' }} align={'center'}>
+                  </Flex>
+                </Box>
+              )}
+              {/* <Flex direction={{ base: 'row' }} align={'center'}>
             <Box flex={1} mr={4}>
               <Text fontSize={'xs'}>{formContent.label_newsletter}</Text>
             </Box>
@@ -325,7 +331,6 @@ const MyForm = (props) => {
               ))}
             </HStack>
           </Flex> */}
-              </Box>
               <Box>
                 <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
                   {formContent.submit_text}
@@ -333,11 +338,15 @@ const MyForm = (props) => {
               </Box>
             </Stack>
           </Form>
-          {/* <Box pt={4} pb={4}>
-          <Text fontSize="xs" color={'gray.700'}>
-            {formContent.form_remind}
-          </Text>
-        </Box> */}
+          {formContent.form_remind && (
+            <Box>
+              <Text
+                fontSize="xs"
+                color={'gray.700'}
+                dangerouslySetInnerHTML={{ __html: formContent.form_remind }}
+              />
+            </Box>
+          )}
         </Stack>
       </Box>
     </Box>
@@ -345,13 +354,12 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-  mapPropsToValues: () => ({
+  mapPropsToValues: ({props}) => ({
     Email: '',
     FirstName: '',
     LastName: '',
     MobileCountryCode: '852',
     MobilePhone: '',
-    Birthdate: '',
     OptIn: true,
   }),
 
