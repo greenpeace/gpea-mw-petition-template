@@ -3,15 +3,19 @@ import Head from 'next/head';
 const SEO = () => {
   return (
     <Head>
-      <script>
-        {`
+      {/* campaign dataLayer */}
+      <Script
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
             gCampaign: 'forests',
             gBasket: 'global',
           });
-        `}
-      </script>
+        `,
+        }}
+      />
       {/* title */}
       <title>推動超市走塑 急需您我行動 - Greenpeace 綠色和平 | 香港</title>
       <meta
