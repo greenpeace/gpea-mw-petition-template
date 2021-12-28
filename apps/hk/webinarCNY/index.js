@@ -21,7 +21,7 @@ const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
 
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
-const SignupForm = dynamic(() => import('@components/GP/HKForm'));
+const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
 function Index({ status, theme, setFormContent, signup }) {
@@ -74,7 +74,7 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm showProcess={false} showBirthdate={false} showNewletter={false}/>}
+                  {submitted ? <DonateForm /> : <SignupForm/>}
                 </Box>
               </FormContainer>
             </Box>
