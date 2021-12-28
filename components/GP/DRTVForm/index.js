@@ -521,8 +521,8 @@ const MyEnhancedForm = withFormik({
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: window.location.href ? window.location.href : '',
     };
-    delete formData.Email;
-    delete formData.LastName;
+    // delete formData.Email;
+    // delete formData.LastName;
     setSubmitting(true);
     submitForm(formData, theme.EndpointURL);
   },
