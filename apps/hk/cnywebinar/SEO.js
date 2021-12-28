@@ -11,15 +11,16 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: '',
-            gBasket: '',
+            gCampaign: 'general',
+            gBasket: 'cnywebinar',
           });
         `,
         }}
       />
       {/* title */}
       <title>
-        綠色新春教室：裸買店主同你環保辦年貨與大掃除 - Greenpeace 綠色和平 | 香港
+        綠色新春教室：裸買店主同你環保辦年貨與大掃除 - Greenpeace 綠色和平 |
+        香港
       </title>
       <meta
         property="og:title"
@@ -35,7 +36,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/07/8122f00d-gp01wpp.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/12/2650f83a-chuen_hub.jpg"
       />
     </Head>
   );

@@ -74,7 +74,7 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm/>}
+                  {submitted ? <DonateForm /> : <SignupForm />}
                 </Box>
               </FormContainer>
             </Box>

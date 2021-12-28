@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Text,
-  Stack,
-  Circle,
-  Icon,
-} from '@chakra-ui/react';
+import { Box, Text, Stack, Circle, Icon } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
@@ -18,7 +12,7 @@ import { MdOutlineOndemandVideo } from 'react-icons/md';
 
 const Webinar = ({ content, theme }) => {
   const themeInterests = theme.interests;
-  const subHeadline = headingProps
+  const subHeadline = headingProps;
 
   const triangle = {
     // borderBottom: '6px solid #66cc00',
@@ -32,19 +26,17 @@ const Webinar = ({ content, theme }) => {
     bottom: 12,
   };
 
-  const iconColor = themeInterests ? `theme.${themeInterests}` : 'brand.500'
+  const iconColor = themeInterests ? `theme.${themeInterests}` : 'brand.500';
 
   const Feature = ({ text, icon, iconBg }) => {
     return (
       <Stack direction={'row'} align={'center'}>
         <Box marginLeft={-2} pos={`relative`}>
-          <Circle size='40px' color='white' bg={iconBg}>
+          <Circle size="40px" color="white" bg={iconBg}>
             {icon}
           </Circle>
         </Box>
-        <Text {...paragraphProps}>
-          {text}
-        </Text>
+        <Text {...paragraphProps}>{text}</Text>
       </Stack>
     );
   };
@@ -78,7 +70,7 @@ const Webinar = ({ content, theme }) => {
   );
 };
 
-const mapStateToProps = ({theme }) => {
+const mapStateToProps = ({ theme }) => {
   return { theme: theme.data };
 };
 
