@@ -127,7 +127,7 @@ const MyForm = (props) => {
     <Box>
       <Box py="8" px="4">
         <Stack spacing="4">
-          {showProcess && numberOfResponses && numberOfTarget ? (
+          {numberOfResponses && numberOfTarget ? (
             <Box>
               <Box
                 borderRadius={'20px'}
@@ -265,7 +265,6 @@ const MyForm = (props) => {
                 </Box>
               </HStack>
 
-              {showBirthdate && (
                 <Box>
                   <FormControl
                     id="Birthdate"
@@ -289,9 +288,7 @@ const MyForm = (props) => {
                     </FormErrorMessage>
                   </FormControl>
                 </Box>
-              )}
 
-              {showNewletter && (
                 <Box>
                   <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
                     <Box flex={1} mr={2} pt={1}>
@@ -311,7 +308,6 @@ const MyForm = (props) => {
                     />
                   </Flex>
                 </Box>
-              )}
               {/* <Flex direction={{ base: 'row' }} align={'center'}>
             <Box flex={1} mr={4}>
               <Text fontSize={'xs'}>{formContent.label_newsletter}</Text>
