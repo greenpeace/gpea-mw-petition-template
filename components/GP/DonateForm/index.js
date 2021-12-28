@@ -69,6 +69,7 @@ const DonateForm = (props) => {
                     fontSize={{ base: '2xl', xl: '3xl' }}
                     fontWeight={700}
                     dangerouslySetInnerHTML={{ __html: donate_header }}
+                    color={`${themeInterests}.500`}
                   />
                 </Box>
               )}
@@ -92,7 +93,7 @@ const DonateForm = (props) => {
                       borderWidth={`2px`}
                       borderColor={
                         donateType === d.value
-                          ? `theme.${themeInterests}`
+                          ? `${themeInterests}.500`
                           : 'gray.200'
                       }
                       flex={1}
@@ -108,7 +109,7 @@ const DonateForm = (props) => {
                         ...afterProps,
                         backgroundColor:
                           donateType === d.value
-                            ? `theme.${themeInterests}`
+                            ? `${themeInterests}.500`
                             : '#fff',
                       }}
                       onClick={() => {
@@ -142,7 +143,7 @@ const DonateForm = (props) => {
                           border={`2px`}
                           borderColor={
                             amount === d.value
-                              ? `theme.${themeInterests}`
+                              ? `${themeInterests}.500`
                               : isOther
                               ? '#FFF'
                               : 'gray.200'
@@ -160,7 +161,7 @@ const DonateForm = (props) => {
                             ...afterProps,
                             backgroundColor:
                               amount === d.value
-                                ? `theme.${themeInterests}`
+                                ? `${themeInterests}.500`
                                 : '#fff',
                           }}
                           onClick={() => {
