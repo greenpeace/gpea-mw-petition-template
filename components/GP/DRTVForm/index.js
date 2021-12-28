@@ -13,6 +13,7 @@ import * as formActions from 'store/actions/action-types/form-actions';
 import {
   FormControl,
   FormErrorMessage,
+  FormLabel,
   Button,
   Box,
   Flex,
@@ -152,7 +153,7 @@ const MyForm = (props) => {
   useEffect(() => {
     if (Object.keys(formContent).length > 0) {
       setFieldValue('CampaignData1__c', formContent.campaign_type[0]);
-      setFieldValue('CampaignData2__c', '');
+      setFieldValue('CampaignData2__c', formContent.payment_method[0].value);
       setFieldValue('CampaignData3__c', '');
       setFieldValue(
         'CampaignData4__c',
@@ -176,7 +177,7 @@ const MyForm = (props) => {
 
     if (resetAll === 'all')
       setFieldValue('CampaignData1__c', formContent.campaign_type[0]);
-    setFieldValue('CampaignData2__c', '');
+    setFieldValue('CampaignData2__c', formContent.payment_method[0].value);
     setFieldValue('CampaignData3__c', '');
     setFieldValue(
       'CampaignData4__c',
@@ -184,9 +185,10 @@ const MyForm = (props) => {
     );
 
     if (resetAll === 'all')
-      document.getElementById('CampaignType').value =
+      document.getElementById('CampaignData1__c').value =
         formContent.campaign_type[0];
-    document.getElementById('PaymentMethod').value = '';
+    document.getElementById('CampaignData2__c').value =
+      formContent.payment_method[0].value;
     document.getElementById('CampaignData3__c').value = '';
     [].forEach.call(document.getElementsByName('CampaignData4__c'), (item) => {
       item.checked = true;
@@ -351,8 +353,11 @@ const MyForm = (props) => {
             </Box>
 
             <Box>
-              <FormControl id="CampaignType" isInvalid={errors.CampaignType}>
-                {' '}
+              <FormControl
+                id="CampaignData1__c"
+                isInvalid={errors.CampaignData1__c && touched.CampaignData1__c}
+              >
+                <FormLabel>{formContent.label_campaign_type}</FormLabel>
                 {formContent.campaign_type && (
                   <Select
                     onChange={handleChange}
@@ -367,19 +372,22 @@ const MyForm = (props) => {
                     ))}
                   </Select>
                 )}
+                <FormErrorMessage color="red">
+                  {errors.CampaignData1__c}
+                </FormErrorMessage>
               </FormControl>
             </Box>
 
             <Box>
               <FormControl
-                id="PaymentMethod"
-                isInvalid={errors.PaymentMethod && touched.PaymentMethod}
+                id="CampaignData2__c"
+                isInvalid={errors.CampaignData2__c && touched.CampaignData2__c}
               >
+                <FormLabel>{formContent.label_payment_method}</FormLabel>
                 <Select
                   onChange={handleChange}
                   fontSize={'16px'}
                   size={'lg'}
-                  placeholder={formContent.label_payment_method}
                   name="CampaignData2__c"
                 >
                   {formContent.payment_method &&
@@ -389,13 +397,17 @@ const MyForm = (props) => {
                       </option>
                     ))}
                 </Select>
+                <FormErrorMessage color="red">
+                  {errors.PaymentMethod}
+                </FormErrorMessage>
               </FormControl>
             </Box>
 
             <Box>
+              <FormLabel>{formContent.label_amount}</FormLabel>
               <Field
-                errors={errors.Amount}
-                touched={touched.Amount}
+                errors={errors.CampaignData3__c}
+                touched={touched.CampaignData3__c}
                 label={formContent.label_amount}
                 name={'CampaignData3__c'}
                 handleChange={handleChange}
@@ -509,8 +521,8 @@ const MyEnhancedForm = withFormik({
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: window.location.href ? window.location.href : '',
     };
-    // delete formData.Email;
-    // delete formData.LastName;
+    delete formData.Email;
+    delete formData.LastName;
     setSubmitting(true);
     submitForm(formData, theme.EndpointURL);
   },

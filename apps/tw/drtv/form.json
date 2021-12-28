@@ -14,9 +14,9 @@
   "label_phone_optional": "手提號碼（選填）",
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",
-  "label_campaign_type": "專案類別",
-  "label_payment_method": "捐款方式 (Payment method)",
-  "label_amount": "捐款金額 (Amount)",
+  "label_campaign_type": "專案類別*",
+  "label_payment_method": "捐款方式* (Payment method)",
+  "label_amount": "捐款金額* (Amount)",
   "label_contact_time": "平日方便聯繫時間",
   "label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考隱私保護政策。",
 
