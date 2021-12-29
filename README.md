@@ -6,7 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## MW Petition Design Migration Schema
 
-The project will pull the basic campaign data based on the `MARKET` and `PROJECT_NAME` in the `env` from the schema endpoint.
+During the build, the project will pull the basic campaign data from the schema endpoint based on the `MARKET` and `PROJECT_NAME` in the `env`.
 
 - [Petition theme data schema](https://docs.google.com/spreadsheets/d/1_NziZSM1zHoQOzo_BgPS2apl7TLCqRRbO0ev1ykkl08/edit#gid=0)
 
@@ -58,12 +58,24 @@ npx husky set .husky/pre-commit "npx pretty-quick --staged"
 
 ## How to utilize the .env files
 
-.env file will store the environment variables and its mainly used for the build script and node.js script. For this project, we also use it to store the project identity so we can fetch the project theme data from the [project schema spreadsheet](https://docs.google.com/spreadsheets/d/1_NziZSM1zHoQOzo_BgPS2apl7TLCqRRbO0ev1ykkl08/edit#gid=0).
-There is the priority of the .env files and the machine will run the app based on the mode to get the corespinding env variables.
+.env file will store the environment variable for the build script and deployment script. The project will fetch the project theme data from the [project schema spreadsheet](https://docs.google.com/spreadsheets/d/1_NziZSM1zHoQOzo_BgPS2apl7TLCqRRbO0ev1ykkl08/edit#gid=0).
+There is the priority of the .env files when it comes to different environment. The script will run the app based on the env mode to get the variables.
 
 - `.env`: The default env file. We keep the value empty so it can be shared across the users and will not cause conflicts
 - `.env.development`: The env file designed for development mode. You only need to modify the project local path and project name in the file.
 - `.env.production`: The env file for production mode. You will need to provide all project configs PLUS the path configs and FTP configs in the file.
+
+## Component structure
+
+```text
+components/
+└── Component/
+    ├── index.js
+    └── Component.style.js
+└── SecondComponent/
+    ├── index.js
+    └── SecondComponent.style.js
+```
 
 ## Folder structure
 
@@ -108,11 +120,9 @@ pages
 
 - [Chakra UI Documentation](https://chakra-ui.com/)
 
-## How we maintain the styles
+## How to maintain the styles
 
 Chakraui is heavily rely on style props to manage and override the component styles. Please check the available props in the doc.
-
-Besides Chakraui component, I also suggest use styled-component to create pure component and to minimize the CSS issues.
 
 ## Useful documnetation and references
 

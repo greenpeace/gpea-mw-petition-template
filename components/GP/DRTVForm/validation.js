@@ -22,6 +22,15 @@ export function validation(values, formContent) {
   if (!values.Birthdate) {
     errors.Birthdate = formContent.empty_data_alert;
   }
+  if (!values.CampaignData1__c) {
+    errors.CampaignData1__c = formContent.empty_data_alert;
+  }
+  if (!values.CampaignData2__c) {
+    errors.CampaignData2__c = formContent.empty_data_alert;
+  }
+  if (!values.CampaignData3__c && values.CampaignData3__c !== 0) {
+    errors.CampaignData3__c = formContent.empty_data_alert;
+  }
 
   if (values.Phone) {
     const phoneReg6 = new RegExp(/^(0|886|\+886)?(9\d{8})$/).test(values.Phone);
