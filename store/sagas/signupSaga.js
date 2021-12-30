@@ -18,23 +18,24 @@ export function* submitForm(actions) {
         }, new FormData()),
       }),
     );
-    
-    const responseBody = yield call(() => response.json());
-    
-    //if (response.statusText === 'OKAY') { 測試失敗狀況用
+
+    //const responseBody = yield call(() => response.json());
+
     if (response.statusText === 'OK') {
+      // if(responseBody.Status === 201){
+      //   yield put({
+      //     type: signupActions.SIGN_UP_SUCCESS,
+      //   });
+      // }else{
+      //   yield put({
+      //     type: signupActions.SIGN_UP_FAILED,
+      //   });
+      // }
 
-      if(responseBody.Status === 201){
-        yield put({
-          type: signupActions.SIGN_UP_SUCCESS,
-        });
-      }else{
-        yield put({
-          type: signupActions.SIGN_UP_FAILED,
-        });
-      }
+      yield put({
+        type: signupActions.SIGN_UP_SUCCESS,
+      });
 
-      
       yield put({ type: statusActions.SET_FORM_SUBMITTED, data: true });
       // Tracking
       if (ProjectName || EventLabel) {
@@ -43,11 +44,13 @@ export function* submitForm(actions) {
       } else {
         console.log('Project undefined');
       }
-      
-    } 
-
+    } else {
+      yield put({
+        type: signupActions.SIGN_UP_FAILED,
+      });
+      yield put({ type: statusActions.SET_FORM_SUBMITTED, data: true });
+    }
   } catch (e) {
     console.log(`e`, e);
-    
   }
 }

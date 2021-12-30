@@ -413,6 +413,7 @@ const MyForm = (props) => {
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 type="number"
+                min="0"
               />
             </Box>
 
