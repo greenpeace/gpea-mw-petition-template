@@ -21,7 +21,7 @@ const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
 
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
-const SignupForm = dynamic(() => import('@components/GP/DownloadForm'));
+const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
 function Index({ status, theme, setFormContent, signup }) {
