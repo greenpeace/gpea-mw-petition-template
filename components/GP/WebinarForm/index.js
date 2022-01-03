@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
-import { capitalize } from '@common/utils';
+import { capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
@@ -277,6 +277,10 @@ const MyEnhancedForm = withFormik({
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
     // TODO: Fix Access-Control-Allow-Origin issue
     const endPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
+    const completionURL = await clearURL(window?.location.href, [
+      '_ga',
+      'fbclid',
+    ]);
 
     const formData = {
       ...hiddenFormData,
@@ -289,7 +293,7 @@ const MyEnhancedForm = withFormik({
       CampaignId: isProd ? theme.CampaignId : '7012u000000OxDYAA0',
       LeadSource: LeadSource,
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
-      CompletionURL: window.location.href ? window.location.href : '',
+      CompletionURL: completionURL,
     };
 
     setSubmitting(true);
