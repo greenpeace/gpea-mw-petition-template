@@ -35,7 +35,7 @@ const speaker3Content = [
     name: 'Susan',
     role: '環保裸買店「四圍斟」店長',
     content:
-      '全裸買店「四圍斟」的理念是推廣裸買好處，讓大家將裸買變成生活習慣，強調源頭減廢的重要性。四圍斟舉辦過「鄰里裸買計劃」，並推出裸網購、裸外賣，令裸買變得「隨時隨地」與方便。店舖裸買商品多樣，包括應節食品蝦子麵、清潔劑、有機腰果糖、環保尿布和乳墊等。',
+      '裸買店「四圍斟」的理念是推廣裸買好處，讓大家將裸買變成生活習慣，強調源頭減廢的重要性。四圍斟舉辦過「鄰里裸買計劃」，並推出裸網購、裸外賣，令裸買變得「隨時隨地」與方便。店舖裸買商品多樣，包括應節食品蝦子麵、清潔劑、有機腰果糖、環保尿布和乳墊等。',
     avatar: speaker3,
   },
 ];
@@ -64,12 +64,9 @@ const Content = ({ theme }) => {
 
       <Box {...paragraphProps} bgColor="#F9F9F9" borderRadius={8} p={4}>
         裸買店「四圍斟」店長Susan將會聯同綠色和平項目主任譚穎琳（Leanne）、社區外展主任柯家文（Kaman）在網上教室裡，同你分享豐富新春減廢心得，節目內容包括：
-        <List mt={3}>
+        <List mt={4}>
           <ListItem _before={{ content: `"- "` }}>
             裸買店主分享環保辦年貨心得
-          </ListItem>
-          <ListItem _before={{ content: `"- "` }}>
-            新春換物貼士與資源平台分享
           </ListItem>
           <ListItem _before={{ content: `"- "` }}>
             新春換物貼士與資源平台分享
@@ -97,10 +94,6 @@ const Content = ({ theme }) => {
       <Heading {...headingProps}>
         立即報名！學習新春環保減廢貼士，過節都可以善用每一分資源。
       </Heading>
-
-      <Text as="p" {...paragraphProps}>
-        綠色和平正號召全球支持者加入海洋聯署，亦誠意邀請您參與聯署，壯大守護海洋力量。您的力量，是推動2030年前成立至少30%海洋保護區的關鍵。
-      </Text>
 
       <Box>
         <Speaker content={speaker3Content} />

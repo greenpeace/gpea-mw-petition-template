@@ -14,7 +14,9 @@ const Thankyou = ({ theme, signup }) => {
   return (
     <>
       <Heading {...headingProps}>
-        感謝您報名參與綠色新春教室，實踐減廢生活。
+        感謝您報名參與綠色新春教室，
+        <br />
+        實踐減廢生活。
       </Heading>
 
       <Text as="p" {...paragraphProps}>
