@@ -320,15 +320,6 @@ const MyForm = (props) => {
               </Box>
             </Stack>
           </Form>
-          {formContent.form_remind && (
-            <Box>
-              <Text
-                fontSize="xs"
-                color={'gray.700'}
-                dangerouslySetInnerHTML={{ __html: formContent.form_remind }}
-              />
-            </Box>
-          )}
         </Stack>
       </Box>
     </Box>
