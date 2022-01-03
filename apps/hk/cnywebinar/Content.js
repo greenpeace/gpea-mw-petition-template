@@ -8,8 +8,9 @@ import {
 import Speaker from './Speaker';
 import Webinar from './Webinar';
 
-import speaker1 from './images/speaker1.png';
+import speaker1 from './images/speaker1_v2.jpg';
 import speaker2 from './images/speaker2.png';
+import speaker3 from './images/speaker3.jpg';
 
 const WebinarContent = {
   title: '',
@@ -29,6 +30,16 @@ const speaker1Content = [
   },
 ];
 
+const speaker3Content = [
+  {
+    name: 'Susan',
+    role: '環保裸買店「四圍斟」店長',
+    content:
+      '全裸買店「四圍斟」的理念是推廣裸買好處，讓大家將裸買變成生活習慣，強調源頭減廢的重要性。四圍斟舉辦過「鄰里裸買計劃」，並推出裸網購、裸外賣，令裸買變得「隨時隨地」與方便。店舖裸買商品多樣，包括應節食品蝦子麵、清潔劑、有機腰果糖、環保尿布和乳墊等。',
+    avatar: speaker3,
+  },
+];
+
 const speaker2Content = [
   {
     name: '柯家文 Kaman',
@@ -44,7 +55,7 @@ const Content = ({ theme }) => {
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        請即報名 《綠色新春教室：裸買店主同你環保辦年貨與大掃除》
+        報名新春教室 齊過綠色新年
       </Heading>
 
       <Box {...paragraphProps}>
@@ -52,10 +63,13 @@ const Content = ({ theme }) => {
       </Box>
 
       <Box {...paragraphProps} bgColor="#F9F9F9" borderRadius={8} p={4}>
-        綠色和平項目主任譚穎琳（Leanne）、社區外展主任柯家文（Kaman）聯同二手商舖店主將會在網上教室裡，手把手同你製作環保清潔劑，節目內容包括：
+        裸買店「四圍斟」店長Susan將會聯同綠色和平項目主任譚穎琳（Leanne）、社區外展主任柯家文（Kaman）在網上教室裡，同你分享豐富新春減廢心得，節目內容包括：
         <List mt={3}>
           <ListItem _before={{ content: `"- "` }}>
             裸買店主分享環保辦年貨心得
+          </ListItem>
+          <ListItem _before={{ content: `"- "` }}>
+            新春換物貼士與資源平台分享
           </ListItem>
           <ListItem _before={{ content: `"- "` }}>
             新春換物貼士與資源平台分享
@@ -73,11 +87,11 @@ const Content = ({ theme }) => {
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        虎年將至！想必大家已經開始忙於清理家居和佈置新春。去舊迎新之際，我們往往產生大量即棄物品、多餘資源，如果未能善用，或會為環境帶來新的負擔。因此，綠色和平將會舉辦綠色新春教室，邀請到裸買店主，同大家分享裸買應節物品心得、製作環保清潔劑，並推介精選二手換物資源平台，讓大家便捷又環保地搜羅應節物、大掃除，在新一年做到源頭減廢，培養環保新習慣！
+        虎年將至！想必大家已經開始忙於清理和佈置家居，迎接新春。去舊迎新之際，我們往往產生大量即棄物品，如果未能善用，或會為環境帶來更大負擔。因此，綠色和平將會舉辦綠色新春教室，邀請到裸買店「四圍斟」店長Susan，同大家分享裸買應節物品心得、製作環保清潔劑，推介二手換物平台，讓大家便捷又環保地搜羅應節物品、大掃除，在新一年做到源頭減廢，培養環保新習慣！
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        首500位成功報名新春教室的朋友，更可以獲贈綠色和平送出以環保啞粉紙及大豆油墨製成的吉祥物環保揮春（款式隨機）乙份。立即報名參與教室，與我們一起渡過綠色新春，學會在生活上源頭減廢！
+        首500位成功報名並出席新春教室的朋友，更可以獲贈綠色和平送出以環保啞粉紙及大豆油墨印製的吉祥物環保揮春（款式隨機）乙張。立即報名參與教室，與我們一起渡過綠色新春，學會在生活上源頭減廢！
       </Text>
 
       <Heading {...headingProps}>
@@ -87,6 +101,10 @@ const Content = ({ theme }) => {
       <Text as="p" {...paragraphProps}>
         綠色和平正號召全球支持者加入海洋聯署，亦誠意邀請您參與聯署，壯大守護海洋力量。您的力量，是推動2030年前成立至少30%海洋保護區的關鍵。
       </Text>
+
+      <Box>
+        <Speaker content={speaker3Content} />
+      </Box>
 
       <Box>
         <Speaker content={speaker1Content} />

@@ -11,7 +11,7 @@ import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/chuen_hub.jpg';
+import heroBannerImage from './images/banner.jpeg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
@@ -58,7 +58,7 @@ function Index({ status, theme, setFormContent, signup }) {
         <HeroBanner
           bgImage={heroBannerImage}
           content={{
-            title: '綠色新春教室:<br/>裸買店主同你環保辦年貨與大掃除',
+            title: '請即報名<br/>裸買店主同你環保辦年貨與大掃除',
             description: [''],
           }}
         />

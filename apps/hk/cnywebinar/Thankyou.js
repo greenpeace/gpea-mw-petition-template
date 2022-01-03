@@ -22,7 +22,7 @@ const Thankyou = ({ theme, signup }) => {
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        綠色和平團隊一直推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策。你願意多走一步，支持我們的走塑工作做得更完善有效嗎？
+        綠色和平團隊一直推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策。您願意多走一步，支持我們的走塑工作做得更完善有效嗎？
       </Text>
 
       <Text as="p" {...paragraphProps}>
@@ -34,7 +34,7 @@ const Thankyou = ({ theme, signup }) => {
       </Box>
 
       <Heading {...headingProps}>
-        即棄塑膠永久傷害海洋、環境與人體健康，你願意出手減緩危機嗎？
+        即棄塑膠永久傷害海洋、環境與人體健康，您願意出手減緩危機嗎？
       </Heading>
 
       <Text as="p" {...paragraphProps}>
@@ -47,6 +47,16 @@ const Thankyou = ({ theme, signup }) => {
 
       <Text as="p" {...paragraphProps}>
         緩解塑膠污染，捐助綠色和平走塑工作。
+      </Text>
+
+      <Text as="p" {...paragraphProps}>
+        捐款查詢：
+        <br />
+        歡迎致電會員服務熱線 (852) 2854 8318，或電郵至{' '}
+        <a href="mailto:donor.services.hk@greenpeace.org">
+          <u>donor.services.hk@greenpeace.org</u>
+        </a>
+        ，以查詢捐款相關事宜。
       </Text>
     </>
   );
