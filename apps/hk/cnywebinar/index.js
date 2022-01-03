@@ -58,7 +58,7 @@ function Index({ status, theme, setFormContent, signup }) {
         <HeroBanner
           bgImage={heroBannerImage}
           content={{
-            title: '請即報名<br/>裸買店主同你環保辦年貨與大掃除',
+            title: '請即報名綠色新春教室<br/>裸買店主同你環保辦年貨與大掃除',
             description: [''],
           }}
         />
