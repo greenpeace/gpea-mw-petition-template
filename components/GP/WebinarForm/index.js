@@ -125,6 +125,7 @@ const MyForm = (props) => {
           <Box>
             <Heading
               fontSize={'2xl'}
+              color={`theme.${themeInterests}`}
               dangerouslySetInnerHTML={{ __html: formContent.form_header }}
             />
           </Box>
