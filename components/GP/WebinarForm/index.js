@@ -279,7 +279,7 @@ const MyEnhancedForm = withFormik({
     const endPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
     const completionURL = await clearURL(window?.location.href, [
       '_ga',
-      'vfbclid',
+      'fbclid',
     ]);
 
     const formData = {
