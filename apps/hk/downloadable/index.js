@@ -21,7 +21,7 @@ const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
 
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
-const SignupForm = dynamic(() => import('@components/GP/HKForm'));
+const SignupForm = dynamic(() => import('@components/GP/DownloadForm'));
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
 function Index({ status, theme, setFormContent, signup }) {
@@ -50,7 +50,7 @@ function Index({ status, theme, setFormContent, signup }) {
           content={{
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
-            }，感謝您報名 綠色新春教室`,
+            }，感謝您下載<br/> 綠色生活手冊`,
             description: ['為無塑環境多走一步，捐助支持走塑項目。'],
           }}
         />

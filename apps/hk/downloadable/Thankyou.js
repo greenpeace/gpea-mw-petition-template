@@ -14,7 +14,7 @@ const Thankyou = ({ theme, signup }) => {
   return (
     <>
       <Heading {...headingProps}>
-        感謝您報名參與綠色新春教室，實踐減廢生活。
+        感謝您下載手冊，實踐走塑減廢生活習慣。
       </Heading>
 
       <Text as="p" {...paragraphProps}>
@@ -47,6 +47,16 @@ const Thankyou = ({ theme, signup }) => {
 
       <Text as="p" {...paragraphProps}>
         緩解塑膠污染，捐助綠色和平走塑工作。
+      </Text>
+
+      <Text as="p" {...paragraphProps}>
+        捐款查詢：
+        <br />
+        歡迎致電會員服務熱線 (852) 2854 8318，或電郵至{' '}
+        <a href="mailto:donor.services.hk@greenpeace.org">
+          <u>donor.services.hk@greenpeace.org</u>
+        </a>
+        ，以查詢捐款相關事宜。
       </Text>
     </>
   );
