@@ -6,10 +6,14 @@ import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Container } from '@chakra-ui/react';
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
+
+import speaker1 from './images/speaker1_v2.jpg';
+import speaker2 from './images/speaker2.png';
+import speaker3 from './images/speaker3.jpg';
 
 import heroBannerImage from './images/banner.jpeg';
 
@@ -25,16 +29,23 @@ const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
 function Index({ status, theme, setFormContent, signup }) {
+  const speakerAvatarProps = {
+    bgSize: 'cover',
+    borderRadius: '50%',
+    w: 10,
+    h: 10,
+  };
   const { submitted } = status;
   const { FirstName } = signup;
-
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   const { ref, inView } = useInView({
-    /* Optional options */
     threshold: 0,
   });
   const myRef = useRef(null);
+  const speaker1Ref = useRef(null);
+  const speaker2Ref = useRef(null);
+  const speaker3Ref = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
 
   useEffect(() => {
@@ -68,10 +79,47 @@ function Index({ status, theme, setFormContent, signup }) {
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer theme={theme}>
-                {submitted ? <Thankyou /> : <Content />}
+                {submitted ? (
+                  <Thankyou />
+                ) : (
+                  <Content
+                    speaker1Ref={speaker1Ref}
+                    speaker2Ref={speaker2Ref}
+                    speaker3Ref={speaker3Ref}
+                  />
+                )}
               </ContentContainer>
             </Box>
             <Box flex={1} ref={myRef}>
+              {/**TODO: margin top issue */}
+              <Container mt={-20} d={{ md: 'none' }}>
+                <Flex
+                  direction={'row'}
+                  justifyContent={'flex-end'}
+                  pos={`relative`}
+                  py={2}
+                  zIndex={2}
+                >
+                  <Box
+                    bgImage={speaker3}
+                    onClick={() => scrollToRef(speaker3Ref)}
+                    {...speakerAvatarProps}
+                    mr={-1}
+                  ></Box>
+                  <Box
+                    bgImage={speaker1}
+                    onClick={() => scrollToRef(speaker1Ref)}
+                    {...speakerAvatarProps}
+                    mr={-1}
+                  ></Box>
+                  <Box
+                    bgImage={speaker2}
+                    onClick={() => scrollToRef(speaker2Ref)}
+                    {...speakerAvatarProps}
+                  ></Box>
+                </Flex>
+              </Container>
+
               <FormContainer>
                 <Box ref={ref}>
                   {submitted ? <DonateForm /> : <SignupForm />}
