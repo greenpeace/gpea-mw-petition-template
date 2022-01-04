@@ -3,8 +3,6 @@ import { Heading, Box, Flex, Text, Image, Stack } from '@chakra-ui/react';
 import PageContainer from '@containers/pageContainer';
 import SocialButton from '@components/SocialButton/socialButton';
 
-import { TextWrapper } from './Banner.style';
-
 const iconWrapProps = {
   bgColor: '#FFF',
   borderRadius: '50%',
@@ -30,32 +28,35 @@ export default function Index({ content, bgImage, removeMask }) {
                 direction="column"
                 justifyContent="space-between"
               >
-                <TextWrapper>
-                  <Heading
-                    as="h1"
-                    fontSize={{ base: 'var(--text-xl)', md: 'var(--text-2xl)' }}
-                    color={content.colorCode ? content.colorCode : 'white'}
-                    dangerouslySetInnerHTML={{ __html: content.title }}
-                  />
+                <Stack spacing={4}>
+                  <Box>
+                    <Heading
+                      as="h1"
+                      fontSize={{
+                        base: 'var(--text-xl)',
+                        md: 'var(--text-2xl)',
+                      }}
+                      color="white"
+                      dangerouslySetInnerHTML={{ __html: content.title }}
+                    />
+                  </Box>
                   {content.description.map((d, i) => (
                     <Text
                       key={i}
                       fontSize="var(--text-base)"
-                      color={'white'}
+                      color="white"
                       dangerouslySetInnerHTML={{ __html: d }}
                     ></Text>
                   ))}
-                </TextWrapper>
-                <TextWrapper>
-                  <Stack direction="column" spacing={4}>
-                    {content.inviteMessage && (
-                      <Text
-                        color={'white'}
-                        dangerouslySetInnerHTML={{
-                          __html: content.inviteMessage,
-                        }}
-                      />
-                    )}
+                  {content.inviteMessage && (
+                    <Text
+                      color="white"
+                      dangerouslySetInnerHTML={{
+                        __html: content.inviteMessage,
+                      }}
+                    />
+                  )}
+                  <Box>
                     <Stack direction="row" spacing={6}>
                       {content.inviteMessage &&
                         content.shareLink.map((d, i) => (
@@ -66,8 +67,8 @@ export default function Index({ content, bgImage, removeMask }) {
                           </Box>
                         ))}
                     </Stack>
-                  </Stack>
-                </TextWrapper>
+                  </Box>
+                </Stack>
               </Flex>
             </Box>
           </PageContainer>
