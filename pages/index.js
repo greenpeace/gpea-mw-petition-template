@@ -78,7 +78,11 @@ const mapDispatchToProps = (dispatch) => {
 export async function getStaticProps() {
   const envProjectName = process.env.projectName;
   const envProjectMarket = process.env.projectMarket;
-  console.log(process.env.MARKET);
+
+  console.log(
+    'Building from ' + process.env.MARKET + ':' + process.env.projectName,
+  );
+
   const fetchURLs = [
     process.env.themeEndpoint,
     process.env.signupNumbersHK,
