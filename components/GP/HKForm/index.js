@@ -334,6 +334,7 @@ const MyEnhancedForm = withFormik({
     MobileCountryCode: '852',
     MobilePhone: '',
     OptIn: true,
+    Birthdate: '',
   }),
 
   validate: async (values, props) => {
