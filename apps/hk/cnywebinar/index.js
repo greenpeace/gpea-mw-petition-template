@@ -6,7 +6,14 @@ import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Flex, Container } from '@chakra-ui/react';
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  Flex,
+  Container,
+  Text,
+} from '@chakra-ui/react';
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -28,13 +35,15 @@ const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
+const speakerAvatarProps = {
+  bgSize: 'cover',
+  borderRadius: '50%',
+  w: '100px',
+  h: '100px',
+  border: '2px solid white',
+};
+
 function Index({ status, theme, setFormContent, signup }) {
-  const speakerAvatarProps = {
-    bgSize: 'cover',
-    borderRadius: '50%',
-    w: 10,
-    h: 10,
-  };
   const { submitted } = status;
   const { FirstName } = signup;
   const scrollToRef = (ref) =>
@@ -92,34 +101,55 @@ function Index({ status, theme, setFormContent, signup }) {
             </Box>
             <Box flex={1} ref={myRef}>
               {/**TODO: margin top issue */}
-              <Container mt={-20} d={{ md: 'none' }}>
-                <Flex
-                  direction={'row'}
-                  justifyContent={'flex-end'}
-                  pos={`relative`}
-                  py={2}
-                  zIndex={2}
-                >
+              <Container>
+                <Flex pos="relative" zIndex="2" py={4} flexDirection="column">
+                  <Text
+                    fontSize="xl"
+                    px="2"
+                    mb="4"
+                    fontWeight="bold"
+                    color="white"
+                  >
+                    嘉賓主持：
+                  </Text>
+                  <AvatarGroup size="xl" max={4}>
+                    <Avatar
+                      name="「四圍斟」Susan"
+                      src={speaker3}
+                      onClick={() => scrollToRef(speaker3Ref)}
+                    />
+                    <Avatar
+                      name="譚穎琳 Leanne"
+                      src={speaker1}
+                      onClick={() => scrollToRef(speaker1Ref)}
+                    />
+                    <Avatar
+                      name="柯家文 Kaman"
+                      src={speaker2}
+                      onClick={() => scrollToRef(speaker2Ref)}
+                    />
+                  </AvatarGroup>
+                </Flex>
+                {/* <Flex direction="row" pos="relative" mb={4} py={2} zIndex={2}>
                   <Box
                     bgImage={speaker3}
                     onClick={() => scrollToRef(speaker3Ref)}
                     {...speakerAvatarProps}
-                    mr={-1}
+                    mr={-4}
                   ></Box>
                   <Box
                     bgImage={speaker1}
                     onClick={() => scrollToRef(speaker1Ref)}
                     {...speakerAvatarProps}
-                    mr={-1}
+                    mr={-4}
                   ></Box>
                   <Box
                     bgImage={speaker2}
                     onClick={() => scrollToRef(speaker2Ref)}
                     {...speakerAvatarProps}
                   ></Box>
-                </Flex>
+                </Flex> */}
               </Container>
-
               <FormContainer>
                 <Box ref={ref}>
                   {submitted ? <DonateForm /> : <SignupForm />}

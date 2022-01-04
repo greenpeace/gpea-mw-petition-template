@@ -23,7 +23,8 @@ function TestmonialCard(props) {
       direction={{ base: 'column', xl: 'row' }}
       width={'full'}
       rounded={'xl'}
-      p={8}
+      px={6}
+      py={8}
       justifyContent={'space-between'}
       position={'relative'}
       bg={useColorModeValue('white', 'gray.800')}
