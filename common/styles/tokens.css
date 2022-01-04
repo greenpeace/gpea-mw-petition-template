@@ -59,18 +59,18 @@
 
   /* Thematic Colors */
 
-  --arctic-100: #cbf7fc;
-  --arctic-300: #9de4ec;
+  --arctic-100: #f0fffe;
+  --arctic-300: #bbeef0;
   --arctic: #62cbd7;
   --arctic-700: #34c1d1;
 
-  --health-100: #ffdfd4;
-  --health-300: #ffb79e;
+  --health-100: #fff0f0;
+  --health-300: #ffc2cb;
   --health: #f09d7f;
   --health-700: #ed815a;
 
-  --climate-100: #ffeebc;
-  --climate-300: #ffda6e;
+  --climate-100: #fffde6;
+  --climate-300: #ffeb7a;
   --climate: #ffbe00;
   --climate-700: #efa800;
 
@@ -79,13 +79,13 @@
   --plastics: #afaa91;
   --plastics-700: #9b9370;
 
-  --forests-100: #9beace;
-  --forests-300: #3cd09b;
+  --forests-100: #dcf5e8;
+  --forests-300: #38d9a9;
   --forests: #00b474;
   --forests-700: #009560;
 
-  --oceans-100: #78cdff;
-  --oceans-300: #31b3ff;
+  --oceans-100: #e6faff;
+  --oceans-300: #7adcff;
   --oceans: #008fe2;
   --oceans-700: #0075ba;
 
