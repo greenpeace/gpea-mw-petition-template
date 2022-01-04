@@ -119,7 +119,7 @@ const MyForm = (props) => {
   };
 
   return (
-    <Box>
+    <Box border="1px" borderColor="gray.100">
       <Box py="8" px="4">
         <Stack spacing="4">
           <Box>
@@ -268,6 +268,7 @@ const MyForm = (props) => {
                 <Text
                   fontSize="xs"
                   color={'gray.700'}
+                  lineHeight="1.7"
                   dangerouslySetInnerHTML={{
                     __html: formContent.form_remind,
                   }}
