@@ -18,7 +18,7 @@ export default function SmallWithSocial() {
         align={{ base: 'center', md: 'center' }}
       >
         <Stack direction={'row'} spacing={2}>
-          <Text as="span">© GREENPEACE {new Date().getFullYear()}</Text>
+          <Text as="span">© Greenpeace {new Date().getFullYear()}</Text>
         </Stack>
         <Stack direction={'row'} spacing={8}>
           <SocialButton
