@@ -14,9 +14,7 @@ const Thankyou = ({ theme, signup }) => {
   return (
     <>
       <Heading {...headingProps}>
-        感謝您報名參與綠色新春教室，
-        <br />
-        實踐減廢生活。
+        感謝您下載手冊，實踐走塑減廢生活習慣。
       </Heading>
 
       <Text as="p" {...paragraphProps}>
@@ -24,7 +22,7 @@ const Thankyou = ({ theme, signup }) => {
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        綠色和平團隊一直推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策。您願意多走一步，支持我們的走塑工作做得更完善有效嗎？
+        綠色和平團隊一直推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策。你願意多走一步，支持我們的走塑工作做得更完善有效嗎？
       </Text>
 
       <Text as="p" {...paragraphProps}>
@@ -36,7 +34,7 @@ const Thankyou = ({ theme, signup }) => {
       </Box>
 
       <Heading {...headingProps}>
-        即棄塑膠永久傷害海洋、環境與人體健康，您願意出手減緩危機嗎？
+        即棄塑膠永久傷害海洋、環境與人體健康，你願意出手減緩危機嗎？
       </Heading>
 
       <Text as="p" {...paragraphProps}>

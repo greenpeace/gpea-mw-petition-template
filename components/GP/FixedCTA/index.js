@@ -22,8 +22,6 @@ const FixedCTA = ({ onClick, status, form }) => {
     return (
       <Button
         pos={'fixed'}
-        px={2}
-        py={2}
         bottom={0}
         left={0}
         zIndex={99}

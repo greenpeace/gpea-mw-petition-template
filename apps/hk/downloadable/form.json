@@ -1,6 +1,6 @@
 {
-  "form_header": "報名綠色教室 跟裸買達人學新春環保貼士",
-  "form_description": "首500位成功報名，可獲環保揮春乙份！",
+  "form_header": "下載綠色生活手冊 獲得素食食譜與大掃除指南",
+  "form_description": "新一年新習慣，逐步實踐環保減廢生活！",
   "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
   "signed_number": "已聯署人數",
 
@@ -51,9 +51,9 @@
   "donate_description": [
     "您的捐助，將有效地、直接地幫助我們推動本地走塑進程，緩解塑膠污染。"
   ],
-  "default_message": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策。",
+  "default_message": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策",
   "donate_suggestion_header": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
-  "donate_suggestion_message": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
+  "donate_suggestion_message": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策 ，全面減緩塑膠污染問題。",
   "currency": "HKD",
   "default_amount": 100,
   "donate_type": [
@@ -89,19 +89,19 @@
     {
       "label": "100",
       "value": 100,
-      "description": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策。",
+      "description": "您的捐款，協助發起全球聯署行動，擴大要求制定「全球海洋公約」的聲音力量！",
       "currency": "HKD"
     },
     {
       "label": "150",
       "value": 150,
-      "description": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
+      "description": "支持綠色和平船艦持續監察企業最新動向，及時阻止破壞海洋的行為！",
       "currency": "HKD"
     },
     {
       "label": "200",
       "value": 200,
-      "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
+      "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意制定「全球海洋公約」，推進守護30%海洋保護區目標！",
       "currency": "HKD"
     },
     {

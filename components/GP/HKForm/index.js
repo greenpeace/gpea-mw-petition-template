@@ -170,31 +170,33 @@ const MyForm = (props) => {
           </Box>
           <Form onSubmit={handleSubmit}>
             <Stack spacing="4">
-              <Stack direction={`row`}>
-                <Box flex={1}>
-                  <Field
-                    errors={errors.LastName}
-                    touched={touched.LastName}
-                    label={formContent.label_last_name}
-                    name={'LastName'}
-                    type={'text'}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  />
-                </Box>
+              <Box>
+                <Stack direction={`row`}>
+                  <Box flex={1}>
+                    <Field
+                      errors={errors.LastName}
+                      touched={touched.LastName}
+                      label={formContent.label_last_name}
+                      name={'LastName'}
+                      type={'text'}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                    />
+                  </Box>
 
-                <Box flex={1}>
-                  <Field
-                    errors={errors.FirstName}
-                    touched={touched.FirstName}
-                    label={formContent.label_first_name}
-                    name={'FirstName'}
-                    type={'text'}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  />
-                </Box>
-              </Stack>
+                  <Box flex={1}>
+                    <Field
+                      errors={errors.FirstName}
+                      touched={touched.FirstName}
+                      label={formContent.label_first_name}
+                      name={'FirstName'}
+                      type={'text'}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                    />
+                  </Box>
+                </Stack>
+              </Box>
 
               <Box>
                 <FormControl
@@ -235,35 +237,37 @@ const MyForm = (props) => {
                 </FormControl>
               </Box>
 
-              <HStack align="flex-start">
-                <Box>
-                  <FormControl id="mobileCountryCode">
-                    <Select
-                      name="MobileCountryCode"
-                      onChange={handleChange}
-                      fontSize={'16px'}
-                      size={'lg'}
-                    >
-                      {(formContent.mobile_country_code || []).map((d) => (
-                        <option key={d.value} value={d.value}>
-                          {d.label}
-                        </option>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Box>
-                <Box flex={1}>
-                  <Field
-                    errors={errors.MobilePhone}
-                    touched={touched.MobilePhone}
-                    label={formContent.label_phone}
-                    name={'MobilePhone'}
-                    type="tel"
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  />
-                </Box>
-              </HStack>
+              <Box>
+                <HStack align="flex-start">
+                  <Box>
+                    <FormControl id="mobileCountryCode">
+                      <Select
+                        name="MobileCountryCode"
+                        onChange={handleChange}
+                        fontSize={'16px'}
+                        size={'lg'}
+                      >
+                        {(formContent.mobile_country_code || []).map((d) => (
+                          <option key={d.value} value={d.value}>
+                            {d.label}
+                          </option>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Box>
+                  <Box flex={1}>
+                    <Field
+                      errors={errors.MobilePhone}
+                      touched={touched.MobilePhone}
+                      label={formContent.label_phone}
+                      name={'MobilePhone'}
+                      type="tel"
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                    />
+                  </Box>
+                </HStack>
+              </Box>
 
               <Box>
                 <FormControl
@@ -308,25 +312,7 @@ const MyForm = (props) => {
                   />
                 </Flex>
               </Box>
-              {/* <Flex direction={{ base: 'row' }} align={'center'}>
-            <Box flex={1} mr={4}>
-              <Text fontSize={'xs'}>{formContent.label_newsletter}</Text>
-            </Box>
-            <HStack spacing={2}>
-              {(formContent.new_letter || []).map((d, i) => (
-                <Button
-                  key={i}
-                  bgColor={d.value === values.Newsletter ? '#66cc00' : '#FFF'}
-                  color={d.value === values.Newsletter ? '#FFF' : '#000'}
-                  variant={`outline`}
-                  fontSize={'sm'}
-                  onClick={() => setFieldValue('Newsletter', d.value)}
-                >
-                  {d.label}
-                </Button>
-              ))}
-            </HStack>
-          </Flex> */}
+
               <Box>
                 <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
                   {formContent.submit_text}
@@ -334,15 +320,6 @@ const MyForm = (props) => {
               </Box>
             </Stack>
           </Form>
-          {formContent.form_remind && (
-            <Box>
-              <Text
-                fontSize="xs"
-                color={'gray.700'}
-                dangerouslySetInnerHTML={{ __html: formContent.form_remind }}
-              />
-            </Box>
-          )}
         </Stack>
       </Box>
     </Box>

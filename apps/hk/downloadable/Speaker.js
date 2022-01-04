@@ -1,5 +1,6 @@
 import {
   Avatar,
+  chakra,
   Flex,
   SimpleGrid,
   useColorModeValue,
@@ -23,8 +24,7 @@ function TestmonialCard(props) {
       direction={{ base: 'column', xl: 'row' }}
       width={'full'}
       rounded={'xl'}
-      px={6}
-      py={8}
+      p={8}
       justifyContent={'space-between'}
       position={'relative'}
       bg={useColorModeValue('white', 'gray.800')}
@@ -55,14 +55,16 @@ function TestmonialCard(props) {
         textAlign={'left'}
         justifyContent={'space-between'}
       >
-        <Text {...pStyle}>{content}</Text>
-        <Text fontWeight="bold" fontSize="md" letterSpacing={'1px'}>
+        <chakra.p {...pStyle} pb={4}>
+          {content}
+        </chakra.p>
+        <chakra.p fontWeight={'bold'} fontSize={16}>
           {name}
           <br />
-          <Text as="span" fontSize="sm" color={'gray.500'}>
+          <chakra.span fontSize={14} fontFamily={'Inter'} color={'gray.500'}>
             {role}
-          </Text>
-        </Text>
+          </chakra.span>
+        </chakra.p>
       </Flex>
     </Flex>
   );

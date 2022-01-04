@@ -38,7 +38,7 @@ export default function Index({ content, bgImage }) {
                   <Heading
                     as="h1"
                     fontSize={{ base: 'var(--text-xl)', md: 'var(--text-2xl)' }}
-                    lineHeight="1.2"
+                    lineHeight="1.3"
                     color={'white'}
                     mb={4}
                     dangerouslySetInnerHTML={{ __html: content.title }}
