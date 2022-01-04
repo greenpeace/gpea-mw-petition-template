@@ -15,27 +15,29 @@ export function validation(values, formContent) {
     errors.LastName = formContent.empty_data_alert;
   }
 
-  if (!values.Phone) {
-    errors.Phone = formContent.empty_data_alert;
+  if (!values.MobilePhone) {
+    errors.MobilePhone = formContent.empty_data_alert;
   }
 
   if (!values.Birthdate) {
     errors.Birthdate = formContent.empty_data_alert;
   }
 
-  if (values.Phone) {
-    const phoneReg6 = new RegExp(/^(0|886|\+886)?(9\d{8})$/).test(values.Phone);
+  if (values.MobilePhone) {
+    const phoneReg6 = new RegExp(/^(0|886|\+886)?(9\d{8})$/).test(
+      values.MobilePhone,
+    );
     const phoneReg7 = new RegExp(/^(0|886|\+886){1}[3-8]-?\d{6,8}$/).test(
-      values.Phone,
+      values.MobilePhone,
     );
     const phoneReg8 = new RegExp(/^(0|886|\+886){1}[2]-?\d{8}$/).test(
-      values.Phone,
+      values.MobilePhone,
     );
 
     if (phoneReg6 || phoneReg7 || phoneReg8) {
       return errors;
     } else {
-      errors.Phone = formContent.invalid_format_alert;
+      errors.MobilePhone = formContent.invalid_format_alert;
     }
   }
 
