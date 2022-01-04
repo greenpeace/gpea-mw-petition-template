@@ -66,10 +66,7 @@ const Content = ({ theme, speaker1Ref, speaker2Ref, speaker3Ref }) => {
         裸買店「四圍斟」店長Susan將會聯同綠色和平項目主任譚穎琳（Leanne）、社區外展主任柯家文（Kaman）在網上教室裡，同你分享豐富新春減廢心得，節目內容包括：
         <List mt={3}>
           <ListItem _before={{ content: `"- "` }}>
-            裸買店主分享環保辦年貨心得
-          </ListItem>
-          <ListItem _before={{ content: `"- "` }}>
-            新春換物貼士與資源平台分享
+            裸買店店主分享環保辦年貨心得
           </ListItem>
           <ListItem _before={{ content: `"- "` }}>
             新春換物貼士與資源平台分享

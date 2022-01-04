@@ -1,6 +1,5 @@
 import React from 'react';
 import { Heading, Box, Text, Image } from '@chakra-ui/react';
-// import NextImage from "next/image";
 import PageContainer from '@containers/pageContainer';
 import { TextWrapper } from './Banner.style';
 
@@ -21,7 +20,7 @@ import { TextWrapper } from './Banner.style';
 //     ].includes(prop),
 // });
 
-export default function Index({ content, bgImage }) {
+export default function Index({ content, bgImage, removeMask }) {
   return (
     <>
       <Box
@@ -50,7 +49,7 @@ export default function Index({ content, bgImage }) {
                       <Text
                         key={i}
                         fontSize="var(--text-base)"
-                        color={'#FFF'}
+                        color={'white'}
                         dangerouslySetInnerHTML={{ __html: d }}
                       />
                     ))}
@@ -68,19 +67,20 @@ export default function Index({ content, bgImage }) {
             width={'100%'}
             objectFit={'cover'}
             objectPosition={{ base: '20% top', md: 'center top' }}
-            alt={'Greenpeace 綠色和平'}
           />
         </Box>
 
-        <Box
-          className={'heroMask'}
-          pos={'absolute'}
-          top={0}
-          right={0}
-          left={0}
-          bottom={0}
-          bgColor={'rgba(0,0,0,0.5)'}
-        />
+        {!removeMask && (
+          <Box
+            className={'heroMask'}
+            pos={'absolute'}
+            top={0}
+            right={0}
+            left={0}
+            bottom={0}
+            bgColor={'rgba(0,0,0,0.5)'}
+          />
+        )}
       </Box>
     </>
   );

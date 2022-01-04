@@ -13,7 +13,7 @@ const iconWrapProps = {
   fontSize: '20px',
 };
 
-export default function Index({ content, bgImage }) {
+export default function Index({ content, bgImage, removeMask }) {
   return (
     <>
       <Box
@@ -67,11 +67,6 @@ export default function Index({ content, bgImage }) {
                           </Box>
                         ))}
                     </Stack>
-                    {/* <Box onClick={() => console.log('clicked')}>
-                      <Text textDecoration={'underline'} color={'#FFF'}>
-                        {content.inviteInfo}
-                      </Text>
-                    </Box> */}
                   </Stack>
                 </TextWrapper>
               </Flex>
@@ -89,15 +84,17 @@ export default function Index({ content, bgImage }) {
           />
         </Box>
 
-        <Box
-          className={'heroMask'}
-          pos={'absolute'}
-          top={0}
-          right={0}
-          left={0}
-          bottom={0}
-          bgColor={'rgba(0,0,0,.5)'}
-        />
+        {!removeMask && (
+          <Box
+            className={'heroMask'}
+            pos={'absolute'}
+            top={0}
+            right={0}
+            left={0}
+            bottom={0}
+            bgColor={'rgba(0,0,0,0.5)'}
+          />
+        )}
       </Box>
     </>
   );

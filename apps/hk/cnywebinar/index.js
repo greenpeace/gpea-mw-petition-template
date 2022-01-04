@@ -70,7 +70,7 @@ function Index({ status, theme, setFormContent, signup }) {
           content={{
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
-            }，感謝您報名 綠色新春教室`,
+            }，感謝您報名綠色新春教室`,
             description: ['為無塑環境多走一步，捐助支持走塑項目。'],
           }}
         />
@@ -78,7 +78,8 @@ function Index({ status, theme, setFormContent, signup }) {
         <HeroBanner
           bgImage={heroBannerImage}
           content={{
-            title: '請即報名綠色新春教室<br/>裸買店主同你環保辦年貨與大掃除',
+            title:
+              '請即報名綠色新春教室<br/>裸買店店主同你<br/>環保辦年貨大掃除',
             description: [''],
           }}
         />
