@@ -34,15 +34,14 @@ export default function Index({ content, bgImage, removeMask }) {
                   <Heading
                     as="h1"
                     fontSize={{ base: 'var(--text-xl)', md: 'var(--text-2xl)' }}
-                    lineHeight="1.3"
-                    color={'white'}
+                    color={content.colorCode ? content.colorCode : 'white'}
                     dangerouslySetInnerHTML={{ __html: content.title }}
                   />
                   {content.description.map((d, i) => (
                     <Text
                       key={i}
                       fontSize="var(--text-base)"
-                      color={'#FFF'}
+                      color={'white'}
                       dangerouslySetInnerHTML={{ __html: d }}
                     ></Text>
                   ))}

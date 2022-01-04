@@ -37,8 +37,7 @@ export default function Index({ content, bgImage, removeMask }) {
                   <Heading
                     as="h1"
                     fontSize={{ base: 'var(--text-xl)', md: 'var(--text-2xl)' }}
-                    lineHeight="1.3"
-                    color={'white'}
+                    color={content.colorCode ? content.colorCode : 'white'}
                     mb={4}
                     dangerouslySetInnerHTML={{ __html: content.title }}
                   />

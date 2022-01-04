@@ -22,7 +22,7 @@ import speaker1 from './images/speaker1_v2.jpg';
 import speaker2 from './images/speaker2.png';
 import speaker3 from './images/speaker3.jpg';
 
-import heroBannerImage from './images/banner.jpeg';
+import heroBannerImage from './images/q1-cny-webinar-kv-banner.jpg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
@@ -34,14 +34,6 @@ const PageContainer = dynamic(() => import('@containers/pageContainer'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
-
-const speakerAvatarProps = {
-  bgSize: 'cover',
-  borderRadius: '50%',
-  w: '100px',
-  h: '100px',
-  border: '2px solid white',
-};
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
@@ -72,7 +64,9 @@ function Index({ status, theme, setFormContent, signup }) {
               FirstName ? FirstName : '綠色和平支持者'
             }，感謝您報名綠色新春教室`,
             description: ['為無塑環境多走一步，捐助支持走塑項目。'],
+            colorCode: '#fcf5c5',
           }}
+          removeMask="true"
         />
       ) : (
         <HeroBanner
@@ -81,7 +75,9 @@ function Index({ status, theme, setFormContent, signup }) {
             title:
               '請即報名綠色新春教室<br/>裸買店店主同你<br/>環保辦年貨大掃除',
             description: [''],
+            colorCode: '#fcf5c5',
           }}
+          removeMask="true"
         />
       )}
       <PageContainer>
@@ -131,25 +127,6 @@ function Index({ status, theme, setFormContent, signup }) {
                     />
                   </AvatarGroup>
                 </Flex>
-                {/* <Flex direction="row" pos="relative" mb={4} py={2} zIndex={2}>
-                  <Box
-                    bgImage={speaker3}
-                    onClick={() => scrollToRef(speaker3Ref)}
-                    {...speakerAvatarProps}
-                    mr={-4}
-                  ></Box>
-                  <Box
-                    bgImage={speaker1}
-                    onClick={() => scrollToRef(speaker1Ref)}
-                    {...speakerAvatarProps}
-                    mr={-4}
-                  ></Box>
-                  <Box
-                    bgImage={speaker2}
-                    onClick={() => scrollToRef(speaker2Ref)}
-                    {...speakerAvatarProps}
-                  ></Box>
-                </Flex> */}
               </Container>
               <FormContainer>
                 <Box ref={ref}>
