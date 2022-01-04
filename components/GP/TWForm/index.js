@@ -230,10 +230,10 @@ const MyForm = (props) => {
             <HStack align="flex-end">
               <Box flex={1}>
                 <Field
-                  errors={errors.Phone}
-                  touched={touched.Phone}
+                  errors={errors.MobilePhone}
+                  touched={touched.MobilePhone}
                   label={formContent.label_phone}
-                  name={'Phone'}
+                  name={'MobilePhone'}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
                 />
@@ -302,9 +302,9 @@ const MyEnhancedForm = withFormik({
     Email: '',
     FirstName: '',
     LastName: '',
-    Phone: '',
-    Birthdate: '',
+    MobilePhone: '',
     OptIn: true,
+    Birthdate: '',
   }),
 
   validate: async (values, props) => {
