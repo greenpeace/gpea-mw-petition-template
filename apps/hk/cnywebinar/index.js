@@ -57,7 +57,9 @@ function Index({ status, theme, setFormContent, signup }) {
               title: `${
                 FirstName ? FirstName : '綠色和平支持者'
               }，感謝您報名綠色新春教室`,
-              description: ['為無塑環境多走一步，捐助支持走塑項目。'],
+              description: [
+                '為我們的無塑未來與環境多走一步，捐助支持綠色和平走塑項目。',
+              ],
             }}
             removeMask="true"
           ></ThanksBanner>
