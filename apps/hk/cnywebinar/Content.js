@@ -1,6 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Box, Heading, Text, Image, List, ListItem } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Text,
+  Image,
+  List,
+  ListItem,
+  UnorderedList,
+} from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
@@ -62,24 +70,15 @@ const Content = ({ theme, speaker1Ref, speaker2Ref, speaker3Ref }) => {
         <Webinar showTitle={false} content={WebinarContent} />
       </Box>
 
-      <Box {...paragraphProps} bgColor="#F9F9F9" borderRadius={8} p={4}>
+      <Box {...paragraphProps} bgColor="gray.50" borderRadius={8} p={6}>
         裸買店「四圍斟」店長Susan將會聯同綠色和平項目主任譚穎琳（Leanne）、社區外展主任柯家文（Kaman）在網上教室裡，同你分享豐富新春減廢心得，節目內容包括：
-        <List mt={3}>
-          <ListItem _before={{ content: `"- "` }}>
-            裸買店主分享環保辦年貨心得
-          </ListItem>
-          <ListItem _before={{ content: `"- "` }}>
-            新春換物貼士與資源平台分享
-          </ListItem>
-          <ListItem _before={{ content: `"- "` }}>
-            新春換物貼士與資源平台分享
-          </ListItem>
-          <ListItem _before={{ content: `"- "` }}>環保清潔劑製作</ListItem>
-          <ListItem _before={{ content: `"- "` }}>
-            新春大掃除減廢與重用、交換資源心得
-          </ListItem>
-          <ListItem _before={{ content: `"- "` }}>全城走塑工作與展望</ListItem>
-        </List>
+        <UnorderedList my={4} spacing={3}>
+          <ListItem>裸買店店主分享環保辦年貨心得</ListItem>
+          <ListItem>新春換物貼士與資源平台分享</ListItem>
+          <ListItem>環保清潔劑製作</ListItem>
+          <ListItem>新春大掃除減廢與重用、交換資源心得</ListItem>
+          <ListItem>全城走塑工作與展望</ListItem>
+        </UnorderedList>
       </Box>
 
       <Heading {...headingProps}>

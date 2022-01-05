@@ -1,27 +1,8 @@
 import React from 'react';
-import { Heading, Box, Text, Image } from '@chakra-ui/react';
-// import NextImage from "next/image";
+import { Heading, Box, Stack, Text, Image } from '@chakra-ui/react';
 import PageContainer from '@containers/pageContainer';
-import { TextWrapper } from './Banner.style';
 
-// const Image = chakra(NextImage, {
-//   baseStyle: { w: '100%', h: '100%' },
-//   shouldForwardProp: (prop) =>
-//     [
-//       "width",
-//       "height",
-//       "src",
-//       "alt",
-//       "quality",
-//       "placeholder",
-//       "blurDataURL",
-//       "loader ",
-//       "objectFit",
-//       "objectPosition"
-//     ].includes(prop),
-// });
-
-export default function Index({ content, bgImage }) {
+export default function Index({ content, bgImage, removeMask, children }) {
   return (
     <>
       <Box
@@ -33,30 +14,33 @@ export default function Index({ content, bgImage }) {
         <Box pos={'relative'} zIndex={3}>
           <PageContainer>
             <Box py={8} px={4} maxW={{ base: '100%', md: '50%' }}>
-              <TextWrapper>
+              <Stack spacing="4">
                 {content.title && (
                   <Heading
                     as="h1"
-                    fontSize={{ base: 'var(--text-xl)', md: 'var(--text-2xl)' }}
-                    lineHeight="1.3"
-                    color={'white'}
+                    fontSize={{
+                      base: 'var(--text-xl)',
+                      md: 'var(--text-2xl)',
+                    }}
+                    color="white"
                     mb={4}
                     dangerouslySetInnerHTML={{ __html: content.title }}
                   />
                 )}
                 {content.description && (
-                  <>
+                  <Box>
                     {content.description.map((d, i) => (
                       <Text
                         key={i}
                         fontSize="var(--text-base)"
-                        color={'#FFF'}
+                        color="white"
                         dangerouslySetInnerHTML={{ __html: d }}
                       />
                     ))}
-                  </>
+                  </Box>
                 )}
-              </TextWrapper>
+                {children}
+              </Stack>
             </Box>
           </PageContainer>
         </Box>
@@ -68,19 +52,20 @@ export default function Index({ content, bgImage }) {
             width={'100%'}
             objectFit={'cover'}
             objectPosition={{ base: '20% top', md: 'center top' }}
-            alt={'Greenpeace 綠色和平'}
           />
         </Box>
 
-        <Box
-          className={'heroMask'}
-          pos={'absolute'}
-          top={0}
-          right={0}
-          left={0}
-          bottom={0}
-          bgColor={'rgba(0,0,0,0.5)'}
-        />
+        {!removeMask && (
+          <Box
+            className={'heroMask'}
+            pos={'absolute'}
+            top={0}
+            right={0}
+            left={0}
+            bottom={0}
+            bgColor={'rgba(0,0,0,0.5)'}
+          />
+        )}
       </Box>
     </>
   );

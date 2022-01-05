@@ -32,7 +32,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?campaign=oceans_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -47,11 +47,11 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "請捐助支持走塑工作",
+  "donate_header": "我願意支持解決塑膠污染！",
   "donate_description": [
-    "您的捐助，將有效地、直接地幫助我們推動本地走塑進程，緩解塑膠污染。"
+    "我要捐款支持解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。"
   ],
-  "default_message": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策。",
+  "default_message": "我要捐款支持解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。",
   "donate_suggestion_header": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
   "donate_suggestion_message": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
   "currency": "HKD",
@@ -64,19 +64,19 @@
     {
       "label": "500",
       "value": 500,
-      "description": "支持綠色和平持續搜集第一手海洋真相，透過傳播媒體送到您與全球的眼前！",
+      "description": "支持綠色和平發起聯署行動，集合民眾力量向企業、政府發聲，要求減塑。",
       "currency": "HKD"
     },
     {
       "label": "700",
       "value": 700,
-      "description": "支持綠色和平船艦調查所需裝備，監察破壞海洋的行為，實時前赴應對突發環境災難！",
+      "description": "支持綠色和平推廣減塑議題，提高公眾對塑膠污染的意識和關注。",
       "currency": "HKD"
     },
     {
       "label": "900",
       "value": 900,
-      "description": "支持綠色和平團隊聯同科學家，到各個海域進行實地考察與研究工作，並展開國際倡議行動！",
+      "description": "支持綠色和平在全球搜集可行的減塑模式或替代方案，推動香港企業、政府參考及採納。",
       "currency": "HKD"
     },
     {
@@ -101,7 +101,7 @@
     {
       "label": "200",
       "value": 200,
-      "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
+      "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策 ，全面減緩塑膠污染問題。",
       "currency": "HKD"
     },
     {

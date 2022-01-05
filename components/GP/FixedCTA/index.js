@@ -28,8 +28,12 @@ const FixedCTA = ({ onClick, status, form }) => {
         width="100%"
         fontSize="xl"
         px={2}
-        py={6}
+        py={8}
         color="white"
+        borderTopRightRadius={'4px'}
+        borderTopLeftRadius={'4px'}
+        borderBottomLeftRadius={0}
+        borderBottomRightRadius={0}
         bg="orange.500"
         _hover={{ bg: 'orange.300' }}
         onClick={onClick}
