@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
-import { numberFormat, capitalize } from '@common/utils';
+import { numberFormat, capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
-
 import {
   FormControl,
   FormErrorMessage,
@@ -23,6 +22,11 @@ import {
   Checkbox,
   Heading,
 } from '@chakra-ui/react';
+import {
+  MAIL_DOMAINS,
+  MAIL_TOP_DOMAINS,
+  EXCLUDE_URL_PARAMETERS,
+} from '@common/constants';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 
 const MyForm = (props) => {
@@ -44,9 +48,6 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
-    showProcess = true, //TBC
-    showBirthdate = true, //TBC
-    showNewletter = true, //TBC
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -91,21 +92,8 @@ const MyForm = (props) => {
   }, [signup.submitted]);
 
   const mailSuggestion = (value) => {
-    const domains = [
-      'me.com',
-      'outlook.com',
-      'netvigator.com',
-      'cloud.com',
-      'live.hk',
-      'msn.com',
-      'gmail.com',
-      'hotmail.com',
-      'ymail.com',
-      'yahoo.com',
-      'yahoo.com.tw',
-      'yahoo.com.hk',
-    ];
-    const topLevelDomains = ['com', 'net', 'org'];
+    const domains = MAIL_DOMAINS;
+    const topLevelDomains = MAIL_TOP_DOMAINS;
 
     if (value) {
       Mailcheck.run({
@@ -125,7 +113,7 @@ const MyForm = (props) => {
 
   return (
     <Box>
-      <Box py="8" px="4">
+      <Box py={{ base: 6, md: 8 }} px={{ base: 4, md: 6 }}>
         <Stack spacing="4">
           {numberOfResponses && numberOfTarget ? (
             <Box>
@@ -350,6 +338,10 @@ const MyEnhancedForm = withFormik({
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
     // TODO: Fix Access-Control-Allow-Origin issue
     const endPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
+    const completionURL = await clearURL(
+      window?.location.href,
+      EXCLUDE_URL_PARAMETERS,
+    );
 
     const formData = {
       ...hiddenFormData,
@@ -362,7 +354,7 @@ const MyEnhancedForm = withFormik({
       CampaignId: isProd ? theme.CampaignId : '7012u000000OxDYAA0',
       LeadSource: LeadSource,
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
-      CompletionURL: window.location.href ? window.location.href : '',
+      CompletionURL: completionURL,
     };
 
     setSubmitting(true);

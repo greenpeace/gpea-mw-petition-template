@@ -23,6 +23,11 @@ import {
   Checkbox,
   Heading,
 } from '@chakra-ui/react';
+import {
+  MAIL_DOMAINS,
+  MAIL_TOP_DOMAINS,
+  EXCLUDE_URL_PARAMETERS,
+} from '@common/constants';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 
 const MyForm = (props) => {
@@ -88,21 +93,8 @@ const MyForm = (props) => {
   }, [signup.submitted]);
 
   const mailSuggestion = (value) => {
-    const domains = [
-      'me.com',
-      'outlook.com',
-      'netvigator.com',
-      'cloud.com',
-      'live.hk',
-      'msn.com',
-      'gmail.com',
-      'hotmail.com',
-      'ymail.com',
-      'yahoo.com',
-      'yahoo.com.tw',
-      'yahoo.com.hk',
-    ];
-    const topLevelDomains = ['com', 'net', 'org'];
+    const domains = MAIL_DOMAINS;
+    const topLevelDomains = MAIL_TOP_DOMAINS;
 
     if (value) {
       Mailcheck.run({
