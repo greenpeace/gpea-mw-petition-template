@@ -4,6 +4,7 @@ import {
   SimpleGrid,
   useColorModeValue,
   Text,
+  Stack,
 } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 import { paragraphProps } from '@common/styles/components/contentStyle';
@@ -26,7 +27,9 @@ function TestmonialCard(props) {
       px={6}
       py={8}
       justifyContent={'space-between'}
-      position={'relative'}
+      position="realtive"
+      border="1px"
+      borderColor="gray.100"
       bg={useColorModeValue('white', 'gray.800')}
       _before={{
         content: '""',
@@ -48,22 +51,23 @@ function TestmonialCard(props) {
         height={'120px'}
         width={'120px'}
         alignSelf={'center'}
-        m={{ base: '0 0 35px 0', md: '0 20px 0 0' }}
+        m={{ base: '0 0 20px 0', xl: '0 20px 0 0' }}
       />
-      <Flex
+      <Stack
         direction={'column'}
         textAlign={'left'}
         justifyContent={'space-between'}
+        spacing="4"
       >
-        <Text {...pStyle}>{content}</Text>
-        <Text fontWeight="bold" fontSize="md" letterSpacing={'1px'}>
+        <Text fontWeight="bold">
           {name}
           <br />
           <Text as="span" fontSize="sm" color={'gray.500'}>
             {role}
           </Text>
         </Text>
-      </Flex>
+        <Text {...pStyle}>{content}</Text>
+      </Stack>
     </Flex>
   );
 }
