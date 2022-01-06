@@ -30,4 +30,5 @@
 
 .plastics {
   --thematic-color: var(--plastics);
+  --thematic-color-300: var(--plastics-300);
 }
