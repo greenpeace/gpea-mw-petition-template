@@ -44,7 +44,7 @@ const Thankyou = ({ theme, signup }) => {
       <Box {...paragraphProps}>
         <UnorderedList>
           <ListItem>
-            2020 年
+            <strong>2020 年</strong>
             <UnorderedList>
               <ListItem>
                 統一超商於臺南 3 間門市試辦為期三個月的容器租借服務
@@ -56,7 +56,7 @@ const Thankyou = ({ theme, signup }) => {
             </UnorderedList>
           </ListItem>
           <ListItem>
-            2021 年
+            <strong>2021 年</strong>
             <UnorderedList>
               <ListItem>
                 綠色和平發起「絕塑好店計畫」，選定臺中草悟道商圈作為循環杯示範商圈，並在

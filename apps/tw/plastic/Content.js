@@ -59,7 +59,7 @@ const Content = ({ theme }) => {
         <Text as="span" color={`theme.${themeInterests}`}>
           透過連署
           <br />
-          讓市政府聽見您的聲音 ！
+          讓市政府聽見您的聲音！
         </Text>
       </Heading>
 
