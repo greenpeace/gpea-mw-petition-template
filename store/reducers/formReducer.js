@@ -4,8 +4,14 @@ const initState = {
   data: {},
   content: {},
   signupNumbers: {
-    hk: '',
-    tw: '',
+    hk: {
+      NumberOfResponses: '',
+      Petition_Signup_Target__c: '',
+    },
+    tw: {
+      NumberOfResponses: '',
+      Petition_Signup_Target__c: '',
+    },
   },
   suggestion: '',
   showMessage: false,

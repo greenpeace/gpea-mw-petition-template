@@ -45,36 +45,3 @@ const MyApp = ({ Component, pageProps }) => {
 };
 
 export default wrapper.withRedux(MyApp);
-
-export async function getStaticProps() {
-  const envProjectName = process.env.projectName;
-  const fetchURLs = [
-    process.env.themeEndpoint,
-    process.env.signupNumbersHK,
-    process.env.signupNumbersTW,
-  ];
-
-  const result = await axios.all(fetchURLs.map((d) => axios.get(d))).then(
-    axios.spread(async (...res) => {
-      const getTheme = await res[0].data.records.find(
-        (d) => d.ProjectName === envProjectName,
-      );
-      const getSignupNumbersHK = res[1].data.find(
-        (d) => d.Id === getTheme.CampaignId,
-      );
-      const getSignupNumbersTW = res[2].data.find(
-        (d) => d.Id === getTheme.CampaignId,
-      );
-
-      return { getTheme, getSignupNumbersHK, getSignupNumbersTW };
-    }),
-  );
-
-  return {
-    props: {
-      themeData: result.getTheme || {},
-      signupNumbersHK: result.getSignupNumbersHK || '',
-      signupNumbersTW: result.getSignupNumbersTW || '',
-    },
-  };
-}
