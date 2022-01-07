@@ -50,9 +50,8 @@ const Content = ({ theme }) => {
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        估計 2020 年全臺一次性飲料杯垃圾量高達 20 億個，要做到有效減量，需要
-        <br />
-        政府積極透過收費和誘因減少一次性塑膠，推動循環使用模式，引導企業一同站在減塑陣線。
+        估計 2020 年全臺一次性飲料杯垃圾量高達 20
+        億個，要做到有效減量，需要政府積極透過收費和誘因減少一次性塑膠，推動循環使用模式，引導企業一同站在減塑陣線。
       </Text>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -74,7 +73,7 @@ const Content = ({ theme }) => {
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        <strong>-1 減少一次性塑膠：</strong>提高一次性餐具計價收費 2025
+        <strong>-1 減少一次性塑膠：</strong>提高一次性餐具計價，收費 2025
         年全市塑膠使用量減半
         <br />
         <strong>+ ∞ 增加循環使用：</strong>2025 年市內循環容器使用比例達

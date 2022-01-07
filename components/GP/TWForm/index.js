@@ -86,6 +86,15 @@ const MyForm = (props) => {
     };
   }, [numberOfResponses]);
 
+  //setting additional fileds for formik
+  useEffect(() => {
+    if (Object.keys(formContent).length > 0) {
+      if (formContent.counties) setFieldValue('Counties', '');
+      if (formContent.namelist)
+        setFieldValue('Namelist', formContent.namelist[0].value);
+    }
+  }, [formContent]);
+
   useEffect(() => {
     if (signup.submitted) {
       setWebStatus(true);
@@ -261,6 +270,35 @@ const MyForm = (props) => {
               </FormControl>
             </Box>
 
+            {formContent.counties && (
+              <Box>
+                <FormControl
+                  id="Counties"
+                  isInvalid={errors.Counties && touched.Counties}
+                >
+                  <Select
+                    onChange={handleChange}
+                    fontSize={'16px'}
+                    placeholder={formContent.label_counties}
+                    size={'lg'}
+                  >
+                    {formContent.counties.map((d, index) => (
+                      <option
+                        key={index}
+                        value={`${d.value}`}
+                        disabled={d.disabled ? true : null}
+                      >
+                        {d.value}
+                      </option>
+                    ))}
+                  </Select>
+                  <FormErrorMessage color="red">
+                    {errors.Counties}
+                  </FormErrorMessage>
+                </FormControl>
+              </Box>
+            )}
+
             <Box>
               <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
                 <Box flex={1} mr={2} pt={1}>
@@ -271,11 +309,38 @@ const MyForm = (props) => {
                     defaultChecked
                   />
                 </Box>
-                <Text fontSize="xs" color={'gray.700'}>
-                  {formContent.label_newsletter}
-                </Text>
+                <Text
+                  fontSize="xs"
+                  color={'gray.700'}
+                  dangerouslySetInnerHTML={{
+                    __html: formContent.label_newsletter,
+                  }}
+                ></Text>
               </Flex>
             </Box>
+
+            {formContent.namelist && (
+              <Box>
+                <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+                  <Box flex={1} mr={2} pt={1}>
+                    <Checkbox
+                      id="Namelist"
+                      name="Namelist"
+                      onChange={handleChange}
+                      defaultChecked
+                      value={formContent.namelist[0].value}
+                    />
+                  </Box>
+                  <Text
+                    fontSize="xs"
+                    color={'gray.700'}
+                    dangerouslySetInnerHTML={{
+                      __html: formContent.label_namelist,
+                    }}
+                  ></Text>
+                </Flex>
+              </Box>
+            )}
 
             <Box>
               <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
@@ -301,7 +366,6 @@ const MyEnhancedForm = withFormik({
 
   validate: async (values, props) => {
     const { formContent } = props;
-
     return validation(values, formContent);
   },
 
@@ -326,6 +390,9 @@ const MyEnhancedForm = withFormik({
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: window.location.href ? window.location.href : '',
     };
+
+    if (values.Counties) formData.CampaignData1__c = values.Counties;
+    if (values.Namelist) formData.CampaignData2__c = values.Namelist;
 
     setSubmitting(true);
     submitForm(formData, endPoint);
