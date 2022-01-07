@@ -11,24 +11,39 @@ import * as statusActions from 'store/actions/action-types/status-actions';
 
 /* Determine the returned project index by env variable */
 const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
+const envProjectName = process.env.projectName;
+const envProjectMarket = process.env.projectMarket;
+const themeEndpointURL = process.env.themeEndpoint;
+const signupNumbersHKURL = process.env.signupNumbersHK;
+const signupNumbersTWURL = process.env.signupNumbersTW;
 
-function Index({
-  setTheme,
-  themeData,
-  signupNumbersHK,
-  signupNumbersTW,
-  setSignupNumbers,
-  setWebStatus,
-}) {
+function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
   const router = useRouter();
+
+  /** page=2 force to result page */
   useEffect(() => {
-    setTheme(themeData);
-    setSignupNumbers({ hk: signupNumbersHK, tw: signupNumbersTW });
     const currentPage = router.query?.page;
     if (currentPage === '2') {
       setWebStatus(true);
     }
   }, [router]);
+
+  /** Fetch signup data on load */
+  useEffect(async () => {
+    const fetchURLs = {
+      hk: signupNumbersHKURL,
+      tw: signupNumbersTWURL,
+    };
+
+    const signupData = await axios
+      .get(fetchURLs[themeData?.Market])
+      .then((response) => {
+        return response.data.find((d) => d.Id === themeData?.CampaignId);
+      })
+      .catch((error) => console.log(error));
+
+    setSignupNumbers({ [themeData?.Market]: signupData });
+  }, []);
 
   useEffect(() => {
     const market = themeData?.Market;
@@ -51,6 +66,7 @@ function Index({
       };
       TagManager.initialize(tagManagerArgs);
     }
+    setTheme(themeData);
   }, [themeData]);
 
   if (DynamicComponent) {
@@ -76,39 +92,23 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export async function getStaticProps() {
-  const envProjectName = process.env.projectName;
-  const envProjectMarket = process.env.projectMarket;
-
-  const fetchURLs = [
-    process.env.themeEndpoint,
-    process.env.signupNumbersHK,
-    process.env.signupNumbersTW,
-  ];
-
-  const result = await axios.all(fetchURLs.map((d) => axios.get(d))).then(
-    axios.spread(async (...res) => {
-      const getTheme = await res[0].data.records.find(
+  const singleResult = await axios
+    .get(themeEndpointURL)
+    .then((response) => {
+      return response.data.records.find(
         (d) =>
           d.ProjectName === envProjectName && d.Market === envProjectMarket,
       );
-      const getSignupNumbersHK = res[1].data.find(
-        (d) => d.Id === getTheme?.CampaignId,
-      );
-      const getSignupNumbersTW = res[2].data.find(
-        (d) => d.Id === getTheme?.CampaignId,
-      );
+    })
+    .catch((error) => console.log(error));
 
-      return { getTheme, getSignupNumbersHK, getSignupNumbersTW };
-    }),
-  );
+  console.log('Building from ' + envProjectMarket + ':' + envProjectName);
 
-  !result.getTheme && console.warn('PROJECT NAME NOT FOUND');
+  !singleResult && console.warn('PROJECT NAME NOT FOUND');
 
   return {
     props: {
-      themeData: result.getTheme || {},
-      signupNumbersHK: result.getSignupNumbersHK || '',
-      signupNumbersTW: result.getSignupNumbersTW || '',
+      themeData: singleResult || {},
     },
   };
 }

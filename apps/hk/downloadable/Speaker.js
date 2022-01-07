@@ -1,10 +1,10 @@
 import {
   Avatar,
+  chakra,
   Flex,
   SimpleGrid,
   useColorModeValue,
   Text,
-  Stack,
 } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 import { paragraphProps } from '@common/styles/components/contentStyle';
@@ -24,12 +24,9 @@ function TestmonialCard(props) {
       direction={{ base: 'column', xl: 'row' }}
       width={'full'}
       rounded={'xl'}
-      px={6}
-      py={8}
+      p={8}
       justifyContent={'space-between'}
-      position="realtive"
-      border="1px"
-      borderColor="gray.100"
+      position={'relative'}
       bg={useColorModeValue('white', 'gray.800')}
       _before={{
         content: '""',
@@ -51,23 +48,24 @@ function TestmonialCard(props) {
         height={'120px'}
         width={'120px'}
         alignSelf={'center'}
-        m={{ base: '0 0 20px 0', xl: '0 20px 0 0' }}
+        m={{ base: '0 0 35px 0', md: '0 20px 0 0' }}
       />
-      <Stack
+      <Flex
         direction={'column'}
         textAlign={'left'}
         justifyContent={'space-between'}
-        spacing="4"
       >
-        <Text fontWeight="bold">
+        <chakra.p {...pStyle} pb={4}>
+          {content}
+        </chakra.p>
+        <chakra.p fontWeight={'bold'} fontSize={16}>
           {name}
           <br />
-          <Text as="span" fontSize="sm" color={'gray.500'}>
+          <chakra.span fontSize={14} fontFamily={'Inter'} color={'gray.500'}>
             {role}
-          </Text>
-        </Text>
-        <Text {...pStyle}>{content}</Text>
-      </Stack>
+          </chakra.span>
+        </chakra.p>
+      </Flex>
     </Flex>
   );
 }

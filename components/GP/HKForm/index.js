@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
-import { numberFormat, capitalize } from '@common/utils';
+import { numberFormat, capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
-
 import {
   FormControl,
   FormErrorMessage,
@@ -23,6 +22,11 @@ import {
   Checkbox,
   Heading,
 } from '@chakra-ui/react';
+import {
+  MAIL_DOMAINS,
+  MAIL_TOP_DOMAINS,
+  EXCLUDE_URL_PARAMETERS,
+} from '@common/constants';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 
 const MyForm = (props) => {
@@ -44,9 +48,6 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
-    showProcess = true, //TBC
-    showBirthdate = true, //TBC
-    showNewletter = true, //TBC
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -91,21 +92,8 @@ const MyForm = (props) => {
   }, [signup.submitted]);
 
   const mailSuggestion = (value) => {
-    const domains = [
-      'me.com',
-      'outlook.com',
-      'netvigator.com',
-      'cloud.com',
-      'live.hk',
-      'msn.com',
-      'gmail.com',
-      'hotmail.com',
-      'ymail.com',
-      'yahoo.com',
-      'yahoo.com.tw',
-      'yahoo.com.hk',
-    ];
-    const topLevelDomains = ['com', 'net', 'org'];
+    const domains = MAIL_DOMAINS;
+    const topLevelDomains = MAIL_TOP_DOMAINS;
 
     if (value) {
       Mailcheck.run({
@@ -125,7 +113,7 @@ const MyForm = (props) => {
 
   return (
     <Box>
-      <Box py="8" px="4">
+      <Box py={{ base: 6, md: 8 }} px={{ base: 4, md: 6 }}>
         <Stack spacing="4">
           {numberOfResponses && numberOfTarget ? (
             <Box>
@@ -170,31 +158,33 @@ const MyForm = (props) => {
           </Box>
           <Form onSubmit={handleSubmit}>
             <Stack spacing="4">
-              <Stack direction={`row`}>
-                <Box flex={1}>
-                  <Field
-                    errors={errors.LastName}
-                    touched={touched.LastName}
-                    label={formContent.label_last_name}
-                    name={'LastName'}
-                    type={'text'}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  />
-                </Box>
+              <Box>
+                <Stack direction={`row`}>
+                  <Box flex={1}>
+                    <Field
+                      errors={errors.LastName}
+                      touched={touched.LastName}
+                      label={formContent.label_last_name}
+                      name={'LastName'}
+                      type={'text'}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                    />
+                  </Box>
 
-                <Box flex={1}>
-                  <Field
-                    errors={errors.FirstName}
-                    touched={touched.FirstName}
-                    label={formContent.label_first_name}
-                    name={'FirstName'}
-                    type={'text'}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  />
-                </Box>
-              </Stack>
+                  <Box flex={1}>
+                    <Field
+                      errors={errors.FirstName}
+                      touched={touched.FirstName}
+                      label={formContent.label_first_name}
+                      name={'FirstName'}
+                      type={'text'}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                    />
+                  </Box>
+                </Stack>
+              </Box>
 
               <Box>
                 <FormControl
@@ -235,98 +225,82 @@ const MyForm = (props) => {
                 </FormControl>
               </Box>
 
-              <HStack align="flex-start">
-                <Box>
-                  <FormControl id="mobileCountryCode">
-                    <Select
-                      name="MobileCountryCode"
-                      onChange={handleChange}
-                      fontSize={'16px'}
-                      size={'lg'}
-                    >
-                      {(formContent.mobile_country_code || []).map((d) => (
-                        <option key={d.value} value={d.value}>
-                          {d.label}
-                        </option>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Box>
-                <Box flex={1}>
-                  <Field
-                    errors={errors.MobilePhone}
-                    touched={touched.MobilePhone}
-                    label={formContent.label_phone}
-                    name={'MobilePhone'}
-                    type="tel"
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  />
-                </Box>
-              </HStack>
-
-                <Box>
-                  <FormControl
-                    id="Birthdate"
-                    isInvalid={errors.Birthdate && touched.Birthdate}
-                  >
-                    <Select
-                      onChange={handleChange}
-                      fontSize={'16px'}
-                      placeholder={formContent.label_year_of_birth}
-                      size={'lg'}
-                    >
-                      {birthDateYear &&
-                        birthDateYear.map((d) => (
-                          <option key={d.value} value={`${d.value}-01-01`}>
-                            {d.value}
+              <Box>
+                <HStack align="flex-start">
+                  <Box>
+                    <FormControl id="mobileCountryCode">
+                      <Select
+                        name="MobileCountryCode"
+                        onChange={handleChange}
+                        fontSize={'16px'}
+                        size={'lg'}
+                      >
+                        {(formContent.mobile_country_code || []).map((d) => (
+                          <option key={d.value} value={d.value}>
+                            {d.label}
                           </option>
                         ))}
-                    </Select>
-                    <FormErrorMessage color="red">
-                      {errors.Birthdate}
-                    </FormErrorMessage>
-                  </FormControl>
-                </Box>
-
-                <Box>
-                  <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-                    <Box flex={1} mr={2} pt={1}>
-                      <Checkbox
-                        name="OptIn"
-                        defaultChecked
-                        // colorScheme={`${theme.ProjectName}`}
-                        onChange={handleChange}
-                      />
-                    </Box>
-                    <Text
-                      fontSize="xs"
-                      color={'gray.700'}
-                      dangerouslySetInnerHTML={{
-                        __html: formContent.label_newsletter,
-                      }}
+                      </Select>
+                    </FormControl>
+                  </Box>
+                  <Box flex={1}>
+                    <Field
+                      errors={errors.MobilePhone}
+                      touched={touched.MobilePhone}
+                      label={formContent.label_phone}
+                      name={'MobilePhone'}
+                      type="tel"
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
                     />
-                  </Flex>
-                </Box>
-              {/* <Flex direction={{ base: 'row' }} align={'center'}>
-            <Box flex={1} mr={4}>
-              <Text fontSize={'xs'}>{formContent.label_newsletter}</Text>
-            </Box>
-            <HStack spacing={2}>
-              {(formContent.new_letter || []).map((d, i) => (
-                <Button
-                  key={i}
-                  bgColor={d.value === values.Newsletter ? '#66cc00' : '#FFF'}
-                  color={d.value === values.Newsletter ? '#FFF' : '#000'}
-                  variant={`outline`}
-                  fontSize={'sm'}
-                  onClick={() => setFieldValue('Newsletter', d.value)}
+                  </Box>
+                </HStack>
+              </Box>
+
+              <Box>
+                <FormControl
+                  id="Birthdate"
+                  isInvalid={errors.Birthdate && touched.Birthdate}
                 >
-                  {d.label}
-                </Button>
-              ))}
-            </HStack>
-          </Flex> */}
+                  <Select
+                    onChange={handleChange}
+                    fontSize={'16px'}
+                    placeholder={formContent.label_year_of_birth}
+                    size={'lg'}
+                  >
+                    {birthDateYear &&
+                      birthDateYear.map((d) => (
+                        <option key={d.value} value={`${d.value}-01-01`}>
+                          {d.value}
+                        </option>
+                      ))}
+                  </Select>
+                  <FormErrorMessage color="red">
+                    {errors.Birthdate}
+                  </FormErrorMessage>
+                </FormControl>
+              </Box>
+
+              <Box>
+                <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+                  <Box flex={1} mr={2} pt={1}>
+                    <Checkbox
+                      name="OptIn"
+                      defaultChecked
+                      // colorScheme={`${theme.ProjectName}`}
+                      onChange={handleChange}
+                    />
+                  </Box>
+                  <Text
+                    fontSize="xs"
+                    color={'gray.700'}
+                    dangerouslySetInnerHTML={{
+                      __html: formContent.label_newsletter,
+                    }}
+                  />
+                </Flex>
+              </Box>
+
               <Box>
                 <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
                   {formContent.submit_text}
@@ -334,15 +308,6 @@ const MyForm = (props) => {
               </Box>
             </Stack>
           </Form>
-          {formContent.form_remind && (
-            <Box>
-              <Text
-                fontSize="xs"
-                color={'gray.700'}
-                dangerouslySetInnerHTML={{ __html: formContent.form_remind }}
-              />
-            </Box>
-          )}
         </Stack>
       </Box>
     </Box>
@@ -350,13 +315,14 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-  mapPropsToValues: ({props}) => ({
+  mapPropsToValues: ({ props }) => ({
     Email: '',
     FirstName: '',
     LastName: '',
     MobileCountryCode: '852',
     MobilePhone: '',
     OptIn: true,
+    Birthdate: '',
   }),
 
   validate: async (values, props) => {
@@ -372,6 +338,10 @@ const MyEnhancedForm = withFormik({
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
     // TODO: Fix Access-Control-Allow-Origin issue
     const endPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
+    const completionURL = await clearURL(
+      window?.location.href,
+      EXCLUDE_URL_PARAMETERS,
+    );
 
     const formData = {
       ...hiddenFormData,
@@ -384,7 +354,7 @@ const MyEnhancedForm = withFormik({
       CampaignId: isProd ? theme.CampaignId : '7012u000000OxDYAA0',
       LeadSource: LeadSource,
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
-      CompletionURL: window.location.href ? window.location.href : '',
+      CompletionURL: completionURL,
     };
 
     setSubmitting(true);

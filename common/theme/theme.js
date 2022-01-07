@@ -13,12 +13,12 @@ const theme = extendTheme({
   },
   colors: {
     brand: {
-      100: '#ddffa3',
-      300: '#a2e649',
-      400: '#85D633',
+      100: 'var(--green-100)',
+      300: 'var(--green-300)',
+      400: 'var(--green-400)',
       500: 'var(--green-500)', // Default GP
-      600: '#57AD00',
-      700: '#378000',
+      600: 'var(--green-600)',
+      700: 'var(--green-700)',
       900: '#133300',
     },
     gray: {
@@ -32,6 +32,12 @@ const theme = extendTheme({
       300: 'var(--orange-300)',
       500: 'var(--orange-500)',
       700: 'var(--orange-700)',
+    },
+    blue: {
+      100: 'var(--blue-100)',
+      300: 'var(--blue-300)',
+      500: 'var(--blue-500)',
+      900: 'var(--blue-900)',
     },
     default: {
       100: 'var(--green-100)',
@@ -75,6 +81,7 @@ const theme = extendTheme({
     },
     theme: {
       default: 'var(--brand)',
+      general: 'var(--brand)',
       arctic: 'var(--arctic)',
       health: 'var(--health)',
       climate: 'var(--climate)',
