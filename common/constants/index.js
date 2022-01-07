@@ -1,4 +1,4 @@
-export const EXCLUDE_URL_PARAMETERS = ['_gl', '_ga', 'gclid', 'fbclid'];
+export const EXCLUDE_URL_PARAMETERS = ['_gl', '_ga', '_gl', 'gclid', 'fbclid'];
 
 export const MAIL_DOMAINS = [
   'me.com',
