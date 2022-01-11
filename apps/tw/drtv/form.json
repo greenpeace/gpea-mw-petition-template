@@ -22,6 +22,7 @@
 
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
+  "minus_num_alert": "請勿輸入小於0的數字",
 
   "invalid_email_alert": "請填上有效電子郵件",
   "invalid_format_alert": "請輸入有效格式",
