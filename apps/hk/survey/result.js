@@ -163,7 +163,7 @@ function Index({
                 </ContentContainer>
               )}
             </Box>
-            <Box flex={1} maxW="500px" ref={myRef}>
+            <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
                   {submitted ? <DonateForm /> : <SignupForm />}
