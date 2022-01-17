@@ -37,6 +37,7 @@ export default function Index({ content, bgImage, removeMask }) {
                         md: 'var(--text-2xl)',
                       }}
                       color="white"
+                      textShadow="0 0 1px rgba(0,0,0, .2)"
                       dangerouslySetInnerHTML={{ __html: content.title }}
                     />
                   </Box>
@@ -86,7 +87,6 @@ export default function Index({ content, bgImage, removeMask }) {
 
         {!removeMask && (
           <Box
-            className={'heroMask'}
             pos={'absolute'}
             top={0}
             right={0}

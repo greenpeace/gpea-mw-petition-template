@@ -11,7 +11,7 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'general',
+            gCampaign: 'plastics',
             gBasket: 'cnywebinar',
           });
         `,
