@@ -11,7 +11,7 @@ import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/chuen_hub.jpg';
+import heroBannerImage from './images/revised_banner.jpg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
@@ -50,9 +50,12 @@ function Index({ status, theme, setFormContent, signup }) {
           content={{
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
-            }，感謝您下載<br/> 綠色生活手冊`,
-            description: ['為無塑環境多走一步，捐助支持走塑項目。'],
+            }，感謝您下載綠色生活手冊`,
+            description: [
+              '指南將於數分鐘內寄送到您的電郵，請查閱。<br/>為無塑環境多走一步，捐助支持走塑項目。',
+            ],
           }}
+          removeMask="true"
         />
       ) : (
         <HeroBanner
@@ -61,6 +64,7 @@ function Index({ status, theme, setFormContent, signup }) {
             title: '請即下載<br/>綠色生活手冊新春篇',
             description: [''],
           }}
+          removeMask="true"
         />
       )}
       <PageContainer>

@@ -2,7 +2,7 @@ import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actio
 
 const initState = {
   data: {
-    LeadSource: 'Petition - Plastics',
+    LeadSource: '',
     Petition_Interested_In_Arctic__c: false,
     Petition_Interested_In_Climate__c: false,
     Petition_Interested_In_Forest__c: false,

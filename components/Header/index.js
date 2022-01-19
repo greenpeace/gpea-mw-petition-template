@@ -10,6 +10,8 @@ const WithSubnavigation = ({ href }) => {
       bgColor={'brand.500'}
       borderBottom={'1px solid var(--shades-100)'}
       boxShadow={'var(--shadow-1)'}
+      pos={'relative'}
+      zIndex={3}
     >
       <Flex py={'12px'} align={'center'}>
         <Container maxW={'1200px'}>

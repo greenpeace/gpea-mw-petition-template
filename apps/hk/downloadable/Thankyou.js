@@ -44,20 +44,6 @@ const Thankyou = ({ theme, signup }) => {
       <Text as="p" {...paragraphProps}>
         有您的捐助支持，綠色和平便能有更大力量推動政府、企業和社區走塑，並投放更多資源進行個人減廢教育，帶領香港邁向無塑未來。
       </Text>
-
-      <Text as="p" {...paragraphProps}>
-        緩解塑膠污染，捐助綠色和平走塑工作。
-      </Text>
-
-      <Text as="p" {...paragraphProps}>
-        捐款查詢：
-        <br />
-        歡迎致電會員服務熱線 (852) 2854 8318，或電郵至{' '}
-        <a href="mailto:donor.services.hk@greenpeace.org">
-          <u>donor.services.hk@greenpeace.org</u>
-        </a>
-        ，以查詢捐款相關事宜。
-      </Text>
     </>
   );
 };

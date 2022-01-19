@@ -1,9 +1,13 @@
 export function validation(values, formContent) {
   const errors = {};
 
-  if (!values.Email) {
-    errors.Email = formContent.empty_data_alert;
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
+  // if (!values.Email) {
+  //   errors.Email = formContent.empty_data_alert;
+  // } else
+  if (
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email) &&
+    values.Email
+  ) {
     errors.Email = formContent.invalid_email_alert;
   }
 
@@ -30,6 +34,8 @@ export function validation(values, formContent) {
   }
   if (!values.CampaignData3__c && values.CampaignData3__c !== 0) {
     errors.CampaignData3__c = formContent.empty_data_alert;
+  } else if (values.CampaignData3__c < 0) {
+    errors.CampaignData3__c = formContent.minus_num_alert;
   }
 
   if (values.Phone) {

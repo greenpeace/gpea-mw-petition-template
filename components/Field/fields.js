@@ -15,6 +15,8 @@ export const Field = (props) => {
     label,
     handleChange,
     handleBlur,
+    min,
+    max,
     size = 'lg',
   } = props;
 
@@ -29,6 +31,8 @@ export const Field = (props) => {
         onBlur={handleBlur}
         _placeholder={{ fontSize: 16 }}
         size={size}
+        min={min}
+        max={max}
       />
       <FormErrorMessage color="red">{errors}</FormErrorMessage>
     </FormControl>

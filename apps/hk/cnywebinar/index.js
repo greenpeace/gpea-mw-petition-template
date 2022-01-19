@@ -58,7 +58,7 @@ function Index({ status, theme, setFormContent, signup }) {
                 FirstName ? FirstName : '綠色和平支持者'
               }，感謝您報名綠色新春教室`,
               description: [
-                '為我們的無塑未來與環境多走一步，捐助支持綠色和平走塑項目。',
+                '為我們的無塑未來與環境多走一步，捐助支持綠色和平走塑項目。<b>以每月$200捐款支持綠色和平的項目工作，您將獲得兩次「環保手作工作坊」或探訪的機會</b>！名額有限，額滿即止。',
               ],
             }}
             removeMask="true"

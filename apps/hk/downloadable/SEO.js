@@ -11,8 +11,8 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: '',
-            gBasket: '',
+            gCampaign: 'plastics',
+            gBasket: 'downloadable',
           });
         `,
         }}
@@ -36,7 +36,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/12/2650f83a-chuen_hub.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/01/61150b1d-cny-booklet-preview-updatedv2.jpg"
       />
     </Head>
   );

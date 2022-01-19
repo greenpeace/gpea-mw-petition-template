@@ -1,0 +1,7 @@
+export const INIT_SURVEY = 'INIT_SURVEY';
+export const SET_SURVEY = 'SET_SURVEY';
+export const SET_SURVEY_SUCCESS = 'SET_SURVEY_SUCCESS';
+export const SET_SURVEY_ANSWER = 'SET_SURVEY_ANSWER';
+export const SET_SURVEY_QUIZ = 'SET_SURVEY_QUIZ';
+
+export const SET_SURVEY_PAGE = 'SET_SURVEY_PAGE';
