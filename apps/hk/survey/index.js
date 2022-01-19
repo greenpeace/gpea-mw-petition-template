@@ -38,7 +38,7 @@ const Index = ({ survey }) => {
             w="100%"
             h="100%"
             blur={'4px'}
-            opacity={'0.25'}
+            opacity={'0.2'}
             objectFit={'cover'}
             src={isLandingOrQuizPage ? bgPlasticsImage : null}
           />

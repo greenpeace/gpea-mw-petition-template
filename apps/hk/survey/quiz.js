@@ -78,16 +78,12 @@ const Quiz = ({
       <Container maxW={'4xl'} h={'100%'} w={'100%'} pt={'20px'} pb={'100px'}>
         <Center h={'100%'}>
           <Stack w="100%" spacing={6}>
-            <Box
-              alignSelf={'flex-start'}
-              borderColor={'theme.plastics'}
-              borderLeft={'4px'}
-              color={'theme.plastics'}
-              px={4}
-              py={1}
-            >
-              <Text fontWeight={'bold'} fontSize={'xl'}>
-                {current + 1} / {quiz.length}
+            <Box alignSelf={'flex-start'} color={'theme.plastics'}>
+              <Text fontSize={'xl'}>
+                <Text as="span" fontWeight={'bold'} fontSize={'4xl'}>
+                  0{current + 1}
+                </Text>{' '}
+                / {quiz.length}
               </Text>
             </Box>
             <Heading>{currentQuiz?.question.label}</Heading>
