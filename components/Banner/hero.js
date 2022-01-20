@@ -28,8 +28,8 @@ export default function Index({ content, bgImage, removeMask, children }) {
                     dangerouslySetInnerHTML={{ __html: content.title }}
                   />
                 )}
-                {content.description && (
-                  <Box>
+                <Box>
+                  <Stack spacing="4">
                     {content.description.map((d, i) => (
                       <Text
                         key={i}
@@ -38,9 +38,9 @@ export default function Index({ content, bgImage, removeMask, children }) {
                         dangerouslySetInnerHTML={{ __html: d }}
                       />
                     ))}
-                  </Box>
-                )}
-                {children}
+                  </Stack>
+                </Box>
+                <Box>{children}</Box>
               </Stack>
             </Box>
           </PageContainer>

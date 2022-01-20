@@ -5,48 +5,34 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import contentA from './images/GP0466C_High_res.jpg';
-import contentB from './images/GP048X9_Web_size.jpg';
-import contentC from './images/GP04Z2Q_Web_size-4_r.jpg';
-
 const Thankyou = () => {
   return (
     <>
+      <Text as="p" {...paragraphProps}>
+        感謝您聯署支持制止企業政府破壞行為，守護北極生態。
+      </Text>
+
+      <Text as="p" {...paragraphProps}>
+        您的聯署意義重大，我們將一起保護、維持、復育北極奇妙不凡生態的理想。
+        綠色和平一直以行動、科學研究、政策倡議等方式守護北極，您願意多走一步，捐助守護北極的工作嗎？
+        您的捐款將直接資助我們的實地科研任務、揭露各國企業與政府破壞北極的行為、以及國際間的倡議工作，直接幫助達成制止破壞行為，守護北極生態的目標。
+      </Text>
+
       <Heading {...headingProps}>
-        放任氣候危機惡化，北極熊或將於 2100 年滅絕
+        北極正向我們發出求救信號，您可以施以援手！
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        全球暖化下，北極海冰已損失三分之二的體積，放任氣候危機惡化，北極熊將失去唯一棲所，難以狩獵、尋找另一半以及養育幼熊。
+        北極現正面臨多方面的威脅，包括海冰消融、鑽油、工業捕撈漏油危機等，北極熊面臨滅絕危機，生態系統瀕臨崩潰邊緣。
       </Text>
-
-      <Box {...paragraphProps}>
-        <Image src={contentA} />
-      </Box>
-
-      <Heading {...headingProps}>北極危機，與您我攸關</Heading>
 
       <Text as="p" {...paragraphProps}>
-        北極與地球氣候息息相關，許多地區已遭受海平面上升，熱浪、颱風、洪水等異常氣候現象影響，這一切災難是全球人類、動植物及生態共同承受，無一倖免。
+        有您的捐助支持，綠色和平便能有更多資源與力量執行保護北極工作，幫助北極逐步回復奇妙不凡的生態。
       </Text>
-
-      <Box {...paragraphProps}>
-        <Image src={contentB} />
-      </Box>
-
-      <Heading {...headingProps}>群眾力量，創造無限可能</Heading>
 
       <Text as="p" {...paragraphProps}>
-        目前，全球有超過
-        800萬人參加守護北極聯署，繼成功令法院裁定蜆殼石油（SHELL）要為氣候危機負責，
-        我們急需您擴大守護北極的聲音力量，以推動各國領袖宣布承諾減碳排目標、
-        在2030 前將受保護海洋擴大至 30%
-        。守護北極路上有您加入，綠色和平將努力創造更多改變！
+        向美麗北極伸出援手，捐助綠色和平北極工作。
       </Text>
-
-      <Box {...paragraphProps}>
-        <Image src={contentC} />
-      </Box>
     </>
   );
 };

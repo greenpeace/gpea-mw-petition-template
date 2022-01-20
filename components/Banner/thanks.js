@@ -41,22 +41,26 @@ export default function Index({ content, bgImage, removeMask }) {
                       dangerouslySetInnerHTML={{ __html: content.title }}
                     />
                   </Box>
-                  {content.description.map((d, i) => (
-                    <Text
-                      key={i}
-                      fontSize="var(--text-base)"
-                      color="white"
-                      dangerouslySetInnerHTML={{ __html: d }}
-                    ></Text>
-                  ))}
-                  {content.inviteMessage && (
-                    <Text
-                      color="white"
-                      dangerouslySetInnerHTML={{
-                        __html: content.inviteMessage,
-                      }}
-                    />
-                  )}
+                  <Box>
+                    <Stack spacing="4">
+                      {content.description.map((d, i) => (
+                        <Text
+                          key={i}
+                          fontSize="var(--text-base)"
+                          color="white"
+                          dangerouslySetInnerHTML={{ __html: d }}
+                        ></Text>
+                      ))}
+                      {content.inviteMessage && (
+                        <Text
+                          color="white"
+                          dangerouslySetInnerHTML={{
+                            __html: content.inviteMessage,
+                          }}
+                        />
+                      )}
+                    </Stack>
+                  </Box>
                   <Box>
                     <Stack direction="row" spacing={6}>
                       {content.inviteMessage &&

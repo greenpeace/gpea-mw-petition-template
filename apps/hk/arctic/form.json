@@ -1,7 +1,7 @@
 {
-  "form_header": "救氣候，阻止北極破壞！",
-  "form_description": "守護北極行動獲超過800萬人支持，您的加入能壯大全球守護北極行列，令各國領袖無法忽視我們的聲音，讓北極得到及時保護，請立即加入聯署！",
-  "form_remind": "Greenpeace respects and protects your personal information and you can unsubscribe at any time. For more details please refer to Greenpeace privacy policy.",
+  "form_header": "攜手守護北極生態！",
+  "form_description": "我願意聯署加入守護北極行列！",
+  "form_remind": "",
   "signed_number": "已聯署人數",
 
   "label_yes": "是",
@@ -15,7 +15,7 @@
   "label_phone_optional": "手提號碼（選填）",
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",
-  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考私隱政策。",
+  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank'><u>私隱政策</u></a>。",
 
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
@@ -31,7 +31,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "捐助支持",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=arctic",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=arctic_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -46,10 +46,8 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "守護北極行動，急需您的支持",
-  "donate_description": [
-    "您的捐助，支持綠色和平以公正獨立的身份，持續推動守護北極的工作！"
-  ],
+  "donate_header": "我願意守護北極！",
+  "donate_description": ["我要捐款保護北極，令北極回復奇妙不凡的生態。"],
   "default_message": "您的捐助，支持綠色和平以公正獨立的身份，持續推動守護北極的工作！",
   "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
   "donate_suggestion_message": "誠邀您加入每月捐款會員的行列，因為對於非牟利團體而言，定期定額捐款別具意義：它能為組織提供穩定的收入，持續地支援我們的項目研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
