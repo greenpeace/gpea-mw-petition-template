@@ -5,8 +5,8 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import contentA from './images/GP0466C_High_res.jpg';
-import contentB from './images/GP048X9_Web_size.jpg';
+import contentA from './images/GP04NTU_PressMedia.jpg';
+import contentB from './images/GP04F4D_High_res.jpg';
 import contentC from './images/GP04Z2Q_Web_size-4_r.jpg';
 
 const Content = ({ theme }) => {
@@ -50,10 +50,6 @@ const Content = ({ theme }) => {
       <Text as="p" {...paragraphProps}>
         綠色和平正號召全球支持者加入北極聯署，亦誠意邀請您參與聯署，壯大守護北極力量。您的力量，是制止企業政府破壞行為，守護北極生態的關鍵。
       </Text>
-
-      <Box {...paragraphProps}>
-        <Image src={contentC} />
-      </Box>
 
       <Heading {...headingProps}>
         請即聯署，向正受破壞的脆弱北極伸出援手！

@@ -8,13 +8,19 @@ import {
 const Thankyou = () => {
   return (
     <>
-      <Text as="p" {...paragraphProps}>
+      <Heading {...headingProps}>
         感謝您聯署支持制止企業政府破壞行為，守護北極生態。
-      </Text>
+      </Heading>
 
       <Text as="p" {...paragraphProps}>
         您的聯署意義重大，我們將一起保護、維持、復育北極奇妙不凡生態的理想。
+      </Text>
+
+      <Text as="p" {...paragraphProps}>
         綠色和平一直以行動、科學研究、政策倡議等方式守護北極，您願意多走一步，捐助守護北極的工作嗎？
+      </Text>
+
+      <Text as="p" {...paragraphProps}>
         您的捐款將直接資助我們的實地科研任務、揭露各國企業與政府破壞北極的行為、以及國際間的倡議工作，直接幫助達成制止破壞行為，守護北極生態的目標。
       </Text>
 
