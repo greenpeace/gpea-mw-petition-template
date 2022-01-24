@@ -4,6 +4,8 @@ export const headingProps = {
   fontSize: { base: 'xl', md: '2xl' },
 };
 export const paragraphProps = {
-  lineHeight: 1.7,
+  fontSize: { base: '16px' },
+  whiteSpace: 'pre-line',
+  lineHeight: 2,
   mb: 6,
 };

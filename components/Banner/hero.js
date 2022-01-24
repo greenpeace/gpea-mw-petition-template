@@ -28,19 +28,21 @@ export default function Index({ content, bgImage, removeMask, children }) {
                     dangerouslySetInnerHTML={{ __html: content.title }}
                   />
                 )}
-                <Box>
-                  <Stack spacing="4">
-                    {content.description.map((d, i) => (
-                      <Text
-                        key={i}
-                        fontSize="var(--text-base)"
-                        color="white"
-                        dangerouslySetInnerHTML={{ __html: d }}
-                      />
-                    ))}
-                  </Stack>
-                </Box>
-                <Box>{children}</Box>
+                {content.description && (
+                  <Box>
+                    <Stack spacing="4">
+                      {content.description.map((d, i) => (
+                        <Text
+                          key={i}
+                          fontSize="var(--text-base)"
+                          color="white"
+                          dangerouslySetInnerHTML={{ __html: d }}
+                        />
+                      ))}
+                    </Stack>
+                  </Box>
+                )}
+                {children && <Box>{children}</Box>}
               </Stack>
             </Box>
           </PageContainer>
