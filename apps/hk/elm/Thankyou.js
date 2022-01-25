@@ -6,6 +6,8 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
+import image01 from './images/eco-gif.gif';
+
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
   const { FirstName } = signup;
@@ -31,10 +33,6 @@ const Thankyou = ({ theme, signup }) => {
       <Text as="p" {...paragraphProps}>
         您為守護大嶼工作提供了強大力量。我們邀請您繼續關注守護香港自然環境議題，以及透過綠色和平的網站認識更多守護大嶼的幕後工作與同路人故事。
       </Text>
-
-      {/* <Box {...paragraphProps}>
-        <Image src={borrow} />
-      </Box> */}
 
       <Heading {...headingProps}>
         為香港自然環境多走一步，請捐助守護大嶼項目。
@@ -68,15 +66,17 @@ const Thankyou = ({ theme, signup }) => {
         向香港自然環境伸出援手，捐助綠色和平守護大嶼工作。
       </Text>
 
-      {/* <Text as="p" {...paragraphProps}>
-        捐款查詢：
-        <br />
-        歡迎致電會員服務熱線 (852) 2854 8318，或電郵至{' '}
-        <a href="mailto:donor.services.hk@greenpeace.org">
-          <u>donor.services.hk@greenpeace.org</u>
-        </a>
-        ，以查詢捐款相關事宜。
-      </Text> */}
+      <Heading {...headingProps}>
+        捐款守護香港自然環境，即送您一副「生態保衛隊」桌上遊戲！
+      </Heading>
+
+      <Text as="p" {...paragraphProps}>
+        現以每月$200或以上捐款，推動政府善用棕地，守護香港自然環境，您將獲得一副「生態保衛隊」桌上遊戲，並資助低收入家庭學生參與生態導賞團！
+      </Text>
+
+      <Box as="p" {...paragraphProps}>
+        <Image src={image01} />
+      </Box>
     </>
   );
 };

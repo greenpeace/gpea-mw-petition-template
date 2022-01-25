@@ -19,12 +19,12 @@ const SEO = () => {
       />
       {/* title */}
       <title>
-        立即報名：與極地科學家張偉賢遠洋對話：北極熊與海冰現況科學講座 -
-        Greenpeace 綠色和平 | 香港
+        立即報名：與極地科學家遠洋對話：北極熊與海冰科學講座 - Greenpeace
+        綠色和平 | 香港
       </title>
       <meta
         property="og:title"
-        content="立即報名：與極地科學家張偉賢遠洋對話：北極熊與海冰現況科學講座 - Greenpeace 綠色和平 | 香港"
+        content="立即報名：與極地科學家遠洋對話：北極熊與海冰科學講座 - Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"

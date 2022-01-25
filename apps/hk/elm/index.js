@@ -53,9 +53,11 @@ function Index({ status, theme, setFormContent, signup }) {
               title: `${
                 FirstName ? FirstName : '綠色和平支持者'
               }，感謝您加入守護大嶼行列！`,
-              description: [],
+              description: [
+                '現以每月$200或以上捐款，推動政府善用棕地，守護香港自然環境，您將獲得一副「生態保衛隊」桌上遊戲，並資助低收入家庭學生參與生態導賞團！',
+              ],
             }}
-            removeMask="true"
+            // removeMask="true"
           ></ThanksBanner>
         ) : (
           <HeroBanner
@@ -64,7 +66,7 @@ function Index({ status, theme, setFormContent, signup }) {
               title: '請即聯署<br/>要求政府撤回<br/>「明日大嶼」填海計劃',
               description: [''],
             }}
-            removeMask="true"
+            // removeMask="true"
           ></HeroBanner>
         )}
       </Box>
