@@ -51,7 +51,7 @@ function Index({ status, theme, setFormContent, signup }) {
             content={{
               title: `${
                 FirstName ? FirstName : '綠色和平支持者'
-              }，感謝您報名「與極地科學家張偉賢遠洋對話」！`,
+              }，感謝您報名「與極地科學家遠洋對話」！`,
               description: [],
             }}
             removeMask="true"
@@ -61,7 +61,7 @@ function Index({ status, theme, setFormContent, signup }) {
             bgImage={heroBannerImage}
             content={{
               title:
-                '請即報名<br/>與極地科學家張偉賢<br/>遠洋對話：北極熊與海冰現況科學講座',
+                '請即報名<br/>與極地科學家<br/>遠洋對話：北極熊與海冰科學講座',
               description: [''],
             }}
             removeMask="true"
