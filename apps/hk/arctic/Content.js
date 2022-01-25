@@ -5,48 +5,55 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import contentA from './images/GP0466C_High_res.jpg';
-import contentB from './images/GP048X9_Web_size.jpg';
+import contentA from './images/GP04NTU_PressMedia.jpg';
+import contentB from './images/GP04F4D_High_res.jpg';
 import contentC from './images/GP04Z2Q_Web_size-4_r.jpg';
 
 const Content = ({ theme }) => {
   return (
     <>
       <Heading {...headingProps}>
-        放任氣候危機惡化，北極熊或將於 2100 年滅絕
+        聯署制止企業政府破壞行為，守護北極生態！
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        全球暖化下，北極海冰已損失三分之二的體積，放任氣候危機惡化，北極熊將失去唯一棲所，難以狩獵、尋找另一半以及養育幼熊。
+        您的聯署將幫助制止各國企業、政府在北極鑽油與工業捕撈惡行，守護北極生態、北極熊的唯一棲所！
       </Text>
+
+      <Text as="p" {...paragraphProps}>
+        綠色和平致力制止各國企業、政府破壞北極的行動及政策，透過推動《全球海洋公約》，將北極地區設為優先保護區，嚴格管制、禁止各國進行鑽油、捕魚等活動，同時帶動全球氣候改革以控制升溫於
+        1.5℃ 內。守護北極生態、北極熊的唯一棲所。
+      </Text>
+
+      <Heading {...headingProps}>您願意聯署加入守護北極行列嗎？</Heading>
 
       <Box {...paragraphProps}>
         <Image src={contentA} />
       </Box>
 
-      <Heading {...headingProps}>北極危機，與您我攸關</Heading>
+      <Heading {...headingProps}>
+        北極熊被逼至減絕邊緣，急需您施予援手！
+      </Heading>
 
       <Text as="p" {...paragraphProps}>
-        北極與地球氣候息息相關，許多地區已遭受海平面上升，熱浪、颱風、洪水等異常氣候現象影響，這一切災難是全球人類、動植物及生態共同承受，無一倖免。
+        北極原是地球上的淨土，孕育奇妙不凡的野生生態，更具調節全球氣候的功能。可惜，鑽油破壞和工業捕撈等人類行為嚴重威脅，加上氣候危機影響下，海冰在過去數十年已損失三分之二的體積，北極熊的數量亦減少近一半，北極生態岌岌可危。
+      </Text>
+
+      <Text as="p" {...paragraphProps}>
+        如我們未能及時挽救這場危機，北極生態系統、生物多樣性將受到嚴重破壞，北極熊可能就此滅絕。如若北極陷入困境，人類亦將難逃厄運。
       </Text>
 
       <Box {...paragraphProps}>
         <Image src={contentB} />
       </Box>
 
-      <Heading {...headingProps}>群眾力量，創造無限可能</Heading>
-
       <Text as="p" {...paragraphProps}>
-        目前，全球有超過
-        800萬人參加守護北極聯署，繼成功令法院裁定蜆殼石油（SHELL）要為氣候危機負責，
-        我們急需您擴大守護北極的聲音力量，以推動各國領袖宣布承諾減碳排目標、
-        在2030 前將受保護海洋擴大至 30%
-        。守護北極路上有您加入，綠色和平將努力創造更多改變！
+        綠色和平正號召全球支持者加入北極聯署，亦誠意邀請您參與聯署，壯大守護北極力量。您的力量，是制止企業政府破壞行為，守護北極生態的關鍵。
       </Text>
 
-      <Box {...paragraphProps}>
-        <Image src={contentC} />
-      </Box>
+      <Heading {...headingProps}>
+        請即聯署，向正受破壞的脆弱北極伸出援手！
+      </Heading>
     </>
   );
 };

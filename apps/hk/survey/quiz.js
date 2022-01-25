@@ -75,29 +75,27 @@ const Quiz = ({
 
   return (
     <Box h={{ base: '100%', sm: '100vh' }} mt={{ base: 0, sm: '-55px' }}>
-      <Container maxW={'4xl'} h={'100%'} w={'100%'} pt={'20px'} pb={'100px'}>
+      <Container maxW={'4xl'} h={'100%'} w={'100%'} pt={'20px'} pb={'140px'}>
         <Center h={'100%'}>
           <Stack w="100%" spacing={6}>
-            <Box
-              alignSelf={'flex-start'}
-              borderColor={'theme.plastics'}
-              borderLeft={'4px'}
-              color={'theme.plastics'}
-              px={4}
-              py={1}
-            >
-              <Text fontWeight={'bold'} fontSize={'xl'}>
-                {current + 1} / {quiz.length}
+            <Box alignSelf={'flex-start'} color={'theme.plastics'}>
+              <Text fontSize={'xl'}>
+                <Text as="span" fontWeight={'bold'} fontSize={'3xl'}>
+                  0{current + 1}
+                </Text>{' '}
+                / {quiz.length}
               </Text>
             </Box>
-            <Heading>{currentQuiz?.question.label}</Heading>
+            <Heading fontSize={{ base: '2xl', md: '5xl' }}>
+              {currentQuiz?.question.label}
+            </Heading>
             <Text
               fontSize={{ base: 'md', md: 'lg' }}
               dangerouslySetInnerHTML={{ __html: currentQuiz?.content.label }}
             ></Text>
             <SimpleGrid
               alignItems="stretch"
-              minChildWidth={{ base: '120px', sm: '240px' }}
+              minChildWidth={{ base: '200px', md: '280px' }}
               spacing={4}
             >
               {currentQuiz?.options?.map((d, i) => {
@@ -189,7 +187,7 @@ const Quiz = ({
         bgColor={'rgba(255,255,255,0.95)'}
         style={{ boxShadow: '0px 0px 16px rgb(30 1 40 / 16%)' }}
       >
-        <Container maxW={'4xl'}>
+        <Box maxW={'4xl'} mx="auto">
           <Flex direction="row" justifyContent="space-between">
             <Button
               variant="reset"
@@ -213,7 +211,7 @@ const Quiz = ({
               下一條
             </Button>
           </Flex>
-        </Container>
+        </Box>
       </Box>
     </Box>
   );

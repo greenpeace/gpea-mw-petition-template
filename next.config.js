@@ -14,7 +14,6 @@ const nextConfig = {
     signupNumbersTW: process.env.SIGN_UP_NUMBERS_TW,
     dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.green${process.env.MARKET}.greenpeace.org/websign-dummy`,
   },
-  basePath: isProd ? process.env.BASEPATH : '',
   // Use the CDN in production and localhost for development.
   assetPrefix: isProd ? process.env.ASSETPREFIX : '',
   trailingSlash: true,

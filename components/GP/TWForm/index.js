@@ -217,11 +217,15 @@ const MyForm = (props) => {
                       setFieldValue('Email', suggestion);
                       initSuggestion();
                     }}
-                    pt={2}
-                    cursor={`pointer`}
+                    p={2}
+                    cursor={'pointer'}
                   >
-                    <Text fontSize={`sm`} color={`theme.${themeInterests}`}>
-                      {formContent.suggestion_message} <b>{suggestion}</b>
+                    <Text fontSize={'sm'} color={`theme.${themeInterests}`}>
+                      {formContent.suggestion_message}
+                      <b>
+                        <u>{suggestion}</u>
+                      </b>
+                      ?
                     </Text>
                   </Box>
                 )}

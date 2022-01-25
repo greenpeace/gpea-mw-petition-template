@@ -1,6 +1,6 @@
 {
-  "form_header": "攜手守護北極生態！",
-  "form_description": "我願意聯署加入守護北極行列！",
+  "form_header": "促請撤回「明日大嶼」填海計劃，優先發展棕地",
+  "form_description": "我願意聯署加入守護大嶼行列！",
   "form_remind": "",
   "signed_number": "已聯署人數",
 
@@ -9,13 +9,14 @@
   "label_name": "稱謂",
   "label_first_name": "名字",
   "label_last_name": "姓氏",
-  "label_title": "主題",
   "label_email": "電郵地址",
-  "label_phone": "手提號碼",
+  "label_phone": "手提號碼（接收活動SMS提示）",
   "label_phone_optional": "手提號碼（選填）",
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",
-  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank'><u>私隱政策</u></a>。",
+  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
+
+  "show_brithDate": false,
 
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
@@ -25,13 +26,13 @@
   "minimum_8_characters": "請輸入8位數字",
   "suggestion_message": "您是否想輸入",
 
-  "submit_text": "立即聯署",
+  "submit_text": "立即聯署 守護大嶼",
   "thanks_title": "",
   "thanks_ask": "",
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=arctic_mw&campaignId=7012u000000PF7oAAG",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=elm_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -46,9 +47,9 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "我願意守護北極！",
-  "donate_description": ["我要捐款保護北極，令北極回復奇妙不凡的生態。"],
-  "default_message": "您的捐助，支持綠色和平以公正獨立的身份，持續推動守護北極的工作！",
+  "donate_header": "請捐助守護大嶼工作",
+  "donate_description": ["<b>你的捐助，將有效地、直接地</b>守護香港自然環境。"],
+  "default_message": "支持綠色和平持續監察政府棕地政策和土地規劃動向，及時回應並採取相應行動",
   "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
   "donate_suggestion_message": "誠邀您加入每月捐款會員的行列，因為對於非牟利團體而言，定期定額捐款別具意義：它能為組織提供穩定的收入，持續地支援我們的項目研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
   "currency": "HKD",
@@ -61,19 +62,19 @@
     {
       "label": "500",
       "value": 500,
-      "description": "持續搜集第一手北極環境真相，透過傳播媒體送到您與全球的眼前。",
+      "description": "支持發起聯署行動，號召更多市民加入守護香港自然環境",
       "currency": "HKD"
     },
     {
       "label": "700",
       "value": 700,
-      "description": "協助團隊聯同科學家，到北極進行實地考察與氣候研究工作。",
+      "description": "支持綠色和平揭露現時土地規劃弊端",
       "currency": "HKD"
     },
     {
       "label": "900",
       "value": 900,
-      "description": "協助團隊準備極地專用裝備，前赴北極應對突發環境災難，進行長期實地研究工作。",
+      "description": "支持綠色和平調查被低估發展潛力的土地資源，向政府提倡優先發展棕地",
       "currency": "HKD"
     },
     {
@@ -86,19 +87,19 @@
     {
       "label": "200",
       "value": 200,
-      "description": "支持發起全球聯署行動，擴大促請各國將升溫控制至1.5°C、停止破壞北極的聲音力量！",
+      "description": "支持綠色和平持續監察政府棕地政策和土地規劃動向，及時回應並採取相應行動",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持綠色和平船艦及項目團隊，持績監察企業與政府最新動向，及時阻止破壞北極的行為。",
+      "description": "支持綠色和平揭露現時土地規劃弊端，並製作調查報告以證明香港存在棕地等，被低估發展價值的覓地選項，無必要破壞自然環境",
       "currency": "HKD"
     },
     {
       "label": "400",
       "value": 400,
-      "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意以升溫控制至1.5°C為目標、停止開發北極資源。",
+      "description": "支持綠色和平促請政府以謹慎態度，嚴正審視被低估發展潛力的棕地，優先發展現存可用的土地資源，滿足市民住屋需要，讓城市發展與自然環境和諧共存，締造宜居環境",
       "currency": "HKD"
     },
     {
@@ -107,5 +108,5 @@
       "description": ""
     }
   ],
-  "thanks_message": "您的捐款，將幫助綠色和平為環境問題找到出路，並在全球各地落實環保工作。謝謝！"
+  "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"
 }

@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
+    "build:windows": "set NODE_ENV=production && npm run build",
     "start": "next start",
     "format": "prettier --write .",
-    "build-export": "next build && next export",
-    "deploy": "npm run build-export && NODE_ENV=production node mc-deploy.js",
+    "deploy": "npm run build && NODE_ENV=production node mc-deploy.js",
     "prepare": "husky install"
   },
   "husky": {

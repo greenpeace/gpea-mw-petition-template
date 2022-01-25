@@ -6,7 +6,6 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import contentA from './images/GP0STU61Y_PressMedia.jpg';
 import contentD from './images/GP01B4T_PressMedia.jpg';
 
 const Content = ({ theme }) => {

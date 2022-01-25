@@ -1,36 +1,41 @@
 import React, { useEffect, useRef } from 'react';
-import HeroBanner from '@components/Banner/hero';
-import ThanksBanner from '@components/Banner/thanks';
-import PageContainer from '@containers/pageContainer';
+import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
-import Content from './Content';
-import Thankyou from './Thankyou';
-import SignupForm from '@components/GP/HKForm';
-import DonateForm from '@components/GP/DonateForm';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
-import FixedCTA from '@components/GP/FixedCTA';
-import SEO from './SEO';
 import formContent from './form';
+import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/GP01RWO_PressMedia.jpg';
+import heroBannerImage from './images/banner.jpg';
+
+const Content = dynamic(() => import('./Content'));
+const Thankyou = dynamic(() => import('./Thankyou'));
+
+const HeroBanner = dynamic(() => import('@components/Banner/hero'));
+const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
+const PageContainer = dynamic(() => import('@containers/pageContainer'));
+
+const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+const SignupForm = dynamic(() => import('@components/GP/HKForm'));
+const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
   const { FirstName } = signup;
-
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   const { ref, inView } = useInView({
-    /* Optional options */
     threshold: 0,
   });
   const myRef = useRef(null);
+  const speaker1Ref = useRef(null);
+  const speaker2Ref = useRef(null);
+  const speaker3Ref = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
 
   useEffect(() => {
@@ -40,35 +45,45 @@ function Index({ status, theme, setFormContent, signup }) {
   return (
     <>
       <SEO />
-      {submitted ? (
-        <ThanksBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: `${
-              FirstName ? FirstName : '綠色和平支持者'
-            }，感謝您加入守護北極行列！`,
-            description: [
-              '為北極多走一步，以每月$200捐款支持守護北極項目，您將獲得兩次「環保手作工作坊」或導賞團機會！',
-            ],
-          }}
-        />
-      ) : (
-        <HeroBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: '請即聯署<br/>守護北極生態！',
-            description: [
-              '過去數十年，北極在全球暖化下，已損失三分之二的海冰體積，北極熊的數量亦減少近一半。失去海冰屏障，加上北極海洋不到1.5%範圍得到正式保護，石油公司、工業捕漁船可以不分季節，直入北極奪取資源。',
-            ],
-          }}
-        />
-      )}
+      <Box>
+        {submitted ? (
+          <ThanksBanner
+            bgImage={heroBannerImage}
+            content={{
+              title: `${
+                FirstName ? FirstName : '綠色和平支持者'
+              }，感謝您加入守護大嶼行列！`,
+              description: [
+                '現以每月$200或以上捐款，推動政府善用棕地，守護香港自然環境，您將獲得一副「生態保衛隊」桌上遊戲，並資助低收入家庭學生參與生態導賞團！',
+              ],
+            }}
+            // removeMask="true"
+          ></ThanksBanner>
+        ) : (
+          <HeroBanner
+            bgImage={heroBannerImage}
+            content={{
+              title: '請即聯署<br/>要求政府撤回<br/>「明日大嶼」填海計劃',
+              description: [''],
+            }}
+            // removeMask="true"
+          ></HeroBanner>
+        )}
+      </Box>
       <PageContainer>
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer theme={theme}>
-                {submitted ? <Thankyou /> : <Content />}
+                {submitted ? (
+                  <Thankyou />
+                ) : (
+                  <Content
+                    speaker1Ref={speaker1Ref}
+                    speaker2Ref={speaker2Ref}
+                    speaker3Ref={speaker3Ref}
+                  />
+                )}
               </ContentContainer>
             </Box>
             <Box flex={1} ref={myRef}>

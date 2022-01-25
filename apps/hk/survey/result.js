@@ -95,10 +95,7 @@ function Index({
                       }}
                     />
                     <Text as="p" color="white">
-                      您的參與意義重大，令走塑不再只是一個人的事！
-                    </Text>
-                    <Text as="p" color="white">
-                      想知道調查結果，更多熱心走塑人和事，以及工作坊、線上分享會等活動資訊？立即登記！
+                      您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
                     </Text>
                   </Stack>
                 </Box>

@@ -30,17 +30,19 @@ export default function Index({ content, bgImage, removeMask, children }) {
                 )}
                 {content.description && (
                   <Box>
-                    {content.description.map((d, i) => (
-                      <Text
-                        key={i}
-                        fontSize="var(--text-base)"
-                        color="white"
-                        dangerouslySetInnerHTML={{ __html: d }}
-                      />
-                    ))}
+                    <Stack spacing="4">
+                      {content.description.map((d, i) => (
+                        <Text
+                          key={i}
+                          fontSize="var(--text-base)"
+                          color="white"
+                          dangerouslySetInnerHTML={{ __html: d }}
+                        />
+                      ))}
+                    </Stack>
                   </Box>
                 )}
-                {children}
+                {children && <Box>{children}</Box>}
               </Stack>
             </Box>
           </PageContainer>
