@@ -16,8 +16,6 @@
   "label_year_of_birth_optional": "出生年份（選填）",
   "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
 
-  "show_brithDate": false,
-
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
 
