@@ -1,19 +1,29 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
-import { Box, Image, useMediaQuery } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 import SEO from './SEO';
 import QUIZ from './quiz.json';
 
-import bgPlasticsImage from './images/plastic_survey_page.jpg';
-
 const Index = ({ survey }) => {
   const currentPage = survey?.page;
+  const Page = dynamic(() =>
+    import(`apps/${process.env.project}/${currentPage}`),
+  );
 
   return (
     <Box>
       <SEO />
+      <Page quiz={QUIZ} />
+      <Box
+        position={'absolute'}
+        top="0"
+        left="0"
+        w="100%"
+        h="100%"
+        zIndex={'-1'}
+      />
     </Box>
   );
 };

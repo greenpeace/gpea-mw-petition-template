@@ -11,11 +11,11 @@ import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 
-import bgA from './images/2.jpg';
-import bgB from './images/MAX_20211211_Greenpeace_荃灣路德圍_222.jpg';
-import bgC from './images/GP0STTWIG_Medium_res.jpg';
-import bgD from './images/20210816-RDPT-PC-21.jpg';
-import bgE from './images/gp0stunis_medium_res-1024x707.jpg';
+// import bgA from './images/2.jpg';
+// import bgB from './images/MAX_20211211_Greenpeace_荃灣路德圍_222.jpg';
+// import bgC from './images/GP0STTWIG_Medium_res.jpg';
+// import bgD from './images/20210816-RDPT-PC-21.jpg';
+// import bgE from './images/gp0stunis_medium_res-1024x707.jpg';
 
 const ContentResult = dynamic(() => import('./resultContent/contentResult'));
 const ContentA = dynamic(() => import('./resultContent/contentA'));
@@ -104,7 +104,7 @@ function Index({
             </Box>
           </PageContainer>
         </Box>
-        <Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
+        {/* <Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
           {(() => {
             switch (getFinalAnswer) {
               case '1':
@@ -121,7 +121,7 @@ function Index({
                 return <Image {...ImageBGProps} src={bgE} />;
             }
           })()}
-        </Box>
+        </Box> */}
         <Box
           pos={'absolute'}
           top={0}
@@ -131,7 +131,7 @@ function Index({
           bgColor={'rgba(0,0,0,0.5)'}
         />
       </Box>
-      <Box maxW="1200px" mx="auto">
+      {/* <Box maxW="1200px" mx="auto">
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
@@ -169,7 +169,7 @@ function Index({
             </Box>
           </Flex>
         </OverflowWrapper>
-      </Box>
+      </Box> */}
 
       <PetitionFooter locale={'HKChinese'} />
       {!inView && (

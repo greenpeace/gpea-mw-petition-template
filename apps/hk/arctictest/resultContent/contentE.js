@@ -6,8 +6,8 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import image01 from '../images/gp0stunis_medium_res-1024x707.jpg';
-import image02 from '../images/gp0strf5y_medium_res-1024x683.jpg';
+// import image01 from '../images/gp0stunis_medium_res-1024x707.jpg';
+// import image02 from '../images/gp0strf5y_medium_res-1024x683.jpg';
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
@@ -29,12 +29,12 @@ const Content = ({ theme }) => {
         綠色和平一直以行動、科學研究、政策倡議等方式推動走塑，您願意多走一步，捐助解決塑膠污染問題的工作嗎？
       </Text>
 
-      <Box {...paragraphProps} w={'100%'}>
+      {/* <Box {...paragraphProps} w={'100%'}>
         <SimpleGrid columns={2} spacing={2}>
           <Image src={image01} alt="Greenpeace 綠色和平" />
           <Image src={image02} alt="Greenpeace 綠色和平" />
         </SimpleGrid>
-      </Box>
+      </Box> */}
 
       <Text as="p" {...paragraphProps}>
         解決塑膠污染問題，您可以施以援手！

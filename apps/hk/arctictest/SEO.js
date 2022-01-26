@@ -18,18 +18,21 @@ const SEO = () => {
         }}
       />
       {/* title */}
-      <title>走塑不是一個人的事 - Greenpeace 綠色和平 | 香港</title>
+      <title>
+        找出隱藏在您潛意識中的極地動物！10題測出您的性格與習慣 - Greenpeace
+        綠色和平 | 香港
+      </title>
       <meta
         property="og:title"
-        content="走塑不是一個人的事 - Greenpeace 綠色和平 | 香港"
+        content="找出隱藏在您潛意識中的極地動物！10題測出您的性格與習慣 - Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"
-        content="走塑不是一個人的事，誠邀您用2分鐘參與問卷調查，一起動動腦袋，為塑膠污染問題尋找出路！"
+        content="每個人的潛意識都會隱藏著最真實的性格，而每一種性格都代表着不同的極地動物，獨立自主的北極熊、始終如一的雪鴞、家庭至上的藍鯨等，快來找出隱藏在您潛意識中的極地動物吧！"
       />
       <meta
         property="og:description"
-        content="走塑不是一個人的事，誠邀您用2分鐘參與問卷調查，一起動動腦袋，為塑膠污染問題尋找出路！"
+        content="每個人的潛意識都會隱藏著最真實的性格，而每一種性格都代表着不同的極地動物，獨立自主的北極熊、始終如一的雪鴞、家庭至上的藍鯨等，快來找出隱藏在您潛意識中的極地動物吧！"
       />
       <meta
         property="og:image"

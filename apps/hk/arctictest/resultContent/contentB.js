@@ -6,8 +6,8 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import image01 from '../images/MAX_20211211_Greenpeace_荃灣路德圍_56.jpg';
-import image02 from '../images/MAX_20211211_Greenpeace_荃灣路德圍_222.jpg';
+// import image01 from '../images/MAX_20211211_Greenpeace_荃灣路德圍_56.jpg';
+// import image02 from '../images/MAX_20211211_Greenpeace_荃灣路德圍_222.jpg';
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
@@ -29,12 +29,12 @@ const Content = ({ theme }) => {
         您願意多走一步，捐助解決塑膠污染問題的工作嗎？
       </Text>
 
-      <Box {...paragraphProps} w={'100%'}>
+      {/* <Box {...paragraphProps} w={'100%'}>
         <SimpleGrid columns={2} spacing={2}>
           <Image src={image01} alt="Greenpeace 綠色和平" />
           <Image src={image02} alt="Greenpeace 綠色和平" />
         </SimpleGrid>
-      </Box>
+      </Box> */}
 
       <Text as="p" {...paragraphProps}>
         解決塑膠污染問題，您可以施以援手！

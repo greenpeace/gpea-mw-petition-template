@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
+import dynamic from 'next/dynamic';
 import {
   Stack,
   Container,
@@ -12,8 +13,14 @@ import {
   Center,
   SimpleGrid,
   Textarea,
+  Image,
 } from '@chakra-ui/react';
+import useImage from './useImage';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
+
+import bgImage from './images/questionLayers/Q1/背景圖Q1.jpg';
+import bgImage02 from './images/questionLayers/Q1/極光Q1.png';
+import bgImage03 from './images/questionLayers/Q1/冰山Q1.png';
 
 const Quiz = ({
   setSurveyPage,
@@ -26,18 +33,17 @@ const Quiz = ({
   const currentQuiz = quiz[current];
   const freeTextRef = useRef(null);
   const showFreeText = current === 4 && answer[current]?.toString() === '5';
-  const [isFreeTextError, setFreeTextError] = useState(false);
+  const { loading, error, image } = useImage(currentQuiz?.image);
+
+  const DynamicBg = dynamic(() =>
+    import(`apps/${process.env.project}/Background/Bg${currentQuiz.id}`),
+  );
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
   const executeScroll = () => scrollToRef(freeTextRef);
 
   useEffect(() => {
-    setFreeTextError(false);
-
     if (showFreeText) {
       executeScroll();
     }
@@ -52,50 +58,94 @@ const Quiz = ({
   };
 
   const handleNextButton = () => {
-    if (current === 4 && showFreeText) {
-      if (!freeTextRef.current?.value) {
-        setFreeTextError(true);
-        return;
-      } else {
-        setFreeTextError(false);
-        setSurveyAnswer({
-          index: current,
-          value: [freeTextRef.current?.value],
-        });
-        setSurveyPage('result');
-      }
-    }
-
     if (current + 1 >= quiz.length) {
-      setSurveyPage('result');
+      setSurveyPage('checkResult');
     } else {
       setCurrentQuiz((current += 1));
     }
   };
 
+  console.log('DynamicBg-', DynamicBg);
+
   return (
-    <Box h={{ base: '100%', sm: '100vh' }} mt={{ base: 0, sm: '-55px' }}>
-      <Container maxW={'4xl'} h={'100%'} w={'100%'} pt={'20px'} pb={'140px'}>
+    <Box>
+      <Container
+        maxW={'2xl'}
+        h={'100%'}
+        w={'100%'}
+        pt={'20px'}
+        pos={`relative`}
+        zIndex={10}
+      >
         <Center h={'100%'}>
-          <Stack w="100%" spacing={6}>
-            <Box alignSelf={'flex-start'} color={'theme.plastics'}>
-              <Text fontSize={'xl'}>
-                <Text as="span" fontWeight={'bold'} fontSize={'3xl'}>
-                  0{current + 1}
-                </Text>{' '}
-                / {quiz.length}
-              </Text>
+          <Stack w="100%" spacing={6} direction="column">
+            <Box bgColor={'#025177'} borderRadius={'8px'} p={4}>
+              <Center>
+                <Heading fontSize={{ base: 'xl', md: 'xl' }} color={'#FFF'}>
+                  找出隱藏在您潛意識中的極地動物！10題測出您的性格與習慣
+                </Heading>
+              </Center>
             </Box>
-            <Heading fontSize={{ base: '2xl', md: '5xl' }}>
-              {currentQuiz?.question.label}
-            </Heading>
+
+            <Flex
+              direction="row"
+              align={'center'}
+              justifyContent={'space-between'}
+            >
+              <Box cursor={'pointer'} onClick={() => handleBackButton()}>
+                上一頁
+              </Box>
+              <Box flex={1} mx={12}>
+                <Flex
+                  direction="row"
+                  spacing={1}
+                  w={'100%'}
+                  justifyContent={'space-between'}
+                >
+                  {quiz.map((d, i) => (
+                    <Box
+                      key={i}
+                      bgColor={
+                        currentQuiz.id === (i + 1).toString()
+                          ? '#025177'
+                          : '#FFF'
+                      }
+                      borderRadius={'50%'}
+                      w={'10px'}
+                      h={'10px'}
+                    />
+                  ))}
+                </Flex>
+              </Box>
+              <Box>
+                <Text fontSize={'xl'}>
+                  <Text as="span" fontWeight={'bold'} fontSize={'3xl'}>
+                    {current + 1}
+                  </Text>{' '}
+                  / {quiz.length}
+                </Text>
+              </Box>
+            </Flex>
+
+            <Box bgColor={'#FFF'} borderRadius={'8px'} p={4} boxShadow>
+              <Center>
+                <Heading fontSize={{ base: 'xl', md: 'xl' }} color={'#025177'}>
+                  {currentQuiz?.question.label}
+                </Heading>
+              </Center>
+            </Box>
+
+            <Box>
+              <Image src={image} borderRadius={'8px'} />
+            </Box>
+
             <Text
               fontSize={{ base: 'md', md: 'lg' }}
               dangerouslySetInnerHTML={{ __html: currentQuiz?.content.label }}
             ></Text>
             <SimpleGrid
               alignItems="stretch"
-              minChildWidth={{ base: '200px', md: '280px' }}
+              minChildWidth={{ base: '200px' }}
               spacing={4}
             >
               {currentQuiz?.options?.map((d, i) => {
@@ -109,16 +159,14 @@ const Quiz = ({
                     py={4}
                     border="1px"
                     borderColor="gray.400"
-                    borderRadius={'4px'}
-                    bgColor={
-                      selected ? 'theme.plastics' : 'rgba(255,255,255,0.85)'
-                    }
-                    color={selected ? 'white' : 'gray.900'}
+                    borderRadius={'8px'}
+                    bgColor={selected ? 'theme.plastics' : '#025177'}
+                    color={selected ? 'white' : 'white'}
                     cursor="pointer"
                     fontSize="base"
                     transition="0.2s ease"
                     onClick={async () => {
-                      const index = getCurrentAnswers.indexOf(d.value);
+                      // const index = getCurrentAnswers.indexOf(d.value);
 
                       // Case 0: last question
                       if (currentQuiz.maximum === 1) {
@@ -126,32 +174,8 @@ const Quiz = ({
                           index: current,
                           value: [d.value],
                         });
+                        setTimeout(() => handleNextButton(), 100);
                         return;
-                      }
-
-                      if (selected) {
-                        // Case 1: Selected => unSelected
-                        getCurrentAnswers.splice(index, 1);
-                        setSurveyAnswer({
-                          index: current,
-                          value: getCurrentAnswers,
-                        });
-                      } else {
-                        // Case 2: Reach maximum select items
-                        if (getCurrentAnswers.length >= currentQuiz.maximum) {
-                          return;
-                        }
-                        if (lastOption) {
-                          setSurveyAnswer({
-                            index: current,
-                            value: [d.value],
-                          });
-                          return;
-                        }
-                        // Case 3: unSelected => Selected
-                        let newArr = [...getCurrentAnswers, d.value];
-                        newArr = await newArr.filter((d) => d != 'clear');
-                        setSurveyAnswer({ index: current, value: newArr });
                       }
                     }}
                   >
@@ -165,54 +189,65 @@ const Quiz = ({
                 );
               })}
             </SimpleGrid>
-            {showFreeText && (
-              <Textarea
-                isInvalid={isFreeTextError}
-                ref={freeTextRef}
-                bgColor={'white'}
-                placeholder={'留下您的想法...'}
-              />
-            )}
+
+            {/* <Flex direction="row" justifyContent="space-between">
+              <Button
+                variant="reset"
+                bgColor={'#FFEFBA'}
+                borderRadius={'full'}
+                size="lg"
+                minWidth="120px"
+                onClick={() => handleBackButton()}
+                _hover={{ boxShadow: '#FFEFBA 0px 0px 12px' }}
+              >
+                返回
+              </Button>
+              <Button
+                variant="subCTA"
+                disabled={
+                  answer[current]?.length === undefined ||
+                  answer[current]?.length === 0
+                }
+                onClick={() => handleNextButton()}
+              >
+                下一條
+              </Button>
+            </Flex> */}
           </Stack>
         </Center>
       </Container>
+      {/* <Box>
+      <Image
+        w="100%"
+        h="100%"
+        top={0}
+        objectFit={'cover'}
+        bgImage={bgImage02}
+        position="absolute"
+        zIndex={2}
+      />
 
-      <Box
-        position={'fixed'}
-        bottom={0}
-        left={0}
-        w={'100%'}
-        px={4}
-        py={4}
-        bgColor={'rgba(255,255,255,0.95)'}
-        style={{ boxShadow: '0px 0px 16px rgb(30 1 40 / 16%)' }}
-      >
-        <Box maxW={'4xl'} mx="auto">
-          <Flex direction="row" justifyContent="space-between">
-            <Button
-              variant="reset"
-              bgColor={'#FFEFBA'}
-              borderRadius={'full'}
-              size="lg"
-              minWidth="120px"
-              onClick={() => handleBackButton()}
-              _hover={{ boxShadow: '#FFEFBA 0px 0px 12px' }}
-            >
-              返回
-            </Button>
-            <Button
-              variant="subCTA"
-              disabled={
-                answer[current]?.length === undefined ||
-                answer[current]?.length === 0
-              }
-              onClick={() => handleNextButton()}
-            >
-              下一條
-            </Button>
-          </Flex>
-        </Box>
-      </Box>
+      <Image
+        w="100%"
+        h="100%"
+        top={0}
+        objectFit={'cover'}
+        bgImage={bgImage03}
+        position="absolute"
+        zIndex={1}
+      />
+
+      <Image
+        w="100%"
+        h="100%"
+        top={0}
+        objectFit={'cover'}
+        bgImage={bgImage}
+        position="absolute"
+        zIndex={-1}
+      />
+      </Box> */}
+      <DynamicBg />
     </Box>
   );
 };

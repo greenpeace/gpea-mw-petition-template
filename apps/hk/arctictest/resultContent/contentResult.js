@@ -13,8 +13,8 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import image01 from '../images/plastic_sj.gif';
-import image02 from '../images/Artboard 12-100.jpg';
+// import image01 from '../images/plastic_sj.gif';
+// import image02 from '../images/Artboard 12-100.jpg';
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
@@ -28,9 +28,9 @@ const Content = ({ theme }) => {
         您的聯署將幫助綠色和平從個人、社區、企業與政策層面，推動源頭減少即棄塑膠，長遠解決塑膠污染問題，令美麗海洋與環境回復潔淨健康！
       </Text>
 
-      <Box as="p" {...paragraphProps}>
+      {/* <Box as="p" {...paragraphProps}>
         <Image maxW={{ base: 'auto', sm: '400px' }} src={image01} />
-      </Box>
+      </Box> */}
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         拯救被塑膠殘害的生命，您可以施以援手！
@@ -46,9 +46,9 @@ const Content = ({ theme }) => {
         自2016年起，綠色和平致力推動源頭減塑，由推動快餐、超市等企業淘汰即棄塑膠、招募社區商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，竭力解決塑膠污染，幫助海洋、環境逐步回復潔淨健康，減輕下一代面對的環境負擔。
       </Text>
 
-      <Box as="p" {...paragraphProps}>
+      {/* <Box as="p" {...paragraphProps}>
         <Image maxW={{ base: 'auto', sm: '400px' }} src={image02} />
-      </Box>
+      </Box> */}
 
       <Box {...paragraphProps} bgColor="#F9F9F9" borderRadius={8} p={4}>
         手冊內容包括：

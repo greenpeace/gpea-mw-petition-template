@@ -6,7 +6,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import contentD from './images/GP01B4T_PressMedia.jpg';
+// import contentD from './images/GP01B4T_PressMedia.jpg';
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
@@ -28,9 +28,9 @@ const Content = ({ theme }) => {
         解決塑膠污染問題，您可以施以援手！
       </Text>
 
-      <Box {...paragraphProps}>
+      {/* <Box {...paragraphProps}>
         <Image src={contentD} layout="fill" alt="Greenpeace 綠色和平" />
-      </Box>
+      </Box> */}
 
       <Text as="p" {...paragraphProps}>
         即棄塑膠帶來的一時便利，換來充斥塑膠垃圾的海洋、環境永久的傷害 —{' '}
