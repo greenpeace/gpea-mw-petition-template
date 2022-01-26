@@ -23,23 +23,17 @@ export function validation(values, formContent) {
     errors.Birthdate = formContent.empty_data_alert;
   }
 
-  if (
-    values.MobilePhone.toString().length >= 8 &&
-    values.MobileCountryCode === '852'
-  ) {
-    const regex = /^[2,3,5,6,8,9]{1}[0-9]{7}$/i;
-    if (!regex.test(values.MobilePhone)) {
-      errors.MobilePhone = formContent.invalid_format_alert;
-    }
-  }
-
-  if (
-    values.MobilePhone.toString().length >= 8 &&
-    values.MobileCountryCode === '853'
-  ) {
-    const regex = /^[6]{1}[0-9]{7}$/i;
-    if (!regex.test(values.MobilePhone)) {
-      errors.MobilePhone = formContent.invalid_format_alert;
+  if (values.MobilePhone) {
+    if (values.MobileCountryCode === '852') {
+      const regex = /^[2,3,5,6,8,9]{1}[0-9]{7}$/i;
+      if (!regex.test(values.MobilePhone)) {
+        errors.MobilePhone = formContent.invalid_format_alert;
+      }
+    } else if (values.MobileCountryCode === '853') {
+      const regex = /^[6]{1}[0-9]{7}$/i;
+      if (!regex.test(values.MobilePhone)) {
+        errors.MobilePhone = formContent.invalid_format_alert;
+      }
     }
   }
 
