@@ -11,29 +11,31 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'oceans',
+            gCampaign: 'general',
             gBasket: 'elm',
           });
         `,
         }}
       />
       {/* title */}
-      <title>守護大嶼 - Greenpeace 綠色和平 | 香港</title>
+      <title>
+        請即聯署要求政府撤回「明日大嶼」填海計劃 - Greenpeace 綠色和平 | 香港
+      </title>
       <meta
         property="og:title"
-        content="守護大嶼 - Greenpeace 綠色和平 | 香港"
+        content="請即聯署要求政府撤回「明日大嶼」填海計劃 - Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"
-        content="海洋住屋不對立，為了珍貴脆弱的香港海洋生態，及讓市民安居樂業，一起發聲，要求政府優先發展棕地，放棄不負責任的「明日大嶼」方案！"
+        content="大嶼山擁有不可忽視的生態價值，是香港珍貴的自然資源。但「明日大嶼」填海計劃一旦展開，可導致生態與財政雙重危機，因此，我們需要更多人的力量聯署，促請政府放棄「明日大嶼」，善用現存土地資源，守護香港自然環境。"
       />
       <meta
         property="og:description"
-        content="海洋住屋不對立，為了珍貴脆弱的香港海洋生態，及讓市民安居樂業，一起發聲，要求政府優先發展棕地，放棄不負責任的「明日大嶼」方案！"
+        content="大嶼山擁有不可忽視的生態價值，是香港珍貴的自然資源。但「明日大嶼」填海計劃一旦展開，可導致生態與財政雙重危機，因此，我們需要更多人的力量聯署，促請政府放棄「明日大嶼」，善用現存土地資源，守護香港自然環境。"
       />
       <meta
         property="og:image"
-        content="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1853/ecology-sharelink.jpg?v=1624962949576"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/01/ae5922a9-artboard-15-elm-mw-fb-preview.jpg"
       />
     </Head>
   );
