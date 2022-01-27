@@ -1,6 +1,6 @@
 {
-  "form_header": "只需2分鐘，立即登記！",
-  "form_description": "現在登記，立即為您送上「 綠色生活電子手冊-新春篇」，內容包括大掃除簡約收納法、環保清潔劑做法等，教您環保過新年！",
+  "form_header": "攜手解決塑膠污染問題！",
+  "form_description": "我願意聯署推動源頭減少即棄塑膠，長遠解決塑膠污染問題，令美麗海洋與環境回復潔淨健康！",
   "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
   "signed_number": "已聯署人數",
 
@@ -45,9 +45,9 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "請捐助推動走塑工作",
+  "donate_header": "我願意解決塑膠污染！",
   "donate_description": [
-    "您的捐助，將有效地、直接地解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。"
+    "我要捐款解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。"
   ],
   "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
   "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
@@ -99,7 +99,7 @@
     {
       "label": "400",
       "value": 400,
-      "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策 ，全面減緩塑膠污染問題。",
+      "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
       "currency": "HKD"
     },
     {
