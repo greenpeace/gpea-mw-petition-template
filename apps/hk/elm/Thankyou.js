@@ -39,11 +39,7 @@ const Thankyou = ({ theme, signup }) => {
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        感謝您聯署支持守護大嶼，優先發展棕地。
-      </Text>
-
-      <Text as="p" {...paragraphProps}>
-        您的聯署意義重大，我們將一起實現守護香港自然環境的目標。綠色和平一直以行動、研究調查、政策倡議等方式守護大嶼，您願意多走一步，捐助守護大嶼的工作嗎？
+        綠色和平一直以行動、研究調查、政策倡議等方式守護大嶼，您願意多走一步，捐助守護大嶼的工作嗎？
       </Text>
 
       <Text as="p" {...paragraphProps}>
