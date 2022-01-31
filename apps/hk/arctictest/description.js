@@ -28,12 +28,15 @@ const Description = ({ setSurveyPage }) => {
             <Text
               color="gray.700"
               fontWeight={700}
-              fontSize={{ base: 'sm', sm: 'md', md: 'xl' }}
+              fontSize={{ base: 'md', md: 'xl' }}
+              lineHeight="2"
             >
-              您正在畫室中繪製世界地圖，正想為海洋填色之際，卻不慎將水倒翻在地圖上，極地看起來就像被海水淹沒一樣！本來打算抹乾水漬，但極地位置卻突然出現一道閃光，再張開眼睛的時候才發現自己竟然穿越到極地之中！遇上各種事件之後，發現原來自己潛意識中隱藏著某種極地動物的特質？！
+              您正在畫室中繪製世界地圖，正想為海洋填色之際，卻不慎將水倒翻在地圖上，極地看起來就像被海水淹沒一樣！本來打算抹乾水漬，但極地位置卻突然出現一道閃光，再張開眼睛的時候才發現自己竟然穿越到極地之中！
+              <br />
+              遇上各種事件之後，發現原來自己潛意識中隱藏著某種極地動物的特質！？
             </Text>
-            <Flex justifyContent={{ base: 'flex-end' }}>
-              <Button alignSelf={'right'}>
+            <Flex mt={4} justifyContent={{ base: 'center' }}>
+              <Button>
                 <Text fontSize={{ base: 'sm', sm: 'md' }}>下一步</Text>
               </Button>
             </Flex>

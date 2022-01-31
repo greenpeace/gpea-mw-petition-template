@@ -41,7 +41,7 @@ const Quiz = ({ quiz, current }) => {
           </Box>
         </Box>
       )}
-      <Container maxW={'2xl'} pos={`relative`} zIndex={10}>
+      <Container maxW={'2xl'} pb="6" pos={'relative'} zIndex={10}>
         <Center py={4}>
           <Stack w="100%" spacing={4} direction="column">
             <Box bgColor={'#025177'} borderRadius={'8px'} p={4}>
@@ -50,7 +50,7 @@ const Quiz = ({ quiz, current }) => {
                 color={'#FFF'}
                 textAlign={{ base: 'left', md: 'center' }}
               >
-                找出隱藏在您潛意識中的極地動物！10題測出您的性格與習慣
+                測出您的性格與習慣，找出隱藏在您潛意識中的極地動物！
               </Heading>
             </Box>
             <Box ref={ref}>
@@ -63,20 +63,21 @@ const Quiz = ({ quiz, current }) => {
                 <Box
                   bgColor={'rgba(255,255,255,0.6)'}
                   borderRadius={'8px'}
-                  p={4}
+                  py={4}
+                  px={2}
                 >
                   <Heading
                     fontSize={{ base: 'md', md: 'xl' }}
                     color={'#025177'}
                     textAlign={{ base: 'left' }}
-                    mb={4}
+                    py="4"
                   >
                     {currentQuiz?.question.label}
                   </Heading>
                   <Image
                     src={image}
                     borderRadius={'8px'}
-                    border={'3px solid #FFF'}
+                    border={'4px solid #FFF'}
                   />
                 </Box>
               </Box>

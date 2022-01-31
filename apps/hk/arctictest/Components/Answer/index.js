@@ -35,8 +35,8 @@ const Quiz = ({
           <Box
             key={i}
             p={4}
-            borderRadius={'4px'}
-            bgColor={selected ? '#025177' : 'theme.arctic'}
+            borderRadius={'md'}
+            bgColor={selected ? 'arctic.500' : 'arctic.100'}
             color={selected ? 'white' : '#025177'}
             cursor="pointer"
             transition="0.2s ease"
