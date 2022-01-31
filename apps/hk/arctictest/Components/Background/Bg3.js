@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Image } from '@chakra-ui/react';
 
-import bgImage from '../images/questionLayers/Q9/背景圖Q9-100.jpg';
+import bgImage from '../../images/questionLayers/Q3/背景圖Q3-100.jpg';
 
 const Bg = () => {
   return (

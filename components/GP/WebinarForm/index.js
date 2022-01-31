@@ -19,6 +19,8 @@ import {
   Select,
   Input,
   Heading,
+  useDisclosure,
+  Flex,
 } from '@chakra-ui/react';
 import {
   MAIL_DOMAINS,
@@ -49,6 +51,7 @@ const MyForm = (props) => {
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure(true);
   const themeInterests = theme.interests;
 
   useEffect(() => {
@@ -111,50 +114,60 @@ const MyForm = (props) => {
 
   return (
     <Box>
+      <Flex justify="flex-end" pos={'absolute'} right={4}>
+        <Button onClick={() => (isOpen ? onClose() : onOpen())}></Button>
+      </Flex>
       <Box py={{ base: 6, md: 8 }} px={{ base: 4, md: 6 }}>
         <Stack spacing="4">
           <Box>
             <Heading
-              fontSize={'2xl'}
+              fontSize={{ base: 'lg', xl: '2xl' }}
               color={`theme.${themeInterests}`}
               dangerouslySetInnerHTML={{ __html: formContent.form_header }}
             />
           </Box>
-          <Box>
-            <Text
-              as="p"
-              dangerouslySetInnerHTML={{ __html: formContent.form_description }}
-            />
-          </Box>
+          {isOpen && (
+            <Box>
+              <Text
+                as="p"
+                dangerouslySetInnerHTML={{
+                  __html: formContent.form_description,
+                }}
+                fontSize={{ base: 'sm', xl: 'md' }}
+              />
+            </Box>
+          )}
           <Form onSubmit={handleSubmit}>
             <Stack spacing="4">
-              <Stack direction={`row`}>
-                <Box flex={1}>
-                  <Field
-                    errors={errors.LastName}
-                    touched={touched.LastName}
-                    label={formContent.label_last_name}
-                    name={'LastName'}
-                    type={'text'}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  />
-                </Box>
+              {isOpen && (
+                <Stack direction={`row`}>
+                  <Box flex={1}>
+                    <Field
+                      errors={errors.LastName}
+                      touched={touched.LastName}
+                      label={formContent.label_last_name}
+                      name={'LastName'}
+                      type={'text'}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                    />
+                  </Box>
 
-                <Box flex={1}>
-                  <Field
-                    errors={errors.FirstName}
-                    touched={touched.FirstName}
-                    label={formContent.label_first_name}
-                    name={'FirstName'}
-                    type={'text'}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                  />
-                </Box>
-              </Stack>
+                  <Box flex={1}>
+                    <Field
+                      errors={errors.FirstName}
+                      touched={touched.FirstName}
+                      label={formContent.label_first_name}
+                      name={'FirstName'}
+                      type={'text'}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                    />
+                  </Box>
+                </Stack>
+              )}
 
-              <Box>
+              <Box flex={1}>
                 <FormControl
                   id="email"
                   isInvalid={errors.Email && touched.Email}
@@ -193,78 +206,86 @@ const MyForm = (props) => {
                 </FormControl>
               </Box>
 
-              <Box>
-                <HStack align="flex-start">
-                  <Box>
-                    <FormControl id="mobileCountryCode">
-                      <Select
-                        name="MobileCountryCode"
-                        onChange={handleChange}
-                        fontSize={'16px'}
-                        size={'lg'}
-                      >
-                        {(formContent.mobile_country_code || []).map((d) => (
-                          <option key={d.value} value={d.value}>
-                            {d.label}
+              {isOpen && (
+                <Box>
+                  <HStack align="flex-start">
+                    <Box>
+                      <FormControl id="mobileCountryCode">
+                        <Select
+                          name="MobileCountryCode"
+                          onChange={handleChange}
+                          fontSize={'16px'}
+                          size={'lg'}
+                        >
+                          {(formContent.mobile_country_code || []).map((d) => (
+                            <option key={d.value} value={d.value}>
+                              {d.label}
+                            </option>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Box>
+                    <Box flex={1}>
+                      <Field
+                        errors={errors.MobilePhone}
+                        touched={touched.MobilePhone}
+                        label={formContent.label_phone}
+                        name={'MobilePhone'}
+                        type="tel"
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}
+                      />
+                    </Box>
+                  </HStack>
+                </Box>
+              )}
+
+              {isOpen && (
+                <Box>
+                  <FormControl
+                    id="Birthdate"
+                    isInvalid={errors.Birthdate && touched.Birthdate}
+                  >
+                    <Select
+                      onChange={handleChange}
+                      fontSize={'16px'}
+                      placeholder={formContent.label_year_of_birth}
+                      size={'lg'}
+                    >
+                      {birthDateYear &&
+                        birthDateYear.map((d) => (
+                          <option key={d.value} value={`${d.value}-01-01`}>
+                            {d.value}
                           </option>
                         ))}
-                      </Select>
-                    </FormControl>
-                  </Box>
-                  <Box flex={1}>
-                    <Field
-                      errors={errors.MobilePhone}
-                      touched={touched.MobilePhone}
-                      label={formContent.label_phone}
-                      name={'MobilePhone'}
-                      type="tel"
-                      handleChange={handleChange}
-                      handleBlur={handleBlur}
-                    />
-                  </Box>
-                </HStack>
-              </Box>
+                    </Select>
+                    <FormErrorMessage color="red">
+                      {errors.Birthdate}
+                    </FormErrorMessage>
+                  </FormControl>
+                </Box>
+              )}
 
-              <Box>
-                <FormControl
-                  id="Birthdate"
-                  isInvalid={errors.Birthdate && touched.Birthdate}
-                >
-                  <Select
-                    onChange={handleChange}
-                    fontSize={'16px'}
-                    placeholder={formContent.label_year_of_birth}
-                    size={'lg'}
-                  >
-                    {birthDateYear &&
-                      birthDateYear.map((d) => (
-                        <option key={d.value} value={`${d.value}-01-01`}>
-                          {d.value}
-                        </option>
-                      ))}
-                  </Select>
-                  <FormErrorMessage color="red">
-                    {errors.Birthdate}
-                  </FormErrorMessage>
-                </FormControl>
-              </Box>
+              {isOpen && (
+                <Box>
+                  <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+                    {formContent.submit_text}
+                  </Button>
+                </Box>
+              )}
 
-              <Box>
-                <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
-                  {formContent.submit_text}
-                </Button>
-              </Box>
-
-              <Box>
-                <Text
-                  fontSize="xs"
-                  color={'gray.700'}
-                  lineHeight="1.7"
-                  dangerouslySetInnerHTML={{
-                    __html: formContent.form_remind,
-                  }}
-                />
-              </Box>
+              {isOpen && (
+                <Box>
+                  <Text
+                    fontSize="xs"
+                    color={'gray.700'}
+                    lineHeight="1.7"
+                    dangerouslySetInnerHTML={{
+                      __html: formContent.form_remind,
+                    }}
+                  />
+                </Box>
+              )}
             </Stack>
           </Form>
         </Stack>

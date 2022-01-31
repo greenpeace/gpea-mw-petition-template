@@ -10,18 +10,14 @@
       "label": ""
     },
     "options": [
-      { "value": "1", "label": "先拍下照片，之後與家人朋友分享。" },
+      { "value": "F", "label": "先拍下照片，之後與家人朋友分享。" },
       {
-        "value": "2",
+        "value": "E",
         "label": "環視周圍，尋找一同欣賞的人群。"
       },
-      { "value": "3", "label": "仔細地用雙眼觀察，直至極光消失。" },
+      { "value": "A", "label": "仔細地用雙眼觀察，直至極光消失。" },
       {
-        "value": "4",
-        "label": "參與淨山、淨灘、淨海相關活動"
-      },
-      {
-        "value": "5",
+        "value": "J",
         "label": "沒有特別的感覺，繼續旅程比較重要。"
       }
     ],
@@ -37,12 +33,12 @@
     },
     "content": { "value": "", "label": "" },
     "options": [
-      { "value": "1", "label": "維持原來的服飾。" },
+      { "value": "C", "label": "維持原來的服飾。" },
       {
-        "value": "2",
+        "value": "A",
         "label": "自己拿着衣服進行旅程。"
       },
-      { "value": "3", "label": "脫下衣服並找地方收好，讓之後也可穿回。" }
+      { "value": "J", "label": "脫下衣服並找地方收好，讓之後也可穿回。" }
     ],
     "image": "questions/Q2-100.jpg",
     "maximum": 1,
@@ -56,10 +52,10 @@
     },
     "content": { "value": "", "label": "" },
     "options": [
-      { "value": "1", "label": "直接上前詢問動物們發生什麼事。" },
-      { "value": "2", "label": "先觀察情況再接近動物。" },
-      { "value": "3", "label": "想起家人，希望可以與家人進行旅程。" },
-      { "value": "4", "label": "裝作看不見，向反方向行走。" }
+      { "value": "E", "label": "直接上前詢問動物們發生什麼事。" },
+      { "value": "B", "label": "先觀察情況再接近動物。" },
+      { "value": "F", "label": "想起家人，希望可以與家人進行旅程。" },
+      { "value": "A", "label": "裝作看不見，向反方向行走。" }
     ],
     "image": "questions/Q3-100.jpg",
     "maximum": 1,
@@ -74,15 +70,15 @@
     "content": { "value": "", "label": "" },
     "options": [
       {
-        "value": "1",
+        "value": "G",
         "label": "選擇同行。"
       },
       {
-        "value": "2",
+        "value": "B",
         "label": "先與對方交談，觀察對方後才決定。"
       },
-      { "value": "3", "label": "簡單寒暄，繼續一人旅程。" },
-      { "value": "4", "label": "直接拒絕對方。" }
+      { "value": "A", "label": "簡單寒暄，繼續一人旅程。" },
+      { "value": "D", "label": "直接拒絕對方。" }
     ],
     "image": "questions/Q4-100.jpg",
     "maximum": 1,
@@ -97,19 +93,19 @@
     "content": { "value": "", "label": "" },
     "options": [
       {
-        "value": "1",
+        "value": "F",
         "label": "藍鯨家族正在進行遷徙。"
       },
       {
-        "value": "2",
+        "value": "H",
         "label": "一對企鵝正在相親相愛地交配繁殖。"
       },
       {
-        "value": "3",
+        "value": "I",
         "label": "石油公司在海床進行地震勘探爆破。 "
       },
       {
-        "value": "4",
+        "value": "G",
         "label": "一隻北極熊由於飢餓而躺在極地上，發出痛苦的呼叫。"
       }
     ],
@@ -126,19 +122,19 @@
     "content": { "value": "", "label": "" },
     "options": [
       {
-        "value": "1",
+        "value": "J",
         "label": "身體力行，答應邀請，上船參與旅程。"
       },
       {
-        "value": "2",
+        "value": "A",
         "label": "持續觀望，詢問更多詳情。"
       },
       {
-        "value": "3",
+        "value": "F",
         "label": "記下要點，之後與親友分享極地生態資訊。 "
       },
       {
-        "value": "4",
+        "value": "C",
         "label": "按照計劃，繼續旅程。"
       }
     ],
@@ -155,19 +151,19 @@
     "content": { "value": "", "label": "" },
     "options": [
       {
-        "value": "1",
+        "value": "E",
         "label": "將所有事情和感受都向對方訴說。"
       },
       {
-        "value": "2",
+        "value": "H",
         "label": "只向對方表達感受。"
       },
       {
-        "value": "3",
+        "value": "J",
         "label": "只向對方說明情況。"
       },
       {
-        "value": "4",
+        "value": "I",
         "label": "不想多加解釋，裝作沒事發生。"
       }
     ],
@@ -184,19 +180,19 @@
     "content": { "value": "", "label": "" },
     "options": [
       {
-        "value": "1",
+        "value": "I",
         "label": "不理解但尊重對方決定，沒有多問便繼續旅程。"
       },
       {
-        "value": "2",
+        "value": "G",
         "label": "沒什麼大不了，輕易接受對方的決定。"
       },
       {
-        "value": "3",
+        "value": "D",
         "label": "感到可惜，嘗試挽回對方。"
       },
       {
-        "value": "4",
+        "value": "A",
         "label": "鬆一口氣，自己亦希望一人旅程。"
       }
     ],
@@ -213,19 +209,19 @@
     "content": { "value": "", "label": "" },
     "options": [
       {
-        "value": "1",
+        "value": "J",
         "label": "加入支持環保組織，參與政策倡議，向石油與捕魚企業發信要求停止對環境的破壞。"
       },
       {
-        "value": "2",
+        "value": "F",
         "label": "決心從教育著手，培養自己與子女環保意識以守護北極熊。"
       },
       {
-        "value": "3",
+        "value": "H",
         "label": "充滿歉意，對他們的遭遇感到惋惜。"
       },
       {
-        "value": "4",
+        "value": "C",
         "label": "只希望旅程不受冰塊融化影響。"
       }
     ],
@@ -242,19 +238,19 @@
     "content": { "value": "", "label": "" },
     "options": [
       {
-        "value": "1",
+        "value": "D",
         "label": "認為可以回到原來的世界，直接向光芒進發。"
       },
       {
-        "value": "2",
+        "value": "F",
         "label": "想起原來世界的家人朋友，即使可能遇到危險亦要嘗試。"
       },
       {
-        "value": "3",
+        "value": "J",
         "label": "對光芒半信半疑，先觀察後進發。"
       },
       {
-        "value": "4",
+        "value": "B",
         "label": "以為是幻覺，努力返回冰面。"
       }
     ],
