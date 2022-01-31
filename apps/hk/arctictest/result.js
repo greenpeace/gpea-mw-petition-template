@@ -43,7 +43,7 @@ function Index({
     setFormContent(formContent);
     setAnswerToSubmitForm({
       ...hiddenForm,
-      CampaignData1__c: answer[0]?.toString().replace('clear', '5'),
+      CampaignData1__c: result[0]?.el,
       // CampaignData2__c: answer[1]?.toString().replace('clear', '5'),
       // CampaignData3__c: answer[2]?.toString().replace('clear', '5'),
       // CampaignData4__c: answer[3]?.toString().replace('clear', '5'),
@@ -99,7 +99,7 @@ function Index({
               <Text as="p" color="white">
                 您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
               </Text>
-              <Image src={image} />
+              <Image src={image} maxWidth={'320px'} />
               <Text
                 as="p"
                 dangerouslySetInnerHTML={{
@@ -110,7 +110,7 @@ function Index({
           </Box>
         </PageContainer>
 
-        <Image
+        {/* <Image
           w="100%"
           h="100%"
           objectFit={'cover'}
@@ -119,6 +119,17 @@ function Index({
           position="absolute"
           top={0}
           bottom={0}
+          bgColor={'rgba(255,255,255,0.8)'}
+        /> */}
+        <Box
+          w="100%"
+          h="100%"
+          objectFit={'cover'}
+          cursor={'pointer'}
+          position="absolute"
+          top={0}
+          bottom={0}
+          bgColor={'rgba(0,0,0,0.5)'}
         />
       </Box>
       <PageContainer>
@@ -127,22 +138,6 @@ function Index({
             {submitted ? (
               <ContentContainer theme={theme}>
                 <Box>內容</Box>
-                {/* {(() => {
-                  switch (getFinalAnswer) {
-                    case '1':
-                      return <ContentA />;
-                    case '2':
-                      return <ContentB />;
-                    case '3':
-                      return <ContentC />;
-                    case '4':
-                      return <ContentD />;
-                    case '5':
-                      return <ContentE />;
-                    default:
-                      return <ContentE />;
-                  }
-                })()} */}
               </ContentContainer>
             ) : (
               <ContentContainer theme={theme}>
@@ -159,6 +154,7 @@ function Index({
         bottom={{ base: -2, md: 'auto' }}
         top={{ base: 'auto', md: 20 }}
         right={{ base: 'auto', md: 10 }}
+        h={'170px'}
       >
         <FormContainer>
           <Box ref={ref}>{submitted ? <DonateForm /> : <SignupForm />}</Box>

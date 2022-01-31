@@ -56,37 +56,32 @@ const Quiz = ({ quiz, current }) => {
             <Box ref={ref}>
               <QuizTop quiz={quiz} />
             </Box>
-            <LazyShow>
-              {loading ? (
-                <Skeleton h={'215px'} />
-              ) : (
-                <Box>
-                  <Box
-                    bgColor={'rgba(255,255,255,0.6)'}
-                    borderRadius={'8px'}
-                    p={4}
+            {loading ? (
+              <Skeleton h={'215px'} />
+            ) : (
+              <Box>
+                <Box
+                  bgColor={'rgba(255,255,255,0.6)'}
+                  borderRadius={'8px'}
+                  p={4}
+                >
+                  <Heading
+                    fontSize={{ base: 'md', md: 'xl' }}
+                    color={'#025177'}
+                    textAlign={{ base: 'left' }}
+                    mb={4}
                   >
-                    <Heading
-                      fontSize={{ base: 'md', md: 'xl' }}
-                      color={'#025177'}
-                      textAlign={{ base: 'left' }}
-                      mb={4}
-                    >
-                      {currentQuiz?.question.label}
-                    </Heading>
-                    <Image
-                      src={image}
-                      borderRadius={'8px'}
-                      border={'3px solid #FFF'}
-                    />
-                  </Box>
+                    {currentQuiz?.question.label}
+                  </Heading>
+                  <Image
+                    src={image}
+                    borderRadius={'8px'}
+                    border={'3px solid #FFF'}
+                  />
                 </Box>
-              )}
-            </LazyShow>
-
-            <LazyShow>
-              <Answer quiz={quiz} />
-            </LazyShow>
+              </Box>
+            )}
+            <Answer quiz={quiz} />
           </Stack>
         </Center>
       </Container>
