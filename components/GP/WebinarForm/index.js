@@ -122,6 +122,7 @@ const MyForm = (props) => {
               as="h2"
               {...headingProps}
               mb="0"
+              color={`theme.${themeInterests}`}
               dangerouslySetInnerHTML={{ __html: formContent.form_header }}
             />
           </Box>
