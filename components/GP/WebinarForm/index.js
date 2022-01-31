@@ -26,6 +26,10 @@ import {
   EXCLUDE_URL_PARAMETERS,
 } from '@common/constants';
 import { OrangeCTA } from '@common/styles/components/formStyle';
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
 
 const MyForm = (props) => {
   const {
@@ -115,7 +119,9 @@ const MyForm = (props) => {
         <Stack spacing="4">
           <Box>
             <Heading
-              fontSize={'2xl'}
+              as="h2"
+              {...headingProps}
+              mb="0"
               color={`theme.${themeInterests}`}
               dangerouslySetInnerHTML={{ __html: formContent.form_header }}
             />
@@ -123,6 +129,8 @@ const MyForm = (props) => {
           <Box>
             <Text
               as="p"
+              {...paragraphProps}
+              mb="0"
               dangerouslySetInnerHTML={{ __html: formContent.form_description }}
             />
           </Box>

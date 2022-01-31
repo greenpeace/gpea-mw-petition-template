@@ -23,7 +23,6 @@ const ContentB = dynamic(() => import('./resultContent/contentB'));
 const ContentC = dynamic(() => import('./resultContent/contentC'));
 const ContentD = dynamic(() => import('./resultContent/contentD'));
 const ContentE = dynamic(() => import('./resultContent/contentE'));
-const Thankyou = dynamic(() => import('./Thankyou'));
 
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
@@ -40,11 +39,13 @@ function Index({
   status,
   theme,
   setFormContent,
+  signup,
   answer,
   hiddenForm,
   setAnswerToSubmitForm,
 }) {
   const { submitted } = status;
+  const { FirstName } = signup;
   const getFinalAnswer = answer[4]?.toString().replace('clear', '5');
 
   const scrollToRef = (ref) =>
@@ -81,23 +82,45 @@ function Index({
             <Box py={8} px={4} maxW={{ base: '100%' }}>
               <Flex direction="row">
                 <Box flex={1}>
-                  <Stack spacing="4">
-                    <Heading
-                      as="h1"
-                      fontSize={{
-                        base: 'var(--text-xl)',
-                        md: 'var(--text-2xl)',
-                      }}
-                      color="white"
-                      mb={4}
-                      dangerouslySetInnerHTML={{
-                        __html: '感謝您參與問卷調查！',
-                      }}
-                    />
-                    <Text as="p" color="white">
-                      您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
-                    </Text>
-                  </Stack>
+                  {submitted ? (
+                    <Stack spacing="4">
+                      <Heading
+                        as="h1"
+                        fontSize={{
+                          base: 'var(--text-xl)',
+                          md: 'var(--text-2xl)',
+                        }}
+                        color="white"
+                        mb={4}
+                        dangerouslySetInnerHTML={{
+                          __html: `${
+                            FirstName ? FirstName : '綠色和平支持者'
+                          }，感謝您加入推動源頭減少即棄塑膠！`,
+                        }}
+                      />
+                      <Text as="p" color="white">
+                        為環境多走一步，捐助解決塑膠污染問題。
+                      </Text>
+                    </Stack>
+                  ) : (
+                    <Stack spacing="4">
+                      <Heading
+                        as="h1"
+                        fontSize={{
+                          base: 'var(--text-xl)',
+                          md: 'var(--text-2xl)',
+                        }}
+                        color="white"
+                        mb={4}
+                        dangerouslySetInnerHTML={{
+                          __html: '感謝您參與問卷調查！',
+                        }}
+                      />
+                      <Text as="p" color="white">
+                        您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
+                      </Text>
+                    </Stack>
+                  )}
                 </Box>
                 <Box flex={{ base: 0, md: 1 }}></Box>
               </Flex>
@@ -131,7 +154,7 @@ function Index({
           bgColor={'rgba(0,0,0,0.5)'}
         />
       </Box>
-      <Box maxW="1200px" mx="auto">
+      <PageContainer>
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
@@ -169,7 +192,7 @@ function Index({
             </Box>
           </Flex>
         </OverflowWrapper>
-      </Box>
+      </PageContainer>
 
       <PetitionFooter locale={'HKChinese'} />
       {!inView && (
