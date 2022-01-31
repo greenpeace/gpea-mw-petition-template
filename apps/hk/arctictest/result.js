@@ -2,7 +2,16 @@ import React, { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Stack, Text, Heading, Flex, Image } from '@chakra-ui/react';
+import {
+  Box,
+  Stack,
+  Text,
+  Heading,
+  Flex,
+  Image,
+  useDisclosure,
+  useMediaQuery,
+} from '@chakra-ui/react';
 import PetitionFooter from '@containers/petitionFooter';
 import FormContainer from '@containers/formContainer';
 import PageContainer from '@containers/pageContainer';
@@ -38,6 +47,8 @@ function Index({
   const executeScroll = () => scrollToRef(myRef);
   const [result, setResult] = useState([]);
   const { loading, error, image } = useImage(RESULT[result[0]?.el]?.image);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
 
   useEffect(() => {
     setFormContent(formContent);
@@ -71,6 +82,17 @@ function Index({
 
     setResult(calAnswer);
   }, [answer]);
+
+  const handleOnClick = () => {
+    if (isLargerThan768) {
+      return;
+    }
+    if (isOpen) {
+      return;
+    } else {
+      onOpen();
+    }
+  };
 
   return (
     <Box position={'relative'}>
@@ -154,9 +176,15 @@ function Index({
         bottom={{ base: -2, md: 'auto' }}
         top={{ base: 'auto', md: 20 }}
         right={{ base: 'auto', md: 10 }}
-        h={'170px'}
+        h={isOpen ? 'auto' : '170px'}
+        onClick={() => handleOnClick()}
       >
         <FormContainer>
+          {isOpen && (
+            <Flex justify="flex-end" position="absolute" right={6} top={2}>
+              <Box onClick={() => onClose()}>X</Box>
+            </Flex>
+          )}
           <Box ref={ref}>{submitted ? <DonateForm /> : <SignupForm />}</Box>
         </FormContainer>
       </Box>
