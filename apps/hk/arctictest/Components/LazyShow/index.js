@@ -1,5 +1,6 @@
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
+import { usePrevious } from 'common/utils';
 
 function useOnScreen(ref, rootMargin = '0px') {
   // State and setter for storing whether element is visible
@@ -28,36 +29,58 @@ function useOnScreen(ref, rootMargin = '0px') {
   return isIntersecting;
 }
 
-const LazyShow = ({ children }) => {
+const LazyShow = ({ children, duration = 1, initial, reTrigger }) => {
   const controls = useAnimation();
   const rootRef = useRef();
   const onScreen = useOnScreen(rootRef);
+
+  const sequence = async () => {
+    await controls.start({
+      opacity: 0,
+      transition: {
+        duration: 0,
+        ease: 'easeIn',
+      },
+    });
+
+    return await controls.start({
+      opacity: 1,
+      transition: {
+        duration,
+        ease: 'easeIn',
+      },
+    });
+  };
+
   useEffect(() => {
     if (onScreen) {
       controls.start({
-        y: 0,
         opacity: 1,
         transition: {
-          duration: 2,
-          ease: 'easeOut',
+          duration,
+          ease: 'easeIn',
         },
       });
     } else {
       controls.start({
-        y: { base: '-30px', sm: '-60px' },
         opacity: 0,
         transition: {
-          duration: 2,
+          duration,
           ease: 'easeOut',
         },
       });
     }
   }, [onScreen, controls]);
+
+  useEffect(() => {
+    sequence();
+  }, [reTrigger]);
+
   return (
     <motion.div
       className="lazy-div"
       ref={rootRef}
-      initial={{ opacity: 0, y: '-10px' }}
+      initial={initial}
       animate={controls}
     >
       {children}

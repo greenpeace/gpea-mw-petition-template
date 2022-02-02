@@ -1,5 +1,6 @@
 import { Box, Image, Stack, Center } from '@chakra-ui/react';
 import { connect } from 'react-redux';
+import LazyShow from './Components/LazyShow';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
 import bgPlasticsImage from './images/openingending/keyVisualBackground.png';
@@ -9,29 +10,35 @@ import startButton from './images/openingending/startButtonKeyVisual.png';
 const Landing = ({ setSurveyPage }) => {
   return (
     <Box h={'100vh'} mt={{ base: '-55px' }} pos={`relative`}>
-      <Image
-        w="100%"
-        h="100%"
+      <Box
+        position="absolute"
+        top={0}
+        bottom={0}
+        w={'100%'}
+        bgSize={'cover'}
+        bgRepeat={'no-repeat'}
         objectFit={'cover'}
-        src={bgPlasticsImage}
-        cursor={'pointer'}
-      />
-      <Box position="absolute" top={0} bottom={0} w={'100%'}>
-        <Center h={'100%'}>
+        bgImage={`url(${bgPlasticsImage})`}
+      >
+        <Center h={'100%'} w={'100%'}>
           <Stack direction="column">
             <Box px={{ base: 6, md: 0 }}>
-              <Image src={titleKeyVisual} />
+              <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.5}>
+                <Image src={titleKeyVisual} />
+              </LazyShow>
             </Box>
             <Box
               maxWidth={{ base: '50%', sm: 'auto' }}
               alignSelf={'center'}
               onClick={() => setSurveyPage('description')}
             >
-              <Image
-                src={startButton}
-                cursor={'pointer'}
-                _hover={{ opacity: 0.8 }}
-              />
+              <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.5}>
+                <Image
+                  src={startButton}
+                  cursor={'pointer'}
+                  _hover={{ opacity: 0.85 }}
+                />
+              </LazyShow>
             </Box>
           </Stack>
         </Center>

@@ -8,7 +8,6 @@ import {
   Heading,
   Center,
   Image,
-  Skeleton,
 } from '@chakra-ui/react';
 import useImage from './useImage';
 import QuizTop from './Components/QuizTop';
@@ -56,46 +55,47 @@ const Quiz = ({ quiz, current }) => {
             <Box ref={ref}>
               <QuizTop quiz={quiz} />
             </Box>
-            {loading ? (
-              <Skeleton h={'215px'} />
-            ) : (
-              <Box>
-                <Box
-                  bgColor={'rgba(255,255,255,0.6)'}
-                  borderRadius={'8px'}
-                  py={4}
-                  px={2}
+            <Box>
+              <Box
+                bgColor={'rgba(255,255,255,0.6)'}
+                borderRadius={'8px'}
+                py={4}
+                px={2}
+              >
+                <Heading
+                  fontSize={{ base: 'md', md: 'xl' }}
+                  color={'#025177'}
+                  textAlign={{ base: 'left' }}
+                  py="4"
                 >
-                  <Heading
-                    fontSize={{ base: 'md', md: 'xl' }}
-                    color={'#025177'}
-                    textAlign={{ base: 'left' }}
-                    py="4"
+                  {currentQuiz?.question.label}
+                </Heading>
+                <Box minH={'180px'}>
+                  <LazyShow
+                    initial={{ opacity: 0, x: 0, y: 0 }}
+                    duration={0.75}
+                    reTrigger={currentQuiz.id}
                   >
-                    {currentQuiz?.question.label}
-                  </Heading>
-                  <Image
-                    src={image}
-                    borderRadius={'8px'}
-                    border={'4px solid #FFF'}
-                  />
+                    <Image
+                      src={image}
+                      borderRadius={'8px'}
+                      border={'4px solid #FFF'}
+                    />
+                  </LazyShow>
                 </Box>
               </Box>
-            )}
+            </Box>
             <Answer quiz={quiz} />
           </Stack>
         </Center>
       </Container>
-      <DynamicBg />
-      <Image
-        w="100%"
-        h="100%"
-        top={0}
-        objectFit={'cover'}
-        bgImage={bgImage}
-        position="absolute"
-        zIndex={0}
-      />
+      <LazyShow
+        initial={{ opacity: 0, x: 0, y: 0 }}
+        duration={0.5}
+        reTrigger={currentQuiz.id}
+      >
+        <DynamicBg />
+      </LazyShow>
     </Box>
   );
 };
