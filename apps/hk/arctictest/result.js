@@ -11,6 +11,8 @@ import {
   Image,
   useDisclosure,
   useMediaQuery,
+  Grid,
+  GridItem,
 } from '@chakra-ui/react';
 import PetitionFooter from '@containers/petitionFooter';
 import FormContainer from '@containers/formContainer';
@@ -38,14 +40,15 @@ function Index({
   setAnswerToSubmitForm,
 }) {
   const { submitted } = status;
-  const scrollToRef = (ref) =>
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
+  // const scrollToRef = (ref) =>
+  //   ref.current?.scrollIntoView({ behavior: 'smooth' });
+  // const { ref, inView } = useInView({
+  //   threshold: 0,
+  // });
   const myRef = useRef(null);
-  const executeScroll = () => scrollToRef(myRef);
+  // const executeScroll = () => scrollToRef(myRef);
   const [result, setResult] = useState([]);
+  const [bgElementHeight, setBgElementHeight] = useState(null);
   const { loading, error, image } = useImage(RESULT[result[0]?.el]?.image);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
@@ -83,6 +86,12 @@ function Index({
     setResult(calAnswer);
   }, [answer]);
 
+  useEffect(() => {
+    if (myRef.current) {
+      setBgElementHeight(myRef.current.clientHeight);
+    }
+  }, [myRef.current]);
+
   const handleOnClick = () => {
     if (isLargerThan768) {
       return;
@@ -95,102 +104,105 @@ function Index({
   };
 
   return (
-    <Box position={'relative'}>
-      {/* <Box zIndex={9} position={{base: 'fixed', md: 'sticky'}} bottom={{base: -2, md: 'initial'}}>
-        <FormContainer>
-          <Box ref={ref}>{submitted ? <DonateForm /> : <SignupForm />}</Box>
-        </FormContainer>
-      </Box> */}
-
-      <Box pos={'relative'} zIndex={2}>
+    <>
+      <Box pos={'relative'}>
         <PageContainer>
-          <Box py={8} px={4} zIndex={4} pos={'relative'} maxWidth={'720px'}>
-            <Stack spacing="4" direction={{ base: 'column' }}>
-              <Heading
-                as="h1"
-                fontSize={{
-                  base: 'var(--text-xl)',
-                  md: 'var(--text-2xl)',
-                }}
-                color="white"
-                mb={4}
-                dangerouslySetInnerHTML={{
-                  __html: '感謝您參與問卷調查！',
-                }}
-              />
-              <Text as="p" color="white">
-                您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
-              </Text>
-              <Image src={image} maxWidth={'320px'} />
-              <Text
-                as="p"
-                dangerouslySetInnerHTML={{
-                  __html: RESULT[result[0]?.el]?.content,
-                }}
-              />
-            </Stack>
-          </Box>
+          <Grid
+            templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
+            gap={0}
+            position={'relative'}
+            zIndex={2}
+          >
+            <GridItem w="100%" pos={'relative'}>
+              <Box ref={myRef}>
+                <Box
+                  py={8}
+                  px={4}
+                  zIndex={4}
+                  pos={'relative'}
+                  maxWidth={'720px'}
+                >
+                  <Stack spacing="4" direction={{ base: 'column' }}>
+                    <Heading
+                      as="h1"
+                      fontSize={{
+                        base: 'var(--text-xl)',
+                        md: 'var(--text-2xl)',
+                      }}
+                      color="white"
+                      mb={4}
+                      dangerouslySetInnerHTML={{
+                        __html: '感謝您參與問卷調查！',
+                      }}
+                    />
+                    <Text as="p" color="white">
+                      您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
+                    </Text>
+                    <Image src={image} maxWidth={'320px'} />
+                    <Text
+                      as="p"
+                      dangerouslySetInnerHTML={{
+                        __html: RESULT[result[0]?.el]?.content,
+                      }}
+                    />
+                  </Stack>
+                </Box>
+              </Box>
+              <Box maxWidth={'720px'}>
+                <Box flex={1}>
+                  {submitted ? (
+                    <ContentContainer theme={theme}>
+                      <Box>內容</Box>
+                    </ContentContainer>
+                  ) : (
+                    <ContentContainer theme={theme}>
+                      <ContentResult />
+                    </ContentContainer>
+                  )}
+                </Box>
+              </Box>
+            </GridItem>
+            <GridItem w="100%">
+              <Box
+                zIndex={9}
+                position={{ base: 'fixed', md: 'sticky' }}
+                bottom={{ base: -2, md: 'auto' }}
+                top={{ base: 'auto', md: 20 }}
+                right={{ base: 'auto', md: 10 }}
+                // h={isOpen ? '520px' : '170px'}
+                onClick={() => handleOnClick()}
+              >
+                <FormContainer>
+                  {isOpen && (
+                    <Flex
+                      justify="flex-end"
+                      position="absolute"
+                      right={6}
+                      top={2}
+                    >
+                      <Box onClick={() => onClose()}>X</Box>
+                    </Flex>
+                  )}
+                  <Box>{submitted ? <DonateForm /> : <SignupForm />}</Box>
+                </FormContainer>
+              </Box>
+            </GridItem>
+          </Grid>
         </PageContainer>
 
-        {/* <Image
-          w="100%"
-          h="100%"
-          objectFit={'cover'}
+        <Image
+          top={0}
+          w={'100%'}
+          h={bgElementHeight}
+          cursor={'pointer'}
+          position="absolute"
+          bgColor={'rgba(255,255,255,0.2)'}
+          zIndex={1}
           src={bgPlasticsImage}
-          cursor={'pointer'}
-          position="absolute"
-          top={0}
-          bottom={0}
-          bgColor={'rgba(255,255,255,0.8)'}
-        /> */}
-        <Box
-          w="100%"
-          h="100%"
-          objectFit={'cover'}
-          cursor={'pointer'}
-          position="absolute"
-          top={0}
-          bottom={0}
-          bgColor={'rgba(0,0,0,0.5)'}
         />
       </Box>
-      <PageContainer>
-        <Box maxWidth={'720px'}>
-          <Box flex={1}>
-            {submitted ? (
-              <ContentContainer theme={theme}>
-                <Box>內容</Box>
-              </ContentContainer>
-            ) : (
-              <ContentContainer theme={theme}>
-                <ContentResult />
-              </ContentContainer>
-            )}
-          </Box>
-        </Box>
-      </PageContainer>
-
-      <Box
-        zIndex={9}
-        position={{ base: 'fixed' }}
-        bottom={{ base: -2, md: 'auto' }}
-        top={{ base: 'auto', md: 20 }}
-        right={{ base: 'auto', md: 10 }}
-        h={isOpen ? 'auto' : '170px'}
-        onClick={() => handleOnClick()}
-      >
-        <FormContainer>
-          {isOpen && (
-            <Flex justify="flex-end" position="absolute" right={6} top={2}>
-              <Box onClick={() => onClose()}>X</Box>
-            </Flex>
-          )}
-          <Box ref={ref}>{submitted ? <DonateForm /> : <SignupForm />}</Box>
-        </FormContainer>
-      </Box>
-
       <PetitionFooter locale={'HKChinese'} />
-    </Box>
+    </>
   );
 }
 
