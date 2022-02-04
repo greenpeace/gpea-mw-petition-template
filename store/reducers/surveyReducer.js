@@ -1,20 +1,9 @@
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
 const initState = {
-  data: {
-    0: ['E'],
-    1: ['A'],
-    2: ['E'],
-    3: ['B'],
-    4: ['G'],
-    5: ['F'],
-    6: ['H'],
-    7: ['I'],
-    8: ['C'],
-    9: ['F'],
-  },
+  data: {},
   current: 0,
-  page: 'result',
+  page: 'landing',
   lastAction: null,
 };
 
