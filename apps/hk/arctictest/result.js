@@ -48,10 +48,12 @@ function Index({
   const myRef = useRef(null);
   // const executeScroll = () => scrollToRef(myRef);
   const [result, setResult] = useState([]);
+  const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
-  const { loading, error, image } = useImage(RESULT[result[0]?.el]?.image);
+  const { loading, error, image } = useImage(RESULT[result[0]?.el]?.image); // animal
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
+  const dynamicContent = RESULT[result[0]?.el]?.content;
 
   useEffect(() => {
     setFormContent(formContent);
@@ -87,10 +89,10 @@ function Index({
   }, [answer]);
 
   useEffect(() => {
-    if (myRef.current) {
+    if (result.length > 0) {
       setBgElementHeight(myRef.current.clientHeight);
     }
-  }, [myRef.current]);
+  }, [dynamicContent, dynamicImageHeight]);
 
   const handleOnClick = () => {
     if (isLargerThan768) {
@@ -103,6 +105,16 @@ function Index({
     }
   };
 
+  // console.log('RESULT[result[0]?.el]?.content-',RESULT[result[0]?.el]?.content)
+
+  // console.log('dynamicContentRef-', dynamicContent);
+
+  // console.log('bgElementHeight-',bgElementHeight)
+
+  // console.log('RESULT[result[0]?.el]?.image-',RESULT[result[0]?.el]?.image)
+
+  // console.log('dynamicImage-', dynamicImage?.current?.clientHeight);
+
   return (
     <>
       <Box pos={'relative'}>
@@ -114,39 +126,42 @@ function Index({
             zIndex={2}
           >
             <GridItem w="100%" pos={'relative'}>
-              <Box ref={myRef}>
-                <Box
-                  py={8}
-                  px={4}
-                  zIndex={4}
-                  pos={'relative'}
-                  maxWidth={'720px'}
-                >
-                  <Stack spacing="4" direction={{ base: 'column' }}>
-                    <Heading
-                      as="h1"
-                      fontSize={{
-                        base: 'var(--text-xl)',
-                        md: 'var(--text-2xl)',
-                      }}
-                      color="white"
-                      mb={4}
-                      dangerouslySetInnerHTML={{
-                        __html: '感謝您參與問卷調查！',
-                      }}
-                    />
-                    <Text as="p" color="white">
-                      您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
-                    </Text>
-                    <Image src={image} maxWidth={'320px'} />
-                    <Text
-                      as="p"
-                      dangerouslySetInnerHTML={{
-                        __html: RESULT[result[0]?.el]?.content,
-                      }}
-                    />
-                  </Stack>
-                </Box>
+              <Box
+                py={8}
+                px={4}
+                zIndex={4}
+                pos={'relative'}
+                maxWidth={'720px'}
+                ref={myRef}
+              >
+                <Stack spacing="4" direction={{ base: 'column' }}>
+                  <Heading
+                    as="h1"
+                    fontSize={{
+                      base: 'var(--text-xl)',
+                      md: 'var(--text-2xl)',
+                    }}
+                    color="white"
+                    mb={4}
+                    dangerouslySetInnerHTML={{
+                      __html: '感謝您參與問卷調查！',
+                    }}
+                  />
+                  <Text as="p" color="white">
+                    您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
+                  </Text>
+                  <Image
+                    src={image}
+                    maxWidth={'320px'}
+                    onLoad={(e) => setDynamicImage(e.target.clientHeight)}
+                  />
+                  <Text
+                    as="p"
+                    dangerouslySetInnerHTML={{
+                      __html: RESULT[result[0]?.el]?.content,
+                    }}
+                  />
+                </Stack>
               </Box>
               <Box maxWidth={'720px'}>
                 <Box flex={1}>
@@ -168,7 +183,7 @@ function Index({
                 position={{ base: 'fixed', md: 'sticky' }}
                 bottom={{ base: -2, md: 'auto' }}
                 top={{ base: 'auto', md: 20 }}
-                right={{ base: 'auto', md: 10 }}
+                right={{ base: 0 }}
                 // h={isOpen ? '520px' : '170px'}
                 onClick={() => handleOnClick()}
               >
@@ -190,16 +205,17 @@ function Index({
           </Grid>
         </PageContainer>
 
-        <Image
-          top={0}
-          w={'100%'}
-          h={bgElementHeight}
-          cursor={'pointer'}
-          position="absolute"
-          bgColor={'rgba(255,255,255,0.2)'}
-          zIndex={1}
-          src={bgPlasticsImage}
-        />
+        {bgElementHeight && (
+          <Image
+            top={0}
+            w={'100%'}
+            h={`${bgElementHeight}px`}
+            position="absolute"
+            bgColor={'rgba(255,255,255,0.2)'}
+            zIndex={1}
+            src={bgPlasticsImage}
+          />
+        )}
       </Box>
       <PetitionFooter locale={'HKChinese'} />
     </>
