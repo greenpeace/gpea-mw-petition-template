@@ -73,7 +73,7 @@ const Quiz = ({ quiz, current }) => {
                 <Box minH={'180px'}>
                   <LazyShow
                     initial={{ opacity: 0, x: 0, y: 0 }}
-                    duration={0.75}
+                    duration={0.5}
                     reTrigger={currentQuiz.id}
                   >
                     <Image
@@ -91,7 +91,7 @@ const Quiz = ({ quiz, current }) => {
       </Container>
       <LazyShow
         initial={{ opacity: 0, x: 0, y: 0 }}
-        duration={0.5}
+        duration={0.25}
         reTrigger={currentQuiz.id}
       >
         <DynamicBg />

@@ -23,7 +23,7 @@ const Landing = ({ setSurveyPage }) => {
         <Center h={'100%'} w={'100%'}>
           <Stack direction="column">
             <Box px={{ base: 6, md: 0 }}>
-              <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.5}>
+              <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
                 <Image src={titleKeyVisual} />
               </LazyShow>
             </Box>
@@ -32,7 +32,7 @@ const Landing = ({ setSurveyPage }) => {
               alignSelf={'center'}
               onClick={() => setSurveyPage('description')}
             >
-              <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.5}>
+              <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
                 <Image
                   src={startButton}
                   cursor={'pointer'}

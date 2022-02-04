@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
+import { motion, useAnimation } from 'framer-motion';
 import {
   Box,
   Stack,
@@ -13,6 +14,7 @@ import {
   useMediaQuery,
   Grid,
   GridItem,
+  Center,
 } from '@chakra-ui/react';
 import PetitionFooter from '@containers/petitionFooter';
 import FormContainer from '@containers/formContainer';
@@ -21,7 +23,6 @@ import ContentContainer from '@containers/contentContainer';
 import formContent from './form';
 import RESULT from './result.json';
 import useImage from './useImage';
-import LazyShow from './Components/LazyShow';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 
@@ -40,19 +41,14 @@ function Index({
   setAnswerToSubmitForm,
 }) {
   const { submitted } = status;
-  // const scrollToRef = (ref) =>
-  //   ref.current?.scrollIntoView({ behavior: 'smooth' });
-  // const { ref, inView } = useInView({
-  //   threshold: 0,
-  // });
-  const myRef = useRef(null);
-  // const executeScroll = () => scrollToRef(myRef);
+  const controls = useAnimation();
+  const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
   const [result, setResult] = useState([]);
   const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
   const { loading, error, image } = useImage(RESULT[result[0]?.el]?.image); // animal
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
+  const myRef = useRef(null);
   const dynamicContent = RESULT[result[0]?.el]?.content;
 
   useEffect(() => {
@@ -60,10 +56,6 @@ function Index({
     setAnswerToSubmitForm({
       ...hiddenForm,
       CampaignData1__c: result[0]?.el,
-      // CampaignData2__c: answer[1]?.toString().replace('clear', '5'),
-      // CampaignData3__c: answer[2]?.toString().replace('clear', '5'),
-      // CampaignData4__c: answer[3]?.toString().replace('clear', '5'),
-      // CampaignData5__c: answer[4]?.toString().replace('clear', '5'),
     });
   }, []);
 
@@ -92,28 +84,37 @@ function Index({
     if (result.length > 0) {
       setBgElementHeight(myRef.current.clientHeight);
     }
-  }, [dynamicContent, dynamicImageHeight]);
+  }, [myRef.current?.clientHeight, dynamicContent, dynamicImageHeight]);
 
-  const handleOnClick = () => {
-    if (isLargerThan768) {
-      return;
-    }
-    if (isOpen) {
-      return;
-    } else {
-      onOpen();
+  const handleMobileFormOnClick = () => {
+    if (!isOpen) {
+      controls
+        .start({
+          opacity: 1,
+          y: 10, // hide borderRadius
+          transform: {
+            duration: 1,
+            ease: 'easeIn',
+          },
+        })
+        .then(() => onOpen());
     }
   };
 
-  // console.log('RESULT[result[0]?.el]?.content-',RESULT[result[0]?.el]?.content)
-
-  // console.log('dynamicContentRef-', dynamicContent);
-
-  // console.log('bgElementHeight-',bgElementHeight)
-
-  // console.log('RESULT[result[0]?.el]?.image-',RESULT[result[0]?.el]?.image)
-
-  // console.log('dynamicImage-', dynamicImage?.current?.clientHeight);
+  const handleMobileFormClose = () => {
+    if (isOpen) {
+      controls
+        .start({
+          opacity: 1,
+          y: 380,
+          transform: {
+            duration: 1,
+            ease: 'easeIn',
+          },
+        })
+        .then(() => onClose());
+    }
+  };
 
   return (
     <>
@@ -178,42 +179,64 @@ function Index({
               </Box>
             </GridItem>
             <GridItem w="100%">
-              <Box
-                zIndex={9}
-                position={{ base: 'fixed', md: 'sticky' }}
-                bottom={{ base: -2, md: 'auto' }}
-                top={{ base: 'auto', md: 20 }}
-                right={{ base: 0 }}
-                // h={isOpen ? '520px' : '170px'}
-                onClick={() => handleOnClick()}
-              >
-                <FormContainer>
-                  {isOpen && (
-                    <Flex
-                      justify="flex-end"
-                      position="absolute"
-                      right={6}
-                      top={2}
-                    >
-                      <Box onClick={() => onClose()}>X</Box>
-                    </Flex>
-                  )}
-                  <Box>{submitted ? <DonateForm /> : <SignupForm />}</Box>
-                </FormContainer>
-              </Box>
+              {isLargerThan768 ? (
+                <Box
+                  zIndex={9}
+                  position={{ md: 'sticky' }}
+                  top={{ base: 'auto', md: 20 }}
+                  right={{ base: 0 }}
+                >
+                  <FormContainer>
+                    <Box>{submitted ? <DonateForm /> : <SignupForm />}</Box>
+                  </FormContainer>
+                </Box>
+              ) : (
+                <Box zIndex={9} bottom={0} position={'fixed'}>
+                  <motion.div
+                    className="motion-div"
+                    animate={controls}
+                    initial={{
+                      y: 380,
+                    }}
+                    onClick={() => handleMobileFormOnClick()}
+                  >
+                    <FormContainer>
+                      {isOpen && (
+                        <Flex justify="flex-end">
+                          <Box
+                            pos={'absolute'}
+                            w={'30px'}
+                            h={'30px'}
+                            borderRadius={'50%'}
+                            top={'-10px'}
+                            right={'5px'}
+                            zIndex={8}
+                            bgColor={'#FFF'}
+                            onClick={() => handleMobileFormClose()}
+                          >
+                            <Center h={'100%'}>X</Center>
+                          </Box>
+                        </Flex>
+                      )}
+                      <Box>{submitted ? <DonateForm /> : <SignupForm />}</Box>
+                    </FormContainer>
+                  </motion.div>
+                </Box>
+              )}
             </GridItem>
           </Grid>
         </PageContainer>
 
         {bgElementHeight && (
-          <Image
+          <Box
+            className="bgImage"
             top={0}
             w={'100%'}
             h={`${bgElementHeight}px`}
             position="absolute"
-            bgColor={'rgba(255,255,255,0.2)'}
+            bgColor={'#C6C6C6'}
             zIndex={1}
-            src={bgPlasticsImage}
+            // src={bgPlasticsImage}
           />
         )}
       </Box>

@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
-
+import LazyShow from './Components/LazyShow';
 import bgPlasticsImage from './images/openingending/Ending-100.jpg';
 
 const Description = ({ setSurveyPage }) => {
@@ -17,27 +17,31 @@ const Description = ({ setSurveyPage }) => {
     <Box h={'100vh'} mt={{ base: '-55px' }}>
       <Center h={'100%'} zIndex={2} position={'relative'}>
         <Container maxW={'4xl'}>
-          <Box
-            py={40}
-            bgColor={'rgba(255,255,255,0.8)'}
-            borderRadius={'8px'}
-            p={8}
-            cursor={'pointer'}
-            onClick={() => setSurveyPage('result')}
-          >
-            <Text
-              color="gray.700"
-              fontWeight={700}
-              fontSize={{ base: 'sm', sm: 'md', md: 'xl' }}
+          <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
+            <Box
+              py={40}
+              bgColor={'rgba(255,255,255,0.8)'}
+              borderRadius={'8px'}
+              p={8}
+              cursor={'pointer'}
             >
-              原來那道神秘的光芒真的可以讓您回到本來生活的世界！被光芒吸進去後您再次返回畫室，想照鏡子確認自己的狀態時，鏡子上出現的居然是自己潛意識中隱藏著的極地動物？！
-            </Text>
-            <Flex justifyContent={{ base: 'flex-end' }}>
-              <Button alignSelf={'right'}>
-                <Text fontSize={{ base: 'sm', sm: 'md' }}>下一步</Text>
-              </Button>
-            </Flex>
-          </Box>
+              <Text
+                color="gray.700"
+                fontWeight={700}
+                fontSize={{ base: 'sm', sm: 'md', md: 'xl' }}
+              >
+                原來那道神秘的光芒真的可以讓您回到本來生活的世界！被光芒吸進去後您再次返回畫室，想照鏡子確認自己的狀態時，鏡子上出現的居然是自己潛意識中隱藏著的極地動物？！
+              </Text>
+              <Flex mt={4} justifyContent={{ base: 'center' }}>
+                <Button
+                  onClick={() => setSurveyPage('result')}
+                  variant={'subCTA'}
+                >
+                  <Text fontSize={{ base: 'sm', sm: 'md' }}>下一步</Text>
+                </Button>
+              </Flex>
+            </Box>
+          </LazyShow>
         </Container>
       </Center>
 
