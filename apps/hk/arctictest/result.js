@@ -26,8 +26,6 @@ import useImage from './useImage';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 
-import bgPlasticsImage from './images/questionLayers/Q1/背景圖Q1.jpg';
-
 const ContentResult = dynamic(() => import('./resultContent/contentResult'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
@@ -145,12 +143,12 @@ function Index({
                     color="white"
                     mb={4}
                     dangerouslySetInnerHTML={{
-                      __html: '感謝您參與問卷調查！',
+                      __html: '感謝您完成心理測驗',
                     }}
                   />
-                  <Text as="p" color="white">
+                  {/* <Text as="p" color="white">
                     您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
-                  </Text>
+                  </Text> */}
                   <Image
                     src={image}
                     maxWidth={'320px'}
@@ -196,7 +194,7 @@ function Index({
                     className="motion-div"
                     animate={controls}
                     initial={{
-                      y: 380,
+                      y: 360,
                     }}
                     onClick={() => handleMobileFormOnClick()}
                   >
@@ -236,7 +234,6 @@ function Index({
             position="absolute"
             bgColor={'#C6C6C6'}
             zIndex={1}
-            // src={bgPlasticsImage}
           />
         )}
       </Box>

@@ -19,6 +19,7 @@ const Landing = ({ setSurveyPage }) => {
         bgRepeat={'no-repeat'}
         objectFit={'cover'}
         bgImage={`url(${bgPlasticsImage})`}
+        bgPosition={'center center'}
       >
         <Center h={'100%'} w={'100%'}>
           <Stack direction="column">

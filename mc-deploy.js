@@ -48,7 +48,7 @@ const buildFolder = path.join(__dirname, 'out');
 // const ftpRemoteDir = '';
 // * Local configs are Depreciated
 // * Get configs from env
-const ftpRemoteDir = process.env.BASEPATH;
+const ftpRemoteDir = process.env.BASE_PATH;
 const ftpConfigName = process.env.FTP_CONFIG_NAME;
 
 console.log(`\`${ftpRemoteDir}:\`${ftpConfigName}\`}`);
