@@ -17,7 +17,7 @@ const Description = ({ setSurveyPage }) => {
     <Box h={'100vh'} mt={{ base: '-55px' }}>
       <Center h={'100%'} zIndex={2} position={'relative'}>
         <Container maxW={'4xl'}>
-          <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.5}>
+          <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
             <Box
               py={40}
               bgColor={'rgba(255,255,255,0.8)'}

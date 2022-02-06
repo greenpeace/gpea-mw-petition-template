@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
-import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { motion, useAnimation } from 'framer-motion';
 import {
@@ -88,12 +87,11 @@ function Index({
     if (!isOpen) {
       controls
         .start({
-          opacity: 1,
-          y: 10, // hide borderRadius
-          transform: {
-            duration: 1,
-            ease: 'easeIn',
+          transition: {
+            type: 'tween',
+            duration: 0.25,
           },
+          y: '10px', // hide borderRadius
         })
         .then(() => onOpen());
     }
@@ -103,11 +101,10 @@ function Index({
     if (isOpen) {
       controls
         .start({
-          opacity: 1,
-          y: 380,
-          transform: {
-            duration: 1,
-            ease: 'easeIn',
+          y: '430px',
+          transition: {
+            type: 'tween',
+            duration: 0.25,
           },
         })
         .then(() => onClose());
@@ -149,17 +146,37 @@ function Index({
                   {/* <Text as="p" color="white">
                     您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
                   </Text> */}
-                  <Image
-                    src={image}
-                    maxWidth={'320px'}
-                    onLoad={(e) => setDynamicImage(e.target.clientHeight)}
-                  />
-                  <Text
-                    as="p"
-                    dangerouslySetInnerHTML={{
-                      __html: RESULT[result[0]?.el]?.content,
-                    }}
-                  />
+                  <Box pos={'relative'}>
+                    <Image
+                      src={image}
+                      maxW={{ base: '100%', sm: '320px' }}
+                      maxH={{ base: '320px' }}
+                      onLoad={(e) => setDynamicImage(e.target.clientHeight)}
+                      pos={'relative'}
+                      zIndex={2}
+                      mx={'auto'}
+                    />
+                    <Box
+                      bgColor={'green.500'}
+                      borderRadius={'50%'}
+                      w={`${dynamicImageHeight}px`}
+                      h={`${dynamicImageHeight}px`}
+                      position={'absolute'}
+                      zIndex={1}
+                      top={0}
+                      left={0}
+                      right={0}
+                      mx={'auto'}
+                    />
+                  </Box>
+                  <Box pt={12}>
+                    <Text
+                      as="p"
+                      dangerouslySetInnerHTML={{
+                        __html: RESULT[result[0]?.el]?.content,
+                      }}
+                    />
+                  </Box>
                 </Stack>
               </Box>
               <Box maxWidth={'720px'}>
@@ -194,7 +211,7 @@ function Index({
                     className="motion-div"
                     animate={controls}
                     initial={{
-                      y: 360,
+                      y: '430px',
                     }}
                     onClick={() => handleMobileFormOnClick()}
                   >
