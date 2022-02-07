@@ -9,10 +9,10 @@ import {
   Image,
 } from '@chakra-ui/react';
 import useImage from './useImage';
-import Answer from './Components/Answer';
-import Question from './Components/Question';
-import LazyShow from './Components/LazyShow';
-import DynamicBackground from './Components/DynamicBackground';
+import Answer from './components/Answer';
+import Question from './components/Question';
+import LazyShow from './components/LazyShow';
+import DynamicBackground from './components/DynamicBackground';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
 const Quiz = ({ quiz, current }) => {

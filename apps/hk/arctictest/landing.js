@@ -1,6 +1,6 @@
 import { Box, Image, Stack, Center } from '@chakra-ui/react';
 import { connect } from 'react-redux';
-import LazyShow from './Components/LazyShow';
+import LazyShow from './components/LazyShow';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
 import bgPlasticsImage from './images/openingending/keyVisualBackground.png';

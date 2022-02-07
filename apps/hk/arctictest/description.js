@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
-import LazyShow from './Components/LazyShow';
+import LazyShow from './components/LazyShow';
 import bgPlasticsImage from './images/openingending/Starting.png';
 
 const Description = ({ setSurveyPage }) => {

@@ -2,11 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 
 const DynamicBackground = ({ currentQuiz }) => {
-  const DynamicBg = dynamic(() =>
-    import(
-      `apps/${process.env.project}/Components/Background/Bg${currentQuiz.id}`
-    ),
-  );
+  const DynamicBg = dynamic(() => import(`../Background/Bg${currentQuiz.id}`));
 
   return <DynamicBg />;
 };
