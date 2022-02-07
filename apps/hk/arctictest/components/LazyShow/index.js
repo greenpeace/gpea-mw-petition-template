@@ -77,12 +77,7 @@ const LazyShow = ({ children, duration = 1, initial, reTrigger }) => {
   }, [reTrigger]);
 
   return (
-    <motion.div
-      className="lazy-div"
-      ref={rootRef}
-      initial={initial}
-      animate={controls}
-    >
+    <motion.div ref={rootRef} initial={initial} animate={controls}>
       {children}
     </motion.div>
   );
