@@ -41,7 +41,7 @@ const Thankyou = ({ theme, signup }) => {
         </Grid>
       </Box>
 
-      <Heading {...headingProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         北極正向我們發出求救信號，您可以施以援手！
       </Heading>
 
@@ -53,9 +53,9 @@ const Thankyou = ({ theme, signup }) => {
         有您的捐助支持，綠色和平便能有更多資源與力量執行保護北極工作，幫助北極逐步回復奇妙不凡的生態。
       </Text>
 
-      <Text as="p" {...paragraphProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         向美麗北極伸出援手，捐助綠色和平北極工作。
-      </Text>
+      </Heading>
     </>
   );
 };
