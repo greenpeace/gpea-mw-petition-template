@@ -11,8 +11,8 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'plastics',
-            gBasket: 'survey',
+            gCampaign: 'arctic',
+            gBasket: 'arcticquiz',
           });
         `,
         }}
@@ -36,7 +36,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/01/6495863e-plastic-survey-less.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/02/31ae4bcf-arctic-quiz-kv-preview.jpg"
       />
     </Head>
   );
