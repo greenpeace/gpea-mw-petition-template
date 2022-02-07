@@ -159,7 +159,7 @@ function Index({
                     <Heading
                       {...headingProps}
                       dangerouslySetInnerHTML={{
-                        __html: '感謝您完成心理測驗',
+                        __html: '立即登記解鎖心理測驗結果',
                       }}
                     />
                   </Box>
