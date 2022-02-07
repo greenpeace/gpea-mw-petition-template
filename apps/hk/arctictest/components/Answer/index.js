@@ -53,9 +53,11 @@ const Quiz = ({
           >
             <Center h="100%">
               <Text
+                fontSize={{ base: 'base', md: 'md' }}
+                fontWeight={700}
+                lineHeight="1.7"
                 letterSpacing="1px"
                 dangerouslySetInnerHTML={{ __html: d.label }}
-                fontWeight={700}
               ></Text>
             </Center>
           </Box>

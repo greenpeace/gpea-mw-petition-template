@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Box, Flex, Text } from '@chakra-ui/react';
+import { ChevronLeftIcon } from '@chakra-ui/icons';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
 const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
@@ -15,12 +16,29 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
   };
 
   return (
-    <Flex direction="row" align={'center'} justifyContent={'space-between'}>
+    <Flex
+      direction="row"
+      align={'center'}
+      justifyContent={'space-between'}
+      pb="2"
+    >
       <Box cursor={'pointer'} onClick={() => handleBackButton()}>
-        上一頁
+        <Flex alignContent={'center'}>
+          <ChevronLeftIcon w={6} h={6} pt="1" pr="1" />
+          <Text as="span" fontSize={'md'}>
+            上一頁
+          </Text>
+        </Flex>
       </Box>
       <Box flex={1} mx={{ base: 6, sm: 12 }}>
-        <Flex direction="row" w={'100%'} justifyContent={'space-between'}>
+        <Flex
+          direction="row"
+          w={'100%'}
+          maxW="320px"
+          mx="auto"
+          justifyContent={'space-between'}
+          pt={'2px'}
+        >
           {quiz.map((d, i) => (
             <Box
               key={i}
@@ -28,15 +46,15 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
                 currentQuiz.id === (i + 1).toString() ? '#025177' : '#FFF'
               }
               borderRadius={'50%'}
-              w={'10px'}
-              h={'10px'}
+              w={'8px'}
+              h={'8px'}
             />
           ))}
         </Flex>
       </Box>
       <Box>
         <Text fontSize={'xl'}>
-          <Text as="span" fontWeight={'bold'} fontSize={'3xl'}>
+          <Text as="span" fontWeight={'bold'} fontSize={'2xl'}>
             {current + 1}
           </Text>{' '}
           / {quiz.length}

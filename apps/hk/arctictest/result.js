@@ -243,7 +243,7 @@ function Index({
             w={'100%'}
             h={`${bgElementHeight}px`}
             position="absolute"
-            bgColor={'gray.100'}
+            bgColor={'#cbf7fc'}
             zIndex={1}
           />
         )}

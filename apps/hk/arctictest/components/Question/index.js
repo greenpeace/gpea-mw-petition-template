@@ -18,7 +18,7 @@ const Question = ({ quiz }) => {
           </Box>
         </Box>
       )}
-      <Box bgColor={'#025177'} borderRadius={'8px'} p={4}>
+      {/* <Box bgColor={'#025177'} borderRadius={'8px'} p={4}>
         <Heading
           fontSize={{ base: 'md', md: 'xl' }}
           color={'#FFF'}
@@ -26,7 +26,7 @@ const Question = ({ quiz }) => {
         >
           測出您的性格與習慣，找出隱藏在您潛意識中的極地動物！
         </Heading>
-      </Box>
+      </Box> */}
       <Box ref={ref}>
         <QuizTop quiz={quiz} />
       </Box>

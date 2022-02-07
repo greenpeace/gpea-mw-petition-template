@@ -38,10 +38,11 @@ const Quiz = ({ quiz, current }) => {
                     color={'#025177'}
                     textAlign={{ base: 'left' }}
                     py="4"
+                    lineHeight="1.7"
                   >
                     {currentQuiz?.question.label}
                   </Heading>
-                  <Box minH={'180px'}>
+                  <Box>
                     <LazyShow
                       initial={{ opacity: 0, x: 0, y: 0 }}
                       duration={0.5}
@@ -49,7 +50,7 @@ const Quiz = ({ quiz, current }) => {
                     >
                       <Image
                         src={image}
-                        borderRadius={'8px'}
+                        borderRadius={'4px'}
                         border={'4px solid #FFF'}
                       />
                     </LazyShow>
