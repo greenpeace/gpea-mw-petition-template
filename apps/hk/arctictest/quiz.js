@@ -15,6 +15,8 @@ import LazyShow from './components/LazyShow';
 import DynamicBackground from './components/DynamicBackground';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
+import BackgroundVisual from './images/Question Interface Background.png';
+
 const Quiz = ({ quiz, current }) => {
   const currentQuiz = quiz[current];
   const { loading, error, image } = useImage(currentQuiz?.image);
@@ -42,19 +44,15 @@ const Quiz = ({ quiz, current }) => {
                   >
                     {currentQuiz?.question.label}
                   </Heading>
-                  <Box>
-                    <LazyShow
-                      initial={{ opacity: 0, x: 0, y: 0 }}
-                      duration={0.5}
-                      reTrigger={currentQuiz.id}
-                    >
-                      <Image
-                        src={image}
-                        borderRadius={'4px'}
-                        border={'4px solid #FFF'}
-                      />
-                    </LazyShow>
-                  </Box>
+                  <LazyShow
+                    initial={{ opacity: 0, x: 0, y: 0 }}
+                    duration={0.5}
+                    reTrigger={currentQuiz.id}
+                  >
+                    <Box borderRadius={'4px'} border={'4px solid #FFF'}>
+                      <Image src={image} loading="lazy" />
+                    </Box>
+                  </LazyShow>
                 </Box>
               </Box>
               <Box pt={4}>
@@ -63,7 +61,16 @@ const Quiz = ({ quiz, current }) => {
             </Stack>
           </Center>
         </Container>
-        <DynamicBackground currentQuiz={currentQuiz} />
+        <Image
+          src={BackgroundVisual}
+          w="100%"
+          h="100%"
+          top={0}
+          objectFit={'cover'}
+          objectPosition={'center top'}
+          position="absolute"
+        />
+        {/* <DynamicBackground currentQuiz={currentQuiz} /> */}
       </Box>
     </>
   );
