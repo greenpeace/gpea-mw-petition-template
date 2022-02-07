@@ -1,10 +1,9 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
-import { Box } from '@chakra-ui/react';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 import SEO from './SEO';
-import QUIZ from './quiz.json';
+import QUIZ from './data/quiz.json';
 
 const Index = ({ survey }) => {
   const currentPage = survey?.page;
@@ -13,18 +12,10 @@ const Index = ({ survey }) => {
   );
 
   return (
-    <Box>
+    <>
       <SEO />
       <Page quiz={QUIZ} />
-      <Box
-        position={'absolute'}
-        top="0"
-        left="0"
-        w="100%"
-        h="100%"
-        zIndex={'-1'}
-      />
-    </Box>
+    </>
   );
 };
 
