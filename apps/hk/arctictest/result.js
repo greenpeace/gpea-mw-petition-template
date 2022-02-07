@@ -127,34 +127,40 @@ function Index({
             zIndex={2}
           >
             <GridItem w="100%" pos={'relative'}>
-              <Box py={8} px={4} zIndex={4} pos={'relative'} ref={myRef}>
-                <Stack spacing="6">
-                  <Heading
-                    as="h1"
-                    {...headingProps}
-                    dangerouslySetInnerHTML={{
-                      __html: '感謝您完成心理測驗',
-                    }}
-                  />
-                  <Box pos={'relative'}>
-                    <Image
-                      src={image}
-                      onLoad={(e) => setDynamicImage(e.target.clientHeight)}
-                      pos={'relative'}
-                      zIndex={2}
-                      mx={'auto'}
-                    />
+              <Box px={4} zIndex={4} pos={'relative'} ref={myRef}>
+                <Stack spacing="4">
+                  <Center position="relative" w="320px" h="320px">
                     <Box
-                      bgColor={'green.500'}
-                      borderRadius={'50%'}
-                      w={`${dynamicImageHeight}px`}
-                      h={`${dynamicImageHeight}px`}
-                      position={'absolute'}
-                      zIndex={1}
-                      top={0}
-                      left={0}
-                      right={0}
-                      mx={'auto'}
+                      _before={{
+                        content: `""`,
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: '80%',
+                        height: '80%',
+                        bg: 'gray.500',
+                        opacity: '0.5',
+                        borderRadius: '100%',
+                      }}
+                    >
+                      <Image
+                        src={image}
+                        onLoad={(e) => setDynamicImage(e.target.clientHeight)}
+                        pos={'relative'}
+                        w="100%"
+                        h="100%"
+                        objectFit={'cover'}
+                        zIndex={2}
+                      />
+                    </Box>
+                  </Center>
+                  <Box>
+                    <Heading
+                      {...headingProps}
+                      dangerouslySetInnerHTML={{
+                        __html: '感謝您完成心理測驗',
+                      }}
                     />
                   </Box>
                   <Box>
@@ -233,12 +239,11 @@ function Index({
 
         {bgElementHeight && (
           <Box
-            className="bgImage"
             top={0}
             w={'100%'}
             h={`${bgElementHeight}px`}
             position="absolute"
-            bgColor={'#C6C6C6'}
+            bgColor={'gray.100'}
             zIndex={1}
           />
         )}
