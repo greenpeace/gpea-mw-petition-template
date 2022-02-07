@@ -20,10 +20,15 @@ import FormContainer from '@containers/formContainer';
 import PageContainer from '@containers/pageContainer';
 import ContentContainer from '@containers/contentContainer';
 import formContent from './form';
-import RESULT from './result.json';
+import RESULT from './data/result.json';
 import useImage from './useImage';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
+
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
 
 const ContentResult = dynamic(() => import('./resultContent/contentResult'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
@@ -122,35 +127,18 @@ function Index({
             zIndex={2}
           >
             <GridItem w="100%" pos={'relative'}>
-              <Box
-                py={8}
-                px={4}
-                zIndex={4}
-                pos={'relative'}
-                maxWidth={'720px'}
-                ref={myRef}
-              >
-                <Stack spacing="4" direction={{ base: 'column' }}>
+              <Box py={8} px={4} zIndex={4} pos={'relative'} ref={myRef}>
+                <Stack spacing="6">
                   <Heading
                     as="h1"
-                    fontSize={{
-                      base: 'var(--text-xl)',
-                      md: 'var(--text-2xl)',
-                    }}
-                    color="white"
-                    mb={4}
+                    {...headingProps}
                     dangerouslySetInnerHTML={{
                       __html: '感謝您完成心理測驗',
                     }}
                   />
-                  {/* <Text as="p" color="white">
-                    您的參與意義重大，協助綠色和平塑膠污染問題尋找出路！
-                  </Text> */}
                   <Box pos={'relative'}>
                     <Image
                       src={image}
-                      maxW={{ base: '100%', sm: '320px' }}
-                      maxH={{ base: '320px' }}
                       onLoad={(e) => setDynamicImage(e.target.clientHeight)}
                       pos={'relative'}
                       zIndex={2}
@@ -169,9 +157,10 @@ function Index({
                       mx={'auto'}
                     />
                   </Box>
-                  <Box pt={12}>
+                  <Box>
                     <Text
                       as="p"
+                      {...paragraphProps}
                       dangerouslySetInnerHTML={{
                         __html: RESULT[result[0]?.el]?.content,
                       }}
@@ -179,7 +168,7 @@ function Index({
                   </Box>
                 </Stack>
               </Box>
-              <Box maxWidth={'720px'}>
+              <Box>
                 <Box flex={1}>
                   {submitted ? (
                     <ContentContainer theme={theme}>
