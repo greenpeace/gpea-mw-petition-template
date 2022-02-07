@@ -24,7 +24,7 @@ const Quiz = ({ quiz, current }) => {
       <Box>
         <Container maxW={'2xl'} pb="6" pos={'relative'} zIndex={10}>
           <Center py={4}>
-            <Stack w="100%" direction="column">
+            <Stack w="100%" direction="column" spacing={0}>
               <Question quiz={quiz} />
               <Box>
                 <Box
@@ -57,7 +57,7 @@ const Quiz = ({ quiz, current }) => {
                   </Box>
                 </Box>
               </Box>
-              <Box pt={2}>
+              <Box pt={4}>
                 <Answer quiz={quiz} />
               </Box>
             </Stack>
