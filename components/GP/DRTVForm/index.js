@@ -26,6 +26,10 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import { OrangeCTA } from '@common/styles/components/formStyle';
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
 
 const MyForm = (props) => {
   const {
@@ -205,44 +209,19 @@ const MyForm = (props) => {
         setClearForm={setClearForm}
       />
       <Stack spacing="4">
-        {/* {numberOfResponses && numberOfTarget ? (
-          <Box>
-            <Box
-              borderRadius={'20px'}
-              bgColor="#d2d2d2"
-              h={`14px`}
-              overflow={`hidden`}
-            >
-              {numberOfResponses && (
-                <Box
-                  style={{ transition: `width 2s` }}
-                  h={`14px`}
-                  w={progressNumber}
-                  borderRadius={4}
-                  bgColor={`theme.${themeInterests}`}
-                />
-              )}
-            </Box>
-            <Box>
-              <Text color={`theme.${themeInterests}`} fontSize={'sm'} mt={2}>
-                {formContent.signed_number}:{' '}
-                <Text as="span" fontSize={'2xl'} fontWeight="bold">
-                  {numberFormat(numberOfResponses)}
-                </Text>{' '}
-                / {numberFormat(numberOfTarget)}
-              </Text>
-            </Box>
-          </Box>
-        ) : null} */}
         <Box>
           <Heading
-            fontSize={'2xl'}
+            as="h2"
+            {...headingProps}
+            mb="0"
             dangerouslySetInnerHTML={{ __html: formContent.form_header }}
           />
         </Box>
         <Box>
           <Text
             as="p"
+            {...paragraphProps}
+            mb="0"
             dangerouslySetInnerHTML={{ __html: formContent.form_description }}
           />
         </Box>

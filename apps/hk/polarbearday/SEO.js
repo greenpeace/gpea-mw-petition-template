@@ -36,7 +36,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/01/8f5b8b4a-cnywebinar-preview.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/01/9f7d4b1a-artboard-15-pbd-webinar-preview.jpg"
       />
     </Head>
   );

@@ -16,8 +16,6 @@
   "label_year_of_birth_optional": "出生年份（選填）",
   "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
 
-  "show_brithDate": false,
-
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
 
@@ -47,11 +45,11 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "我願意支持解決塑膠污染！",
+  "donate_header": "我願意解決塑膠污染！",
   "donate_description": [
-    "我要捐款支持解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。"
+    "我要捐款解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。"
   ],
-  "default_message": "我要捐款支持解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。",
+  "default_message": "我要捐款解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。",
   "donate_suggestion_header": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
   "donate_suggestion_message": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
   "currency": "HKD",
@@ -101,7 +99,7 @@
     {
       "label": "400",
       "value": 400,
-      "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策 ，全面減緩塑膠污染問題。",
+      "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
       "currency": "HKD"
     },
     {

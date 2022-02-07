@@ -11,7 +11,7 @@ import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/banner.jpg';
+import heroBannerImage from './images/DJI_0457_r_c.jpg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
@@ -63,7 +63,7 @@ function Index({ status, theme, setFormContent, signup }) {
           <HeroBanner
             bgImage={heroBannerImage}
             content={{
-              title: '請即聯署<br/>要求政府撤回<br/>「明日大嶼」填海計劃',
+              title: '請即聯署<br/>要求政府撤回<br/>明日大嶼填海計劃',
               description: [''],
             }}
             // removeMask="true"

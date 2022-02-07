@@ -29,7 +29,7 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box as="p" {...paragraphProps}>
-        <Image maxW={{ base: 'auto', sm: '400px' }} src={image01} />
+        <Image src={image01} />
       </Box>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -47,7 +47,7 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box as="p" {...paragraphProps}>
-        <Image maxW={{ base: 'auto', sm: '400px' }} src={image02} />
+        <Image src={image02} />
       </Box>
 
       <Box {...paragraphProps} bgColor="#F9F9F9" borderRadius={8} p={4}>
@@ -60,7 +60,7 @@ const Content = ({ theme }) => {
         </UnorderedList>
       </Box>
 
-      <Heading {...headingProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         2分鐘完成登記，掌握走塑、環保工作的最新脈動！
       </Heading>
     </>

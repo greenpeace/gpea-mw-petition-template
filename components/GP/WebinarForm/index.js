@@ -28,6 +28,10 @@ import {
   EXCLUDE_URL_PARAMETERS,
 } from '@common/constants';
 import { OrangeCTA } from '@common/styles/components/formStyle';
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
 
 const MyForm = (props) => {
   const {
@@ -114,29 +118,25 @@ const MyForm = (props) => {
 
   return (
     <Box>
-      {/* <Flex justify="flex-end" pos={'absolute'} right={4}>
-        <Button onClick={() => (isOpen ? onClose() : onOpen())}></Button>
-      </Flex> */}
       <Box py={{ base: 6, md: 8 }} px={{ base: 4, md: 6 }}>
         <Stack spacing="4">
           <Box>
             <Heading
-              fontSize={{ base: 'lg', xl: '2xl' }}
+              as="h2"
+              {...headingProps}
+              mb="0"
               color={`theme.${themeInterests}`}
               dangerouslySetInnerHTML={{ __html: formContent.form_header }}
             />
           </Box>
-          {/* {isOpen && ( */}
           <Box>
             <Text
               as="p"
-              dangerouslySetInnerHTML={{
-                __html: formContent.form_description,
-              }}
-              fontSize={{ base: 'sm', xl: 'md' }}
+              {...paragraphProps}
+              mb="0"
+              dangerouslySetInnerHTML={{ __html: formContent.form_description }}
             />
           </Box>
-          {/* )} */}
           <Form onSubmit={handleSubmit}>
             <Stack spacing="4">
               <Stack direction={`row`}>
@@ -340,7 +340,11 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     hiddenFormData: hiddenForm.data,
     isLoading: signup.lastAction === signupActions.SIGN_UP,
     formContent: form.content,
-    numberOfResponses: form.signupNumbers.hk?.NumberOfResponses,
+    numberOfResponses: Math.max(
+      parseInt(form.signupNumbers.hk?.NumberOfResponses),
+      parseInt(form.signupNumbers.hk?.NumberOfLeads) +
+        parseInt(form.signupNumbers.hk?.NumberOfContacts),
+    ),
     numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
     theme: theme.data,
     suggestion: form.suggestion,

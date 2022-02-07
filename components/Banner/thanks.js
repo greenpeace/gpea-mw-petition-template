@@ -86,10 +86,10 @@ export default function Index({ content, bgImage, removeMask }) {
         <Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
           <Image
             src={bgImage}
-            h={'100%'}
-            w={'100%'}
-            objectFit={'cover'}
-            objectPosition={{ base: '20% top', md: 'center top' }}
+            height="100%"
+            width="100%"
+            objectFit="cover"
+            objectPosition="center top"
           />
         </Box>
 

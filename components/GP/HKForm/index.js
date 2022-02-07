@@ -28,6 +28,10 @@ import {
   EXCLUDE_URL_PARAMETERS,
 } from '@common/constants';
 import { OrangeCTA } from '@common/styles/components/formStyle';
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
 
 const MyForm = (props) => {
   const {
@@ -146,13 +150,17 @@ const MyForm = (props) => {
           ) : null}
           <Box>
             <Heading
-              fontSize={'2xl'}
+              as="h2"
+              {...headingProps}
+              mb="0"
               dangerouslySetInnerHTML={{ __html: formContent.form_header }}
             />
           </Box>
           <Box>
             <Text
               as="p"
+              {...paragraphProps}
+              mb="0"
               dangerouslySetInnerHTML={{ __html: formContent.form_description }}
             />
           </Box>
@@ -373,7 +381,11 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     hiddenFormData: hiddenForm.data,
     isLoading: signup.lastAction === signupActions.SIGN_UP,
     formContent: form.content,
-    numberOfResponses: form.signupNumbers.hk?.NumberOfResponses,
+    numberOfResponses: Math.max(
+      parseInt(form.signupNumbers.hk?.NumberOfResponses),
+      parseInt(form.signupNumbers.hk?.NumberOfLeads) +
+        parseInt(form.signupNumbers.hk?.NumberOfContacts),
+    ),
     numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
     theme: theme.data,
     suggestion: form.suggestion,

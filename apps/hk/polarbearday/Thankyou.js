@@ -6,6 +6,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
+import image00 from './images/GIY工作坊_R1.jpg';
 import image01 from './images/GP04F4D_High_res.jpg';
 import image02 from './images/GP04NTU_PressMedia.jpg';
 
@@ -15,8 +16,15 @@ const Thankyou = ({ theme, signup }) => {
   return (
     <>
       <Text as="p" {...paragraphProps}>
-        為守護脆弱北極多走一步，以每月$200捐款支持綠色和平北極項目，您將獲得兩次「環保手作工作坊」或探訪的機會！2月工作坊主題是「北極熊和諧粉彩體驗班」，讓您對北極熊的現況有更深體會。名額有限，額滿即止。
+        <b>
+          為守護脆弱北極多走一步，以每月$200捐款支持綠色和平北極項目，您將獲得兩次「環保手作工作坊」或探訪的機會！
+        </b>
+        2月工作坊主題是「北極熊和諧粉彩體驗班」，讓您對北極熊的現況有更深體會。名額有限，額滿即止。
       </Text>
+
+      <Box {...paragraphProps}>
+        <Image src={image00} maxW="480px" mx="auto" />
+      </Box>
 
       <Text as="p" {...paragraphProps}>
         您的參與意義重大，我們將一起了解北極熊生存危機與極地實況，以採取行動為守護北極出一分力。
@@ -41,7 +49,7 @@ const Thankyou = ({ theme, signup }) => {
         </Grid>
       </Box>
 
-      <Heading {...headingProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         北極正向我們發出求救信號，您可以施以援手！
       </Heading>
 
@@ -53,9 +61,9 @@ const Thankyou = ({ theme, signup }) => {
         有您的捐助支持，綠色和平便能有更多資源與力量執行保護北極工作，幫助北極逐步回復奇妙不凡的生態。
       </Text>
 
-      <Text as="p" {...paragraphProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         向美麗北極伸出援手，捐助綠色和平北極工作。
-      </Text>
+      </Heading>
     </>
   );
 };

@@ -12,7 +12,7 @@ import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 
 import speaker1 from './images/Asset-4-wilson.png';
-import heroBannerImage from './images/Artboard-10pbd-webinar-banner.png';
+import heroBannerImage from './images/pbd-webinar-banner.jpg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
@@ -61,7 +61,7 @@ function Index({ status, theme, setFormContent, signup }) {
             bgImage={heroBannerImage}
             content={{
               title:
-                '請即報名<br/>與極地科學家<br/>遠洋對話：北極熊與海冰科學講座',
+                '請即報名<br/>與極地科學家遠洋對話：<br/><span>北極熊與海冰講座</span>',
               description: [''],
             }}
             removeMask="true"
@@ -72,14 +72,11 @@ function Index({ status, theme, setFormContent, signup }) {
               pos="relative"
               zIndex="2"
             >
-              {/* <Box>
-                <Text fontSize="xl" mb="4" fontWeight="bold" color="white">
-                  講座日期：2022年2月27日 11:00 AM
-                </Text>
-              </Box> */}
               <Box>
                 <Text fontSize="xl" mb="4" fontWeight="bold" color="white">
-                  嘉賓主持：
+                  嘉賓講者：
+                  <br />
+                  首位港產極地嚮導 張偉賢
                 </Text>
                 <AvatarGroup size="xl" max={4}>
                   <Avatar
