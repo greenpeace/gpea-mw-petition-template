@@ -12,7 +12,6 @@ import useImage from './useImage';
 import Answer from './components/Answer';
 import Question from './components/Question';
 import LazyShow from './components/LazyShow';
-import DynamicBackground from './components/DynamicBackground';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
 import BackgroundVisual from './images/Question Interface Background.png';

@@ -1,15 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
-import { motion, useAnimation } from 'framer-motion';
 import {
   Box,
   Stack,
   Text,
   Heading,
-  Flex,
   Image,
-  useDisclosure,
+  Container,
   useMediaQuery,
   Grid,
   GridItem,
@@ -43,21 +41,19 @@ function Index({
   setAnswerToSubmitForm,
 }) {
   const { submitted } = status;
-  const controls = useAnimation();
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
   const [result, setResult] = useState([]);
   const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
-  const { loading, error, image } = useImage(RESULT[result[0]?.el]?.image); // animal
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { loading, error, image } = useImage(RESULT[result?.el]?.image); // animal
   const myRef = useRef(null);
-  const dynamicContent = RESULT[result[0]?.el]?.content;
+  const dynamicContent = RESULT[result?.el]?.content;
 
   useEffect(() => {
     setFormContent(formContent);
     setAnswerToSubmitForm({
       ...hiddenForm,
-      CampaignData1__c: result[0]?.el,
+      CampaignData1__c: result?.el,
     });
   }, []);
 
@@ -79,42 +75,54 @@ function Index({
       )
       .sort((a, b) => (a.count > b.count ? -1 : 1));
 
-    setResult(calAnswer);
+    console.log('calAnswer-', calAnswer); /** Log answers before filter */
+
+    const getMostLargerValue = calAnswer.filter(
+      (d, i) => d.count === calAnswer[0].count,
+    );
+
+    setResult(
+      getMostLargerValue[Math.floor(Math.random() * getMostLargerValue.length)],
+    );
   }, [answer]);
 
   useEffect(() => {
-    if (result.length > 0) {
+    if (result) {
       setBgElementHeight(myRef.current.clientHeight);
     }
   }, [myRef.current?.clientHeight, dynamicContent, dynamicImageHeight]);
 
-  const handleMobileFormOnClick = () => {
-    if (!isOpen) {
-      controls
-        .start({
-          transition: {
-            type: 'tween',
-            duration: 0.25,
-          },
-          y: '10px', // hide borderRadius
-        })
-        .then(() => onOpen());
+  const handleDynamicContent = (result) => {
+    switch (result.el) {
+      case 'A':
+        return <Box>北極熊 content</Box>;
+      case 'B':
+        return <Box>北極狐 content</Box>;
+      case 'C':
+        return <Box>雪鴞 content</Box>;
+      case 'D':
+        return <Box>獨角鯨 content</Box>;
+      case 'E':
+        return <Box>馴鹿 content</Box>;
+      case 'F':
+        return <Box>藍鯨 content</Box>;
+      case 'G':
+        return <Box>南極小章魚 content</Box>;
+      case 'H':
+        return <Box>信天翁 content</Box>;
+      case 'I':
+        return <Box>磷蝦 content</Box>;
+      case 'J':
+        return <Box>阿德利企鵝 content</Box>;
+
+      default:
+        break;
     }
   };
 
-  const handleMobileFormClose = () => {
-    if (isOpen) {
-      controls
-        .start({
-          y: '430px',
-          transition: {
-            type: 'tween',
-            duration: 0.25,
-          },
-        })
-        .then(() => onClose());
-    }
-  };
+  const RenderForm = () => (submitted ? <DonateForm /> : <SignupForm />);
+  const RenderContent = () =>
+    submitted ? <Box>{handleDynamicContent(result)}</Box> : <ContentResult />;
 
   return (
     <>
@@ -123,10 +131,10 @@ function Index({
           <Grid
             templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
             gap={0}
-            position={'relative'}
             zIndex={2}
+            flexDirection={'column-reverse'}
           >
-            <GridItem w="100%" pos={'relative'}>
+            <GridItem w="100%">
               <Box px={4} zIndex={4} pos={'relative'} ref={myRef}>
                 <Stack spacing="4">
                   <Center position="relative" w="320px" h="320px">
@@ -139,7 +147,7 @@ function Index({
                         transform: 'translate(-50%, -50%)',
                         width: '80%',
                         height: '80%',
-                        bg: 'gray.500',
+                        bg: RESULT[result?.el]?.color,
                         opacity: '0.5',
                         borderRadius: '100%',
                       }}
@@ -168,28 +176,36 @@ function Index({
                       as="p"
                       {...paragraphProps}
                       dangerouslySetInnerHTML={{
-                        __html: RESULT[result[0]?.el]?.content,
+                        __html: RESULT[result?.el]?.content,
                       }}
                     />
                   </Box>
                 </Stack>
               </Box>
-              <Box>
-                <Box flex={1}>
-                  {submitted ? (
-                    <ContentContainer theme={theme}>
-                      <Box>內容</Box>
-                    </ContentContainer>
-                  ) : (
-                    <ContentContainer theme={theme}>
-                      <ContentResult />
-                    </ContentContainer>
-                  )}
-                </Box>
+              <Box flex={1} mt={'-10px'} position="relative" zIndex={3}>
+                {!isLargerThan768 && (
+                  <Container>
+                    <Box
+                      maxW="500px"
+                      mx="auto"
+                      bgColor="white"
+                      borderRadius={8}
+                      boxShadow="lg"
+                      overflow="hidden"
+                    >
+                      {' '}
+                      {/** copy style from FormContainer */}
+                      <RenderForm />
+                    </Box>
+                  </Container>
+                )}
+                <ContentContainer theme={theme}>
+                  <RenderContent />
+                </ContentContainer>
               </Box>
             </GridItem>
             <GridItem w="100%">
-              {isLargerThan768 ? (
+              {isLargerThan768 && (
                 <Box
                   zIndex={9}
                   position={{ md: 'sticky' }}
@@ -197,40 +213,10 @@ function Index({
                   right={{ base: 0 }}
                 >
                   <FormContainer>
-                    <Box>{submitted ? <DonateForm /> : <SignupForm />}</Box>
+                    <Box>
+                      <RenderForm />
+                    </Box>
                   </FormContainer>
-                </Box>
-              ) : (
-                <Box zIndex={9} bottom={0} position={'fixed'}>
-                  <motion.div
-                    className="motion-div"
-                    animate={controls}
-                    initial={{
-                      y: '430px',
-                    }}
-                    onClick={() => handleMobileFormOnClick()}
-                  >
-                    <FormContainer>
-                      {isOpen && (
-                        <Flex justify="flex-end">
-                          <Box
-                            pos={'absolute'}
-                            w={'30px'}
-                            h={'30px'}
-                            borderRadius={'50%'}
-                            top={'-10px'}
-                            right={'5px'}
-                            zIndex={8}
-                            bgColor={'#FFF'}
-                            onClick={() => handleMobileFormClose()}
-                          >
-                            <Center h={'100%'}>X</Center>
-                          </Box>
-                        </Flex>
-                      )}
-                      <Box>{submitted ? <DonateForm /> : <SignupForm />}</Box>
-                    </FormContainer>
-                  </motion.div>
                 </Box>
               )}
             </GridItem>
