@@ -35,8 +35,10 @@ const Quiz = ({
           <Box
             key={i}
             p={4}
+            border="2px"
+            borderColor="#025177"
             borderRadius={'md'}
-            bgColor={selected ? 'arctic.500' : 'arctic.100'}
+            bgColor={selected ? '#025177' : 'arctic.100'}
             color={selected ? 'white' : '#025177'}
             cursor="pointer"
             transition="0.2s ease"
@@ -47,7 +49,6 @@ const Quiz = ({
                   value: [d.value],
                 });
                 setTimeout(() => handleNextButton(), 100);
-                return;
               }
             }}
           >

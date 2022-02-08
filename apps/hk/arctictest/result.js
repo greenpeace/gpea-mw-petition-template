@@ -3,15 +3,16 @@ import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
 import {
   Box,
+  Center,
+  Container,
   Stack,
   Text,
   Heading,
   Image,
-  Container,
   useMediaQuery,
   Grid,
   GridItem,
-  Center,
+  Flex,
 } from '@chakra-ui/react';
 import PetitionFooter from '@containers/petitionFooter';
 import FormContainer from '@containers/formContainer';
@@ -22,15 +23,17 @@ import RESULT from './data/result.json';
 import useImage from './useImage';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
-
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-const ContentResult = dynamic(() => import('./resultContent/contentResult'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
+
+const ArcticResult = dynamic(() => import('./resultContent/arcticResult'));
+const ContentResult = dynamic(() => import('./resultContent/contentResult'));
+const OceanResult = dynamic(() => import('./resultContent/oceanResult'));
 
 function Index({
   status,
@@ -92,37 +95,16 @@ function Index({
     }
   }, [myRef.current?.clientHeight, dynamicContent, dynamicImageHeight]);
 
+  // Determine Content Result
   const handleDynamicContent = (result) => {
-    switch (result.el) {
-      case 'A':
-        return <Box>北極熊 content</Box>;
-      case 'B':
-        return <Box>北極狐 content</Box>;
-      case 'C':
-        return <Box>雪鴞 content</Box>;
-      case 'D':
-        return <Box>獨角鯨 content</Box>;
-      case 'E':
-        return <Box>馴鹿 content</Box>;
-      case 'F':
-        return <Box>藍鯨 content</Box>;
-      case 'G':
-        return <Box>南極小章魚 content</Box>;
-      case 'H':
-        return <Box>信天翁 content</Box>;
-      case 'I':
-        return <Box>磷蝦 content</Box>;
-      case 'J':
-        return <Box>阿德利企鵝 content</Box>;
-
-      default:
-        break;
-    }
+    console.log('result.el-', result.el);
+    result.el in ['A', 'B', 'C', 'D', 'E'] ? <ArcticResult /> : <OceanResult />;
   };
 
-  const RenderForm = () => (submitted ? <DonateForm /> : <SignupForm />);
   const RenderContent = () =>
-    submitted ? <Box>{handleDynamicContent(result)}</Box> : <ContentResult />;
+    submitted ? <Box>{handleDynamicContent(result)}</Box> : null;
+
+  const RenderForm = () => (submitted ? <DonateForm /> : <SignupForm />);
 
   return (
     <>
@@ -136,17 +118,22 @@ function Index({
           >
             <GridItem w="100%">
               <Box px={4} zIndex={4} pos={'relative'} ref={myRef}>
-                <Stack spacing="4">
-                  <Center position="relative" w="320px" h="320px">
+                <Stack>
+                  <Flex
+                    py={8}
+                    justifyContent={{ base: 'center', md: 'flex-start' }}
+                  >
                     <Box
+                      maxW={{ base: '220px', md: '280px' }}
+                      position="relative"
                       _before={{
                         content: `""`,
                         position: 'absolute',
-                        top: '50%',
-                        left: '50%',
+                        top: '60%',
+                        left: '40%',
                         transform: 'translate(-50%, -50%)',
-                        width: '80%',
-                        height: '80%',
+                        width: '200px',
+                        height: '200px',
                         bg: RESULT[result?.el]?.color,
                         opacity: '0.5',
                         borderRadius: '100%',
@@ -162,7 +149,7 @@ function Index({
                         zIndex={2}
                       />
                     </Box>
-                  </Center>
+                  </Flex>
                   <Box>
                     <Heading
                       {...headingProps}
@@ -182,7 +169,7 @@ function Index({
                   </Box>
                 </Stack>
               </Box>
-              <Box flex={1} mt={'-10px'} position="relative" zIndex={3}>
+              <Box flex={1} position="relative" zIndex={3}>
                 {!isLargerThan768 && (
                   <Container>
                     <Box
@@ -193,8 +180,6 @@ function Index({
                       boxShadow="lg"
                       overflow="hidden"
                     >
-                      {' '}
-                      {/** copy style from FormContainer */}
                       <RenderForm />
                     </Box>
                   </Container>
@@ -229,7 +214,7 @@ function Index({
             w={'100%'}
             h={`${bgElementHeight}px`}
             position="absolute"
-            bgColor={'#cbf7fc'}
+            // bgColor={'#cbf7fc'}
             zIndex={1}
           />
         )}

@@ -22,55 +22,50 @@ const Quiz = ({ quiz, current }) => {
 
   return (
     <>
-      <Box>
-        <Container maxW={'2xl'} pb="6" pos={'relative'} zIndex={10}>
-          <Center py={4}>
-            <Stack w="100%" direction="column" spacing={0}>
-              <Question quiz={quiz} />
-              <Box>
-                <Box
-                  bgColor={'rgba(255,255,255,0.6)'}
-                  borderRadius={'8px'}
-                  pb={4}
-                  px={2}
+      <Container maxW={{ base: 'xl', xl: '2xl' }} pos={'relative'} zIndex={10}>
+        <Center py={4}>
+          <Stack w="100%" direction="column" spacing={4}>
+            <Box>
+              <Box borderRadius={'8px'} pb={4}>
+                <Heading
+                  fontSize={{ base: 'lg', md: 'xl' }}
+                  color={'#025177'}
+                  py="4"
+                  lineHeight="1.7"
                 >
-                  <Heading
-                    fontSize={{ base: 'md', md: 'xl' }}
-                    color={'#025177'}
-                    py="4"
-                    px="4"
-                    lineHeight="1.7"
-                  >
-                    {currentQuiz?.question.label}
-                  </Heading>
-                  <LazyShow
-                    initial={{ opacity: 0, x: 0, y: 0 }}
-                    duration={0.5}
-                    reTrigger={currentQuiz.id}
-                  >
-                    <Box borderRadius={'4px'} border={'4px solid #FFF'}>
-                      <Image src={image} loading="lazy" />
-                    </Box>
-                  </LazyShow>
-                </Box>
+                  {currentQuiz?.question.label}
+                </Heading>
+                <LazyShow
+                  initial={{ opacity: 0, x: 0, y: 0 }}
+                  duration={0.5}
+                  reTrigger={currentQuiz.id}
+                >
+                  <Box borderRadius={'4px'} border={'4px solid #FFF'}>
+                    <Image src={image} loading="lazy" />
+                  </Box>
+                </LazyShow>
               </Box>
-              <Box pt={4}>
-                <Answer quiz={quiz} />
-              </Box>
-            </Stack>
-          </Center>
-        </Container>
-        <Image
-          src={BackgroundVisual}
-          w="100%"
-          h="100%"
-          top={0}
-          objectFit={'cover'}
-          objectPosition={'center top'}
-          position="absolute"
-        />
-        {/* <DynamicBackground currentQuiz={currentQuiz} /> */}
-      </Box>
+            </Box>
+            <Box>
+              <Answer quiz={quiz} />
+            </Box>
+            <Box>
+              <Question quiz={quiz} />
+            </Box>
+          </Stack>
+        </Center>
+      </Container>
+      <Image
+        src={BackgroundVisual}
+        w="100%"
+        h="100%"
+        top={0}
+        objectFit={'cover'}
+        objectPosition={'center top'}
+        position="absolute"
+        blur={'0.5'}
+      />
+      {/* <DynamicBackground currentQuiz={currentQuiz} /> */}
     </>
   );
 };

@@ -17,10 +17,10 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
 
   return (
     <Flex
+      py={2}
       direction="row"
       align={'center'}
       justifyContent={'space-between'}
-      pb="2"
     >
       <Box cursor={'pointer'} onClick={() => handleBackButton()}>
         <Flex alignContent={'center'}>
@@ -42,6 +42,7 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
           {quiz.map((d, i) => (
             <Box
               key={i}
+              border="1px solid #025177"
               bgColor={
                 currentQuiz.id === (i + 1).toString() ? '#025177' : '#FFF'
               }
