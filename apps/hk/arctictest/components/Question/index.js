@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Box, useMediaQuery } from '@chakra-ui/react';
+import { Box, useMediaQuery } from '@chakra-ui/react';
 import QuizTop from '../QuizTop';
 import StickyHeader from '../StickyHeader';
 import { useInView } from 'react-intersection-observer';
@@ -10,7 +10,7 @@ const Question = ({ quiz }) => {
 
   return (
     <>
-      {isSmallerThan768 && !inView && (
+      {/* {isSmallerThan768 && !inView && (
         <Box style={{ position: 'fixed', top: '0', left: '0', zIndex: 99 }}>
           <Box bgColor={'#FFF'}>
             <Container maxW={'2xl'}>
@@ -18,7 +18,7 @@ const Question = ({ quiz }) => {
             </Container>
           </Box>
         </Box>
-      )}
+      )} */}
       {/* <Box bgColor={'#025177'} borderRadius={'8px'} p={4}>
         <Heading
           fontSize={{ base: 'md', md: 'xl' }}
