@@ -17,7 +17,8 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
 
   return (
     <Flex
-      py={2}
+      my={6}
+      pb={4}
       direction="row"
       align={'center'}
       justifyContent={'space-between'}
@@ -25,7 +26,12 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
       <Box cursor={'pointer'} onClick={() => handleBackButton()}>
         <Flex alignContent={'center'}>
           <ChevronLeftIcon w={6} h={6} pt="1" pr="1" />
-          <Text as="span" fontSize={'md'}>
+          <Text
+            as="span"
+            fontWeight="bold"
+            fontSize={{ base: 'md' }}
+            color="#025177"
+          >
             上一頁
           </Text>
         </Flex>
@@ -37,12 +43,12 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
           maxW="320px"
           mx="auto"
           justifyContent={'space-between'}
-          pt={'2px'}
+          pt="2px"
         >
           {quiz.map((d, i) => (
             <Box
               key={i}
-              border="1px solid #025177"
+              border="2px solid #025177"
               bgColor={
                 currentQuiz.id === (i + 1).toString() ? '#025177' : '#FFF'
               }
@@ -54,11 +60,13 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
         </Flex>
       </Box>
       <Box>
-        <Text fontSize={'xl'}>
-          <Text as="span" fontWeight={'bold'} fontSize={'2xl'}>
-            {current + 1}
-          </Text>{' '}
-          / {quiz.length}
+        <Text
+          as="span"
+          fontWeight="bold"
+          fontSize={{ base: 'md', md: 'xl' }}
+          color="#025177"
+        >
+          {current + 1} / {quiz.length}
         </Text>
       </Box>
     </Flex>

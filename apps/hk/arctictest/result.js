@@ -119,6 +119,14 @@ function Index({
             <GridItem w="100%">
               <Box px={4} zIndex={4} pos={'relative'} ref={myRef}>
                 <Stack>
+                  <Box>
+                    <Heading
+                      {...headingProps}
+                      dangerouslySetInnerHTML={{
+                        __html: '立即登記解鎖心理測驗結果',
+                      }}
+                    />
+                  </Box>
                   <Flex
                     py={8}
                     justifyContent={{ base: 'center', md: 'flex-start' }}
@@ -150,14 +158,6 @@ function Index({
                       />
                     </Box>
                   </Flex>
-                  <Box>
-                    <Heading
-                      {...headingProps}
-                      dangerouslySetInnerHTML={{
-                        __html: '立即登記解鎖心理測驗結果',
-                      }}
-                    />
-                  </Box>
                   <Box>
                     <Text
                       as="p"

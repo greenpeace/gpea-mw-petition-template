@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, useMediaQuery } from '@chakra-ui/react';
+import { Box, Heading, useMediaQuery } from '@chakra-ui/react';
 import QuizTop from '../QuizTop';
 import StickyHeader from '../StickyHeader';
 import { useInView } from 'react-intersection-observer';
@@ -19,15 +19,6 @@ const Question = ({ quiz }) => {
           </Box>
         </Box>
       )} */}
-      {/* <Box bgColor={'#025177'} borderRadius={'8px'} p={4}>
-        <Heading
-          fontSize={{ base: 'md', md: 'xl' }}
-          color={'#FFF'}
-          textAlign={{ base: 'left', md: 'center' }}
-        >
-          測出您的性格與習慣，找出隱藏在您潛意識中的極地動物！
-        </Heading>
-      </Box> */}
       <Box ref={ref}>
         <QuizTop quiz={quiz} />
       </Box>
