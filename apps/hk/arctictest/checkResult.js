@@ -30,14 +30,16 @@ const Description = ({ setSurveyPage }) => {
                 fontWeight={700}
                 fontSize={{ base: 'sm', sm: 'md', md: 'xl' }}
               >
-                原來那道神秘的光芒真的可以讓您回到本來生活的世界！被光芒吸進去後您再次返回畫室，想照鏡子確認自己的狀態時，鏡子上出現的居然是自己潛意識中隱藏著的極地動物？！
+                光芒果然把您吸進去！您成功返回畫室，想照鏡子確認自己的狀態時，鏡子上出現的居然是自己潛意識中隱藏著的極地動物？！
               </Text>
               <Flex mt={4} justifyContent={{ base: 'center' }}>
                 <Button
                   onClick={() => setSurveyPage('result')}
                   variant={'subCTA'}
                 >
-                  <Text fontSize={{ base: 'sm', sm: 'md' }}>下一步</Text>
+                  <Text fontSize={{ base: 'sm', sm: 'md' }}>
+                    查看我的極地動物
+                  </Text>
                 </Button>
               </Flex>
             </Box>
