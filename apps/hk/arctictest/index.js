@@ -7,9 +7,7 @@ import QUIZ from './data/quiz.json';
 
 const Index = ({ survey }) => {
   const currentPage = survey?.page;
-  const Page = dynamic(() =>
-    import(`apps/${process.env.project}/${currentPage}`),
-  );
+  const Page = dynamic(() => import(`./${currentPage}`));
 
   return (
     <>
