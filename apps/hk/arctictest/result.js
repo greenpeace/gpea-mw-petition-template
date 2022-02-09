@@ -35,6 +35,19 @@ const ArcticResult = dynamic(() => import('./resultContent/arcticResult'));
 const ContentResult = dynamic(() => import('./resultContent/contentResult'));
 const OceanResult = dynamic(() => import('./resultContent/oceanResult'));
 
+const useWindowSize = () => {
+  const [size, setSize] = useState([0]);
+  useEffect(() => {
+    const updateSize = () => {
+      setSize([window.innerWidth]);
+    };
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+};
+
 function Index({
   status,
   theme,
@@ -48,6 +61,7 @@ function Index({
   const [result, setResult] = useState([]);
   const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
+  // const [width] = useWindowSize();
   const { loading, error, image } = useImage(RESULT[result?.el]?.image); // animal
   const myRef = useRef(null);
   const dynamicContent = RESULT[result?.el]?.content;
@@ -77,8 +91,6 @@ function Index({
         [],
       )
       .sort((a, b) => (a.count > b.count ? -1 : 1));
-
-    console.log('calAnswer-', calAnswer); /** Log answers before filter */
 
     const getMostLargerValue = calAnswer.filter(
       (d, i) => d.count === calAnswer[0].count,
@@ -173,7 +185,7 @@ function Index({
                 {!isLargerThan768 && (
                   <Container>
                     <Box
-                      maxW="500px"
+                      maxW="100%"
                       mx="auto"
                       bgColor="white"
                       borderRadius={8}
