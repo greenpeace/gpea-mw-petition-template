@@ -1,5 +1,5 @@
 {
-  "form_header": "​​只需輸入聯絡資料，便可立即獲得心理測驗結果及守護極地資訊！",
+  "form_header": "​​只需輸入聯絡資料，便可立即獲得心理測驗結果及其他守護極地資訊！",
   "form_description": "",
   "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
   "signed_number": "已聯署人數",
@@ -24,7 +24,7 @@
   "minimum_8_characters": "請輸入8位數字",
   "suggestion_message": "您是否想輸入",
 
-  "submit_text": "立即登記",
+  "submit_text": "立即登記 獲得結果",
   "thanks_title": "",
   "thanks_ask": "",
   "thanks_content": "",
