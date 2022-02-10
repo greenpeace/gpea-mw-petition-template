@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
 import {
   Box,
-  Center,
   Container,
   Stack,
   Text,
@@ -34,6 +33,8 @@ const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 const ArcticResult = dynamic(() => import('./resultContent/arcticResult'));
 const ContentResult = dynamic(() => import('./resultContent/contentResult'));
 const OceanResult = dynamic(() => import('./resultContent/oceanResult'));
+
+import resultBG from './images/result_page_background.jpg';
 
 const useWindowSize = () => {
   const [size, setSize] = useState([0]);
@@ -130,42 +131,25 @@ function Index({
           >
             <GridItem w="100%">
               <Box px={4} zIndex={4} pos={'relative'} ref={myRef}>
-                <Stack>
+                <Stack py={6}>
                   <Box>
                     <Heading
                       {...headingProps}
+                      color={'white'}
+                      fontSize={{ base: '2xl', md: '4xl' }}
                       dangerouslySetInnerHTML={{
                         __html: '立即登記解鎖心理測驗結果',
                       }}
                     />
                   </Box>
-                  <Flex
-                    py={8}
-                    justifyContent={{ base: 'center', md: 'flex-start' }}
-                  >
-                    <Box
-                      maxW={{ base: '220px', md: '280px' }}
-                      position="relative"
-                      _before={{
-                        content: `""`,
-                        position: 'absolute',
-                        top: '60%',
-                        left: '40%',
-                        transform: 'translate(-50%, -50%)',
-                        width: '200px',
-                        height: '200px',
-                        bg: RESULT[result?.el]?.color,
-                        opacity: '0.5',
-                        borderRadius: '100%',
-                      }}
-                    >
+                  <Flex justifyContent={{ base: 'center', md: 'flex-start' }}>
+                    <Box position="relative">
                       <Image
                         src={image}
                         onLoad={(e) => setDynamicImage(e.target.clientHeight)}
                         pos={'relative'}
                         w="100%"
-                        h="100%"
-                        objectFit={'cover'}
+                        maxW="380px"
                         zIndex={2}
                       />
                     </Box>
@@ -173,6 +157,7 @@ function Index({
                   <Box>
                     <Text
                       as="p"
+                      color={'white'}
                       {...paragraphProps}
                       dangerouslySetInnerHTML={{
                         __html: RESULT[result?.el]?.content,
@@ -226,7 +211,10 @@ function Index({
             w={'100%'}
             h={`${bgElementHeight}px`}
             position="absolute"
-            // bgColor={'#cbf7fc'}
+            bgImage={resultBG}
+            bgSize={'cover'}
+            bgPosition={'center center'}
+            bgRepeat={'no-repeat'}
             zIndex={1}
           />
         )}
