@@ -198,20 +198,19 @@ function Index({
                 </Stack>
               </Box>
               <Box flex={1} position="relative" zIndex={3}>
-                {!isLargerThan768 && (
-                  <Container>
-                    <Box
-                      maxW="100%"
-                      mx="auto"
-                      bgColor="white"
-                      borderRadius={8}
-                      boxShadow="lg"
-                      overflow="hidden"
-                    >
-                      <RenderForm />
-                    </Box>
-                  </Container>
-                )}
+                <Container>
+                  <Box
+                    maxW="100%"
+                    mx="auto"
+                    bgColor="white"
+                    borderRadius={8}
+                    boxShadow="lg"
+                    overflow="hidden"
+                    d={{ base: 'block', md: 'none' }}
+                  >
+                    <RenderForm />
+                  </Box>
+                </Container>
 
                 {submitted && (
                   <ContentContainer theme={theme}>
@@ -221,20 +220,19 @@ function Index({
               </Box>
             </GridItem>
             <GridItem w="100%">
-              {isLargerThan768 && (
-                <Box
-                  zIndex={9}
-                  position={{ md: 'sticky' }}
-                  top={{ base: 'auto', md: 20 }}
-                  right={{ base: 0 }}
-                >
-                  <FormContainer>
-                    <Box>
-                      <RenderForm />
-                    </Box>
-                  </FormContainer>
-                </Box>
-              )}
+              <Box
+                zIndex={9}
+                position={{ md: 'sticky' }}
+                top={{ base: 'auto', md: 20 }}
+                right={{ base: 0 }}
+                d={{ base: 'none', md: 'block' }}
+              >
+                <FormContainer>
+                  <Box>
+                    <RenderForm />
+                  </Box>
+                </FormContainer>
+              </Box>
             </GridItem>
           </Grid>
         </PageContainer>
