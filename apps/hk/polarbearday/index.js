@@ -73,10 +73,16 @@ function Index({ status, theme, setFormContent, signup }) {
               zIndex="2"
             >
               <Box>
-                <Text fontSize="xl" mb="4" fontWeight="bold" color="white">
+                <Text
+                  fontSize={{ base: 'md', xl: 'xl' }}
+                  mb="4"
+                  fontWeight="bold"
+                  color="white"
+                  textShadow="0 0 1px rgba(0,0,0, .2)"
+                >
                   嘉賓講者：
                   <br />
-                  首位港產極地嚮導 張偉賢
+                  首位港產極地科研專家 張偉賢
                 </Text>
                 <AvatarGroup size="xl" max={4}>
                   <Avatar
