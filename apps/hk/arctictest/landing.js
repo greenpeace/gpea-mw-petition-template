@@ -70,7 +70,7 @@ const Landing = ({ setSurveyPage }) => {
         bgRepeat={'no-repeat'}
         objectFit={'cover'}
         bgImage={{ base: mobileBG, md: bgPlasticsImage }}
-        bgPosition={'center center'}
+        bgPosition={'40% center'}
         zIndex={'-1'}
       ></Box>
     </Box>
