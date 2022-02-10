@@ -19,6 +19,8 @@ import {
   Select,
   Input,
   Heading,
+  useDisclosure,
+  Flex,
 } from '@chakra-ui/react';
 import {
   MAIL_DOMAINS,
@@ -53,6 +55,7 @@ const MyForm = (props) => {
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure(true);
   const themeInterests = theme.interests;
 
   useEffect(() => {
@@ -162,7 +165,7 @@ const MyForm = (props) => {
                 </Box>
               </Stack>
 
-              <Box>
+              <Box flex={1}>
                 <FormControl
                   id="email"
                   isInvalid={errors.Email && touched.Email}
