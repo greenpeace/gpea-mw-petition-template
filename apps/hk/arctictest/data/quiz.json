@@ -10,17 +10,13 @@
       "label": ""
     },
     "options": [
-      { "value": "A", 
-        "point": 3, 
-        "label": "先拍下照片，之後與家人朋友分享。" },
+      { "value": "A", "point": 3, "label": "先拍下照片，之後與家人朋友分享。" },
       {
         "value": "E",
         "point": 6,
         "label": "環視周圍，尋找一同欣賞的人群。"
       },
-      { "value": "F", 
-        "point": 3, 
-        "label": "仔細地用雙眼觀察，直至極光消失。" },
+      { "value": "F", "point": 3, "label": "仔細地用雙眼觀察，直至極光消失。" },
       {
         "value": "G",
         "point": 3,
@@ -39,15 +35,13 @@
     },
     "content": { "value": "", "label": "" },
     "options": [
-      { "value": "A", 
-        "point": 3, 
-        "label": "維持原來的服飾。" },
+      { "value": "A", "point": 3, "label": "維持原來的服飾。" },
       {
         "value": "C",
-        "point": 6, 
+        "point": 6,
         "label": "脫下衣服，自己拿着。"
       },
-      { "value": "J", "label": "脫下衣服，並找一間冰屋收好。" }
+      { "value": "J", "point": 6, "label": "脫下衣服，並找一間冰屋收好。" }
     ],
     "image": "questions/Q2-100.jpg",
     "maximum": 1,
