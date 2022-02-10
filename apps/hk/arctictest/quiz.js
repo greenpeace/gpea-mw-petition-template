@@ -40,7 +40,7 @@ const Quiz = ({ quiz, current }) => {
                 <Heading
                   fontSize={{ base: 'xl', md: '2xl' }}
                   color={'#025177'}
-                  textAlign={{ base: 'center', md: 'left' }}
+                  textAlign={{ base: 'center' }}
                 >
                   找出隱藏在您潛意識中的極地動物！
                 </Heading>
@@ -64,7 +64,11 @@ const Quiz = ({ quiz, current }) => {
                 duration={0.5}
                 reTrigger={currentQuiz.id}
               >
-                <Box borderRadius={'4px'} border={'4px solid #FFF'}>
+                <Box
+                  borderRadius={'4px'}
+                  border={'4px solid #FFF'}
+                  minH={'240px'}
+                >
                   <Image src={image} loading="lazy" />
                 </Box>
               </LazyShow>

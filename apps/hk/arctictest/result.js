@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
 import {
   Box,
-  Center,
   Container,
   Stack,
   Text,
@@ -35,18 +34,20 @@ const ArcticResult = dynamic(() => import('./resultContent/arcticResult'));
 const ContentResult = dynamic(() => import('./resultContent/contentResult'));
 const OceanResult = dynamic(() => import('./resultContent/oceanResult'));
 
-const useWindowSize = () => {
-  const [size, setSize] = useState([0]);
-  useEffect(() => {
-    const updateSize = () => {
-      setSize([window.innerWidth]);
-    };
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-};
+import resultBG from './images/result_page_background.jpg';
+
+// const useWindowSize = () => {
+//   const [size, setSize] = useState([0]);
+//   useEffect(() => {
+//     const updateSize = () => {
+//       setSize([window.innerWidth]);
+//     };
+//     window.addEventListener('resize', updateSize);
+//     updateSize();
+//     return () => window.removeEventListener('resize', updateSize);
+//   }, []);
+//   return size;
+// };
 
 function Index({
   status,
@@ -57,47 +58,53 @@ function Index({
   setAnswerToSubmitForm,
 }) {
   const { submitted } = status;
-  const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
+  const [isLargerThan768] = useMediaQuery('(min-width: 48em)'); // follow Chakra UI default md break point
   const [result, setResult] = useState([]);
   const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
-  // const [width] = useWindowSize();
-  const { loading, error, image } = useImage(RESULT[result?.el]?.image); // animal
+  const { loading, error, image } = useImage(RESULT[result?.answer]?.image); // animal
   const myRef = useRef(null);
-  const dynamicContent = RESULT[result?.el]?.content;
+  const dynamicContent = RESULT[result?.answer]?.content;
 
   useEffect(() => {
     setFormContent(formContent);
-    setAnswerToSubmitForm({
-      ...hiddenForm,
-      CampaignData1__c: result?.el,
-    });
   }, []);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (!answer) {
       return;
     }
-    const calAnswer = Object.values(answer)
+
+    const calAnswer = await Object.values(answer)
       .map((item) => item.toString())
       .reduce(
         (b, c) => (
           (
             b[b.findIndex((d) => d.el === c)] ||
-            b[b.push({ el: c, count: 0 }) - 1]
+            b[
+              b.push({
+                el: c,
+                answer: c.substring(0, 1),
+                count: 0,
+                point: parseInt(c.substring(2)),
+              }) - 1
+            ]
           ).count++,
           b
         ),
         [],
       )
-      .sort((a, b) => (a.count > b.count ? -1 : 1));
+      .sort((a, b) => (a.count * a.point > b.count * b.point ? -1 : 1)) // sort by calculated points
+      .map((d) => ({ ...d, totalPoints: d.count * d.point }));
+
+    console.log('calAnswer', calAnswer); // log result before filter
 
     const getMostLargerValue = calAnswer.filter(
-      (d, i) => d.count === calAnswer[0].count,
+      (d) => d.totalPoints === calAnswer[0].totalPoints, // get largest points only
     );
 
     setResult(
-      getMostLargerValue[Math.floor(Math.random() * getMostLargerValue.length)],
+      getMostLargerValue[Math.floor(Math.random() * getMostLargerValue.length)], // random item if duplicate
     );
   }, [answer]);
 
@@ -107,14 +114,23 @@ function Index({
     }
   }, [myRef.current?.clientHeight, dynamicContent, dynamicImageHeight]);
 
-  // Determine Content Result
-  const handleDynamicContent = (result) => {
-    console.log('result.el-', result.el);
-    result.el in ['A', 'B', 'C', 'D', 'E'] ? <ArcticResult /> : <OceanResult />;
-  };
+  useEffect(() => {
+    setAnswerToSubmitForm({
+      ...hiddenForm,
+      CampaignData1__c: result?.answer,
+      CampaignData2__c: RESULT[result?.answer]?.value,
+      CampaignData3__c:
+        result?.answer in ['A', 'B', 'C', 'D', 'E'] ? 'Arctic' : 'Oceans',
+    });
+  }, [result?.answer]);
 
-  const RenderContent = () =>
-    submitted ? <Box>{handleDynamicContent(result)}</Box> : null;
+  // Determine Content Result
+  const handleDynamicContent = (result) =>
+    result.answer in ['A', 'B', 'C', 'D', 'E'] ? (
+      <ArcticResult />
+    ) : (
+      <OceanResult />
+    );
 
   const RenderForm = () => (submitted ? <DonateForm /> : <SignupForm />);
 
@@ -129,93 +145,97 @@ function Index({
             flexDirection={'column-reverse'}
           >
             <GridItem w="100%">
-              <Box px={4} zIndex={4} pos={'relative'} ref={myRef}>
-                <Stack>
-                  <Box>
+              <Box
+                px={4}
+                zIndex={4}
+                pos={'relative'}
+                ref={myRef}
+                minH={{ base: 'auto', md: '550px' }}
+              >
+                {' '}
+                {/** Form height */}
+                <Stack py={4}>
+                  <Box pt={6}>
                     <Heading
                       {...headingProps}
+                      color={'white'}
+                      fontSize={{ base: '2xl', md: '4xl' }}
                       dangerouslySetInnerHTML={{
                         __html: '立即登記解鎖心理測驗結果',
                       }}
                     />
                   </Box>
-                  <Flex
-                    py={8}
-                    justifyContent={{ base: 'center', md: 'flex-start' }}
-                  >
-                    <Box
-                      maxW={{ base: '220px', md: '280px' }}
-                      position="relative"
-                      _before={{
-                        content: `""`,
-                        position: 'absolute',
-                        top: '60%',
-                        left: '40%',
-                        transform: 'translate(-50%, -50%)',
-                        width: '200px',
-                        height: '200px',
-                        bg: RESULT[result?.el]?.color,
-                        opacity: '0.5',
-                        borderRadius: '100%',
-                      }}
-                    >
+                  <Flex justifyContent={{ base: 'center', md: 'flex-start' }}>
+                    <Box position="relative">
                       <Image
                         src={image}
                         onLoad={(e) => setDynamicImage(e.target.clientHeight)}
                         pos={'relative'}
-                        w="100%"
-                        h="100%"
-                        objectFit={'cover'}
+                        w="90%"
+                        p={4}
+                        maxW={{ base: '280px', md: '380px' }}
                         zIndex={2}
                       />
                     </Box>
                   </Flex>
                   <Box>
+                    <Heading
+                      {...headingProps}
+                      color={'white'}
+                      fontSize={{ base: 'xl', md: '2xl' }}
+                      dangerouslySetInnerHTML={{
+                        __html: RESULT[result?.answer]?.title,
+                      }}
+                    />
+                  </Box>
+                  <Box>
                     <Text
                       as="p"
+                      color={'white'}
                       {...paragraphProps}
                       dangerouslySetInnerHTML={{
-                        __html: RESULT[result?.el]?.content,
+                        __html: RESULT[result?.answer]?.content,
                       }}
                     />
                   </Box>
                 </Stack>
               </Box>
               <Box flex={1} position="relative" zIndex={3}>
-                {!isLargerThan768 && (
-                  <Container>
-                    <Box
-                      maxW="100%"
-                      mx="auto"
-                      bgColor="white"
-                      borderRadius={8}
-                      boxShadow="lg"
-                      overflow="hidden"
-                    >
-                      <RenderForm />
-                    </Box>
-                  </Container>
+                <Container>
+                  <Box
+                    maxW="100%"
+                    mx="auto"
+                    bgColor="white"
+                    borderRadius={8}
+                    boxShadow="lg"
+                    overflow="hidden"
+                    d={{ base: 'block', md: 'none' }}
+                  >
+                    <RenderForm />
+                  </Box>
+                </Container>
+
+                {submitted && (
+                  <ContentContainer theme={theme}>
+                    <Box>{handleDynamicContent(result)}</Box>
+                  </ContentContainer>
                 )}
-                <ContentContainer theme={theme}>
-                  <RenderContent />
-                </ContentContainer>
               </Box>
             </GridItem>
             <GridItem w="100%">
-              {isLargerThan768 && (
-                <Box
-                  zIndex={9}
-                  position={{ md: 'sticky' }}
-                  top={{ base: 'auto', md: 20 }}
-                  right={{ base: 0 }}
-                >
-                  <FormContainer>
-                    <Box>
-                      <RenderForm />
-                    </Box>
-                  </FormContainer>
-                </Box>
-              )}
+              <Box
+                zIndex={9}
+                position={{ md: 'sticky' }}
+                top={{ base: 'auto', md: 20 }}
+                right={{ base: 0 }}
+                d={{ base: 'none', md: 'block' }}
+              >
+                <FormContainer>
+                  <Box>
+                    <RenderForm />
+                  </Box>
+                </FormContainer>
+              </Box>
             </GridItem>
           </Grid>
         </PageContainer>
@@ -226,7 +246,12 @@ function Index({
             w={'100%'}
             h={`${bgElementHeight}px`}
             position="absolute"
-            // bgColor={'#cbf7fc'}
+            bgImage={resultBG}
+            bgSize={'cover'}
+            bgPosition={'center center'}
+            bgRepeat={'no-repeat'}
+            blur={'0.75'}
+            opacity={'0.9'}
             zIndex={1}
           />
         )}

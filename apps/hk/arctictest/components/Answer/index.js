@@ -30,7 +30,6 @@ const Quiz = ({
       {currentQuiz?.options?.map((d, i) => {
         let getCurrentAnswers = answer[current] || [];
         const selected = getCurrentAnswers.indexOf(d.value) > -1;
-        const lastOption = d.value === 'clear';
         return (
           <Box
             key={i}
@@ -50,7 +49,7 @@ const Quiz = ({
               if (currentQuiz.maximum === 1) {
                 setSurveyAnswer({
                   index: current,
-                  value: [d.value],
+                  value: [d.value, d.point],
                 });
                 setTimeout(() => handleNextButton(), 100);
               }
