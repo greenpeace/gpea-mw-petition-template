@@ -62,20 +62,12 @@ function Index({
   const [result, setResult] = useState([]);
   const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
-  // const [width] = useWindowSize();
   const { loading, error, image } = useImage(RESULT[result?.answer]?.image); // animal
   const myRef = useRef(null);
   const dynamicContent = RESULT[result?.answer]?.content;
 
   useEffect(() => {
     setFormContent(formContent);
-    setAnswerToSubmitForm({
-      ...hiddenForm,
-      CampaignData1__c: result?.answer,
-      CampaignData2__c: RESULT[result?.answer]?.value,
-      CampaignData3__c:
-        result?.answer in ['A', 'B', 'C', 'D', 'E'] ? 'Arctic' : 'Oceans',
-    });
   }, []);
 
   useEffect(async () => {
@@ -121,6 +113,16 @@ function Index({
       setBgElementHeight(myRef.current.clientHeight);
     }
   }, [myRef.current?.clientHeight, dynamicContent, dynamicImageHeight]);
+
+  useEffect(() => {
+    setAnswerToSubmitForm({
+      ...hiddenForm,
+      CampaignData1__c: result?.answer,
+      CampaignData2__c: RESULT[result?.answer]?.value,
+      CampaignData3__c:
+        result?.answer in ['A', 'B', 'C', 'D', 'E'] ? 'Arctic' : 'Oceans',
+    });
+  }, [result?.answer]);
 
   // Determine Content Result
   const handleDynamicContent = (result) =>
