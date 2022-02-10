@@ -59,7 +59,7 @@ const Description = ({ setSurveyPage }) => {
                   variant={'quiz'}
                   fontSize={{ base: '2xl', md: '4xl' }}
                   px={{ base: 10, md: 14 }}
-                  py={{ base: 8, md: 10 }}
+                  py={{ base: 6, md: 8 }}
                   onClick={() => setSurveyPage('quiz')}
                 >
                   <Text fontSize={{ base: 'sm', sm: 'md' }}>

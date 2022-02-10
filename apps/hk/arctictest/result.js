@@ -169,8 +169,9 @@ function Index({
                         src={image}
                         onLoad={(e) => setDynamicImage(e.target.clientHeight)}
                         pos={'relative'}
-                        w="100%"
-                        maxW={{ base: '100%', md: '380px' }}
+                        w="90%"
+                        p={4}
+                        maxW={{ base: '280px', md: '380px' }}
                         zIndex={2}
                       />
                     </Box>
@@ -247,6 +248,8 @@ function Index({
             bgSize={'cover'}
             bgPosition={'center center'}
             bgRepeat={'no-repeat'}
+            blur={'0.75'}
+            opacity={'0.9'}
             zIndex={1}
           />
         )}

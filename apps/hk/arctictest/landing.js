@@ -13,7 +13,7 @@ const Landing = ({ setSurveyPage }) => {
     <Box h={'100vh'} mt={{ base: '-55px' }} pos={`relative`}>
       <Center h={'100%'} w={'100%'}>
         <Stack direction="column">
-          <Box px={{ base: 6, md: 0 }}>
+          <Box p={6} mx="auto" maxWidth={{ base: 'auto', md: '680px' }}>
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Image src={titleKeyVisual} />
             </LazyShow>
@@ -29,7 +29,7 @@ const Landing = ({ setSurveyPage }) => {
                 transform="skew(0, -6deg)"
                 fontSize={{ base: '2xl', md: '4xl' }}
                 px={{ base: 10, md: 14 }}
-                py={{ base: 8, md: 10 }}
+                py={{ base: 6, md: 8 }}
                 onClick={() => setSurveyPage('description')}
               >
                 立即開始
