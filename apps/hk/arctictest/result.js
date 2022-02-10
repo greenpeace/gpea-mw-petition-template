@@ -36,18 +36,18 @@ const OceanResult = dynamic(() => import('./resultContent/oceanResult'));
 
 import resultBG from './images/result_page_background.jpg';
 
-const useWindowSize = () => {
-  const [size, setSize] = useState([0]);
-  useEffect(() => {
-    const updateSize = () => {
-      setSize([window.innerWidth]);
-    };
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-};
+// const useWindowSize = () => {
+//   const [size, setSize] = useState([0]);
+//   useEffect(() => {
+//     const updateSize = () => {
+//       setSize([window.innerWidth]);
+//     };
+//     window.addEventListener('resize', updateSize);
+//     updateSize();
+//     return () => window.removeEventListener('resize', updateSize);
+//   }, []);
+//   return size;
+// };
 
 function Index({
   status,
@@ -62,7 +62,7 @@ function Index({
   const [result, setResult] = useState([]);
   const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
-  const [width] = useWindowSize();
+  // const [width] = useWindowSize();
   const { loading, error, image } = useImage(RESULT[result?.answer]?.image); // animal
   const myRef = useRef(null);
   const dynamicContent = RESULT[result?.answer]?.content;
@@ -198,20 +198,19 @@ function Index({
                 </Stack>
               </Box>
               <Box flex={1} position="relative" zIndex={3}>
-                {!isLargerThan768 && (
-                  <Container>
-                    <Box
-                      maxW="100%"
-                      mx="auto"
-                      bgColor="white"
-                      borderRadius={8}
-                      boxShadow="lg"
-                      overflow="hidden"
-                    >
-                      <RenderForm />
-                    </Box>
-                  </Container>
-                )}
+                <Container>
+                  <Box
+                    maxW="100%"
+                    mx="auto"
+                    bgColor="white"
+                    borderRadius={8}
+                    boxShadow="lg"
+                    overflow="hidden"
+                    d={{ base: 'block', md: 'none' }}
+                  >
+                    <RenderForm />
+                  </Box>
+                </Container>
 
                 {submitted && (
                   <ContentContainer theme={theme}>
@@ -221,20 +220,19 @@ function Index({
               </Box>
             </GridItem>
             <GridItem w="100%">
-              {isLargerThan768 && (
-                <Box
-                  zIndex={9}
-                  position={{ md: 'sticky' }}
-                  top={{ base: 'auto', md: 20 }}
-                  right={{ base: 0 }}
-                >
-                  <FormContainer>
-                    <Box>
-                      <RenderForm />
-                    </Box>
-                  </FormContainer>
-                </Box>
-              )}
+              <Box
+                zIndex={9}
+                position={{ md: 'sticky' }}
+                top={{ base: 'auto', md: 20 }}
+                right={{ base: 0 }}
+                d={{ base: 'none', md: 'block' }}
+              >
+                <FormContainer>
+                  <Box>
+                    <RenderForm />
+                  </Box>
+                </FormContainer>
+              </Box>
             </GridItem>
           </Grid>
         </PageContainer>
