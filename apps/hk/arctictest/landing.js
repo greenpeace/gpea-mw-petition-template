@@ -5,8 +5,8 @@ import * as surveyActions from 'store/actions/action-types/survey-actions';
 
 import bgPlasticsImage from './images/openingending/keyVisualBackground.png';
 import mobileBG from './images/KV_mobile.png';
-import titleKeyVisual from './images/openingending/titleKeyVisual.png';
-import startButton from './images/openingending/startButtonKeyVisual.png';
+import TitleKeyVisual from './images/openingending/titleKeyVisual.png';
+import TitleKeyVisualMobile from './images/openingending/headline_mobile.png';
 
 const Landing = ({ setSurveyPage }) => {
   return (
@@ -15,7 +15,16 @@ const Landing = ({ setSurveyPage }) => {
         <Stack direction="column">
           <Box p={6} mx="auto" maxWidth={{ base: 'auto', md: '680px' }}>
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
-              <Image src={titleKeyVisual} />
+              <Image
+                d={{ base: 'none', md: 'block' }}
+                src={TitleKeyVisual}
+                alt="2分鐘心理測驗"
+              />
+              <Image
+                d={{ base: 'block', md: 'none' }}
+                src={TitleKeyVisualMobile}
+                alt="2分鐘心理測驗"
+              />
             </LazyShow>
           </Box>
           <Box

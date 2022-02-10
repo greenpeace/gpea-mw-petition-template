@@ -36,7 +36,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/02/31ae4bcf-arctic-quiz-kv-preview.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/02/1e286272-key_visual_updated_preview.jpg"
       />
     </Head>
   );
