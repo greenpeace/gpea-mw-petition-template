@@ -72,6 +72,9 @@ function Index({
     setAnswerToSubmitForm({
       ...hiddenForm,
       CampaignData1__c: result?.answer,
+      CampaignData2__c: RESULT[result?.answer]?.value,
+      CampaignData3__c:
+        result?.answer in ['A', 'B', 'C', 'D', 'E'] ? 'Arctic' : 'Oceans',
     });
   }, []);
 
@@ -102,7 +105,7 @@ function Index({
       .sort((a, b) => (a.count * a.point > b.count * b.point ? -1 : 1)) // sort by calculated points
       .map((d) => ({ ...d, totalPoints: d.count * d.point }));
 
-      console.log('calAnswer', calAnswer) // log result before filter
+    console.log('calAnswer', calAnswer); // log result before filter
 
     const getMostLargerValue = calAnswer.filter(
       (d) => d.totalPoints === calAnswer[0].totalPoints, // get largest points only
@@ -120,7 +123,7 @@ function Index({
   }, [myRef.current?.clientHeight, dynamicContent, dynamicImageHeight]);
 
   // Determine Content Result
-  const handleDynamicContent = (result) => 
+  const handleDynamicContent = (result) =>
     result.answer in ['A', 'B', 'C', 'D', 'E'] ? (
       <ArcticResult />
     ) : (
@@ -140,7 +143,15 @@ function Index({
             flexDirection={'column-reverse'}
           >
             <GridItem w="100%">
-              <Box px={4} zIndex={4} pos={'relative'} ref={myRef} minH={{base: 'auto', md: '550px'}}> {/** Form height */}
+              <Box
+                px={4}
+                zIndex={4}
+                pos={'relative'}
+                ref={myRef}
+                minH={{ base: 'auto', md: '550px' }}
+              >
+                {' '}
+                {/** Form height */}
                 <Stack py={4}>
                   <Box pt={6}>
                     <Heading
@@ -159,7 +170,7 @@ function Index({
                         onLoad={(e) => setDynamicImage(e.target.clientHeight)}
                         pos={'relative'}
                         w="100%"
-                        maxW={{base: "100%", md: "380px"}}
+                        maxW={{ base: '100%', md: '380px' }}
                         zIndex={2}
                       />
                     </Box>
@@ -201,8 +212,12 @@ function Index({
                     </Box>
                   </Container>
                 )}
-                
-                  {submitted && (<ContentContainer theme={theme}><Box>{handleDynamicContent(result)}</Box></ContentContainer>)}
+
+                {submitted && (
+                  <ContentContainer theme={theme}>
+                    <Box>{handleDynamicContent(result)}</Box>
+                  </ContentContainer>
+                )}
               </Box>
             </GridItem>
             <GridItem w="100%">
