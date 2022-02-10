@@ -131,8 +131,8 @@ function Index({
           >
             <GridItem w="100%">
               <Box px={4} zIndex={4} pos={'relative'} ref={myRef}>
-                <Stack py={6}>
-                  <Box>
+                <Stack py={4}>
+                  <Box pt={6}>
                     <Heading
                       {...headingProps}
                       color={'white'}
@@ -154,6 +154,16 @@ function Index({
                       />
                     </Box>
                   </Flex>
+                  <Box>
+                    <Heading
+                      {...headingProps}
+                      color={'white'}
+                      fontSize={{ base: 'xl', md: '2xl' }}
+                      dangerouslySetInnerHTML={{
+                        __html: RESULT[result?.el]?.title,
+                      }}
+                    />
+                  </Box>
                   <Box>
                     <Text
                       as="p"
