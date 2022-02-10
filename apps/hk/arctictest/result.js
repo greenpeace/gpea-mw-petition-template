@@ -58,47 +58,58 @@ function Index({
   setAnswerToSubmitForm,
 }) {
   const { submitted } = status;
-  const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
+  const [isLargerThan768] = useMediaQuery('(min-width: 48em)'); // follow Chakra UI default md break point
   const [result, setResult] = useState([]);
   const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
-  // const [width] = useWindowSize();
-  const { loading, error, image } = useImage(RESULT[result?.el]?.image); // animal
+  const [width] = useWindowSize();
+  const { loading, error, image } = useImage(RESULT[result?.answer]?.image); // animal
   const myRef = useRef(null);
-  const dynamicContent = RESULT[result?.el]?.content;
+  const dynamicContent = RESULT[result?.answer]?.content;
 
   useEffect(() => {
     setFormContent(formContent);
     setAnswerToSubmitForm({
       ...hiddenForm,
-      CampaignData1__c: result?.el,
+      CampaignData1__c: result?.answer,
     });
   }, []);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (!answer) {
       return;
     }
-    const calAnswer = Object.values(answer)
+
+    const calAnswer = await Object.values(answer)
       .map((item) => item.toString())
       .reduce(
         (b, c) => (
           (
             b[b.findIndex((d) => d.el === c)] ||
-            b[b.push({ el: c, count: 0 }) - 1]
+            b[
+              b.push({
+                el: c,
+                answer: c.substring(0, 1),
+                count: 0,
+                point: parseInt(c.substring(2)),
+              }) - 1
+            ]
           ).count++,
           b
         ),
         [],
       )
-      .sort((a, b) => (a.count > b.count ? -1 : 1));
+      .sort((a, b) => (a.count * a.point > b.count * b.point ? -1 : 1)) // sort by calculated points
+      .map((d) => ({ ...d, totalPoints: d.count * d.point }));
+
+      console.log('calAnswer', calAnswer) // log result before filter
 
     const getMostLargerValue = calAnswer.filter(
-      (d, i) => d.count === calAnswer[0].count,
+      (d) => d.totalPoints === calAnswer[0].totalPoints, // get largest points only
     );
 
     setResult(
-      getMostLargerValue[Math.floor(Math.random() * getMostLargerValue.length)],
+      getMostLargerValue[Math.floor(Math.random() * getMostLargerValue.length)], // random item if duplicate
     );
   }, [answer]);
 
@@ -109,13 +120,12 @@ function Index({
   }, [myRef.current?.clientHeight, dynamicContent, dynamicImageHeight]);
 
   // Determine Content Result
-  const handleDynamicContent = (result) => {
-    console.log('result.el-', result.el);
-    result.el in ['A', 'B', 'C', 'D', 'E'] ? <ArcticResult /> : <OceanResult />;
-  };
-
-  const RenderContent = () =>
-    submitted ? <Box>{handleDynamicContent(result)}</Box> : null;
+  const handleDynamicContent = (result) => 
+    result.answer in ['A', 'B', 'C', 'D', 'E'] ? (
+      <ArcticResult />
+    ) : (
+      <OceanResult />
+    );
 
   const RenderForm = () => (submitted ? <DonateForm /> : <SignupForm />);
 
@@ -130,7 +140,7 @@ function Index({
             flexDirection={'column-reverse'}
           >
             <GridItem w="100%">
-              <Box px={4} zIndex={4} pos={'relative'} ref={myRef}>
+              <Box px={4} zIndex={4} pos={'relative'} ref={myRef} minH={{base: 'auto', md: '550px'}}> {/** Form height */}
                 <Stack py={4}>
                   <Box pt={6}>
                     <Heading
@@ -149,7 +159,7 @@ function Index({
                         onLoad={(e) => setDynamicImage(e.target.clientHeight)}
                         pos={'relative'}
                         w="100%"
-                        maxW="380px"
+                        maxW={{base: "100%", md: "380px"}}
                         zIndex={2}
                       />
                     </Box>
@@ -160,7 +170,7 @@ function Index({
                       color={'white'}
                       fontSize={{ base: 'xl', md: '2xl' }}
                       dangerouslySetInnerHTML={{
-                        __html: RESULT[result?.el]?.title,
+                        __html: RESULT[result?.answer]?.title,
                       }}
                     />
                   </Box>
@@ -170,7 +180,7 @@ function Index({
                       color={'white'}
                       {...paragraphProps}
                       dangerouslySetInnerHTML={{
-                        __html: RESULT[result?.el]?.content,
+                        __html: RESULT[result?.answer]?.content,
                       }}
                     />
                   </Box>
@@ -191,9 +201,8 @@ function Index({
                     </Box>
                   </Container>
                 )}
-                <ContentContainer theme={theme}>
-                  <RenderContent />
-                </ContentContainer>
+                
+                  {submitted && (<ContentContainer theme={theme}><Box>{handleDynamicContent(result)}</Box></ContentContainer>)}
               </Box>
             </GridItem>
             <GridItem w="100%">

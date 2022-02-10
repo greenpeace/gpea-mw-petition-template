@@ -64,7 +64,7 @@ const Quiz = ({ quiz, current }) => {
                 duration={0.5}
                 reTrigger={currentQuiz.id}
               >
-                <Box borderRadius={'4px'} border={'4px solid #FFF'}>
+                <Box borderRadius={'4px'} border={'4px solid #FFF'} minH={'240px'}>
                   <Image src={image} loading="lazy" />
                 </Box>
               </LazyShow>
