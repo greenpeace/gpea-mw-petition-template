@@ -36,18 +36,18 @@ const OceanResult = dynamic(() => import('./resultContent/oceanResult'));
 
 import resultBG from './images/result_page_background.jpg';
 
-const useWindowSize = () => {
-  const [size, setSize] = useState([0]);
-  useEffect(() => {
-    const updateSize = () => {
-      setSize([window.innerWidth]);
-    };
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-};
+// const useWindowSize = () => {
+//   const [size, setSize] = useState([0]);
+//   useEffect(() => {
+//     const updateSize = () => {
+//       setSize([window.innerWidth]);
+//     };
+//     window.addEventListener('resize', updateSize);
+//     updateSize();
+//     return () => window.removeEventListener('resize', updateSize);
+//   }, []);
+//   return size;
+// };
 
 function Index({
   status,
@@ -62,7 +62,7 @@ function Index({
   const [result, setResult] = useState([]);
   const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
-  const [width] = useWindowSize();
+  // const [width] = useWindowSize();
   const { loading, error, image } = useImage(RESULT[result?.answer]?.image); // animal
   const myRef = useRef(null);
   const dynamicContent = RESULT[result?.answer]?.content;
