@@ -39,5 +39,17 @@ export const Button = {
       letterSpacing: '2px',
       _hover: { bg: 'orange.300' },
     },
+    quiz: {
+      rounded: 'full',
+      transition: 'all 0.2s cubic-bezier(.08,.52,.52,1)',
+      colorScheme: 'orange',
+      letterSpacing: '2px',
+      borderWidth: '4px',
+      background:
+        'linear-gradient(150deg, rgba(244,223,96,1) 0%, rgba(255,129,0,1) 100%)',
+      borderColor: 'white',
+      color: 'white',
+      fontWeight: 'bold',
+    },
   },
 };

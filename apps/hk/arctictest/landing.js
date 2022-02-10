@@ -25,16 +25,9 @@ const Landing = ({ setSurveyPage }) => {
           >
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Button
-                transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
+                variant={'quiz'}
                 transform="skew(0, -6deg)"
-                colorScheme="orange"
-                letterSpacing="2px"
-                borderWidth="6px"
-                background="linear-gradient(150deg, rgba(244,223,96,1) 0%, rgba(255,129,0,1) 100%)"
-                borderColor="white"
-                color="white"
                 fontSize={{ base: '2xl', md: '4xl' }}
-                fontWeight="bold"
                 px={{ base: 10, md: 14 }}
                 py={{ base: 8, md: 10 }}
                 onClick={() => setSurveyPage('description')}
