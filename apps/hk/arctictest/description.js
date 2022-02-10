@@ -27,7 +27,7 @@ const Description = ({ setSurveyPage }) => {
               <Heading
                 fontSize={{ base: 'xl', md: '2xl' }}
                 color={'#025177'}
-                textAlign={{ base: 'center', md: 'left' }}
+                textAlign={{ base: 'center' }}
               >
                 找出隱藏在您潛意識中的極地動物！
               </Heading>
