@@ -31,23 +31,9 @@ const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 
 const ArcticResult = dynamic(() => import('./resultContent/arcticResult'));
-const ContentResult = dynamic(() => import('./resultContent/contentResult'));
 const OceanResult = dynamic(() => import('./resultContent/oceanResult'));
 
 import resultBG from './images/result_page_background.jpg';
-
-// const useWindowSize = () => {
-//   const [size, setSize] = useState([0]);
-//   useEffect(() => {
-//     const updateSize = () => {
-//       setSize([window.innerWidth]);
-//     };
-//     window.addEventListener('resize', updateSize);
-//     updateSize();
-//     return () => window.removeEventListener('resize', updateSize);
-//   }, []);
-//   return size;
-// };
 
 function Index({
   status,
@@ -119,14 +105,15 @@ function Index({
       ...hiddenForm,
       CampaignData1__c: result?.answer,
       CampaignData2__c: RESULT[result?.answer]?.value,
-      CampaignData3__c:
-        result?.answer in ['A', 'B', 'C', 'D', 'E'] ? 'Arctic' : 'Oceans',
+      CampaignData3__c: ['A', 'B', 'C', 'D', 'E'].includes(result?.answer)
+        ? 'Arctic'
+        : 'Oceans',
     });
   }, [result?.answer]);
 
   // Determine Content Result
   const handleDynamicContent = (result) =>
-    result.answer in ['A', 'B', 'C', 'D', 'E'] ? (
+    ['A', 'B', 'C', 'D', 'E'].includes(result?.answer) ? (
       <ArcticResult />
     ) : (
       <OceanResult />
@@ -152,18 +139,27 @@ function Index({
                 ref={myRef}
                 minH={{ base: 'auto', md: '550px' }}
               >
-                {' '}
-                {/** Form height */}
                 <Stack py={4}>
                   <Box pt={6}>
-                    <Heading
-                      {...headingProps}
-                      color={'white'}
-                      fontSize={{ base: '2xl', md: '4xl' }}
-                      dangerouslySetInnerHTML={{
-                        __html: '立即登記解鎖心理測驗結果',
-                      }}
-                    />
+                    {submitted ? (
+                      <Heading
+                        {...headingProps}
+                        color={'white'}
+                        fontSize={{ base: '2xl', md: '4xl' }}
+                        dangerouslySetInnerHTML={{
+                          __html: '心理測驗結果會於1分鐘後傳送到您的電郵。',
+                        }}
+                      />
+                    ) : (
+                      <Heading
+                        {...headingProps}
+                        color={'white'}
+                        fontSize={{ base: '2xl', md: '4xl' }}
+                        dangerouslySetInnerHTML={{
+                          __html: '立即登記解鎖心理測驗結果。',
+                        }}
+                      />
+                    )}
                   </Box>
                   <Flex justifyContent={{ base: 'center', md: 'flex-start' }}>
                     <Box position="relative">
