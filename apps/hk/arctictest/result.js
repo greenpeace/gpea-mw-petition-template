@@ -147,7 +147,7 @@ function Index({
                         color={'white'}
                         fontSize={{ base: '2xl', md: '4xl' }}
                         dangerouslySetInnerHTML={{
-                          __html: '心理測驗結果會於1分鐘後傳送到您的電郵。',
+                          __html: `心理測驗結果會於1分鐘後傳送到您的電郵。`,
                         }}
                       />
                     ) : (
@@ -196,7 +196,7 @@ function Index({
                   </Box>
                 </Stack>
               </Box>
-              <Box flex={1} position="relative" zIndex={3}>
+              <Box flex={1} py={4} position="relative" zIndex={3}>
                 <Container>
                   <Box
                     maxW="100%"

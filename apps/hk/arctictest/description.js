@@ -49,7 +49,7 @@ const Description = ({ setSurveyPage }) => {
                   color={'#025177'}
                   lineHeight="1.7"
                 >
-                  您正在畫室中繪製世界地圖d極地位置突然出現一道閃光，帶您穿越到極地之中！
+                  您正在畫室中繪製世界地圖極地位置突然出現一道閃光，帶您穿越到極地之中！
                 </Heading>
               </Box>
             </LazyShow>

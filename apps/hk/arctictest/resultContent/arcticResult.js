@@ -12,10 +12,6 @@ const Content = ({ theme }) => {
   const themeInterests = theme.interests;
   return (
     <>
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        心理測驗結果會於1分鐘後傳送到您的電郵。
-      </Heading>
-
       <Text as="p" {...paragraphProps}>
         再一次感謝您的參與，找出代表您的極地動物。但您知道在遙遠的北極，這些極地動物正遇到種種困難，威脅著牠們的家園嗎？
       </Text>
