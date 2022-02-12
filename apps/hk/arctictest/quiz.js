@@ -56,7 +56,7 @@ const Quiz = ({ quiz, current }) => {
                 <Box
                   borderRadius={'4px'}
                   border={'4px solid #FFF'}
-                  minH={'240px'}
+                  minH={{ base: 'auto', md: '240px' }}
                 >
                   <Image src={image} loading="lazy" />
                 </Box>

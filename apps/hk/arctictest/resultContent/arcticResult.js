@@ -34,7 +34,7 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <Image src={image00} maxW="480px" mx="auto" />
+        <Image src={image00} maxW={{ base: '100%', md: '480px' }} mx="auto" />
       </Box>
 
       <Text as="p" {...paragraphProps}>
