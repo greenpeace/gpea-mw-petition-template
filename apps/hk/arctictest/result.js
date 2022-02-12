@@ -206,19 +206,21 @@ function Index({
                 </Stack>
               </Box>
               <Box flex={1} position="relative" zIndex={3}>
-                <Container>
-                  <Box
-                    maxW="100%"
-                    mx="auto"
-                    bgColor="white"
-                    borderRadius={8}
-                    boxShadow="lg"
-                    overflow="hidden"
-                    d={{ base: 'block', md: 'none' }}
-                  >
-                    <RenderForm />
-                  </Box>
-                </Container>
+                <Box py={2}>
+                  <Container>
+                    <Box
+                      maxW="100%"
+                      mx="auto"
+                      bgColor="white"
+                      borderRadius={8}
+                      boxShadow="lg"
+                      overflow="hidden"
+                      d={{ base: 'block', md: 'none' }}
+                    >
+                      <RenderForm />
+                    </Box>
+                  </Container>
+                </Box>
 
                 {submitted && (
                   <ContentContainer theme={theme} py={4}>
