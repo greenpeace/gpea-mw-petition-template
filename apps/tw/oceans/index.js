@@ -19,7 +19,7 @@ import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/GP1SUB1C_PressMedia.jpg';
+import heroBannerImage from './images/banner.png';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
@@ -48,8 +48,10 @@ function Index({ status, theme, setFormContent, signup }) {
           content={{
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
-            }，謝謝您參與這次的連署`,
-            description: ['能更進一步支持我們的海洋行動嗎？'],
+            }，請收下海洋捎來的謝意`,
+            description: [
+              '能不能多幫海洋一個忙？<br/>邀請您的朋友、家人、同事一起支持全球海洋保護區',
+            ],
           }}
         />
       ) : (
