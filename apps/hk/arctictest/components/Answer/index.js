@@ -41,10 +41,6 @@ const Quiz = ({
             color={selected ? 'white' : '#025177'}
             cursor="pointer"
             transition="0.2s ease"
-            _hover={{
-              bgColor: '#025177',
-              color: 'white',
-            }}
             onClick={async () => {
               if (currentQuiz.maximum === 1) {
                 setSurveyAnswer({
