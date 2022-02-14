@@ -27,7 +27,6 @@ function Index({ status, theme, setFormContent, signup }) {
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   const { ref, inView } = useInView({
-    /* Optional options */
     threshold: 0,
   });
   const myRef = useRef(null);
