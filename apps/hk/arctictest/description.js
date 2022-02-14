@@ -32,14 +32,16 @@ const Description = ({ setSurveyPage }) => {
                 找出隱藏在您潛意識中的極地動物！
               </Heading>
             </Box>
-            <Box minH={'240px'}>
-              <Box borderRadius={'8px'} pb={4} minH={'240px'}>
-                <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.5}>
-                  <Box borderRadius={'4px'} border={'4px solid #FFF'}>
-                    <Image src={bgPlasticsImage} loading="lazy" />
-                  </Box>
-                </LazyShow>
-              </Box>
+            <Box
+              borderRadius={'8px'}
+              pb={4}
+              minH={{ base: 'auto', md: '240px' }}
+            >
+              <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.5}>
+                <Box borderRadius={'4px'} border={'4px solid #FFF'}>
+                  <Image src={bgPlasticsImage} loading="lazy" />
+                </Box>
+              </LazyShow>
             </Box>
 
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
@@ -49,7 +51,7 @@ const Description = ({ setSurveyPage }) => {
                   color={'#025177'}
                   lineHeight="1.7"
                 >
-                  您正在畫室中繪製世界地圖d極地位置突然出現一道閃光，帶您穿越到極地之中！
+                  您正在畫室中繪製世界地圖極地位置突然出現一道閃光，帶您穿越到極地之中！
                 </Heading>
               </Box>
             </LazyShow>

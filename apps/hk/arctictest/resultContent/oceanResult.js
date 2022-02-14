@@ -12,12 +12,8 @@ const Content = ({ theme }) => {
   const themeInterests = theme.interests;
   return (
     <>
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        心理測驗結果會於1分鐘後傳送到您的電郵。
-      </Heading>
-
       <Text as="p" {...paragraphProps}>
-        再一次感謝您的參與，找出代表您的海洋動物。但您知道在浩瀚的海洋中，這些動物正遇到種種困難，威脅著牠們的家園嗎？
+        再一次感謝您的參與，找出代表您的海洋動物，請到電郵信箱查閱心理測驗結果。但您知道在浩瀚的海洋中，這些動物正遇到種種困難，威脅著牠們的家園嗎？
       </Text>
 
       <Text as="p" {...paragraphProps}>
@@ -38,7 +34,7 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <Image src={image00} maxW="480px" mx="auto" />
+        <Image src={image00} maxW={{ base: '100%', md: '480px' }} mx="auto" />
       </Box>
 
       <Text as="p" {...paragraphProps}>

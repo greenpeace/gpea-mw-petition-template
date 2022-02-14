@@ -19,6 +19,7 @@ import PageContainer from '@containers/pageContainer';
 import ContentContainer from '@containers/contentContainer';
 import formContent from './form';
 import RESULT from './data/result.json';
+import oceansContent from './oceans';
 import useImage from './useImage';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
@@ -31,23 +32,9 @@ const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 
 const ArcticResult = dynamic(() => import('./resultContent/arcticResult'));
-const ContentResult = dynamic(() => import('./resultContent/contentResult'));
 const OceanResult = dynamic(() => import('./resultContent/oceanResult'));
 
 import resultBG from './images/result_page_background.jpg';
-
-// const useWindowSize = () => {
-//   const [size, setSize] = useState([0]);
-//   useEffect(() => {
-//     const updateSize = () => {
-//       setSize([window.innerWidth]);
-//     };
-//     window.addEventListener('resize', updateSize);
-//     updateSize();
-//     return () => window.removeEventListener('resize', updateSize);
-//   }, []);
-//   return size;
-// };
 
 function Index({
   status,
@@ -63,12 +50,17 @@ function Index({
   const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
   const { loading, error, image } = useImage(RESULT[result?.answer]?.image); // animal
-  const myRef = useRef(null);
+  const topSection = useRef(null);
   const dynamicContent = RESULT[result?.answer]?.content;
 
   useEffect(() => {
     setFormContent(formContent);
   }, []);
+
+  useEffect(() => {
+    const isArcticResult = ['A', 'B', 'C', 'D', 'E'].includes(result?.answer);
+    !isArcticResult && setFormContent(oceansContent);
+  }, [submitted]);
 
   useEffect(async () => {
     if (!answer) {
@@ -97,8 +89,6 @@ function Index({
       .sort((a, b) => (a.count * a.point > b.count * b.point ? -1 : 1)) // sort by calculated points
       .map((d) => ({ ...d, totalPoints: d.count * d.point }));
 
-    console.log('calAnswer', calAnswer); // log result before filter
-
     const getMostLargerValue = calAnswer.filter(
       (d) => d.totalPoints === calAnswer[0].totalPoints, // get largest points only
     );
@@ -110,23 +100,29 @@ function Index({
 
   useEffect(() => {
     if (result) {
-      setBgElementHeight(myRef.current.clientHeight);
+      setBgElementHeight(topSection.current.clientHeight);
     }
-  }, [myRef.current?.clientHeight, dynamicContent, dynamicImageHeight]);
+  }, [
+    topSection.current?.clientHeight,
+    dynamicContent,
+    dynamicImageHeight,
+    submitted,
+  ]);
 
   useEffect(() => {
     setAnswerToSubmitForm({
       ...hiddenForm,
       CampaignData1__c: result?.answer,
       CampaignData2__c: RESULT[result?.answer]?.value,
-      CampaignData3__c:
-        result?.answer in ['A', 'B', 'C', 'D', 'E'] ? 'Arctic' : 'Oceans',
+      CampaignData3__c: ['A', 'B', 'C', 'D', 'E'].includes(result?.answer)
+        ? 'Arctic'
+        : 'Oceans',
     });
   }, [result?.answer]);
 
   // Determine Content Result
   const handleDynamicContent = (result) =>
-    result.answer in ['A', 'B', 'C', 'D', 'E'] ? (
+    ['A', 'B', 'C', 'D', 'E'].includes(result?.answer) ? (
       <ArcticResult />
     ) : (
       <OceanResult />
@@ -149,21 +145,30 @@ function Index({
                 px={4}
                 zIndex={4}
                 pos={'relative'}
-                ref={myRef}
+                ref={topSection}
                 minH={{ base: 'auto', md: '550px' }}
               >
-                {' '}
-                {/** Form height */}
                 <Stack py={4}>
                   <Box pt={6}>
-                    <Heading
-                      {...headingProps}
-                      color={'white'}
-                      fontSize={{ base: '2xl', md: '4xl' }}
-                      dangerouslySetInnerHTML={{
-                        __html: '立即登記解鎖心理測驗結果',
-                      }}
-                    />
+                    {submitted ? (
+                      <Heading
+                        {...headingProps}
+                        color={'white'}
+                        fontSize={{ base: '2xl', md: '4xl' }}
+                        dangerouslySetInnerHTML={{
+                          __html: '心理測驗結果會於1分鐘後傳送到您的電郵。',
+                        }}
+                      />
+                    ) : (
+                      <Heading
+                        {...headingProps}
+                        color={'white'}
+                        fontSize={{ base: '2xl', md: '4xl' }}
+                        dangerouslySetInnerHTML={{
+                          __html: '立即登記解鎖心理測驗結果。',
+                        }}
+                      />
+                    )}
                   </Box>
                   <Flex justifyContent={{ base: 'center', md: 'flex-start' }}>
                     <Box position="relative">
@@ -201,34 +206,39 @@ function Index({
                 </Stack>
               </Box>
               <Box flex={1} position="relative" zIndex={3}>
-                <Container>
-                  <Box
-                    maxW="100%"
-                    mx="auto"
-                    bgColor="white"
-                    borderRadius={8}
-                    boxShadow="lg"
-                    overflow="hidden"
-                    d={{ base: 'block', md: 'none' }}
-                  >
-                    <RenderForm />
-                  </Box>
-                </Container>
+                <Box py={2}>
+                  <Container>
+                    <Box
+                      maxW="100%"
+                      mx="auto"
+                      bgColor="white"
+                      borderRadius={8}
+                      boxShadow="lg"
+                      overflow="hidden"
+                      d={{ base: 'block', md: 'none' }}
+                    >
+                      <RenderForm />
+                    </Box>
+                  </Container>
+                </Box>
 
                 {submitted && (
-                  <ContentContainer theme={theme}>
+                  <ContentContainer theme={theme} py={4}>
                     <Box>{handleDynamicContent(result)}</Box>
                   </ContentContainer>
                 )}
               </Box>
             </GridItem>
-            <GridItem w="100%">
+            <GridItem w="100%" d={{ base: 'none', md: 'block' }}>
+              {submitted && (
+                <Box h={`${bgElementHeight - bgElementHeight / 2}px`} />
+              )}
               <Box
                 zIndex={9}
                 position={{ md: 'sticky' }}
-                top={{ base: 'auto', md: 20 }}
+                top={{ base: 'auto', md: 2 }}
                 right={{ base: 0 }}
-                d={{ base: 'none', md: 'block' }}
+                pt={3}
               >
                 <FormContainer>
                   <Box>
