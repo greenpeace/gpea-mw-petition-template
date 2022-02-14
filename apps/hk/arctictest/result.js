@@ -156,7 +156,7 @@ function Index({
                         color={'white'}
                         fontSize={{ base: '2xl', md: '4xl' }}
                         dangerouslySetInnerHTML={{
-                          __html: '請到電郵信箱查閱心理測驗結果。',
+                          __html: '心理測驗結果會於1分鐘後傳送到您的電郵。',
                         }}
                       />
                     ) : (
