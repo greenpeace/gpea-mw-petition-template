@@ -296,4 +296,11 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+function propsAreEqual(prevState, nextState) {
+  return prevState.status.submitted === nextState.status.submitted;
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(React.memo(Index, propsAreEqual));
