@@ -25,7 +25,7 @@ export function validation(values, formContent) {
 
   if (values.MobilePhone) {
     if (values.MobileCountryCode === '852') {
-      const regex = /^[2,3,5,6,8,9]{1}[0-9]{7}$/i;
+      const regex = /^[2-9]{1}[0-9]{7}$/i;
       if (!regex.test(values.MobilePhone)) {
         errors.MobilePhone = formContent.invalid_format_alert;
       }
