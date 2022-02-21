@@ -16,45 +16,45 @@ import {
 import Speaker from './Speaker';
 import Webinar from './Webinar';
 
-import speaker1 from './images/speaker1_v2.jpg';
-import speaker2 from './images/speaker2.png';
-import speaker3 from './images/speaker3.jpg';
+import speaker1 from './images/gurugurulogo.jpg';
+import speaker2 from './images/MilMilllogo.jpg';
+import speaker3 from './images/campaigner-leanne-03.jpg';
 
 const WebinarContent = {
   title: '',
-  date: '日期：2022年1月20日（星期四）',
-  time: '時間：晚上8時至9時15分',
+  date: '日期：2022年3月19日（星期六）',
+  time: '時間：早上11時至中午12時',
   description: '線上分享會平台：Zoom（網上登記後會獲得相關鏈結和密碼）',
   other: '',
 };
 
 const speaker1Content = [
   {
-    name: '譚穎琳 Leanne',
-    role: '綠色和平項目主任',
+    name: '負責人',
+    role: '回收廠Milmill負責人',
     content:
-      '全城走塑項目主任，倡議及推動走塑的無限可能，積極關心企業塑膠問題及香港塑膠政策。過去活躍於社區回收活動，看到源頭減廢的重要性，更加堅定了走塑的目標。Leanne亦是「唔該借借」重用餐具社區實驗的發起人，積極推動社區走塑工作。',
+      '喵坊Mil Mil是香港首間紙包飲品盒回收漿廠及教育中心，每日最多可處理約50噸紙包飲品盒，製成再生漿。同時Mil Mil亦會回收各種廢紙，製成多樣再生紙品。',
     avatar: speaker1,
-  },
-];
-
-const speaker3Content = [
-  {
-    name: 'Susan',
-    role: '環保裸買店「四圍斟」店長',
-    content:
-      '裸買店「四圍斟」的理念是推廣裸買好處，讓大家將裸買變成生活習慣，強調源頭減廢的重要性。四圍斟舉辦過「鄰里裸買計劃」，並推出裸網購、裸外賣，令裸買變得「隨時隨地」與方便。店舖裸買商品多樣，包括應節食品蝦子麵、清潔劑、有機腰果糖、環保尿布和乳墊等。',
-    avatar: speaker3,
   },
 ];
 
 const speaker2Content = [
   {
-    name: '柯家文 Kaman',
-    role: '綠色和平社區外展主任',
+    name: '阿晴',
+    role: '環保網店Guruguru創辦人',
     content:
-      '全城走塑社區外展主任，與「走塑小隊」走訪香港各大社區，發掘走塑小店。疫情下，講環保，搞走塑，看似天方夜譚，但是Kaman與「走塑小隊」發現，社區仍有好多街坊及小店堅持走塑，未來希望推動更多個體與社區加入走塑行列。',
+      '瓹窿瓹罅Guruguru是一間綠色網上商店，推廣環保網購，致力減低過度包裝情況，鼓勵消費者重用資源與培養源頭減廢習慣。Guruguru環保配送服務，免費收回紙類、塑膠與玻璃包裝，並將之重用或回收；他們亦曾於疫情期間送出環保外賣器皿，鼓勵客人源頭減廢，少用即棄塑膠餐具。',
     avatar: speaker2,
+  },
+];
+
+const speaker3Content = [
+  {
+    name: '譚穎琳 Leanne',
+    role: '綠色和平項目主任',
+    content:
+      '全城走塑項目主任，倡議及推動走塑的無限可能，積極關心企業塑膠問題及香港塑膠政策。過去活躍於社區回收活動，看到源頭減廢的重要性，更加堅定了走塑的目標。',
+    avatar: speaker3,
   },
 ];
 
@@ -63,43 +63,32 @@ const Content = ({ theme, speaker1Ref, speaker2Ref, speaker3Ref }) => {
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        報名新春教室 齊過綠色新年
+        免費報名講座 認識家居減廢與回收要點
       </Heading>
 
-      <Box {...paragraphProps}>
+      <Box {...paragraphProps} bgColor="gray.50" borderRadius={8} p={6}>
         <Webinar showTitle={false} content={WebinarContent} />
       </Box>
 
-      <Box {...paragraphProps} bgColor="gray.50" borderRadius={8} p={6}>
-        裸買店「四圍斟」店長Susan將會聯同綠色和平項目主任譚穎琳（Leanne）、社區外展主任柯家文（Kaman）在網上教室裡，同你分享豐富新春減廢心得，節目內容包括：
-        <UnorderedList my={4} spacing={3}>
-          <ListItem>裸買店店主分享環保辦年貨心得</ListItem>
-          <ListItem>新春換物貼士與資源平台分享</ListItem>
-          <ListItem>環保清潔劑製作</ListItem>
-          <ListItem>新春大掃除減廢與重用、交換資源心得</ListItem>
-          <ListItem>全城走塑工作與展望</ListItem>
-        </UnorderedList>
+      <Box {...paragraphProps}>
+        家居物品種類繁多，大眾未必清楚知道正確的回收分類與方法，以及​​家居減廢的好辦法。因此，綠色和平特意邀請到紙包飲品盒回收漿廠MilMill負責人、環保網店Guruguru創辦人阿晴參與線上講座，講解回收要點、分類、背後工序與限制，分享業界推廣資源重用、源頭減廢的工作，並為大家提供家居減廢、重用與回收的貼士。同時，綠色和平走塑項目主任譚穎琳將會分享推廣社區減廢經驗，以及回收與重用資源須知。
       </Box>
 
       <Heading {...headingProps}>
-        新一年，你願意參與綠色教室，學習生活中減廢嗎？
+        你願意認識減廢概念，了解回收的分類與限制嗎？
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        虎年將至！想必大家已經開始忙於清理和佈置家居，迎接新春。去舊迎新之際，我們往往產生大量即棄物品，如果未能善用，或會為環境帶來更大負擔。因此，綠色和平將會舉辦綠色新春教室，邀請到裸買店「四圍斟」店長Susan，同大家分享裸買應節物品心得、製作環保清潔劑，推介二手換物平台，讓大家便捷又環保地搜羅應節物品、大掃除，在新一年做到源頭減廢，培養環保新習慣！
+        「紙包飲品盒可以在哪裏回收？」「所有塑膠都可以回收嗎？」我們或許對家居減廢和回收有很多疑問，如果因錯誤分類與處理，而浪費了有用資源，則十分可惜。因此，嘉賓會詳細跟我們解釋紙品、塑膠回收的須知，回收品分類與指定收集地點，他們亦會分享回收資源後，如何加以利用，變成再生或重用資源。
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        首500位成功報名並出席新春教室的朋友，更可以獲贈綠色和平送出以環保啞粉紙及大豆油墨印製的吉祥物環保揮春（款式隨機）乙張。立即報名參與教室，與我們一起渡過綠色新春，學會在生活上源頭減廢！
+        另外，回收與再造不能處理所有資源，並非保護環境的萬全之策。我們在講座中亦會介紹「源頭減廢」概念，以及生活中實踐源頭減廢的方法，培養「走塑」習慣。
       </Text>
 
       <Heading {...headingProps}>
         立即報名！學習新春環保減廢貼士，過節都可以善用每一分資源。
       </Heading>
-
-      <Box ref={speaker3Ref}>
-        <Speaker content={speaker3Content} />
-      </Box>
 
       <Box ref={speaker1Ref}>
         <Speaker content={speaker1Content} />
@@ -107,6 +96,10 @@ const Content = ({ theme, speaker1Ref, speaker2Ref, speaker3Ref }) => {
 
       <Box ref={speaker2Ref}>
         <Speaker content={speaker2Content} />
+      </Box>
+
+      <Box>
+        <Speaker content={speaker3Content} />
       </Box>
     </>
   );
