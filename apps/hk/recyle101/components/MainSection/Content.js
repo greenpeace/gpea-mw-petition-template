@@ -1,24 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import {
-  Box,
-  Heading,
-  Text,
-  Image,
-  List,
-  ListItem,
-  UnorderedList,
-} from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
-import Speaker from './Speaker';
-import Webinar from './Webinar';
+import Speaker from '../../Speaker';
+import Webinar from '../../Webinar';
 
-import speaker1 from './images/gurugurulogo.jpg';
-import speaker2 from './images/MilMilllogo.jpg';
-import speaker3 from './images/campaigner-leanne-03.jpg';
+import speaker1 from '../../images/gurugurulogo.jpg';
+import speaker2 from '../../images/MilMilllogo.jpg';
+import speaker3 from '../../images/campaigner-leanne-03.jpg';
 
 const WebinarContent = {
   title: '',
@@ -58,7 +50,9 @@ const speaker3Content = [
   },
 ];
 
-const Content = ({ theme, speaker1Ref, speaker2Ref, speaker3Ref }) => {
+const Content = ({ theme }) => {
+  const speaker1Ref = useRef(null);
+  const speaker2Ref = useRef(null);
   const themeInterests = theme.interests;
   return (
     <>

@@ -6,7 +6,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import borrow from './images/plastics_borrow_event.jpg';
+import borrow from '../../images/plastics_borrow_event.jpg';
 
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
