@@ -31,12 +31,16 @@ function Index({ setFormContent }) {
   }, []);
 
   useEffect(() => {
+    if (isLargerThanMD) {
+      setShowCTAButton(false);
+      return;
+    }
     if (!inView && !isLargerThanMD) {
       setShowCTAButton(true);
     } else {
       setShowCTAButton(false);
     }
-  }, [inView]);
+  }, [inView, isLargerThanMD]);
 
   return (
     <>
