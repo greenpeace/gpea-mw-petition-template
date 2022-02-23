@@ -9,7 +9,7 @@ import Speaker from '../../Speaker';
 import Webinar from '../../Webinar';
 
 import speaker1 from '../../images/gurugurulogo.jpg';
-import speaker2 from '../../images/Mil Milllogo.jpg';
+import speaker2 from '../../images/MilMilllogo.jpg';
 import speaker3 from '../../images/campaigner-leanne-03.jpg';
 
 const WebinarContent = {

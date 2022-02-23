@@ -14,7 +14,7 @@ import { useWindowSize } from '../../util';
 import { headingProps } from '@common/styles/components/contentStyle';
 
 import speaker1 from '../../images/gurugurulogo.jpg';
-import speaker2 from '../../images/Mil Milllogo.jpg';
+import speaker2 from '../../images/MilMilllogo.jpg';
 import speaker3 from '../../images/campaigner-leanne-03.jpg';
 
 const formWidth = 500;

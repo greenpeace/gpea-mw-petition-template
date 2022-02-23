@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import speaker1 from '../../images/gurugurulogo.jpg';
-import speaker2 from '../../images/Mil Milllogo.jpg';
+import speaker2 from '../../images/MilMilllogo.jpg';
 import Form from '../Form';
 import { useWindowSize } from '../../util';
 import { headingProps } from '@common/styles/components/contentStyle';
