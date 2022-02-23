@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import speaker1 from '../../images/gurugurulogo.jpg';
-import speaker2 from '../../images/MilMilllogo.jpg';
+import speaker2 from '../../images/Mil Milllogo.jpg';
 import Form from '../Form';
 import { useWindowSize } from '../../util';
 import { headingProps } from '@common/styles/components/contentStyle';
@@ -59,7 +59,7 @@ function Content({ signup }) {
           </Text>
           <AvatarGroup size="xl" max={4}>
             <Avatar
-              name="回收廠MilMill代表"
+              name="回收廠Mil Mill代表"
               src={speaker2}
               onClick={() => scrollToRef(speaker2Ref)}
             />

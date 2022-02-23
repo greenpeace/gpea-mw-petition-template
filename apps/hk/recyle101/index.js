@@ -66,6 +66,7 @@ function Index({ setFormContent }) {
       </Container>
 
       <PetitionFooter locale={'HKChinese'} />
+
       {showCTAButton && (
         <FixedCTA onClick={() => executeScroll(mobileForm)}>
           {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}
