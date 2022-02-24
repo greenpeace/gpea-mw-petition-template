@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Box, Heading, Text } from '@chakra-ui/react';
 import {
@@ -7,10 +7,10 @@ import {
 } from '@common/styles/components/contentStyle';
 import Speaker from '../../Speaker';
 import Webinar from '../../Webinar';
-
 import speaker1 from '../../images/gurugurulogo.jpg';
 import speaker2 from '../../images/MilMilllogo.jpg';
 import speaker3 from '../../images/campaigner-leanne-03.jpg';
+import * as statusActions from 'store/actions/action-types/status-actions';
 
 const WebinarContent = {
   title: '',
@@ -50,11 +50,16 @@ const speaker3Content = [
   },
 ];
 
-const Content = ({ theme }) => {
+const Content = ({ theme, setScrollToTarget }) => {
   const speaker1Ref = useRef(null);
   const speaker2Ref = useRef(null);
   const speaker3Ref = useRef(null);
   const themeInterests = theme.interests;
+
+  useEffect(() => {
+    setScrollToTarget([speaker1Ref, speaker2Ref, speaker3Ref]);
+  }, [speaker1Ref]);
+
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -105,4 +110,12 @@ const mapStateToProps = ({ status, theme }) => {
   return { status, theme: theme.data };
 };
 
-export default connect(mapStateToProps)(Content);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setScrollToTarget: (data) => {
+      dispatch({ type: statusActions.SET_SCROLL_TO_TARGET, data });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content);

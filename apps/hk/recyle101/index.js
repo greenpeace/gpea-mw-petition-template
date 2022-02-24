@@ -24,6 +24,7 @@ function Index({ setFormContent }) {
   const executeScroll = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
   const [showCTAButton, setShowCTAButton] = useState(false);
 
   useEffect(() => {
@@ -60,7 +61,7 @@ function Index({ setFormContent }) {
       {/** Mobile form End */}
 
       <Container maxW={`${maxWSize}px`}>
-        <Box w={{ md: 'md', xl: 'xl' }} py={10}>
+        <Box w={{ md: 'md', lg: 'xl' }} py={10}>
           <MainSection />
         </Box>
       </Container>

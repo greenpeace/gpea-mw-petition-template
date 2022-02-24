@@ -1,9 +1,11 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import Content from './Content';
 import Thankyou from './Thankyou';
 
-const MainSection = ({ status }) =>
-  status.submitted ? <Thankyou /> : <Content />;
+const MainSection = ({ status }) => {
+  return status.submitted ? <Thankyou /> : <Content />;
+};
 
 const mapStateToProps = ({ status }) => {
   return { status };

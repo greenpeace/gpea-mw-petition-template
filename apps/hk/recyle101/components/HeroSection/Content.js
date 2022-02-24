@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import {
   Avatar,
@@ -19,17 +19,16 @@ import speaker3 from '../../images/campaigner-leanne-03.jpg';
 
 const formWidth = 500;
 
-function Content() {
+function Content({ status }) {
+  const { scrollToTarget } = status;
   const { ref, inView } = useInView({
     threshold: 0,
   });
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
 
-  const speaker1Ref = useRef(null);
-  const speaker2Ref = useRef(null);
-  const speaker3Ref = useRef(null);
   const getSize = useWindowSize();
+  const [readyToShow, setReadyToShow] = useState(false);
 
   const formProps = inView // switch form position when TITLE inView
     ? {
@@ -44,6 +43,10 @@ function Content() {
         top: '0px',
         width: `${formWidth}px`,
       };
+
+  useEffect(() => {
+    setReadyToShow(true);
+  }, []);
 
   return (
     <Box py={20} w={{ md: 'md', xl: 'xl' }}>
@@ -66,21 +69,27 @@ function Content() {
             <Avatar
               name="回收廠Mil Mill代表"
               src={speaker2}
-              onClick={() => scrollToRef(speaker2Ref)}
+              onClick={() => scrollToRef(scrollToTarget[1])}
+              cursor={'pointer'}
             />
             <Avatar
               name="環保網店Guruguru創辦人阿晴"
               src={speaker1}
-              onClick={() => scrollToRef(speaker1Ref)}
+              onClick={() => scrollToRef(scrollToTarget[0])}
+              cursor={'pointer'}
             />
             <Avatar
               name="綠色和平項目主任 譚穎琳 Leanne"
               src={speaker3}
-              onClick={() => scrollToRef(speaker3Ref)}
+              onClick={() => scrollToRef(scrollToTarget[2])}
+              cursor={'pointer'}
             />
           </AvatarGroup>
         </Flex>
-        <Box {...formProps} d={{ base: 'none', md: 'block' }}>
+        <Box
+          {...formProps}
+          d={{ base: 'none', md: readyToShow ? 'block' : 'none' }}
+        >
           <Form />
         </Box>
       </Box>
