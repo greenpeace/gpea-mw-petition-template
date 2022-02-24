@@ -19,8 +19,9 @@ import speaker3 from '../../images/campaigner-leanne-03.jpg';
 
 const formWidth = 500;
 
-function Content({ status }) {
+function Content({ status, theme }) {
   const { scrollToTarget } = status;
+  const [readyToShow, setReadyToShow] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0,
   });
@@ -28,8 +29,6 @@ function Content({ status }) {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
 
   const getSize = useWindowSize();
-  const [readyToShow, setReadyToShow] = useState(false);
-
   const formProps = inView // switch form position when TITLE inView
     ? {
         position: 'absolute',
@@ -45,7 +44,7 @@ function Content({ status }) {
       };
 
   useEffect(() => {
-    setReadyToShow(true);
+    setTimeout(() => setReadyToShow(true), 200);
   }, []);
 
   return (
@@ -86,12 +85,11 @@ function Content({ status }) {
             />
           </AvatarGroup>
         </Flex>
-        <Box
-          {...formProps}
-          d={{ base: 'none', lg: readyToShow ? 'block' : 'none' }}
-        >
-          <Form />
-        </Box>
+        {readyToShow && (
+          <Box {...formProps} d={{ base: 'none', lg: 'block' }}>
+            <Form />
+          </Box>
+        )}
       </Box>
     </Box>
   );
