@@ -55,12 +55,16 @@ function Index({
 
   useEffect(() => {
     setFormContent(formContent);
-  }, []);
+  }, []); // init Form
 
   useEffect(() => {
     const isArcticResult = ['A', 'B', 'C', 'D', 'E'].includes(result?.answer);
-    !isArcticResult && setFormContent(oceansContent);
-  }, [submitted]);
+    if (!isArcticResult) {
+      setFormContent(oceansContent);
+    } else {
+      setFormContent(formContent);
+    }
+  }, [submitted]); // switch Form by result
 
   useEffect(async () => {
     if (!answer) {
@@ -292,4 +296,11 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+function propsAreEqual(prevState, nextState) {
+  return prevState.status.submitted === nextState.status.submitted;
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(React.memo(Index, propsAreEqual));
