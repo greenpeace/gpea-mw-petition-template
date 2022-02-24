@@ -12,7 +12,7 @@ const SEO = () => {
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
             gCampaign: 'plastics',
-            gBasket: 'recyle101',
+            gBasket: 'recycle101',
           });
         `,
         }}
