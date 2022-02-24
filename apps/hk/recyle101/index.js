@@ -18,7 +18,7 @@ const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 const maxWSize = 1200;
 
 function Index({ setFormContent }) {
-  const [isLargerThanMD] = useMediaQuery('(min-width: 48em)'); // default md: '48em'
+  const [isLargerThanLG] = useMediaQuery('(min-width: 62em)'); // default md: '62em'
   const { ref, inView } = useInView({ threshold: 0 });
   const mobileForm = useRef(null);
   const executeScroll = (ref) => {
@@ -32,16 +32,16 @@ function Index({ setFormContent }) {
   }, []);
 
   useEffect(() => {
-    if (isLargerThanMD) {
+    if (isLargerThanLG) {
       setShowCTAButton(false);
       return;
     }
-    if (!inView && !isLargerThanMD) {
+    if (!inView && !isLargerThanLG) {
       setShowCTAButton(true);
     } else {
       setShowCTAButton(false);
     }
-  }, [inView, isLargerThanMD]);
+  }, [inView, isLargerThanLG]);
 
   return (
     <>
@@ -54,14 +54,18 @@ function Index({ setFormContent }) {
 
       {/** Mobile form */}
       <Box ref={mobileForm}>
-        <Box d={{ base: 'block', md: 'none' }} mt={-2} ref={ref}>
+        <Box d={{ base: 'block', lg: 'none' }} mt={-2} ref={ref}>
           <Form />
         </Box>
       </Box>
       {/** Mobile form End */}
 
       <Container maxW={`${maxWSize}px`}>
-        <Box w={{ md: 'md', lg: 'xl' }} py={10}>
+        <Box
+          w={{ base: '100%', lg: 'md', xl: maxWSize / 2 }}
+          py={10}
+          pr={{ xl: 10 }}
+        >
           <MainSection />
         </Box>
       </Container>

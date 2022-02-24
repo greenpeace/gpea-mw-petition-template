@@ -88,7 +88,7 @@ function Content({ status }) {
         </Flex>
         <Box
           {...formProps}
-          d={{ base: 'none', md: readyToShow ? 'block' : 'none' }}
+          d={{ base: 'none', lg: readyToShow ? 'block' : 'none' }}
         >
           <Form />
         </Box>
