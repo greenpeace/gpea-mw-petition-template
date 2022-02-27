@@ -11,7 +11,7 @@ import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/q1-cny-webinar-kv-banner.jpg';
+import heroBannerImage from './images/banner.jpeg';
 
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 

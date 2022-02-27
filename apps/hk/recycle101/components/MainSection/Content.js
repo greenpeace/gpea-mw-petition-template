@@ -7,8 +7,8 @@ import {
 } from '@common/styles/components/contentStyle';
 import Speaker from '../../Speaker';
 import Webinar from '../../Webinar';
-import speaker1 from '../../images/gurugurulogo.jpg';
-import speaker2 from '../../images/MilMilllogo.jpg';
+import speaker1 from '../../images/MilMilllogo.jpg';
+import speaker2 from '../../images/gurugurulogo.jpg';
 import speaker3 from '../../images/campaigner-leanne-03.jpg';
 import * as statusActions from 'store/actions/action-types/status-actions';
 
@@ -22,8 +22,8 @@ const WebinarContent = {
 
 const speaker1Content = [
   {
-    name: '負責人',
-    role: '回收廠Mil Mill負責人',
+    name: 'Maria',
+    role: '回收廠Mil Mill/SSID可持續發展經理',
     content:
       '喵坊Mil Mill是香港首間紙包飲品盒回收漿廠及教育中心，每日最多可處理約50噸紙包飲品盒，製成再生漿。同時Mil Mill亦會回收各種廢紙，製成多樣再生紙品。',
     avatar: speaker1,
@@ -72,7 +72,7 @@ const Content = ({ theme, setScrollToTarget }) => {
 
       <Box {...paragraphProps}>
         家居物品種類繁多，大眾未必清楚知道正確的回收分類與方法，以及​​家居減廢的好辦法。因此，綠色和平特意邀請到紙包飲品盒回收漿廠Mil
-        Mill負責人、環保網店Guruguru創辦人阿晴參與線上講座，講解回收要點、分類、背後工序與限制，分享業界推廣資源重用、源頭減廢的工作，並為大家提供家居減廢、重用與回收的貼士。同時，綠色和平走塑項目主任譚穎琳將會分享推廣社區減廢經驗，以及回收與重用資源須知。
+        Mill負責人、環保網店Guruguru創辦人阿晴，參與線上講座，講解回收要點、分類、背後工序與限制，分享業界推廣資源重用、源頭減廢的工作。並為大家提供家居減廢、重用與回收的貼士。同時，綠色和平走塑項目主任譚穎琳將會分享推廣社區減廢經驗，以及回收與重用資源須知。
       </Box>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -88,7 +88,7 @@ const Content = ({ theme, setScrollToTarget }) => {
       </Text>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        立即報名！學習新春環保減廢貼士，過節都可以善用每一分資源。
+        立即報名！認識回收分類與局限，培養減廢生活習慣。
       </Heading>
 
       <Box ref={speaker1Ref}>

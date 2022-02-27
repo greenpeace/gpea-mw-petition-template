@@ -62,19 +62,19 @@ function Content({ status, theme }) {
       <Box pos={'relative'}>
         <Flex zIndex="2" py={4} flexDirection="column">
           <Text fontSize="xl" px="2" mb="4" fontWeight="bold" color="white">
-            嘉賓講者：
+            嘉賓講者
           </Text>
           <AvatarGroup size="xl" max={4}>
             <Avatar
               name="回收廠Mil Mill代表"
               src={speaker2}
-              onClick={() => scrollToRef(scrollToTarget[1])}
+              onClick={() => scrollToRef(scrollToTarget[0])}
               cursor={'pointer'}
             />
             <Avatar
               name="環保網店Guruguru創辦人阿晴"
               src={speaker1}
-              onClick={() => scrollToRef(scrollToTarget[0])}
+              onClick={() => scrollToRef(scrollToTarget[1])}
               cursor={'pointer'}
             />
             <Avatar
