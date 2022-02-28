@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
 import Wrapper from '@containers/gpsWrapper';
-import dynamic from 'next/dynamic';
-import axios from 'axios';
 import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Script from 'next/script';
-import Navbar from 'components/Navbar';
 import {
   Container,
   Box,
@@ -22,16 +19,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 
-/* Determine the returned project index by env variable */
-const envProjectName = process.env.projectName;
-const envProjectMarket = process.env.projectMarket;
-const themeEndpointURL = process.env.themeEndpoint;
-const signupNumbersHKURL = process.env.signupNumbersHK;
-const signupNumbersTWURL = process.env.signupNumbersTW;
-
-function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
-  const router = useRouter();
-
+function Index() {
   return (
     <div>
       <Head>

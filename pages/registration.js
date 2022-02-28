@@ -1,72 +1,97 @@
-import React, { useEffect } from 'react';
-import Wrapper from '@containers/gpsWrapper';
+import React, { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
-import axios from 'axios';
-import TagManager from 'react-gtm-module';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-import Script from 'next/script';
-import Navbar from 'components/Navbar';
-import {
-  Container,
-  Box,
-  Heading,
-  Text,
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
-} from '@chakra-ui/react';
+import PetitionFooter from '@containers/petitionFooter';
+import { useInView } from 'react-intersection-observer';
+import { connect } from 'react-redux';
+import { Box, Container, useMediaQuery } from '@chakra-ui/react';
+import Wrapper from '@containers/gpsWrapper';
+import HeroSection from '@components/GPS/HeroSection';
+import MainSection from '@components/GPS/MainSection';
+import Form from '@components/GPS/GPSForm';
+import formContent from '@components/GPS/formContent';
+import * as formActions from 'store/actions/action-types/form-actions';
 
-/* Determine the returned project index by env variable */
-const envProjectName = process.env.projectName;
-const envProjectMarket = process.env.projectMarket;
-const themeEndpointURL = process.env.themeEndpoint;
-const signupNumbersHKURL = process.env.signupNumbersHK;
-const signupNumbersTWURL = process.env.signupNumbersTW;
+import heroBannerImage from '@components/GPS/images/banner.jpeg';
 
-function Registration({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
-  const router = useRouter();
+const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
+
+const maxWSize = 1200;
+
+function Index({ setFormContent }) {
+  const [isLargerThanLG] = useMediaQuery('(min-width: 62em)'); // default md: '62em'
+  const { ref, inView } = useInView({ threshold: 0 });
+  const mobileForm = useRef(null);
+  const executeScroll = (ref) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const [showCTAButton, setShowCTAButton] = useState(false);
+
+  useEffect(() => {
+    setFormContent(formContent);
+  }, []);
+
+  useEffect(() => {
+    if (isLargerThanLG) {
+      setShowCTAButton(false);
+      return;
+    }
+    if (!inView && !isLargerThanLG) {
+      setShowCTAButton(true);
+    } else {
+      setShowCTAButton(false);
+    }
+  }, [inView, isLargerThanLG]);
+
   return (
-    <div>
-      <Head>
-        <Script
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-          var dataLayer = (window.dataLayer = window.dataLayer || []);
-          dataLayer.push({
-            gCampaign: '',
-            gBasket: '',
-          });
-        `,
-          }}
-        />
-        <title>走塑GPS 全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！</title>
-        <meta
-          property="og:title"
-          content="走塑GPS 全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！"
-        />
-        <meta name="description" content="走塑GPS小助手 幫你日常走塑零失手" />
-        <meta
-          property="og:description"
-          content="走塑GPS小助手 幫你日常走塑零失手"
-        />
-        <meta
-          property="og:image"
-          content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/a5120475-gp02i8e_high_res.jpg"
-        />
-      </Head>
-      <Container maxWidth="100%" py={6}>
-        <Box>
-          <Heading>Registration</Heading>
+    <>
+      <Box bgImage={heroBannerImage} bgRepeat={'no-repeat'} bgSize={'cover'}>
+        <Container maxW={`${maxWSize}px`}>
+          <HeroSection />
+        </Container>
+      </Box>
+
+      {/** Mobile form */}
+      <Box ref={mobileForm}>
+        <Box d={{ base: 'block', lg: 'none' }} mt={-2} ref={ref}>
+          <Form />
+        </Box>
+      </Box>
+      {/** Mobile form End */}
+
+      <Container maxW={`${maxWSize}px`}>
+        <Box
+          w={{ base: '100%', lg: 'md', xl: maxWSize / 2 }}
+          py={10}
+          pr={{ xl: 10 }}
+        >
+          <MainSection />
         </Box>
       </Container>
-    </div>
+
+      <PetitionFooter locale={'HKChinese'} />
+
+      {showCTAButton && (
+        <FixedCTA onClick={() => executeScroll(mobileForm)}>
+          {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}
+        </FixedCTA>
+      )}
+    </>
   );
 }
 
-Registration.getLayout = (page) => <Wrapper>{page}</Wrapper>;
+Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
 
-export default Registration;
+const mapStateToProps = ({ status, theme, signup }) => {
+  return { status, theme: theme.data, signup: signup.data };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setFormContent: (data) => {
+      dispatch({ type: formActions.SET_FORM, data });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index);
