@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
-import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Container, useMediaQuery } from '@chakra-ui/react';
@@ -68,8 +67,6 @@ function Index({ setFormContent }) {
           <MainSection />
         </Box>
       </Container>
-
-      <PetitionFooter locale={'HKChinese'} />
 
       {showCTAButton && (
         <FixedCTA onClick={() => executeScroll(mobileForm)}>

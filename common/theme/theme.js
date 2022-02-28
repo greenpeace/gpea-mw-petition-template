@@ -16,6 +16,19 @@ const theme = extendTheme({
     body: 'var(--font-family)',
     heading: 'var(--font-family)',
   },
+  textStyles: {
+    heading: {
+      fontSize: { base: '3xl', md: '4xl' },
+      fontWeight: 900,
+      color: '#77C1D3',
+    },
+    content: {
+      fontSize: { base: 'md', md: 'lg' },
+      lineHeight: 1.7,
+      py: 2,
+      mb: 2,
+    },
+  },
   styles,
   colors,
 });
