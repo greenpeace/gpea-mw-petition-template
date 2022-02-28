@@ -1,16 +1,28 @@
 import React, { useEffect } from 'react';
-import Wrapper from '@containers/wrapper';
+import Wrapper from '@containers/gpsWrapper';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
 import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
-import { connect } from 'react-redux';
-import * as themeActions from 'store/actions/action-types/theme-actions';
-import * as formActions from 'store/actions/action-types/form-actions';
-import * as statusActions from 'store/actions/action-types/status-actions';
+import Head from 'next/head';
+import Script from 'next/script';
+import Navbar from 'components/Navbar';
+import {
+  Container,
+  Box,
+  Heading,
+  Text,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  Image,
+  AspectRatio,
+  Stack,
+} from '@chakra-ui/react';
 
 /* Determine the returned project index by env variable */
-const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
 const envProjectName = process.env.projectName;
 const envProjectMarket = process.env.projectMarket;
 const themeEndpointURL = process.env.themeEndpoint;
@@ -20,97 +32,136 @@ const signupNumbersTWURL = process.env.signupNumbersTW;
 function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
   const router = useRouter();
 
-  /** page=2 force to result page */
-  useEffect(() => {
-    const currentPage = router.query?.page;
-    if (currentPage === '2') {
-      setWebStatus(true);
-    }
-  }, [router]);
+  return (
+    <div>
+      <Head>
+        {/* campaign dataLayer */}
+        <Script
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+          var dataLayer = (window.dataLayer = window.dataLayer || []);
+          dataLayer.push({
+            gCampaign: '',
+            gBasket: '',
+          });
+        `,
+          }}
+        />
+        <title>走塑GPS 全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！</title>
+        <meta
+          property="og:title"
+          content="走塑GPS 全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！"
+        />
+        <meta name="description" content="走塑GPS小助手 幫你日常走塑零失手" />
+        <meta
+          property="og:description"
+          content="走塑GPS小助手 幫你日常走塑零失手"
+        />
+        <meta
+          property="og:image"
+          content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/a5120475-gp02i8e_high_res.jpg"
+        />
+      </Head>
+      <Container maxWidth="100%" py={6}>
+        <Box>
+          <Heading>走塑GPS 全港1,100間走塑店鋪</Heading>
+          <Text as="p">準備充足走塑的你，最怕店鋪拒收自攜容器「摸門釘」？</Text>
+          <Text as="p">心血來潮走塑的你，最好走塑小店「總有一間喺左近」？</Text>
+          <Text as="p">
+            為了方便市民搜尋「全城走塑計劃」超過1,100間走塑商戶，綠色和平推出「走塑GPS」WhatsApp
+            Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free,
+            Care Free」！
+          </Text>
 
-  /** Fetch signup data on load */
-  useEffect(async () => {
-    const fetchURLs = {
-      hk: signupNumbersHKURL,
-      tw: signupNumbersTWURL,
-    };
+          <UnorderedList>
+            <ListItem>即時定位：5間最就近走塑小店</ListItem>
+            <ListItem>資訊齊全：地址、地圖、走塑等級</ListItem>
+            <ListItem>費用全免！</ListItem>
+          </UnorderedList>
 
-    const signupData = await axios
-      .get(fetchURLs[themeData?.Market])
-      .then((response) => {
-        return response.data.find((d) => d.Id === themeData?.CampaignId);
-      })
-      .catch((error) => console.log(error));
+          <Box bgColor={'green.500'} d={'inline-block'} borderRadius={8} p={6}>
+            <Text>立即免費使用走塑GPS/立即啟動走塑GPS</Text>
+          </Box>
 
-    setSignupNumbers({ [themeData?.Market]: signupData });
-  }, []);
+          <Box>
+            <Image src={'/images/location.png'} w={'80px'} />
+            <Heading>邊間走塑小店喺左近 免費幫你搵</Heading>
+            <Text as="p">
+              只須於WhatsApp分享實時位置，「走塑GPS」將立即搜尋5間鄰近走塑小店，內附地圖連結助你規劃路線光顧心水小店。
+            </Text>
+          </Box>
 
-  useEffect(() => {
-    const market = themeData?.Market;
-    /* GTM is only applicable for production env */
-    if (process.env.NODE_ENV === 'production') {
-      let gtmId = '';
-      switch (market) {
-        case 'hk':
-          gtmId = 'GTM-M6LZL75';
-          break;
-        case 'tw':
-          gtmId = 'GTM-WRM6WK6';
-          break;
-        default:
-          gtmId = '';
-          break;
-      }
-      const tagManagerArgs = {
-        gtmId: gtmId,
-      };
-      TagManager.initialize(tagManagerArgs);
-    }
-    setTheme(themeData);
-  }, [themeData]);
+          <Box>
+            <Image src={'/images/sticker.png'} w={'80px'} />
+            <Heading>走塑兩級制 唔使心大心細</Heading>
+            <Text as="p">
+              綠色和平以「全城走塑」白色及藍色徽章貼紙，標示店鋪不同程度的走塑措施。「走塑GPS」亦會於搜尋結果顯示店鋪走塑等級，自備容器購物亦得，享受走塑優惠亦得！
+            </Text>
+            <Stack direction="row">
+              <Box>
+                <Image src={'/images/PFC_Sticker_blue.png'} />
+              </Box>
+              <Box>
+                <Image src={'/images/PFC_Sticker_white.png'} />
+              </Box>
+            </Stack>
+          </Box>
 
-  if (DynamicComponent) {
-    return <DynamicComponent />;
-  }
-  return <div>Loading...</div>;
+          <Box>
+            <AspectRatio ratio={16 / 9}>
+              <iframe
+                src="https://www.youtube.com/embed/kz_EDIfH7gU"
+                alt="demo"
+              />
+            </AspectRatio>
+          </Box>
+
+          <Box>
+            <Image src={'/images/like.png'} w={'80px'} />
+            <Heading>全港走塑版圖 持續擴展中！</Heading>
+            <Text as="p">
+              綠色和平自2018年發起「全城走塑計劃」，與超過170位義工到訪全港大小社區，遊說店主提供走塑選擇，2021年底達成1,100間里程碑！
+            </Text>
+            <Text as="p">
+              未來我們會繼續擴大全港走塑版圖，邀請更多類型店鋪營造走塑友善環境，示範具體解決方案，促請政府及企業提出更積極走塑措施！
+            </Text>
+          </Box>
+
+          <Box>
+            <Stack direction="column">
+              <Box>
+                <Image src={'/images/20210508_SSPHunting_5.jpg'} />
+              </Box>
+              <Box>
+                <Image src={'/images/20210508_SSPHunting_8.jpg'} />
+              </Box>
+              <Box>
+                <Image src={'/images/20210508_SSPHunting_17.jpg'} />
+              </Box>
+            </Stack>
+          </Box>
+
+          <Box>
+            <Box
+              bgColor={'green.500'}
+              d={'inline-block'}
+              borderRadius={8}
+              p={6}
+            >
+              <Text>立即免費使用走塑GPS/立即啟動走塑GPS</Text>
+            </Box>
+            <Text as="p" fontSize="xs">
+              **
+              如有任何使用「走塑GPS」疑難，歡迎參閱常見問題或按此填寫表格聯絡我們。
+            </Text>
+          </Box>
+        </Box>
+      </Container>
+    </div>
+  );
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setTheme: (data) => {
-      dispatch({ type: themeActions.SET_THEME, data });
-    },
-    setSignupNumbers: (data) => {
-      dispatch({ type: formActions.SET_SIGNUP_NUMBERS, data });
-    },
-    setWebStatus: (bol) => {
-      dispatch({ type: statusActions.SET_FORM_SUBMITTED, data: bol });
-    },
-  };
-};
-
-export async function getStaticProps() {
-  const singleResult = await axios
-    .get(themeEndpointURL)
-    .then((response) => {
-      return response.data.records.find(
-        (d) =>
-          d.ProjectName === envProjectName && d.Market === envProjectMarket,
-      );
-    })
-    .catch((error) => console.log(error));
-
-  console.log('Building from ' + envProjectMarket + ':' + envProjectName);
-
-  !singleResult && console.warn('PROJECT NAME NOT FOUND');
-
-  return {
-    props: {
-      themeData: singleResult || {},
-    },
-  };
-}
-
-export default connect(null, mapDispatchToProps)(Index);
+export default Index;
