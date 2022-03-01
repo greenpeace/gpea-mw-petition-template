@@ -5,8 +5,8 @@ import { Container, Box } from '@chakra-ui/react';
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 
-const Index = () => {
-  const RenderForm = ({ status }) =>
+const Index = ({ status }) => {
+  const RenderForm = (status) =>
     status?.submitted ? <DonateForm /> : <SignupForm />;
   return (
     <Container maxW={'100%'}>

@@ -14,11 +14,11 @@ const Thankyou = ({ theme, signup }) => {
   return (
     <>
       <Heading {...headingProps}>
-        感謝您下載指南，實踐走塑減廢生活習慣。
+        感謝您的支持，綠色和平已為您開啟免費使用「走塑GPS」服務，助您未來尋找鄰近走塑店鋪！
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        指南將於數分鐘內以短訊及電郵寄送給您，請查閱。
+        「走塑GPS」WhatsApp頁面將顯示您成功登記的確認訊息。
       </Text>
 
       <Text as="p" {...paragraphProps}>
@@ -53,7 +53,7 @@ const Thankyou = ({ theme, signup }) => {
         緩解塑膠污染，捐助綠色和平走塑工作。
       </Text>
 
-      <Text as="p" {...paragraphProps}>
+      {/* <Text as="p" {...paragraphProps}>
         捐款查詢：
         <br />
         歡迎致電會員服務熱線 (852) 2854 8318，或電郵至{' '}
@@ -61,7 +61,7 @@ const Thankyou = ({ theme, signup }) => {
           <u>donor.services.hk@greenpeace.org</u>
         </a>
         ，以查詢捐款相關事宜。
-      </Text>
+      </Text> */}
     </>
   );
 };

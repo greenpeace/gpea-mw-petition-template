@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  Avatar,
-  AvatarGroup,
-  Box,
-  Flex,
-  Text,
-  Heading,
-} from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
-import speaker1 from '@components/GPS/images/gurugurulogo.jpg';
-import speaker2 from '@components/GPS/images/MilMilllogo.jpg';
-import speaker3 from '@components/GPS/images/campaigner-leanne-03.jpg';
 import Form from '@components/GPS/GPSForm';
 import { useWindowSize } from '@components/GPS/util';
 import { headingProps } from '@common/styles/components/contentStyle';
@@ -52,7 +42,7 @@ function Content({ signup }) {
           color={'white'}
           fontSize={{ base: '2xl', md: '4xl' }}
           dangerouslySetInnerHTML={{
-            __html: `${FirstName}，感謝您下載<br/>綠色生活指南`,
+            __html: `${FirstName}，您現在可以免費使用走塑GPS！`,
           }}
         />
       </Box>
