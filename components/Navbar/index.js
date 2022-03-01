@@ -79,23 +79,35 @@ const DesktopNav = () => {
     <Flex d={{ base: 'flex', md: 'flex' }}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          <Popover trigger={'hover'} placement={'bottom-start'}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
-          </Popover>
+          {navItem.target === '_blank' ? (
+            <a
+              href={navItem.href}
+              target={navItem.target}
+              style={{
+                backgroundColor: '#FF8100',
+                borderRadius: '4px',
+                color: '#FFF',
+                fontSize: '14px',
+                padding: '4px 10px',
+              }}
+            >
+              {navItem.label}
+            </a>
+          ) : (
+            <Link
+              p={2}
+              href={navItem.href ?? '#'}
+              fontSize={'sm'}
+              fontWeight={500}
+              color={linkColor}
+              _hover={{
+                textDecoration: 'none',
+                color: linkHoverColor,
+              }}
+            >
+              {navItem.label}
+            </Link>
+          )}
         </Box>
       ))}
     </Flex>
@@ -173,17 +185,21 @@ const NAV_ITEMS = [
   {
     label: '使用教學',
     href: '/tutorial',
+    target: '_self',
   },
   {
     label: '免費登記使用',
     href: '/registration',
+    target: '_self',
   },
   {
     label: '常見問題',
     href: '/faq',
+    target: '_self',
   },
   {
     label: '捐助支持',
-    href: '#',
+    href: 'https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw',
+    target: '_blank',
   },
 ];
