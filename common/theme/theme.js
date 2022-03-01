@@ -22,6 +22,11 @@ const theme = extendTheme({
       fontWeight: 900,
       color: '#77C1D3',
     },
+    subTitle: {
+      fontSize: { base: 'xl', md: '2xl' },
+      fontWeight: 700,
+      color: '#77C1D3',
+    },
     content: {
       fontSize: { base: 'md', md: 'lg' },
       lineHeight: 1.7,

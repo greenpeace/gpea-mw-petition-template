@@ -10,7 +10,7 @@ export const CTAButton = () => (
     cursor={'pointer'}
     align="center"
   >
-    <Text fontSize={'xl'} color={'#FFF'} fontWeight={700}>
+    <Text fontSize={{ base: 'lg', md: 'xl' }} color={'#FFF'} fontWeight={700}>
       立即免費使用走塑GPS/立即啟動走塑GPS
     </Text>
   </Box>

@@ -1,13 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  Avatar,
-  AvatarGroup,
-  Box,
-  Flex,
-  Text,
-  Heading,
-} from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import Form from '@components/GPS/GPSForm';
 import { useWindowSize } from '@components/GPS/util';

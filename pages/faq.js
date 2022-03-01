@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Wrapper from '@containers/gpsWrapper';
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Script from 'next/script';
-import Navbar from 'components/Navbar';
 import {
   Text,
   Container,
@@ -15,10 +11,31 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Flex,
+  Image,
 } from '@chakra-ui/react';
 
+import { headingProps } from '@common/styles/components/contentStyle';
+import { CTAButton } from '@components/GPS/CTA/button';
+import heroBannerImage from '@components/GPS/images/banner.jpeg';
+
+const maxWSize = 1200;
+
+const questionWrapProps = {
+  _expanded: { bg: '#F2F2F2' },
+};
+
+const questionProps = {
+  py: 6,
+  fontWeight: 700,
+};
+
+const answerProps = {
+  py: 6,
+  fontWeight: 300,
+};
+
 function Faq() {
-  const router = useRouter();
   return (
     <div>
       <Head>
@@ -37,41 +54,63 @@ function Faq() {
           content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/a5120475-gp02i8e_high_res.jpg"
         />
       </Head>
-      <Container maxWidth="100%" py={6}>
-        <Box>
-          <Heading>走塑GPS常見問題</Heading>
-        </Box>
-        <Box>
-          <Box bgColor={'green.500'} d={'inline-block'} borderRadius={8} p={6}>
-            <Text>立即免費使用走塑GPS/立即啟動走塑GPS</Text>
-          </Box>
-        </Box>
 
-        <Accordion defaultIndex={[0]} allowMultiple>
+      <Box bgImage={heroBannerImage} bgRepeat={'no-repeat'} bgSize={'cover'}>
+        <Container maxW={`${maxWSize}px`}>
+          <Box py={20} w={{ md: 'md', xl: 'xl' }}>
+            <Box>
+              <Heading
+                {...headingProps}
+                color={'white'}
+                fontSize={{ base: '2xl', md: '4xl' }}
+                dangerouslySetInnerHTML={{
+                  __html: '走塑GPS常見問題',
+                }}
+              />
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+      <Container maxW={`${maxWSize}px`} py={6}>
+        <Flex
+          flexDirection={{ base: 'column', md: 'row' }}
+          justifyContent={'space-between'}
+          bgColor={'#77C1D3'}
+          p={6}
+          borderRadius={8}
+          align="center"
+        >
+          <Box mb={{ base: 6, md: 0 }}>
+            <Text textStyle={'subTitle'} color={'white'}>
+              啟動WhatsApp「走塑GPS」後，發送任何訊息即可開始使用！
+            </Text>
+          </Box>
+          <Box>
+            <CTAButton />
+          </Box>
+        </Flex>
+
+        <Accordion defaultIndex={[0]} py={6}>
           <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  訊息顯示「根據紀錄，你已經使用5次查詢」，未能繼續使用？
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
+            <AccordionButton {...questionWrapProps}>
+              <Box flex="1" textAlign="left" {...questionProps}>
+                訊息顯示「根據紀錄，你已經使用5次查詢」，未能繼續使用？
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel {...answerProps}>
               你只需按此完成簡單登記，就能免費使用「走塑GPS」服務！
             </AccordionPanel>
           </AccordionItem>
 
           <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  搜尋結果顯示店鋪，與我的實時位置距離甚遠？
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
+            <AccordionButton {...questionWrapProps}>
+              <Box flex="1" textAlign="left" {...questionProps}>
+                搜尋結果顯示店鋪，與我的實時位置距離甚遠？
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel {...answerProps}>
               綠色和平正持續邀請更多商戶加入全城走塑計劃，「走塑GPS」將定期更新資料庫。
               <br />
               你亦可以在「分享位置」頁面直接輸入地點，以搜尋更多走塑店鋪。
@@ -79,85 +118,73 @@ function Faq() {
           </AccordionItem>
 
           <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  我能否選擇不分享位置，而使用「走塑GPS」？
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
+            <AccordionButton {...questionWrapProps}>
+              <Box flex="1" textAlign="left" {...questionProps}>
+                我能否選擇不分享位置，而使用「走塑GPS」？
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
             <AccordionPanel pb={4}>
               你可以在「分享位置」頁面直接輸入地點，以搜尋更多走塑店鋪。
             </AccordionPanel>
           </AccordionItem>
 
           <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  我未能與「走塑GPS」分享位置？
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
+            <AccordionButton {...questionWrapProps}>
+              <Box flex="1" textAlign="left" {...questionProps}>
+                我未能與「走塑GPS」分享位置？
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel {...answerProps}>
               你可能需要於手機的應用程式設定，容許WhatsApp存取你的位置。
             </AccordionPanel>
           </AccordionItem>
 
           <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  我已完成登記，卻未能繼續使用「走塑GPS」？
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
+            <AccordionButton {...questionWrapProps}>
+              <Box flex="1" textAlign="left" {...questionProps}>
+                我已完成登記，卻未能繼續使用「走塑GPS」？
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel {...answerProps}>
               你的登記號碼須與使用「走塑GPS」的號碼相同。如仍未能使用，歡迎你按此填寫表格匯報相關錯誤，我們將會盡快跟進。
             </AccordionPanel>
           </AccordionItem>
 
           <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  我發現店鋪資料有誤？
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
+            <AccordionButton {...questionWrapProps}>
+              <Box flex="1" textAlign="left" {...questionProps}>
+                我發現店鋪資料有誤？
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel {...answerProps}>
               歡迎你按此填寫表格匯報相關錯誤，我們將會盡快跟進，經核實後亦會更新資料庫。
             </AccordionPanel>
           </AccordionItem>
 
           <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  我是店主，如何加入「全城走塑」計劃？
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
+            <AccordionButton {...questionWrapProps}>
+              <Box flex="1" textAlign="left" {...questionProps}>
+                我是店主，如何加入「全城走塑」計劃？
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel {...answerProps}>
               歡迎你按此填寫表格留下簡單店鋪資料，我們將盡快與你聯絡！
             </AccordionPanel>
           </AccordionItem>
 
           <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  我想進一步支持「全城走塑」計劃？
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
+            <AccordionButton {...questionWrapProps}>
+              <Box flex="1" textAlign="left" {...questionProps}>
+                我想進一步支持「全城走塑」計劃？
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel {...answerProps}>
               綠色和平從不接受政府和商界資助，因此你的捐助支持，將有效幫助我們進一步鞏固與走塑店鋪的合作，致力促進社區走塑風潮，以具體的解決方案作示範，促請政府及企業提出更積極走塑措施。
               <br />
               你亦可按此填寫表格留下聯絡方法，加入我們的「走塑小隊」，一起發掘更多社區走塑力量！
@@ -165,15 +192,13 @@ function Faq() {
           </AccordionItem>
 
           <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  綠色和平為解決本地塑膠污染問題，展開了甚麼工作？
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
+            <AccordionButton {...questionWrapProps}>
+              <Box flex="1" textAlign="left" {...questionProps}>
+                綠色和平為解決本地塑膠污染問題，展開了甚麼工作？
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel {...answerProps}>
               綠色和平2016年起在香港推動減塑項目工作，從個人、社區、企業到政府層面，透過權威科學研究、提倡可行政策、凝聚社區力量等途徑，設法解決塑膠污染問題。
               <br />
               2016年：屈臣氏集團、759阿信屋等大型零售商，宣佈淘汰含微塑膠的產品
@@ -193,25 +218,35 @@ function Faq() {
           </AccordionItem>
 
           <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  全球反塑膠污染行動中，綠色和平有何角色？
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
+            <AccordionButton {...questionWrapProps}>
+              <Box flex="1" textAlign="left" {...questionProps}>
+                全球反塑膠污染行動中，綠色和平有何角色？
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel {...answerProps}>
               綠色和平遍佈全球六大洲，覆蓋超過55個國家及地區的辦公室網絡，除了推動本地減塑政策，亦會攜手合作展開跨地域研究調查（例：追蹤洋垃圾去向）、敦促跨國企業減少生產即棄塑膠（例：可口可樂2030年重用容器承諾），以及遊說各地領袖達成減塑協議（例：推動全球塑膠公約）。
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
 
-        <Box>
-          <Box bgColor={'green.500'} d={'inline-block'} borderRadius={8} p={6}>
-            <Text>立即免費使用走塑GPS/立即啟動走塑GPS</Text>
+        <Flex
+          flexDirection={{ base: 'column', md: 'row' }}
+          justifyContent={'space-between'}
+          bgColor={'#77C1D3'}
+          p={6}
+          borderRadius={8}
+          align="center"
+        >
+          <Box mb={{ base: 6, md: 0 }}>
+            <Text textStyle={'subTitle'} color={'white'}>
+              啟動WhatsApp「走塑GPS」後，發送任何訊息即可開始使用！
+            </Text>
           </Box>
-        </Box>
+          <Box>
+            <CTAButton />
+          </Box>
+        </Flex>
       </Container>
     </div>
   );
