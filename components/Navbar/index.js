@@ -78,7 +78,7 @@ const DesktopNav = () => {
   return (
     <Flex d={{ base: 'flex', md: 'flex' }}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
+        <Box key={navItem.label} px={2}>
           {navItem.target === '_blank' ? (
             <a
               href={navItem.href}
@@ -103,6 +103,11 @@ const DesktopNav = () => {
               _hover={{
                 textDecoration: 'none',
                 color: linkHoverColor,
+              }}
+              sx={{
+                ':focus:not(:focus-visible)': {
+                  shadow: 'none',
+                },
               }}
             >
               {navItem.label}

@@ -6,7 +6,7 @@ export const CTAButton = () => (
     bgColor={'green.500'}
     borderRadius={8}
     p={6}
-    _hover={{ bgColor: '#C7E2B5' }}
+    _hover={{ bgColor: '#005F89' }}
     cursor={'pointer'}
     align="center"
   >

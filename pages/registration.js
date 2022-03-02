@@ -8,6 +8,7 @@ import HeroSection from '@components/GPS/HeroSection';
 import MainSection from '@components/GPS/MainSection';
 import Form from '@components/GPS/GPSForm';
 import formContent from '@components/GPS/formContent';
+import Head from 'next/head';
 import * as formActions from 'store/actions/action-types/form-actions';
 
 import heroBannerImage from '@components/GPS/images/banner.jpeg';
@@ -44,6 +45,22 @@ function Index({ setFormContent }) {
 
   return (
     <>
+      <Head>
+        <title>只需簡單登記，便可免費使用「走塑GPS」！</title>
+        <meta
+          property="og:title"
+          content="只需簡單登記，便可免費使用「走塑GPS」！"
+        />
+        <meta name="description" content="走塑GPS小助手 幫你日常走塑零失手" />
+        <meta
+          property="og:description"
+          content="走塑GPS小助手 幫你日常走塑零失手"
+        />
+        <meta
+          property="og:image"
+          content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/a5120475-gp02i8e_high_res.jpg"
+        />
+      </Head>
       <Box bgImage={heroBannerImage} bgRepeat={'no-repeat'} bgSize={'cover'}>
         <Container maxW={`${maxWSize}px`}>
           <HeroSection />

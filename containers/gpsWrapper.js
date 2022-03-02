@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Box, Container } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import Nav from 'components/Navbar';
 import PetitionFooter from '@containers/petitionFooter';
 

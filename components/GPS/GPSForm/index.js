@@ -6,7 +6,6 @@ const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 
 const Index = ({ status }) => {
-  console.log('status-', status.submitted);
   const RenderForm = () =>
     status?.submitted ? <DonateForm /> : <SignupForm />;
   return (
