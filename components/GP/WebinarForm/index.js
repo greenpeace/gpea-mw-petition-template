@@ -252,12 +252,10 @@ const MyForm = (props) => {
                   id="Birthdate"
                   isInvalid={errors.Birthdate && touched.Birthdate}
                 >
-                  <Select
-                    onChange={handleChange}
-                    fontSize={'16px'}
-                    placeholder={formContent.label_year_of_birth}
-                    size={'lg'}
-                  >
+                  <Select onChange={handleChange} fontSize={'16px'} size={'lg'}>
+                    <option value={''}>
+                      {formContent.label_year_of_birth}
+                    </option>
                     {birthDateYear &&
                       birthDateYear.map((d) => (
                         <option key={d.value} value={`${d.value}-01-01`}>

@@ -26,12 +26,7 @@ class NextDocument extends Document {
           <Main />
           <NextScript />
           {/** MC_FORM_STARTS  */}
-          {/* <form
-            method="post"
-            action="https://cloud.greenhk.greenpeace.org/websign"
-            id="mc-form"
-            style={{ display: 'none' }}
-          >
+          <form method="post" id="mc-form" style={{ display: 'none' }}>
             <input
               placeholder="FirstName"
               name="FirstName"
@@ -74,77 +69,7 @@ class NextDocument extends Document {
               type="checkbox"
               defaultValue=""
             />
-            <input
-              type="hidden"
-              name="LeadSource"
-              defaultValue="Petition - Plastics"
-            />
-            <input
-              type="hidden"
-              name="Petition_Interested_In_Arctic__c"
-              defaultValue="false"
-            />
-            <input
-              type="hidden"
-              name="Petition_Interested_In_Climate__c"
-              defaultValue="false"
-            />
-            <input
-              type="hidden"
-              name="Petition_Interested_In_Forest__c"
-              defaultValue="false"
-            />
-            <input
-              type="hidden"
-              name="Petition_Interested_In_Health__c"
-              defaultValue="false"
-            />
-            <input
-              type="hidden"
-              name="Petition_Interested_In_Oceans__c"
-              defaultValue="false"
-            />
-            <input
-              type="hidden"
-              name="Petition_Interested_In_Plastics__c"
-              defaultValue="true"
-            />
-            <input
-              type="hidden"
-              name="CampaignId"
-              defaultValue="7012u000000P8kwAAC"
-            />
-            <input
-              type="hidden"
-              name="UtmMedium"
-              id="UtmMedium"
-              defaultValue=""
-            />
-            <input
-              type="hidden"
-              name="UtmSource"
-              id="UtmSource"
-              defaultValue=""
-            />
-            <input
-              type="hidden"
-              name="UtmCampaign"
-              id="UtmCampaign"
-              defaultValue=""
-            />
-            <input
-              type="hidden"
-              name="UtmContent"
-              id="UtmContent"
-              defaultValue=""
-            />
-            <input type="hidden" name="UtmTerm" id="UtmTerm" defaultValue="" />
-            <input type="hidden" name="CampaignData1__c" defaultValue="" />
-            <input type="hidden" name="CampaignData2__c" defaultValue="" />
-            <input type="hidden" name="CampaignData3__c" defaultValue="" />
-            <input type="hidden" name="CampaignData4__c" defaultValue="" />
-            <input type="hidden" name="CampaignData5__c" defaultValue="" />
-          </form> */}
+          </form>
           {/** MC_FORM_ENDS  */}
         </body>
       </Html>
