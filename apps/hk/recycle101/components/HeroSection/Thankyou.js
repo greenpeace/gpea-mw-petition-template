@@ -59,7 +59,7 @@ function Content({ signup }) {
           textShadow="0 0 1px rgba(0,0,0, .2)"
           mb={4}
           dangerouslySetInnerHTML={{
-            __html: `${FirstName}<br/>感謝您報名減廢回收免費講座！`,
+            __html: `${FirstName}<br/>感謝您報名減廢講座！`,
           }}
         />
       </Box>

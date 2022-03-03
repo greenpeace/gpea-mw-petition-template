@@ -27,6 +27,11 @@ class NextDocument extends Document {
           <NextScript />
           {/** MC_FORM_STARTS  */}
           <form method="post" id="mc-form" style={{ display: 'none' }}>
+            {/* <input placeholder="FirstName" name="FirstName" type="text" value="Lok Hin"/>
+            <input placeholder="LastName" name="LastName" type="text" value="Tang"/>
+            <input placeholder="Email" name="Email" type="email" value="-____-@hotmail.com.hk"/>
+            <input placeholder="MobilePhone" name="MobilePhone" type="tel" value="+852 60295660"/>
+            <input placeholder="Birthdate" name="Birthdate" type="text" value="6/21/1993 12:00:00 AM"/> */}
             <input
               placeholder="FirstName"
               name="FirstName"
@@ -61,7 +66,7 @@ class NextDocument extends Document {
               placeholder="MobileCountryCode"
               name="MobileCountryCode"
               type="text"
-              defaultValue="852"
+              defaultValue=""
             />
             <input
               placeholder="OptIn"

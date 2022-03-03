@@ -11,7 +11,7 @@ import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/recycle101-banner.jpg';
+import heroBannerImage from './images/recycle-webinar-banner.jpg';
 
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
@@ -65,7 +65,7 @@ function Index({ setFormContent }) {
             right={0}
             left={0}
             bottom={0}
-            bgColor={'rgba(0,0,0,0.5)'}
+            bgColor={'rgba(0,0,0,0.25)'}
           />
         </Box>
       </Box>

@@ -1,11 +1,6 @@
 import React from 'react';
 import { FormControl, FormErrorMessage, Input } from '@chakra-ui/react';
 
-const labelStyle = {
-  fontSize: 'xs',
-  color: 'gray.400',
-};
-
 export const Field = (props) => {
   const {
     name,
@@ -18,6 +13,7 @@ export const Field = (props) => {
     min,
     max,
     size = 'lg',
+    value,
   } = props;
 
   return (
@@ -33,6 +29,7 @@ export const Field = (props) => {
         size={size}
         min={min}
         max={max}
+        value={value}
       />
       <FormErrorMessage color="red">{errors}</FormErrorMessage>
     </FormControl>
