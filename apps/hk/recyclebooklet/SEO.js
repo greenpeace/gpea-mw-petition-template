@@ -12,7 +12,7 @@ const SEO = () => {
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
             gCampaign: 'plastics',
-            gBasket: 'recycle101',
+            gBasket: 'recyclebooklet',
           });
         `,
         }}
@@ -36,7 +36,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/01/8f5b8b4a-cnywebinar-preview.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/03/39f7fd41-recycle-ebook-preview.jpg"
       />
     </Head>
   );
