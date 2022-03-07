@@ -9,10 +9,12 @@ const Index = ({ status }) => {
   const RenderForm = () =>
     status?.submitted ? <DonateForm /> : <SignupForm />;
   return (
-    <Container maxW={'100%'}>
+    <Container maxW={'100%'} padding="2px">
       <Box
         mx="auto"
         bgColor="white"
+        border="1px"
+        borderColor="rgba(255,255,255,0.75)"
         borderRadius={8}
         boxShadow="lg"
         overflow="hidden"

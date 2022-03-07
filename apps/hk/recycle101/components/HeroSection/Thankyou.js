@@ -7,10 +7,11 @@ import {
   Flex,
   Text,
   Heading,
+  Stack,
 } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import speaker1 from '../../images/gurugurulogo.jpg';
-import speaker2 from '../../images/MilMilllogo.jpg';
+import speaker2 from '../../images/milmill.png';
 import speaker3 from '../../images/campaigner-leanne-03.jpg';
 import Form from '../Form';
 import { useWindowSize } from '../../util';
@@ -45,14 +46,20 @@ function Content({ signup }) {
   }, []);
 
   return (
-    <Box py={20} w={{ md: 'md', xl: 'xl' }}>
+    <Stack spacing="4" py={'40px'} w={{ md: 'md', xl: 'xl' }}>
       <Box ref={ref}>
         <Heading
+          as="h1"
           {...headingProps}
           color={'white'}
-          fontSize={{ base: '2xl', md: '4xl' }}
+          fontSize={{
+            base: 'var(--text-xl)',
+            md: 'var(--text-2xl)',
+          }}
+          textShadow="0 0 1px rgba(0,0,0, .2)"
+          mb={4}
           dangerouslySetInnerHTML={{
-            __html: `${FirstName}<br/>感謝您報名減廢回收免費講座！`,
+            __html: `${FirstName}<br/>感謝您報名減廢講座！`,
           }}
         />
       </Box>
@@ -74,7 +81,7 @@ function Content({ signup }) {
           <Form />
         </Box>
       </Box>
-    </Box>
+    </Stack>
   );
 }
 

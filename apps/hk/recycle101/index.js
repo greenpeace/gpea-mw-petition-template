@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Container, useMediaQuery } from '@chakra-ui/react';
+import { Box, Container, Image, useMediaQuery } from '@chakra-ui/react';
 import HeroSection from './components/HeroSection';
 import MainSection from './components/MainSection';
 import Form from './components/Form';
@@ -11,7 +11,7 @@ import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/banner.jpeg';
+import heroBannerImage from './images/recycle-webinar-banner.jpg';
 
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
@@ -46,15 +46,33 @@ function Index({ setFormContent }) {
   return (
     <>
       <SEO />
-      <Box bgImage={heroBannerImage} bgRepeat={'no-repeat'} bgSize={'cover'}>
+      <Box pos={'relative'}>
         <Container maxW={`${maxWSize}px`}>
           <HeroSection />
         </Container>
+
+        <Box zIndex={-1} pos={'absolute'} top={0} right={0} left={0} bottom={0}>
+          <Image
+            src={heroBannerImage}
+            height="100%"
+            width="100%"
+            objectFit="cover"
+            objectPosition="center top"
+          />
+          <Box
+            pos={'absolute'}
+            top={0}
+            right={0}
+            left={0}
+            bottom={0}
+            bgColor={'rgba(0,0,0,0.25)'}
+          />
+        </Box>
       </Box>
 
       {/** Mobile form */}
       <Box ref={mobileForm}>
-        <Box d={{ base: 'block', lg: 'none' }} mt={-2} ref={ref}>
+        <Box d={{ base: 'block', lg: 'none' }} mt={-4} ref={ref}>
           <Form />
         </Box>
       </Box>
@@ -65,6 +83,7 @@ function Index({ setFormContent }) {
           w={{ base: '100%', lg: 'md', xl: maxWSize / 2 }}
           py={10}
           pr={{ xl: 10 }}
+          pb={16}
         >
           <MainSection />
         </Box>

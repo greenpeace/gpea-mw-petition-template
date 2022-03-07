@@ -1,15 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text, Image } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 import Speaker from '../../Speaker';
 import Webinar from '../../Webinar';
-import speaker1 from '../../images/MilMilllogo.jpg';
+import speaker1 from '../../images/milmill.png';
 import speaker2 from '../../images/gurugurulogo.jpg';
 import speaker3 from '../../images/campaigner-leanne-03.jpg';
+import contentBanner from '../../images/Artboard 9-recycle-webinar-gdn.jpg';
+
 import * as statusActions from 'store/actions/action-types/status-actions';
 
 const WebinarContent = {
@@ -35,7 +37,7 @@ const speaker2Content = [
     name: '阿晴',
     role: '環保網店Guruguru創辦人',
     content:
-      '瓹窿瓹罅Guruguru是一間綠色網上商店，推廣環保網購，致力減低過度包裝情況，鼓勵消費者重用資源與培養源頭減廢習慣。Guruguru環保配送服務，免費收回紙類、塑膠與玻璃包裝，並將之重用或回收；他們亦曾於疫情期間送出環保外賣器皿，鼓勵客人源頭減廢，少用即棄塑膠餐具。',
+      '瓹窿瓹罅Guruguru是一間綠色網上商店，推廣環保網購，致力減低過度包裝情況，鼓勵消費者重用資源與培養源頭減廢習慣。Guruguru環保配送服務，免費收回紙類、塑膠與指定玻璃及某些包裝用品，並將之重用或回收；他們亦曾於疫情期間送出環保外賣器皿，鼓勵客人源頭減廢，少用即棄塑膠餐具。',
     avatar: speaker2,
   },
 ];
@@ -72,7 +74,11 @@ const Content = ({ theme, setScrollToTarget }) => {
 
       <Box {...paragraphProps}>
         家居物品種類繁多，大眾未必清楚知道正確的回收分類與方法，以及​​家居減廢的好辦法。因此，綠色和平特意邀請到紙包飲品盒回收漿廠Mil
-        Mill負責人、環保網店Guruguru創辦人阿晴，參與線上講座，講解回收要點、分類、背後工序與限制，分享業界推廣資源重用、源頭減廢的工作。並為大家提供家居減廢、重用與回收的貼士。同時，綠色和平走塑項目主任譚穎琳將會分享推廣社區減廢經驗，以及回收與重用資源須知。
+        Mill可持續發展經理Maria、環保網店Guruguru創辦人阿晴，參與線上講座，講解回收要點、分類、背後工序與限制，分享業界推廣資源重用、源頭減廢的工作。並為大家提供家居減廢、重用與回收的貼士。同時，綠色和平走塑項目主任譚穎琳將會分享推廣社區減廢經驗，以及回收與重用資源須知。
+      </Box>
+
+      <Box {...paragraphProps}>
+        <Image src={contentBanner} />
       </Box>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
