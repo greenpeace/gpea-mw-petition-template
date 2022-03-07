@@ -13,10 +13,12 @@ const Thankyou = ({ theme, signup }) => {
   const { FirstName } = signup;
   return (
     <>
-      <Heading {...headingProps}>感謝您報名減廢回收免費講座！</Heading>
+      <Heading {...headingProps}>
+        感謝您下載指南，實踐走塑減廢生活習慣。
+      </Heading>
 
       <Text as="p" {...paragraphProps}>
-        講座連結和密碼將於數分鐘內寄送到您的電郵，請查閱。
+        指南將於數分鐘內以短訊及電郵寄送給您，請查閱。
       </Text>
 
       <Text as="p" {...paragraphProps}>

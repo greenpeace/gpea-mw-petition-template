@@ -96,6 +96,34 @@ const MyForm = (props) => {
     }
   }, [signup.submitted]);
 
+  useEffect(() => {
+    const selectForm = document.forms['mc-form'];
+    const documentFormsArray = Array.from(selectForm);
+    if (documentFormsArray) {
+      documentFormsArray.map((data) => {
+        if (!data.defaultValue) {
+          return;
+        }
+
+        if (data.name === 'MobilePhone') {
+          setFieldValue('MobileCountryCode', data.defaultValue?.split(' ')[0]);
+          setFieldValue('MobilePhone', data.defaultValue?.split(' ')[1]);
+          return;
+        }
+
+        if (data.name === 'Birthdate') {
+          setFieldValue(
+            'Birthdate',
+            `${data.defaultValue?.split('/')[2].substring(0, 4)}-01-01`,
+          );
+          return;
+        }
+
+        setFieldValue(data.name, data.defaultValue);
+      });
+    }
+  }, []);
+
   const mailSuggestion = (value) => {
     const domains = MAIL_DOMAINS;
     const topLevelDomains = MAIL_TOP_DOMAINS;
@@ -125,7 +153,7 @@ const MyForm = (props) => {
           right={0}
           left={0}
           bottom={0}
-          bgColor={'rgba(0, 0, 0, 0.5)'}
+          bgColor={'rgba(255, 255, 255, 0.25)'}
           zIndex={9}
         />
       )}
@@ -160,6 +188,7 @@ const MyForm = (props) => {
                     type={'text'}
                     handleChange={handleChange}
                     handleBlur={handleBlur}
+                    value={values.LastName}
                   />
                 </Box>
 
@@ -172,6 +201,7 @@ const MyForm = (props) => {
                     type={'text'}
                     handleChange={handleChange}
                     handleBlur={handleBlur}
+                    value={values.FirstName}
                   />
                 </Box>
               </Stack>
@@ -224,6 +254,7 @@ const MyForm = (props) => {
                         onChange={handleChange}
                         fontSize={'16px'}
                         size={'lg'}
+                        value={values.mobileCountry}
                       >
                         {(formContent.mobile_country_code || []).map((d) => (
                           <option key={d.value} value={d.value}>
@@ -242,6 +273,7 @@ const MyForm = (props) => {
                       type="tel"
                       handleChange={handleChange}
                       handleBlur={handleBlur}
+                      value={values.MobilePhone}
                     />
                   </Box>
                 </HStack>
@@ -255,9 +287,12 @@ const MyForm = (props) => {
                   <Select
                     onChange={handleChange}
                     fontSize={'16px'}
-                    placeholder={formContent.label_year_of_birth}
                     size={'lg'}
+                    value={values.Birthdate}
                   >
+                    <option value={''}>
+                      {formContent.label_year_of_birth}
+                    </option>
                     {birthDateYear &&
                       birthDateYear.map((d) => (
                         <option key={d.value} value={`${d.value}-01-01`}>

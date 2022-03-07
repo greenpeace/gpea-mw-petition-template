@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import Content from './Content';
 import Thankyou from './Thankyou';
 
-const MainSection = ({ status }) =>
+const HeroSectionContent = ({ status }) =>
   status.submitted ? <Thankyou /> : <Content />;
 
 const mapStateToProps = ({ status }) => {
   return { status };
 };
 
-export default connect(mapStateToProps)(MainSection);
+export default connect(mapStateToProps)(HeroSectionContent);
