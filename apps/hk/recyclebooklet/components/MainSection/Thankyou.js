@@ -7,6 +7,7 @@ import {
 } from '@common/styles/components/contentStyle';
 
 import borrow from '../../images/plastics_borrow_event.jpg';
+import banner from '../../images/Campaign-20220304_1200x1200.jpg';
 
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
@@ -48,6 +49,24 @@ const Thankyou = ({ theme, signup }) => {
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         緩解塑膠污染，捐助綠色和平走塑工作。
       </Heading>
+
+      <Box {...paragraphProps}>
+        <Image src={banner} />
+      </Box>
+
+      <Text as="p" {...paragraphProps}>
+        <b>※ 2021-22 課稅年度即將結束，</b>在3月31日前以單次捐助 $500 或月捐
+        $200，支持綠色和平項目工作，即可以慈善捐款免稅額扣稅！
+      </Text>
+
+      <Text as="p" {...paragraphProps}>
+        單次捐助 $500：參加「回收廠參觀」活動。
+      </Text>
+
+      <Text as="p" {...paragraphProps}>
+        每月捐助 $200：參加「回收廠參觀」活動及「環保手作工作坊」或
+        自選2個「環保手作工作坊」
+      </Text>
     </>
   );
 };
