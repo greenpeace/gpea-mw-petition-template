@@ -143,7 +143,7 @@ const Content = ({ theme }) => {
 };
 
 const mapStateToProps = ({ theme }) => {
-  theme.data.interests = 'climate';
+  // theme.data.interests = 'climate';
   return { theme: theme.data };
 };
 
