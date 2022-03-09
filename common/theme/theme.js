@@ -18,7 +18,7 @@ const theme = extendTheme({
   },
   textStyles: {
     heading: {
-      fontSize: { base: '3xl', md: '4xl' },
+      fontSize: { base: '2xl', md: '4xl' },
       fontWeight: 900,
       color: '#77C1D3',
     },
@@ -29,7 +29,7 @@ const theme = extendTheme({
     },
     content: {
       fontSize: { base: 'md', md: 'lg' },
-      lineHeight: 1.7,
+      lineHeight: 1.5,
       py: 2,
       mb: 2,
     },

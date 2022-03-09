@@ -3,41 +3,28 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
   Link,
-  Popover,
-  PopoverTrigger,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
+  Image,
 } from '@chakra-ui/react';
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box>
-      <Flex
-        bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
-        minH={'60px'}
-        py={{ base: 2 }}
-        px={{ base: 4 }}
-        borderBottom={1}
-        borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
-        align={'center'}
-        justifyContent={'space-around'}
-      >
+    <Box
+      pos={'absolute'}
+      w={'100%'}
+      h={{ base: '50px', md: '60px' }}
+      zIndex={9}
+      py={1}
+    >
+      <Flex px={{ base: 4 }} align={'center'} justifyContent={'space-around'}>
         <Flex
           flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
@@ -54,7 +41,10 @@ export default function WithSubnavigation() {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Link href={'/'}>
-            <Text>LOGO</Text>
+            <Image
+              src={'/images/greenpeace_logo.svg'}
+              maxW={{ base: '120px', md: '160px' }}
+            />
           </Link>
         </Flex>
 
@@ -76,29 +66,27 @@ const DesktopNav = () => {
   const linkHoverColor = useColorModeValue('gray.800', 'white');
 
   return (
-    <Flex d={{ base: 'flex', md: 'flex' }}>
+    <Flex d={{ base: 'flex' }} h={'50px'} align={'center'}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label} px={2}>
           {navItem.target === '_blank' ? (
-            <a
-              href={navItem.href}
-              target={navItem.target}
-              style={{
-                backgroundColor: '#FF8100',
-                borderRadius: '4px',
-                color: '#FFF',
-                fontSize: '14px',
-                padding: '4px 10px',
-              }}
-            >
-              {navItem.label}
+            <a href={navItem.href} target={navItem.target}>
+              <Text
+                bgGradient="linear(to-l, #F2994A, #F2994A)"
+                bgClip="text"
+                fontSize={'md'}
+                fontWeight={700}
+                pl={2}
+              >
+                {navItem.label}
+              </Text>
             </a>
           ) : (
             <Link
               p={2}
               href={navItem.href ?? '#'}
-              fontSize={'sm'}
-              fontWeight={500}
+              fontSize={'md'}
+              fontWeight={700}
               color={linkColor}
               _hover={{
                 textDecoration: 'none',
