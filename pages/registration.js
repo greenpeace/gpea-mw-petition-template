@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Container, useMediaQuery } from '@chakra-ui/react';
+import axios from 'axios';
 import Wrapper from '@containers/gpsWrapper';
 import HeroSection from '@components/GPS/HeroSection';
 import MainSection from '@components/GPS/MainSection';
@@ -11,13 +12,20 @@ import formContent from '@components/GPS/formContent';
 import Head from 'next/head';
 import * as formActions from 'store/actions/action-types/form-actions';
 
+import * as themeActions from 'store/actions/action-types/theme-actions';
+const envProjectName = process.env.projectName;
+const envProjectMarket = process.env.projectMarket;
+const themeEndpointURL = process.env.themeEndpoint;
+const signupNumbersHKURL = process.env.signupNumbersHK;
+const signupNumbersTWURL = process.env.signupNumbersTW;
+
 import heroBannerImage from '@components/GPS/images/banner.jpeg';
 
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
 const maxWSize = 1200;
 
-function Index({ setFormContent }) {
+function Index({ setFormContent, setTheme, themeData }) {
   const [isLargerThanLG] = useMediaQuery('(min-width: 62em)'); // default md: '62em'
   const { ref, inView } = useInView({ threshold: 0 });
   const mobileForm = useRef(null);
@@ -26,6 +34,30 @@ function Index({ setFormContent }) {
   };
 
   const [showCTAButton, setShowCTAButton] = useState(false);
+
+  useEffect(() => {
+    const market = themeData?.Market;
+    /* GTM is only applicable for production env */
+    if (process.env.NODE_ENV === 'production') {
+      let gtmId = '';
+      switch (market) {
+        case 'hk':
+          gtmId = 'GTM-M6LZL75';
+          break;
+        case 'tw':
+          gtmId = 'GTM-WRM6WK6';
+          break;
+        default:
+          gtmId = '';
+          break;
+      }
+      const tagManagerArgs = {
+        gtmId: gtmId,
+      };
+      TagManager.initialize(tagManagerArgs);
+    }
+    setTheme(themeData);
+  }, [themeData]);
 
   useEffect(() => {
     setFormContent(formContent);
@@ -105,7 +137,32 @@ const mapDispatchToProps = (dispatch) => {
     setFormContent: (data) => {
       dispatch({ type: formActions.SET_FORM, data });
     },
+    setTheme: (data) => {
+      dispatch({ type: themeActions.SET_THEME, data });
+    },
   };
 };
+
+export async function getStaticProps() {
+  const singleResult = await axios
+    .get(themeEndpointURL)
+    .then((response) => {
+      return response.data.records.find(
+        (d) =>
+          d.ProjectName === envProjectName && d.Market === envProjectMarket,
+      );
+    })
+    .catch((error) => console.log(error));
+
+  console.log('Building from ' + envProjectMarket + ':' + envProjectName);
+
+  !singleResult && console.warn('PROJECT NAME NOT FOUND');
+
+  return {
+    props: {
+      themeData: singleResult || {},
+    },
+  };
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index);
