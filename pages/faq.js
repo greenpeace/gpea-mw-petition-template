@@ -22,6 +22,11 @@ const maxWSize = 1200;
 
 const questionWrapProps = {
   _expanded: { bg: '#F9BD82' },
+  sx: {
+    ':focus:not(:focus-visible)': {
+      shadow: 'none',
+    },
+  },
 };
 
 const questionProps = {

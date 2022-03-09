@@ -221,9 +221,20 @@ function Index() {
       </Container>
       <Modal isOpen={isOpen} onClose={onClose} isCentered={true} size={'2xl'}>
         <ModalOverlay />
-        <ModalContent bgColor={'transparent'} boxShadow={'none'}>
+        <ModalContent
+          bgColor={'transparent'}
+          boxShadow={'none'}
+          maxW={{ md: '80%' }}
+        >
           <ModalBody py={10} px={4} boxShadow={'none'}>
-            <ModalCloseButton color="#000" />
+            <ModalCloseButton
+              color="#000"
+              sx={{
+                ':focus:not(:focus-visible)': {
+                  shadow: 'none',
+                },
+              }}
+            />
             <AspectRatio ratio={16 / 9}>
               <iframe
                 src="https://www.youtube.com/embed/kz_EDIfH7gU"

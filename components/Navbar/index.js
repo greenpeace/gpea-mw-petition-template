@@ -37,10 +37,22 @@ export default function WithSubnavigation() {
             }
             variant={'ghost'}
             aria-label={'Toggle Navigation'}
+            sx={{
+              ':focus:not(:focus-visible)': {
+                shadow: 'none',
+              },
+            }}
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Link href={'/'}>
+          <Link
+            href={'/'}
+            sx={{
+              ':focus:not(:focus-visible)': {
+                shadow: 'none',
+              },
+            }}
+          >
             <Image
               src={'/images/greenpeace_logo.svg'}
               maxW={{ base: '120px', md: '160px' }}
