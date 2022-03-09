@@ -12,7 +12,6 @@ import {
   AccordionPanel,
   AccordionIcon,
   Flex,
-  Image,
 } from '@chakra-ui/react';
 
 import { headingProps } from '@common/styles/components/contentStyle';
@@ -22,7 +21,7 @@ import heroBannerImage from '@components/GPS/images/banner.jpeg';
 const maxWSize = 1200;
 
 const questionWrapProps = {
-  _expanded: { bg: '#F2F2F2' },
+  _expanded: { bg: '#F9BD82' },
 };
 
 const questionProps = {
@@ -37,7 +36,7 @@ const answerProps = {
 
 function Faq() {
   return (
-    <div>
+    <Box pt={{ base: '50px', md: '60px' }}>
       <Head>
         <title>走塑GPS FAQ</title>
         <meta
@@ -248,7 +247,7 @@ function Faq() {
           </Box>
         </Flex>
       </Container>
-    </div>
+    </Box>
   );
 }
 

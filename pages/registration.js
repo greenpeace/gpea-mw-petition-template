@@ -44,7 +44,7 @@ function Index({ setFormContent }) {
   }, [inView, isLargerThanLG]);
 
   return (
-    <>
+    <Box pt={{ base: '50px', md: '60px' }}>
       <Head>
         <title>只需簡單登記，便可免費使用「走塑GPS」！</title>
         <meta
@@ -90,7 +90,7 @@ function Index({ setFormContent }) {
           {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}
         </FixedCTA>
       )}
-    </>
+    </Box>
   );
 }
 

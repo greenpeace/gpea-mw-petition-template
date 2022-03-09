@@ -11,6 +11,15 @@ const theme = extendTheme({
   components: {
     Progress,
     Button,
+    Switch: {
+      baseStyle: {
+        track: {
+          _focus: {
+            boxShadow: 'none',
+          },
+        },
+      },
+    },
   },
   fonts: {
     body: 'var(--font-family)',
