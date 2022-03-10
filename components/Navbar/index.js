@@ -5,16 +5,18 @@ import {
   IconButton,
   Stack,
   Collapse,
-  Icon,
   useColorModeValue,
   useDisclosure,
   Image,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { useInView } from 'react-intersection-observer';
+import getConfig from 'next/config';
 import Link from 'next/link';
 
 export default function WithSubnavigation() {
+  const { publicRuntimeConfig } = getConfig();
+
   const { isOpen, onToggle } = useDisclosure();
   const { ref, inView, entry } = useInView({
     /* Optional options */
@@ -62,7 +64,7 @@ export default function WithSubnavigation() {
             }}
           >
             <Image
-              src={'/images/greenpeace_logo.svg'}
+              src={`${publicRuntimeConfig.staticFolder}/images/greenpeace_logo.svg`}
               maxW={{ base: '120px', md: '160px' }}
               cursor={'pointer'}
             />

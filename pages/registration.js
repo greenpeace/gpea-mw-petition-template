@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Container, useMediaQuery } from '@chakra-ui/react';
+import TagManager from 'react-gtm-module';
 import axios from 'axios';
 import Wrapper from '@containers/gpsWrapper';
 import HeroSection from '@components/GPS/HeroSection';
