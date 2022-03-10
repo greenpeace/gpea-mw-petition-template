@@ -6,23 +6,31 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link,
   useColorModeValue,
   useDisclosure,
   Image,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import { useInView } from 'react-intersection-observer';
+import Link from 'next/link';
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
 
   return (
     <Box
-      pos={'absolute'}
+      pos={'fixed'}
+      top={0}
       w={'100%'}
       h={{ base: '50px', md: '60px' }}
+      bgColor={'#FFF'}
       zIndex={9}
       py={1}
+      ref={ref}
     >
       <Flex px={{ base: 4 }} align={'center'} justifyContent={'space-around'}>
         <Flex
@@ -56,6 +64,7 @@ export default function WithSubnavigation() {
             <Image
               src={'/images/greenpeace_logo.svg'}
               maxW={{ base: '120px', md: '160px' }}
+              cursor={'pointer'}
             />
           </Link>
         </Flex>
@@ -67,7 +76,7 @@ export default function WithSubnavigation() {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
+        <MobileNav handleToggle={onToggle} />
       </Collapse>
     </Box>
   );
@@ -94,23 +103,25 @@ const DesktopNav = () => {
               </Text>
             </a>
           ) : (
-            <Link
-              p={2}
-              href={navItem.href ?? '#'}
-              fontSize={'md'}
-              fontWeight={700}
-              color={linkColor}
-              _hover={{
-                textDecoration: 'none',
-                color: linkHoverColor,
-              }}
-              sx={{
-                ':focus:not(:focus-visible)': {
-                  shadow: 'none',
-                },
-              }}
-            >
-              {navItem.label}
+            <Link href={navItem.href ?? '#'}>
+              <Text
+                p={2}
+                fontSize={'md'}
+                fontWeight={700}
+                color={linkColor}
+                _hover={{
+                  textDecoration: 'none',
+                  color: linkHoverColor,
+                }}
+                sx={{
+                  ':focus:not(:focus-visible)': {
+                    shadow: 'none',
+                  },
+                }}
+                cursor={'pointer'}
+              >
+                {navItem.label}
+              </Text>
             </Link>
           )}
         </Box>
@@ -119,7 +130,7 @@ const DesktopNav = () => {
   );
 };
 
-const MobileNav = () => {
+const MobileNav = ({ handleToggle }) => {
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
@@ -127,61 +138,37 @@ const MobileNav = () => {
       display={{ md: 'none' }}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+        <MobileNavItem
+          handleToggle={handleToggle}
+          key={navItem.label}
+          {...navItem}
+        />
       ))}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
-  const { isOpen, onToggle } = useDisclosure();
-
+const MobileNavItem = ({ handleToggle, label, children, href }) => {
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
+    <Stack spacing={4}>
       <Flex
         py={2}
-        as={Link}
-        href={href ?? '#'}
         justify={'space-between'}
         align={'center'}
         _hover={{
           textDecoration: 'none',
         }}
+        onClick={() => handleToggle()}
       >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}
-        >
-          {label}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={'all .25s ease-in-out'}
-            transform={isOpen ? 'rotate(180deg)' : ''}
-            w={6}
-            h={6}
-          />
-        )}
+        <Link href={href}>
+          <Text
+            fontWeight={600}
+            color={useColorModeValue('gray.600', 'gray.200')}
+          >
+            {label}
+          </Text>
+        </Link>
       </Flex>
-
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
-        <Stack
-          mt={2}
-          pl={4}
-          borderLeft={1}
-          borderStyle={'solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.700')}
-          align={'start'}
-        >
-          {children &&
-            children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
-                {child.label}
-              </Link>
-            ))}
-        </Stack>
-      </Collapse>
     </Stack>
   );
 };

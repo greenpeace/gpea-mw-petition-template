@@ -4,6 +4,9 @@ const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 
 const nextConfig = {
+  publicRuntimeConfig: {
+    staticFolder: isProd ? '/2022/gps' : '',
+  },
   env: {
     project: process.env.PROJECT,
     form: process.env.FORM,
@@ -17,6 +20,7 @@ const nextConfig = {
   // Use the CDN in production and localhost for development.
   assetPrefix: isProd ? process.env.ASSETPREFIX : '',
   trailingSlash: true,
+  basePath: isProd ? '/2022/gps' : '',
   exportPathMap: async () => ({
     '/': { page: '/' },
   }),

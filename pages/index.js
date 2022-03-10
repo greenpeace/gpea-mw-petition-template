@@ -1,7 +1,7 @@
 import React from 'react';
 import Wrapper from '@containers/gpsWrapper';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
+import getConfig from 'next/config';
 import {
   Container,
   Box,
@@ -48,6 +48,9 @@ const triangleProps = {
 
 function Index() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { publicRuntimeConfig } = getConfig();
+
   return (
     <Box pt={{ base: '50px', md: '60px' }}>
       {' '}
@@ -103,6 +106,7 @@ function Index() {
       </Box>
       <Container maxW={`${maxWSize}px`}>
         <Box d={{ lg: 'none' }}>
+          a
           <ShareContent />
         </Box>
         <Center height="50px">
@@ -116,7 +120,10 @@ function Index() {
           <Stack direction={{ base: 'column', lg: 'row' }} spacing={{ lg: 12 }}>
             <Stack direction={{ base: 'column' }} flex={1}>
               <Box>
-                <Image src={'/images/placeholder.svg'} w={{ base: '40px' }} />
+                <Image
+                  src={`${publicRuntimeConfig.staticFolder}/images/placeholder.svg`}
+                  w={{ base: '40px' }}
+                />
               </Box>
               <Box flex={1}>
                 <Text textStyle={'heading'}>邊間走塑小店喺左近 免費幫你搵</Text>
@@ -128,7 +135,7 @@ function Index() {
 
             <Box flex={1}>
               <Image
-                src={'/images/demo_video.jpg'}
+                src={`${publicRuntimeConfig.staticFolder}/images/demo_video.jpg`}
                 width={'100%'}
                 onClick={onOpen}
                 cursor={'pointer'}
@@ -143,7 +150,10 @@ function Index() {
             >
               <Stack direction={{ base: 'column' }} flex={1}>
                 <Box>
-                  <Image src={'/images/sticker.svg'} w={{ base: '40px' }} />
+                  <Image
+                    src={`${publicRuntimeConfig.staticFolder}/images/sticker.svg`}
+                    w={{ base: '40px' }}
+                  />
                 </Box>
                 <Box flex={1}>
                   <Text textStyle={'heading'}>走塑兩級制 唔使心大心細</Text>
@@ -156,9 +166,11 @@ function Index() {
               <Box flex={1}>
                 <Stack direction={{ base: 'row' }}>
                   <Box textAlign="center">
-                    <Image src={'/images/PFC_Sticker_blue.png'} />
                     <Image
-                      src={'/images/grade1-ribbon.svg'}
+                      src={`${publicRuntimeConfig.staticFolder}/images/PFC_Sticker_blue.png`}
+                    />
+                    <Image
+                      src={`${publicRuntimeConfig.staticFolder}/images/grade1-ribbon.svg`}
                       px={{ base: 8, md: 12 }}
                     />
                     <Text textStyle={'content'} pt={2}>
@@ -167,9 +179,11 @@ function Index() {
                     </Text>
                   </Box>
                   <Box textAlign="center">
-                    <Image src={'/images/PFC_Sticker_white.png'} />
                     <Image
-                      src={'/images/grade2-ribbon.svg'}
+                      src={`${publicRuntimeConfig.staticFolder}/images/PFC_Sticker_white.png`}
+                    />
+                    <Image
+                      src={`${publicRuntimeConfig.staticFolder}/images/grade2-ribbon.svg`}
                       px={{ base: 8, md: 12 }}
                     />
                     <Text textStyle={'content'} pt={2}>
@@ -184,7 +198,10 @@ function Index() {
 
           <Stack direction={{ base: 'column' }}>
             <Box>
-              <Image src={'/images/like.svg'} w={{ base: '40px' }} />
+              <Image
+                src={`${publicRuntimeConfig.staticFolder}/images/like.svg`}
+                w={{ base: '40px' }}
+              />
             </Box>
             <Box flex={1}>
               <Text textStyle={'heading'}>全港走塑版圖 持續擴展中！</Text>
@@ -198,13 +215,19 @@ function Index() {
             <Box>
               <Stack direction="column">
                 <Box>
-                  <Image src={'/images/20210508_SSPHunting_5.jpg'} />
+                  <Image
+                    src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_5.jpg`}
+                  />
                 </Box>
                 <Box>
-                  <Image src={'/images/20210508_SSPHunting_8.jpg'} />
+                  <Image
+                    src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_8.jpg`}
+                  />
                 </Box>
                 <Box>
-                  <Image src={'/images/20210508_SSPHunting_17.jpg'} />
+                  <Image
+                    src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_17.jpg`}
+                  />
                 </Box>
               </Stack>
             </Box>
@@ -249,6 +272,7 @@ function Index() {
 }
 
 const HeroSection = () => {
+  const { publicRuntimeConfig } = getConfig();
   {
     /** #F9BD82 */
   }
@@ -349,7 +373,7 @@ const HeroSection = () => {
               <Box>
                 {' '}
                 <Image
-                  src={'/images/Plastic-free_GPS.svg'}
+                  src={`${publicRuntimeConfig.staticFolder}/images/Plastic-free_GPS.svg`}
                   maxW={{ base: '160px', lg: '360px' }}
                   ml={{ lg: 20 }}
                 />

@@ -16,8 +16,6 @@ import * as themeActions from 'store/actions/action-types/theme-actions';
 const envProjectName = process.env.projectName;
 const envProjectMarket = process.env.projectMarket;
 const themeEndpointURL = process.env.themeEndpoint;
-const signupNumbersHKURL = process.env.signupNumbersHK;
-const signupNumbersTWURL = process.env.signupNumbersTW;
 
 import heroBannerImage from '@components/GPS/images/banner.jpeg';
 

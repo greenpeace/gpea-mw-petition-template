@@ -1,6 +1,6 @@
 import React from 'react';
 import Wrapper from '@containers/gpsWrapper';
-import { useRouter } from 'next/router';
+import getConfig from 'next/config';
 import Head from 'next/head';
 import { Container, Box, Heading, Text, Flex, Image } from '@chakra-ui/react';
 import { headingProps } from '@common/styles/components/contentStyle';
@@ -10,6 +10,7 @@ import heroBannerImage from '@components/GPS/images/banner.jpeg';
 const maxWSize = 1200;
 
 function Tutorial() {
+  const { publicRuntimeConfig } = getConfig();
   return (
     <Box pt={{ base: '50px', md: '60px' }}>
       <Head>
@@ -72,7 +73,10 @@ function Tutorial() {
               ** 記得把「走塑GPS」加到你的通訊錄，以便日後隨時查詢走塑店鋪位置！
             </Text>
           </Box>
-          <Image src={'/images/7.png'} w={'100%'} />
+          <Image
+            src={`${publicRuntimeConfig.staticFolder}/images/7.png`}
+            w={'100%'}
+          />
         </Box>
 
         <Box borderTop={'1px solid #F2F2F2'} mt={6} py={6}>
@@ -83,7 +87,10 @@ function Tutorial() {
               }
             </Text>
           </Box>
-          <Image src={'/images/7.png'} w={'100%'} />
+          <Image
+            src={`${publicRuntimeConfig.staticFolder}/images/7.png`}
+            w={'100%'}
+          />
         </Box>
 
         <Box borderTop={'1px solid #F2F2F2'} mt={6} py={6}>
@@ -94,7 +101,10 @@ function Tutorial() {
               }
             </Text>
           </Box>
-          <Image src={'/images/8.png'} w={'100%'} />
+          <Image
+            src={`${publicRuntimeConfig.staticFolder}/images/8.png`}
+            w={'100%'}
+          />
         </Box>
 
         <Box borderTop={'1px solid #F2F2F2'} mt={6} py={6}>
@@ -103,7 +113,10 @@ function Tutorial() {
               分享位置後，「走塑GPS」會即時顯示最接近你的5間走塑友善小店。
             </Text>
           </Box>
-          <Image src={'/images/9.png'} w={'100%'} />
+          <Image
+            src={`${publicRuntimeConfig.staticFolder}/images/9.png`}
+            w={'100%'}
+          />
         </Box>
 
         <Box borderTop={'1px solid #F2F2F2'} mt={6} py={6}>
@@ -112,7 +125,10 @@ function Tutorial() {
               你亦可在「分享位置」頁面輸入搜尋地點（以建築物為佳），「走塑GPS」將為你搜尋指定地點附近的走塑小店。
             </Text>
           </Box>
-          <Image src={'/images/10.png'} w={'100%'} />
+          <Image
+            src={`${publicRuntimeConfig.staticFolder}/images/10.png`}
+            w={'100%'}
+          />
         </Box>
 
         <Flex
