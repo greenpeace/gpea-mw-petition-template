@@ -12,6 +12,7 @@ import {
   AccordionPanel,
   AccordionIcon,
   Flex,
+  Stack,
 } from '@chakra-ui/react';
 
 import { headingProps } from '@common/styles/components/contentStyle';
@@ -21,7 +22,9 @@ import heroBannerImage from '@components/GPS/images/banner.jpeg';
 const maxWSize = 1200;
 
 const questionWrapProps = {
-  _expanded: { bg: '#F9BD82' },
+  _expanded: {
+    textDecoder: 'underline',
+  },
   sx: {
     ':focus:not(:focus-visible)': {
       shadow: 'none',
@@ -30,13 +33,17 @@ const questionWrapProps = {
 };
 
 const questionProps = {
+  fontSize: 'lg',
   py: 6,
-  fontWeight: 700,
+  color: '#77C1D3',
+  fontWeight: 'bold',
 };
 
 const answerProps = {
   py: 6,
-  fontWeight: 300,
+  mb: 4,
+  lineHeight: 1.7,
+  textAlign: 'justify',
 };
 
 function Faq() {
@@ -234,10 +241,12 @@ function Faq() {
           </AccordionItem>
         </Accordion>
 
-        <Flex
+        <Stack
+          spacing="4"
           flexDirection={{ base: 'column', md: 'row' }}
           justifyContent={'space-between'}
           bgColor={'#77C1D3'}
+          my="6"
           p={6}
           borderRadius={8}
           align="center"
@@ -250,7 +259,7 @@ function Faq() {
           <Box>
             <CTAButton />
           </Box>
-        </Flex>
+        </Stack>
       </Container>
     </Box>
   );
