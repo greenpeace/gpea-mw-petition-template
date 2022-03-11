@@ -72,57 +72,46 @@ function Index() {
         />
       </Head>
       <HeroSection />
-      <Box my={6}>
-        <Container maxW={`${maxWSize}px`}>
-          <Flex
-            flexDirection={{ base: 'column', lg: 'row' }}
-            align={{ base: 'initial', lg: 'center' }}
-          >
-            <Box bgColor="#77C1D3" borderRadius={16} py={4} px={6}>
-              <Text
-                as="p"
-                textStyle={'content'}
-                fontWeight={500}
-                color={'#FFF'}
-                mb={4}
-              >
-                準備充足走塑的你，最怕店鋪拒收自攜容器<b>「摸門釘」</b>?
-              </Text>
-              <Text
-                as="p"
-                textStyle={'content'}
-                fontWeight={500}
-                color={'#FFF'}
-              >
-                心血來潮走塑的你，最好走塑小店<b>「總有一間喺左近」</b>?
-              </Text>
-            </Box>
+      <Container maxW={`${maxWSize}px`} py="6" px="4">
+        <Stack
+          spacing="6"
+          flexDirection={{ base: 'column', lg: 'row' }}
+          align={{ base: 'initial', lg: 'center' }}
+        >
+          <Box flex="1" bgColor="#77C1D3" borderRadius="xl" p="4">
+            <Text as="p" textStyle={'content'} color={'#FFF'}>
+              準備充足走塑的你，最怕店鋪拒收自攜容器<b>「摸門釘」</b>？
+            </Text>
+            <Text as="p" textStyle={'content'} color={'#FFF'}>
+              心血來潮走塑的你，最好走塑小店<b>「總有一間喺左近」</b>？
+            </Text>
+          </Box>
+          <Box flex="1" p="4">
+            <ShareContent />
+          </Box>
+        </Stack>
 
-            <Box flex={1} ml={6} d={{ base: 'none', lg: 'block' }}>
-              <ShareContent />
-            </Box>
-          </Flex>
-        </Container>
-      </Box>
-      <Container maxW={`${maxWSize}px`}>
-        <Box d={{ lg: 'none' }}>
-          a
-          <ShareContent />
-        </Box>
-        <Center height="50px">
-          <Divider borderColor="#77C1D3" orientation="vertical" />
+        <Center>
+          <Divider
+            height="48px"
+            my="4"
+            border="2px"
+            borderColor="#77C1D3"
+            orientation="vertical"
+          />
         </Center>
+
         <Box maxW={'480px'} mx={'auto'} my={6}>
           <CTAButton />
         </Box>
 
         <Stack spacing={12} py={{ base: 6, lg: 12 }}>
-          <Stack direction={{ base: 'column', lg: 'row' }} spacing={{ lg: 12 }}>
-            <Stack direction={{ base: 'column' }} flex={1}>
+          <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
+            <Stack direction={{ base: 'column' }} flex={1} spacing="6">
               <Box>
                 <Image
                   src={`${publicRuntimeConfig.staticFolder}/images/placeholder.svg`}
-                  w={{ base: '40px' }}
+                  w="48px"
                 />
               </Box>
               <Box flex={1}>
@@ -134,12 +123,14 @@ function Index() {
             </Stack>
 
             <Box flex={1}>
-              <Image
-                src={`${publicRuntimeConfig.staticFolder}/images/demo_video.jpg`}
-                width={'100%'}
-                onClick={onOpen}
-                cursor={'pointer'}
-              />
+              <Box borderRadius="xl" overflow="hidden">
+                <Image
+                  src={`${publicRuntimeConfig.staticFolder}/images/demo_video.jpg`}
+                  width={'100%'}
+                  onClick={onOpen}
+                  cursor={'pointer'}
+                />
+              </Box>
             </Box>
           </Stack>
 
@@ -148,11 +139,11 @@ function Index() {
               direction={{ base: 'column', lg: 'row-reverse' }}
               spacing={{ lg: 12 }}
             >
-              <Stack direction={{ base: 'column' }} flex={1}>
+              <Stack direction={{ base: 'column' }} flex={1} spacing="6">
                 <Box>
                   <Image
                     src={`${publicRuntimeConfig.staticFolder}/images/sticker.svg`}
-                    w={{ base: '40px' }}
+                    w="48px"
                   />
                 </Box>
                 <Box flex={1}>
@@ -165,7 +156,7 @@ function Index() {
 
               <Box flex={1}>
                 <Stack direction={{ base: 'row' }}>
-                  <Box textAlign="center">
+                  <Stack textAlign="center" spacing="4">
                     <Image
                       src={`${publicRuntimeConfig.staticFolder}/images/PFC_Sticker_blue.png`}
                     />
@@ -173,12 +164,12 @@ function Index() {
                       src={`${publicRuntimeConfig.staticFolder}/images/grade1-ribbon.svg`}
                       px={{ base: 8, md: 12 }}
                     />
-                    <Text textStyle={'content'} pt={2}>
+                    <Text textStyle={'content'}>
                       完全淘汰即棄塑膠 或<br />
                       提供走塑優惠
                     </Text>
-                  </Box>
-                  <Box textAlign="center">
+                  </Stack>
+                  <Stack textAlign="center" spacing="4">
                     <Image
                       src={`${publicRuntimeConfig.staticFolder}/images/PFC_Sticker_white.png`}
                     />
@@ -186,45 +177,48 @@ function Index() {
                       src={`${publicRuntimeConfig.staticFolder}/images/grade2-ribbon.svg`}
                       px={{ base: 8, md: 12 }}
                     />
-                    <Text textStyle={'content'} pt={2}>
+                    <Text textStyle={'content'}>
                       不主動提供即棄塑膠 或<br />
                       歡迎自備餐具/器皿購物
                     </Text>
-                  </Box>
+                  </Stack>
                 </Stack>
               </Box>
             </Stack>
           </Box>
 
-          <Stack direction={{ base: 'column' }}>
+          <Stack direction={{ base: 'column' }} spacing="6">
             <Box>
               <Image
                 src={`${publicRuntimeConfig.staticFolder}/images/like.svg`}
-                w={{ base: '40px' }}
+                w="48px"
               />
             </Box>
             <Box flex={1}>
               <Text textStyle={'heading'}>全港走塑版圖 持續擴展中！</Text>
               <Text as="p" textStyle={'content'}>
-                綠色和平自2018年發起「全城走塑計劃」，與超過170位義工到訪全港大小社區，遊說店主提供走塑選擇，2021年底達成1,100間里程碑！
-                <br />
-                <br />
+                綠色和平自2018年發起「全城走塑計劃」，與超過 <b>170</b>
+                位義工到訪全港大小社區，遊說店主提供走塑選擇，2021年底達成{' '}
+                <b>1,100</b>
+                間里程碑！
+              </Text>
+              <Text as="p" textStyle={'content'}>
                 未來我們會繼續擴大全港走塑版圖，邀請更多類型店鋪營造走塑友善環境，示範具體解決方案，促請政府及企業提出更積極走塑措施！
               </Text>
             </Box>
             <Box>
-              <Stack direction="column">
-                <Box>
+              <Stack spacing="6" direction="column">
+                <Box maxW="80%">
                   <Image
                     src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_5.jpg`}
                   />
                 </Box>
-                <Box>
+                <Box maxW="80%" alignSelf={'flex-end'}>
                   <Image
                     src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_8.jpg`}
                   />
                 </Box>
-                <Box>
+                <Box maxW="80%">
                   <Image
                     src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_17.jpg`}
                   />
@@ -233,13 +227,14 @@ function Index() {
             </Box>
           </Stack>
 
-          <Box maxW={'480px'} align="center" alignSelf={'center'}>
+          <Stack spacing="4" maxW={'480px'} align="center" alignSelf={'center'}>
             <CTAButton />
+            <br />
             <Text as="p" fontSize="xs">
               **
               如有任何使用「走塑GPS」疑難，歡迎參閱常見問題或按此填寫表格聯絡我們。
             </Text>
-          </Box>
+          </Stack>
         </Stack>
       </Container>
       <Modal isOpen={isOpen} onClose={onClose} isCentered={true} size={'2xl'}>
@@ -308,17 +303,7 @@ const HeroSection = () => {
                     fontSize={{ base: '2xl', lg: '5xl' }}
                     fontWeight={700}
                   >
-                    全港
-                    <Text
-                      color={'#FFF'}
-                      fontSize={{ base: '4xl', lg: '5xl' }}
-                      fontWeight={700}
-                      as="span"
-                      px={2}
-                    >
-                      1,100
-                    </Text>
-                    間走塑店鋪
+                    全港 1,100 間走塑店鋪
                   </Text>
                   <Text
                     color={'#FFF'}
@@ -396,10 +381,10 @@ const ShareContent = () => {
         color={'#77C1D3'}
         textAlign={'justify'}
       >
-        為了方便市民搜尋「全城走塑計劃」超過
-        <Text fontSize={{ base: '2xl', md: '5xl' }} fontWeight={700} as="span">
+        為了方便市民搜尋「全城走塑計劃」超過 1,100
+        {/* <Text fontSize={{ base: '2xl', md: '5xl' }} fontWeight={700} as="span">
           1,100
-        </Text>
+        </Text> */}
         間走塑商戶，綠色和平推出「走塑GPS」WhatsApp
         Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到
         <b>「Plastic Free, Care Free」</b>!
