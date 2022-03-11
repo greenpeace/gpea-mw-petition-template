@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import {
   Box,
   Heading,
@@ -8,42 +7,48 @@ import {
   Image,
   Grid,
   GridItem,
-  ListItem,
   UnorderedList,
-  Flex,
+  ListItem,
+  Divider,
   SimpleGrid,
+  Flex,
   useDisclosure,
   Collapse,
-  Divider,
+  Link,
 } from '@chakra-ui/react';
+import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
+import contentBanner from '../../images/ezgif.com-gif-maker-9.gif';
+import contentBanner2 from '../../images/ezgif.com-gif-maker-7.gif';
 
-import contentA from './images/img01.jpg';
-import contentB from './images/img02.jpg';
-import contentC from './images/img03.jpg';
+import * as statusActions from 'store/actions/action-types/status-actions';
 
-import watsonLogo from './images/brand/ASW-VAG-rounded.png';
-import yataLogo from './images/brand/yata-logo.jpg';
-import dailyFarmLogo from './images/brand/DairyFarm_logo.jpg';
-import citySuperLogo from './images/brand/citysuper-logo.png';
-import aeonLogo from './images/brand/aeon-logo.png';
-import msLogo from './images/brand/marksandspencer-logo.jpg';
-import vanguardLogo from './images/brand/vanguard-logo.jpg';
+import contentA from '../../images/img01.jpg';
+import contentB from '../../images/img02.jpg';
+import contentC from '../../images/img03.jpg';
 
-import brand01 from './images/brand/wellcome-logo.png';
-import brand02 from './images/brand/parknshop-logo.jpg';
-import brand03 from './images/brand/marksandspencer-logo.jpg';
-import brand04 from './images/brand/taste-logo.jpg';
-import brand05 from './images/brand/fusion-logo.png';
-import brand06 from './images/brand/international-logo.jpg';
-import brand07 from './images/brand/yata-logo.jpg';
-import brand08 from './images/brand/citysuper-logo.png';
-import brand09 from './images/brand/aeon-logo.png';
-import brand10 from './images/brand/vanguard-logo.jpg';
-import brand11 from './images/brand/uselect-logo.png';
+import watsonLogo from '../../images/brand/ASW-VAG-rounded.png';
+import yataLogo from '../../images/brand/yata-logo.jpg';
+import dailyFarmLogo from '../../images/brand/DairyFarm_logo.jpg';
+import citySuperLogo from '../../images/brand/citysuper-logo.png';
+import aeonLogo from '../../images/brand/aeon-logo.png';
+import msLogo from '../../images/brand/marksandspencer-logo.jpg';
+import vanguardLogo from '../../images/brand/vanguard-logo.jpg';
+
+import brand01 from '../../images/brand/wellcome-logo.png';
+import brand02 from '../../images/brand/parknshop-logo.jpg';
+import brand03 from '../../images/brand/marksandspencer-logo.jpg';
+import brand04 from '../../images/brand/taste-logo.jpg';
+import brand05 from '../../images/brand/fusion-logo.png';
+import brand06 from '../../images/brand/international-logo.jpg';
+import brand07 from '../../images/brand/yata-logo.jpg';
+import brand08 from '../../images/brand/citysuper-logo.png';
+import brand09 from '../../images/brand/aeon-logo.png';
+import brand10 from '../../images/brand/vanguard-logo.jpg';
+import brand11 from '../../images/brand/uselect-logo.png';
 
 const brandsContent = [
   {
@@ -407,13 +412,86 @@ const CardItem = ({ ranking, data, themeInterests }) => {
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
+
   return (
     <>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+        聯署超市走塑 急需您我行動
+      </Heading>
+
+      <Box {...paragraphProps}>
+        每年，香港有至少112噸塑膠包裝垃圾流入海洋。這些垃圾入侵食物鏈，令你我日常進食的海鮮、食鹽暗藏微塑膠！來自超市的即棄包裝作為塑膠污染主要源頭之一，超市絕對有企業責任改變其貨品包裝及銷售模式！
+      </Box>
+
+      <Box {...paragraphProps}>
+        一同發聲，要求大型連鎖超市回應你的訴求：制定完整減塑藍圖、發展可重用包裝銷售模式、淘汰無謂塑膠包裝，並提供走塑購物選項，讓你「有得揀」。
+      </Box>
+
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+        你願意加入聯署，推動企業帶頭走塑嗎？
+      </Heading>
+
+      <Box {...paragraphProps}>
+        <Image src={contentBanner} />
+      </Box>
+
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+        超市走塑 有你有可能
+      </Heading>
+
       <Text as="p" {...paragraphProps}>
-        每年，香港有至少112噸塑膠包裝垃圾流入海洋。超市即棄包裝是塑膠污染的主要源頭之一；這些垃圾入侵食物鏈，您我日常進食的海鮮、食鹽亦無一倖免，暗藏微塑膠！
+        事實上，綠色和平早已向各大超市提供「走塑」方案，亦成功促使個別超市踏出減塑的第一步：有賴逾24,000人聯署、組成「全城超市查膠隊」、發佈
+        <Link
+          href="https://www.greenpeace.org/hongkong/issues/plastics/update/18629/%E3%80%8A%E9%A6%99%E6%B8%AF%E9%80%A3%E9%8E%96%E8%B6%85%E5%B8%82%E8%B5%B0%E5%A1%91%E8%A9%95%E7%B4%9A%E3%80%8B%E5%A0%B1%E5%91%8A/?_gl=1*ulxia2*_gcl_aw*R0NMLjE2Mzg4NTgzNTMuRUFJYUlRb2JDaE1JelpXa2s0Nl85QUlWZ2FxV0NoM1V1Z2h1RUFBWUFTQUFFZ0lRX2ZEX0J3RQ..&_ga=2.13296247.1747380560.1645524117-536208999.1616127401"
+          isExternal
+          color={`theme.${themeInterests}`}
+        >
+          《香港連鎖超市走塑評級報告》
+        </Link>
+        、舉辦
+        <Link
+          href="https://www.greenpeace.org/hongkong/issues/plastics/update/11980/%E8%B6%85%E5%B8%82%E8%B5%B0%E5%A1%91%E4%B8%8D%E5%90%83%E5%8A%9B%E5%8F%88%E8%A8%8E%E5%A5%BD-%E6%93%B4%E5%B1%95%E5%AE%A2%E6%BA%90%E5%A2%9E%E7%94%9F%E6%84%8F"
+          isExternal
+          color={`theme.${themeInterests}`}
+        >
+          跨地超市業界科學峰會
+        </Link>
+        等行動支持，綠色和平在2021年2月成功推動百佳的母公司屈臣氏集團進一步走塑，首設具體走塑目標！2021年9月政府委託可持續發展委員會，展開「管制即棄塑膠」公眾參與，有關文件亦已將蔬果包裝列為考慮管制的即棄塑膠項目，但未有具體目標。
       </Text>
 
       <Box {...paragraphProps}>
+        <Image src={contentBanner2} />
+      </Box>
+
+      <Text as="p" {...paragraphProps}>
+        這是一個好開始，但要取得更大成果，我們需要你加入聯署，推動超市加快改變步伐，追上國際走塑潮流，制定完整減塑藍圖，負起對環境、顧客以至我們下一代的責任。
+      </Text>
+
+      <Box bgColor={'gray.100'} p={4} mb={6} borderRadius={'md'}>
+        <Box {...paragraphProps}>
+          <b>立即聯署要求超市:</b>
+          <UnorderedList pl={2}>
+            <ListItem>
+              立刻減少無謂包裝，設立無塑購物區域或裸買補充站，增加售賣裸裝產品比例
+            </ListItem>
+            <ListItem>
+              訂下整體塑膠減量目標，並制訂明確的路線圖與時間表
+            </ListItem>
+            <ListItem>
+              設定全面淘汰即棄塑膠期限，停用不可回收的塑膠物料，並將可回收的塑膠重用或妥善回收
+            </ListItem>
+            <ListItem>
+              以「可循環再用」為原則，推動以可重用包裝銷售貨品，主動回收並重用顧客退還的包裝，建立可持續的重用系統，達至源頭減廢
+            </ListItem>
+          </UnorderedList>
+        </Box>
+      </Box>
+
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+        請即聯署，推動超市推行走塑措施！
+      </Heading>
+
+      {/* <Box {...paragraphProps}>
         <Grid
           templateRows="repeat(2, 1fr)"
           templateColumns="repeat(6, 1fr)"
@@ -476,32 +554,30 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box bgColor={'gray.100'} p={4} mb={6} borderRadius={'md'}>
-        <Text as="p">
-          <UnorderedList>
-            <ListContent
-              title={'裸買補充站'}
-              value={'增加設有裸買補充站的分店數量最少 10 倍'}
-            />
-            <ListContent title={'減塑蔬果區'} value={'擴展至最少 50 間分店'} />
-            <ListContent
-              title={'走塑優惠'}
-              value={
-                '自備餐盒可享$2折扣，於所有沙律櫃位及最少50%的燒味櫃位全面實施'
-              }
-            />
-            <ListContent title={'環保袋共享站'} value={'擴展至全線分店'} />
-            <ListContent
-              title={'減售原生塑膠即棄品'}
-              value={
-                '淘汰最少 50%以原生塑膠為原料的即棄用品，以其他可重用、紙製、回收或生物基原料代替'
-              }
-            />
-            <ListContent
-              title={'膠袋減量'}
-              value={'用於即棄膠袋及透明平頭袋的原生塑膠量，將分別減少30%及50%'}
-            />
-          </UnorderedList>
-        </Text>
+        <UnorderedList>
+          <ListContent
+            title={'裸買補充站'}
+            value={'增加設有裸買補充站的分店數量最少 10 倍'}
+          />
+          <ListContent title={'減塑蔬果區'} value={'擴展至最少 50 間分店'} />
+          <ListContent
+            title={'走塑優惠'}
+            value={
+              '自備餐盒可享$2折扣，於所有沙律櫃位及最少50%的燒味櫃位全面實施'
+            }
+          />
+          <ListContent title={'環保袋共享站'} value={'擴展至全線分店'} />
+          <ListContent
+            title={'減售原生塑膠即棄品'}
+            value={
+              '淘汰最少 50%以原生塑膠為原料的即棄用品，以其他可重用、紙製、回收或生物基原料代替'
+            }
+          />
+          <ListContent
+            title={'膠袋減量'}
+            value={'用於即棄膠袋及透明平頭袋的原生塑膠量，將分別減少30%及50%'}
+          />
+        </UnorderedList>
       </Box>
 
       <Box {...paragraphProps}>
@@ -545,7 +621,7 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box bgColor={'gray.100'} p={4} mb={6} borderRadius={'md'}>
-        <Text as="p" {...paragraphProps}>
+        <Box {...paragraphProps}>
           <b>立即聯署要求超市：</b>
           <UnorderedList pl={2}>
             <ListItem>
@@ -561,9 +637,9 @@ const Content = ({ theme }) => {
               以「可循環再用」為原則，發展並向員工及公眾推廣可大規模實行的走塑方案
             </ListItem>
           </UnorderedList>
-        </Text>
+        </Box>
 
-        <Text as="p" {...paragraphProps}>
+        <Box {...paragraphProps}>
           <b>我們亦要求政府：</b>
           <UnorderedList pl={2}>
             <ListItem>
@@ -576,7 +652,7 @@ const Content = ({ theme }) => {
               投放資源予社區教育及提供回收減廢設施，例如鼓勵超市設置自取站予人拿取環保袋及器皿等
             </ListItem>
           </UnorderedList>
-        </Text>
+        </Box>
       </Box>
 
       <Text as="p" {...paragraphProps}>
@@ -640,7 +716,7 @@ const Content = ({ theme }) => {
           <br />* 華潤、AEON、city'super及Marks &
           Spencer沒有回覆本次綠色和平發出的超市塑膠使用量問卷調查，本報告的資料大部分是來自於公開可取得之資訊。
         </Text>
-      </Box>
+      </Box> */}
     </>
   );
 };
@@ -649,4 +725,12 @@ const mapStateToProps = ({ status, theme }) => {
   return { status, theme: theme.data };
 };
 
-export default connect(mapStateToProps)(Content);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setScrollToTarget: (data) => {
+      dispatch({ type: statusActions.SET_SCROLL_TO_TARGET, data });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content);
