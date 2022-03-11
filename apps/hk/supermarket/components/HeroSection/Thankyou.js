@@ -48,7 +48,7 @@ function Content({ signup }) {
           textShadow="0 0 1px rgba(0,0,0, .2)"
           mb={4}
           dangerouslySetInnerHTML={{
-            __html: `${FirstName}<br/>感謝您聯署推動超市走塑！`,
+            __html: `${FirstName}，<br/>感謝您聯署推動超市走塑！`,
           }}
         />
       </Box>

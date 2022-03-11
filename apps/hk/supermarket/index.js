@@ -46,7 +46,7 @@ function Index({ setFormContent }) {
   return (
     <>
       <SEO />
-      <Box pos={'relative'}>
+      <Box pos={'relative'} minH={{ base: '400px', md: '520px' }}>
         <Container maxW={`${maxWSize}px`}>
           <HeroSection />
         </Container>
@@ -58,14 +58,6 @@ function Index({ setFormContent }) {
             width="100%"
             objectFit="cover"
             objectPosition="center top"
-          />
-          <Box
-            pos={'absolute'}
-            top={0}
-            right={0}
-            left={0}
-            bottom={0}
-            bgColor={'rgba(0,0,0,0.25)'}
           />
         </Box>
       </Box>
