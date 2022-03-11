@@ -81,8 +81,7 @@ function Index() {
           <Box flex="1" bgColor="#77C1D3" borderRadius="xl" p="4">
             <Text as="p" textStyle={'content'} color={'#FFF'}>
               準備充足走塑的你，最怕店鋪拒收自攜容器<b>「摸門釘」</b>？
-            </Text>
-            <Text as="p" textStyle={'content'} color={'#FFF'}>
+              <br />
               心血來潮走塑的你，最好走塑小店<b>「總有一間喺左近」</b>？
             </Text>
           </Box>
@@ -115,7 +114,11 @@ function Index() {
                 />
               </Box>
               <Box flex={1}>
-                <Text textStyle={'heading'}>邊間走塑小店喺左近 免費幫你搵</Text>
+                <Text textStyle={'heading'}>
+                  邊間走塑小店喺左近
+                  <br />
+                  免費幫你搵
+                </Text>
                 <Text as="p" textStyle={'content'}>
                   只須於WhatsApp分享實時位置，「走塑GPS」將立即搜尋5間鄰近走塑小店，內附地圖連結助你規劃路線光顧心水小店。
                 </Text>
@@ -135,11 +138,8 @@ function Index() {
           </Stack>
 
           <Box>
-            <Stack
-              direction={{ base: 'column', lg: 'row-reverse' }}
-              spacing={{ lg: 12 }}
-            >
-              <Stack direction={{ base: 'column' }} flex={1} spacing="6">
+            <Stack direction={{ base: 'column', lg: 'row-reverse' }}>
+              <Stack px="4" direction={{ base: 'column' }} flex={1} spacing="6">
                 <Box>
                   <Image
                     src={`${publicRuntimeConfig.staticFolder}/images/sticker.svg`}
@@ -153,9 +153,8 @@ function Index() {
                   </Text>
                 </Box>
               </Stack>
-
-              <Box flex={1}>
-                <Stack direction={{ base: 'row' }}>
+              <Box px="4" flex={1}>
+                <Stack spacing="4" direction={{ base: 'row' }}>
                   <Stack textAlign="center" spacing="4">
                     <Image
                       src={`${publicRuntimeConfig.staticFolder}/images/PFC_Sticker_blue.png`}
@@ -164,7 +163,7 @@ function Index() {
                       src={`${publicRuntimeConfig.staticFolder}/images/grade1-ribbon.svg`}
                       px={{ base: 8, md: 12 }}
                     />
-                    <Text textStyle={'content'}>
+                    <Text textStyle={'content'} textAlign="center">
                       完全淘汰即棄塑膠 或<br />
                       提供走塑優惠
                     </Text>
@@ -177,7 +176,7 @@ function Index() {
                       src={`${publicRuntimeConfig.staticFolder}/images/grade2-ribbon.svg`}
                       px={{ base: 8, md: 12 }}
                     />
-                    <Text textStyle={'content'}>
+                    <Text textStyle={'content'} textAlign="center">
                       不主動提供即棄塑膠 或<br />
                       歡迎自備餐具/器皿購物
                     </Text>
@@ -374,17 +373,8 @@ const HeroSection = () => {
 const ShareContent = () => {
   return (
     <Box>
-      <Text
-        as="p"
-        textStyle={'content'}
-        fontWeight={500}
-        color={'#77C1D3'}
-        textAlign={'justify'}
-      >
-        為了方便市民搜尋「全城走塑計劃」超過 1,100
-        {/* <Text fontSize={{ base: '2xl', md: '5xl' }} fontWeight={700} as="span">
-          1,100
-        </Text> */}
+      <Text as="p" textStyle={'content'} fontWeight={500} color={'#77C1D3'}>
+        為了方便市民搜尋「全城走塑計劃」超過 <b>1,100</b>
         間走塑商戶，綠色和平推出「走塑GPS」WhatsApp
         Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到
         <b>「Plastic Free, Care Free」</b>!

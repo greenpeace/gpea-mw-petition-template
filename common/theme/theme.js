@@ -40,9 +40,9 @@ const theme = extendTheme({
     },
     content: {
       fontSize: { base: 'md', md: 'lg' },
-      lineHeight: 1.5,
-      py: 2,
+      lineHeight: 1.7,
       mb: 4,
+      textAlign: 'justify',
     },
   },
   styles,
