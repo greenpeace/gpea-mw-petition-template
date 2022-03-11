@@ -116,7 +116,18 @@ const MyForm = (props) => {
   };
 
   return (
-    <Box>
+    <Box pos={'relative'}>
+      {isLoading && (
+        <Box
+          pos={'absolute'}
+          top={0}
+          right={0}
+          left={0}
+          bottom={0}
+          bgColor={'rgba(255, 255, 255, 0.25)'}
+          zIndex={9}
+        />
+      )}
       <Box py={{ base: 6, md: 8 }} px={{ base: 4, md: 6 }}>
         <Stack spacing="4">
           {numberOfResponses && numberOfTarget ? (
