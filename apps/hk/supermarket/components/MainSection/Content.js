@@ -489,7 +489,7 @@ const Content = ({ theme }) => {
         請即聯署，推動超市推行走塑措施！
       </Heading>
 
-      <Supermarket />
+      {/* <Supermarket /> */}
     </>
   );
 };
