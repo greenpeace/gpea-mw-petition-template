@@ -4,7 +4,6 @@ import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Container, useMediaQuery } from '@chakra-ui/react';
 import TagManager from 'react-gtm-module';
-import axios from 'axios';
 import Wrapper from '@containers/gpsWrapper';
 import HeroSection from '@components/GPS/HeroSection';
 import MainSection from '@components/GPS/MainSection';
@@ -14,9 +13,6 @@ import Head from 'next/head';
 import * as formActions from 'store/actions/action-types/form-actions';
 
 import * as themeActions from 'store/actions/action-types/theme-actions';
-const envProjectName = process.env.projectName;
-const envProjectMarket = process.env.projectMarket;
-const themeEndpointURL = process.env.themeEndpoint;
 
 import heroBannerImage from '@components/GPS/images/banner.jpeg';
 
@@ -56,7 +52,7 @@ function Index({ setFormContent, setTheme, themeData }) {
       TagManager.initialize(tagManagerArgs);
     }
     setTheme(themeData);
-  }, [themeData]);
+  }, []);
 
   useEffect(() => {
     setFormContent(formContent);
@@ -128,7 +124,7 @@ function Index({ setFormContent, setTheme, themeData }) {
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
 
 const mapStateToProps = ({ status, theme, signup }) => {
-  return { status, theme: theme.data, signup: signup.data };
+  return { status, themeData: theme.data, signup: signup.data };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -141,27 +137,5 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-
-export async function getStaticProps() {
-  const singleResult = await axios
-    .get(themeEndpointURL)
-    .then((response) => {
-      return response.data.records.find(
-        (d) =>
-          d.ProjectName === envProjectName && d.Market === envProjectMarket,
-      );
-    })
-    .catch((error) => console.log(error));
-
-  console.log('Building from ' + envProjectMarket + ':' + envProjectName);
-
-  !singleResult && console.warn('PROJECT NAME NOT FOUND');
-
-  return {
-    props: {
-      themeData: singleResult || {},
-    },
-  };
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index);

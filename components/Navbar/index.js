@@ -95,11 +95,12 @@ const DesktopNav = () => {
           {navItem.target === '_blank' ? (
             <a href={navItem.href} target={navItem.target}>
               <Text
-                bgGradient="linear(to-l, #F2994A, #F2994A)"
-                bgClip="text"
+                bgColor="orange.500"
                 fontSize={'md'}
                 fontWeight={700}
-                pl={2}
+                p={2}
+                color={'#FFF'}
+                borderRadius={'8px'}
               >
                 {navItem.label}
               </Text>
