@@ -8,7 +8,6 @@ import {
   Text,
   ListItem,
   UnorderedList,
-  Image,
   AspectRatio,
   Stack,
   Flex,
@@ -23,6 +22,7 @@ import {
   Divider,
 } from '@chakra-ui/react';
 
+import Image from 'next/image';
 import { CTAButton } from '@components/GPS/CTA/button';
 
 const maxWSize = 1200;
@@ -50,6 +50,10 @@ function Index() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { publicRuntimeConfig } = getConfig();
+
+  const imageLoader = ({ src, width, quality }) => {
+    return `${src}?w=${width}&q=${quality || 25}`;
+  };
 
   return (
     <Box pt={{ base: '50px', md: '60px' }}>
@@ -110,7 +114,8 @@ function Index() {
               <Box>
                 <Image
                   src={`${publicRuntimeConfig.staticFolder}/images/placeholder.svg`}
-                  w="48px"
+                  width="48px"
+                  height="48px"
                 />
               </Box>
               <Box flex={1}>
@@ -129,7 +134,9 @@ function Index() {
               <Box borderRadius="xl" overflow="hidden">
                 <Image
                   src={`${publicRuntimeConfig.staticFolder}/images/demo_video.jpg`}
-                  width={'100%'}
+                  layout="responsive"
+                  width={1375}
+                  height={779}
                   onClick={onOpen}
                   cursor={'pointer'}
                 />
@@ -139,11 +146,17 @@ function Index() {
 
           <Box>
             <Stack direction={{ base: 'column', lg: 'row-reverse' }}>
-              <Stack px="4" direction={{ base: 'column' }} flex={1} spacing="6">
+              <Stack
+                px={{ base: 0, md: 4 }}
+                direction={{ base: 'column' }}
+                flex={1}
+                spacing="6"
+              >
                 <Box>
                   <Image
                     src={`${publicRuntimeConfig.staticFolder}/images/sticker.svg`}
-                    w="48px"
+                    width="48px"
+                    height="48px"
                   />
                 </Box>
                 <Box flex={1}>
@@ -153,28 +166,40 @@ function Index() {
                   </Text>
                 </Box>
               </Stack>
-              <Box px="4" flex={1}>
+              <Box px={{ base: 0, md: 4 }} flex={1}>
                 <Stack spacing="4" direction={{ base: 'row' }}>
-                  <Stack textAlign="center" spacing="4">
+                  <Stack flex={1} textAlign="center" spacing="4">
                     <Image
                       src={`${publicRuntimeConfig.staticFolder}/images/PFC_Sticker_blue.png`}
+                      layout="responsive"
+                      width={1440}
+                      height={1440}
                     />
                     <Image
                       src={`${publicRuntimeConfig.staticFolder}/images/grade1-ribbon.svg`}
                       px={{ base: 8, md: 12 }}
+                      layout="responsive"
+                      width={150}
+                      height={30}
                     />
                     <Text textStyle={'content'} textAlign="center">
                       完全淘汰即棄塑膠 或<br />
                       提供走塑優惠
                     </Text>
                   </Stack>
-                  <Stack textAlign="center" spacing="4">
+                  <Stack flex={1} textAlign="center" spacing="4">
                     <Image
                       src={`${publicRuntimeConfig.staticFolder}/images/PFC_Sticker_white.png`}
+                      layout="responsive"
+                      width={1440}
+                      height={1440}
                     />
                     <Image
                       src={`${publicRuntimeConfig.staticFolder}/images/grade2-ribbon.svg`}
                       px={{ base: 8, md: 12 }}
+                      layout="responsive"
+                      width={150}
+                      height={30}
                     />
                     <Text textStyle={'content'} textAlign="center">
                       不主動提供即棄塑膠 或<br />
@@ -190,7 +215,8 @@ function Index() {
             <Box>
               <Image
                 src={`${publicRuntimeConfig.staticFolder}/images/like.svg`}
-                w="48px"
+                width="48px"
+                height="48px"
               />
             </Box>
             <Box flex={1}>
@@ -210,16 +236,28 @@ function Index() {
                 <Box maxW="80%">
                   <Image
                     src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_5.jpg`}
+                    layout="responsive"
+                    width={1920}
+                    height={1280}
+                    priority={true}
                   />
                 </Box>
                 <Box maxW="80%" alignSelf={'flex-end'}>
                   <Image
                     src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_8.jpg`}
+                    layout="intrinsic"
+                    width={1920}
+                    height={1280}
+                    priority={true}
                   />
                 </Box>
                 <Box maxW="80%">
                   <Image
                     src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_17.jpg`}
+                    layout="responsive"
+                    width={1920}
+                    height={1280}
+                    priority={true}
                   />
                 </Box>
               </Stack>
@@ -337,7 +375,7 @@ const HeroSection = () => {
             </Box>
           </Box>
           <Box flex={1} alignSelf={{ base: 'flex-end', md: 'center' }} pt={6}>
-            <Stack direction={'row'} align={'center'} spacing={6}>
+            <Stack direction={'row'} align={'center'} spacing={6} mb={'-5px'}>
               <Box d={{ base: 'block', lg: 'none' }}>
                 {' '}
                 <Box textAlign="center" pt={4}>
@@ -354,12 +392,15 @@ const HeroSection = () => {
                   </Text>
                 </Box>
               </Box>
-              <Box>
-                {' '}
+              <Box
+                className="mainVisualWrap"
+                maxW={{ base: '160px', lg: '365px' }}
+              >
                 <Image
                   src={`${publicRuntimeConfig.staticFolder}/images/Plastic-free_GPS.svg`}
-                  maxW={{ base: '160px', lg: '360px' }}
-                  ml={{ lg: 20 }}
+                  width={533}
+                  height={767}
+                  layout={'intrinsic'}
                 />
               </Box>
             </Stack>
