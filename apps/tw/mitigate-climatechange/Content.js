@@ -39,12 +39,18 @@ const Content = ({ theme }) => {
       </Box>
 
       <Text as="p" {...paragraphProps}>
-        一切的災難與悲劇以「氣候變遷」概括，似乎太過溫和，更驚悚的是，這一切僅是全球升溫
-        1 度所帶來的影響，此時此刻，我們正自殺式的邁向升溫 3 度！
+        一切的災難與悲劇以「氣候變遷」概括，似乎太過溫和，更驚悚的是，
+        <b>
+          這一切僅是全球升溫 1 度所帶來的影響，此時此刻，我們正自殺式的邁向升溫
+          3 度！
+        </b>
       </Text>
       <Text as="p" {...paragraphProps}>
         科學家已向世界發出紅色警告：如果我們無法即刻減碳、在 2050
-        年前達成淨零碳排，屆時氣候系統恐將崩潰，伴隨而來的是大規模的生物滅絕、食物鏈與生態系巨變與成千上萬的氣候難民。當災難電影成為現實生活，試想您的晚年與您的後代，將會生活在何等可怕的氣候環境中？
+        年前達成淨零碳排，屆時氣候系統恐將崩潰，伴隨而來的是大規模的生物滅絕、食物鏈與生態系巨變與成千上萬的氣候難民。
+        <b>
+          當災難電影成為現實生活，試想您的晚年與您的後代，將會生活在何等可怕的氣候環境中？
+        </b>
       </Text>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -61,7 +67,8 @@ const Content = ({ theme }) => {
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        現在就加入連署，聲援綠色和平的氣候行動，讓紊亂的氣候系統能因政府與企業的改變回到正軌，讓您我的努力，得以造福世間萬物在地球上生生不息。
+        <b>現在就加入連署，聲援綠色和平的氣候行動</b>
+        ，讓紊亂的氣候系統能因政府與企業的改變回到正軌，讓您我的努力，得以造福世間萬物在地球上生生不息。
       </Text>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -106,7 +113,7 @@ const Content = ({ theme }) => {
         <u>我們需要您加入連署，讓企業看見消費者對使用永續電力的實質肯定！</u>
       </Text>
 
-      <Text as="p" {...subHeadingProps}>
+      {/* <Text as="p" {...subHeadingProps}>
         317 位老師使用綠色和平線上氣候教育平台，還不夠！
       </Text>
 
@@ -119,11 +126,13 @@ const Content = ({ theme }) => {
       <Text as="p" {...paragraphProps}>
         我們的目標是以平台為起點，讓氣候教育最終能成為法定課綱，而這
         <u>需要您加入連署，讓政府意識到臺灣氣候教育的匱乏！</u>
-      </Text>
+      </Text> */}
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         <Text as="span" color={`theme.${themeInterests}`}>
-          您的連署，讓我們做的更快、更多、更好
+          您的連署
+          <br />
+          讓我們做的更快、更多、更好
         </Text>
       </Heading>
 
@@ -135,7 +144,9 @@ const Content = ({ theme }) => {
         <Text as="span" color={`theme.${themeInterests}`}>
           現在就連署
           <br />
-          讓氣候問題因您的一小步，帶來看的見的改變與進步！
+          讓氣候問題因您的一小步
+          <br />
+          帶來看的見的改變與進步！
         </Text>
       </Heading>
     </>

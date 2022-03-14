@@ -16,7 +16,7 @@
   "label_year_of_birth_optional": "出生年份（選填）",
   "label_counties": "居住縣市",
   "label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/' target='_blank'>隱私保護政策</a>。",
-  "label_namelist": "本人同意綠色和平於本專案進行期間，基於專案需求、政策建議等目的，將本人此次連署留下的資料（包括但不限於姓名），以紙本、電子、口頭或其他適當方式，列於支持者名單中，並利用於本會、桃園市政府、及前揭機構之所在地區。",
+  "label_namelist": "本人同意綠色和平於本專案進行期間，基於專案需求、政策建議等目的，將本人此次連署留下的資料（包括但不限於姓名），以紙本、電子、口頭或其他適當方式，列於支持者名單中，並利用於本會及訴求機構之所在地區。",
 
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
@@ -32,7 +32,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "立即捐助",
-  "donateURL": "https://supporter.ea.greenpeace.org/tw/s/donate/alt-layout-new?campaign=mitigate_climatechange",
+  "donateURL": "https://supporter.ea.greenpeace.org/tw/s/donate/alt-layout?campaign=mitigate_climatechange",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",

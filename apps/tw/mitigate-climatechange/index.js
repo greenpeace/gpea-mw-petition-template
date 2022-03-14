@@ -19,7 +19,9 @@ import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/gp-climate-banner.jpg';
+// import heroBannerImage from './images/gp-climate-banner.jpg';
+import heroBannerImageA from './images/climate_banner_a_web.jpg';
+import heroBannerImageB from './images/climate_petition_banner_b_web.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
@@ -42,25 +44,49 @@ function Index({ status, theme, setFormContent, signup }) {
   return (
     <>
       <SEO />
-      {submitted ? (
-        <ThanksBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: `${
-              FirstName ? FirstName : '綠色和平支持者'
-            }，謝謝您參與這次的連署`,
-            description: ['能更進一步支持我們的氣候行動嗎？'],
-          }}
-        />
-      ) : (
-        <HeroBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: '<b>立即連署<br/>您能逆轉氣候危機</b>',
-            description: [''],
-          }}
-        />
-      )}
+      <div className="banner-a" style={{ display: 'none' }}>
+        {submitted ? (
+          <ThanksBanner
+            bgImage={heroBannerImageA}
+            content={{
+              title: `${
+                FirstName ? FirstName : '綠色和平支持者'
+              }，謝謝您參與這次的連署`,
+              description: ['能更進一步支持我們的氣候行動嗎？'],
+            }}
+          />
+        ) : (
+          <HeroBanner
+            bgImage={heroBannerImageA}
+            content={{
+              title: '<b>立即連署<br/>您能扭轉氣候危機</b>',
+              description: [''],
+            }}
+          />
+        )}
+      </div>
+      <div className="banner-b">
+        {submitted ? (
+          <ThanksBanner
+            bgImage={heroBannerImageB}
+            content={{
+              title: `${
+                FirstName ? FirstName : '綠色和平支持者'
+              }，謝謝您參與這次的連署`,
+              description: ['能更進一步支持我們的氣候行動嗎？'],
+            }}
+          />
+        ) : (
+          <HeroBanner
+            bgImage={heroBannerImageB}
+            content={{
+              title: '<b>立即連署<br/>您能扭轉氣候危機</b>',
+              description: [''],
+            }}
+          />
+        )}
+      </div>
+
       <PageContainer>
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>

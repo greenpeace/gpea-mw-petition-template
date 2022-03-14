@@ -18,10 +18,10 @@ const SEO = () => {
         }}
       />
       {/* title */}
-      <title>立即連署！您能逆轉氣候危機 - Greenpeace 綠色和平 | 台灣</title>
+      <title>立即連署！您能扭轉氣候危機 - Greenpeace 綠色和平 | 台灣</title>
       <meta
         property="og:title"
-        content="立即連署！您能逆轉氣候危機 - Greenpeace 綠色和平 | 台灣"
+        content="立即連署！您能扭轉氣候危機 - Greenpeace 綠色和平 | 台灣"
       />
       <meta
         name="description"
