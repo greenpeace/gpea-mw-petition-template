@@ -14,6 +14,11 @@ import StepProgress from '@components/Progress/StepProgress';
 import MessageSection from './messageSection';
 import SubmitSection from './submitSection';
 
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
+
 const DonateForm = (props) => {
   const {
     formContent: {
@@ -66,8 +71,9 @@ const DonateForm = (props) => {
               {donate_header && (
                 <Box>
                   <Heading
-                    fontSize={{ base: '2xl', xl: '3xl' }}
-                    fontWeight={700}
+                    as="h2"
+                    {...headingProps}
+                    mb="0"
                     dangerouslySetInnerHTML={{ __html: donate_header }}
                     color={`${themeInterests}.500`}
                   />
@@ -78,7 +84,8 @@ const DonateForm = (props) => {
                 <Box key={i}>
                   <Text
                     as="p"
-                    fontSize={{ base: 'sm', xl: 'md' }}
+                    {...paragraphProps}
+                    mb="0"
                     dangerouslySetInnerHTML={{ __html: d }}
                   />
                 </Box>
@@ -145,7 +152,7 @@ const DonateForm = (props) => {
                             amount === d.value
                               ? `${themeInterests}.500`
                               : isOther
-                              ? '#FFF'
+                              ? '#fff'
                               : 'gray.200'
                           }
                           borderRadius={'md'}
