@@ -39,8 +39,6 @@
   "whatsappURL": "",
 
   "counties": [
-    { "label": "桃園市", "value": "桃園市" },
-    { "label": "—————", "value": "—————", "disabled": true },
     { "label": "臺北市", "value": "臺北市" },
     { "label": "新北市", "value": "新北市" },
     { "label": "基隆市", "value": "基隆市" },

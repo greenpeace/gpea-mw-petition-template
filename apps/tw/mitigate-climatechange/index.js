@@ -21,7 +21,7 @@ import * as formActions from 'store/actions/action-types/form-actions';
 
 // import heroBannerImage from './images/gp-climate-banner.jpg';
 import heroBannerImageA from './images/climate_banner_a_web.jpg';
-import heroBannerImageB from './images/climate_petition_banner_b_web.jpg';
+import heroBannerImageB from './images/climate_petition_banner.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
