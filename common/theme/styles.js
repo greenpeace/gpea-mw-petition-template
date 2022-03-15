@@ -19,13 +19,16 @@ const styles = {
       pointerEvents: 'none',
     },
     '#nprogress .bar': {
-      background: 'brand.400',
+      background: 'brand.500',
       position: 'fixed',
       zIndex: '1031',
       top: 0,
       left: 0,
       width: '100%',
       height: '2px',
+    },
+    '#nprogress .spinner': {
+      display: 'none',
     },
   },
 };
