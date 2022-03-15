@@ -7,16 +7,14 @@ import {
   Collapse,
   useColorModeValue,
   useDisclosure,
-  Image,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { useInView } from 'react-intersection-observer';
-import getConfig from 'next/config';
 import Link from 'next/link';
+import { imageLoader } from 'common/utils';
+import Image from 'next/image';
 
 export default function WithSubnavigation() {
-  const { publicRuntimeConfig } = getConfig();
-
   const { isOpen, onToggle } = useDisclosure();
   const { ref, inView, entry } = useInView({
     /* Optional options */
@@ -54,22 +52,25 @@ export default function WithSubnavigation() {
             }}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Link
-            href={'/'}
-            sx={{
-              ':focus:not(:focus-visible)': {
-                shadow: 'none',
-              },
-            }}
-          >
+        <Link
+          href={'/'}
+          sx={{
+            ':focus:not(:focus-visible)': {
+              shadow: 'none',
+            },
+          }}
+          cursor={'pointer'}
+        >
+          <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
             <Image
-              src={`${publicRuntimeConfig.staticFolder}/images/greenpeace_logo.svg`}
-              maxW={{ base: '120px', md: '160px' }}
-              cursor={'pointer'}
+              loader={imageLoader}
+              src={`/images/greenpeace_logo.svg`}
+              layout="intrinsic"
+              width={'160px'}
+              height={'30px'}
             />
-          </Link>
-        </Flex>
+          </Flex>
+        </Link>
 
         <Box d={{ base: 'none', md: 'block' }}>
           <DesktopNav />

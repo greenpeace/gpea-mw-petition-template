@@ -10,11 +10,11 @@ import MainSection from '@components/GPS/MainSection';
 import Form from '@components/GPS/GPSForm';
 import formContent from '@components/GPS/formContent';
 import Head from 'next/head';
+
+import { imageLoader } from 'common/utils';
 import * as formActions from 'store/actions/action-types/form-actions';
-
 import * as themeActions from 'store/actions/action-types/theme-actions';
-
-import heroBannerImage from '@components/GPS/images/banner.jpeg';
+import Image from 'next/image';
 
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
@@ -88,15 +88,31 @@ function Index({ setFormContent, setTheme, themeData }) {
           content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/a5120475-gp02i8e_high_res.jpg"
         />
       </Head>
-      <Box bgImage={heroBannerImage} bgRepeat={'no-repeat'} bgSize={'cover'}>
-        <Container maxW={`${maxWSize}px`}>
+      <Box w={'100%'} pos={'relative'} className="bannerSection">
+        <Container maxW={`${maxWSize}px`} pos={'relative'} zIndex={99}>
+          {' '}
+          {/** bigger than navbar */}
           <HeroSection />
         </Container>
+
+        <Image
+          loader={imageLoader}
+          src="/images/banner.jpeg"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+        />
       </Box>
 
       {/** Mobile form */}
       <Box ref={mobileForm}>
-        <Box d={{ base: 'block', lg: 'none' }} mt={-2} ref={ref}>
+        <Box
+          d={{ base: 'block', lg: 'none' }}
+          mt={-2}
+          ref={ref}
+          pos={'relative'}
+          zIndex={2}
+        >
           <Form />
         </Box>
       </Box>

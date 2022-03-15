@@ -6,7 +6,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import borrow from '@components/GPS/images/plastics_borrow_event.jpg';
+// import borrow from '@components/GPS/images/plastics_borrow_event.jpg';
 
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
@@ -33,9 +33,9 @@ const Thankyou = ({ theme, signup }) => {
         您的捐款將直接資助我們持續調查塑膠污染問題、督促企業和政府推出積極的減塑目標與政策，以及推動超市淘汰即棄塑膠、招募更多商戶成為走塑店鋪，邁向全城走塑。
       </Text>
 
-      <Box {...paragraphProps}>
+      {/* <Box {...paragraphProps}>
         <Image src={borrow} />
-      </Box>
+      </Box> */}
 
       <Heading {...headingProps}>
         即棄塑膠永久傷害海洋、環境與人體健康，您願意出手減緩危機嗎？

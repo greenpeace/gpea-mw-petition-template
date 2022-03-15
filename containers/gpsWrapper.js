@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect, dispatch } from 'react-redux';
 import { Box } from '@chakra-ui/react';
 import Nav from 'components/Navbar';
-import PetitionFooter from '@containers/petitionFooter';
+import PetitionFooter from 'containers/petitionFooter';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 
 const envProjectName = process.env.projectName;

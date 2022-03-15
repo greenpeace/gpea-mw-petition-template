@@ -17,7 +17,9 @@ import {
 
 import { headingProps } from '@common/styles/components/contentStyle';
 import { CTAButton } from '@components/GPS/CTA/button';
-import heroBannerImage from '@components/GPS/images/banner.jpeg';
+import { imageLoader } from 'common/utils';
+
+import Image from 'next/image';
 
 const maxWSize = 1200;
 
@@ -66,8 +68,13 @@ function Faq() {
         />
       </Head>
 
-      <Box bgImage={heroBannerImage} bgRepeat={'no-repeat'} bgSize={'cover'}>
-        <Container maxW={`${maxWSize}px`}>
+      <Box
+        w={'100%'}
+        pos={'relative'}
+        overflow={'hidden'}
+        className="bannerSection"
+      >
+        <Container maxW={`${maxWSize}px`} pos={`relative`} zIndex={2}>
           <Box py={20} w={{ md: 'md', xl: 'xl' }}>
             <Box>
               <Heading
@@ -75,12 +82,20 @@ function Faq() {
                 color={'white'}
                 fontSize={{ base: '2xl', md: '4xl' }}
                 dangerouslySetInnerHTML={{
-                  __html: '走塑GPS常見問題',
+                  __html: '走塑GPS使用教學',
                 }}
               />
             </Box>
           </Box>
         </Container>
+        <Image
+          loader={imageLoader}
+          src="/images/banner.jpeg"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+        />
+        {/** https://image-component.nextjs.gallery/background */}
       </Box>
       <Container maxW={`${maxWSize}px`} py={6}>
         <Flex

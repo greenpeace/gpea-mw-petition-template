@@ -30,7 +30,7 @@ function Content({ status, theme }) {
       };
 
   useEffect(() => {
-    setTimeout(() => setReadyToShow(true), 200);
+    setTimeout(() => setReadyToShow(true), 500);
   }, []);
 
   return (

@@ -30,3 +30,9 @@ export async function clearURL(url, params) {
 
   return getURL.toString();
 }
+
+export const imageLoader = ({ src, width, quality }) => {
+  return `${process.env.NEXT_PUBLIC_BASE_PATH}${src}?w=${width}&q=${
+    quality || 75
+  }`;
+};

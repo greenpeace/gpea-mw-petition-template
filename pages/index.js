@@ -1,7 +1,6 @@
 import React from 'react';
 import Wrapper from '@containers/gpsWrapper';
 import Head from 'next/head';
-import getConfig from 'next/config';
 import {
   Container,
   Box,
@@ -24,6 +23,7 @@ import {
 
 import Image from 'next/image';
 import { CTAButton } from '@components/GPS/CTA/button';
+import { imageLoader } from 'common/utils';
 
 const maxWSize = 1200;
 const trianglePropsMD = {
@@ -48,13 +48,6 @@ const triangleProps = {
 
 function Index() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const { publicRuntimeConfig } = getConfig();
-
-  const imageLoader = ({ src, width, quality }) => {
-    return `${src}?w=${width}&q=${quality || 25}`;
-  };
-
   return (
     <Box pt={{ base: '50px', md: '60px' }}>
       {' '}
@@ -113,7 +106,8 @@ function Index() {
             <Stack direction={{ base: 'column' }} flex={1} spacing="6">
               <Box>
                 <Image
-                  src={`${publicRuntimeConfig.staticFolder}/images/placeholder.svg`}
+                  loader={imageLoader}
+                  src={`/images/placeholder.svg`}
                   width="48px"
                   height="48px"
                 />
@@ -133,7 +127,8 @@ function Index() {
             <Box flex={1}>
               <Box borderRadius="xl" overflow="hidden">
                 <Image
-                  src={`${publicRuntimeConfig.staticFolder}/images/demo_video.jpg`}
+                  loader={imageLoader}
+                  src={`/images/demo_video.jpg`}
                   layout="responsive"
                   width={1375}
                   height={779}
@@ -154,7 +149,8 @@ function Index() {
               >
                 <Box>
                   <Image
-                    src={`${publicRuntimeConfig.staticFolder}/images/sticker.svg`}
+                    loader={imageLoader}
+                    src={`/images/sticker.svg`}
                     width="48px"
                     height="48px"
                   />
@@ -170,13 +166,15 @@ function Index() {
                 <Stack spacing="4" direction={{ base: 'row' }}>
                   <Stack flex={1} textAlign="center" spacing="4">
                     <Image
-                      src={`${publicRuntimeConfig.staticFolder}/images/PFC_Sticker_blue.png`}
+                      loader={imageLoader}
+                      src={`/images/PFC_Sticker_blue.png`}
                       layout="responsive"
                       width={1440}
                       height={1440}
                     />
                     <Image
-                      src={`${publicRuntimeConfig.staticFolder}/images/grade1-ribbon.svg`}
+                      loader={imageLoader}
+                      src={`/images/grade1-ribbon.svg`}
                       px={{ base: 8, md: 12 }}
                       layout="responsive"
                       width={150}
@@ -189,13 +187,15 @@ function Index() {
                   </Stack>
                   <Stack flex={1} textAlign="center" spacing="4">
                     <Image
-                      src={`${publicRuntimeConfig.staticFolder}/images/PFC_Sticker_white.png`}
+                      loader={imageLoader}
+                      src={`/images/PFC_Sticker_white.png`}
                       layout="responsive"
                       width={1440}
                       height={1440}
                     />
                     <Image
-                      src={`${publicRuntimeConfig.staticFolder}/images/grade2-ribbon.svg`}
+                      loader={imageLoader}
+                      src={`/images/grade2-ribbon.svg`}
                       px={{ base: 8, md: 12 }}
                       layout="responsive"
                       width={150}
@@ -214,7 +214,8 @@ function Index() {
           <Stack direction={{ base: 'column' }} spacing="6">
             <Box>
               <Image
-                src={`${publicRuntimeConfig.staticFolder}/images/like.svg`}
+                loader={imageLoader}
+                src={`/images/like.svg`}
                 width="48px"
                 height="48px"
               />
@@ -235,7 +236,8 @@ function Index() {
               <Stack spacing="6" direction="column">
                 <Box maxW="80%">
                   <Image
-                    src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_5.jpg`}
+                    loader={imageLoader}
+                    src={`/images/20210508_SSPHunting_5.jpg`}
                     layout="responsive"
                     width={1920}
                     height={1280}
@@ -244,7 +246,8 @@ function Index() {
                 </Box>
                 <Box maxW="80%" alignSelf={'flex-end'}>
                   <Image
-                    src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_8.jpg`}
+                    loader={imageLoader}
+                    src={`/images/20210508_SSPHunting_8.jpg`}
                     layout="intrinsic"
                     width={1920}
                     height={1280}
@@ -253,7 +256,8 @@ function Index() {
                 </Box>
                 <Box maxW="80%">
                   <Image
-                    src={`${publicRuntimeConfig.staticFolder}/images/20210508_SSPHunting_17.jpg`}
+                    loader={imageLoader}
+                    src={`/images/20210508_SSPHunting_17.jpg`}
                     layout="responsive"
                     width={1920}
                     height={1280}
@@ -304,7 +308,6 @@ function Index() {
 }
 
 const HeroSection = () => {
-  const { publicRuntimeConfig } = getConfig();
   {
     /** #F9BD82 */
   }
@@ -397,7 +400,8 @@ const HeroSection = () => {
                 maxW={{ base: '160px', lg: '365px' }}
               >
                 <Image
-                  src={`${publicRuntimeConfig.staticFolder}/images/Plastic-free_GPS.svg`}
+                  loader={imageLoader}
+                  src={`/images/Plastic-free_GPS.svg`}
                   width={533}
                   height={767}
                   layout={'intrinsic'}

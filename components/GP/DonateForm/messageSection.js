@@ -1,21 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  Box,
-  Text,
-  Stack,
-  Heading,
-  Image,
-  Center,
-  Button,
-} from '@chakra-ui/react';
+import { Box, Text, Stack, Heading, Center, Button } from '@chakra-ui/react';
 import * as formActions from 'store/actions/action-types/form-actions';
 import { OrangeCTA, OutlineCTA } from '@common/styles/components/formStyle';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
-import heartIcon from './images/heart-icon.png';
+import { imageLoader } from 'common/utils';
+import Image from 'next/image';
 
 const DonateForm = (props) => {
   const {
@@ -33,7 +26,13 @@ const DonateForm = (props) => {
   return (
     <Box py="6" px="4">
       <Center>
-        <Image src={heartIcon} w={'64px'} />
+        <Image
+          loader={imageLoader}
+          src={`/images/heart-icon.png`}
+          layout="intrinsic"
+          width={100}
+          height={84}
+        />
       </Center>
       <Heading
         {...headingProps}
