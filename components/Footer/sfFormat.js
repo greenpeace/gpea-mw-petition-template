@@ -32,7 +32,7 @@ const SFFormat = ({ locale }) => {
         <Box pt={4} pb={6}>
           <Image
             loader={imageLoader}
-            src={`/images/logo/GP-logo-2019-white-[web].png`}
+            src="https://www.greenpeace.org/hongkong/wp-content/themes/planet4-child-theme-hongkong/static/images/logo_zh_gp_w%20footer.svg"
             layout="intrinsic"
             width={'160px'}
             height={'26px'}
