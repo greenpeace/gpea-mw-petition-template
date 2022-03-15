@@ -31,6 +31,8 @@ export default function WithSubnavigation() {
       bgColor={'#FFF'}
       py={1}
       ref={ref}
+      borderBottom="1px"
+      borderColor="gray.100"
     >
       <Flex px={{ base: 4 }} align={'center'} justifyContent={'space-around'}>
         <Flex
@@ -99,9 +101,10 @@ const DesktopNav = () => {
                 bgColor="orange.500"
                 fontSize={'md'}
                 fontWeight={700}
-                p={2}
-                color={'#FFF'}
-                borderRadius={'8px'}
+                px={4}
+                py={2}
+                color={'white'}
+                borderRadius={'4px'}
               >
                 {navItem.label}
               </Text>
@@ -111,7 +114,6 @@ const DesktopNav = () => {
               <Text
                 p={2}
                 fontSize={'md'}
-                fontWeight={700}
                 color={linkColor}
                 _hover={{
                   textDecoration: 'none',
@@ -206,7 +208,7 @@ const NAV_ITEMS = [
   },
   {
     label: '捐助支持',
-    href: 'https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw',
+    href: 'https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw&ref=gps-header-donate-button',
     target: '_blank',
   },
 ];
