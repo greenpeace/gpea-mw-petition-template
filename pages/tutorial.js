@@ -46,7 +46,7 @@ function Tutorial() {
         </Container>
         <Image
           loader={imageLoader}
-          src="/images/banner.jpeg"
+          src="/images/recycle-webinar-banner.jpg"
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -57,6 +57,7 @@ function Tutorial() {
         <Flex
           flexDirection={{ base: 'column', md: 'row' }}
           justifyContent={'space-between'}
+          alignItems={'center'}
           p={6}
           // bgColor={'#77C1D3'}
           // borderRadius={8}
@@ -101,8 +102,11 @@ function Tutorial() {
           <Box borderTop={'1px solid #F2F2F2'} mt={6} py={6}>
             <Box mb={6}>
               <Text as="p" fontSize="lg" mb="4">
+                <b>iOS：</b>
+              </Text>
+              <Text as="p" fontSize="lg" mb="4">
                 {
-                  'iOS: 點選左下角「+」號 > 選擇「位置 / Location」 > 選擇「傳送您目前的位置 / Send Your Current Location'
+                  '點選左下角「+」號 > 選擇「位置 / Location」 > 選擇「傳送您目前的位置 / Send Your Current Location'
                 }
               </Text>
             </Box>
@@ -120,8 +124,11 @@ function Tutorial() {
           <Box borderTop={'1px solid #F2F2F2'} mt={6} py={6}>
             <Box mb={6}>
               <Text as="p" fontSize="lg" mb="4">
+                <b>Android：</b>
+              </Text>
+              <Text as="p" fontSize="lg" mb="4">
                 {
-                  'Android: 點擊「萬字夾」圖示 > 選擇「位置 / Location」 > 選擇「傳送您目前的位置 / Send Your Current Location)'
+                  '點擊「萬字夾」圖示 > 選擇「位置 / Location」 > 選擇「傳送您目前的位置 / Send Your Current Location)'
                 }
               </Text>
             </Box>

@@ -75,7 +75,7 @@ function Index() {
           flexDirection={{ base: 'column', lg: 'row' }}
           align="center"
         >
-          <Box flex="1" borderLeft="4px" borderColor="#77C1D3" p="6">
+          <Box flex="1" borderLeft="4px" borderColor="#77C1D3" p="6" py="8">
             <Text as="p" textStyle={'content'} mb="0">
               準備充足走塑的你，最怕店鋪拒收自攜容器<b>「摸門釘」</b>？
               <br />
@@ -83,7 +83,22 @@ function Index() {
             </Text>
           </Box>
           <Box flex="1" p="4">
-            <ShareContent />
+            <Text as="p" textStyle={'content'}>
+              為了方便市民搜尋「全城走塑計劃」超過 <b>1,100</b>
+              間走塑商戶，綠色和平推出「走塑GPS」WhatsApp
+              Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到
+              <Text as="span" fontWeight="bold">
+                「Plastic Free, Care Free」
+              </Text>
+              !
+            </Text>
+            <Text>
+              <UnorderedList pl={2} mb={4}>
+                <ListItem>即時定位：5間最就近走塑小店</ListItem>
+                <ListItem>資訊齊全：地址、地圖、走塑等級</ListItem>
+                <ListItem>費用全免！</ListItem>
+              </UnorderedList>
+            </Text>
           </Box>
         </Stack>
 
@@ -101,7 +116,7 @@ function Index() {
           <CTAButton />
         </Box>
 
-        <Stack spacing={'12'} py={{ base: 6, lg: 12 }}>
+        <Stack spacing={'60px'} py={{ base: 6, lg: 12 }}>
           <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
             <Stack direction={{ base: 'column' }} flex={1} spacing="6">
               <Box>
@@ -110,6 +125,7 @@ function Index() {
                   src={`/images/placeholder.svg`}
                   width="48px"
                   height="48px"
+                  pl="2"
                 />
               </Box>
               <Box flex={1}>
@@ -123,7 +139,6 @@ function Index() {
                 </Text>
               </Box>
             </Stack>
-
             <Box flex={1}>
               <Box borderRadius="xl" overflow="hidden">
                 <Image
@@ -139,77 +154,76 @@ function Index() {
             </Box>
           </Stack>
 
-          <Box>
-            <Stack direction={{ base: 'column', lg: 'row-reverse' }}>
-              <Stack
-                px={{ base: 0, md: 4 }}
-                direction={{ base: 'column' }}
-                flex={1}
-                spacing="6"
-              >
-                <Box>
-                  <Image
-                    loader={imageLoader}
-                    src={`/images/sticker.svg`}
-                    width="48px"
-                    height="48px"
-                  />
-                </Box>
-                <Box flex={1}>
-                  <Text textStyle={'heading'}>走塑兩級制 唔使心大心細</Text>
-                  <Text as="p" textStyle={'content'}>
-                    綠色和平以「全城走塑」白色及藍色徽章貼紙，標示店鋪不同程度的走塑措施。「走塑GPS」亦會於搜尋結果顯示店鋪走塑等級，自備容器購物亦得，享受走塑優惠亦得！
-                  </Text>
-                </Box>
-              </Stack>
-              <Box px={{ base: 0, md: 4 }} flex={1}>
-                <Stack spacing="4" direction={{ base: 'row' }}>
-                  <Stack flex={1} textAlign="center" spacing="4">
-                    <Image
-                      loader={imageLoader}
-                      src={`/images/PFC_Sticker_blue.png`}
-                      layout="responsive"
-                      width={1440}
-                      height={1440}
-                    />
-                    <Image
-                      loader={imageLoader}
-                      src={`/images/grade1-ribbon.svg`}
-                      px={{ base: 8, md: 12 }}
-                      layout="responsive"
-                      width={150}
-                      height={30}
-                    />
-                    <Text textStyle={'content'} textAlign="center">
-                      完全淘汰即棄塑膠 或<br />
-                      提供走塑優惠
-                    </Text>
-                  </Stack>
-                  <Stack flex={1} textAlign="center" spacing="4">
-                    <Image
-                      loader={imageLoader}
-                      src={`/images/PFC_Sticker_white.png`}
-                      layout="responsive"
-                      width={1440}
-                      height={1440}
-                    />
-                    <Image
-                      loader={imageLoader}
-                      src={`/images/grade2-ribbon.svg`}
-                      px={{ base: 8, md: 12 }}
-                      layout="responsive"
-                      width={150}
-                      height={30}
-                    />
-                    <Text textStyle={'content'} textAlign="center">
-                      不主動提供即棄塑膠 或<br />
-                      歡迎自備餐具/器皿購物
-                    </Text>
-                  </Stack>
-                </Stack>
+          <Stack direction={{ base: 'column', lg: 'row-reverse' }} spacing="6">
+            <Stack
+              px={{ base: 0, md: 4 }}
+              direction={{ base: 'column' }}
+              flex={1}
+              spacing="6"
+            >
+              <Box>
+                <Image
+                  loader={imageLoader}
+                  src={`/images/sticker.svg`}
+                  width="48px"
+                  height="48px"
+                  pl="2"
+                />
+              </Box>
+              <Box flex={1}>
+                <Text textStyle={'heading'}>走塑兩級制 唔使心大心細</Text>
+                <Text as="p" textStyle={'content'}>
+                  綠色和平以「全城走塑」白色及藍色徽章貼紙，標示店鋪不同程度的走塑措施。「走塑GPS」亦會於搜尋結果顯示店鋪走塑等級，自備容器購物亦得，享受走塑優惠亦得！
+                </Text>
               </Box>
             </Stack>
-          </Box>
+            <Box px={{ base: 0, md: 4 }} flex={1}>
+              <Stack spacing="4" direction={{ base: 'row' }}>
+                <Stack flex={1} textAlign="center" spacing="4">
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/PFC_Sticker_blue.png`}
+                    layout="responsive"
+                    width={1440}
+                    height={1440}
+                  />
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/grade1-ribbon.svg`}
+                    px={{ base: 8, md: 12 }}
+                    layout="responsive"
+                    width={150}
+                    height={30}
+                  />
+                  <Text textStyle={'content'} textAlign="center">
+                    完全淘汰即棄塑膠 或<br />
+                    提供走塑優惠
+                  </Text>
+                </Stack>
+                <Stack flex={1} textAlign="center" spacing="4">
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/PFC_Sticker_white.png`}
+                    layout="responsive"
+                    width={1440}
+                    height={1440}
+                  />
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/grade2-ribbon.svg`}
+                    px={{ base: 8, md: 12 }}
+                    layout="responsive"
+                    width={150}
+                    height={30}
+                  />
+                  <Text textStyle={'content'} textAlign="center">
+                    不主動提供即棄塑膠 或<br />
+                    歡迎自備餐具/器皿購物
+                  </Text>
+                </Stack>
+              </Stack>
+            </Box>
+          </Stack>
 
           <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
             <Stack direction={{ base: 'column' }} flex={1} spacing="6">
@@ -219,6 +233,7 @@ function Index() {
                   src={`/images/like.svg`}
                   width="48px"
                   height="48px"
+                  pl="2"
                 />
               </Box>
               <Box flex={1}>
@@ -415,27 +430,6 @@ const HeroSection = () => {
           </Box>
         </Flex>
       </Container>
-    </Box>
-  );
-};
-
-const ShareContent = () => {
-  return (
-    <Box>
-      <Text as="p" textStyle={'content'}>
-        為了方便市民搜尋「全城走塑計劃」超過 <b>1,100</b>
-        間走塑商戶，綠色和平推出「走塑GPS」WhatsApp
-        Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到
-        <Text as="span" fontWeight="bold">
-          「Plastic Free, Care Free」
-        </Text>
-        !
-      </Text>
-      <UnorderedList pl={2} mb={4}>
-        <ListItem>即時定位：5間最就近走塑小店</ListItem>
-        <ListItem>資訊齊全：地址、地圖、走塑等級</ListItem>
-        <ListItem>費用全免！</ListItem>
-      </UnorderedList>
     </Box>
   );
 };

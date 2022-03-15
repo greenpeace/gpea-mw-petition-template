@@ -85,7 +85,7 @@ function Faq() {
         </Container>
         <Image
           loader={imageLoader}
-          src="/images/banner.jpeg"
+          src="/images/recycle-webinar-banner.jpg"
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -97,6 +97,7 @@ function Faq() {
         <Flex
           flexDirection={{ base: 'column', md: 'row' }}
           justifyContent={'space-between'}
+          alignItems={'center'}
           p={6}
           // bgColor={'#77C1D3'}
           // borderRadius={8}
