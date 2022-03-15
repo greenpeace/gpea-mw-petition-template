@@ -73,10 +73,10 @@ function Index() {
         <Stack
           spacing="6"
           flexDirection={{ base: 'column', lg: 'row' }}
-          align={{ base: 'initial', lg: 'center' }}
+          align="center"
         >
-          <Box flex="1" bgColor="#77C1D3" borderRadius="xl" p="4">
-            <Text as="p" textStyle={'content'} color={'#FFF'}>
+          <Box flex="1" borderLeft="4px" borderColor="#77C1D3" p="6">
+            <Text as="p" textStyle={'content'} mb="0">
               準備充足走塑的你，最怕店鋪拒收自攜容器<b>「摸門釘」</b>？
               <br />
               心血來潮走塑的你，最好走塑小店<b>「總有一間喺左近」</b>？
@@ -87,7 +87,7 @@ function Index() {
           </Box>
         </Stack>
 
-        <Center>
+        {/* <Center>
           <Divider
             height="48px"
             my="4"
@@ -95,13 +95,13 @@ function Index() {
             borderColor="#77C1D3"
             orientation="vertical"
           />
-        </Center>
+        </Center> */}
 
         <Box maxW={'480px'} mx={'auto'} my={6}>
           <CTAButton />
         </Box>
 
-        <Stack spacing={12} py={{ base: 6, lg: 12 }}>
+        <Stack spacing={'12'} py={{ base: 6, lg: 12 }}>
           <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
             <Stack direction={{ base: 'column' }} flex={1} spacing="6">
               <Box>
@@ -211,60 +211,64 @@ function Index() {
             </Stack>
           </Box>
 
-          <Stack direction={{ base: 'column' }} spacing="6">
-            <Box>
+          <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
+            <Stack direction={{ base: 'column' }} flex={1} spacing="6">
+              <Box>
+                <Image
+                  loader={imageLoader}
+                  src={`/images/like.svg`}
+                  width="48px"
+                  height="48px"
+                />
+              </Box>
+              <Box flex={1}>
+                <Text textStyle={'heading'}>全港走塑版圖 持續擴展中！</Text>
+                <Text as="p" textStyle={'content'}>
+                  綠色和平自2018年發起「全城走塑計劃」，與超過 <b>170</b>
+                  位義工到訪全港大小社區，遊說店主提供走塑選擇，2021年底達成{' '}
+                  <b>1,100</b>
+                  間里程碑！
+                </Text>
+                <Text as="p" textStyle={'content'}>
+                  未來我們會繼續擴大全港走塑版圖，邀請更多類型店鋪營造走塑友善環境，示範具體解決方案，促請政府及企業提出更積極走塑措施！
+                </Text>
+              </Box>
+            </Stack>
+
+            <Box flex={1}>
+              <Box borderRadius="xl" overflow="hidden">
+                <Image
+                  loader={imageLoader}
+                  src={`/images/20210508_SSPHunting_5.jpg`}
+                  layout="responsive"
+                  width={1920}
+                  height={1280}
+                  priority={true}
+                />
+              </Box>
+            </Box>
+          </Stack>
+
+          <Stack spacing="6">
+            <Box borderRadius="xl" overflow="hidden">
               <Image
                 loader={imageLoader}
-                src={`/images/like.svg`}
-                width="48px"
-                height="48px"
+                src={`/images/20210508_SSPHunting_8.jpg`}
+                layout="responsive"
+                width={1920}
+                height={1280}
+                priority={true}
               />
             </Box>
-            <Box flex={1}>
-              <Text textStyle={'heading'}>全港走塑版圖 持續擴展中！</Text>
-              <Text as="p" textStyle={'content'}>
-                綠色和平自2018年發起「全城走塑計劃」，與超過 <b>170</b>
-                位義工到訪全港大小社區，遊說店主提供走塑選擇，2021年底達成{' '}
-                <b>1,100</b>
-                間里程碑！
-              </Text>
-              <Text as="p" textStyle={'content'}>
-                未來我們會繼續擴大全港走塑版圖，邀請更多類型店鋪營造走塑友善環境，示範具體解決方案，促請政府及企業提出更積極走塑措施！
-              </Text>
-            </Box>
-            <Box>
-              <Stack spacing="6" direction="column">
-                <Box maxW="80%">
-                  <Image
-                    loader={imageLoader}
-                    src={`/images/20210508_SSPHunting_5.jpg`}
-                    layout="responsive"
-                    width={1920}
-                    height={1280}
-                    priority={true}
-                  />
-                </Box>
-                <Box maxW="80%" alignSelf={'flex-end'}>
-                  <Image
-                    loader={imageLoader}
-                    src={`/images/20210508_SSPHunting_8.jpg`}
-                    layout="intrinsic"
-                    width={1920}
-                    height={1280}
-                    priority={true}
-                  />
-                </Box>
-                <Box maxW="80%">
-                  <Image
-                    loader={imageLoader}
-                    src={`/images/20210508_SSPHunting_17.jpg`}
-                    layout="responsive"
-                    width={1920}
-                    height={1280}
-                    priority={true}
-                  />
-                </Box>
-              </Stack>
+            <Box borderRadius="xl" overflow="hidden">
+              <Image
+                loader={imageLoader}
+                src={`/images/20210508_SSPHunting_17.jpg`}
+                layout="responsive"
+                width={1920}
+                height={1280}
+                priority={true}
+              />
             </Box>
           </Stack>
 
@@ -367,7 +371,7 @@ const HeroSection = () => {
                   as="h1"
                   fontSize={{ base: '5xl', lg: '8xl' }}
                   color="#77C1D3"
-                  fontWeight={900}
+                  fontWeight="bold"
                 >
                   <Box as="span" style={{ transform: 'rotate(-190deg)' }}>
                     走
@@ -386,7 +390,7 @@ const HeroSection = () => {
                     as="h1"
                     fontSize={{ base: '5xl', lg: '9xl' }}
                     color="#77C1D3"
-                    fontWeight={900}
+                    fontWeight="bold"
                   >
                     <Box as="span" style={{ transform: 'rotate(-190deg)' }}>
                       走
@@ -418,13 +422,16 @@ const HeroSection = () => {
 const ShareContent = () => {
   return (
     <Box>
-      <Text as="p" textStyle={'content'} fontWeight={500} color={'#77C1D3'}>
+      <Text as="p" textStyle={'content'}>
         為了方便市民搜尋「全城走塑計劃」超過 <b>1,100</b>
         間走塑商戶，綠色和平推出「走塑GPS」WhatsApp
         Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到
-        <b>「Plastic Free, Care Free」</b>!
+        <Text as="span" fontWeight="bold">
+          「Plastic Free, Care Free」
+        </Text>
+        !
       </Text>
-      <UnorderedList pl={2} mb={4} color="#77C1D3">
+      <UnorderedList pl={2} mb={4}>
         <ListItem>即時定位：5間最就近走塑小店</ListItem>
         <ListItem>資訊齊全：地址、地圖、走塑等級</ListItem>
         <ListItem>費用全免！</ListItem>

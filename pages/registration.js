@@ -88,16 +88,14 @@ function Index({ setFormContent, setTheme, themeData }) {
           content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/a5120475-gp02i8e_high_res.jpg"
         />
       </Head>
-      <Box w={'100%'} pos={'relative'} className="bannerSection">
-        <Container maxW={`${maxWSize}px`} pos={'relative'} zIndex={99}>
-          {' '}
-          {/** bigger than navbar */}
+      <Box w={'100%'} pos={'relative'}>
+        <Container maxW={`${maxWSize}px`} pos={'relative'} zIndex={1}>
           <HeroSection />
         </Container>
 
         <Image
           loader={imageLoader}
-          src="/images/banner.jpeg"
+          src="/images/recycle-webinar-banner.jpg"
           layout="fill"
           objectFit="cover"
           quality={100}
