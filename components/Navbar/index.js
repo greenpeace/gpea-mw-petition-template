@@ -23,12 +23,12 @@ export default function WithSubnavigation() {
 
   return (
     <Box
+      zIndex="9"
       pos={'fixed'}
       top={0}
       w={'100%'}
       h={{ base: '50px', md: '60px' }}
       bgColor={'#FFF'}
-      zIndex={9}
       py={1}
       ref={ref}
     >
@@ -90,7 +90,7 @@ const DesktopNav = () => {
   const linkHoverColor = useColorModeValue('gray.800', 'white');
 
   return (
-    <Flex d={{ base: 'flex' }} h={'50px'} align={'center'}>
+    <Flex zIndex="1" d={{ base: 'flex' }} h={'50px'} align={'center'}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label} px={2}>
           {navItem.target === '_blank' ? (
@@ -137,9 +137,15 @@ const DesktopNav = () => {
 const MobileNav = ({ handleToggle }) => {
   return (
     <Stack
-      bg={useColorModeValue('white', 'gray.800')}
-      p={4}
+      zIndex="1"
+      spacing="6"
+      bg="white"
+      px="6"
+      pt="6"
+      pb="10"
       display={{ md: 'none' }}
+      borderBottom="1px"
+      borderColor="gray.100"
     >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem
@@ -154,7 +160,7 @@ const MobileNav = ({ handleToggle }) => {
 
 const MobileNavItem = ({ handleToggle, label, children, href }) => {
   return (
-    <Stack spacing={4}>
+    <Box>
       <Flex
         py={2}
         justify={'space-between'}
@@ -173,11 +179,16 @@ const MobileNavItem = ({ handleToggle, label, children, href }) => {
           </Text>
         </Link>
       </Flex>
-    </Stack>
+    </Box>
   );
 };
 
 const NAV_ITEMS = [
+  {
+    label: '主頁',
+    href: '/',
+    target: '_self',
+  },
   {
     label: '使用教學',
     href: '/tutorial',
