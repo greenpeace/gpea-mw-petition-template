@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import HeroBanner from '@components/Banner/hero';
-import ThanksBanner from '@components/Banner/thanks';
+import HeroBanner from '@components/ResponsiveBanner/hero';
+import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
@@ -21,6 +21,7 @@ import * as formActions from 'store/actions/action-types/form-actions';
 
 // import heroBannerImage from './images/gp-climate-banner.jpg';
 import heroBannerImageA from './images/climate_banner_a_web.jpg';
+import heroBannerImageAMobile from './images/climate_banner_a_mobile.jpg';
 import heroBannerImageB from './images/climate_petition_banner.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
@@ -47,42 +48,82 @@ function Index({ status, theme, setFormContent, signup }) {
       <div className="banner-a" style={{ display: 'none' }}>
         {submitted ? (
           <ThanksBanner
-            bgImage={heroBannerImageA}
+            defaultImage={heroBannerImageA}
             content={{
               title: `${
                 FirstName ? FirstName : '綠色和平支持者'
               }，謝謝您參與這次的連署`,
               description: ['能更進一步支持我們的氣候行動嗎？'],
             }}
+            imageSrcset={[
+              {
+                media: '(min-width: 48em)',
+                srcset: heroBannerImageA,
+              },
+              {
+                media: '',
+                srcset: heroBannerImageAMobile,
+              },
+            ]}
           />
         ) : (
           <HeroBanner
-            bgImage={heroBannerImageA}
+            defaultImage={heroBannerImageA}
             content={{
               title: '<b>立即連署<br/>您能扭轉氣候危機</b>',
               description: [''],
             }}
+            imageSrcset={[
+              {
+                media: '(min-width: 48em)',
+                srcset: heroBannerImageA,
+              },
+              {
+                media: '',
+                srcset: heroBannerImageAMobile,
+              },
+            ]}
           />
         )}
       </div>
       <div className="banner-b">
         {submitted ? (
           <ThanksBanner
-            bgImage={heroBannerImageB}
+            defaultImage={heroBannerImageA}
             content={{
               title: `${
                 FirstName ? FirstName : '綠色和平支持者'
               }，謝謝您參與這次的連署`,
               description: ['能更進一步支持我們的氣候行動嗎？'],
             }}
+            imageSrcset={[
+              {
+                media: '(min-width: 48em)',
+                srcset: heroBannerImageA,
+              },
+              {
+                media: '',
+                srcset: heroBannerImageAMobile,
+              },
+            ]}
           />
         ) : (
           <HeroBanner
-            bgImage={heroBannerImageB}
+            defaultImage={heroBannerImageA}
             content={{
               title: '<b>立即連署<br/>您能扭轉氣候危機</b>',
               description: [''],
             }}
+            imageSrcset={[
+              {
+                media: '(min-width: 48em)',
+                srcset: heroBannerImageA,
+              },
+              {
+                media: '',
+                srcset: heroBannerImageAMobile,
+              },
+            ]}
           />
         )}
       </div>
