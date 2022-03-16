@@ -1,5 +1,4 @@
 import { extendTheme } from '@chakra-ui/react';
-import { ProgressStyles as Progress } from '@common/styles/components/progressStyles';
 
 import styles from './styles';
 import colors from './colors';
@@ -9,7 +8,6 @@ const theme = extendTheme({
   initialColorMode: 'light',
   useSystemColorMode: false,
   components: {
-    Progress,
     Button,
     Switch: {
       baseStyle: {
