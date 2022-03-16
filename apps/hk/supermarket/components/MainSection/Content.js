@@ -465,7 +465,7 @@ const Content = ({ theme }) => {
         這是一個好開始，但要取得更大成果，我們需要你加入聯署，推動超市加快改變步伐，追上國際走塑潮流，制定完整減塑藍圖，負起對環境、顧客以至我們下一代的責任。
       </Text>
 
-      <Box bgColor={'gray.100'} p={4} mb={6} borderRadius={'md'}>
+      <Box bgColor={'gray.50'} p={6} borderRadius={'md'}>
         <Box {...paragraphProps}>
           <b>立即聯署要求超市:</b>
           <UnorderedList pl={2}>
