@@ -20,9 +20,10 @@ import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
 // import heroBannerImage from './images/gp-climate-banner.jpg';
-import heroBannerImageA from './images/climate_banner_a_web.jpg';
-import heroBannerImageAMobile from './images/climate_banner_a_mobile.jpg';
-import heroBannerImageB from './images/climate_petition_banner.jpg';
+import heroBannerImageA from './images/climatebanner_web.jpg';
+import heroBannerImageAMobile from './images/climatebanner_mobile.jpg';
+import heroBannerImageB from './images/climatebanner2_web.jpg';
+import heroBannerImageBMobile from './images/climatebanner2_mobile.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
@@ -45,7 +46,7 @@ function Index({ status, theme, setFormContent, signup }) {
   return (
     <>
       <SEO />
-      <div className="banner-a" style={{ display: 'none' }}>
+      <div className="banner-a">
         {submitted ? (
           <ThanksBanner
             defaultImage={heroBannerImageA}
@@ -86,10 +87,10 @@ function Index({ status, theme, setFormContent, signup }) {
           />
         )}
       </div>
-      <div className="banner-b">
+      <div className="banner-b" style={{ display: 'none' }}>
         {submitted ? (
           <ThanksBanner
-            defaultImage={heroBannerImageA}
+            defaultImage={heroBannerImageB}
             content={{
               title: `${
                 FirstName ? FirstName : '綠色和平支持者'
@@ -99,17 +100,17 @@ function Index({ status, theme, setFormContent, signup }) {
             imageSrcset={[
               {
                 media: '(min-width: 48em)',
-                srcset: heroBannerImageA,
+                srcset: heroBannerImageB,
               },
               {
                 media: '',
-                srcset: heroBannerImageAMobile,
+                srcset: heroBannerImageBMobile,
               },
             ]}
           />
         ) : (
           <HeroBanner
-            defaultImage={heroBannerImageA}
+            defaultImage={heroBannerImageB}
             content={{
               title: '<b>立即連署<br/>您能扭轉氣候危機</b>',
               description: [''],
@@ -117,11 +118,11 @@ function Index({ status, theme, setFormContent, signup }) {
             imageSrcset={[
               {
                 media: '(min-width: 48em)',
-                srcset: heroBannerImageA,
+                srcset: heroBannerImageB,
               },
               {
                 media: '',
-                srcset: heroBannerImageAMobile,
+                srcset: heroBannerImageBMobile,
               },
             ]}
           />
