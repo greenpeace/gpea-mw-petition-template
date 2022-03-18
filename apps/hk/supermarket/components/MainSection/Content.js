@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
   Box,
@@ -47,6 +47,7 @@ import brand08 from '../../images/brand/citysuper-logo.png';
 import brand09 from '../../images/brand/aeon-logo.png';
 import brand10 from '../../images/brand/vanguard-logo.jpg';
 import brand11 from '../../images/brand/uselect-logo.png';
+import SwiperCarousel from 'components/Swiper';
 
 const brandsContent = [
   {
@@ -410,7 +411,11 @@ const CardItem = ({ ranking, data, themeInterests }) => {
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
-
+  const customConfig = {
+    autoplay: {
+      delay: 5500,
+    },
+  };
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -430,7 +435,10 @@ const Content = ({ theme }) => {
       </Heading>
 
       <Box {...paragraphProps}>
-        <Image src={contentBanner} />
+        <SwiperCarousel
+          images={[contentA, contentB, contentC]}
+          swiperConfig={customConfig}
+        />
       </Box>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -458,7 +466,7 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <Image src={contentBanner2} />
+        <SwiperCarousel images={[contentA, contentB, contentC]} />
       </Box>
 
       <Text as="p" {...paragraphProps}>
