@@ -9,6 +9,7 @@ import {
   UnorderedList,
   AspectRatio,
   Stack,
+  SimpleGrid,
   Flex,
   Center,
   useMediaQuery,
@@ -53,15 +54,21 @@ function Index() {
       {' '}
       {/** NAV Height */}
       <Head>
-        <title>走塑GPS 全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！</title>
+        <title>
+          走塑GPS：全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！ - Greenpeace
+          綠色和平 | 香港
+        </title>
         <meta
           property="og:title"
-          content="走塑GPS 全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！"
+          content="走塑GPS：全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！ - Greenpeace 綠色和平 | 香港"
         />
-        <meta name="description" content="走塑GPS小助手 幫你日常走塑零失手" />
+        <meta
+          name="description"
+          content="為了方便市民搜尋「全城走塑計劃」商戶，綠色和平推出「走塑GPS」WhatsApp Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free, Care Free」！"
+        />
         <meta
           property="og:description"
-          content="走塑GPS小助手 幫你日常走塑零失手"
+          content="為了方便市民搜尋「全城走塑計劃」商戶，綠色和平推出「走塑GPS」WhatsApp Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free, Care Free」！"
         />
         <meta
           property="og:image"
@@ -75,15 +82,15 @@ function Index() {
           flexDirection={{ base: 'column', lg: 'row' }}
           align="center"
         >
-          <Box flex="1" borderLeft="4px" borderColor="#77C1D3" p="6" py="8">
-            <Text as="p" textStyle={'content'} mb="0">
-              準備充足走塑的你，最怕店鋪拒收自攜容器<b>「摸門釘」</b>？
-              <br />
-              心血來潮走塑的你，最好走塑小店<b>「總有一間喺左近」</b>？
+          <Box flex="1" borderLeft="4px" borderColor="#77C1D3" p="6">
+            <Text as="p" textStyle={'content'}>
+              綠色和平推出「走塑GPS」WhatsApp
+              Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free,
+              Care Free」！
             </Text>
           </Box>
           <Box flex="1" p="4">
-            <Text as="p" textStyle={'content'}>
+            {/* <Text as="p" textStyle={'content'}>
               為了方便市民搜尋「全城走塑計劃」超過 <b>1,100</b>
               間走塑商戶，綠色和平推出「走塑GPS」WhatsApp
               Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到
@@ -98,26 +105,39 @@ function Index() {
                 <ListItem>資訊齊全：地址、地圖、走塑等級</ListItem>
                 <ListItem>費用全免！</ListItem>
               </UnorderedList>
-            </Text>
+            </Text> */}
+            <SimpleGrid spacing="4" columns={3} direction={{ base: 'row' }}>
+              <Image
+                loader={imageLoader}
+                src={`/images/PFC_Sticker_white.png`}
+                layout="responsive"
+                width={1440}
+                height={1440}
+              />
+              <Image
+                loader={imageLoader}
+                src={`/images/PFC_Sticker_blue.png`}
+                layout="responsive"
+                width={1440}
+                height={1440}
+              />
+              <Image
+                loader={imageLoader}
+                src={`/images/PFC_Sticker_blue.png`}
+                layout="responsive"
+                width={1440}
+                height={1440}
+              />
+            </SimpleGrid>
           </Box>
         </Stack>
-
-        {/* <Center>
-          <Divider
-            height="48px"
-            my="4"
-            border="2px"
-            borderColor="#77C1D3"
-            orientation="vertical"
-          />
-        </Center> */}
 
         <Box maxW={'480px'} mx={'auto'} my={6}>
           <CTAButton />
         </Box>
 
         <Stack spacing={'60px'} py={{ base: 6, lg: 12 }}>
-          <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
+          {/* <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
             <Stack direction={{ base: 'column' }} flex={1} spacing="6">
               <Box>
                 <Image
@@ -152,7 +172,7 @@ function Index() {
                 />
               </Box>
             </Box>
-          </Stack>
+          </Stack> */}
 
           <Stack direction={{ base: 'column', lg: 'row-reverse' }} spacing="6">
             <Stack
@@ -182,7 +202,7 @@ function Index() {
                 <Stack flex={1} textAlign="center" spacing="4">
                   <Image
                     loader={imageLoader}
-                    src={`/images/PFC_Sticker_blue.png`}
+                    src={`/images/PFC_Sticker_white.png`}
                     layout="responsive"
                     width={1440}
                     height={1440}
@@ -203,7 +223,7 @@ function Index() {
                 <Stack flex={1} textAlign="center" spacing="4">
                   <Image
                     loader={imageLoader}
-                    src={`/images/PFC_Sticker_white.png`}
+                    src={`/images/PFC_Sticker_blue.png`}
                     layout="responsive"
                     width={1440}
                     height={1440}

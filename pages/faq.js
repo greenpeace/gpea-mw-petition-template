@@ -122,7 +122,7 @@ function Faq() {
             <AccordionItem>
               <AccordionButton {...questionWrapProps}>
                 <Box flex="1" textAlign="left" {...questionProps}>
-                  訊息顯示「根據紀錄，你已經使用5次查詢」，未能繼續使用？
+                  訊息顯示「根據紀錄，你已經使用3次查詢」，未能繼續使用？
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
