@@ -1,0 +1,21 @@
+<script runat="server">
+  Platform.Load("Core", "1");
+  try {
+  </script>
+%%[
+  VAR @FirstName, @LastName, @Email, @MobilePhone, @Birthdate
+  SET @Contact__c = _subscriberkey */
+  SET @Rows = LookupRows("ENT.Contact_Salesforce_1", "Id", @Contact__c)
+  SET @RowCount = rowcount(@Rows)
+  SET @Row = row(@Rows, 1)
+  SET @FirstName = field(@Row, "FirstName")
+  SET @LastName = field(@Row, "LastName")
+  SET @Email = field(@Row, "Email")
+  SET @MobilePhone = field(@Row, "MobilePhone")
+  SET @Birthdate = field(@Row, "Birthdate")
+]%%
+<script runat="server">
+  } catch(e) {
+
+  }
+  </script>
