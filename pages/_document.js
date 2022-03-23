@@ -21,6 +21,22 @@ class NextDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap"
           />
+          <meta
+            property="og:title"
+            content="走塑GPS：全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！ - Greenpeace 綠色和平 | 香港"
+          />
+          <meta
+            name="description"
+            content="為了方便市民搜尋「全城走塑計劃」商戶，綠色和平推出「走塑GPS」WhatsApp Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free, Care Free」！"
+          />
+          <meta
+            property="og:description"
+            content="為了方便市民搜尋「全城走塑計劃」商戶，綠色和平推出「走塑GPS」WhatsApp Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free, Care Free」！"
+          />
+          <meta
+            property="og:image"
+            content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/a5120475-gp02i8e_high_res.jpg"
+          />
         </Head>
         <body>
           <Main />

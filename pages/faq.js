@@ -52,22 +52,11 @@ function Faq() {
   return (
     <Box pt={{ base: '50px', md: '60px' }}>
       <Head>
-        <title>走塑GPS FAQ</title>
-        <meta
-          property="og:title"
-          content="走塑GPS 全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！"
-        />
-        <meta name="description" content="走塑GPS小助手 幫你日常走塑零失手" />
-        <meta
-          property="og:description"
-          content="走塑GPS小助手 幫你日常走塑零失手"
-        />
-        <meta
-          property="og:image"
-          content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/a5120475-gp02i8e_high_res.jpg"
-        />
+        <title>
+          走塑GPS：全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！ - Greenpeace
+          綠色和平 | 香港
+        </title>
       </Head>
-
       <Box w={'100%'} pos={'relative'} overflow={'hidden'}>
         <Container maxW={`${maxWSize}px`} pos={`relative`} zIndex={2}>
           <Box py={20} w={{ md: 'md', xl: 'xl' }}>
@@ -85,7 +74,7 @@ function Faq() {
         </Container>
         <Image
           loader={imageLoader}
-          src="/images/recycle-webinar-banner.jpg"
+          src="/images/gps-banner.png"
           layout="fill"
           objectFit="cover"
           quality={100}

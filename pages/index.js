@@ -51,29 +51,11 @@ function Index() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box pt={{ base: '50px', md: '60px' }}>
-      {' '}
-      {/** NAV Height */}
       <Head>
         <title>
           走塑GPS：全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！ - Greenpeace
           綠色和平 | 香港
         </title>
-        <meta
-          property="og:title"
-          content="走塑GPS：全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！ - Greenpeace 綠色和平 | 香港"
-        />
-        <meta
-          name="description"
-          content="為了方便市民搜尋「全城走塑計劃」商戶，綠色和平推出「走塑GPS」WhatsApp Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free, Care Free」！"
-        />
-        <meta
-          property="og:description"
-          content="為了方便市民搜尋「全城走塑計劃」商戶，綠色和平推出「走塑GPS」WhatsApp Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free, Care Free」！"
-        />
-        <meta
-          property="og:image"
-          content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/a5120475-gp02i8e_high_res.jpg"
-        />
       </Head>
       <HeroSection />
       <Container maxW={`${maxWSize}px`} py="6" px="4">
@@ -109,21 +91,21 @@ function Index() {
             <SimpleGrid spacing="4" columns={3} direction={{ base: 'row' }}>
               <Image
                 loader={imageLoader}
-                src={`/images/PFC_Sticker_white.png`}
+                src={`/images/svg/22.svg`}
                 layout="responsive"
                 width={1440}
                 height={1440}
               />
               <Image
                 loader={imageLoader}
-                src={`/images/PFC_Sticker_blue.png`}
+                src={`/images/svg/GPS-如何使用.svg`}
                 layout="responsive"
                 width={1440}
                 height={1440}
               />
               <Image
                 loader={imageLoader}
-                src={`/images/PFC_Sticker_blue.png`}
+                src={`/images/svg/24.svg`}
                 layout="responsive"
                 width={1440}
                 height={1440}
