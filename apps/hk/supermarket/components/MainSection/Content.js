@@ -16,9 +16,13 @@ import {
 
 import * as statusActions from 'store/actions/action-types/status-actions';
 
-import contentA from '../../images/img01.jpg';
-import contentB from '../../images/img02.jpg';
-import contentC from '../../images/img03.jpg';
+import s1 from '../../images/s1.jpg';
+import s2 from '../../images/s2.jpg';
+import s3 from '../../images/s3.jpg';
+import s4 from '../../images/s4.jpg';
+import contentE from '../../images/R0032723.jpg';
+import contentF from '../../images/R0032756.jpg';
+import contentG from '../../images/R0032663_nologo.8bbebf77.jpg';
 
 import Supermarket from './Supermarket';
 import SwiperCarousel from 'components/Swiper';
@@ -49,10 +53,7 @@ const Content = ({ theme }) => {
       </Heading>
 
       <Box {...paragraphProps}>
-        <SwiperCarousel
-          images={[contentA, contentB, contentC]}
-          swiperConfig={customConfig}
-        />
+        <SwiperCarousel images={[s1, s2, s3, s4]} swiperConfig={customConfig} />
       </Box>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -80,7 +81,7 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <SwiperCarousel images={[contentA, contentB, contentC]} />
+        <SwiperCarousel images={[contentE, contentF, contentG]} />
       </Box>
 
       <Text as="p" {...paragraphProps}>
