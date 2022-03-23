@@ -14,7 +14,7 @@ import Link from 'next/link';
 import { imageLoader } from 'common/utils';
 import Image from 'next/image';
 
-export default function WithSubnavigation() {
+export default function WithSubnavigation({ currentPage }) {
   const { isOpen, onToggle } = useDisclosure();
   const { ref, inView, entry } = useInView({
     /* Optional options */
@@ -80,20 +80,20 @@ export default function WithSubnavigation() {
           </Link>
 
           <Box d={{ base: 'none', md: 'block' }}>
-            <DesktopNav />
+            <DesktopNav currentPage={currentPage} />
           </Box>
           <Box d={{ base: 'block', md: 'none' }} flex={1} />
         </Flex>
 
         <Collapse in={isOpen} animateOpacity>
-          <MobileNav handleToggle={onToggle} />
+          <MobileNav handleToggle={onToggle} currentPage={currentPage} />
         </Collapse>
       </Box>
     </Box>
   );
 }
 
-const DesktopNav = () => {
+const DesktopNav = ({ currentPage }) => {
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
 
@@ -116,6 +116,7 @@ const DesktopNav = () => {
                 },
               }}
               cursor={'pointer'}
+              fontWeight={currentPage === navItem.href ? 900 : 300}
             >
               {navItem.label}
             </Text>
@@ -144,7 +145,7 @@ const DesktopNav = () => {
   );
 };
 
-const MobileNav = ({ handleToggle }) => {
+const MobileNav = ({ handleToggle, currentPage }) => {
   return (
     <Stack
       zIndex="1"
@@ -163,6 +164,7 @@ const MobileNav = ({ handleToggle }) => {
           handleToggle={handleToggle}
           key={navItem.label}
           {...navItem}
+          currentPage={currentPage}
         />
       ))}
       <Box d="inline-block">
@@ -187,7 +189,13 @@ const MobileNav = ({ handleToggle }) => {
   );
 };
 
-const MobileNavItem = ({ handleToggle, label, children, href }) => {
+const MobileNavItem = ({
+  handleToggle,
+  label,
+  children,
+  href,
+  currentPage,
+}) => {
   return (
     <Box>
       <Flex
@@ -201,8 +209,8 @@ const MobileNavItem = ({ handleToggle, label, children, href }) => {
       >
         <Link href={href}>
           <Text
-            fontWeight={600}
             color={useColorModeValue('gray.600', 'gray.200')}
+            fontWeight={currentPage === href ? 900 : 300}
           >
             {label}
           </Text>

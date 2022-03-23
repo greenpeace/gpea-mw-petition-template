@@ -16,6 +16,7 @@ const themeEndpointURL = process.env.themeEndpoint;
 function Layout({ children, themeData, setTheme }) {
   const router = useRouter();
   const [showChat, setShowChat] = useState(false);
+  const [currentPage, setCurrentPage] = useState('/');
   useEffect(async () => {
     const singleResult = await axios
       .get(themeEndpointURL)
@@ -35,6 +36,10 @@ function Layout({ children, themeData, setTheme }) {
   }, []);
 
   useEffect(async () => {
+    if (router.pathname) {
+      setCurrentPage(router.pathname);
+    }
+
     const regex = /registration/;
     if (router.route?.match(regex) !== null) {
       setShowChat(false);
@@ -63,7 +68,7 @@ function Layout({ children, themeData, setTheme }) {
 
   return (
     <Box>
-      <Nav />
+      <Nav currentPage={currentPage} />
       {children}
       <PetitionFooter locale={'HKChinese'} />
       <Box pos={'fixed'} bottom={'20px'} right={'20px'} d={{ md: 'none' }}>
