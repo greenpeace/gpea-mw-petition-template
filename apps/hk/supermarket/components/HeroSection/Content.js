@@ -47,7 +47,7 @@ function Content() {
           textShadow="0 0 1px rgba(0,0,0, .2)"
           mb={4}
           dangerouslySetInnerHTML={{
-            __html: '請即聯署<br/>超市走塑 要有得揀',
+            __html: '請即聯署<br/>推動超市走塑',
           }}
         />
       </Box>

@@ -88,29 +88,29 @@ const Content = ({ theme }) => {
         這是一個好開始，但要取得更大成果，我們需要你加入聯署，推動超市加快改變步伐，追上國際走塑潮流，制定完整減塑藍圖，負起對環境、顧客以至我們下一代的責任。
       </Text>
 
-      <Box bgColor={'gray.50'} p={6} borderRadius={'md'}>
+      <Box bgColor={'gray.50'} p={6} mb="6" borderRadius={'md'}>
         <Box {...paragraphProps}>
           <b>立即聯署要求超市:</b>
           <UnorderedList pl={2}>
             <ListItem>
-              立刻減少無謂包裝，設立無塑購物區域或裸買補充站，增加售賣裸裝產品比例
+              減少無謂包裝，設立無塑購物區或裸買補充站，增加售賣裸裝產品比例
             </ListItem>
             <ListItem>
-              訂下整體塑膠減量目標，並制訂明確的路線圖與時間表
+              訂立整體塑膠減量目標，並制訂明確的路線圖與時間表
             </ListItem>
             <ListItem>
-              設定全面淘汰即棄塑膠期限，停用不可回收的塑膠物料，並將可回收的塑膠重用或妥善回收
+              設定全面淘汰即棄塑膠期限，立即停用不可回收的塑膠物料，並主動重用或妥善回收可回收塑膠
             </ListItem>
             <ListItem>
-              以「可循環再用」為原則，推動以可重用包裝銷售貨品，主動回收並重用顧客退還的包裝，建立可持續的重用系統，達至源頭減廢
+              推動「循環再用」減廢模式，改以可重用包裝銷售貨品，主動回收並重用顧客退還的包裝，建立可持續的重用系統
             </ListItem>
           </UnorderedList>
         </Box>
       </Box>
 
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+      {/* <Heading {...headingProps} color={`theme.${themeInterests}`}>
         請即聯署，推動超市推行走塑措施！
-      </Heading>
+      </Heading> */}
 
       {/* <Supermarket /> */}
     </>
