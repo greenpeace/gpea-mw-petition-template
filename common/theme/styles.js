@@ -27,6 +27,9 @@ const styles = {
       width: '100%',
       height: '2px',
     },
+    '#nprogress .spinner': {
+      display: 'none',
+    },
     '.swiper-pagination-bullet-active': {
       background: 'brand.500',
     },
