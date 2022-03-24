@@ -26,9 +26,9 @@ const theme = extendTheme({
   textStyles: {
     heading: {
       fontSize: { base: '2xl', md: '4xl' },
-      fontWeight: 900,
+      fontWeight: 'bold',
       color: 'var(--gps-primary)',
-      mb: 4,
+      mb: 6,
     },
     subTitle: {
       fontSize: { base: 'xl', md: '2xl' },

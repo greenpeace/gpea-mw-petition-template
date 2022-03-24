@@ -59,7 +59,7 @@ function Index() {
       </Head>
       {/* <HeroSection /> */}
       <Container maxW={`${maxWSize}px`} py="6" px="4">
-        <Stack spacing="60px">
+        <Stack spacing={{ base: '60px', md: '80px' }}>
           <Box>
             <Box>
               <Image
@@ -74,14 +74,14 @@ function Index() {
               flexDirection={{ base: 'column', lg: 'row' }}
               align="center"
             >
-              <Box flex="1">
-                <Stack spacing="6" py="6">
+              <Box flex="1" py="6">
+                <Stack spacing="6" align={{ base: 'center', md: 'flex-start' }}>
                   <Text as="p" textStyle={'content'}>
                     綠色和平推出「走塑GPS」WhatsApp
                     Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic
                     Free, Care Free」！
                   </Text>
-                  <Box d="inline-block" w="auto" mx="auto">
+                  <Box>
                     <CTAButton />
                   </Box>
                 </Stack>
@@ -113,7 +113,12 @@ function Index() {
               </Box>
             </Stack>
           </Box>
-          <Stack spacing="4">
+          <Stack spacing="6">
+            <Box>
+              <Text as="p" textStyle={'content'}>
+                只須於WhatsApp分享實時位置，「走塑GPS」將立即搜尋5間鄰近走塑小店，內附地圖連結助你規劃路線光顧心水小店。
+              </Text>
+            </Box>
             <SimpleGrid columns="4" justifyContent={'space-around'}>
               <Image
                 loader={imageLoader}
@@ -152,13 +157,12 @@ function Index() {
               flex={1}
               spacing="6"
             >
-              <Box>
+              <Box px="2">
                 <Image
                   loader={imageLoader}
                   src={`/images/svg/sticker-free-icon-font.svg`}
                   width="48px"
                   height="48px"
-                  pl="2"
                 />
               </Box>
               <Box flex={1}>
@@ -215,13 +219,12 @@ function Index() {
           </Stack>
           <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
             <Stack direction={{ base: 'column' }} flex={1} spacing="6">
-              <Box>
+              <Box px="2">
                 <Image
                   loader={imageLoader}
                   src={`/images/svg/map-free-icon-font.svg`}
                   width="48px"
                   height="48px"
-                  pl="2"
                 />
               </Box>
               <Box flex={1}>

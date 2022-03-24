@@ -69,15 +69,14 @@ function Tutorial() {
       <Container maxW={`${maxWSize}px`} py={6}>
         <Flex
           flexDirection={{ base: 'column', md: 'row' }}
-          justifyContent={'space-between'}
           alignItems={'center'}
+          justifyContent={'space-between'}
           p={6}
-          background="gray.50"
+          background="gray.10"
           borderLeft="4px"
           borderColor="var(--gps-primary)"
-          align="center"
         >
-          <Box mb={{ base: 6, md: 0 }}>
+          <Box py="6">
             <Text textStyle={'subTitle'}>
               啟動WhatsApp「走塑GPS」後，發送任何訊息即可開始使用！
             </Text>
