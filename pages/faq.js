@@ -12,7 +12,6 @@ import {
   AccordionPanel,
   AccordionIcon,
   Flex,
-  Stack,
 } from '@chakra-ui/react';
 
 import { headingProps } from '@common/styles/components/contentStyle';
@@ -35,13 +34,12 @@ const questionWrapProps = {
 };
 
 const questionProps = {
-  fontSize: { base: 'lg', md: 'xl' },
-  py: 6,
+  fontSize: 'lg',
+  py: 4,
   fontWeight: 'bold',
 };
 
 const answerProps = {
-  py: 6,
   mb: 4,
   lineHeight: 1.7,
   textAlign: 'justify',
@@ -99,8 +97,8 @@ function Faq() {
           </Box>
         </Flex>
 
-        <Box maxW="4xl" mx="auto" my="4">
-          <Accordion defaultIndex={[0]} py={6}>
+        <Box maxW="4xl" mx="auto" py={6}>
+          <Accordion defaultIndex={[0]}>
             <AccordionItem>
               <AccordionButton {...questionWrapProps}>
                 <Box flex="1" textAlign="left" {...questionProps}>
@@ -134,7 +132,7 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel pb={4}>
+              <AccordionPanel {...answerProps}>
                 你可以在「分享位置」頁面直接輸入地點，以搜尋更多走塑店鋪。
               </AccordionPanel>
             </AccordionItem>

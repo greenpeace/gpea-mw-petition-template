@@ -14,11 +14,11 @@ const Thankyou = ({ theme, signup }) => {
   return (
     <>
       <Heading {...headingProps}>
-        感謝您的支持，綠色和平已為您開啟免費使用「走塑GPS」服務，助您未來尋找鄰近走塑店鋪！
+        感謝您的支持，綠色和平已為您啟動完整版「走塑GPS」服務，助您未來尋找鄰近走塑店鋪！
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        「走塑GPS」WhatsApp頁面將顯示您成功登記的確認訊息。
+        **「走塑GPS」WhatsApp對話將顯示您成功登記的確認訊息。
       </Text>
 
       <Text as="p" {...paragraphProps}>

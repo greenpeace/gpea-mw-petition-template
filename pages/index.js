@@ -61,57 +61,89 @@ function Index() {
       <Container maxW={`${maxWSize}px`} py="6" px="4">
         <Stack spacing="60px">
           <Box>
-            <Image
-              loader={imageLoader}
-              src={`/images/svg/Plastic-free-GPS-banner.svg`}
-              width="1400"
-              height="800"
-            />
+            <Box>
+              <Image
+                loader={imageLoader}
+                src={`/images/svg/Plastic-free-GPS-banner.svg`}
+                width="1400"
+                height="800"
+              />
+            </Box>
+            <Stack
+              spacing="6"
+              flexDirection={{ base: 'column', lg: 'row' }}
+              align="center"
+            >
+              <Box flex="1">
+                <Stack spacing="6" py="6">
+                  <Text as="p" textStyle={'content'}>
+                    綠色和平推出「走塑GPS」WhatsApp
+                    Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic
+                    Free, Care Free」！
+                  </Text>
+                  <Box d="inline-block" w="auto" mx="auto">
+                    <CTAButton />
+                  </Box>
+                </Stack>
+              </Box>
+              <Box w="100%" flex="1">
+                <SimpleGrid columns="3" justifyContent={'space-around'}>
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/svg/22.svg`}
+                    layout="responsive"
+                    width={1440}
+                    height={1440}
+                  />
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/svg/GPS-如何使用.svg`}
+                    layout="responsive"
+                    width={1440}
+                    height={1440}
+                  />
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/svg/24.svg`}
+                    layout="responsive"
+                    width={1440}
+                    height={1440}
+                  />
+                </SimpleGrid>
+              </Box>
+            </Stack>
           </Box>
-          <Stack
-            p="4"
-            my="8"
-            spacing="6"
-            flexDirection={{ base: 'column', lg: 'row' }}
-            align="center"
-          >
-            <Box flex="1">
-              <Stack spacing="6">
-                <Text as="p" textStyle={'content'}>
-                  綠色和平推出「走塑GPS」WhatsApp
-                  Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic
-                  Free, Care Free」！
-                </Text>
-                <Box d="inline-block" w="auto" mx="auto">
-                  <CTAButton />
-                </Box>
-              </Stack>
-            </Box>
-            <Box w="100%" flex="1">
-              <SimpleGrid columns="3" justifyContent={'space-around'}>
-                <Image
-                  loader={imageLoader}
-                  src={`/images/svg/22.svg`}
-                  layout="responsive"
-                  width={1440}
-                  height={1440}
-                />
-                <Image
-                  loader={imageLoader}
-                  src={`/images/svg/GPS-如何使用.svg`}
-                  layout="responsive"
-                  width={1440}
-                  height={1440}
-                />
-                <Image
-                  loader={imageLoader}
-                  src={`/images/svg/24.svg`}
-                  layout="responsive"
-                  width={1440}
-                  height={1440}
-                />
-              </SimpleGrid>
-            </Box>
+          <Stack spacing="4">
+            <SimpleGrid columns="4" justifyContent={'space-around'}>
+              <Image
+                loader={imageLoader}
+                src={`/images/svg/25.svg`}
+                layout="responsive"
+                width={1440}
+                height={1440}
+              />
+              <Image
+                loader={imageLoader}
+                src={`/images/svg/26.svg`}
+                layout="responsive"
+                width={1440}
+                height={1440}
+              />
+              <Image
+                loader={imageLoader}
+                src={`/images/svg/27.svg`}
+                layout="responsive"
+                width={1440}
+                height={1440}
+              />
+              <Image
+                loader={imageLoader}
+                src={`/images/svg/28.svg`}
+                layout="responsive"
+                width={1440}
+                height={1440}
+              />
+            </SimpleGrid>
           </Stack>
           <Stack direction={{ base: 'column', lg: 'row-reverse' }} spacing="6">
             <Stack
@@ -181,7 +213,6 @@ function Index() {
               </Stack>
             </Box>
           </Stack>
-
           <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
             <Stack direction={{ base: 'column' }} flex={1} spacing="6">
               <Box>
@@ -203,7 +234,6 @@ function Index() {
                 </Text>
               </Box>
             </Stack>
-
             <Box flex={1}>
               <Box borderRadius="xl" overflow="hidden">
                 <Image
@@ -216,29 +246,28 @@ function Index() {
                 />
               </Box>
             </Box>
-          </Stack>
-
-          <Stack spacing="6">
-            <Box borderRadius="xl" overflow="hidden">
-              <Image
-                loader={imageLoader}
-                src={`/images/20210508_SSPHunting_8.jpg`}
-                layout="responsive"
-                width={1920}
-                height={1280}
-                priority={true}
-              />
-            </Box>
-            <Box borderRadius="xl" overflow="hidden">
-              <Image
-                loader={imageLoader}
-                src={`/images/20210508_SSPHunting_17.jpg`}
-                layout="responsive"
-                width={1920}
-                height={1280}
-                priority={true}
-              />
-            </Box>
+            <Stack spacing="6">
+              <Box borderRadius="xl" overflow="hidden">
+                <Image
+                  loader={imageLoader}
+                  src={`/images/20210508_SSPHunting_8.jpg`}
+                  layout="responsive"
+                  width={1920}
+                  height={1280}
+                  priority={true}
+                />
+              </Box>
+              <Box borderRadius="xl" overflow="hidden">
+                <Image
+                  loader={imageLoader}
+                  src={`/images/20210508_SSPHunting_17.jpg`}
+                  layout="responsive"
+                  width={1920}
+                  height={1280}
+                  priority={true}
+                />
+              </Box>
+            </Stack>
           </Stack>
 
           <Stack spacing="4" maxW={'480px'} align="center" alignSelf={'center'}>
