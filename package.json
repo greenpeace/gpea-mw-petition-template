@@ -26,6 +26,7 @@
     "@emotion/styled": "^11.3.0",
     "@fontsource/noto-sans-tc": "^4.5.2",
     "axios": "^0.21.1",
+    "crypto-js": "^4.1.1",
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "formik": "^2.2.9",
