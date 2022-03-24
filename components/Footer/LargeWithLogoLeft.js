@@ -11,6 +11,8 @@ import SocialButton from '../SocialButton/socialButton';
 import { FooterBGBlue } from './footer.style';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
+import logo from '@common/images/logo/GP-logo-2019-white-[web].png';
+
 const ListHeader = ({ children }) => {
   return (
     <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
@@ -28,12 +30,8 @@ export default function LargeWithLogoLeft() {
           spacing={8}
         >
           <Stack spacing={4}>
-            <Box>
-              <Image
-                htmlWidth="200px"
-                src="https://www.greenpeace.org/hongkong/wp-content/themes/planet4-child-theme-hongkong/static/images/logo_zh_gp_w%20footer.svg"
-                alt="Greenpeace 綠色和平"
-              />
+            <Box pt={4} pb={6}>
+              <Image src={logo} maxW={'180px'} alt={'Greenpeace 綠色和平'} />
             </Box>
             <Text fontSize={'sm'} maxWidth={'480px'}>
               綠色和平是獨立的國際環保組織，通過科學研究、政策倡議及和平行動，揭露全球環境問題並提出相應解決方案。
