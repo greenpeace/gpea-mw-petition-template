@@ -35,9 +35,8 @@ const questionWrapProps = {
 };
 
 const questionProps = {
-  fontSize: 'lg',
+  fontSize: { base: 'lg', md: 'xl' },
   py: 6,
-  color: 'var(--gps-primary)',
   fontWeight: 'bold',
 };
 
@@ -85,16 +84,13 @@ function Faq() {
           justifyContent={'space-between'}
           alignItems={'center'}
           p={6}
-          // bgColor={'var(--gps-primary)'}
-          // borderRadius={8}
-          // color={'white'}
           background="gray.50"
           borderLeft="4px"
           borderColor="var(--gps-primary)"
           align="center"
         >
           <Box mb={{ base: 6, md: 0 }}>
-            <Text textStyle={'subTitle'} color={'white'}>
+            <Text textStyle={'subTitle'}>
               啟動WhatsApp「走塑GPS」後，發送任何訊息即可開始使用！
             </Text>
           </Box>
@@ -244,26 +240,6 @@ function Faq() {
             </AccordionItem>
           </Accordion>
         </Box>
-
-        <Stack
-          spacing="4"
-          flexDirection={{ base: 'column', md: 'row' }}
-          justifyContent={'space-between'}
-          bgColor={'var(--gps-primary)'}
-          my="6"
-          p={6}
-          borderRadius={8}
-          align="center"
-        >
-          <Box mb={{ base: 6, md: 0 }}>
-            <Text textStyle={'subTitle'} color={'white'}>
-              啟動WhatsApp「走塑GPS」後，發送任何訊息即可開始使用！
-            </Text>
-          </Box>
-          <Box>
-            <CTAButton />
-          </Box>
-        </Stack>
       </Container>
     </Box>
   );
