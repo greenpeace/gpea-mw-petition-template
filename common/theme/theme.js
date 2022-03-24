@@ -27,13 +27,13 @@ const theme = extendTheme({
     heading: {
       fontSize: { base: '2xl', md: '4xl' },
       fontWeight: 900,
-      color: '#77C1D3',
+      color: 'var(--gps-primary)',
       mb: 4,
     },
     subTitle: {
       fontSize: { base: 'xl', md: '2xl' },
       fontWeight: 700,
-      color: '#77C1D3',
+      color: 'var(--gps-primary)',
       mb: 4,
     },
     content: {

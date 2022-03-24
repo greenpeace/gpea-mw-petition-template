@@ -73,10 +73,7 @@ function Index({ setFormContent, setTheme, themeData }) {
   return (
     <Box pt={{ base: '50px', md: '60px' }}>
       <Head>
-        <title>
-          走塑GPS：全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！ - Greenpeace
-          綠色和平 | 香港
-        </title>
+        <title>走塑GPS 登記使用完整版 - Greenpeace 綠色和平 | 香港</title>
       </Head>
       <Box w={'100%'} pos={'relative'}>
         <Container maxW={`${maxWSize}px`} pos={'relative'} zIndex={1}>

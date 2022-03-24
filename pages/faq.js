@@ -37,7 +37,7 @@ const questionWrapProps = {
 const questionProps = {
   fontSize: 'lg',
   py: 6,
-  color: '#77C1D3',
+  color: 'var(--gps-primary)',
   fontWeight: 'bold',
 };
 
@@ -52,10 +52,7 @@ function Faq() {
   return (
     <Box pt={{ base: '50px', md: '60px' }}>
       <Head>
-        <title>
-          走塑GPS：全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！ - Greenpeace
-          綠色和平 | 香港
-        </title>
+        <title>走塑GPS 常見問題 - Greenpeace 綠色和平 | 香港</title>
       </Head>
       <Box w={'100%'} pos={'relative'} overflow={'hidden'}>
         <Container maxW={`${maxWSize}px`} pos={`relative`} zIndex={2}>
@@ -66,7 +63,7 @@ function Faq() {
                 color={'white'}
                 fontSize={{ base: '2xl', md: '4xl' }}
                 dangerouslySetInnerHTML={{
-                  __html: '走塑GPS使用教學',
+                  __html: '走塑GPS 常見問題',
                 }}
               />
             </Box>
@@ -88,12 +85,12 @@ function Faq() {
           justifyContent={'space-between'}
           alignItems={'center'}
           p={6}
-          // bgColor={'#77C1D3'}
+          // bgColor={'var(--gps-primary)'}
           // borderRadius={8}
           // color={'white'}
           background="gray.50"
           borderLeft="4px"
-          borderColor="#77C1D3"
+          borderColor="var(--gps-primary)"
           align="center"
         >
           <Box mb={{ base: 6, md: 0 }}>
@@ -252,7 +249,7 @@ function Faq() {
           spacing="4"
           flexDirection={{ base: 'column', md: 'row' }}
           justifyContent={'space-between'}
-          bgColor={'#77C1D3'}
+          bgColor={'var(--gps-primary)'}
           my="6"
           p={6}
           borderRadius={8}

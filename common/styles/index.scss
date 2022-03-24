@@ -2,6 +2,11 @@
 
 @import './scss/theme', './scss/content', './scss/step', './scss/override';
 
+:root {
+  --gps-primary: #4dd171;
+  --gps-whatsapp: #25d366;
+}
+
 html,
 body {
   margin: 0;

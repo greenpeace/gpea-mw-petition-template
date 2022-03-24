@@ -29,7 +29,7 @@ export default function WithSubnavigation({ currentPage }) {
       h={{ base: '50px', md: '60px' }}
       w="100%"
       bgColor="white"
-      py={1}
+      py={2}
       ref={ref}
       borderBottom="1px"
       borderColor="gray.100"
@@ -98,9 +98,9 @@ const DesktopNav = ({ currentPage }) => {
   const linkHoverColor = useColorModeValue('gray.800', 'white');
 
   return (
-    <Flex zIndex="1" d={{ base: 'flex' }} h={'50px'} align={'center'}>
+    <Box zIndex="1" d={{ base: 'flex' }} h={'50px'} align={'center'}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label} px={2}>
+        <Box key={navItem.label} px={4}>
           <Link href={navItem.href ?? '#'}>
             <Text
               p={2}
@@ -123,10 +123,10 @@ const DesktopNav = ({ currentPage }) => {
           </Link>
         </Box>
       ))}
-      <Box d="inline-block">
+      <Box cursor="pointer" d="inline-block">
         <Link
           href="https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw&ref=gps-header-donate-button"
-          isExternal
+          isExterna
         >
           <Text
             bgColor="orange.500"
@@ -141,7 +141,7 @@ const DesktopNav = ({ currentPage }) => {
           </Text>
         </Link>
       </Box>
-    </Flex>
+    </Box>
   );
 };
 

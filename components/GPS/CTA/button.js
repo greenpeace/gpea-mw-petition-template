@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, Button, Text } from '@chakra-ui/react';
+import { Box, Flex, Text, Icon } from '@chakra-ui/react';
+
+import { BsWhatsapp } from 'react-icons/bs';
 
 export const CTAButton = () => (
   <Box
@@ -7,13 +9,25 @@ export const CTAButton = () => (
     borderRadius={8}
     _hover={{ opacity: 0.9 }}
     cursor={'pointer'}
-    align="center"
     p={1}
   >
-    <Box bgColor={'orange.500'} borderRadius={8} p={4} align="center">
-      <Text fontSize={{ base: 'lg', md: 'xl' }} color={'#FFF'} fontWeight={700}>
+    <Flex
+      bgColor="var(--gps-whatsapp)"
+      borderRadius={8}
+      p={4}
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Icon
+        as={BsWhatsapp}
+        fontSize="2xl"
+        mr="4"
+        color="white"
+        fontWeight="bold"
+      />
+      <Text fontSize={{ base: 'lg', md: 'xl' }} color="white" fontWeight="bold">
         立即啟動走塑GPS
       </Text>
-    </Box>
+    </Flex>
   </Box>
 );
