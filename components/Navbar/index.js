@@ -167,7 +167,7 @@ const MobileNav = ({ handleToggle, currentPage }) => {
           currentPage={currentPage}
         />
       ))}
-      <Box d="inline-block">
+      <Box cursor="pointer" d="inline-block">
         <Link
           href="https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw&ref=gps-header-donate-button"
           isExternal
@@ -199,6 +199,7 @@ const MobileNavItem = ({
   return (
     <Box>
       <Flex
+        cursor="pointer"
         py={2}
         justify={'space-between'}
         align={'center'}

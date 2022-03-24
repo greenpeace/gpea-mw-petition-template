@@ -59,111 +59,60 @@ function Index() {
       </Head>
       {/* <HeroSection /> */}
       <Container maxW={`${maxWSize}px`} py="6" px="4">
-        <Box>
-          <Image
-            loader={imageLoader}
-            src={`/images/svg/Plastic-free-GPS-banner.svg`}
-            width="1400"
-            height="800"
-          />
-        </Box>
-        <Stack
-          my="6"
-          spacing="6"
-          flexDirection={{ base: 'column', lg: 'row' }}
-          align="center"
-        >
-          <Box flex="1" borderLeft="4px" borderColor="var(--gps-primary)" p="6">
-            <Text as="p" textStyle={'content'}>
-              綠色和平推出「走塑GPS」WhatsApp
-              Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free,
-              Care Free」！
-            </Text>
-            <Box d="inline-block" w="auto" my="6" mx="auto">
-              <CTAButton />
-            </Box>
+        <Stack spacing="60px">
+          <Box>
+            <Image
+              loader={imageLoader}
+              src={`/images/svg/Plastic-free-GPS-banner.svg`}
+              width="1400"
+              height="800"
+            />
           </Box>
-          <Box flex="1" p="4">
-            {/* <Text as="p" textStyle={'content'}>
-              為了方便市民搜尋「全城走塑計劃」超過 <b>1,100</b>
-              間走塑商戶，綠色和平推出「走塑GPS」WhatsApp
-              Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到
-              <Text as="span" fontWeight="bold">
-                「Plastic Free, Care Free」
-              </Text>
-              !
-            </Text>
-            <Text>
-              <UnorderedList pl={2} mb={4}>
-                <ListItem>即時定位：5間最就近走塑小店</ListItem>
-                <ListItem>資訊齊全：地址、地圖、走塑等級</ListItem>
-                <ListItem>費用全免！</ListItem>
-              </UnorderedList>
-            </Text> */}
-            <SimpleGrid spacing="4" columns={3} direction={{ base: 'row' }}>
-              <Image
-                loader={imageLoader}
-                src={`/images/svg/22.svg`}
-                layout="responsive"
-                width={1440}
-                height={1440}
-              />
-              <Image
-                loader={imageLoader}
-                src={`/images/svg/GPS-如何使用.svg`}
-                layout="responsive"
-                width={1440}
-                height={1440}
-              />
-              <Image
-                loader={imageLoader}
-                src={`/images/svg/24.svg`}
-                layout="responsive"
-                width={1440}
-                height={1440}
-              />
-            </SimpleGrid>
-          </Box>
-        </Stack>
-
-        <Stack spacing={'60px'} py={{ base: 6, lg: 12 }}>
-          {/* <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
-            <Stack direction={{ base: 'column' }} flex={1} spacing="6">
-              <Box>
-                <Image
-                  loader={imageLoader}
-                  src={`/images/placeholder.svg`}
-                  width="48px"
-                  height="48px"
-                  pl="2"
-                />
-              </Box>
-              <Box flex={1}>
-                <Text textStyle={'heading'}>
-                  邊間走塑小店喺左近
-                  <br />
-                  免費幫你搵
-                </Text>
+          <Stack
+            p="4"
+            my="8"
+            spacing="6"
+            flexDirection={{ base: 'column', lg: 'row' }}
+            align="center"
+          >
+            <Box flex="1">
+              <Stack spacing="6">
                 <Text as="p" textStyle={'content'}>
-                  只須於WhatsApp分享實時位置，「走塑GPS」將立即搜尋5間鄰近走塑小店，內附地圖連結助你規劃路線光顧心水小店。
+                  綠色和平推出「走塑GPS」WhatsApp
+                  Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic
+                  Free, Care Free」！
                 </Text>
-              </Box>
-            </Stack>
-            <Box flex={1}>
-              <Box borderRadius="xl" overflow="hidden">
+                <Box d="inline-block" w="auto" mx="auto">
+                  <CTAButton />
+                </Box>
+              </Stack>
+            </Box>
+            <Box w="100%" flex="1">
+              <SimpleGrid columns="3" justifyContent={'space-around'}>
                 <Image
                   loader={imageLoader}
-                  src={`/images/demo_video.jpg`}
+                  src={`/images/svg/22.svg`}
                   layout="responsive"
-                  width={1375}
-                  height={779}
-                  onClick={onOpen}
-                  cursor={'pointer'}
+                  width={1440}
+                  height={1440}
                 />
-              </Box>
+                <Image
+                  loader={imageLoader}
+                  src={`/images/svg/GPS-如何使用.svg`}
+                  layout="responsive"
+                  width={1440}
+                  height={1440}
+                />
+                <Image
+                  loader={imageLoader}
+                  src={`/images/svg/24.svg`}
+                  layout="responsive"
+                  width={1440}
+                  height={1440}
+                />
+              </SimpleGrid>
             </Box>
-          </Stack> */}
-
+          </Stack>
           <Stack direction={{ base: 'column', lg: 'row-reverse' }} spacing="6">
             <Stack
               px={{ base: 0, md: 4 }}
