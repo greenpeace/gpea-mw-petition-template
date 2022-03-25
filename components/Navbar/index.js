@@ -26,10 +26,9 @@ export default function WithSubnavigation({ currentPage }) {
       zIndex="9"
       pos={'fixed'}
       top={0}
-      h={{ base: '50px', md: '60px' }}
       w="100%"
       bgColor="white"
-      py={2}
+      py={{ base: 2, md: 4 }}
       ref={ref}
       borderBottom="1px"
       borderColor="gray.100"
@@ -93,19 +92,22 @@ export default function WithSubnavigation({ currentPage }) {
   );
 }
 
-const DesktopNav = ({ currentPage }) => {
-  const linkColor = useColorModeValue('gray.600', 'gray.200');
+const DesktopNav = ({ href, currentPage }) => {
   const linkHoverColor = useColorModeValue('gray.800', 'white');
 
   return (
-    <Box zIndex="1" d={{ base: 'flex' }} h={'50px'} align={'center'}>
+    <Box zIndex="1" d={{ base: 'flex' }} align={'center'}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label} px={4}>
-          <Link href={navItem.href ?? '#'}>
+          <Link href={navItem.href}>
             <Text
               p={2}
               fontSize={'md'}
-              color={linkColor}
+              cursor={'pointer'}
+              color={
+                currentPage === navItem.href ? 'var(--gps-primary)' : 'gray.500'
+              }
+              fontWeight={currentPage === navItem.href ? 'bold' : 300}
               _hover={{
                 textDecoration: 'none',
                 color: linkHoverColor,
@@ -115,8 +117,6 @@ const DesktopNav = ({ currentPage }) => {
                   shadow: 'none',
                 },
               }}
-              cursor={'pointer'}
-              fontWeight={currentPage === navItem.href ? 900 : 300}
             >
               {navItem.label}
             </Text>
@@ -189,13 +189,7 @@ const MobileNav = ({ handleToggle, currentPage }) => {
   );
 };
 
-const MobileNavItem = ({
-  handleToggle,
-  label,
-  children,
-  href,
-  currentPage,
-}) => {
+const MobileNavItem = ({ handleToggle, label, href, currentPage }) => {
   return (
     <Box>
       <Flex
@@ -210,8 +204,8 @@ const MobileNavItem = ({
       >
         <Link href={href}>
           <Text
-            color={useColorModeValue('gray.600', 'gray.200')}
-            fontWeight={currentPage === href ? 900 : 300}
+            color={currentPage === href ? 'var(--gps-primary)' : 'gray.500'}
+            fontWeight={currentPage === href ? 'bold' : 300}
           >
             {label}
           </Text>
