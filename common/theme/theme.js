@@ -5,8 +5,6 @@ import colors from './colors';
 import { Button } from './components/Button';
 
 const theme = extendTheme({
-  initialColorMode: 'light',
-  useSystemColorMode: false,
   components: {
     Button,
   },
