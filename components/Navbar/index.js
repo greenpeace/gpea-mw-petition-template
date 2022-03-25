@@ -5,7 +5,6 @@ import {
   IconButton,
   Stack,
   Collapse,
-  useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
@@ -93,8 +92,6 @@ export default function WithSubnavigation({ currentPage }) {
 }
 
 const DesktopNav = ({ href, currentPage }) => {
-  const linkHoverColor = useColorModeValue('gray.800', 'white');
-
   return (
     <Box zIndex="1" d={{ base: 'flex' }} align={'center'}>
       {NAV_ITEMS.map((navItem) => (
@@ -110,7 +107,7 @@ const DesktopNav = ({ href, currentPage }) => {
               fontWeight={currentPage === navItem.href ? 'bold' : 300}
               _hover={{
                 textDecoration: 'none',
-                color: linkHoverColor,
+                fontWeight: 'bold',
               }}
               sx={{
                 ':focus:not(:focus-visible)': {
