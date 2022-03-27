@@ -1,24 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Box, Image, Heading, Text } from '@chakra-ui/react';
+import { Heading, Text } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
-
-// import borrow from '@components/GPS/images/plastics_borrow_event.jpg';
 
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
   const { FirstName } = signup;
   return (
     <>
-      <Heading {...headingProps}>
-        感謝您的支持，綠色和平已為您開啟免費使用「走塑GPS」服務，助您未來尋找鄰近走塑店鋪！
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+        感謝您的支持，綠色和平已為您啟動完整版「走塑GPS」服務，助您未來尋找鄰近走塑店鋪！
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        「走塑GPS」WhatsApp頁面將顯示您成功登記的確認訊息。
+        <b>**「走塑GPS」WhatsApp對話將顯示您成功登記的確認訊息。</b>
       </Text>
 
       <Text as="p" {...paragraphProps}>
@@ -33,11 +31,7 @@ const Thankyou = ({ theme, signup }) => {
         您的捐款將直接資助我們持續調查塑膠污染問題、督促企業和政府推出積極的減塑目標與政策，以及推動超市淘汰即棄塑膠、招募更多商戶成為走塑店鋪，邁向全城走塑。
       </Text>
 
-      {/* <Box {...paragraphProps}>
-        <Image src={borrow} />
-      </Box> */}
-
-      <Heading {...headingProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         即棄塑膠永久傷害海洋、環境與人體健康，您願意出手減緩危機嗎？
       </Heading>
 
@@ -52,16 +46,6 @@ const Thankyou = ({ theme, signup }) => {
       <Text as="p" {...paragraphProps}>
         緩解塑膠污染，捐助綠色和平走塑工作。
       </Text>
-
-      {/* <Text as="p" {...paragraphProps}>
-        捐款查詢：
-        <br />
-        歡迎致電會員服務熱線 (852) 2854 8318，或電郵至{' '}
-        <a href="mailto:donor.services.hk@greenpeace.org">
-          <u>donor.services.hk@greenpeace.org</u>
-        </a>
-        ，以查詢捐款相關事宜。
-      </Text> */}
     </>
   );
 };

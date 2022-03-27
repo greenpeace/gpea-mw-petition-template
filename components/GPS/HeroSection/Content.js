@@ -41,7 +41,7 @@ function Content({ status, theme }) {
           color={'white'}
           fontSize={{ base: '2xl', md: '4xl' }}
           dangerouslySetInnerHTML={{
-            __html: '立即登記<br/>免費使用走塑GPS！',
+            __html: '立即登記<br/>免費使用完整版！',
           }}
         />
       </Box>

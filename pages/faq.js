@@ -12,7 +12,6 @@ import {
   AccordionPanel,
   AccordionIcon,
   Flex,
-  Stack,
 } from '@chakra-ui/react';
 
 import { headingProps } from '@common/styles/components/contentStyle';
@@ -36,13 +35,11 @@ const questionWrapProps = {
 
 const questionProps = {
   fontSize: 'lg',
-  py: 6,
-  color: '#77C1D3',
+  py: 4,
   fontWeight: 'bold',
 };
 
 const answerProps = {
-  py: 6,
   mb: 4,
   lineHeight: 1.7,
   textAlign: 'justify',
@@ -52,10 +49,7 @@ function Faq() {
   return (
     <Box pt={{ base: '50px', md: '60px' }}>
       <Head>
-        <title>
-          走塑GPS：全港走塑店鋪定位地圖 1,100間走塑店鋪輕鬆定位！ - Greenpeace
-          綠色和平 | 香港
-        </title>
+        <title>走塑GPS 常見問題 - Greenpeace 綠色和平 | 香港</title>
       </Head>
       <Box w={'100%'} pos={'relative'} overflow={'hidden'}>
         <Container maxW={`${maxWSize}px`} pos={`relative`} zIndex={2}>
@@ -66,7 +60,7 @@ function Faq() {
                 color={'white'}
                 fontSize={{ base: '2xl', md: '4xl' }}
                 dangerouslySetInnerHTML={{
-                  __html: '走塑GPS使用教學',
+                  __html: '走塑GPS 常見問題',
                 }}
               />
             </Box>
@@ -85,19 +79,15 @@ function Faq() {
       <Container maxW={`${maxWSize}px`} py={6}>
         <Flex
           flexDirection={{ base: 'column', md: 'row' }}
-          justifyContent={'space-between'}
           alignItems={'center'}
+          justifyContent={'space-between'}
           p={6}
-          // bgColor={'#77C1D3'}
-          // borderRadius={8}
-          // color={'white'}
-          background="gray.50"
+          background="gray.10"
           borderLeft="4px"
-          borderColor="#77C1D3"
-          align="center"
+          borderColor="var(--gps-primary)"
         >
-          <Box mb={{ base: 6, md: 0 }}>
-            <Text textStyle={'subTitle'} color={'white'}>
+          <Box py="6">
+            <Text textStyle={'subTitle'}>
               啟動WhatsApp「走塑GPS」後，發送任何訊息即可開始使用！
             </Text>
           </Box>
@@ -106,8 +96,8 @@ function Faq() {
           </Box>
         </Flex>
 
-        <Box maxW="4xl" mx="auto" my="4">
-          <Accordion defaultIndex={[0]} py={6}>
+        <Box maxW="4xl" mx="auto" py={6}>
+          <Accordion defaultIndex={[0]}>
             <AccordionItem>
               <AccordionButton {...questionWrapProps}>
                 <Box flex="1" textAlign="left" {...questionProps}>
@@ -141,7 +131,7 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel pb={4}>
+              <AccordionPanel {...answerProps}>
                 你可以在「分享位置」頁面直接輸入地點，以搜尋更多走塑店鋪。
               </AccordionPanel>
             </AccordionItem>
@@ -247,26 +237,6 @@ function Faq() {
             </AccordionItem>
           </Accordion>
         </Box>
-
-        <Stack
-          spacing="4"
-          flexDirection={{ base: 'column', md: 'row' }}
-          justifyContent={'space-between'}
-          bgColor={'#77C1D3'}
-          my="6"
-          p={6}
-          borderRadius={8}
-          align="center"
-        >
-          <Box mb={{ base: 6, md: 0 }}>
-            <Text textStyle={'subTitle'} color={'white'}>
-              啟動WhatsApp「走塑GPS」後，發送任何訊息即可開始使用！
-            </Text>
-          </Box>
-          <Box>
-            <CTAButton />
-          </Box>
-        </Stack>
       </Container>
     </Box>
   );

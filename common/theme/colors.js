@@ -9,11 +9,13 @@ const colors = {
     900: '#133300',
   },
   gray: {
-    100: '#f1f3f5',
-    300: '#dee2e6',
-    500: '#adb5bd',
-    700: '#495057',
-    900: '#212529',
+    10: 'var(--shades-10)',
+    50: 'var(--shades-50)',
+    100: 'var(--shades-100)',
+    300: 'var(--shades-300)',
+    500: 'var(--shades-500)',
+    700: 'var(--shades-700)',
+    900: 'var(--shades-900)',
   },
   orange: {
     300: 'var(--orange-300)',

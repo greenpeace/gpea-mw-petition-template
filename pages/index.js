@@ -32,7 +32,7 @@ const trianglePropsMD = {
   height: 30,
   borderLeft: '90px solid transparent',
   borderRight: '0px solid transparent',
-  borderTop: '60px solid #77C1D3',
+  borderTop: '60px solid var(--gps-primary)',
   right: 0,
   zIndex: 2,
 };
@@ -42,7 +42,7 @@ const triangleProps = {
   height: 30,
   borderLeft: '60px solid transparent',
   borderRight: '0px solid transparent',
-  borderTop: '40px solid #77C1D3',
+  borderTop: '40px solid var(--gps-primary)',
   left: 60,
   zIndex: 2,
 };
@@ -57,105 +57,102 @@ function Index() {
           綠色和平 | 香港
         </title>
       </Head>
-      <HeroSection />
+      {/* <HeroSection /> */}
       <Container maxW={`${maxWSize}px`} py="6" px="4">
-        <Stack
-          spacing="6"
-          flexDirection={{ base: 'column', lg: 'row' }}
-          align="center"
-        >
-          <Box flex="1" borderLeft="4px" borderColor="#77C1D3" p="6">
-            <Text as="p" textStyle={'content'}>
-              綠色和平推出「走塑GPS」WhatsApp
-              Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free,
-              Care Free」！
-            </Text>
+        <Stack spacing={{ base: '60px', md: '80px' }}>
+          <Box>
+            <Box>
+              <Image
+                loader={imageLoader}
+                src={`/images/svg/Plastic-free-GPS-banner.svg`}
+                width="1400"
+                height="800"
+              />
+            </Box>
+            <Stack
+              spacing="6"
+              flexDirection={{ base: 'column', lg: 'row' }}
+              align="center"
+            >
+              <Box flex="1" py="6">
+                <Stack spacing="6" align={{ base: 'center', md: 'flex-start' }}>
+                  <Text as="p" textStyle={'content'}>
+                    綠色和平推出「走塑GPS」WhatsApp Chatbot功能，
+                    <br />
+                    讓你隨時隨地尋找鄰近走塑友善小店，做到
+                    <strong>「Plastic Free, Care Free」</strong>！
+                  </Text>
+                  <Box>
+                    <CTAButton />
+                  </Box>
+                </Stack>
+              </Box>
+              <Box w="100%" flex="1">
+                <SimpleGrid columns="3" justifyContent={'space-around'}>
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/svg/22.svg`}
+                    layout="responsive"
+                    width={1440}
+                    height={1440}
+                  />
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/svg/GPS-如何使用.svg`}
+                    layout="responsive"
+                    width={1440}
+                    height={1440}
+                  />
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/svg/24.svg`}
+                    layout="responsive"
+                    width={1440}
+                    height={1440}
+                  />
+                </SimpleGrid>
+              </Box>
+            </Stack>
           </Box>
-          <Box flex="1" p="4">
-            {/* <Text as="p" textStyle={'content'}>
-              為了方便市民搜尋「全城走塑計劃」超過 <b>1,100</b>
-              間走塑商戶，綠色和平推出「走塑GPS」WhatsApp
-              Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到
-              <Text as="span" fontWeight="bold">
-                「Plastic Free, Care Free」
+          <Stack spacing="6">
+            <Box>
+              <Text as="p" textStyle={'content'} textAlign="center">
+                只須於WhatsApp分享實時位置，
+                <br />
+                「走塑GPS」將立即搜尋5間鄰近走塑小店，內附地圖連結助你規劃路線光顧心水小店。
               </Text>
-              !
-            </Text>
-            <Text>
-              <UnorderedList pl={2} mb={4}>
-                <ListItem>即時定位：5間最就近走塑小店</ListItem>
-                <ListItem>資訊齊全：地址、地圖、走塑等級</ListItem>
-                <ListItem>費用全免！</ListItem>
-              </UnorderedList>
-            </Text> */}
-            <SimpleGrid spacing="4" columns={3} direction={{ base: 'row' }}>
+            </Box>
+            <SimpleGrid columns="4" justifyContent={'space-around'}>
               <Image
                 loader={imageLoader}
-                src={`/images/svg/22.svg`}
+                src={`/images/svg/25.svg`}
                 layout="responsive"
                 width={1440}
                 height={1440}
               />
               <Image
                 loader={imageLoader}
-                src={`/images/svg/GPS-如何使用.svg`}
+                src={`/images/svg/26.svg`}
                 layout="responsive"
                 width={1440}
                 height={1440}
               />
               <Image
                 loader={imageLoader}
-                src={`/images/svg/24.svg`}
+                src={`/images/svg/27.svg`}
+                layout="responsive"
+                width={1440}
+                height={1440}
+              />
+              <Image
+                loader={imageLoader}
+                src={`/images/svg/28.svg`}
                 layout="responsive"
                 width={1440}
                 height={1440}
               />
             </SimpleGrid>
-          </Box>
-        </Stack>
-
-        <Box maxW={'480px'} mx={'auto'} my={6}>
-          <CTAButton />
-        </Box>
-
-        <Stack spacing={'60px'} py={{ base: 6, lg: 12 }}>
-          {/* <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
-            <Stack direction={{ base: 'column' }} flex={1} spacing="6">
-              <Box>
-                <Image
-                  loader={imageLoader}
-                  src={`/images/placeholder.svg`}
-                  width="48px"
-                  height="48px"
-                  pl="2"
-                />
-              </Box>
-              <Box flex={1}>
-                <Text textStyle={'heading'}>
-                  邊間走塑小店喺左近
-                  <br />
-                  免費幫你搵
-                </Text>
-                <Text as="p" textStyle={'content'}>
-                  只須於WhatsApp分享實時位置，「走塑GPS」將立即搜尋5間鄰近走塑小店，內附地圖連結助你規劃路線光顧心水小店。
-                </Text>
-              </Box>
-            </Stack>
-            <Box flex={1}>
-              <Box borderRadius="xl" overflow="hidden">
-                <Image
-                  loader={imageLoader}
-                  src={`/images/demo_video.jpg`}
-                  layout="responsive"
-                  width={1375}
-                  height={779}
-                  onClick={onOpen}
-                  cursor={'pointer'}
-                />
-              </Box>
-            </Box>
-          </Stack> */}
-
+          </Stack>
           <Stack direction={{ base: 'column', lg: 'row-reverse' }} spacing="6">
             <Stack
               px={{ base: 0, md: 4 }}
@@ -163,17 +160,16 @@ function Index() {
               flex={1}
               spacing="6"
             >
-              <Box>
+              <Box px="2">
                 <Image
                   loader={imageLoader}
-                  src={`/images/sticker.svg`}
+                  src={`/images/svg/sticker-free-icon-font.svg`}
                   width="48px"
                   height="48px"
-                  pl="2"
                 />
               </Box>
               <Box flex={1}>
-                <Text textStyle={'heading'}>走塑兩級制 唔使心大心細</Text>
+                <Text textStyle={'heading'}>認住走塑貼紙 走塑生活好Easy</Text>
                 <Text as="p" textStyle={'content'}>
                   綠色和平以「全城走塑」白色及藍色徽章貼紙，標示店鋪不同程度的走塑措施。「走塑GPS」亦會於搜尋結果顯示店鋪走塑等級，自備容器購物亦得，享受走塑優惠亦得！
                 </Text>
@@ -198,7 +194,6 @@ function Index() {
                     height={30}
                   />
                   <Text textStyle={'content'} textAlign="center">
-                    完全淘汰即棄塑膠 或<br />
                     提供走塑優惠
                   </Text>
                 </Stack>
@@ -219,39 +214,32 @@ function Index() {
                     height={30}
                   />
                   <Text textStyle={'content'} textAlign="center">
-                    不主動提供即棄塑膠 或<br />
-                    歡迎自備餐具/器皿購物
+                    歡迎自備餐具／器皿購物
                   </Text>
                 </Stack>
               </Stack>
             </Box>
           </Stack>
-
           <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
             <Stack direction={{ base: 'column' }} flex={1} spacing="6">
-              <Box>
+              <Box px="2">
                 <Image
                   loader={imageLoader}
-                  src={`/images/like.svg`}
+                  src={`/images/svg/map-free-icon-font.svg`}
                   width="48px"
                   height="48px"
-                  pl="2"
                 />
               </Box>
               <Box flex={1}>
                 <Text textStyle={'heading'}>全港走塑版圖 持續擴展中！</Text>
                 <Text as="p" textStyle={'content'}>
-                  綠色和平自2018年發起「全城走塑計劃」，與超過 <b>170</b>
-                  位義工到訪全港大小社區，遊說店主提供走塑選擇，2021年底達成{' '}
-                  <b>1,100</b>
-                  間里程碑！
+                  綠色和平自2018年發起「全城走塑計劃」，與超過170位義工到訪全港大小社區，遊說店主提供走塑選擇，2021年底達成1,100間里程碑！
                 </Text>
                 <Text as="p" textStyle={'content'}>
-                  未來我們會繼續擴大全港走塑版圖，邀請更多類型店鋪營造走塑友善環境，示範具體解決方案，促請政府及企業提出更積極走塑措施！
+                  未來我們會邀請更多類型店鋪營造走塑友善環境，示範具體解決方案，促請政府及企業提出更積極走塑措施。歡迎您按此提供走塑店鋪資料，或加入全城走塑小隊，一起擴大全港走塑版圖！
                 </Text>
               </Box>
             </Stack>
-
             <Box flex={1}>
               <Box borderRadius="xl" overflow="hidden">
                 <Image
@@ -264,29 +252,28 @@ function Index() {
                 />
               </Box>
             </Box>
-          </Stack>
-
-          <Stack spacing="6">
-            <Box borderRadius="xl" overflow="hidden">
-              <Image
-                loader={imageLoader}
-                src={`/images/20210508_SSPHunting_8.jpg`}
-                layout="responsive"
-                width={1920}
-                height={1280}
-                priority={true}
-              />
-            </Box>
-            <Box borderRadius="xl" overflow="hidden">
-              <Image
-                loader={imageLoader}
-                src={`/images/20210508_SSPHunting_17.jpg`}
-                layout="responsive"
-                width={1920}
-                height={1280}
-                priority={true}
-              />
-            </Box>
+            <Stack spacing="6">
+              <Box borderRadius="xl" overflow="hidden">
+                <Image
+                  loader={imageLoader}
+                  src={`/images/20210508_SSPHunting_8.jpg`}
+                  layout="responsive"
+                  width={1920}
+                  height={1280}
+                  priority={true}
+                />
+              </Box>
+              <Box borderRadius="xl" overflow="hidden">
+                <Image
+                  loader={imageLoader}
+                  src={`/images/20210508_SSPHunting_17.jpg`}
+                  layout="responsive"
+                  width={1920}
+                  height={1280}
+                  priority={true}
+                />
+              </Box>
+            </Stack>
           </Stack>
 
           <Stack spacing="4" maxW={'480px'} align="center" alignSelf={'center'}>
@@ -351,7 +338,7 @@ const HeroSection = () => {
             mx={{ md: 'auto' }}
           >
             <Box
-              bgColor="#77C1D3"
+              bgColor="var(--gps-primary)"
               borderRadius={'xl'}
               py={{ base: 4, lg: 8 }}
               px={{ md: 12 }}
@@ -387,7 +374,7 @@ const HeroSection = () => {
                 <Text
                   as="h1"
                   fontSize={{ base: '5xl', lg: '8xl' }}
-                  color="#77C1D3"
+                  color="var(--gps-primary)"
                   fontWeight="bold"
                 >
                   <Box as="span" style={{ transform: 'rotate(-190deg)' }}>
@@ -406,7 +393,7 @@ const HeroSection = () => {
                   <Text
                     as="h1"
                     fontSize={{ base: '5xl', lg: '9xl' }}
-                    color="#77C1D3"
+                    color="var(--gps-primary)"
                     fontWeight="bold"
                   >
                     <Box as="span" style={{ transform: 'rotate(-190deg)' }}>

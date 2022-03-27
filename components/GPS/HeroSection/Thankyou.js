@@ -42,7 +42,7 @@ function Content({ signup }) {
           color={'white'}
           fontSize={{ base: '2xl', md: '4xl' }}
           dangerouslySetInnerHTML={{
-            __html: `${FirstName}，您現在可以免費使用走塑GPS！`,
+            __html: `${FirstName}，，您現在可以免費使用完整版走塑GPS！`,
           }}
         />
       </Box>

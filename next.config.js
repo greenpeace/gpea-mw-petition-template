@@ -1,7 +1,6 @@
-// next.config.js
 const isProd = process.env.NODE_ENV === 'production';
-// const withPlugins = require('next-compose-plugins');
-// const optimizedImages = require('next-optimized-images');
+const withPlugins = require('next-compose-plugins');
+const optimizedImages = require('next-optimized-images');
 
 const imagesConfig = isProd
   ? {
@@ -49,25 +48,20 @@ const nextConfig = {
   // https://nextjs.org/docs/api-reference/next/image#built-in-loaders
 };
 
-module.exports = nextConfig;
-
-// module.exports = withPlugins(
-//   [
-//     {
-//       /* config for next-optimized-images */
-//       mozjpeg: {
-//         quality: 80,
-//       },
-//       pngquant: {
-//         speed: 3,
-//         strip: true,
-//         verbose: true,
-//       },
-//     },
-//   ],
-//   {
-//     ...withImages(),
-//     webpack5: true
-//   },
-//   nextConfig,
-// );
+module.exports = withPlugins(
+  [
+    optimizedImages,
+    {
+      /* config for next-optimized-images */
+      mozjpeg: {
+        quality: 80,
+      },
+      pngquant: {
+        speed: 3,
+        strip: true,
+        verbose: true,
+      },
+    },
+  ],
+  nextConfig,
+);

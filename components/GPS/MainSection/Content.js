@@ -20,17 +20,19 @@ const Content = ({ theme, setScrollToTarget }) => {
   return (
     <Box minH={{ base: 'auto', md: '400px' }}>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        全港1,100間走塑店鋪 一鍵導航
+        只需簡單登記，就能使用完整版「走塑GPS」！
       </Heading>
 
-      <Box {...paragraphProps}>
-        為了方便市民搜尋「全城走塑計劃」超過1,100間走塑商戶，綠色和平推出「走塑GPS」WhatsApp
-        Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，做到「Plastic Free, Care
-        Free」！
-      </Box>
+      <Text {...paragraphProps}>
+        感謝您試用「走塑GPS」全港走塑店鋪定位地圖，希望幫到您更輕鬆、方便實踐綠色生活！
+      </Text>
+
+      <Text {...paragraphProps}>
+        **「走塑GPS」WhatsApp對話將顯示您成功登記的確認訊息。
+      </Text>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        只需簡單登記，你就能免費使用「走塑GPS」服務，即時定位鄰近走塑小店！
+        尚未試用過「走塑GPS」？立即免費體驗，輕鬆搜尋全港走塑店鋪！
       </Heading>
     </Box>
   );

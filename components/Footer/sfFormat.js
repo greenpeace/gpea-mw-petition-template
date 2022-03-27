@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Container, Text, Stack, Link, Divider } from '@chakra-ui/react';
-import Image from 'next/image';
+import {
+  Box,
+  Container,
+  Text,
+  Image,
+  Stack,
+  Link,
+  Divider,
+} from '@chakra-ui/react';
 import { FooterBGBlue } from './footer.style';
+
 import { HKChinese, TWChinese, HKEnglish } from './footerContent';
-import { imageLoader } from 'common/utils';
+
+import logo from '@common/images/logo/GP-logo-2019-white-[web].png';
 
 const SFFormat = ({ locale }) => {
   const [content, setContent] = useState(HKChinese);
@@ -30,14 +39,7 @@ const SFFormat = ({ locale }) => {
     <FooterBGBlue>
       <Container maxW={'1200px'} py={8} px={4}>
         <Box pt={4} pb={6}>
-          <Image
-            loader={imageLoader}
-            src="https://www.greenpeace.org/hongkong/wp-content/themes/planet4-child-theme-hongkong/static/images/logo_zh_gp_w%20footer.svg"
-            layout="intrinsic"
-            width={'160px'}
-            height={'26px'}
-            alt={'Greenpeace 綠色和平'}
-          />
+          <Image src={logo} maxW={'180px'} alt={'Greenpeace 綠色和平'} />
         </Box>
         <Stack
           as="flex"
