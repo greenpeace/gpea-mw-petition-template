@@ -5,6 +5,7 @@ import { Field } from '@components/Field/fields';
 import { capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
+import axios from 'axios'
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -52,6 +53,7 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
+    preSetData // GPS PROJECT
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -123,6 +125,18 @@ const MyForm = (props) => {
       });
     }
   }, []);
+
+
+  useEffect(() => {
+    /** FOR GPS PROJECT ONLY
+     * 
+    */
+    const {UserID} = preSetData
+    if(UserID){
+      setFieldValue('MobilePhone', UserID.slice(3,11));
+    }
+
+  }, [preSetData]);
 
   const mailSuggestion = (value) => {
     const domains = MAIL_DOMAINS;
@@ -348,7 +362,7 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const { submitForm, theme, hiddenFormData } = props;
+    const { submitForm, theme, hiddenFormData, preSetData } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
@@ -375,6 +389,22 @@ const MyEnhancedForm = withFormik({
 
     setSubmitting(true);
     submitForm(formData, endPoint);
+
+    /** FOR GPS PROJECT ONLY
+     *
+    */
+      const {UserID} = preSetData
+      if(UserID){
+        axios.post(process.env.GPS_ENDPOINT, {
+          UserID: UserID,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
   },
 
   displayName: 'SignupForm',
@@ -394,6 +424,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
     theme: theme.data,
     suggestion: form.suggestion,
+    preSetData: form.preSet
   };
 };
 

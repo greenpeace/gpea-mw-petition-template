@@ -21,6 +21,8 @@ const nextConfig = {
     signupNumbersTW: process.env.SIGN_UP_NUMBERS_TW,
     dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.green${process.env.MARKET}.greenpeace.org/websign-dummy`,
     NEXT_PUBLIC_BASE_PATH: isProd ? process.env.BASEPATH : '',
+    GPS_KEY: process.env.GPS_KEY,
+    GPS_ENDPOINT: 'https://plastic-community.ev-boy.com/WhatsAppIntegration/Webhooks/UserRegistrationComplete'
   },
   // Use the CDN in production and localhost for development.
   assetPrefix: isProd ? process.env.ASSETPREFIX : '',

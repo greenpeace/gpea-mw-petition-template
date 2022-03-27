@@ -16,6 +16,7 @@ const initState = {
   suggestion: '',
   showMessage: false,
   donateType: 'monthly',
+  preSet: {},
   lastAction: null,
 };
 
@@ -73,6 +74,14 @@ const formReducer = (state = initState, action) => {
         ...state,
         donateType: action.data,
         lastAction: action.type,
+      };
+
+    case formActions.PRE_SET_DATA:
+      return {
+        ...state,
+        preSet: {
+          ...action.data,
+        }
       };
 
     default:
