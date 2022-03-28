@@ -362,7 +362,7 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const { submitForm, theme, hiddenFormData, preSetData } = props;
+    const { submitForm, theme, hiddenFormData } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
@@ -393,18 +393,15 @@ const MyEnhancedForm = withFormik({
     /** FOR GPS PROJECT ONLY
      *
     */
-      const {UserID} = preSetData
-      if(UserID){
-        axios.post(process.env.GPS_ENDPOINT, {
-          UserID: UserID,
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      }
+      axios.post(process.env.GPS_ENDPOINT, {
+        UserID: `${values.MobileCountryCode}${values.MobilePhone}@c.us`,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   },
 
   displayName: 'SignupForm',

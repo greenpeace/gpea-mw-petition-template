@@ -31,7 +31,7 @@ const nextConfig = {
   exportPathMap: async () => ({
     '/': { page: '/' },
     '/faq': { page: '/faq' },
-    '/registration': { page: '/registration' },
+    '/registration': { page: '/registration', query: { p: '', i: '' }},
     '/tutorial': { page: '/tutorial' },
   }),
   generateBuildId: async () => {

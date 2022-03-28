@@ -126,6 +126,12 @@ function Index({ setFormContent, setTheme, themeData }) {
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
 
+export async function getStaticProps() {
+  return {
+    props: {}
+  }
+}
+
 const mapStateToProps = ({ status, theme, signup }) => {
   return { status, themeData: theme.data, signup: signup.data };
 };
