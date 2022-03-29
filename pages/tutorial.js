@@ -90,10 +90,10 @@ function Tutorial() {
           <Stack my="6">
             <Box>
               <Box mb={6}>
-                <Text as="p" fontSize="lg" mb="4">
+                <Text as="p" textStyle={'content'}>
                   你可根據訊息指示或參照以下步驟發送實時位置：
                 </Text>
-                <Text as="p" fontSize="sm">
+                <Text as="p" textStyle={'content'}>
                   **
                   記得把「走塑GPS」加到你的通訊錄，以便日後隨時查詢走塑店鋪位置！
                 </Text>
@@ -135,10 +135,10 @@ function Tutorial() {
             {/* iOS */}
             <Stack order={OS === 'iOS' ? '1' : '2'} spacing="6" align="center">
               <Box>
-                <Text as="p" fontSize="lg" mb="4">
+                <Text as="p" textStyle={'subTitle'}>
                   <b>iOS：</b>
                 </Text>
-                <Text as="p" fontSize="lg" mb="4">
+                <Text as="p" textStyle={'content'}>
                   {
                     '點選左下角「+」號 > 選擇「位置 / Location」 > 選擇「傳送您目前的位置 / Send Your Current Location'
                   }
@@ -153,7 +153,7 @@ function Tutorial() {
                   height={1080}
                 />
               </TutorialImage>
-              <Text as="p" fontSize="lg" mb="4">
+              <Text as="p" textStyle={'content'}>
                 分享位置後，「走塑GPS」會即時顯示最接近你的5間走塑友善小店。
               </Text>
               <TutorialImage>
@@ -165,7 +165,7 @@ function Tutorial() {
                   height={1080}
                 />
               </TutorialImage>
-              <Text as="p" fontSize="lg" mb="4">
+              <Text as="p" textStyle={'content'}>
                 你亦可在「分享位置」頁面輸入搜尋地點（以建築物為佳），「走塑GPS」將為你搜尋指定地點附近的走塑小店。
               </Text>
               <TutorialImage>
@@ -186,10 +186,10 @@ function Tutorial() {
               align="center"
             >
               <Box>
-                <Text as="p" fontSize="lg" mb="4">
+                <Text as="p" textStyle={'subTitle'}>
                   <b>Android：</b>
                 </Text>
-                <Text as="p" fontSize="lg" mb="4">
+                <Text as="p" textStyle={'content'}>
                   {
                     '點擊「萬字夾」圖示 > 選擇「位置 / Location」 > 選擇「傳送您目前的位置 / Send Your Current Location)'
                   }
@@ -213,7 +213,7 @@ function Tutorial() {
                   height={1080}
                 />
               </TutorialImage>
-              <Text as="p" fontSize="lg" mb="4">
+              <Text as="p" textStyle={'content'}>
                 分享位置後，「走塑GPS」會即時顯示最接近你的5間走塑友善小店。
               </Text>
               <TutorialImage>
@@ -225,7 +225,7 @@ function Tutorial() {
                   height={1080}
                 />
               </TutorialImage>
-              <Text as="p" fontSize="lg" mb="4">
+              <Text as="p" textStyle={'content'}>
                 你亦可在「分享位置」頁面輸入搜尋地點（以建築物為佳），「走塑GPS」將為你搜尋指定地點附近的走塑小店。
               </Text>
               <TutorialImage>

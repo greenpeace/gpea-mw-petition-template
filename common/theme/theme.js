@@ -25,22 +25,22 @@ const theme = extendTheme({
   },
   textStyles: {
     heading: {
-      color: 'gray-900',
+      color: 'gray.900',
       fontSize: { base: '2xl', md: '4xl' },
       fontWeight: 'bold',
       mt: 2,
       mb: 4,
     },
     subTitle: {
-      color: 'var(--gps-primary)',
+      color: 'gray.900',
       fontSize: { base: 'xl', md: '2xl' },
       fontWeight: 'bold',
       mt: 2,
       mb: 4,
     },
     content: {
-      color: 'gray-700',
-      fontSize: { base: 'base', md: 'md' },
+      color: 'gray.700',
+      fontSize: { base: 'base', md: 'lg' },
       lineHeight: 2,
       mt: 2,
       mb: 4,

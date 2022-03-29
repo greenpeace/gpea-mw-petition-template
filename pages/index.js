@@ -19,7 +19,6 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Divider,
 } from '@chakra-ui/react';
 
 import Image from 'next/image';
@@ -59,7 +58,7 @@ function Index() {
       </Head>
       {/* <HeroSection /> */}
       <Container maxW={`${maxWSize}px`} py="6" px="4">
-        <Stack spacing={{ base: '60px', md: '80px' }}>
+        <Stack spacing={{ base: '40px', md: '80px' }}>
           <Box>
             <Box>
               <Image
@@ -76,10 +75,15 @@ function Index() {
             >
               <Box flex="1" py="6">
                 <Stack spacing="6" align={{ base: 'center', md: 'flex-start' }}>
-                  <Text as="p" textStyle={'content'}>
-                    綠色和平推出「走塑GPS」WhatsApp Chatbot功能，
+                  <Text
+                    as="p"
+                    textStyle={'content'}
+                    textAlign={{ base: 'center', md: 'left' }}
+                  >
+                    綠色和平推出「走塑GPS」WhatsApp
+                    Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，
                     <br />
-                    讓你隨時隨地尋找鄰近走塑友善小店，做到
+                    做到
                     <strong>「Plastic Free, Care Free」</strong>！
                   </Text>
                   <Box>
@@ -114,14 +118,15 @@ function Index() {
               </Box>
             </Stack>
           </Box>
+          <Box>
+            <Text as="p" textStyle={'content'} textAlign="center">
+              只須於WhatsApp分享實時位置，
+              「走塑GPS」將立即搜尋5間鄰近走塑小店，
+              <br />
+              內附地圖連結助你規劃路線光顧心水小店。
+            </Text>
+          </Box>
           <Stack spacing="6">
-            <Box>
-              <Text as="p" textStyle={'content'} textAlign="center">
-                只須於WhatsApp分享實時位置，
-                <br />
-                「走塑GPS」將立即搜尋5間鄰近走塑小店，內附地圖連結助你規劃路線光顧心水小店。
-              </Text>
-            </Box>
             <SimpleGrid columns="4" justifyContent={'space-around'}>
               <Image
                 loader={imageLoader}

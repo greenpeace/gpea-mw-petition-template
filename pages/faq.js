@@ -39,12 +39,6 @@ const questionProps = {
   fontWeight: 'bold',
 };
 
-const answerProps = {
-  mb: 4,
-  lineHeight: 1.7,
-  textAlign: 'justify',
-};
-
 function Faq() {
   return (
     <Box pt={{ base: '50px', md: '60px' }}>
@@ -105,8 +99,10 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel {...answerProps}>
-                你只需按此完成簡單登記，就能免費使用「走塑GPS」服務！
+              <AccordionPanel>
+                <Text as="p" textStyle={'content'}>
+                  你只需按此完成簡單登記，就能免費使用「走塑GPS」服務！
+                </Text>
               </AccordionPanel>
             </AccordionItem>
 
@@ -117,10 +113,12 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel {...answerProps}>
-                綠色和平正持續邀請更多商戶加入全城走塑計劃，「走塑GPS」將定期更新資料庫。
-                <br />
-                你亦可以在「分享位置」頁面直接輸入地點，以搜尋更多走塑店鋪。
+              <AccordionPanel>
+                <Text as="p" textStyle={'content'}>
+                  綠色和平正持續邀請更多商戶加入全城走塑計劃，「走塑GPS」將定期更新資料庫。
+                  <br />
+                  你亦可以在「分享位置」頁面直接輸入地點，以搜尋更多走塑店鋪。
+                </Text>
               </AccordionPanel>
             </AccordionItem>
 
@@ -131,8 +129,10 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel {...answerProps}>
-                你可以在「分享位置」頁面直接輸入地點，以搜尋更多走塑店鋪。
+              <AccordionPanel>
+                <Text as="p" textStyle={'content'}>
+                  你可以在「分享位置」頁面直接輸入地點，以搜尋更多走塑店鋪。
+                </Text>
               </AccordionPanel>
             </AccordionItem>
 
@@ -143,8 +143,10 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel {...answerProps}>
-                你可能需要於手機的應用程式設定，容許WhatsApp存取你的位置。
+              <AccordionPanel>
+                <Text as="p" textStyle={'content'}>
+                  你可能需要於手機的應用程式設定，容許WhatsApp存取你的位置。
+                </Text>
               </AccordionPanel>
             </AccordionItem>
 
@@ -155,8 +157,10 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel {...answerProps}>
-                你的登記號碼須與使用「走塑GPS」的號碼相同。如仍未能使用，歡迎你按此填寫表格匯報相關錯誤，我們將會盡快跟進。
+              <AccordionPanel>
+                <Text as="p" textStyle={'content'}>
+                  你的登記號碼須與使用「走塑GPS」的號碼相同。如仍未能使用，歡迎你按此填寫表格匯報相關錯誤，我們將會盡快跟進。
+                </Text>
               </AccordionPanel>
             </AccordionItem>
 
@@ -167,8 +171,10 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel {...answerProps}>
-                歡迎你按此填寫表格匯報相關錯誤，我們將會盡快跟進，經核實後亦會更新資料庫。
+              <AccordionPanel>
+                <Text as="p" textStyle={'content'}>
+                  歡迎你按此填寫表格匯報相關錯誤，我們將會盡快跟進，經核實後亦會更新資料庫。
+                </Text>
               </AccordionPanel>
             </AccordionItem>
 
@@ -179,8 +185,10 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel {...answerProps}>
-                歡迎你按此填寫表格留下簡單店鋪資料，我們將盡快與你聯絡！
+              <AccordionPanel>
+                <Text as="p" textStyle={'content'}>
+                  歡迎你按此填寫表格留下簡單店鋪資料，我們將盡快與你聯絡！
+                </Text>
               </AccordionPanel>
             </AccordionItem>
 
@@ -191,10 +199,12 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel {...answerProps}>
-                綠色和平從不接受政府和商界資助，因此你的捐助支持，將有效幫助我們進一步鞏固與走塑店鋪的合作，致力促進社區走塑風潮，以具體的解決方案作示範，促請政府及企業提出更積極走塑措施。
-                <br />
-                你亦可按此填寫表格留下聯絡方法，加入我們的「走塑小隊」，一起發掘更多社區走塑力量！
+              <AccordionPanel>
+                <Text as="p" textStyle={'content'}>
+                  綠色和平從不接受政府和商界資助，因此你的捐助支持，將有效幫助我們進一步鞏固與走塑店鋪的合作，致力促進社區走塑風潮，以具體的解決方案作示範，促請政府及企業提出更積極走塑措施。
+                  <br />
+                  你亦可按此填寫表格留下聯絡方法，加入我們的「走塑小隊」，一起發掘更多社區走塑力量！
+                </Text>
               </AccordionPanel>
             </AccordionItem>
 
@@ -205,22 +215,24 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel {...answerProps}>
-                綠色和平2016年起在香港推動減塑項目工作，從個人、社區、企業到政府層面，透過權威科學研究、提倡可行政策、凝聚社區力量等途徑，設法解決塑膠污染問題。
-                <br />
-                2016年：屈臣氏集團、759阿信屋等大型零售商，宣佈淘汰含微塑膠的產品
-                <br />
-                2017年：麥當勞、肯德基、美心MX大家樂、大快活等連鎖快餐店，公佈減塑政策與承諾
-                <br />
-                2018年：推出「全城走塑計劃」，至今超過1,100間店鋪加入
-                <br />
-                2019年：倡議連鎖超市走塑，百佳和惠康分別公佈進一步減塑承諾及走塑第一步
-                <br />
-                2020年：成功推動政府​​加強管制廢塑膠進出口
-                <br />
-                2021年：促使政府就全面管制塑膠餐具進行公眾諮詢
-                <br />
-                你亦可按此了解更多綠色和平全城走塑里程碑。
+              <AccordionPanel>
+                <Text as="p" textStyle={'content'}>
+                  綠色和平2016年起在香港推動減塑項目工作，從個人、社區、企業到政府層面，透過權威科學研究、提倡可行政策、凝聚社區力量等途徑，設法解決塑膠污染問題。
+                  <br />
+                  2016年：屈臣氏集團、759阿信屋等大型零售商，宣佈淘汰含微塑膠的產品
+                  <br />
+                  2017年：麥當勞、肯德基、美心MX大家樂、大快活等連鎖快餐店，公佈減塑政策與承諾
+                  <br />
+                  2018年：推出「全城走塑計劃」，至今超過1,100間店鋪加入
+                  <br />
+                  2019年：倡議連鎖超市走塑，百佳和惠康分別公佈進一步減塑承諾及走塑第一步
+                  <br />
+                  2020年：成功推動政府​​加強管制廢塑膠進出口
+                  <br />
+                  2021年：促使政府就全面管制塑膠餐具進行公眾諮詢
+                  <br />
+                  你亦可按此了解更多綠色和平全城走塑里程碑。
+                </Text>
               </AccordionPanel>
             </AccordionItem>
 
@@ -231,8 +243,10 @@ function Faq() {
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel {...answerProps}>
-                綠色和平遍佈全球六大洲，覆蓋超過55個國家及地區的辦公室網絡，除了推動本地減塑政策，亦會攜手合作展開跨地域研究調查（例：追蹤洋垃圾去向）、敦促跨國企業減少生產即棄塑膠（例：可口可樂2030年重用容器承諾），以及遊說各地領袖達成減塑協議（例：推動全球塑膠公約）。
+              <AccordionPanel>
+                <Text as="p" textStyle={'content'}>
+                  綠色和平遍佈全球六大洲，覆蓋超過55個國家及地區的辦公室網絡，除了推動本地減塑政策，亦會攜手合作展開跨地域研究調查（例：追蹤洋垃圾去向）、敦促跨國企業減少生產即棄塑膠（例：可口可樂2030年重用容器承諾），以及遊說各地領袖達成減塑協議（例：推動全球塑膠公約）。
+                </Text>
               </AccordionPanel>
             </AccordionItem>
           </Accordion>
