@@ -66,7 +66,7 @@ const MyForm = (props) => {
       let nowYear = new Date().getFullYear();
       let targetYear = nowYear - maxYear;
       for (var i = nowYear - minYear; i >= targetYear; i--) {
-        optionYear.push({ label: i, value: i.toString() });
+        optionYear.unshift({ label: i, value: i.toString() });
       }
       setBirthDateYear(optionYear);
     }
