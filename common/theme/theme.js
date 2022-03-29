@@ -7,6 +7,11 @@ import { Button } from './components/Button';
 const theme = extendTheme({
   components: {
     Button,
+    Link: {
+      baseStyle: {
+        color: 'blue.500',
+      },
+    },
   },
   fonts: {
     body: 'var(--font-family)',
