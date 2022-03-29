@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import HeroBanner from '@components/Banner/hero';
-import ThanksBanner from '@components/Banner/thanks';
+import HeroBanner from '@components/ResponsiveBanner/hero';
+import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
@@ -20,6 +20,7 @@ import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
 import heroBannerImage from './images/banner.jpg';
+import heroBannerImageMobile from './images/banner_for_mobile.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
@@ -45,7 +46,6 @@ function Index({ status, theme, setFormContent, signup }) {
 
       {submitted ? (
         <ThanksBanner
-          bgImage={heroBannerImage}
           content={{
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
@@ -54,14 +54,35 @@ function Index({ status, theme, setFormContent, signup }) {
               '我們已收到您的報名資訊，將於舉辦行動者說明會前以信件方式聯繫您。',
             ],
           }}
+          defaultImage={heroBannerImage}
+          imageSrcset={[
+            {
+              media: '(min-width: 48em)',
+              srcset: heroBannerImage,
+            },
+            {
+              media: '',
+              srcset: heroBannerImageMobile,
+            },
+          ]}
         />
       ) : (
         <HeroBanner
-          bgImage={heroBannerImage}
           content={{
             title: '<b>用行動愛地球！<br/>你也能成為<br/>綠色和平行動者</b>',
             description: [''],
           }}
+          defaultImage={heroBannerImage}
+          imageSrcset={[
+            {
+              media: '(min-width: 48em)',
+              srcset: heroBannerImage,
+            },
+            {
+              media: '',
+              srcset: heroBannerImageMobile,
+            },
+          ]}
         />
       )}
 
