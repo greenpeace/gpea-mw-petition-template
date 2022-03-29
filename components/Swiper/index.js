@@ -1,21 +1,30 @@
 import React from 'react';
 import { Image } from '@chakra-ui/react';
+import styled from '@emotion/styled';
+import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectFade, Pagination, Autoplay } from 'swiper';
 
+// Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+import 'swiper/css/scrollbar';
+
+const Content = styled.div``;
 
 const SwiperCarousel = ({ images, swiperConfig }) => {
   const defaultConfig = {
-    spaceBetween: 10,
+    spaceBetween: 0,
+    centeredSlides: true,
     slidesPerView: 1,
+    loop: true,
     fadeEffect: { crossFade: true },
     autoplay: {
-      delay: 4000,
+      delay: 3000,
+      disableOnInteraction: false,
     },
     pagination: {
+      el: '.swiper-pagination',
       clickable: true,
     },
     effect: 'fade',
@@ -25,13 +34,19 @@ const SwiperCarousel = ({ images, swiperConfig }) => {
     : defaultConfig;
 
   return (
-    <Swiper modules={[Autoplay, EffectFade, Pagination]} {...config}>
-      {(images || []).map((d, i) => (
-        <SwiperSlide key={i}>
-          <Image src={d} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <Content>
+      <Swiper
+        className="slider"
+        modules={[Autoplay, EffectFade, Navigation, Pagination]}
+        {...config}
+      >
+        {(images || []).map((d, i, alt) => (
+          <SwiperSlide key={i}>
+            <Image src={d} alt={alt} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </Content>
   );
 };
 
