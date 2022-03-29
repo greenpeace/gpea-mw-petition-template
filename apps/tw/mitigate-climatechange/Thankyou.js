@@ -45,7 +45,7 @@ const Thankyou = ({ theme, signup }) => {
           <ListItem>
             <strong>全面減碳計畫</strong>
             <br />
-            要求地方政府提供具體淨零轉型方針，包括中央及地方法規、落實轉型的關鍵制度，並因應歐盟「碳邊境稅」」制定碳定價管制。
+            要求地方政府提供具體淨零轉型方針，包括中央及地方法規、落實轉型的關鍵制度，並因應歐盟「碳邊境稅」制定碳定價管制。
           </ListItem>
           <ListItem>
             <strong>編列氣候基金</strong>
