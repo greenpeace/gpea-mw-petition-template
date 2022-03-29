@@ -35,6 +35,7 @@ const DonateForm = (props) => {
     setShowMessage,
     donateType,
     setDonateType,
+    signup,
   } = props;
   const [item, setItem] = useState();
   const [amount, setAmount] = useState(default_amount);
@@ -79,6 +80,10 @@ const DonateForm = (props) => {
                   />
                 </Box>
               )}
+
+              <Box d="none" className="custEmail">
+                {signup.Email}
+              </Box>
 
               {(donate_description || []).map((d, i) => (
                 <Box key={i}>
@@ -240,12 +245,13 @@ const afterProps = {
   transform: 'rotate(-45deg)',
 };
 
-const mapStateToProps = ({ form, theme }) => {
+const mapStateToProps = ({ form, theme, signup }) => {
   return {
     formContent: form.content,
     theme: theme.data,
     showMessage: form.showMessage,
     donateType: form.donateType,
+    signup: signup.data,
   };
 };
 
