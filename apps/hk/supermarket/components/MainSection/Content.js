@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
   Box,
@@ -16,13 +16,16 @@ import {
 
 import * as statusActions from 'store/actions/action-types/status-actions';
 
-import s1 from '../../images/s1.jpg';
-import s2 from '../../images/s2.jpg';
-import s3 from '../../images/s3.jpg';
-import s4 from '../../images/s4.jpg';
-import contentE from '../../images/R0032723.jpg';
-import contentF from '../../images/R0032756.jpg';
-import contentG from '../../images/R0032663_nologo.8bbebf77.jpg';
+import s1 from '../../images/slide1/20200514-DSCF1434.jpg';
+import s2 from '../../images/slide1/A7309550.jpg';
+import s3 from '../../images/slide1/GP0STTWHZ_High_res.jpg';
+import s4 from '../../images/slide1/GP0STTWIH_High_res.jpg';
+import s5 from '../../images/slide1/GP0STTWIU_High_res.jpg';
+import c1 from '../../images/slide2/GP0STTWIM_High_res.jpg';
+import c2 from '../../images/slide2/GP0STTWJG_High_res.jpg';
+import c3 from '../../images/slide2/GP0STTWJM_High_res.jpg';
+import c4 from '../../images/slide2/GP0STTWJN_High_res.jpg';
+import c5 from '../../images/slide2/R0032663.jpg';
 
 import Supermarket from './Supermarket';
 import SwiperCarousel from 'components/Swiper';
@@ -30,9 +33,12 @@ import SwiperCarousel from 'components/Swiper';
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
   const customConfig = {
+    autoHeight: true,
     autoplay: {
-      delay: 5500,
+      delay: 6000,
     },
+    preloadImages: false,
+    lazy: true,
   };
   return (
     <>
@@ -53,7 +59,10 @@ const Content = ({ theme }) => {
       </Heading>
 
       <Box {...paragraphProps}>
-        <SwiperCarousel images={[s1, s2, s3, s4]} swiperConfig={customConfig} />
+        <SwiperCarousel
+          images={[s1, s2, s3, s4, s5]}
+          swiperConfig={customConfig}
+        />
       </Box>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -81,7 +90,10 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <SwiperCarousel images={[contentE, contentF, contentG]} />
+        <SwiperCarousel
+          images={[c1, c2, c3, c4, c5]}
+          swiperConfig={customConfig}
+        />
       </Box>
 
       <Text as="p" {...paragraphProps}>

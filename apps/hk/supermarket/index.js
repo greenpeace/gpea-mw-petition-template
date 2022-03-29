@@ -11,7 +11,7 @@ import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/R0032770_16_9.jpg';
+import heroBannerImage from './images/GP0STTWJ0_High_res.jpg';
 
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
@@ -46,7 +46,7 @@ function Index({ setFormContent }) {
   return (
     <>
       <SEO />
-      <Box pos={'relative'} minH={{ base: '320px', md: '400px' }}>
+      <Box pos={'relative'} minH={{ base: '320px', md: '480px' }}>
         <Container maxW={`${maxWSize}px`}>
           <HeroSection />
         </Container>
@@ -57,7 +57,7 @@ function Index({ setFormContent }) {
             height="100%"
             width="100%"
             objectFit="cover"
-            objectPosition="center top"
+            objectPosition="center"
           />
           <Box
             pos={'absolute'}
