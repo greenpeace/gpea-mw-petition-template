@@ -33,10 +33,6 @@ import SwiperCarousel from 'components/Swiper';
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
   const customConfig = {
-    autoHeight: true,
-    autoplay: {
-      delay: 6000,
-    },
     preloadImages: false,
     lazy: true,
   };
@@ -74,7 +70,6 @@ const Content = ({ theme }) => {
         <Link
           href="https://www.greenpeace.org/hongkong/issues/plastics/update/18629/%E3%80%8A%E9%A6%99%E6%B8%AF%E9%80%A3%E9%8E%96%E8%B6%85%E5%B8%82%E8%B5%B0%E5%A1%91%E8%A9%95%E7%B4%9A%E3%80%8B%E5%A0%B1%E5%91%8A/?_gl=1*ulxia2*_gcl_aw*R0NMLjE2Mzg4NTgzNTMuRUFJYUlRb2JDaE1JelpXa2s0Nl85QUlWZ2FxV0NoM1V1Z2h1RUFBWUFTQUFFZ0lRX2ZEX0J3RQ..&_ga=2.13296247.1747380560.1645524117-536208999.1616127401"
           isExternal
-          color={`theme.${themeInterests}`}
         >
           《香港連鎖超市走塑評級報告》
         </Link>
@@ -82,7 +77,6 @@ const Content = ({ theme }) => {
         <Link
           href="https://www.greenpeace.org/hongkong/issues/plastics/update/11980/%E8%B6%85%E5%B8%82%E8%B5%B0%E5%A1%91%E4%B8%8D%E5%90%83%E5%8A%9B%E5%8F%88%E8%A8%8E%E5%A5%BD-%E6%93%B4%E5%B1%95%E5%AE%A2%E6%BA%90%E5%A2%9E%E7%94%9F%E6%84%8F"
           isExternal
-          color={`theme.${themeInterests}`}
         >
           跨地超市業界科學峰會
         </Link>
@@ -102,27 +96,33 @@ const Content = ({ theme }) => {
 
       <Box bgColor={'gray.50'} p={6} mb="6" borderRadius={'md'}>
         <Box {...paragraphProps}>
-          <b>立即聯署要求超市:</b>
+          <Text as="p" {...paragraphProps} fontSize="md">
+            <b>立即聯署要求超市:</b>
+          </Text>
           <UnorderedList pl={2}>
             <ListItem>
-              減少無謂包裝，設立無塑購物區或裸買補充站，增加售賣裸裝產品比例
+              <Text as="p" {...paragraphProps}>
+                減少無謂包裝，設立無塑購物區或裸買補充站，增加售賣裸裝產品比例
+              </Text>
             </ListItem>
             <ListItem>
-              訂立整體塑膠減量目標，並制訂明確的路線圖與時間表
+              <Text as="p" {...paragraphProps}>
+                訂立整體塑膠減量目標，並制訂明確的路線圖與時間表
+              </Text>
             </ListItem>
             <ListItem>
-              設定全面淘汰即棄塑膠期限，立即停用不可回收的塑膠物料，並主動重用或妥善回收可回收塑膠
+              <Text as="p" {...paragraphProps}>
+                設定全面淘汰即棄塑膠期限，立即停用不可回收的塑膠物料，並主動重用或妥善回收可回收塑膠
+              </Text>
             </ListItem>
             <ListItem>
-              推動「循環再用」減廢模式，改以可重用包裝銷售貨品，主動回收並重用顧客退還的包裝，建立可持續的重用系統
+              <Text as="p" {...paragraphProps}>
+                推動「循環再用」減廢模式，改以可重用包裝銷售貨品，主動回收並重用顧客退還的包裝，建立可持續的重用系統
+              </Text>
             </ListItem>
           </UnorderedList>
         </Box>
       </Box>
-
-      {/* <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        請即聯署，推動超市推行走塑措施！
-      </Heading> */}
 
       {/* <Supermarket /> */}
     </>
