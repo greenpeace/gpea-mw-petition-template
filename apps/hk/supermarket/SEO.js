@@ -18,10 +18,10 @@ const SEO = () => {
         }}
       />
       {/* title */}
-      <title>推動超市走塑 急需您我行動 - Greenpeace 綠色和平 | 香港</title>
+      <title>請即聯署 推動超市走塑 - Greenpeace 綠色和平 | 香港</title>
       <meta
         property="og:title"
-        content="推動超市走塑 急需您我行動 - Greenpeace 綠色和平 | 香港"
+        content="請即聯署 推動超市走塑 - Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"

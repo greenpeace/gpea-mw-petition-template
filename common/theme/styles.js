@@ -30,6 +30,9 @@ const styles = {
     '#nprogress .spinner': {
       display: 'none',
     },
+    '.swiper-pagination-bullet-active': {
+      background: 'brand.500',
+    },
   },
 };
 
