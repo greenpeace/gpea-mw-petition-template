@@ -23,7 +23,14 @@ import {
 
 import Image from 'next/image';
 import { CTAButton } from '@components/GPS/CTA/button';
+import SwiperCarousel from '@components/Swiper';
 import { imageLoader } from 'common/utils';
+
+import c1 from '../public/images/slider/20210508_SSPHunting_17.jpg';
+import c2 from '../public/images/slider/20210508_SSPHunting_5.jpg';
+import c3 from '../public/images/slider/GP0STTWGP_High_res.jpg';
+import c4 from '../public/images/slider/GP0STTWGV_High_res.jpg';
+import c5 from '../public/images/slider/GP0STTWGX_High_res.jpg';
 
 const maxWSize = 1200;
 const trianglePropsMD = {
@@ -63,7 +70,7 @@ function Index() {
             <Box>
               <Image
                 loader={imageLoader}
-                src={`/images/svg/Plastic-free-GPS-banner.svg`}
+                src={`/images/svg/Plastic-free-GPS-banner-v2.svg`}
                 width="1400"
                 height="800"
               />
@@ -81,9 +88,7 @@ function Index() {
                     textAlign={{ base: 'center', md: 'left' }}
                   >
                     綠色和平推出「走塑GPS」WhatsApp
-                    Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店，
-                    <br />
-                    做到
+                    Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店， 做到
                     <strong>「Plastic Free, Care Free」</strong>！
                   </Text>
                   <Box>
@@ -118,46 +123,51 @@ function Index() {
               </Box>
             </Stack>
           </Box>
+
           <Box>
             <Text as="p" textStyle={'content'} textAlign="center">
-              只須於WhatsApp分享實時位置，
-              「走塑GPS」將立即搜尋5間鄰近走塑小店，
+              只須於WhatsApp分享實時位置，「走塑GPS」將立即搜尋5間鄰近走塑小店，
               <br />
               內附地圖連結助你規劃路線光顧心水小店。
             </Text>
           </Box>
-          <Stack spacing="6">
-            <SimpleGrid columns="4" justifyContent={'space-around'}>
-              <Image
-                loader={imageLoader}
-                src={`/images/svg/25.svg`}
-                layout="responsive"
-                width={1440}
-                height={1440}
-              />
-              <Image
-                loader={imageLoader}
-                src={`/images/svg/26.svg`}
-                layout="responsive"
-                width={1440}
-                height={1440}
-              />
-              <Image
-                loader={imageLoader}
-                src={`/images/svg/27.svg`}
-                layout="responsive"
-                width={1440}
-                height={1440}
-              />
-              <Image
-                loader={imageLoader}
-                src={`/images/svg/28.svg`}
-                layout="responsive"
-                width={1440}
-                height={1440}
-              />
-            </SimpleGrid>
-          </Stack>
+
+          <SimpleGrid
+            p="4"
+            spacing="6"
+            columns={{ base: 2, md: 4 }}
+            justifyContent={'space-around'}
+          >
+            <Image
+              loader={imageLoader}
+              src={`/images/svg/25.svg`}
+              layout="responsive"
+              width={1440}
+              height={1440}
+            />
+            <Image
+              loader={imageLoader}
+              src={`/images/svg/26.svg`}
+              layout="responsive"
+              width={1440}
+              height={1440}
+            />
+            <Image
+              loader={imageLoader}
+              src={`/images/svg/27.svg`}
+              layout="responsive"
+              width={1440}
+              height={1440}
+            />
+            <Image
+              loader={imageLoader}
+              src={`/images/svg/28.svg`}
+              layout="responsive"
+              width={1440}
+              height={1440}
+            />
+          </SimpleGrid>
+
           <Stack direction={{ base: 'column', lg: 'row-reverse' }} spacing="6">
             <Stack
               px={{ base: 0, md: 4 }}
@@ -190,14 +200,17 @@ function Index() {
                     width={1440}
                     height={1440}
                   />
-                  <Image
+                  {/* <Image
                     loader={imageLoader}
                     src={`/images/grade1-ribbon.svg`}
                     px={{ base: 8, md: 12 }}
                     layout="responsive"
                     width={150}
                     height={30}
-                  />
+                  /> */}
+                  <Text textStyle={'subTitle'} textAlign="center">
+                    一級走塑店鋪
+                  </Text>
                   <Text textStyle={'content'} textAlign="center">
                     提供走塑優惠
                   </Text>
@@ -210,54 +223,58 @@ function Index() {
                     width={1440}
                     height={1440}
                   />
-                  <Image
+                  {/* <Image
                     loader={imageLoader}
                     src={`/images/grade2-ribbon.svg`}
                     px={{ base: 8, md: 12 }}
                     layout="responsive"
                     width={150}
                     height={30}
-                  />
+                  /> */}
+                  <Text textStyle={'subTitle'} textAlign="center">
+                    二級走塑店鋪
+                  </Text>
                   <Text textStyle={'content'} textAlign="center">
-                    歡迎自備餐具／器皿購物
+                    歡迎自備餐具 / 器皿購物
                   </Text>
                 </Stack>
               </Stack>
             </Box>
           </Stack>
+
           <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
-            <Stack direction={{ base: 'column' }} flex={1} spacing="6">
-              <Box px="2">
-                <Image
-                  loader={imageLoader}
-                  src={`/images/svg/map-free-icon-font.svg`}
-                  width="48px"
-                  height="48px"
-                />
-              </Box>
-              <Box flex={1}>
-                <Text textStyle={'heading'}>全港走塑版圖 持續擴展中！</Text>
-                <Text as="p" textStyle={'content'}>
-                  綠色和平自2018年發起「全城走塑計劃」，與超過170位義工到訪全港大小社區，遊說店主提供走塑選擇，2021年底達成1,100間里程碑！
-                </Text>
-                <Text as="p" textStyle={'content'}>
-                  未來我們會邀請更多類型店鋪營造走塑友善環境，示範具體解決方案，促請政府及企業提出更積極走塑措施。歡迎您按此提供走塑店鋪資料，或加入全城走塑小隊，一起擴大全港走塑版圖！
-                </Text>
-              </Box>
-            </Stack>
-            <Box flex={1}>
-              <Box borderRadius="xl" overflow="hidden">
-                <Image
-                  loader={imageLoader}
-                  src={`/images/20210508_SSPHunting_5.jpg`}
-                  layout="responsive"
-                  width={1920}
-                  height={1280}
-                  priority={true}
-                />
+            <Box flex="1">
+              <Stack direction={{ base: 'column' }} spacing="6">
+                <Box px="2">
+                  <Image
+                    loader={imageLoader}
+                    src={`/images/svg/map-free-icon-font.svg`}
+                    width="48px"
+                    height="48px"
+                  />
+                </Box>
+                <Box flex={1}>
+                  <Text textStyle={'heading'}>全港走塑版圖 持續擴展中！</Text>
+                  <Text as="p" textStyle={'content'}>
+                    綠色和平自2018年發起「全城走塑計劃」，與超過170位義工到訪全港大小社區，遊說店主提供走塑選擇，2021年底達成1,100間里程碑！
+                  </Text>
+                  <Text as="p" textStyle={'content'}>
+                    未來我們會邀請更多類型店鋪營造走塑友善環境，示範具體解決方案，促請政府及企業提出更積極走塑措施。歡迎您按此提供走塑店鋪資料，或加入全城走塑小隊，一起擴大全港走塑版圖！
+                  </Text>
+                </Box>
+              </Stack>
+            </Box>
+            <Box flex="1">
+              <Box
+                w="100%"
+                maxW="580px"
+                borderRadius={'xl'}
+                overflow={'hidden'}
+              >
+                <SwiperCarousel images={[c1, c2, c3, c4, c5]} />
               </Box>
             </Box>
-            <Stack spacing="6">
+            {/* <Stack spacing="6">
               <Box borderRadius="xl" overflow="hidden">
                 <Image
                   loader={imageLoader}
@@ -278,7 +295,7 @@ function Index() {
                   priority={true}
                 />
               </Box>
-            </Stack>
+            </Stack> */}
           </Stack>
 
           <Stack spacing="4" maxW={'480px'} align="center" alignSelf={'center'}>
@@ -288,6 +305,7 @@ function Index() {
               **
               如有任何使用「走塑GPS」疑難，歡迎參閱常見問題或按此填寫表格聯絡我們。
             </Text>
+            <br />
           </Stack>
         </Stack>
       </Container>

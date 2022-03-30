@@ -102,7 +102,7 @@ const DesktopNav = ({ href, currentPage }) => {
               fontSize={'md'}
               cursor={'pointer'}
               color={
-                currentPage === navItem.href ? 'var(--gps-primary)' : 'gray.500'
+                currentPage === navItem.href ? 'var(--gps-primary)' : 'gray.700'
               }
               fontWeight={currentPage === navItem.href ? 'bold' : 300}
               _hover={{
@@ -201,8 +201,8 @@ const MobileNavItem = ({ handleToggle, label, href, currentPage }) => {
       >
         <Link href={href}>
           <Text
-            color={currentPage === href ? 'var(--gps-primary)' : 'gray.500'}
-            fontWeight={currentPage === href ? 'bold' : 300}
+            color={currentPage === href ? 'var(--gps-primary)' : 'gray.700'}
+            fontWeight={currentPage === href ? 'bold' : 400}
           >
             {label}
           </Text>
@@ -224,7 +224,7 @@ const NAV_ITEMS = [
     target: '_self',
   },
   {
-    label: '免費登記使用',
+    label: '登記使用完整版',
     href: '/registration',
     target: '_self',
   },
