@@ -5,19 +5,18 @@ import {
   Container,
   Box,
   Text,
-  ListItem,
-  UnorderedList,
   AspectRatio,
   Stack,
   SimpleGrid,
   Flex,
   Center,
-  useMediaQuery,
+  Heading,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalBody,
   ModalCloseButton,
+  useMediaQuery,
   useDisclosure,
 } from '@chakra-ui/react';
 
@@ -25,6 +24,11 @@ import Image from 'next/image';
 import { CTAButton } from '@components/GPS/CTA/button';
 import SwiperCarousel from '@components/Swiper';
 import { imageLoader } from 'common/utils';
+
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
 
 import c1 from '../public/images/slider/20210508_SSPHunting_17.jpg';
 import c2 from '../public/images/slider/20210508_SSPHunting_5.jpg';
@@ -63,18 +67,28 @@ function Index() {
           綠色和平 | 香港
         </title>
       </Head>
-      {/* <HeroSection /> */}
+
+      <Box>
+        <Image
+          loader={imageLoader}
+          src={`/images/20220318_GPS-01.png`}
+          width="1920"
+          height="960"
+        />
+      </Box>
+
       <Container maxW={`${maxWSize}px`} py="6" px="4">
         <Stack spacing={{ base: '40px', md: '80px' }}>
+          {/* <Box>
+            <Image
+              loader={imageLoader}
+              src={`/images/svg/Plastic-free-GPS-banner-v2.svg`}
+              width="1400"
+              height="800"
+            />
+          </Box> */}
+
           <Box>
-            <Box>
-              <Image
-                loader={imageLoader}
-                src={`/images/svg/Plastic-free-GPS-banner-v2.svg`}
-                width="1400"
-                height="800"
-              />
-            </Box>
             <Stack
               spacing="6"
               flexDirection={{ base: 'column', lg: 'row' }}
@@ -298,11 +312,11 @@ function Index() {
             </Stack> */}
           </Stack>
 
-          <Stack spacing="4" maxW={'480px'} align="center" alignSelf={'center'}>
+          <Stack spacing="4" maxW={'680px'} align="center" alignSelf={'center'}>
             <CTAButton />
             <br />
-            <Text as="p" fontSize="xs">
-              **
+            <Text as="p" textStyle={'content'} textAlign="center">
+              *
               如有任何使用「走塑GPS」疑難，歡迎參閱常見問題或按此填寫表格聯絡我們。
             </Text>
             <br />

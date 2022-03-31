@@ -102,13 +102,9 @@ const DesktopNav = ({ href, currentPage }) => {
               fontSize={'md'}
               cursor={'pointer'}
               color={
-                currentPage === navItem.href ? 'var(--gps-primary)' : 'gray.700'
+                currentPage === navItem.href ? 'var(--gps-primary)' : 'gray.800'
               }
               fontWeight={currentPage === navItem.href ? 'bold' : 300}
-              _hover={{
-                textDecoration: 'none',
-                fontWeight: 'bold',
-              }}
               sx={{
                 ':focus:not(:focus-visible)': {
                   shadow: 'none',
@@ -128,7 +124,6 @@ const DesktopNav = ({ href, currentPage }) => {
           <Text
             bgColor="orange.500"
             fontSize={'md'}
-            fontWeight={700}
             px={4}
             py={2}
             color={'white'}
@@ -151,7 +146,7 @@ const MobileNav = ({ handleToggle, currentPage }) => {
       px="6"
       pt="6"
       pb="10"
-      w="100vw"
+      w="100%"
       display={{ md: 'none' }}
       borderBottom="1px"
       borderColor="gray.100"
@@ -172,7 +167,6 @@ const MobileNav = ({ handleToggle, currentPage }) => {
           <Text
             bgColor="orange.500"
             fontSize={'md'}
-            fontWeight={700}
             px={4}
             py={2}
             color={'white'}
@@ -201,7 +195,7 @@ const MobileNavItem = ({ handleToggle, label, href, currentPage }) => {
       >
         <Link href={href}>
           <Text
-            color={currentPage === href ? 'var(--gps-primary)' : 'gray.700'}
+            color={currentPage === href ? 'var(--gps-primary)' : 'gray.800'}
             fontWeight={currentPage === href ? 'bold' : 400}
           >
             {label}

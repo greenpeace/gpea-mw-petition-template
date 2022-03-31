@@ -46,7 +46,7 @@ function Content({ signup }) {
           }}
         />
         <Text as="p" color={'white'} fontSize="md" fontWeight="bold">
-          ** WhatsApp對話將於1分鐘內顯示確認訊息。
+          * WhatsApp對話將於1分鐘內顯示確認訊息。
         </Text>
       </Box>
       <Box pos={'relative'}>

@@ -15,6 +15,10 @@ import { imageLoader } from 'common/utils';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 import Image from 'next/image';
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
 
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
@@ -84,7 +88,7 @@ function Index({ setFormContent, setTheme, themeData }) {
 
         <Image
           loader={imageLoader}
-          src="/images/gps-banner.png"
+          src="/images/20220318_GPS-03.png"
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -128,8 +132,8 @@ Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
 
 export async function getStaticProps() {
   return {
-    props: {}
-  }
+    props: {},
+  };
 }
 
 const mapStateToProps = ({ status, theme, signup }) => {

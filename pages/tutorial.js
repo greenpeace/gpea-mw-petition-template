@@ -11,12 +11,15 @@ import {
   Stack,
   SimpleGrid,
 } from '@chakra-ui/react';
-import { headingProps } from '@common/styles/components/contentStyle';
 import { CTAButton } from '@components/GPS/CTA/button';
 import { imageLoader } from 'common/utils';
 import { AiFillAndroid, AiFillApple } from 'react-icons/ai';
-
 import Image from 'next/image';
+
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
 
 const maxWSize = 1200;
 
@@ -42,30 +45,32 @@ function Tutorial() {
       <Head>
         <title>走塑GPS 使用教學 - Greenpeace 綠色和平 | 香港</title>
       </Head>
-      <Box w={'100%'} minH="320px" pos={'relative'} overflow={'hidden'}>
+
+      <Box minH="300px" w={'100%'} pos={'relative'} overflow={'hidden'}>
         <Container maxW={`${maxWSize}px`} pos={`relative`} zIndex={2}>
-          <Box py={20} w={{ md: 'md', xl: 'xl' }}>
-            <Stack>
+          <Flex py={20} w={{ md: 'md', xl: 'xl' }} alignItems="center">
+            <Box p="4" bg="var(--gps-primary)">
               <Heading
                 {...headingProps}
+                mb="0"
                 color={'white'}
-                fontSize={{ base: '2xl', md: '4xl' }}
+                fontSize={{ base: '3xl', md: '5xl' }}
                 dangerouslySetInnerHTML={{
                   __html: '走塑GPS 使用教學',
                 }}
               />
-            </Stack>
-          </Box>
+            </Box>
+          </Flex>
         </Container>
         <Image
           loader={imageLoader}
-          src="/images/gps-banner.png"
+          src="/images/20220318_GPS-03.png"
           layout="fill"
           objectFit="cover"
           quality={100}
         />
-        {/** https://image-component.nextjs.gallery/background */}
       </Box>
+
       <Container maxW={`${maxWSize}px`} py={6}>
         <Flex
           flexDirection={{ base: 'column', md: 'row' }}
@@ -76,8 +81,8 @@ function Tutorial() {
           borderLeft="4px"
           borderColor="var(--gps-primary)"
         >
-          <Box py="6">
-            <Text textStyle={'subTitle'}>
+          <Box py="4">
+            <Text as="p" textStyle={'content'}>
               啟動WhatsApp「走塑GPS」後，發送任何訊息即可開始使用！
             </Text>
           </Box>
@@ -85,6 +90,7 @@ function Tutorial() {
             <CTAButton />
           </Box>
         </Flex>
+
         <Stack spacing="4" maxW="3xl" mx="auto" align="center">
           {/* Intro */}
           <Stack my="6">
