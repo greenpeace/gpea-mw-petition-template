@@ -10,7 +10,7 @@
   "label_first_name": "名字",
   "label_last_name": "姓氏",
   "label_email": "電郵地址",
-  "label_phone": "請輸入使用「走塑GPS」的號碼以作認證",
+  "label_phone": "須為走塑GPS使用號碼",
   "label_phone_optional": "手提號碼（選填）",
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",

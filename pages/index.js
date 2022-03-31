@@ -339,9 +339,6 @@ function Index() {
 }
 
 const HeroSection = () => {
-  {
-    /** #F9BD82 */
-  }
   const [isLargerThanMD] = useMediaQuery('(min-width: 62em)'); // default md: '62em'
   return (
     <Box

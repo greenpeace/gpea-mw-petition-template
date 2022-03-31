@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import Form from '@components/GPS/GPSForm';
 import { useWindowSize } from '@components/GPS/util';
@@ -42,9 +42,12 @@ function Content({ signup }) {
           color={'white'}
           fontSize={{ base: '2xl', md: '4xl' }}
           dangerouslySetInnerHTML={{
-            __html: `${FirstName}，，您現在可以免費使用完整版走塑GPS！`,
+            __html: `${FirstName}，您現在可以免費使用完整版走塑GPS！`,
           }}
         />
+        <Text as="p" color={'white'} fontSize="md" fontWeight="bold">
+          ** WhatsApp對話將於1分鐘內顯示確認訊息。
+        </Text>
       </Box>
       <Box pos={'relative'}>
         <Box

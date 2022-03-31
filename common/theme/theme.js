@@ -37,13 +37,14 @@ const theme = extendTheme({
     subTitle: {
       color: 'gray.900',
       fontSize: { base: 'xl', md: '2xl' },
-      fontWeight: 'bold',
+      fontWeight: '400',
       mt: 2,
       mb: 4,
     },
     content: {
-      color: 'gray.700',
-      fontSize: { base: 'base', md: 'lg' },
+      color: 'gray.800',
+      fontSize: { base: 'md', md: 'lg' },
+      fontWeight: '300',
       lineHeight: 2,
       mt: 2,
       mb: 4,
