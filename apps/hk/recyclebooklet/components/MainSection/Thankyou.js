@@ -7,7 +7,7 @@ import {
 } from '@common/styles/components/contentStyle';
 
 import borrow from '../../images/plastics_borrow_event.jpg';
-import banner from '../../images/Campaign-20220304_1200x1200.jpg';
+import banner from '../../images/GIY工作坊-捐款頁_R111_無插圖.jpg';
 
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
@@ -55,17 +55,7 @@ const Thankyou = ({ theme, signup }) => {
       </Box>
 
       <Text as="p" {...paragraphProps}>
-        <b>※ 2021-22 課稅年度即將結束，</b>在3月31日前以單次捐助 $500 或月捐
-        $200，支持綠色和平項目工作，即可以慈善捐款免稅額扣稅！
-      </Text>
-
-      <Text as="p" {...paragraphProps}>
-        單次捐助 $500：參加「回收廠參觀」活動。
-      </Text>
-
-      <Text as="p" {...paragraphProps}>
-        每月捐助 $200：參加「回收廠參觀」活動及「環保手作工作坊」或
-        自選2個「環保手作工作坊」
+        每月$200捐款支持綠色和平的項目工作，即可以慈善捐款免稅額扣稅，同時獲得「環保手作工作坊」或導賞團的機會！
       </Text>
     </>
   );
