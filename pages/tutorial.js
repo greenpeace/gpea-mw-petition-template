@@ -100,8 +100,10 @@ function Tutorial() {
                   你可根據訊息指示或參照以下步驟發送實時位置：
                 </Text>
                 <Text as="p" textStyle={'content'}>
-                  **
-                  記得把「走塑GPS」加到你的通訊錄，以便日後隨時查詢走塑店鋪位置！
+                  <b>
+                    *
+                    記得把「走塑GPS」加到你的通訊錄，以便日後隨時查詢走塑店鋪位置！
+                  </b>
                 </Text>
               </Box>
               <TutorialImage>
@@ -134,8 +136,6 @@ function Tutorial() {
               Android 系統
             </Button>
           </SimpleGrid>
-
-          <br />
 
           <Flex flexDirection={'column'}>
             {/* iOS */}

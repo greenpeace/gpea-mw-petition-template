@@ -304,7 +304,8 @@ function Faq() {
                   2020年：成功推動政府​​加強管制廢塑膠進出口
                   <br />
                   2021年：促使政府就全面管制塑膠餐具進行公眾諮詢
-                  <br />
+                </Text>
+                <Text as="p" textStyle={'content'}>
                   你亦可按此了解更多綠色和平全城走塑里程碑。
                 </Text>
               </AccordionPanel>

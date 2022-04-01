@@ -81,7 +81,7 @@ function Index({ setFormContent, setTheme, themeData }) {
           只需簡單登記，就能使用完整版「走塑GPS」！ - Greenpeace 綠色和平 | 香港
         </title>
       </Head>
-      <Box w={'100%'} pos={'relative'}>
+      <Box pos={'relative'} minH={{ base: '280px', md: '400px' }}>
         <Container maxW={`${maxWSize}px`} pos={'relative'} zIndex={1}>
           <HeroSection />
         </Container>
@@ -91,6 +91,7 @@ function Index({ setFormContent, setTheme, themeData }) {
           src="/images/20220318_GPS-03.png"
           layout="fill"
           objectFit="cover"
+          objectPosition={'center'}
           quality={100}
         />
       </Box>

@@ -94,7 +94,7 @@ function Index() {
               flexDirection={{ base: 'column', lg: 'row' }}
               align="center"
             >
-              <Box flex="1" py="6">
+              <Box flex="1" mb="6">
                 <Stack spacing="6" align={{ base: 'center', md: 'flex-start' }}>
                   <Text
                     as="p"
