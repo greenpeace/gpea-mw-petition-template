@@ -95,20 +95,27 @@ function Index() {
               align="center"
             >
               <Box flex="1" mb="6">
-                <Stack spacing="6" align={{ base: 'center', md: 'flex-start' }}>
+                <Flex
+                  direction="column"
+                  align={{ base: 'center', md: 'flex-start' }}
+                >
+                  <Text textStyle={'heading'}>全港走塑店鋪定位地圖</Text>
                   <Text
                     as="p"
                     textStyle={'content'}
                     textAlign={{ base: 'center', md: 'left' }}
                   >
-                    綠色和平推出「走塑GPS」WhatsApp
-                    Chatbot功能，讓你隨時隨地尋找鄰近走塑友善小店， 做到
+                    綠色和平推出「走塑GPS」WhatsApp Chatbot功能，
+                    <br />
+                    讓你隨時隨地尋找鄰近走塑友善小店，
+                    <br />
+                    做到
                     <strong>「Plastic Free, Care Free」</strong>！
                   </Text>
-                  <Box>
+                  <Box mt="4">
                     <CTAButton />
                   </Box>
-                </Stack>
+                </Flex>
               </Box>
               <Box w="100%" flex="1">
                 <SimpleGrid columns="3" justifyContent={'space-around'}>
@@ -140,9 +147,9 @@ function Index() {
 
           <Box>
             <Text as="p" textStyle={'content'} textAlign="center">
-              只須於WhatsApp分享實時位置，「走塑GPS」將立即搜尋5間鄰近走塑小店，
+              只須於WhatsApp分享實時位置，
               <br />
-              內附地圖連結助你規劃路線光顧心水小店。
+              「走塑GPS」將立即搜尋5間鄰近走塑小店，內附地圖連結助你規劃路線光顧心水小店。
             </Text>
           </Box>
 
