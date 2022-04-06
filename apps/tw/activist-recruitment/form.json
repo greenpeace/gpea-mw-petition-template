@@ -70,10 +70,7 @@
     { "label": "是", "value": true },
     { "label": "否", "value": false }
   ],
-  "namelist": [
-    { "label": "是", "value": 1 },
-    { "label": "否", "value": 0 }
-  ],
+  "namelist": null,
 
   "donate_header": "是的！我想要改變氣候危機",
   "donate_description": [""],

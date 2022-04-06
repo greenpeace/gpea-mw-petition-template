@@ -9,7 +9,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import Content from './Content';
 import Thankyou from './Thankyou';
 import SignupForm from '@components/GP/TWForm';
-import DonateForm from '@components/GP/DonateForm';
+// import DonateForm from '@components/GP/DonateForm';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Icon } from '@chakra-ui/react';
@@ -89,25 +89,30 @@ function Index({ status, theme, setFormContent, signup }) {
       <PageContainer>
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
-            <Box flex={1} mt={{ base: 10, sm: 60 }}>
+            <Box
+              flex={1}
+              mt={!submitted ? { base: 10, md: 60 } : { base: 65, md: 60 }}
+            >
               <ContentContainer theme={theme}>
                 {submitted ? <Thankyou /> : <Content />}
               </ContentContainer>
             </Box>
-            <Box flex={1} ref={myRef}>
-              <FormContainer>
-                <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
-                </Box>
-              </FormContainer>
-            </Box>
+            {!submitted && (
+              <Box flex={1} ref={myRef}>
+                <FormContainer>
+                  <Box ref={ref}>
+                    <SignupForm />
+                  </Box>
+                </FormContainer>
+              </Box>
+            )}
           </Flex>
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'TWChinese'} />
-      {!inView && (
+      {/* {!inView && (
         <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
-      )}
+      )} */}
     </>
   );
 }
