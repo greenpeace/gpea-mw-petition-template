@@ -24,7 +24,7 @@
   "minimum_8_characters": "請輸入8位數字",
   "suggestion_message": "您是否想輸入",
 
-  "submit_text": "立即登記",
+  "submit_text": "立即下載",
   "thanks_title": "",
   "thanks_ask": "",
   "thanks_content": "",
@@ -47,13 +47,13 @@
 
   "donate_header": "請捐助支持走塑工作",
   "donate_description": [
-    "您的捐助，將有效地、直接地幫助我們推動本地走塑進程，緩解塑膠污染。"
+    "我要捐款解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。每月$200捐款支持綠色和平的項目工作，即可以慈善捐款免稅額扣稅，同時獲得「環保手作工作坊」或導賞團的機會！"
   ],
   "default_message": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策。",
   "donate_suggestion_header": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
   "donate_suggestion_message": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
   "currency": "HKD",
-  "default_amount": 100,
+  "default_amount": 200,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -85,20 +85,20 @@
   ],
   "amount_monthly": [
     {
-      "label": "100",
-      "value": 100,
+      "label": "200",
+      "value": 200,
       "description": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策。",
       "currency": "HKD"
     },
     {
-      "label": "150",
-      "value": 150,
+      "label": "300",
+      "value": 300,
       "description": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
       "currency": "HKD"
     },
     {
-      "label": "200",
-      "value": 200,
+      "label": "400",
+      "value": 400,
       "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
       "currency": "HKD"
     },

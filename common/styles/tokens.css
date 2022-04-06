@@ -6,20 +6,28 @@
   --white: #ffffff;
   --black: #000000;
 
+  /* Brand */
   --brand: #66cc00;
-  --green-100: #f7ffe6;
-  --green-300: #c0f274;
-  --green-400: #a2e649;
+
+  /* Primary */
+  --green-100: #f0fae6;
+  --green-200: #c2eb99;
+  --green-300: #a3e066;
+  --green-400: #85d633;
   --green-500: var(--brand);
   --green-600: #4da600;
   --green-700: #378000;
-  --orange-300: #ffb660;
+
+  /* Secondary */
+  --orange-300: #ffb366;
   --orange-500: #ff8100;
-  --orange-700: #e96d00;
-  --blue-100: #d0ebff;
+  --orange-700: #cc6700;
+
+  --blue-100: #e6f5f5;
   --blue-300: #74c0fc;
   --blue-500: #108ee9;
-  --blue-900: #292f47;
+  --blue-700: #252f4a;
+  --blue-900: #182342;
 
   /* Primary & Brand */
   --primary: #66cc00;
@@ -34,57 +42,44 @@
   /* System Colors */
   --error-500: #ffa9a9;
   --error-900: #ff3333;
-  --warning-500: #ffd86f;
+  --warning-500: #fff2cc;
   --warning-900: #f0af23;
-  --success-500: #9cde59;
+  --success-500: #f0fae6;
   --success-900: #66cc00;
 
-  /* Theme */
+  /* Thematic color */
   --thematic-color-100: var(--green-100);
   --thematic-color-300: var(--green-300);
   --thematic-color: var(--primary);
 
-  /* --arctic-100: #f0fffe;
-  --arctic-300: #bbeef0;
-  --health-100: #fff0f0;
-  --health-300: #ffc2cb;
-  --climate-100: #fffde6;
-  --climate-300: #ffeb7a;
-  --forests-100: #dcf5e8;
-  --forests-300: #38d9a9;
-  --oceans-100: #e6faff;
-  --oceans-300: #7adcff;
-  --plastics-100: #f0f0e1;
-  --plastics-300: #d6d5c9; */
+  /* Themes */
 
-  /* Thematic Colors */
-
-  --arctic-100: #f0fffe;
+  --arctic-100: #e0f5f7;
   --arctic-300: #bbeef0;
   --arctic: #62cbd7;
   --arctic-700: #34c1d1;
 
-  --health-100: #fff0f0;
+  --health-100: #fee2e8;
   --health-300: #ffc2cb;
   --health: #f09d7f;
   --health-700: #ed815a;
 
-  --climate-100: #fffde6;
+  --climate-100: #fff2cc;
   --climate-300: #ffeb7a;
   --climate: #ffbe00;
   --climate-700: #efa800;
 
-  --plastics-100: #ebe8d6;
+  --plastics-100: #efeee9;
   --plastics-300: #dcd5b3;
   --plastics: #afaa91;
   --plastics-700: #9b9370;
 
-  --forests-100: #dcf5e8;
+  --forests-100: #ccf0e3;
   --forests-300: #38d9a9;
   --forests: #00b474;
   --forests-700: #009560;
 
-  --oceans-100: #e6faff;
+  --oceans-100: #cce9f9;
   --oceans-300: #7adcff;
   --oceans: #008fe2;
   --oceans-700: #0075ba;
@@ -92,13 +87,13 @@
   /* Shades Gray Colors */
   --shades-10: #fafafa;
   --shades-50: #f8f9fa;
-  --shades-100: #f1f3f5;
+  --shades-100: #e6e6e6;
   --shades-200: #e9ecef;
-  --shades-300: #dee2e6;
-  --shades-500: #adb5bd;
-  --shades-700: #495057;
-  --shades-800: #343a40;
-  --shades-900: #212529;
+  --shades-300: #cccccc;
+  --shades-500: #9a9a9a;
+  --shades-700: #676767;
+  --shades-800: #353535;
+  --shades-900: #020202;
 
   /* line-height */
   --heading-line-height: 1.2;

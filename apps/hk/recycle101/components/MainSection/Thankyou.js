@@ -7,6 +7,7 @@ import {
 } from '@common/styles/components/contentStyle';
 
 import borrow from '../../images/plastics_borrow_event.jpg';
+import banner from '../../images/Campaign-20220304_1200x1200.jpg';
 
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
