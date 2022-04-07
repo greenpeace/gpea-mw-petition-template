@@ -10,3 +10,9 @@ export const paragraphProps = {
   whiteSpace: 'pre-line',
   textAlign: 'justify',
 };
+export const captionProps = {
+  lineHeight: 1.5,
+  mb: 6,
+  color: '#898b92',
+  fontSize: { base: '12px' },
+};
