@@ -31,7 +31,7 @@ const Webinar = ({ content, theme }) => {
   const Feature = ({ text, icon, iconBg }) => {
     return (
       <Stack direction={'row'} align={'center'}>
-        <Box marginLeft={-2} pos={`relative`}>
+        <Box marginLeft={-2} pos={'relative'}>
           <Circle size="40px" color="white" bg={iconBg}>
             {icon}
           </Circle>
