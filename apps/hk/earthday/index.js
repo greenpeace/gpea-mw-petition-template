@@ -26,6 +26,7 @@ import { CloseIcon } from '@chakra-ui/icons';
 import { FaPencilAlt } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import { useInView } from 'react-intersection-observer';
+import axios from 'axios';
 import HeroSection from './components/HeroSection';
 import MainSection from './components/MainContent';
 import Form from './components/Form';
@@ -250,51 +251,62 @@ const HeaderMarquee = () => {
 };
 
 const BottomMarquee = () => {
-  const PAGE_SIZE = 10;
+  const PAGE_SIZE = 30;
   const listInnerRef = useRef();
-  const [data, setData] = useState([]);
-  const [totalData, setTotalData] = useState(0);
   const [thoughts, setThoughts] = useState([]);
-  const [offset, setOffset] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [showThoughts, setShowThoughts] = useState(PAGE_SIZE);
+  const [pageSize, setPageSize] = useState(20);
 
-  const handleFetchData = (params) => {
-    fetch(`${API_ENDPOINT}&offset=${params.offset}&limit=${PAGE_SIZE}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data) {
-          setTotalData(data.totalCount);
-          setData(data.records);
-        }
+  useEffect(async () => {
+    let fetchURLs = [];
+    let commitment = [];
+
+    const getPhotoTotal = await axios
+      .get(`${API_ENDPOINT}&limit=1`)
+      .then((response) => {
+        return response.data.totalCount;
       })
-      .catch((error) => console.error(error));
-  };
+      .catch(function (error) {
+        console.log(error);
+      });
 
-  useEffect(() => {
-    handleFetchData({ offset: offset });
+    for (let i = 0; i < getPhotoTotal; i += 100) {
+      fetchURLs = [...fetchURLs, `${API_ENDPOINT}&offset=${i}`];
+    }
+
+    const commitments = await axios
+      .all(fetchURLs.map((d) => axios.get(d)))
+      .then(
+        axios.spread(async (...res) => {
+          await res.map((d) => commitment.push(d.data.records));
+          return commitment.flat(1);
+        }),
+      )
+      .then((data) => {
+        const resData = {
+          records: data.map((d) => d).sort((a, b) => b.Timestamp - a.Timestamp),
+        };
+        return resData;
+      })
+
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    setThoughts(commitments?.records);
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      setThoughts(data);
-    }
-  }, [data]);
-
   const handleLoadMore = () => {
-    setIsLoading(true);
-    fetch(`${API_ENDPOINT}&offset=${data.length}&limit=${PAGE_SIZE}`)
-      .then((response) => response.json())
-      .then((result) => {
-        if (result) {
-          setData([...data, ...result.records]);
-        }
-      })
-      .catch((error) => console.error(error))
-      .finally(() => setIsLoading(false));
+    const number = thoughts.length - pageSize;
+    if (number > 0) {
+      if (number > PAGE_SIZE) {
+        setPageSize(pageSize + PAGE_SIZE);
+      } else if (number <= PAGE_SIZE) {
+        setPageSize(thoughts.length);
+      }
+    }
   };
 
-  if (data.length === 0) {
+  if (thoughts.length === 0) {
     return (
       <Center py="4">
         <Spinner color="gray.100" />
@@ -327,16 +339,18 @@ const BottomMarquee = () => {
         }}
       >
         <SimpleGrid columns={{ base: '1', md: '2' }}>
-          {thoughts.map((d, i) => (
+          {(thoughts.slice(0, pageSize) || []).map((d, i) => (
             <Box
               key={i}
               flex={1}
               boderRadius="xl"
               borderWidth="1px"
+              borderLeft="4px"
+              borderLeftColor={'theme.climate'}
               bgColor={'yellow.50'}
               p={4}
               overflow="hidden"
-              mb="2"
+              mb="4"
               mx="2"
               fontFamily={'sans-serif'}
             >
@@ -348,26 +362,17 @@ const BottomMarquee = () => {
               >
                 {d.FirstName}:
               </Text>
-              <Text
-                fontSize={'sm'}
-                fontWeight={400}
-                color={'gray.700'}
-                lineHeight="2"
-              >
+              <Text fontSize={'sm'} color={'gray.700'} lineHeight="2">
                 {d?.Thoughts}
               </Text>
             </Box>
           ))}
         </SimpleGrid>
 
-        {totalData >= data.length && (
+        {thoughts.length - pageSize > 0 && (
           <Center my={4}>
-            <Button
-              variant="outline"
-              onClick={handleLoadMore}
-              disabled={isLoading}
-            >
-              {isLoading ? '讀取中' : '讀取更多'}
+            <Button variant="outline" onClick={handleLoadMore}>
+              {'讀取更多'}
             </Button>
           </Center>
         )}
