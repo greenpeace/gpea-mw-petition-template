@@ -35,7 +35,7 @@ class NextDocument extends Document {
           />
           <meta
             property="og:image"
-            content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/08/a5120475-gp02i8e_high_res.jpg"
+            content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/04/9e75f891-20220318_gps-07.jpg"
           />
         </Head>
         <body>
