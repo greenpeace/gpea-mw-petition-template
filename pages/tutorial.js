@@ -64,7 +64,7 @@ function Tutorial() {
         </Container>
         <Image
           loader={imageLoader}
-          src="/images/20220318_GPS-03.png"
+          src="/images/20220318_GPS-03.jpg"
           layout="fill"
           objectFit="cover"
           quality={100}

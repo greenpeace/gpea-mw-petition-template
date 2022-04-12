@@ -39,7 +39,12 @@ function Content({ status, theme }) {
         <Heading
           {...headingProps}
           color={'white'}
-          fontSize={{ base: '2xl', md: '4xl' }}
+          fontSize={{
+            base: 'var(--text-xl)',
+            md: 'var(--text-2xl)',
+          }}
+          textShadow="0 0 1px rgba(0,0,0, .2)"
+          mb={4}
           dangerouslySetInnerHTML={{
             __html: '立即登記<br/>免費使用完整版！',
           }}

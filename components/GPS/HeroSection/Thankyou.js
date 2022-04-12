@@ -40,7 +40,12 @@ function Content({ signup }) {
         <Heading
           {...headingProps}
           color={'white'}
-          fontSize={{ base: '2xl', md: '4xl' }}
+          fontSize={{
+            base: 'var(--text-xl)',
+            md: 'var(--text-2xl)',
+          }}
+          textShadow="0 0 1px rgba(0,0,0, .2)"
+          mb={4}
           dangerouslySetInnerHTML={{
             __html: `${FirstName}，您現在可以免費使用完整版走塑GPS！`,
           }}

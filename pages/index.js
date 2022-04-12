@@ -68,26 +68,25 @@ function Index() {
         </title>
       </Head>
 
-      <Box>
+      <Box d={{ base: 'block', md: 'none' }}>
         <Image
           loader={imageLoader}
-          src={`/images/20220318_GPS-01.png`}
+          src={`/images/20220318_GPS-02.jpg`}
+          width="1000"
+          height="1000"
+        />
+      </Box>
+      <Box d={{ base: 'none', md: 'block' }}>
+        <Image
+          loader={imageLoader}
+          src={`/images/20220318_GPS-01.jpg`}
           width="1920"
-          height="960"
+          height="700"
         />
       </Box>
 
       <Container maxW={`${maxWSize}px`} py="6" px="4">
         <Stack spacing={{ base: '40px', md: '80px' }}>
-          {/* <Box>
-            <Image
-              loader={imageLoader}
-              src={`/images/svg/Plastic-free-GPS-banner-v2.svg`}
-              width="1400"
-              height="800"
-            />
-          </Box> */}
-
           <Box>
             <Stack
               spacing="6"
