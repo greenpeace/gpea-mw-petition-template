@@ -91,7 +91,7 @@ function Index({ setFormContent, setForm, status, setScreen }) {
   }, []);
 
   return (
-    <Box>
+    <>
       <SEO />
       <WebContext.Provider value={webData}>
         {/* <Box bgColor={'#88D6F8'}>
@@ -121,10 +121,8 @@ function Index({ setFormContent, setForm, status, setScreen }) {
         </Box>
 
         <Box bgColor={'#88D6F8'}>
-          <Container maxW="1200px">
-            <Box py="6">
-              <BottomMarquee />
-            </Box>
+          <Container maxW="1200px" py="6">
+            <BottomMarquee />
           </Container>
         </Box>
 
@@ -183,7 +181,7 @@ function Index({ setFormContent, setForm, status, setScreen }) {
           {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}
         </FixedCTA>
       </Slide>
-    </Box>
+    </>
   );
 }
 
@@ -315,13 +313,12 @@ const BottomMarquee = () => {
   }
 
   return (
-    <Box bgColor={'white'} pos={'relative'} borderRadius={'8px'} px={6} py={8}>
+    <Box bgColor={'white'} pos={'relative'} borderRadius={'8px'} px="4" py="6">
       <Box>
         <Heading as="h2" {...headingProps} color={'theme.climate'} mb="6">
           我做得到！
         </Heading>
       </Box>
-
       <Box
         maxH={{ base: '480px', md: '680px' }}
         overflowY={'auto'}
