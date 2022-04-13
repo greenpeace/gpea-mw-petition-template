@@ -51,5 +51,17 @@ export const Button = {
       color: 'white',
       fontWeight: 'bold',
     },
+    quizSquare: {
+      borderRadius: '4px',
+      transition: 'all 0.2s cubic-bezier(.08,.52,.52,1)',
+      colorScheme: 'orange',
+      letterSpacing: '2px',
+      borderWidth: '4px',
+      background: '#FF8100',
+      color: 'white',
+      fontWeight: 'bold',
+      borderWidth: '0',
+      boxShadow: '3px 3px 5px rgba(0, 0, 0, .3)',
+    },
   },
 };
