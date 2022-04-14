@@ -173,7 +173,7 @@
     },
     "options": [
       { "value": "A", "point": 0, "label": "命運" },
-      { "value": "B", "point": 100, "label": "機會" }
+      { "value": "B", "point": 10, "label": "機會" }
     ],
     "image": "questions/earthday-q-10.jpg",
     "maximum": 1,
