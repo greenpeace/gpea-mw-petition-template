@@ -4,7 +4,8 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import banner from '../../images/A7307470.jpg';
+import banner1 from '../../images/GP1SV0BR_High_res.jpg';
+import banner2 from '../../images/GP1SW55R_High_res.jpg';
 
 const Thankyou = () => {
   return (
@@ -16,20 +17,10 @@ const Thankyou = () => {
         您的參與意義重大，我們將一起減緩氣候危機，建立綠色、永續未來的理想。
       </Text>
       <Text as="p" {...paragraphProps}>
-        身處減緩氣候危機的關鍵十年，我們必須分秒必爭加速推動各地領袖與企業，加入或加速氣候改革，全面淘汰化石燃料，控制全球升溫於1.5°C以內。
-      </Text>
-      <Heading as="h1" {...headingProps} color={'theme.climate'}>
-        教育您我下一代，捐助支持綠色和平守護環境。
-      </Heading>
-      <Text as="p" {...paragraphProps}>
-        綠色和平亦著重培養小孩對愛護氣候和環境的意識！自去年推出「童愛環境 ·
-        地球日贈書」計劃，已有近15,000名小孩受惠，透過綠色和平原創繪本《無家可歸的我》，認識氣候危機與各種環境問題。
-      </Text>
-      <Text as="p" {...paragraphProps}>
-        您的捐款將直接資助我們守護環境的工作，以及協助送出《無家可歸的我》繪本至香港小學，讓更多小孩認識氣候變化，從小培育關心環境的觀念。
+        身處減緩氣候危機的關鍵十年，我們必須分秒必爭推動各地領袖、企業展示更強行動力，承諾與兌現其氣候承諾，以加速全面淘汰化石燃料，控制全球升溫於1.5°C以內。
       </Text>
       <Box {...paragraphProps}>
-        <Image src={banner} />
+        <Image src={banner1} />
       </Box>
       <Heading as="h1" {...headingProps} color={'theme.climate'}>
         減緩氣候危機刻不容緩，急需您的支持！
@@ -42,6 +33,15 @@ const Thankyou = () => {
       </Text>
       <Text as="p" {...paragraphProps}>
         向地球伸出援手，捐助綠色和平減緩氣候危機工作。
+      </Text>
+      <Box {...paragraphProps}>
+        <Image src={banner2} />
+      </Box>
+      <Heading as="h1" {...headingProps} color={'theme.climate'}>
+        今天行動，讓綠色和平守護您我下一代的美好環境
+      </Heading>
+      <Text as="p" {...paragraphProps}>
+        一個美好的自然環境是留給下一代最好的禮物。過去50年，綠色和平堅持不接受政商界捐助，以公正獨立的身份減緩氣候危機。因為您，綠色和平守護環境的使命得以延續，實現綠色低碳未來，守護地球！
       </Text>
     </Box>
   );
