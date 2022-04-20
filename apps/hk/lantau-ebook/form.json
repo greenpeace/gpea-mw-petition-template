@@ -1,6 +1,6 @@
 {
-  "form_header": "報名繪本共讀會 認識環境與氣候危機",
-  "form_description": "* 如為18歲以下小朋友報名，敬請於下方所有欄位填寫家長資料，並輸入參與共讀會的小朋友數目。",
+  "form_header": "下載《山海大嶼》特刊 認識大嶼環境與生態",
+  "form_description": "登記後，請於3分鐘內檢查電子郵箱與短訊，以下載電子書。",
   "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
   "signed_number": "已聯署人數",
 
@@ -45,11 +45,11 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "請捐助支持「童愛環境 · 贈書教育」計劃",
+  "donate_header": "請捐助守護大嶼工作",
   "donate_description": [
-    "您的捐助，將幫助100間小學獲得原創氣候危機繪本《無家可歸的我》及教材，從小培養孩子對環境保護的意識。"
+    "您的捐助，將有效地、直接地守護香港自然環境"
   ],
-  "default_message": "支持團隊持續與更多小學接洽，處理寄送繪本安排。",
+  "default_message": "支持綠色和平持續監察政府棕地政策和土地規劃動向，及時回應並採取相應行動。",
   "currency": "HKD",
   "default_amount": 200,
   "donate_type": [
@@ -85,19 +85,19 @@
     {
       "label": "200",
       "value": 200,
-      "description": "支持團隊持續與更多小學接洽，處理寄送繪本安排。",
+      "description": "支持綠色和平持續監察政府棕地政策和土地規劃動向，及時回應並採取相應行動。",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持團隊在贈送繪本同時，為教師舉辦氣候危機培訓。",
+      "description": "支持綠色和平揭露現時土地規劃弊端，並製作調查報告以證明香港存在棕地等被低估發展價值的覓地選項，無必要破壞自然環境。",
       "currency": "HKD"
     },
     {
       "label": "400",
       "value": 400,
-      "description": "支持派出300本繪本到各區小學，教育並培養孩子愛護環境的意識！",
+      "description": "支持綠色和平促請政府以謹慎態度，嚴正審視被低估發展潛力的棕地，優先發展現存可用的土地資源，滿足市民住屋需要，讓城市發展與自然環境和諧共存，締造宜居環境。",
       "currency": "HKD"
     },
     {

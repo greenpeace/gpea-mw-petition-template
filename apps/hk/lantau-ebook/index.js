@@ -9,22 +9,16 @@ import Form from './components/Form';
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
-
 import FixedCTA from './components/FixedCTA';
-const maxWSize = 1200;
-
 import heroBannerImage from './images/202204-earthday-KV-sns-website-banner_2.jpg';
-import speaker1 from './images/Asset-2-shion.png';
+
+const maxWSize = 1200;
 
 function Index({ setFormContent }) {
   const [isLargerThanLG] = useMediaQuery('(min-width: 62em)'); // default md: '62em'
   const { ref, inView } = useInView({ threshold: 0 });
-  const mobileForm = useRef(null);
-  const executeScroll = (ref) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-  const speaker1Ref = useRef(null);
   const [showCTAButton, setShowCTAButton] = useState(false);
+  const mobileForm = useRef(null);
 
   useEffect(() => {
     setFormContent(formContent);
@@ -35,12 +29,9 @@ function Index({ setFormContent }) {
       setTimeout(() => {
         setShowCTAButton(false);
       }, 500);
+      return;
     }
-    if (!inView && !isLargerThanLG) {
-      setShowCTAButton(true);
-    } else {
-      setShowCTAButton(false);
-    }
+    setShowCTAButton(!inView && !isLargerThanLG);
   }, [inView, isLargerThanLG]);
 
   return (
@@ -83,7 +74,7 @@ function Index({ setFormContent }) {
           pr={{ xl: 10 }}
           pb={16}
         >
-          <MainSection speaker1Ref={speaker1Ref} />
+          <MainSection />
         </Box>
       </Container>
 

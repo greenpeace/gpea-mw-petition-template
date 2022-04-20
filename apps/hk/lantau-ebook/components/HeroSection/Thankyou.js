@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {
-  Avatar,
-  AvatarGroup,
   Box,
-  Flex,
   Heading,
   Stack,
-  Text,
 } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import Form from '../Form';
 import { useWindowSize } from '../../util';
 import { headingProps } from '@common/styles/components/contentStyle';
-
-import speaker1 from '../../images/Asset-2-shion.png';
-import speaker2 from '../../images/ken.png';
 
 const formWidth = 500;
 
@@ -58,7 +51,7 @@ function Content({ signup }) {
           textShadow="0 0 1px rgba(0,0,0, .2)"
           mb={4}
           dangerouslySetInnerHTML={{
-            __html: `${FirstName}，<br/>感謝您報名共讀會！`,
+            __html: `${FirstName}，<br/>感謝您下載<br/>山海大嶼特刊`,
           }}
         />
       </Box>

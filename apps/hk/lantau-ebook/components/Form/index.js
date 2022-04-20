@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
 import { Container, Box } from '@chakra-ui/react';
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
-import SignupForm from '../WebinarForm';
+import SignupForm from '@components/GP/WebinarForm';
 
 const Index = ({ status }) => {
   const RenderForm = () =>

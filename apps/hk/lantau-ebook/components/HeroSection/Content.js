@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {
-  Avatar,
-  AvatarGroup,
   Box,
-  Flex,
   Heading,
   Stack,
-  Text,
 } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import Form from '../Form';
 import { useWindowSize } from '../../util';
 import { headingProps } from '@common/styles/components/contentStyle';
-
-import speaker1 from '../../images/Asset-2-shion.png';
-import speaker2 from '../../images/ken.png';
-
 const formWidth = 500;
 
 function Content({ children }) {
@@ -63,20 +55,6 @@ function Content({ children }) {
         />
       </Box>
       <Box pos={'relative'}>
-        <Flex pos="relative" zIndex="2" py={4} flexDirection="column">
-          <Text fontSize="xl" px="2" mb="4" fontWeight="bold" color="white">
-            講者：
-          </Text>
-          <AvatarGroup size="xl" max={4}>
-            <Avatar
-              name="Shion"
-              src={speaker1}
-              onClick={() => executeScroll(speaker1Ref)}
-              cursor={'pointer'}
-              bg="climate.500"
-            />
-          </AvatarGroup>
-        </Flex>
         {readyToShow && (
           <Box {...formProps} d={{ base: 'none', lg: 'block' }}>
             <Form />
