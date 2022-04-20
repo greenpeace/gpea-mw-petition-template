@@ -7,11 +7,12 @@ const StepProgress = ({ theme, status }) => {
   const { submitted } = status;
   const stepCurrentStyle = {
     fontSize: 16,
-    lineHeight: 6,
+    // lineHeight: 6,
+    fontWeight: 'bold',
     color: '#FFF',
     bgColor: `${themeInterests}.500`,
     _after: {
-      borderLeftType: `solid`,
+      borderLeftType: 'solid',
       borderLeftWidth: '17px',
       borderLeftColor: `${themeInterests}.500`,
     },
@@ -19,10 +20,10 @@ const StepProgress = ({ theme, status }) => {
 
   const stepStyle = {
     fontSize: 16,
-    lineHeight: 6,
+    // lineHeight: 6,
     bgColor: `${themeInterests}.100`,
     _after: {
-      borderLeftType: `solid`,
+      borderLeftType: 'solid',
       borderLeftWidth: '17px',
       borderLeftColor: `${themeInterests}.100`,
     },
@@ -40,11 +41,6 @@ const StepProgress = ({ theme, status }) => {
     top: 0,
     right: 0,
     zIndex: 1,
-  };
-
-  const stepProps = {
-    className: submitted ? 'step current' : 'step',
-    styles: submitted ? stepCurrentStyle : stepStyle,
   };
 
   return (

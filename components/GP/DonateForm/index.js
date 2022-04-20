@@ -14,6 +14,11 @@ import StepProgress from '@components/Progress/StepProgress';
 import MessageSection from './messageSection';
 import SubmitSection from './submitSection';
 
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
+
 const DonateForm = (props) => {
   const {
     formContent: {
@@ -30,6 +35,7 @@ const DonateForm = (props) => {
     setShowMessage,
     donateType,
     setDonateType,
+    signup,
   } = props;
   const [item, setItem] = useState();
   const [amount, setAmount] = useState(default_amount);
@@ -66,19 +72,25 @@ const DonateForm = (props) => {
               {donate_header && (
                 <Box>
                   <Heading
-                    fontSize={{ base: '2xl', xl: '3xl' }}
-                    fontWeight={700}
+                    as="h2"
+                    {...headingProps}
+                    mb="0"
                     dangerouslySetInnerHTML={{ __html: donate_header }}
                     color={`${themeInterests}.500`}
                   />
                 </Box>
               )}
 
+              <Box d="none" className="custEmail">
+                {signup.Email}
+              </Box>
+
               {(donate_description || []).map((d, i) => (
                 <Box key={i}>
                   <Text
                     as="p"
-                    fontSize={{ base: 'sm', xl: 'md' }}
+                    {...paragraphProps}
+                    mb="0"
                     dangerouslySetInnerHTML={{ __html: d }}
                   />
                 </Box>
@@ -145,7 +157,7 @@ const DonateForm = (props) => {
                             amount === d.value
                               ? `${themeInterests}.500`
                               : isOther
-                              ? '#FFF'
+                              ? '#fff'
                               : 'gray.200'
                           }
                           borderRadius={'md'}
@@ -233,12 +245,13 @@ const afterProps = {
   transform: 'rotate(-45deg)',
 };
 
-const mapStateToProps = ({ form, theme }) => {
+const mapStateToProps = ({ form, theme, signup }) => {
   return {
     formContent: form.content,
     theme: theme.data,
     showMessage: form.showMessage,
     donateType: form.donateType,
+    signup: signup.data,
   };
 };
 

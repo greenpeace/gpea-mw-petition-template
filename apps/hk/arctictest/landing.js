@@ -10,7 +10,7 @@ import TitleKeyVisualMobile from './images/openingending/headline_mobile.png';
 
 const Landing = ({ setSurveyPage }) => {
   return (
-    <Box h={'100vh'} mt={{ base: '-55px' }} pos={`relative`}>
+    <Box h={'100vh'} mt={{ base: '-55px' }} pos={'relative'}>
       <Center h={'100%'} w={'100%'}>
         <Stack direction="column">
           <Box p={6} mx="auto" maxWidth={{ base: 'auto', md: '680px' }}>

@@ -63,8 +63,9 @@ const SFFormat = ({ locale }) => {
                   <Link
                     href={d.value}
                     target={'_blank'}
-                    textDecoration={'underline'}
+                    color="white"
                     rel="noreferrer"
+                    isExternal
                   >
                     {d.label}
                   </Link>

@@ -10,3 +10,5 @@ export const SET_SIGNUP_NUMBERS = 'SET_SIGNUP_NUMBERS';
 
 export const SET_SHOW_MESSAGE = 'SET_SHOW_MESSAGE';
 export const SET_DONATE_TYPE = 'SET_DONATE_TYPE';
+
+export const SET_FORM_DATA = 'SET_FORM_DATA';

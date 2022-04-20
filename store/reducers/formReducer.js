@@ -75,6 +75,13 @@ const formReducer = (state = initState, action) => {
         lastAction: action.type,
       };
 
+    case formActions.SET_FORM_DATA:
+      return {
+        ...state,
+        data: action.data,
+        lastAction: action.type,
+      };
+
     default:
       return state;
   }
