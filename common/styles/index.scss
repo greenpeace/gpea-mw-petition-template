@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import './tokens.css';
 
 @import './scss/theme', './scss/content', './scss/step', './scss/override';
@@ -46,4 +49,12 @@ a {
 b,
 strong {
   font-weight: bold;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
 }

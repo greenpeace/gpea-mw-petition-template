@@ -6,7 +6,7 @@ import Nav from '@components/Header';
 function Layout({ children }) {
   return (
     <Box>
-      <Nav />
+      {/* <Nav /> */}
       {children}
     </Box>
   );
