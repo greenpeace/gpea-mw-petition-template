@@ -46,9 +46,7 @@
   ],
 
   "donate_header": "請捐助守護大嶼工作",
-  "donate_description": [
-    "您的捐助，將有效地、直接地守護香港自然環境"
-  ],
+  "donate_description": ["您的捐助，將有效地、直接地守護香港自然環境。"],
   "default_message": "支持綠色和平持續監察政府棕地政策和土地規劃動向，及時回應並採取相應行動。",
   "currency": "HKD",
   "default_amount": 200,
