@@ -6,8 +6,8 @@ const CARDS = [
   {
     image: contentCard,
     name: '馮漢城',
-    role:
-      '本片編導。',
+    role: '本片編導。',
+    content: '「我覺得野生物種好似活生生嘅藝術品，因為佢哋有不同顏色、羽毛、行為，會同你交流，呢個就係接觸生態的有趣之處。」'
   }
 ];
 
@@ -22,6 +22,7 @@ const VisionGroup = () => {
                 key={d.name}
                 name={d.name}
                 role={d.role}
+                content={d.content}
                 image={d.image}
                 />
             ))}

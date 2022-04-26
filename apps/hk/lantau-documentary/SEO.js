@@ -19,12 +19,12 @@ const SEO = () => {
       />
       {/* title */}
       <title>
-        立即報名：地球日．救地球——《無家可歸的我》故事共讀會 - Greenpeace
+        Greenpeace
         綠色和平 | 香港
       </title>
       <meta
         property="og:title"
-        content="立即報名：地球日．救地球——《無家可歸的我》故事共讀會 - Greenpeace 綠色和平 | 香港"
+        content="Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"

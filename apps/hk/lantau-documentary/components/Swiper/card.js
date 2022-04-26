@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 
-const Card = ({ image, name, role }) => {
+const Card = ({ image, name, role, content }) => {
   return (
     <div className="inline-block px-3">
       <div className="relative w-[285px] h-[495px] max-w-xs overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
@@ -19,6 +19,10 @@ const Card = ({ image, name, role }) => {
               {name}
             </h1>
             <p className="text-[#FFF]">{role}</p>
+          </div>
+
+          <div className="absolute left-6 right-6 bottom-6">
+            <p className="text-[#FFF]">{content}</p>
           </div>
 
           <Box
