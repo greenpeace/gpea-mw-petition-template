@@ -6,13 +6,14 @@ const Card = ({ image, name, role, content }) => {
     <div className="inline-block px-3">
       <div className="relative w-[285px] h-[495px] max-w-xs overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
         <Box
-          backgroundImage={image}
+          // backgroundImage={image}
           backgroundRepeat="no-repeat"
           backgroundSize={'cover'}
           pos={'absolute'}
           top={0}
           bottom={0}
           w={'full'}
+          bgColor={'#000'}
         >
           <div className="absolute left-4 top-4">
             <h1 className="text-[18px] font-[500] text-[#FFF]">

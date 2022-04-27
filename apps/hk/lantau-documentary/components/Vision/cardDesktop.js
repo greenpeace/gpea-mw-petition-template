@@ -3,8 +3,14 @@ import { Box } from '@chakra-ui/react';
 
 const Card = ({ image, title, content }) => {
   return (
-    <div className="inline-block px-3">
-      <div className="relative w-[285px] h-[495px] max-w-xs overflow-hidden rounded-[20px] shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
+    <div className="flex-1 relative" key={title}>
+      <div className="absolute left-6 right-6 -bottom-[50px] z-30 max-w-[310px]">
+        <h1 className="text-[24px] font-[700] leading-[36px] text-[#FFF] border-b-2 pb-2 mb-2">
+          {title}
+        </h1>
+        <p className="text-[#FFF]">{content}</p>
+      </div>
+      <div className="relative w-[300px] h-[420px] rounded-[20px] mx-auto overflow-hidden">
         <Box
           backgroundImage={image}
           backgroundRepeat="no-repeat"
@@ -14,13 +20,6 @@ const Card = ({ image, title, content }) => {
           bottom={0}
           w={'full'}
         >
-          <div className="absolute left-6 right-6 bottom-6">
-            <h1 className="text-[24px] font-[700] leading-[36px] text-[#FFF] border-b-2 pb-2 mb-2">
-              {title}
-            </h1>
-            <p className="text-[#FFF]">{content}</p>
-          </div>
-
           <Box
             bgGradient="linear(to-b, transparent 0%, transparent 50%, black 100%)"
             h={'full'}
