@@ -7,6 +7,7 @@ import MobileHero from '../../images/mobile/hero.png';
 import DesktopHero from '../../images/hero.jpeg';
 
 import subBanner from '../../images/sub_banner.jpeg';
+import appLogo from '../../images/app_logo.png';
 
 function HeroSection() {
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
@@ -22,9 +23,10 @@ function HeroSection() {
       pb={{md:'100px'}}
     >
       <div className="container mx-auto px-[30px] md:pt-[300px]">
-        <div className="flex flex-col pt-[248px] pb-[67px]">
+        <div className="flex flex-col pt-[128px] pb-[67px]">
           <div className="text-center text-[#FFF]">
             <div className="pb-[28px]">
+              <Image src={appLogo} m={'auto'} maxW={{base: '300px', lg: '980px'}} pb={{base: '60px', lg: '120px'}}/>
               <h1
                 className="text-[32px] font-[700] leading-[48px]"
                 style={{ textShadow: '1px 1px 2px black' }}

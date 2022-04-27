@@ -14,7 +14,7 @@ const Header = () => {
   }
 
   return (
-    <div className={`container mx-auto px-4 sticky top-0 z-20 ${stickyStyle.wrap} md:max-w-[100%]`}>
+    <div className={`container mx-auto px-4 fixed top-0 z-20 ${stickyStyle.wrap} md:max-w-[100%]`}>
       <div className={`${stickyStyle.border}`}>
         <div className="flex flex-row space-x-0 items-center h-[64px]">
           <div className="flex-1">
