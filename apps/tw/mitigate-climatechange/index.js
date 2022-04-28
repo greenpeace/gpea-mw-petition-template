@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import queryString from 'query-string';
+import { useRouter } from 'next/router';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import PageContainer from '@containers/pageContainer';
@@ -26,6 +28,14 @@ import heroBannerImageMobile from './images/banner_mobile.jpg';
 // import heroBannerImageBMobile from './images/climatebanner2_mobile.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
+  // const utmSource = queryString.parse(location.search);
+  // console.log(utmSource)
+  const router = useRouter();
+  const [utmSource, setUtmSource] = useState('');
+  useEffect(() => {
+    setUtmSource(router.query?.utm_source);
+  }, [router]);
+
   const { submitted } = status;
   const { FirstName } = signup;
   const themeInterests = theme.interests;
@@ -99,7 +109,15 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
+                  {submitted ? (
+                    utmSource != 'dd' ? (
+                      <DonateForm />
+                    ) : (
+                      ''
+                    )
+                  ) : (
+                    <SignupForm />
+                  )}
                 </Box>
               </FormContainer>
             </Box>
