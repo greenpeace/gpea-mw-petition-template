@@ -1,5 +1,5 @@
 {
-  "form_header": "下載《山海大嶼》特刊 認識大嶼環境與生態",
+  "form_header": "下載《山海大嶼》電子書 認識大嶼環境與生態",
   "form_description": "登記後，請於3分鐘內檢查電子郵箱與短訊，以下載電子書。",
   "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
   "signed_number": "已聯署人數",
@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&donate_amt=monthly%3A200&campaign=elm_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",

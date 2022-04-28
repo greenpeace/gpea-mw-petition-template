@@ -13,7 +13,7 @@ const Content = ({ theme }) => {
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        下載《山海大嶼》特刊 認識您不知道的大嶼風光與生態
+        下載《山海大嶼》電子書 認識您不知道的大嶼風光與生態
       </Heading>
 
       <Box {...paragraphProps}>
@@ -23,7 +23,7 @@ const Content = ({ theme }) => {
       <Box {...paragraphProps} bgColor="#F9F9F9" borderRadius={8} p={4}>
         <UnorderedList>
           <ListItem>3條大嶼精選行山路線</ListItem>
-          <ListItem>攝影比賽與攝影行作品一覽</ListItem>
+          <ListItem>大嶼攝影比賽作品巡禮</ListItem>
           <ListItem>大嶼珍貴物種圖輯與介紹</ListItem>
           <ListItem>綠色和平大嶼紀錄片製作班底訪談</ListItem>
         </UnorderedList>

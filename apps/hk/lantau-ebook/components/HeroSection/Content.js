@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  Box,
-  Heading,
-  Stack,
-} from '@chakra-ui/react';
+import { Box, Heading, Stack } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import Form from '../Form';
 import { useWindowSize } from '../../util';
@@ -50,7 +46,7 @@ function Content({ children }) {
           textShadow="0 0 1px rgba(0,0,0, .2)"
           mb={4}
           dangerouslySetInnerHTML={{
-            __html: '請即下載<br/>《山海大嶼》<br/>大嶼山主題特刊',
+            __html: '請即下載<br/>《山海大嶼》<br/>大嶼山主題電子書',
           }}
         />
       </Box>

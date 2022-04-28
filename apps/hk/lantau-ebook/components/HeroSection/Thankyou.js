@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  Box,
-  Heading,
-  Stack,
-} from '@chakra-ui/react';
+import { Box, Heading, Stack } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import Form from '../Form';
 import { useWindowSize } from '../../util';

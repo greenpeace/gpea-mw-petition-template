@@ -10,7 +10,7 @@ import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 import FixedCTA from './components/FixedCTA';
-import heroBannerImage from './images/202204-lantau-booklet-KV-website-banner.jpg';
+import heroBannerImage from './images/202205-lantau-booklet-KV-website-banner.jpg';
 
 const maxWSize = 1200;
 

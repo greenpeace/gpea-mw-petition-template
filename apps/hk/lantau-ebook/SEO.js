@@ -36,7 +36,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/04/d05a7515-202204-earthday-kv-sns-website-banner-preview.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/04/c079568d-202205-lantau-booklet-kv-fb-preview.jpg"
       />
     </Head>
   );
