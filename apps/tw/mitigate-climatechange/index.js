@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import queryString from 'query-string';
 import { useRouter } from 'next/router';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
