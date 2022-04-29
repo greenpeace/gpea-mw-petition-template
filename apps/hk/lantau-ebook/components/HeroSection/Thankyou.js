@@ -47,7 +47,7 @@ function Content({ signup }) {
           textShadow="0 0 1px rgba(0,0,0, .2)"
           mb={4}
           dangerouslySetInnerHTML={{
-            __html: `${FirstName}，<br/>感謝您下載<br/>山海大嶼特刊`,
+            __html: `${FirstName}，<br/>感謝您下載<br/>山海大嶼電子書`,
           }}
         />
       </Box>

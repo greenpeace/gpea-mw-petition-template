@@ -36,7 +36,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/04/c079568d-202205-lantau-booklet-kv-fb-preview.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/05/675b5db0-202205-lantau-booklet-kv-fb-preview.jpg"
       />
     </Head>
   );

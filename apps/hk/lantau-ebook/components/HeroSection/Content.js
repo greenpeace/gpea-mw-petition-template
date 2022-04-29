@@ -46,7 +46,7 @@ function Content({ children }) {
           textShadow="0 0 1px rgba(0,0,0, .2)"
           mb={4}
           dangerouslySetInnerHTML={{
-            __html: '請即下載<br/>《山海大嶼》<br/>大嶼山主題電子書',
+            __html: '請即下載<br/>山海大嶼電子書',
           }}
         />
       </Box>

@@ -54,7 +54,7 @@ function Index({ status, theme, setFormContent, signup }) {
                 FirstName ? FirstName : '綠色和平支持者'
               }，感謝您加入守護大嶼行列！`,
               description: [
-                '現以每月$200或以上捐款，推動政府善用棕地，守護香港自然環境，您將獲得一副「生態保衛隊」桌上遊戲，並資助低收入家庭學生參與生態導賞團！',
+                '現以每月$150捐款支持守護大嶼工作，即可欣賞將於5月底發行的《山海大嶼》生態紀錄片，並獲贈一本《山海大嶼年曆》！',
               ],
             }}
             // removeMask="true"
