@@ -20,7 +20,7 @@ function AvatarGroup() {
       <h1 className="text-[20px] font-[700] leading-[36px] pb-[26px]">
         製作與配音團隊
       </h1>
-      <div className="grid grid-cols-3 gap-x-14 gap-y-6 md:gap-2">
+      <div className="grid grid-cols-3 gap-x-8 gap-y-6 md:gap-2">
         {TEAMS.map((d) => (
           <Item
             image={d.image}

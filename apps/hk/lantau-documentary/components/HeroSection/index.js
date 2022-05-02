@@ -4,6 +4,7 @@ import { Box, Button } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/react';
 import AvatarGroup from '../../components/Avatar';
 import MobileHero from '../../images/mobile/hero.png';
+import MobileHeroFront from '../../images/mobile/hero_front.png';
 import DesktopHero from '../../images/hero.jpeg';
 
 import subBanner from '../../images/sub_banner.jpeg';
@@ -16,20 +17,25 @@ function HeroSection() {
 
   return (
     <Box
-      backgroundImage={DesktopHero}
+      backgroundImage={MobileHero}
       backgroundPosition={'top center'}
       backgroundRepeat="no-repeat"
       backgroundSize={'100%'}
-      pb={{md:'100px'}}
+      pb={{ md: '100px' }}
     >
       <div className="container mx-auto px-[30px] md:pt-[300px]">
-        <div className="flex flex-col pt-[128px] pb-[67px]">
+        <div className="flex flex-col pt-[140px] pb-[50px]">
           <div className="text-center text-[#FFF]">
             <div className="pb-[28px]">
-              <Image src={appLogo} m={'auto'} maxW={{base: '300px', lg: '980px'}} pb={{base: '60px', lg: '120px'}}/>
+              <Image
+                src={appLogo}
+                m={'auto'}
+                // maxW={{ base: '300px', lg: '980px' }}
+                pb={{ base: '60px' }}
+              />
               <h1
-                className="text-[32px] font-[700] leading-[48px]"
-                style={{ textShadow: '1px 1px 2px black' }}
+                className="text-[32px] font-[900] leading-[48px]"
+                style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
               >
                 <span className="block md:inline-block">香港第一部</span>
                 <span>大嶼山生態紀錄長片</span>
@@ -39,7 +45,7 @@ function HeroSection() {
             <div>
               <h2
                 className="text-[20px] font-[500] leading-[30px]"
-                style={{ textShadow: '1px 1px 2px black' }}
+                style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
               >
                 <span className="md:block">單次捐款100元</span>{' '}
                 <span>收看記錄片</span>
@@ -100,11 +106,11 @@ function HeroSection() {
               全片不但以4K超高清拍攝，更包含航拍、水底拍攝、夜視拍攝等，務求將大嶼山生態最真實一面搬到螢幕上。我們亦邀請到本地資深傳媒人陳志雲先生為本片配音，全方位帶領大眾了解大嶼山富生物多樣性、值得香港人驕傲的一面。
             </p>
             <div className="hidden md:block">
-            <AvatarGroup />
+              <AvatarGroup />
             </div>
           </div>
           <div className="hidden md:block">
-            <Image src={subBanner}/>
+            <Image src={subBanner} />
           </div>
         </div>
       </div>

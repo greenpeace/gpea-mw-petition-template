@@ -11,28 +11,27 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'climate',
-            gBasket: 'earthdaywebinar',
+            gCampaign: '',
+            gBasket: '',
           });
         `,
         }}
       />
       {/* title */}
       <title>
-        Greenpeace
-        綠色和平 | 香港
+      《山海大嶼》香港第一部大嶼山生態紀錄長片 Greenpeace 綠色和平 | 香港
       </title>
       <meta
         property="og:title"
-        content="Greenpeace 綠色和平 | 香港"
+        content="《山海大嶼》香港第一部大嶼山生態紀錄長片 Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"
-        content="綠色和平舉辦原創繪本《無家可歸的我》故事共讀會，邀請到親子學習活動專頁創辦人MeeliMami，講故事之餘，亦會分享氣候危機、海洋暖化、海冰融化等環境議題，以及拯救環境的小知識。我們希望透過繪本共讀，讓大眾了解環境現正面對的危機與緩解方法，並加入守護地球的行列。"
+        content="紀錄片由綠色和平與本地生態團隊耗時大半年製作，由資深傳媒人陳志雲聲音導航，以大嶼為舞台，帶領觀眾縱覽各個生境。有您的支持，綠色和平將堅持守護大嶼，讓世代得以見證這片水光山色與生態瑰寶的故事。"
       />
       <meta
         property="og:description"
-        content="綠色和平舉辦原創繪本《無家可歸的我》故事共讀會，邀請到親子學習活動專頁創辦人MeeliMami，講故事之餘，亦會分享氣候危機、海洋暖化、海冰融化等環境議題，以及拯救環境的小知識。我們希望透過繪本共讀，讓大眾了解環境現正面對的危機與緩解方法，並加入守護地球的行列。"
+        content="紀錄片由綠色和平與本地生態團隊耗時大半年製作，由資深傳媒人陳志雲聲音導航，以大嶼為舞台，帶領觀眾縱覽各個生境。有您的支持，綠色和平將堅持守護大嶼，讓世代得以見證這片水光山色與生態瑰寶的故事。"
       />
       <meta
         property="og:image"
