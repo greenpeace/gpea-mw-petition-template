@@ -10,7 +10,6 @@ const Header = ({handleMenuClick, MENU}) => {
     wrap: scrollPosition > OFFSET ? 'bg-[#66CC00]' : '',
     border: scrollPosition > OFFSET ? '' : 'border-b-[2px]',
   };
-
   return (
     <div
       className={`px-4 fixed top-0 ${stickyStyle.wrap} w-full transition-all duration-500`}
@@ -27,16 +26,20 @@ const Header = ({handleMenuClick, MENU}) => {
             <div className="flex flex-row items-center gap-8">
               {(MENU||[]).map((d) => (
                 <div
-                  className="cursor-pointer text-[16px] font-[500] text-[#FFF] hover:text-[#d2d2d2]"
+                  className="cursor-pointer text-[16px] font-[500] text-[#FFF] hover:text-[#d2d2d2] hidden md:block"
                   key={d.label}
                   onClick={() => {
-                    console.log('value', d.value)
                     handleMenuClick(d.ref)
                   }}
                 >
                   {d.label}
                 </div>
               ))}
+              <div
+                  className="cursor-pointer text-[16px] font-[500] text-[#FFF] hover:text-[#d2d2d2] hidden md:block"
+                >
+                  立即聯署
+                </div>
               <Button
                 color="white"
                 bgColor={'orange.500'}

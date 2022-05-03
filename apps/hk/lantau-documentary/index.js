@@ -29,8 +29,7 @@ function Index() {
     { label: '紀錄片介紹', value: '', ref: heroSection },
     { label: '我們的理念', value: '', ref: visionSection },
     { label: '大嶼有我', value: '', ref: swiperSection },
-    { label: '細看大嶼', value: '', ref: supportSection },
-    { label: '立即聯署', value: '', ref: informationSection },
+    { label: '細看大嶼', value: '', ref: supportSection }
   ];
 
   return (
