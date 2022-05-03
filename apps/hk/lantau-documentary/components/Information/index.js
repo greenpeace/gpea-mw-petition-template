@@ -4,12 +4,16 @@ import Card from './card';
 import mobileHero from '../../images/mobile/hero.png';
 import joinBackground from '../../images/mobile/join_background.jpeg';
 import joinBackgroundDesktop from '../../images/join_background.jpeg';
+import image01 from '../../images/information/01.jpeg';
+import image02 from '../../images/information/02.jpeg';
+import image03 from '../../images/information/03.jpeg';
+import image04 from '../../images/information/04.jpeg';
 
 const CATEGORIES = [
-  { label: '河溪', value: '河溪' },
-  { label: '濕地', value: '濕地' },
-  { label: '潮間帶', value: '潮間帶' },
-  { label: '海洋', value: '海洋' },
+  { label: '河溪', value: '河溪', image: image01 },
+  { label: '濕地', value: '濕地', image: image02 },
+  { label: '潮間帶', value: '潮間帶', image: image03 },
+  { label: '海洋', value: '海洋', image: image04 },
 ];
 
 const CARDS = [
@@ -41,18 +45,28 @@ function Information() {
     <Box
       backgroundImage={{ base: joinBackground, lg: joinBackgroundDesktop }}
       backgroundPosition={'bottom center'}
-      backgroundSize={{ base: '100%'}}
+      backgroundSize={{ base: '100%' }}
       backgroundRepeat={'no-repeat'}
       w={'full'}
     >
       <div className="container mx-auto px-[30px] py-[36px] lg:max-w-[1180px] lg:px-0">
-        <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[26px] md:pt-[126px]">
+        {/* <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[26px] md:pt-[126px]">
           細看大嶼
         </h1>
 
         <p className="text-[16px] font-[500] text-center pb-[26px] md:pb-[60px]">
           一部紀錄片盡覽大嶼 20 種本地珍貴物種
-        </p>
+        </p> */}
+
+        <div className="pb-[26px] md:pt-[126px] md:pb-[60px]">
+          <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[6px]">
+          細看大嶼
+          </h1>
+
+          <p className="text-[16px] font-[500] text-center">
+          一部紀錄片盡覽大嶼 20 種本地珍貴物種
+          </p>
+        </div>
 
         <div className="lg:hidden">
           <div className="flex flex-row rounded-[40px] p-2 border-2 shadow-md bg-[#FFF]">
@@ -87,13 +101,13 @@ function Information() {
           <div className="flex flex-row gap-[60px]">
             <div className="">
               <div className="flex flex-col gap-[36px]">
-                {CATEGORIES.map((d) => (
+                {CATEGORIES.map((d, i) => (
                   <div
                     className="relative w-[200px] h-[80px] rounded-[20px] overflow-hidden"
-                    key={d.key}
+                    key={`${d.title}-${i}`}
                   >
                     <Box
-                      backgroundImage={mobileHero}
+                      backgroundImage={d.image}
                       backgroundPosition={'top center'}
                       backgroundRepeat="no-repeat"
                       backgroundSize={'100%'}
@@ -101,6 +115,9 @@ function Information() {
                       top={0}
                       bottom={0}
                       w={'full'}
+                      cursor={'pointer'}
+                      _hover={{ opacity: 0.8 }}
+                      onClick={() => setActive(d.value)}
                     >
                       <Center h={'full'}>
                         <h2 className="text-[22px] text-[#FFF] font-[500] ">
@@ -113,73 +130,31 @@ function Information() {
               </div>
             </div>
             <div className="flex-1 pb-10">
-              <div class="grid grid-cols-2 gap-8">
-                <div className="bg-[#FFF] shadow-lg rounded-xl">
-                  <div className="relative overflow-hidden h-[310px] rounded-t-xl">
-                    <Box
-                      backgroundImage={mobileHero}
-                      backgroundPosition={'top center'}
-                      backgroundRepeat="no-repeat"
-                      backgroundSize={'100%'}
-                      pos={'absolute'}
-                      top={0}
-                      bottom={0}
-                      w={'full'}
-                    />
-                  </div>
-                  <div className="bg-[#FFF] rounded-b-xl">
-                    <div className="p-6">
-                      <h2 className="text-[20px] font-[500] pb-2">長趾蛙</h2>
-                      <p className="text-[16px] font-[400]">
-                        長趾蛙背上有三條淡黃縱紋，身驅青褐色，會隱藏在草叢中。
-                      </p>
+              <div className="grid grid-cols-2 gap-8">
+                {CARDS.filter((d) => d.cate === active).map((d, i) => (
+                  <div className="bg-[#FFF] shadow-lg rounded-xl" key={`${d.title}-${i}`}>
+                    <div className="relative overflow-hidden h-[310px] rounded-t-xl">
+                      <Box
+                        backgroundImage={d.image}
+                        backgroundPosition={'top center'}
+                        backgroundRepeat="no-repeat"
+                        backgroundSize={'100%'}
+                        pos={'absolute'}
+                        top={0}
+                        bottom={0}
+                        w={'full'}
+                      />
+                    </div>
+                    <div className="bg-[#FFF] rounded-b-xl">
+                      <div className="p-6">
+                        <h2 className="text-[20px] font-[500] pb-2">
+                          {d.title}
+                        </h2>
+                        <p className="text-[16px] font-[400]">{d.content}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="bg-[#FFF] shadow-lg rounded-xl">
-                  <div className="relative overflow-hidden h-[310px] rounded-t-xl">
-                    <Box
-                      backgroundImage={mobileHero}
-                      backgroundPosition={'top center'}
-                      backgroundRepeat="no-repeat"
-                      backgroundSize={'100%'}
-                      pos={'absolute'}
-                      top={0}
-                      bottom={0}
-                      w={'full'}
-                    />
-                  </div>
-                  <div className="bg-[#FFF] rounded-b-xl">
-                    <div className="p-6">
-                      <h2 className="text-[20px] font-[500] pb-2">長趾蛙</h2>
-                      <p className="text-[16px] font-[400]">
-                        長趾蛙背上有三條淡黃縱紋，身驅青褐色，會隱藏在草叢中。
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="bg-[#FFF] shadow-lg rounded-xl">
-                  <div className="relative overflow-hidden h-[310px] rounded-t-xl">
-                    <Box
-                      backgroundImage={mobileHero}
-                      backgroundPosition={'top center'}
-                      backgroundRepeat="no-repeat"
-                      backgroundSize={'100%'}
-                      pos={'absolute'}
-                      top={0}
-                      bottom={0}
-                      w={'full'}
-                    />
-                  </div>
-                  <div className="bg-[#FFF] rounded-b-xl">
-                    <div className="p-6">
-                      <h2 className="text-[20px] font-[500] pb-2">長趾蛙</h2>
-                      <p className="text-[16px] font-[400]">
-                        長趾蛙背上有三條淡黃縱紋，身驅青褐色，會隱藏在草叢中。
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -187,21 +162,21 @@ function Information() {
       </div>
 
       <div className="container max-w-[1180px] mx-auto px-[30px] py-[36px] min-h-[480px] lg:min-h-[600px]">
-                  <div className="lg:ml-[60%]">
-                  <h1 className="text-[24px] font-[700] leading-[36px] pb-[26px]">
-          參與聯署
-        </h1>
-        <p className="text-[16px] font-[500] leading-[24px] pb-[26px]">
-          你的聯署將有助推動政府撤回「明日大嶼」填海計劃，守護本地珍貴海洋生態，善用現存土地資源。
-        </p>
-        <Button
-          color="white"
-          bgColor={'orange.500'}
-          _hover={{ bg: 'orange.300' }}
-        >
-          立即聯署
-        </Button>
-                  </div>
+        <div className="lg:ml-[60%]">
+          <h1 className="text-[24px] font-[700] leading-[36px] pb-[26px]">
+            參與聯署
+          </h1>
+          <p className="text-[16px] font-[500] leading-[24px] pb-[26px]">
+            你的聯署將有助推動政府撤回「明日大嶼」填海計劃，守護本地珍貴海洋生態，善用現存土地資源。
+          </p>
+          <Button
+            color="white"
+            bgColor={'orange.500'}
+            _hover={{ bg: 'orange.300' }}
+          >
+            立即聯署
+          </Button>
+        </div>
       </div>
     </Box>
   );

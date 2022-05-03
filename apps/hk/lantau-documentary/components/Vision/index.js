@@ -36,7 +36,7 @@ const VisionGroup = () => {
       backgroundSize={'100%'}
       minH={{ md: '850px' }}
     >
-      <div className="container mx-auto py-[36px]">
+      <div className="container mx-auto py-[36px] md:pt-0">
         <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[26px] md:pt-[126px] md:pb-[60px]">
           我們的理念
         </h1>

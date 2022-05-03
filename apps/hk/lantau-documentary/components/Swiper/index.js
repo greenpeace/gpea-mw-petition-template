@@ -1,10 +1,6 @@
-import React, { useRef, useState } from 'react';
-import { Box, Image, Center } from '@chakra-ui/react';
-import Card from './Card';
-import contentCard from '../../images/content_card.jpeg';
-
+import React, { useRef, useState, useEffect } from 'react';
+import { Box, Image, Center, useMediaQuery } from '@chakra-ui/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, useSwiper } from 'swiper';
 import CONTENT from './data';
 import leftArrow from '../../images/left_icon.png';
 import rightArrow from '../../images/right_icon.png';
@@ -60,10 +56,13 @@ const IMAGES = [
 const VisionGroup = () => {
   const swiperRef = useRef(null);
   const [swiperIndex, setSwiperIndex] = useState(0);
+  const [isLargerThan768] = useMediaQuery('(min-width: 768px)');
+  const swiperItemWidth = isLargerThan768 ? '530px' : '285px';
+  const centered = isLargerThan768 ? false : true;
 
   return (
     <Box>
-      <div className="container mx-auto pt-[36px] lg:pb-[60px]">
+      <div className="container mx-auto md:max-w-[100%] md:px-[30px] pt-[36px] md:pt-[0px] lg:pb-[60px]">
         <div className="pb-[26px] md:pt-[126px] md:pb-[60px]">
           <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[6px]">
             大嶼有我
@@ -77,22 +76,17 @@ const VisionGroup = () => {
         <div className="mb-[25px]">
           <Swiper
             slidesPerView={'auto'}
-            centeredSlides={true}
+            centeredSlides={centered}
             spaceBetween={20}
-            // modules={[Pagination]}
             className="mySwiper"
             ref={swiperRef}
             onSlideChange={(data) => setSwiperIndex(data.activeIndex)}
           >
             {(CONTENT.DATA || []).map((d, i) => (
-              <SwiperSlide key={d.title} style={{ width: '285px' }}>
-                {/* <Card
-                    name={d.name}
-                    role={d.role}
-                    content={d.content}
-                    image={d.image}
-                  /> */}
-                <div className="relative w-full h-[495px] max-w-xs overflow-hidden rounded-[20px] shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
+              <SwiperSlide 
+                key={`${d.title}-${i}`} 
+                style={{ width: swiperItemWidth }}>
+                <div className="relative w-full h-[495px] max-w-xs md:max-w-[100%] overflow-hidden rounded-[20px] shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
                   <Box
                     backgroundImage={IMAGES[i]}
                     backgroundRepeat="no-repeat"
@@ -102,7 +96,6 @@ const VisionGroup = () => {
                     top={0}
                     bottom={0}
                     w={'full'}
-                    bgColor={'#000'}
                   >
                     <div className="absolute left-4 top-4">
                       <h1 className="text-[18px] font-[500] text-[#FFF]">
@@ -125,7 +118,7 @@ const VisionGroup = () => {
             ))}
           </Swiper>
 
-          <div className="flex flex-row items-center gap-4 mx-[10px] mt-[30px]">
+          <div className="flex flex-row items-center gap-4 mx-[10px] mt-[30px] max-w-[830px] md:mx-auto">
             <div className="flex-1">
               <div
                 className="flex flex-row items-center bg-white rounded-[25px] mx-[10px] px-2 py-1"
@@ -146,7 +139,7 @@ const VisionGroup = () => {
                 <div
                   id="previousButton"
                   onClick={() => swiperRef.current.swiper.slidePrev()}
-                  className={'w-[40px] h-[40px] rounded-lg'}
+                  className={'w-[40px] h-[40px] rounded-lg cursor-pointer'}
                   style={{ boxShadow: '0px 0px 6px rgba(0, 0, 0, 0.4)' }}
                 >
                   <Center h={'100%'}>
@@ -156,7 +149,7 @@ const VisionGroup = () => {
                 <div
                   id="nextButton"
                   onClick={() => swiperRef.current.swiper.slideNext()}
-                  className={'w-[40px] h-[40px] rounded-lg'}
+                  className={'w-[40px] h-[40px] rounded-lg cursor-pointer'}
                   style={{ boxShadow: '0px 0px 6px rgba(0, 0, 0, 0.4)' }}
                 >
                   <Center h={'100%'}>

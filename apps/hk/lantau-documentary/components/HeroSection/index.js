@@ -17,14 +17,14 @@ function HeroSection() {
 
   return (
     <Box
-      backgroundImage={MobileHero}
+      backgroundImage={{base: MobileHero, md: DesktopHero}}
       backgroundPosition={'top center'}
       backgroundRepeat="no-repeat"
       backgroundSize={'100%'}
       pb={{ md: '100px' }}
     >
-      <div className="container mx-auto px-[30px] md:pt-[300px]">
-        <div className="flex flex-col pt-[140px] pb-[50px]">
+      <div className="container mx-auto px-[30px] md:pt-[195px]">
+        <div className="flex flex-col pt-[140px] pb-[50px] md:py-0">
           <div className="text-center text-[#FFF]">
             <div className="pb-[28px]">
               <Image
@@ -34,7 +34,7 @@ function HeroSection() {
                 pb={{ base: '60px' }}
               />
               <h1
-                className="text-[32px] font-[900] leading-[48px]"
+                className="text-[32px] md:text-[36px] font-[900] leading-[48px] md:leading-[54px]"
                 style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
               >
                 <span className="block md:inline-block">香港第一部</span>
@@ -44,11 +44,12 @@ function HeroSection() {
 
             <div>
               <h2
-                className="text-[20px] font-[500] leading-[30px]"
+                className="text-[20px] md:text-[24px] font-[500] leading-[30px] md:leading-[36px]"
                 style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
               >
                 <span className="md:block">單次捐款100元</span>{' '}
-                <span>收看記錄片</span>
+                <span className="md:inline-block">收看記錄片</span>
+                <span className="block md:inline-block md:pl-2">支持守護大嶼工作</span>
               </h2>
             </div>
 
@@ -92,10 +93,10 @@ function HeroSection() {
               綠色和平與本地生態團隊耗時大半年製作
             </p>
 
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-3 md:max-w-[360px]">
               <div>片長:25分鐘</div>
-              <div>編導：馮漢城</div>
-              <div>配音：陳志雲</div>
+              <div>編導:馮漢城</div>
+              <div>配音:陳志雲</div>
             </div>
 
             <p className="text-[16px] font-[500]">
