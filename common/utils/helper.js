@@ -37,3 +37,12 @@ export const sendPetitionTracking = (eventLabel, eventValue) => {
     contentCategory: 'Petition Signup',
   });
 };
+
+export const getUrlParams = () => {
+  const { searchParams } = new URL(window.location.href);
+  let p = {};
+  for (let [k, v] of searchParams.entries()) {
+    p[k] = v;
+  }
+  return p;
+};
