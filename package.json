@@ -66,7 +66,7 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^8.0.0",
     "lint-staged": "^11.2.3",
-    "prettier": "^2.4.1",
+    "prettier": "^2.6.2",
     "pretty-quick": "^3.1.3",
     "url-loader": "^4.1.1"
   }
