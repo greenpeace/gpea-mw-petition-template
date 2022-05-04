@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
@@ -10,6 +10,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
+import { getUrlParams } from '@common/utils/helper';
 
 import heroBannerImage from './images/DJI_0457_r_c.jpg';
 
@@ -25,6 +26,7 @@ const SignupForm = dynamic(() => import('@components/GP/HKForm'));
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
 function Index({ status, theme, setFormContent, signup }) {
+  const [utmSource, setUtmSource] = useState('');
   const { submitted } = status;
   const { FirstName } = signup;
   const scrollToRef = (ref) =>
@@ -40,6 +42,13 @@ function Index({ status, theme, setFormContent, signup }) {
 
   useEffect(() => {
     setFormContent(formContent);
+  }, []);
+
+  useEffect(() => {
+    const params = getUrlParams();
+    if (params.utm_source) {
+      setUtmSource(params.utm_source);
+    }
   }, []);
 
   return (
@@ -87,11 +96,23 @@ function Index({ status, theme, setFormContent, signup }) {
               </ContentContainer>
             </Box>
             <Box flex={1} ref={myRef}>
-              <FormContainer>
-                <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
-                </Box>
-              </FormContainer>
+              {submitted ? (
+                utmSource != 'dd' ? (
+                  <FormContainer>
+                    <Box ref={ref}>
+                      <DonateForm />
+                    </Box>
+                  </FormContainer>
+                ) : (
+                  <Box h="40px" />
+                )
+              ) : (
+                <FormContainer>
+                  <Box ref={ref}>
+                    <SignupForm />
+                  </Box>
+                </FormContainer>
+              )}
             </Box>
           </Flex>
         </OverflowWrapper>
