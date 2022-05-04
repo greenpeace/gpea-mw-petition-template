@@ -14,11 +14,10 @@ import sectionBackground from './images/mobile/section_background.jpeg';
 import desktopSectionBackground from './images/section_background.jpeg';
 
 function Index() {
-  const scrollToRef = (ref) =>
-    {
-      console.log('scroll to', ref);
-      ref.current?.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToRef = (ref) => {
+    console.log('scroll to', ref);
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   const heroSection = useRef(null);
   const visionSection = useRef(null);
   const swiperSection = useRef(null);
@@ -29,19 +28,19 @@ function Index() {
     { label: '紀錄片介紹', value: '', ref: heroSection },
     { label: '我們的理念', value: '', ref: visionSection },
     { label: '大嶼有我', value: '', ref: swiperSection },
-    { label: '細看大嶼', value: '', ref: supportSection }
+    { label: '細看大嶼', value: '', ref: supportSection },
   ];
 
   return (
     <>
       <SEO />
       <Box>
-        <Header handleMenuClick={scrollToRef} MENU={MENU}/>
+        <Header handleMenuClick={scrollToRef} MENU={MENU} />
         <div ref={heroSection}>
-          <HeroSection/>
+          <HeroSection />
         </div>
 
-        <div className="container mx-auto px-[30px] md:hidden">
+        {/* <div className="container mx-auto px-[30px] md:hidden">
           <div className="pt-[48px]">
             <Image src={subBanner} />
           </div>
@@ -67,18 +66,18 @@ function Index() {
         </div>
 
         <div ref={swiperSection}>
-        <SwiperGroup />
+          <SwiperGroup />
         </div>
 
         <div ref={supportSection}>
-        <Support />
+          <Support />
         </div>
 
         <div ref={informationSection}>
-        <Information />
+          <Information />
         </div>
 
-        <PetitionFooter /> 
+        <PetitionFooter /> */}
       </Box>
     </>
   );
