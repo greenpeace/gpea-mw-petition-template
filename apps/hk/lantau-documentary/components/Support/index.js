@@ -36,7 +36,7 @@ function Support() {
       </div>
       <Box
         // bgGradient="linear(to-b, transparent 0%, transparent 50%, black 100%)"
-        bg="rgba(0,0,0,0.3)"
+        bg="rgba(0,0,0,0.4)"
         pos={'absolute'}
         top={0}
         bottom={0}

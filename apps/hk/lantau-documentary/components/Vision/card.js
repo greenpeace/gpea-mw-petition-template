@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 const Card = ({ image, title, content }) => {
   return (
     <div className="inline-block px-3">
-      <div className="relative w-[285px] h-[495px] max-w-xs overflow-hidden rounded-[20px] shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
+      <div className="relative w-[285px] h-[495px] max-w-xs overflow-hidden rounded-[25px] shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out">
         <Box
           backgroundImage={image}
           backgroundRepeat="no-repeat"

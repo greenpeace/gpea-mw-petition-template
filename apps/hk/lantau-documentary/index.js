@@ -40,26 +40,45 @@ function Index() {
           <HeroSection />
         </div>
 
-        {/* <div className="container mx-auto px-[30px] md:hidden">
-          <div className="pt-[48px]">
-            <Image src={subBanner} />
-          </div>
+        <div className="container mx-auto px-[30px] pt-[48px] md:hidden">
+          <Image src={subBanner} />
         </div>
 
         <div className="md:hidden">
           <AvatarGroup />
         </div>
 
-        <Box
-          backgroundImage={{
-            base: sectionBackground,
-            md: desktopSectionBackground,
-          }}
-          backgroundPosition={'center center'}
-          backgroundRepeat="no-repeat"
-          backgroundSize={'100%'}
-          h={{ base: '200px', md: '415px' }}
-        />
+          <Box
+            backgroundImage={{
+              base: sectionBackground,
+              md: desktopSectionBackground,
+            }}
+            backgroundPosition={'center center'}
+            backgroundRepeat="no-repeat"
+            backgroundSize={'100%'}
+            h={{ base: '200px', md: '415px' }}
+          />
+
+        <div ref={visionSection}>
+          <VisionGroup />
+        </div>
+
+
+        <div ref={swiperSection}>
+          <SwiperGroup />
+        </div>
+
+        <div ref={supportSection}>
+          <Support />
+        </div>
+
+        <div ref={informationSection}>
+          <Information />
+        </div>
+
+        <PetitionFooter />
+
+        {/* 
 
         <div ref={visionSection}>
           <VisionGroup />
