@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useMediaQuery, AspectRatio } from '@chakra-ui/react';
 import { Box, Button } from '@chakra-ui/react';
 import { Image } from '@chakra-ui/react';
@@ -16,11 +16,12 @@ import appLogo from '../../images/app_logo.png';
 function HeroSection() {
   const [showVideo, setShowVideo] = useState(false);
   const scrollPosition = useScrollPosition();
-  // maxW={{base: `${355 - scrollPosition}px`, md: `${1040 - scrollPosition}px`}}
+  const logoRef = useRef(null)
+
   return (
     <div className="relative">
       <Box
-        backgroundImage={{ base: MobileHero, md: DesktopHero }}
+        backgroundImage={{ base: MobileHero, lg: DesktopHero }}
         backgroundPosition={'top center'}
         backgroundRepeat="no-repeat"
         backgroundSize={'100%'}
@@ -31,17 +32,21 @@ function HeroSection() {
         backgroundAttachment={'fixed'}
       />
       <div
-        className="mx-[10px] md:mx-0 pt-[125px] md:pt-[195px] min-h-[105px] relative"
+        className="mx-[10px] md:mx-0 pt-[125px] md:pt-[160px] lg:pt-[130px] xl:pt-[195px] min-h-[105px] relative"
         style={{ zIndex: 1 }}
       >
-        <Image
-          src={appLogo}
-          m={'auto'}
-          maxW={{ base: '335px', md: '1040px' }}
-        />
+        <Box maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }} h={{base: '105px', sm: '145px', lg: '215px', xl: '310px'}}  mx={'auto'}>
+          <Image
+            src={appLogo}
+            m={'auto'}
+            w={{ base: `${355-scrollPosition}px`, sm: `${480-scrollPosition}px`, lg: `${720-scrollPosition}px`, xl: `${1040-scrollPosition}px` }}
+            maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
+            ref={logoRef}
+          />
+        </Box>
       </div>
-      <Box
-        backgroundImage={{ base: MobileHeroFront, md: DesktopHeroFront }}
+      {!showVideo && <Box
+        backgroundImage={{ base: MobileHeroFront, lg: DesktopHeroFront }}
         backgroundPosition={'top center'}
         backgroundRepeat="no-repeat"
         backgroundSize={'100%'}
@@ -51,12 +56,12 @@ function HeroSection() {
         bottom={0}
         zIndex={2}
         className="frontHero"
-      />
+      />}
       <div
         className="container mx-auto px-[30px] relative"
         style={{ zIndex: 11 }}
       >
-        <div className="flex flex-col pt-[65px] md:pt-[140px] pb-[50px] md:py-0">
+        <div className="flex flex-col pt-[65px] md:pt-[100px] lg:pt-[140px] pb-[50px] md:py-0">
           {showVideo ? (
             <div>
               <div className="text-[#FFF] text-[24px] text-right pb-4">
@@ -131,23 +136,27 @@ function HeroSection() {
       </div>
 
       <div
-        className="container mx-auto px-[30px] md:pt-[270px] md:max-w-[1180px] relative pb-[40px] md:pb-[105px]"
+        className="container mx-auto px-[30px] md:pt-[150px] lg:pt-[270px] md:max-w-[1180px] relative pb-[40px] md:pb-[105px] xl:pb-[60px]"
         style={{ zIndex: 10 }}
       >
         <Box
-          bgGradient="linear(to-b, transparent 0%, white 50%, white 100%)"
+          bgGradient={{
+            base: 'linear(to-b, transparent 0%, white 50%, white 100%)',
+            md: 'linear(to-b, transparent 0%, white 30%, white 100%)',
+            xl: 'linear(to-b, transparent 0%, white 50%, white 100%)',
+          }}
           className="mask"
           position="absolute"
           left={0}
           right={0}
           top={0}
           bottom={0}
-          w={'full'}
           zIndex={3}
-          d={{md: 'none'}}
+          w={'full'}
+          d={{ xl: 'none' }}
         />
         <div
-          className="flex flex-row space-between md:gap-[40px] xl:gap-[120px] relative"
+          className="flex flex-col lg:flex-row space-between md:gap-[40px] xl:gap-[120px] relative"
           style={{ zIndex: 6 }}
         >
           <div className="md:flex-1 flex flex-col gap-4">
@@ -176,7 +185,7 @@ function HeroSection() {
             </div>
           </div>
           <div className="hidden md:block">
-            <Image src={subBanner} />
+            <Image src={subBanner} w={'100%'} />
           </div>
         </div>
       </div>

@@ -5,8 +5,8 @@ const Card = ({ image, title, content }) => {
   return (
     <div>
       <h1 className="text-[18px] font-[700] leading-[36px] pb-[12px]">{title}</h1>
-      <div className="flex flex-row rounded-lg overflow-hidden shadow-md">
-        <div className="w-[130px] relative">
+      <div className="flex flex-row rounded-lg overflow-hidden shadow-md items-center">
+        <div className="w-[130px] relative min-h-[150px]">
           <Box
             backgroundImage={image}
             backgroundPosition={'top center'}

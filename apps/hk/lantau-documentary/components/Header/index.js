@@ -26,7 +26,7 @@ const Header = ({handleMenuClick, MENU}) => {
             <div className="flex flex-row items-center gap-8">
               {(MENU||[]).map((d) => (
                 <div
-                  className="cursor-pointer text-[16px] font-[500] text-[#FFF] hover:text-[#d2d2d2] hidden md:block"
+                  className="cursor-pointer text-[16px] font-[500] text-[#FFF] hover:text-[#d2d2d2] hidden lg:block"
                   key={d.label}
                   onClick={() => {
                     handleMenuClick(d.ref)
@@ -36,7 +36,7 @@ const Header = ({handleMenuClick, MENU}) => {
                 </div>
               ))}
               <div
-                  className="cursor-pointer text-[16px] font-[500] text-[#FFF] hover:text-[#d2d2d2] hidden md:block"
+                  className="cursor-pointer text-[16px] font-[500] text-[#FFF] hover:text-[#d2d2d2] hidden lg:block"
                 >
                   立即聯署
                 </div>

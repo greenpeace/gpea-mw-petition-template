@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Center, Button } from '@chakra-ui/react';
 import Card from './card';
-import mobileHero from '../../images/mobile/hero.png';
 import joinBackground from '../../images/mobile/join_background.jpeg';
 import joinBackgroundDesktop from '../../images/join_background.jpeg';
 import image01 from '../../images/information/01.jpeg';
@@ -30,29 +29,25 @@ const CARDS = [
     image: typea1,
     title: '溪流',
     cate: '河溪',
-    content:
-      '大東山一帶山脈蘊藏豐富水源，石澗最能夠體現出河流嘅形態',
+    content: '大東山一帶山脈蘊藏豐富水源，石澗最能夠體現出河流嘅形態',
   },
   {
     image: typea2,
     title: '廣東米蝦',
     cate: '河溪',
-    content:
-      '米蝦是溪流中嘅清潔隊伍，進食有機物與藻類',
+    content: '米蝦是溪流中嘅清潔隊伍，進食有機物與藻類',
   },
   {
     image: typeb1,
     title: '水牛',
     cate: '濕地',
-    content:
-      '水牛在貝澳和水口的淡水濕地生活，平時會食草、打泥漿糊',
+    content: '水牛在貝澳和水口的淡水濕地生活，平時會食草、打泥漿糊',
   },
   {
     image: typeb2,
     title: '長趾蛙',
     cate: '濕地',
-    content:
-      '長趾蛙背上有三條淡黃縱紋，身驅青褐色，會隱藏在草叢中',
+    content: '長趾蛙背上有三條淡黃縱紋，身驅青褐色，會隱藏在草叢中',
   },
   {
     image: typec1,
@@ -65,8 +60,7 @@ const CARDS = [
     image: typec2,
     title: '馬蹄蟹',
     cate: '潮間帶',
-    content:
-      '馬蹄蟹是一種史前生物，在地球已存活了超過四億年，世代在潮間帶繁殖',
+    content: '馬蹄蟹是一種史前生物，在地球已存活了超過四億年，世代在潮間帶繁殖',
   },
   {
     image: typed1,
@@ -79,8 +73,7 @@ const CARDS = [
     image: typed2,
     title: '人為破壞',
     cate: '海洋',
-    content:
-      '大興土木、船隻超速航行等，均會破壞海洋生態，造成不可挽救的影響。',
+    content: '大興土木、船隻超速航行等，均會破壞海洋生態，造成不可挽救的影響。',
   },
 ];
 
@@ -94,20 +87,20 @@ function Information() {
 
   return (
     <Box
-      backgroundImage={{ base: joinBackground, lg: joinBackgroundDesktop }}
+      backgroundImage={{ base: joinBackground, md: joinBackgroundDesktop }}
       backgroundPosition={'bottom center'}
       backgroundSize={{ base: '100%' }}
       backgroundRepeat={'no-repeat'}
       w={'full'}
     >
-      <div className="container mx-auto px-[30px] py-[36px] lg:max-w-[1180px] lg:px-0">
+      <div className="container mx-auto px-[30px] py-[36px] lg:max-w-[1180px] xl:px-0">
         <div className="pb-[26px] md:pt-[126px] md:pb-[60px]">
           <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[6px]">
-          細看大嶼
+            細看大嶼
           </h1>
 
           <p className="text-[16px] font-[500] text-center">
-          一部紀錄片盡覽大嶼 20 種本地珍貴物種
+            一部紀錄片盡覽大嶼 20 種本地珍貴物種
           </p>
         </div>
 
@@ -142,7 +135,6 @@ function Information() {
 
         <div className="hidden lg:block">
           <div className="flex flex-row gap-[60px]">
-            <div className="">
               <div className="flex flex-col gap-[36px]">
                 {CATEGORIES.map((d, i) => (
                   <div
@@ -171,11 +163,13 @@ function Information() {
                   </div>
                 ))}
               </div>
-            </div>
             <div className="flex-1 pb-10">
               <div className="grid grid-cols-2 gap-8">
                 {CARDS.filter((d) => d.cate === active).map((d, i) => (
-                  <div className="bg-[#FFF] shadow-lg rounded-xl" key={`${d.title}-${i}`}>
+                  <div
+                    className="bg-[#FFF] shadow-lg rounded-xl"
+                    key={`${d.title}-${i}`}
+                  >
                     <div className="relative overflow-hidden h-[310px] rounded-t-xl">
                       <Box
                         backgroundImage={d.image}
@@ -193,7 +187,10 @@ function Information() {
                         <h2 className="text-[20px] font-[500] pb-2">
                           {d.title}
                         </h2>
-                        <p className="text-[16px] font-[400]" dangerouslySetInnerHTML={{__html: d.content}}/>
+                        <p
+                          className="text-[16px] font-[400]"
+                          dangerouslySetInnerHTML={{ __html: d.content }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -205,7 +202,7 @@ function Information() {
       </div>
 
       <div className="container max-w-[1180px] mx-auto px-[30px] py-[36px] min-h-[480px] lg:min-h-[600px]">
-        <div className="lg:ml-[60%]">
+        <div className="md:ml-[60%]">
           <h1 className="text-[24px] font-[700] leading-[36px] pb-[26px]">
             參與聯署
           </h1>

@@ -48,21 +48,20 @@ function Index() {
           <AvatarGroup />
         </div>
 
-          <Box
-            backgroundImage={{
-              base: sectionBackground,
-              md: desktopSectionBackground,
-            }}
-            backgroundPosition={'center center'}
-            backgroundRepeat="no-repeat"
-            backgroundSize={'100%'}
-            h={{ base: '200px', md: '415px' }}
-          />
+        <Box
+          backgroundImage={{
+            base: sectionBackground,
+            md: desktopSectionBackground,
+          }}
+          backgroundPosition={'center center'}
+          backgroundRepeat="no-repeat"
+          backgroundSize={'100%'}
+          h={{ base: '200px', lg: '280px', xl: '415px' }}
+        />
 
         <div ref={visionSection}>
           <VisionGroup />
         </div>
-
 
         <div ref={swiperSection}>
           <SwiperGroup />
@@ -77,26 +76,6 @@ function Index() {
         </div>
 
         <PetitionFooter />
-
-        {/* 
-
-        <div ref={visionSection}>
-          <VisionGroup />
-        </div>
-
-        <div ref={swiperSection}>
-          <SwiperGroup />
-        </div>
-
-        <div ref={supportSection}>
-          <Support />
-        </div>
-
-        <div ref={informationSection}>
-          <Information />
-        </div>
-
-        <PetitionFooter /> */}
       </Box>
     </>
   );

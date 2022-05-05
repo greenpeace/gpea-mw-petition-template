@@ -1,9 +1,9 @@
 import React from 'react';
-import Team01 from '../../images/team01.svg';
-import Team02 from '../../images/team02.svg';
-import Team03 from '../../images/team03.svg';
-import Team04 from '../../images/team04.svg';
-import Team05 from '../../images/team05.svg';
+import Team01 from '../../images/team01.png';
+import Team02 from '../../images/team02.png';
+import Team03 from '../../images/team03.png';
+import Team04 from '../../images/team04.png';
+import Team05 from '../../images/team05.png';
 import Item from './item';
 
 const TEAMS = [
