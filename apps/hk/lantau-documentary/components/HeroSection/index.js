@@ -6,8 +6,8 @@ import { CloseIcon } from '@chakra-ui/icons';
 import AvatarGroup from '../../components/Avatar';
 import MobileHero from '../../images/mobile/hero.png';
 import MobileHeroFront from '../../images/mobile/hero_front.png';
-import DesktopHero from '../../images/hero.jpeg';
-import DesktopHeroFront from '../../images/hero_front.png';
+import DesktopHero from '../../images/hero_v2.jpg';
+import DesktopHeroFront from '../../images/hero_front_v2.png';
 import useScrollPosition from '../../components/Header/useScrollPosition';
 
 import subBanner from '../../images/sub_banner.jpeg';
@@ -45,7 +45,7 @@ function HeroSection() {
           />
         </Box>
       </div>
-      {!showVideo && <Box
+      <Box
         backgroundImage={{ base: MobileHeroFront, lg: DesktopHeroFront }}
         backgroundPosition={'top center'}
         backgroundRepeat="no-repeat"
@@ -56,7 +56,7 @@ function HeroSection() {
         bottom={0}
         zIndex={2}
         className="frontHero"
-      />}
+      />
       <div
         className="container mx-auto px-[30px] relative"
         style={{ zIndex: 11 }}
