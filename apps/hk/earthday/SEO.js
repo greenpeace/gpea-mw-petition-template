@@ -19,12 +19,12 @@ const SEO = () => {
       />
       {/* title */}
       <title>
-        立即參加「惜碳承諾」計劃！減碳無難度，地球日踏出第一步 - Greenpeace
+        立即參加「惜碳承諾」計劃！減碳無難度，今天踏出第一步 - Greenpeace
         綠色和平 | 香港
       </title>
       <meta
         property="og:title"
-        content="立即參加「惜碳承諾」計劃！減碳無難度，地球日踏出第一步 - Greenpeace 綠色和平 | 香港"
+        content="立即參加「惜碳承諾」計劃！減碳無難度，今天踏出第一步 - Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"

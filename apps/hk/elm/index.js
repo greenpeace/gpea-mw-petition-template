@@ -59,14 +59,13 @@ function Index({ status, theme, setFormContent, signup }) {
           <ThanksBanner
             bgImage={heroBannerImage}
             content={{
-              title: `${
-                FirstName ? FirstName : '綠色和平支持者'
-              }，感謝您加入守護大嶼行列！`,
+              title: `${FirstName ? FirstName : '綠色和平支持者'
+                }，感謝您加入守護大嶼行列！`,
               description: [
-                '現以每月$150捐款支持守護大嶼工作，即可欣賞將於5月底發行的《山海大嶼》生態紀錄片，並獲贈一本《山海大嶼年曆》！',
+                '現以每月$200捐款支持堅守大嶼工作，即可獲得一面「堅守大嶼」旗幟及2次「環保手作工作坊」的機會。',
               ],
             }}
-            // removeMask="true"
+          // removeMask="true"
           ></ThanksBanner>
         ) : (
           <HeroBanner
@@ -75,7 +74,7 @@ function Index({ status, theme, setFormContent, signup }) {
               title: '請即聯署<br/>要求政府撤回<br/>明日大嶼填海計劃',
               description: [''],
             }}
-            // removeMask="true"
+          // removeMask="true"
           ></HeroBanner>
         )}
       </Box>
