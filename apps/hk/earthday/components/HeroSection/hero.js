@@ -19,7 +19,7 @@ import {
 
 import { Clouds } from './Clouds';
 
-import mainHeadline from '../../images/202204_EarthDayPush-17.svg';
+import mainHeadline from '../../images/202204_EarthDayPush-23.svg';
 import mainVisualLaptop from '../../images/202204_EarthDayPush_R3_KV_laptop.png';
 import R310 from '../../images/202204_EarthDayPush_R3-10.svg';
 import R311 from '../../images/202204_EarthDayPush_R3-11.svg';
