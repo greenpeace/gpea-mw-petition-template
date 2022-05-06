@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useMediaQuery, AspectRatio } from '@chakra-ui/react';
-import { Box, Button } from '@chakra-ui/react';
-import { Image } from '@chakra-ui/react';
+import {
+  useMediaQuery,
+  AspectRatio,
+  Box,
+  Button,
+  Image,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+} from '@chakra-ui/react';
+
 import { CloseIcon } from '@chakra-ui/icons';
 import AvatarGroup from '../../components/Avatar';
 import MobileHero from '../../images/mobile/hero.png';
@@ -15,8 +24,9 @@ import appLogo from '../../images/app_logo.png';
 
 function HeroSection() {
   const [showVideo, setShowVideo] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const scrollPosition = useScrollPosition();
-  const logoRef = useRef(null)
+  const logoRef = useRef(null);
 
   return (
     <div className="relative">
@@ -35,11 +45,20 @@ function HeroSection() {
         className="mx-[10px] md:mx-0 pt-[125px] md:pt-[160px] lg:pt-[130px] xl:pt-[195px] min-h-[105px] relative"
         style={{ zIndex: 1 }}
       >
-        <Box maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }} h={{base: '105px', sm: '145px', lg: '215px', xl: '310px'}}  mx={'auto'}>
+        <Box
+          maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
+          h={{ base: '105px', sm: '145px', lg: '215px', xl: '310px' }}
+          mx={'auto'}
+        >
           <Image
             src={appLogo}
             m={'auto'}
-            w={{ base: `${355-scrollPosition}px`, sm: `${480-scrollPosition}px`, lg: `${720-scrollPosition}px`, xl: `${1040-scrollPosition}px` }}
+            w={{
+              base: `${355 - scrollPosition}px`,
+              sm: `${480 - scrollPosition}px`,
+              lg: `${720 - scrollPosition}px`,
+              xl: `${1040 - scrollPosition}px`,
+            }}
             maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
             ref={logoRef}
           />
@@ -62,7 +81,7 @@ function HeroSection() {
         style={{ zIndex: 11 }}
       >
         <div className="flex flex-col pt-[65px] md:pt-[100px] lg:pt-[140px] pb-[50px] md:py-0">
-          {showVideo ? (
+          {/* {showVideo ? (
             <div>
               <div className="text-[#FFF] text-[24px] text-right pb-4">
                 <CloseIcon
@@ -78,7 +97,10 @@ function HeroSection() {
               </AspectRatio>
             </div>
           ) : (
-            <div className="text-center text-[#FFF]">
+           
+          )} */}
+
+          <div className="text-center text-[#FFF]">
               <div>
                 <div>
                   <h1
@@ -123,7 +145,7 @@ function HeroSection() {
                       border={'2px solid'}
                       borderColor={'orange.500'}
                       _hover={{ bg: 'orange.300', color: '#FFF' }}
-                      onClick={() => setShowVideo(!showVideo)}
+                      onClick={onOpen}
                     >
                       紀錄片預告
                     </Button>
@@ -131,7 +153,6 @@ function HeroSection() {
                 </div>
               </div>
             </div>
-          )}
         </div>
       </div>
 
@@ -189,6 +210,19 @@ function HeroSection() {
           </div>
         </div>
       </div>
+
+      <Modal isOpen={isOpen} size={'4xl'} onClose={onClose} isCentered={true}>
+        <ModalOverlay bgColor={'rgba(255,255,255,0.8'} />
+        <ModalContent pos={'relative'} px={{base: '15px'}} bgColor={'transparent'} shadow={'none'}>
+        <CloseIcon pos={'absolute'} top={'-30px'} right={'15px'} color="#FFF" cursor={'pointer'} onClick={onClose} />
+          <AspectRatio w="100%" ratio={16 / 9}>
+            <iframe
+              src="https://www.youtube.com/embed/LJeuw6MzuRQ"
+              allowFullScreen
+            />
+          </AspectRatio>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
