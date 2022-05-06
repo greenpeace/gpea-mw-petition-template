@@ -60,6 +60,7 @@ function HeroSection() {
               xl: `${1040 - scrollPosition}px`,
             }}
             maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
+            opacity={1- (scrollPosition/300)}
             ref={logoRef}
           />
         </Box>
