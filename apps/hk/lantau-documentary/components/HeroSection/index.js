@@ -44,10 +44,10 @@ function HeroSection() {
             src={appLogo}
             m={'auto'}
             w={{
-              base: `${355 - scrollPosition}px`,
-              sm: `${480 - scrollPosition}px`,
-              lg: `${720 - scrollPosition}px`,
-              xl: `${1040 - scrollPosition}px`,
+              base: `${355 - scrollPosition / 3}px`,
+              sm: `${480 - scrollPosition / 3}px`,
+              lg: `${720 - scrollPosition / 3}px`,
+              xl: `${1040 - scrollPosition / 3}px`,
             }}
             maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
             ref={logoRef}
