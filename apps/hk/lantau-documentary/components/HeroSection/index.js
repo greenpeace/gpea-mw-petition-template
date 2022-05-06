@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useMediaQuery, AspectRatio } from '@chakra-ui/react';
-import { Box, Button } from '@chakra-ui/react';
-import { Image } from '@chakra-ui/react';
+import {
+  useMediaQuery,
+  AspectRatio,
+  Box,
+  Button,
+  Image,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+} from '@chakra-ui/react';
+
 import { CloseIcon } from '@chakra-ui/icons';
 import AvatarGroup from '../../components/Avatar';
 import MobileHero from '../../images/mobile/hero.png';
@@ -15,6 +24,7 @@ import appLogo from '../../images/app_logo.png';
 
 function HeroSection() {
   const [showVideo, setShowVideo] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const scrollPosition = useScrollPosition();
   const logoRef = useRef(null);
 
@@ -50,6 +60,7 @@ function HeroSection() {
               xl: `${1040 - scrollPosition / 3}px`,
             }}
             maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
+            opacity={1 - scrollPosition / 300}
             ref={logoRef}
           />
         </Box>
@@ -71,7 +82,7 @@ function HeroSection() {
         style={{ zIndex: 11 }}
       >
         <div className="flex flex-col pt-[65px] md:pt-[100px] lg:pt-[140px] pb-[50px] md:py-0">
-          {showVideo ? (
+          {/* {showVideo ? (
             <div>
               <div className="text-[#FFF] text-[24px] text-right pb-4">
                 <CloseIcon
@@ -87,61 +98,63 @@ function HeroSection() {
               </AspectRatio>
             </div>
           ) : (
-            <div className="text-center text-[#FFF]">
-              <div>
-                <div class="mb-6">
-                  <h1
-                    className="text-2xl md:text-4xl font-[900] leading-8"
-                    style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
+
+          )} */}
+
+          <div className="text-center text-[#FFF]">
+            <div>
+              <div class="mb-6">
+                <h1
+                  className="text-2xl md:text-4xl font-[900] leading-8"
+                  style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
+                >
+                  <span className="block md:inline-block">香港第一部</span>
+                  <span>大嶼山生態紀錄長片</span>
+                </h1>
+              </div>
+              <div class="mb-8">
+                <h2
+                  className="text-xl md:text-2xl font-[500] leading-8"
+                  style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
+                >
+                  <span className="md:block mb-2">單次捐款100元</span>
+                  <span className="md:inline-block">收看記錄片</span>
+                  <span className="block md:inline-block md:pl-2">
+                    支持守護大嶼工作
+                  </span>
+                </h2>
+              </div>
+              <div className="flex flex-row gap-4 md:max-w-[380px] mx-auto">
+                <div className="flex-1">
+                  <Button
+                    size="lg"
+                    fontWeight={500}
+                    color="white"
+                    w={'100%'}
+                    bgColor={'orange.500'}
+                    _hover={{ bg: 'orange.300', color: '#FFF' }}
                   >
-                    <span className="block md:inline-block">香港第一部</span>
-                    <span>大嶼山生態紀錄長片</span>
-                  </h1>
+                    捐款收看
+                  </Button>
                 </div>
-                <div class="mb-8">
-                  <h2
-                    className="text-xl md:text-2xl font-[500] leading-8"
-                    style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
+                <div className="flex-1">
+                  <Button
+                    size="lg"
+                    color="orange.500"
+                    fontWeight={500}
+                    w={'100%'}
+                    bgColor={'#FFF'}
+                    border={'2px solid'}
+                    borderColor={'orange.500'}
+                    _hover={{ bg: 'orange.300', color: '#FFF' }}
+                    onClick={onOpen}
                   >
-                    <span className="md:block mb-2">單次捐款100元</span>
-                    <span className="md:inline-block">收看記錄片</span>
-                    <span className="block md:inline-block md:pl-2">
-                      支持守護大嶼工作
-                    </span>
-                  </h2>
-                </div>
-                <div className="flex flex-row gap-4 md:max-w-[380px] mx-auto">
-                  <div className="flex-1">
-                    <Button
-                      size="lg"
-                      fontWeight={500}
-                      color="white"
-                      w={'100%'}
-                      bgColor={'orange.500'}
-                      _hover={{ bg: 'orange.300', color: '#FFF' }}
-                    >
-                      捐款收看
-                    </Button>
-                  </div>
-                  <div className="flex-1">
-                    <Button
-                      size="lg"
-                      color="orange.500"
-                      fontWeight={500}
-                      w={'100%'}
-                      bgColor={'#FFF'}
-                      border={'2px solid'}
-                      borderColor={'orange.500'}
-                      _hover={{ bg: 'orange.300', color: '#FFF' }}
-                      onClick={() => setShowVideo(!showVideo)}
-                    >
-                      紀錄片預告
-                    </Button>
-                  </div>
+                    紀錄片預告
+                  </Button>
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
 
@@ -200,6 +213,31 @@ function HeroSection() {
           </div>
         </div>
       </div>
+
+      <Modal isOpen={isOpen} size={'4xl'} onClose={onClose} isCentered={true}>
+        <ModalOverlay bgColor={'rgba(255,255,255,0.8'} />
+        <ModalContent
+          pos={'relative'}
+          px={{ base: '15px' }}
+          bgColor={'transparent'}
+          shadow={'none'}
+        >
+          <CloseIcon
+            pos={'absolute'}
+            top={'-30px'}
+            right={'15px'}
+            color="#FFF"
+            cursor={'pointer'}
+            onClick={onClose}
+          />
+          <AspectRatio w="100%" ratio={16 / 9}>
+            <iframe
+              src="https://www.youtube.com/embed/LJeuw6MzuRQ"
+              allowFullScreen
+            />
+          </AspectRatio>
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
