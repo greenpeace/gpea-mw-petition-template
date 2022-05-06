@@ -10,13 +10,13 @@ import DesktopHero from '../../images/hero_v2.jpg';
 import DesktopHeroFront from '../../images/hero_front_v2.png';
 import useScrollPosition from '../../components/Header/useScrollPosition';
 
-import subBanner from '../../images/sub_banner.jpeg';
+import subBanner from '../../images/cc5e7113d87915b78c9b2ca.jpg';
 import appLogo from '../../images/app_logo.png';
 
 function HeroSection() {
   const [showVideo, setShowVideo] = useState(false);
   const scrollPosition = useScrollPosition();
-  const logoRef = useRef(null)
+  const logoRef = useRef(null);
 
   return (
     <div className="relative">
@@ -35,11 +35,20 @@ function HeroSection() {
         className="mx-[10px] md:mx-0 pt-[125px] md:pt-[160px] lg:pt-[130px] xl:pt-[195px] min-h-[105px] relative"
         style={{ zIndex: 1 }}
       >
-        <Box maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }} h={{base: '105px', sm: '145px', lg: '215px', xl: '310px'}}  mx={'auto'}>
+        <Box
+          maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
+          h={{ base: '105px', sm: '145px', lg: '215px', xl: '310px' }}
+          mx={'auto'}
+        >
           <Image
             src={appLogo}
             m={'auto'}
-            w={{ base: `${355-scrollPosition}px`, sm: `${480-scrollPosition}px`, lg: `${720-scrollPosition}px`, xl: `${1040-scrollPosition}px` }}
+            w={{
+              base: `${355 - scrollPosition}px`,
+              sm: `${480 - scrollPosition}px`,
+              lg: `${720 - scrollPosition}px`,
+              xl: `${1040 - scrollPosition}px`,
+            }}
             maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
             ref={logoRef}
           />
@@ -80,31 +89,31 @@ function HeroSection() {
           ) : (
             <div className="text-center text-[#FFF]">
               <div>
-                <div>
+                <div class="mb-6">
                   <h1
-                    className="text-[32px] md:text-[36px] font-[900] leading-[48px] md:leading-[54px]"
+                    className="text-2xl md:text-4xl font-[900] leading-8"
                     style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
                   >
                     <span className="block md:inline-block">香港第一部</span>
                     <span>大嶼山生態紀錄長片</span>
                   </h1>
                 </div>
-                <div>
+                <div class="mb-8">
                   <h2
-                    className="text-[20px] md:text-[24px] font-[500] leading-[30px] md:leading-[36px]"
+                    className="text-xl md:text-2xl font-[500] leading-8"
                     style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
                   >
-                    <span className="md:block">單次捐款100元</span>{' '}
+                    <span className="md:block mb-2">單次捐款100元</span>
                     <span className="md:inline-block">收看記錄片</span>
                     <span className="block md:inline-block md:pl-2">
                       支持守護大嶼工作
                     </span>
                   </h2>
                 </div>
-
-                <div className="flex flex-row gap-4 pt-[28px] md:max-w-[270px] mx-auto">
+                <div className="flex flex-row gap-4 md:max-w-[380px] mx-auto">
                   <div className="flex-1">
                     <Button
+                      size="lg"
                       fontWeight={500}
                       color="white"
                       w={'100%'}
@@ -116,10 +125,11 @@ function HeroSection() {
                   </div>
                   <div className="flex-1">
                     <Button
+                      size="lg"
                       color="orange.500"
                       fontWeight={500}
                       w={'100%'}
-                      bgColor={'transparent'}
+                      bgColor={'#FFF'}
                       border={'2px solid'}
                       borderColor={'orange.500'}
                       _hover={{ bg: 'orange.300', color: '#FFF' }}
@@ -159,32 +169,33 @@ function HeroSection() {
           className="flex flex-col lg:flex-row space-between md:gap-[40px] xl:gap-[120px] relative"
           style={{ zIndex: 6 }}
         >
-          <div className="md:flex-1 flex flex-col gap-4">
-            <h1 className="text-[24px] font-[700] leading-[36px]">
+          <div className="md:flex-1 flex flex-col gap-6">
+            <h1 className="text-[28px] font-[700] leading-[36px]">
               大嶼山生態紀錄長片
             </h1>
-            <p className="text-[16px] font-[500]">
-              綠色和平與本地生態團隊耗時大半年製作
+
+            <p className="text-[20px]">
+              <b>綠色和平與本地生態團隊耗時大半年製作</b>
             </p>
 
-            <div className="grid grid-cols-3 md:max-w-[360px]">
-              <div>片長:25分鐘</div>
-              <div>編導:馮漢城</div>
-              <div>配音:陳志雲</div>
+            <div className="inline-grid grid-cols-3 font-[500]">
+              <div className="inline-block">片長:25分鐘</div>
+              <div className="inline-block">編導:馮漢城</div>
+              <div className="inline-block">配音:陳志雲</div>
             </div>
 
-            <p className="text-[16px] font-[500]">
+            <p className="text-[16px]">
               山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的香港第一部大嶼山生態紀錄長片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
             </p>
 
-            <p className="text-[16px] font-[500]">
+            <p className="text-[16px]">
               全片不但以4K超高清拍攝，更包含航拍、水底拍攝、夜視拍攝等，務求將大嶼山生態最真實一面搬到螢幕上。我們亦邀請到本地資深傳媒人陳志雲先生為本片配音，全方位帶領大眾了解大嶼山富生物多樣性、值得香港人驕傲的一面。
             </p>
             <div className="hidden md:block">
               <AvatarGroup />
             </div>
           </div>
-          <div className="hidden md:block">
+          <div className="border-white border-4 flex-1 hidden md:block">
             <Image src={subBanner} w={'100%'} />
           </div>
         </div>
