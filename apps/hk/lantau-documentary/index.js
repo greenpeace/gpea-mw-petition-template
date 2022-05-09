@@ -3,6 +3,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import { Box, Image } from '@chakra-ui/react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
+import DonationPage from './components/DonationPage';
 import AvatarGroup from './components/Avatar';
 import VisionGroup from './components/Vision';
 import SwiperGroup from './components/Swiper';
@@ -34,9 +35,10 @@ function Index() {
   return (
     <>
       <SEO />
-      <Box>
+      <DonationPage/>
+      {/* <Box>
         <Header handleMenuClick={scrollToRef} MENU={MENU} />
-        <div ref={heroSection}>
+         <div ref={heroSection}>
           <HeroSection />
         </div>
 
@@ -73,10 +75,10 @@ function Index() {
 
         <div ref={informationSection}>
           <Information />
-        </div>
+        </div> 
 
         <PetitionFooter />
-      </Box>
+      </Box> */}
     </>
   );
 }
