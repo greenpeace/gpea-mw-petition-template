@@ -3,7 +3,7 @@ import { Image, Button } from '@chakra-ui/react';
 import useScrollPosition from './useScrollPosition';
 import logoChinese from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png';
 
-const Header = ({handleMenuClick, MENU}) => {
+const Header = ({handleMenuClick, handleShowDonate, MENU}) => {
   const OFFSET = 10;
   const scrollPosition = useScrollPosition();
   const stickyStyle = {
@@ -30,6 +30,7 @@ const Header = ({handleMenuClick, MENU}) => {
                   key={d.label}
                   onClick={() => {
                     handleMenuClick(d.ref)
+                    handleShowDonate(false)
                   }}
                 >
                   {d.label}
@@ -37,6 +38,7 @@ const Header = ({handleMenuClick, MENU}) => {
               ))}
               <div
                   className="cursor-pointer text-[16px] font-[500] text-[#FFF] hover:text-[#d2d2d2] hidden lg:block"
+                  onClick={() => handleShowDonate(true)}
                 >
                   立即聯署
                 </div>

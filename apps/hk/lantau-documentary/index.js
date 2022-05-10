@@ -3,20 +3,22 @@ import PetitionFooter from '@containers/petitionFooter';
 import { Box, Image } from '@chakra-ui/react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import DonationPage from './components/DonationPage';
 import AvatarGroup from './components/Avatar';
 import VisionGroup from './components/Vision';
 import SwiperGroup from './components/Swiper';
 import Information from './components/Information';
 import Support from './components/Support';
 import SEO from './SEO';
+
+import DonationPage from './components/DonationPage';
+import StreamingPage from './components/StreamingPage';
+
 import subBanner from './images/sub_banner.jpeg';
 import sectionBackground from './images/mobile/section_background.jpeg';
 import desktopSectionBackground from './images/section_background.jpeg';
 
 function Index() {
   const scrollToRef = (ref) => {
-    console.log('scroll to', ref);
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
   const heroSection = useRef(null);
@@ -32,13 +34,28 @@ function Index() {
     { label: '細看大嶼', value: '', ref: supportSection },
   ];
 
+  const [showDonation, setShowDonation] = useState(false)
+
+  const handleShowDonate = (bol) => {
+    setShowDonation(bol)
+  }
+
+  useEffect(()=>{
+    if(showDonation && window){
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  },[showDonation])
+
   return (
     <>
       <SEO />
-      <DonationPage/>
-      {/* <Box>
-        <Header handleMenuClick={scrollToRef} MENU={MENU} />
-         <div ref={heroSection}>
+      <Header handleMenuClick={scrollToRef} MENU={MENU} handleShowDonate={handleShowDonate} />
+      {/* <StreamingPage/> */}
+      {!showDonation && <Box>
+        <div ref={heroSection}>
           <HeroSection />
         </div>
 
@@ -75,10 +92,12 @@ function Index() {
 
         <div ref={informationSection}>
           <Information />
-        </div> 
+        </div>
+      </Box>}
 
-        <PetitionFooter />
-      </Box> */}
+      {showDonation && <DonationPage />}
+
+      <PetitionFooter />
     </>
   );
 }

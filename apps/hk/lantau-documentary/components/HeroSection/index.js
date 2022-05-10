@@ -23,7 +23,6 @@ import subBanner from '../../images/sub_banner.jpeg';
 import appLogo from '../../images/app_logo.png';
 
 function HeroSection() {
-  const [showVideo, setShowVideo] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const scrollPosition = useScrollPosition();
   const logoRef = useRef(null);
@@ -53,14 +52,14 @@ function HeroSection() {
           <Image
             src={appLogo}
             m={'auto'}
-            w={{
-              base: `${355 - scrollPosition}px`,
-              sm: `${480 - scrollPosition}px`,
-              lg: `${720 - scrollPosition}px`,
-              xl: `${1040 - scrollPosition}px`,
-            }}
+            // w={{
+            //   base: `${355 - scrollPosition}px`,
+            //   sm: `${480 - scrollPosition}px`,
+            //   lg: `${720 - scrollPosition}px`,
+            //   xl: `${1040 - scrollPosition}px`,
+            // }}
             maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
-            opacity={1- (scrollPosition/300)}
+            // opacity={1- (scrollPosition/300)}
             ref={logoRef}
           />
         </Box>

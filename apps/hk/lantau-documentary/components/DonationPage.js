@@ -31,22 +31,7 @@ import { connect } from 'react-redux';
 import formContent from '../form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-function Index({ setFormContent, form }) {
-  const scrollToRef = (ref) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-  const heroSection = useRef(null);
-  const visionSection = useRef(null);
-  const swiperSection = useRef(null);
-  const supportSection = useRef(null);
-
-  const MENU = [
-    { label: '紀錄片介紹', value: '', ref: heroSection },
-    { label: '我們的理念', value: '', ref: visionSection },
-    { label: '大嶼有我', value: '', ref: swiperSection },
-    { label: '細看大嶼', value: '', ref: supportSection },
-  ];
-
+function Index({ setFormContent }) {
   const [tab, setTab] = useState(0);
 
   useEffect(() => {
@@ -56,7 +41,6 @@ function Index({ setFormContent, form }) {
   return (
     <>
       <Box>
-        <Header handleMenuClick={scrollToRef} MENU={MENU} />
         <div className="relative pb-[190px]">
           <Box
             backgroundImage={{ base: MobileHero, lg: DesktopHero }}
