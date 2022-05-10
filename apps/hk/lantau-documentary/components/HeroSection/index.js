@@ -126,31 +126,31 @@ function HeroSection() {
 
           <div className="text-center text-[#FFF]">
             <div>
-              <div>
+              <div class="mb-6">
                 <h1
-                  className="text-[32px] md:text-[36px] font-[900] leading-[48px] md:leading-[54px]"
+                  className="text-2xl md:text-4xl font-[900] leading-8"
                   style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
                 >
                   <span className="block md:inline-block">香港第一部</span>
                   <span>大嶼山生態紀錄長片</span>
                 </h1>
               </div>
-              <div>
+              <div class="mb-8">
                 <h2
-                  className="text-[20px] md:text-[24px] font-[500] leading-[30px] md:leading-[36px]"
+                  className="text-xl md:text-2xl font-[500] leading-8"
                   style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
                 >
-                  <span className="md:block">單次捐款100元</span>{' '}
+                  <span className="md:block mb-2">單次捐款100元</span>
                   <span className="md:inline-block">收看記錄片</span>
                   <span className="block md:inline-block md:pl-2">
                     支持守護大嶼工作
                   </span>
                 </h2>
               </div>
-
-              <div className="flex flex-row gap-4 pt-[28px] md:max-w-[270px] mx-auto">
+              <div className="flex flex-row gap-4 md:max-w-[380px] mx-auto">
                 <div className="flex-1">
                   <Button
+                    size="lg"
                     fontWeight={500}
                     color="white"
                     w={'100%'}
@@ -162,10 +162,11 @@ function HeroSection() {
                 </div>
                 <div className="flex-1">
                   <Button
+                    size="lg"
                     color="orange.500"
                     fontWeight={500}
                     w={'100%'}
-                    bgColor={'transparent'}
+                    bgColor={'#FFF'}
                     border={'2px solid'}
                     borderColor={'orange.500'}
                     _hover={{ bg: 'orange.300', color: '#FFF' }}
