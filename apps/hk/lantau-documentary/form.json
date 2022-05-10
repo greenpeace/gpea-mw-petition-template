@@ -1,6 +1,6 @@
 {
-  "form_header": "報名繪本共讀會 認識環境與氣候危機",
-  "form_description": "* 如為18歲以下小朋友報名，敬請於下方所有欄位填寫家長資料，並輸入參與共讀會的小朋友數目。",
+  "form_header": "",
+  "form_description": "",
   "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
   "signed_number": "已聯署人數",
 
@@ -29,7 +29,7 @@
   "thanks_ask": "",
   "thanks_content": "",
   "share_button": "分享出去",
-  "donate_button": "下一步",
+  "donate_button": "捐款收看",
   "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate?language=zh_HK&campaign=earthday",
   "shareMessage": "",
   "fbURL": "",
@@ -45,13 +45,13 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "請捐助支持「童愛環境 · 贈書教育」計劃",
+  "donate_header": "立即捐助 收看《山海大嶼》紀錄片",
   "donate_description": [
-    "您的捐助，將幫助100間小學獲得原創氣候危機繪本《無家可歸的我》及教材，從小培養孩子對環境保護的意識。"
+    "請捐助堅守大嶼工作，為守護大嶼工作提供更多資源與力量，合力推動政府優先發展棕地，守護香港自然環境與生物多樣性！"
   ],
   "default_message": "支持團隊持續與更多小學接洽，處理寄送繪本安排。",
   "currency": "HKD",
-  "default_amount": 200,
+  "default_amount": 100,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -83,21 +83,21 @@
   ],
   "amount_monthly": [
     {
-      "label": "200",
-      "value": 200,
-      "description": "支持團隊持續與更多小學接洽，處理寄送繪本安排。",
+      "label": "100",
+      "value": 100,
+      "description": "收看「山海大嶼」紀錄片",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持團隊在贈送繪本同時，為教師舉辦氣候危機培訓。",
+      "description": "收看「山海大嶼」紀錄片<br/>獲得綠色和平「山海大嶼」限定明信片一套",
       "currency": "HKD"
     },
     {
-      "label": "400",
-      "value": 400,
-      "description": "支持派出300本繪本到各區小學，教育並培養孩子愛護環境的意識！",
+      "label": "500",
+      "value": 500,
+      "description": "收看「山海大嶼」紀錄片<br/>獲得綠色和平「山海大嶼」限定明信片一套<br/>獲得綠色和平「守護大嶼」旗幟一面",
       "currency": "HKD"
     },
     {
