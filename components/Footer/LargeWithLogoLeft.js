@@ -58,7 +58,7 @@ export default function LargeWithLogoLeft() {
             </Link>
             <Link
               href={
-                'https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK'
+                'https://supporter.ea.greenpeace.org/hk/s/donate?language=zh_HK'
               }
               rel="noreferrer"
             >
