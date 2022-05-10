@@ -9,6 +9,7 @@ import SwiperGroup from './components/Swiper';
 import Information from './components/Information';
 import Support from './components/Support';
 import SEO from './SEO';
+import { motion } from 'framer-motion'
 
 import DonationPage from './components/DonationPage';
 import StreamingPage from './components/StreamingPage';

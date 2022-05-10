@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import {
-  useMediaQuery,
   AspectRatio,
   Box,
   Button,
@@ -10,22 +9,53 @@ import {
   ModalOverlay,
   ModalContent,
 } from '@chakra-ui/react';
-
+import { useAnimation, motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { CloseIcon } from '@chakra-ui/icons';
 import AvatarGroup from '../../components/Avatar';
 import MobileHero from '../../images/mobile/hero.png';
 import MobileHeroFront from '../../images/mobile/hero_front.png';
 import DesktopHero from '../../images/hero_v2.jpg';
 import DesktopHeroFront from '../../images/hero_front_v2.png';
-import useScrollPosition from '../../components/Header/useScrollPosition';
 
 import subBanner from '../../images/sub_banner.jpeg';
 import appLogo from '../../images/app_logo.png';
 
 function HeroSection() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const scrollPosition = useScrollPosition();
-  const logoRef = useRef(null);
+
+  const boxVariant = {
+    visible: { opacity: 1, scale: 1, transition: { duration: .75 } },
+    hidden: { opacity: 0, scale: 0, transition: { duration: 1 } },
+  };
+
+  const AnimationBox = ({ children }) => {
+    const control = useAnimation();
+    const [ref, inView] = useInView();
+
+    useEffect(() => {
+      console.log('inView-',inView)
+      if (inView) {
+        control.start("visible");
+      } else {
+        control.start("hidden");
+      }
+    }, [control, inView]);
+
+    return (
+      <div>
+        <div className="absolute top-[40px] md:top-[100px]" ref={ref}></div> {/** InView point */}
+        <motion.div
+          className="box"
+          initial={'visible'}
+          variants={boxVariant}
+          animate={control}
+        >
+          {children}
+        </motion.div>
+      </div>
+    );
+  };
 
   return (
     <div className="relative">
@@ -49,19 +79,13 @@ function HeroSection() {
           h={{ base: '105px', sm: '145px', lg: '215px', xl: '310px' }}
           mx={'auto'}
         >
-          <Image
-            src={appLogo}
-            m={'auto'}
-            // w={{
-            //   base: `${355 - scrollPosition}px`,
-            //   sm: `${480 - scrollPosition}px`,
-            //   lg: `${720 - scrollPosition}px`,
-            //   xl: `${1040 - scrollPosition}px`,
-            // }}
-            maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
-            // opacity={1- (scrollPosition/300)}
-            ref={logoRef}
-          />
+          <AnimationBox>
+            <Image
+              src={appLogo}
+              m={'auto'}
+              maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
+            />
+          </AnimationBox>
         </Box>
       </div>
       <Box
@@ -101,58 +125,58 @@ function HeroSection() {
           )} */}
 
           <div className="text-center text-[#FFF]">
+            <div>
               <div>
-                <div>
-                  <h1
-                    className="text-[32px] md:text-[36px] font-[900] leading-[48px] md:leading-[54px]"
-                    style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
-                  >
-                    <span className="block md:inline-block">香港第一部</span>
-                    <span>大嶼山生態紀錄長片</span>
-                  </h1>
-                </div>
-                <div>
-                  <h2
-                    className="text-[20px] md:text-[24px] font-[500] leading-[30px] md:leading-[36px]"
-                    style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
-                  >
-                    <span className="md:block">單次捐款100元</span>{' '}
-                    <span className="md:inline-block">收看記錄片</span>
-                    <span className="block md:inline-block md:pl-2">
-                      支持守護大嶼工作
-                    </span>
-                  </h2>
-                </div>
+                <h1
+                  className="text-[32px] md:text-[36px] font-[900] leading-[48px] md:leading-[54px]"
+                  style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
+                >
+                  <span className="block md:inline-block">香港第一部</span>
+                  <span>大嶼山生態紀錄長片</span>
+                </h1>
+              </div>
+              <div>
+                <h2
+                  className="text-[20px] md:text-[24px] font-[500] leading-[30px] md:leading-[36px]"
+                  style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
+                >
+                  <span className="md:block">單次捐款100元</span>{' '}
+                  <span className="md:inline-block">收看記錄片</span>
+                  <span className="block md:inline-block md:pl-2">
+                    支持守護大嶼工作
+                  </span>
+                </h2>
+              </div>
 
-                <div className="flex flex-row gap-4 pt-[28px] md:max-w-[270px] mx-auto">
-                  <div className="flex-1">
-                    <Button
-                      fontWeight={500}
-                      color="white"
-                      w={'100%'}
-                      bgColor={'orange.500'}
-                      _hover={{ bg: 'orange.300', color: '#FFF' }}
-                    >
-                      捐款收看
-                    </Button>
-                  </div>
-                  <div className="flex-1">
-                    <Button
-                      color="orange.500"
-                      fontWeight={500}
-                      w={'100%'}
-                      bgColor={'transparent'}
-                      border={'2px solid'}
-                      borderColor={'orange.500'}
-                      _hover={{ bg: 'orange.300', color: '#FFF' }}
-                      onClick={onOpen}
-                    >
-                      紀錄片預告
-                    </Button>
-                  </div>
+              <div className="flex flex-row gap-4 pt-[28px] md:max-w-[270px] mx-auto">
+                <div className="flex-1">
+                  <Button
+                    fontWeight={500}
+                    color="white"
+                    w={'100%'}
+                    bgColor={'orange.500'}
+                    _hover={{ bg: 'orange.300', color: '#FFF' }}
+                  >
+                    捐款收看
+                  </Button>
+                </div>
+                <div className="flex-1">
+                  <Button
+                    color="orange.500"
+                    fontWeight={500}
+                    w={'100%'}
+                    bgColor={'transparent'}
+                    border={'2px solid'}
+                    borderColor={'orange.500'}
+                    _hover={{ bg: 'orange.300', color: '#FFF' }}
+                    onClick={onOpen}
+                  >
+                    紀錄片預告
+                  </Button>
                 </div>
               </div>
             </div>
+          </div>
         </div>
       </div>
 
@@ -213,8 +237,20 @@ function HeroSection() {
 
       <Modal isOpen={isOpen} size={'4xl'} onClose={onClose} isCentered={true}>
         <ModalOverlay bgColor={'rgba(255,255,255,0.8'} />
-        <ModalContent pos={'relative'} px={{base: '15px'}} bgColor={'transparent'} shadow={'none'}>
-        <CloseIcon pos={'absolute'} top={'-30px'} right={'15px'} color="#FFF" cursor={'pointer'} onClick={onClose} />
+        <ModalContent
+          pos={'relative'}
+          px={{ base: '15px' }}
+          bgColor={'transparent'}
+          shadow={'none'}
+        >
+          <CloseIcon
+            pos={'absolute'}
+            top={'-30px'}
+            right={'15px'}
+            color="#FFF"
+            cursor={'pointer'}
+            onClick={onClose}
+          />
           <AspectRatio w="100%" ratio={16 / 9}>
             <iframe
               src="https://www.youtube.com/embed/LJeuw6MzuRQ"
