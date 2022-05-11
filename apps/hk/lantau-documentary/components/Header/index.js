@@ -4,7 +4,7 @@ import useScrollPosition from './useScrollPosition';
 import { useRouter } from 'next/router';
 import logoChinese from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png';
 
-const Header = ({handleShowDonate, MENU}) => {
+const Header = ({MENU}) => {
   const router = useRouter()
   const OFFSET = 10;
   const scrollPosition = useScrollPosition();
@@ -13,8 +13,8 @@ const Header = ({handleShowDonate, MENU}) => {
     border: scrollPosition > OFFSET ? '' : 'border-b-[2px]',
   };
 
-  const handleMenuOnClick = (main, link, refName) => {
-    router.push(`/?s=${refName}`, undefined, { shallow: true })
+  const handleMenuOnClick = (main, link, refName, page) => {
+    router.push(`/?p=${page}&s=${refName}`, undefined, { shallow: true })
   }
 
   return (
@@ -36,8 +36,7 @@ const Header = ({handleShowDonate, MENU}) => {
                   className="cursor-pointer text-[16px] font-[400] text-[#FFF] hover:font-[700] hidden lg:block"
                   key={d.label}
                   onClick={() => {
-                    handleMenuOnClick(d.value, d.label, d.refName)
-                    handleShowDonate(false)
+                    handleMenuOnClick(d.value, d.label, d.refName, d.page)
                   }}
                 >
                   {d.label}
@@ -47,6 +46,7 @@ const Header = ({handleShowDonate, MENU}) => {
                 color="white"
                 bgColor={'orange.500'}
                 _hover={{ bg: 'orange.300' }}
+                onClick={()=>  router.push(`/?p=donation`, undefined, { shallow: true })}
               >
                 立即支持
               </Button>

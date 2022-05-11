@@ -33,7 +33,7 @@ function MainPage({
   ];
 
   useEffect(() => {
-    const {s} = router.query
+    const {s, p} = router.query
     const mapSection = SECTIONS.find(d => d.refName === s)
     if(mapSection){
         scrollToRef(mapSection.ref);

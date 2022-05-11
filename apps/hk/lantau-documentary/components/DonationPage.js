@@ -36,6 +36,10 @@ function Index({ setFormContent }) {
 
   useEffect(() => {
     setFormContent(formContent);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, []);
 
   return (

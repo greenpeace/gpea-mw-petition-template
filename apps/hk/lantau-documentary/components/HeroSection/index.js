@@ -26,7 +26,7 @@ function HeroSection() {
   const { scrollY, scrollYProgress } = useViewportScroll();
 
   const y = useTransform(scrollY, [0, 400], [0, -200]);
-  const opacity = useTransform(scrollYProgress, (value) => 1 - (value * 40));
+  const opacity = useTransform(scrollYProgress, (value) => 1 - (value * 30));
   const scale = useTransform(scrollYProgress, (value) => 1 - (value * 10));
 
   const AnimationBox = ({ children }) => {
