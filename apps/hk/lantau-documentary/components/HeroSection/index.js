@@ -9,7 +9,7 @@ import {
   ModalOverlay,
   ModalContent,
 } from '@chakra-ui/react';
-import { useAnimation, motion } from 'framer-motion';
+import { useAnimation, useViewportScroll, motion, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { CloseIcon } from '@chakra-ui/icons';
 import AvatarGroup from '../../components/Avatar';
@@ -23,33 +23,26 @@ import appLogo from '../../images/app_logo.png';
 
 function HeroSection() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { scrollY, scrollYProgress } = useViewportScroll();
 
-  const boxVariant = {
-    visible: { opacity: 1, scale: 1, transition: { duration: .75 } },
-    hidden: { opacity: 0, scale: 0, transition: { duration: 1 } },
-  };
+  const y = useTransform(scrollY, [0, 400], [0, -200]);
+  const opacity = useTransform(scrollYProgress, (value) => 1 - (value * 40));
+  const scale = useTransform(scrollYProgress, (value) => 1 - (value * 10));
 
   const AnimationBox = ({ children }) => {
-    const control = useAnimation();
-    const [ref, inView] = useInView();
-
-    useEffect(() => {
-      console.log('inView-',inView)
-      if (inView) {
-        control.start("visible");
-      } else {
-        control.start("hidden");
-      }
-    }, [control, inView]);
+    // const control = useAnimation();
+    const [ref, inView] = useInView({
+      /* Optional options */
+      threshold: 0.5,
+      triggerOnce: false
+    });
 
     return (
       <div>
         <div className="absolute top-[40px] md:top-[100px]" ref={ref}></div> {/** InView point */}
         <motion.div
           className="box"
-          initial={'visible'}
-          variants={boxVariant}
-          animate={control}
+          style={{ y: y, opacity: opacity, scale: scale}}
         >
           {children}
         </motion.div>
