@@ -19,7 +19,7 @@ import {
 
 import { Clouds } from './Clouds';
 
-import mainHeadline from '../../images/202204_EarthDayPush-17.svg';
+import mainHeadline from '../../images/202204_EarthDayPush-22.svg';
 import mainVisualLaptop from '../../images/202204_EarthDayPush_R3_KV_laptop.png';
 import R310 from '../../images/202204_EarthDayPush_R3-10.svg';
 import R311 from '../../images/202204_EarthDayPush_R3-11.svg';
@@ -55,11 +55,6 @@ const HeroSection = ({ handleClick, selectedOption, handleSelectOption }) => {
   const [isLargerThanLG] = useMediaQuery('(min-width: 62em)');
   const isSubmitted = useSelector((state) => state.status?.submitted);
   const formData = useSelector((state) => state.form.data);
-  const PROMISES = [
-    '1星期食3餐素',
-    '1星期不用即棄餐具',
-    '1星期做好垃圾資源回收分類',
-  ];
 
   return (
     <Box bgColor={'#88D6F8'}>
@@ -87,7 +82,7 @@ const HeroSection = ({ handleClick, selectedOption, handleSelectOption }) => {
                   >
                     感謝您加入
                     <br />
-                    「惜碳承諾」
+                    「惜碳承諾」！
                   </Heading>
                   <Text
                     fontSize="xl"
@@ -96,27 +91,7 @@ const HeroSection = ({ handleClick, selectedOption, handleSelectOption }) => {
                     textShadow="0 0 1px rgba(0,0,0, .2)"
                     mb="4"
                   >
-                    以下是您選擇的承諾：
-                  </Text>
-                  <Stack
-                    spacing="4"
-                    fontSize="xl"
-                    fontWeight="bold"
-                    color="white"
-                    mb="4"
-                  >
-                    {(formData || []).map((d, i) => (
-                      <Text key={i}>✅ {PROMISES[d]}</Text>
-                    ))}
-                  </Stack>
-                  <Text
-                    fontSize="xl"
-                    fontWeight="bold"
-                    color="white"
-                    textShadow="0 0 1px rgba(0,0,0, .2)"
-                    mb="4"
-                  >
-                    完成挑戰，獲取「惜碳證書」，攜手為地球減碳！
+                    今年世界地球日的主題是「投資我們的星球」，邀請你一起進一步承諾，投資地球！
                   </Text>
                 </Box>
               </Box>

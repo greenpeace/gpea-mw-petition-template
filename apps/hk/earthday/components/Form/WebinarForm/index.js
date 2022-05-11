@@ -304,7 +304,7 @@ const MyForm = (props) => {
                   py={2}
                   color={'gray.700'}
                 >
-                  你的名字將會出現在電子證書上
+                  你的姓名將會出現在電子證書上
                 </Text>
               </Box>
 

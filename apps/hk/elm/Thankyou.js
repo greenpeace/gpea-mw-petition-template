@@ -6,7 +6,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import image01 from './images/elm_desk_calendar.png';
+import image01 from './images/elm_flag.jpg';
 
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
@@ -65,7 +65,7 @@ const Thankyou = ({ theme, signup }) => {
       <Heading {...headingProps}>堅持發聲 行動帶來改變</Heading>
 
       <Text as="p" {...paragraphProps}>
-        現以每月$150捐款支持守護大嶼工作，即可欣賞將於5月底發行的《山海大嶼》生態紀錄片，並獲贈一本《山海大嶼年曆》！
+        現以每月$200捐款支持堅守大嶼工作，即可獲得一面「堅守大嶼」旗幟及2次「環保手作工作坊」的機會。
       </Text>
 
       <Box as="p" {...paragraphProps}>
