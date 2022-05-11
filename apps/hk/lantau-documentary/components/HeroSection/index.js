@@ -119,7 +119,7 @@ function HeroSection() {
 
           <div className="text-center text-[#FFF]">
             <div>
-              <div class="mb-6">
+              <div className="mb-6">
                 <h1
                   className="text-2xl md:text-4xl font-[900] leading-8"
                   style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
@@ -128,7 +128,7 @@ function HeroSection() {
                   <span>大嶼山生態紀錄長片</span>
                 </h1>
               </div>
-              <div class="mb-8">
+              <div className="mb-8">
                 <h2
                   className="text-xl md:text-2xl font-[500] leading-8"
                   style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
