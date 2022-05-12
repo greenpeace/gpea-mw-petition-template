@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import {
-  useMediaQuery,
   AspectRatio,
   Box,
   Button,
@@ -10,24 +9,23 @@ import {
   ModalOverlay,
   ModalContent,
 } from '@chakra-ui/react';
-
+import {
+  useViewportScroll,
+} from 'framer-motion';
 import { CloseIcon } from '@chakra-ui/icons';
 import AvatarGroup from '../../components/Avatar';
 import MobileHero from '../../images/mobile/hero.png';
 import MobileHeroFront from '../../images/mobile/hero_front.png';
 import DesktopHero from '../../images/hero_v2.jpg';
 import DesktopHeroFront from '../../images/hero_front_v2.png';
-import useScrollPosition from '../../components/Header/useScrollPosition';
 
-import subBanner from '../../images/cc5e7113d87915b78c9b2ca.jpg';
+import subBanner from '../../images/sub_banner.jpeg';
 import appLogo from '../../images/app_logo.png';
 
-function HeroSection() {
-  const [showVideo, setShowVideo] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const scrollPosition = useScrollPosition();
-  const logoRef = useRef(null);
+import Logo from './logo';
 
+function HeroSection() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <div className="relative">
       <Box
@@ -50,19 +48,13 @@ function HeroSection() {
           h={{ base: '105px', sm: '145px', lg: '215px', xl: '310px' }}
           mx={'auto'}
         >
-          <Image
-            src={appLogo}
-            m={'auto'}
-            w={{
-              base: `${355 - scrollPosition / 3}px`,
-              sm: `${480 - scrollPosition / 3}px`,
-              lg: `${720 - scrollPosition / 3}px`,
-              xl: `${1040 - scrollPosition / 3}px`,
-            }}
-            maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
-            opacity={1 - scrollPosition / 300}
-            ref={logoRef}
-          />
+          <Logo>
+            <Image
+              src={appLogo}
+              m={'auto'}
+              maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
+            />
+          </Logo>
         </Box>
       </div>
       <Box
@@ -82,28 +74,9 @@ function HeroSection() {
         style={{ zIndex: 11 }}
       >
         <div className="flex flex-col pt-[65px] md:pt-[100px] lg:pt-[140px] pb-[50px] md:py-0">
-          {/* {showVideo ? (
-            <div>
-              <div className="text-[#FFF] text-[24px] text-right pb-4">
-                <CloseIcon
-                  cursor={'pointer'}
-                  onClick={() => setShowVideo(false)}
-                />
-              </div>
-              <AspectRatio maxW="100%" ratio={16 / 9}>
-                <iframe
-                  src="https://www.youtube.com/embed/LJeuw6MzuRQ"
-                  allowFullScreen
-                />
-              </AspectRatio>
-            </div>
-          ) : (
-
-          )} */}
-
           <div className="text-center text-[#FFF]">
             <div>
-              <div class="mb-6">
+              <div className="mb-6">
                 <h1
                   className="text-2xl md:text-4xl font-[900] leading-8"
                   style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
@@ -112,7 +85,7 @@ function HeroSection() {
                   <span>大嶼山生態紀錄長片</span>
                 </h1>
               </div>
-              <div class="mb-8">
+              <div className="mb-8">
                 <h2
                   className="text-xl md:text-2xl font-[500] leading-8"
                   style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
@@ -182,33 +155,32 @@ function HeroSection() {
           className="flex flex-col lg:flex-row space-between md:gap-[40px] xl:gap-[120px] relative"
           style={{ zIndex: 6 }}
         >
-          <div className="md:flex-1 flex flex-col gap-6">
-            <h1 className="text-[28px] font-[700] leading-[36px]">
+          <div className="md:flex-1 flex flex-col gap-4">
+            <h1 className="text-[24px] font-[700] leading-[36px]">
               大嶼山生態紀錄長片
             </h1>
-
-            <p className="text-[20px]">
-              <b>綠色和平與本地生態團隊耗時大半年製作</b>
+            <p className="text-[16px] font-[500]">
+              綠色和平與本地生態團隊耗時大半年製作
             </p>
 
-            <div className="inline-grid grid-cols-3 font-[500]">
-              <div className="inline-block">片長:25分鐘</div>
-              <div className="inline-block">編導:馮漢城</div>
-              <div className="inline-block">配音:陳志雲</div>
+            <div className="grid grid-cols-3 md:max-w-[360px]">
+              <div>片長:25分鐘</div>
+              <div>編導:馮漢城</div>
+              <div>配音:陳志雲</div>
             </div>
 
-            <p className="text-[16px]">
+            <p className="text-[16px] font-[500]">
               山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的香港第一部大嶼山生態紀錄長片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
             </p>
 
-            <p className="text-[16px]">
+            <p className="text-[16px] font-[500]">
               全片不但以4K超高清拍攝，更包含航拍、水底拍攝、夜視拍攝等，務求將大嶼山生態最真實一面搬到螢幕上。我們亦邀請到本地資深傳媒人陳志雲先生為本片配音，全方位帶領大眾了解大嶼山富生物多樣性、值得香港人驕傲的一面。
             </p>
             <div className="hidden md:block">
               <AvatarGroup />
             </div>
           </div>
-          <div className="border-white border-4 flex-1 hidden md:block">
+          <div className="hidden md:block">
             <Image src={subBanner} w={'100%'} />
           </div>
         </div>
