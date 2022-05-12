@@ -19,26 +19,18 @@ const AnimationBox = ({ children }) => {
     triggerOnce: false,
   });
 
-  console.log('trigger');
-
   return (
     <div>
-      <div className="absolute top-[100px] md:top-[180px]" ref={ref}></div>{' '}
       {/** InView point */}
-      {/* {inView && (
+      {inView && (
         <motion.div
           className="box"
           style={{ y: y, opacity: opacity, scale: scale }}
         >
           {children}
         </motion.div>
-      )} */}
-      <motion.div
-        className="box"
-        style={{ y: y, opacity: opacity, scale: scale }}
-      >
-        {children}
-      </motion.div>
+      )}
+      <div ref={ref}/>
     </div>
   );
 };
