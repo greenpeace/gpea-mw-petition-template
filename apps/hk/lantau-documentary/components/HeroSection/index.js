@@ -39,13 +39,13 @@ function HeroSection() {
 
     return (
       <div>
-        <div className="absolute top-[40px] md:top-[100px]" ref={ref}></div> {/** InView point */}
-        <motion.div
+        <div className="absolute top-[100px] md:top-[180px]" ref={ref}></div> {/** InView point */}
+        {inView && <motion.div
           className="box"
           style={{ y: y, opacity: opacity, scale: scale}}
         >
           {children}
-        </motion.div>
+        </motion.div>}
       </div>
     );
   };
@@ -98,25 +98,6 @@ function HeroSection() {
         style={{ zIndex: 11 }}
       >
         <div className="flex flex-col pt-[65px] md:pt-[100px] lg:pt-[140px] pb-[50px] md:py-0">
-          {/* {showVideo ? (
-            <div>
-              <div className="text-[#FFF] text-[24px] text-right pb-4">
-                <CloseIcon
-                  cursor={'pointer'}
-                  onClick={() => setShowVideo(false)}
-                />
-              </div>
-              <AspectRatio maxW="100%" ratio={16 / 9}>
-                <iframe
-                  src="https://www.youtube.com/embed/LJeuw6MzuRQ"
-                  allowFullScreen
-                />
-              </AspectRatio>
-            </div>
-          ) : (
-           
-          )} */}
-
           <div className="text-center text-[#FFF]">
             <div>
               <div className="mb-6">
