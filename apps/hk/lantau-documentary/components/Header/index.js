@@ -10,7 +10,7 @@ const Header = ({ MENU }) => {
   const scrollPosition = useScrollPosition();
   const stickyStyle = {
     wrap: scrollPosition > OFFSET ? 'bg-[#66CC00]' : '',
-    border: scrollPosition > OFFSET ? '' : 'border-b-[2px]',
+    border: scrollPosition > OFFSET ? '' : 'border-b-[1px]',
   };
 
   const handleMenuOnClick = (main, link, refName, page) => {
@@ -62,7 +62,7 @@ const Header = ({ MENU }) => {
                   router.push(`/?p=donation`, undefined, { shallow: true })
                 }
               >
-                立即支持
+                捐款收看
               </Button>
             </div>
           </div>

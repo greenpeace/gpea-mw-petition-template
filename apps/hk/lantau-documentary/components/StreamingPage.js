@@ -117,23 +117,25 @@ function Index() {
               <div className="absolute bottom-0 w-full p-6 bg-[#000] text-[#FFF]">
                 <div className="md:max-w-[1345px] mx-auto">
                   <div className="md:flex-1 flex flex-col gap-4">
-                    <h1 className="text-[24px] font-[700] leading-[36px]">
+                    <h1 className="text-[28px] font-[700] leading-[36px]">
                       大嶼山生態紀錄片
                     </h1>
-                    <p className="text-[16px] font-[500]">
+
+                    <p className="text-[18px] font-[500]">
                       綠色和平與本地生態團隊耗時大半年製作
                     </p>
 
                     <div className="grid grid-cols-3 md:max-w-[360px]">
-                      <div>片長:25分鐘</div>
-                      <div>編導:馮漢城</div>
-                      <div>配音:陳志雲</div>
+                      <span>片長:25分鐘</span>
+                      <span>編導:馮漢城</span>
+                      <span>配音:陳志雲</span>
                     </div>
 
-                    <p className="text-[16px] font-[500]">
+                    <p className="text-[16px]">
                       山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的香港第一部大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
                     </p>
-                    <Button {...OrangeCTA} maxW={'180px'}>
+
+                    <Button {...OrangeCTA} maxW={'220px'}>
                       捐助支持 守護生態
                     </Button>
                   </div>

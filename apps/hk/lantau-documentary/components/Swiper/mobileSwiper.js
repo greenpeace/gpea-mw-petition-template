@@ -41,10 +41,10 @@ const MobileSwiper = ({ IMAGES }) => {
                     w={'full'}
                   >
                     <div className="absolute left-4 top-4 z-10">
-                      <h1 className="text-[18px] font-[500] text-[#FFF]">
+                      <p className="text-[18px] font-[500] text-[#FFF]">
                         {item.name}
-                      </h1>
-                      <p className="text-[#FFF]">{item.role}</p>
+                      </p>
+                      <p className="text-[16px] text-[#FFF]">{item.role}</p>
                     </div>
 
                     <div className="absolute left-6 right-6 bottom-6 z-10">
@@ -78,10 +78,10 @@ const MobileSwiper = ({ IMAGES }) => {
                   w={'full'}
                 >
                   <div className="absolute left-4 top-4 z-10">
-                    <h1 className="text-[18px] font-[500] text-[#FFF]">
+                    <p className="text-[20px] font-[500] text-[#FFF]">
                       {d.name}
-                    </h1>
-                    <p className="text-[#FFF]">{d.role}</p>
+                    </p>
+                    <p className="text-[16px] text-[#FFF]">{d.role}</p>
                   </div>
 
                   <div className="absolute left-6 right-6 bottom-6 z-10">

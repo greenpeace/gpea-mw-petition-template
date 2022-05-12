@@ -154,24 +154,25 @@ function HeroSection() {
           style={{ zIndex: 6 }}
         >
           <div className="md:flex-1 flex flex-col gap-4">
-            <h1 className="text-[24px] font-[700] leading-[36px]">
+            <h1 className="text-[28px] font-[700] leading-[36px]">
               大嶼山生態紀錄片
             </h1>
-            <p className="text-[16px] font-[500]">
+
+            <p className="text-[18px] font-[500]">
               綠色和平與本地生態團隊耗時大半年製作
             </p>
 
             <div className="grid grid-cols-3 md:max-w-[360px]">
-              <div>片長:25分鐘</div>
-              <div>編導:馮漢城</div>
-              <div>配音:陳志雲</div>
+              <span>片長:25分鐘</span>
+              <span>編導:馮漢城</span>
+              <span>配音:陳志雲</span>
             </div>
 
-            <p className="text-[16px] font-[500]">
+            <p className="text-[16px]">
               山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的香港第一部大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
             </p>
 
-            <p className="text-[16px] font-[500]">
+            <p className="text-[16px]">
               全片不但以4K超高清拍攝，更包含航拍、水底拍攝、夜視拍攝等，務求將大嶼山生態最真實一面搬到螢幕上。我們亦邀請到本地資深傳媒人陳志雲先生為本片配音，全方位帶領大眾了解大嶼山富生物多樣性、值得香港人驕傲的一面。
             </p>
             <div className="hidden md:block">

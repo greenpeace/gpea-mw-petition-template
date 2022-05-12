@@ -7,7 +7,7 @@ function Support() {
   return (
     <Box
       backgroundImage={desktopContentDonateBackground}
-      backgroundSize={{base: 'cover', lg: 'contain'}}
+      backgroundSize={{ base: 'cover', lg: 'contain' }}
       backgroundPosition={'center center'}
       pos={'relative'}
     >
@@ -29,13 +29,12 @@ function Support() {
               bgColor={'orange.500'}
               _hover={{ bg: 'orange.300' }}
             >
-              立即支持
+              捐款收看
             </Button>
           </div>
         </div>
       </div>
       <Box
-        // bgGradient="linear(to-b, transparent 0%, transparent 50%, black 100%)"
         bg="rgba(0,0,0,0.4)"
         pos={'absolute'}
         top={0}
