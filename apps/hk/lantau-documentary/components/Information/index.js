@@ -6,6 +6,7 @@ import image02 from '../../images/information/02.jpeg';
 import image03 from '../../images/information/03.jpeg';
 import image04 from '../../images/information/04.jpeg';
 
+import typea0 from '../../images/information/00.jpg';
 import typea1 from '../../images/information/typea1.png';
 import typea2 from '../../images/information/typea2.png';
 import typeb1 from '../../images/information/typeb1.jpg';
@@ -24,16 +25,18 @@ const CATEGORIES = [
 
 const CARDS = [
   {
-    image: typea1,
-    title: '溪流',
+    image: typea0,
+    title: '香港瘰螈',
     cate: '河溪',
-    content: '大東山一帶山脈蘊藏豐富水源，石澗最能夠體現出河流嘅形態',
+    content:
+      '香港瘰螈是兩棲類動物。在繁殖期間，牠們會溪流中積極找尋伴侶。成功受孕的瘰螈會會在水中嘅石菖蒲葉片之間產卵',
   },
   {
     image: typea2,
     title: '廣東米蝦',
     cate: '河溪',
-    content: '米蝦是溪流中嘅清潔隊伍，進食有機物與藻類',
+    content:
+      '米蝦是溪流中嘅清潔隊伍，進食有機物與藻類。牠們會用有剛毛嘅細鉗，不斷尋找可食用的細碎有機物與藻類',
   },
   {
     image: typeb1,
@@ -65,17 +68,17 @@ const CARDS = [
     title: '中華白海豚',
     cate: '海洋',
     content:
-      '中華白海豚在香港最重要的棲息地是大嶼山西面、西南面一帶水域。<br/><br/>但在2020年，他們的數量較過去 17 年下跌近八成。',
+      '中華白海豚在香港最重要的棲息地是大嶼山西面、西南面一帶水域<br/><br/>但在2020年，他們的數量較過去 17 年下跌近八成',
   },
   {
     image: typed2,
     title: '人為破壞',
     cate: '海洋',
-    content: '大興土木、船隻超速航行等，均會破壞海洋生態，造成不可挽救的影響。',
+    content: '大興土木、船隻超速航行等，均會破壞海洋生態，造成不可挽救的影響',
   },
 ];
 
-function Information({children}) {
+function Information({ children }) {
   const [active, setActive] = useState('河溪');
 
   const menuStyle = {
@@ -84,113 +87,111 @@ function Information({children}) {
   };
 
   return (
-      <div className="container mx-auto px-[30px] py-[36px] lg:max-w-[1180px] xl:px-0">
-        <div className="pb-[26px] md:pt-[126px] md:pb-[60px]">
-          <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[6px]">
-            細看大嶼
-          </h1>
+    <div className="container mx-auto px-[30px] py-[36px] lg:max-w-[1180px] xl:px-0">
+      <div className="pb-[26px] md:pt-[126px] md:pb-[60px]">
+        <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[6px]">
+          細看大嶼
+        </h1>
 
-          <p className="text-[16px] font-[500] text-center">
-            一部紀錄片盡覽大嶼 20 種本地珍貴物種
-          </p>
+        <p className="text-[16px] font-[500] text-center">
+          一部紀錄片盡覽大嶼 20 種本地珍貴物種
+        </p>
+      </div>
+
+      <div className="lg:hidden">
+        <div className="flex flex-row rounded-[40px] p-2 border-2 shadow-md bg-[#FFF]">
+          {CATEGORIES.map((d) => (
+            <button
+              key={d.value}
+              className={`${
+                d.value === active ? menuStyle.active : menuStyle.normal
+              }`}
+              onClick={() => setActive(d.value)}
+            >
+              {d.label}
+            </button>
+          ))}
         </div>
 
-        <div className="lg:hidden">
-          <div className="flex flex-row rounded-[40px] p-2 border-2 shadow-md bg-[#FFF]">
-            {CATEGORIES.map((d) => (
-              <button
-                key={d.value}
-                className={`${
-                  d.value === active ? menuStyle.active : menuStyle.normal
-                }`}
-                onClick={() => setActive(d.value)}
-              >
-                {d.label}
-              </button>
+        <div className="py-[28px]">
+          <div className="flex flex-col gap-8">
+            {CARDS.filter((d) => d.cate === active).map((d) => (
+              <Card
+                image={d.image}
+                title={d.title}
+                content={d.content}
+                key={d.title}
+              />
             ))}
           </div>
-
-          <div className="py-[28px]">
-            <div className="flex flex-col gap-8">
-              {CARDS.filter((d) => d.cate === active).map((d) => (
-                <Card
-                  image={d.image}
-                  title={d.title}
-                  content={d.content}
-                  key={d.title}
-                />
-              ))}
-            </div>
-          </div>
         </div>
+      </div>
 
-        <div className="hidden lg:block">
-          <div className="flex flex-row gap-[60px]">
-              <div className="flex flex-col gap-[36px]">
-                {CATEGORIES.map((d, i) => (
-                  <div
-                    className="relative w-[200px] h-[80px] rounded-[20px] overflow-hidden"
-                    key={`${d.title}-${i}`}
-                  >
+      <div className="hidden lg:block">
+        <div className="flex flex-row gap-[60px]">
+          <div className="flex flex-col gap-[36px]">
+            {CATEGORIES.map((d, i) => (
+              <div
+                className="relative w-[200px] h-[80px] rounded-[20px] overflow-hidden"
+                key={`${d.title}-${i}`}
+              >
+                <Box
+                  backgroundImage={d.image}
+                  backgroundPosition={'top center'}
+                  backgroundRepeat="no-repeat"
+                  backgroundSize={'100%'}
+                  pos={'absolute'}
+                  top={0}
+                  bottom={0}
+                  w={'full'}
+                  cursor={'pointer'}
+                  _hover={{ opacity: 0.8 }}
+                  onClick={() => setActive(d.value)}
+                >
+                  <Center h={'full'}>
+                    <h2 className="text-[22px] text-[#FFF] font-[500] ">
+                      {d.label}
+                    </h2>
+                  </Center>
+                </Box>
+              </div>
+            ))}
+          </div>
+          <div className="flex-1 pb-10">
+            <div className="grid grid-cols-2 gap-8">
+              {CARDS.filter((d) => d.cate === active).map((d, i) => (
+                <div
+                  className="bg-[#FFF] shadow-lg rounded-xl"
+                  key={`${d.title}-${i}`}
+                >
+                  <div className="relative overflow-hidden h-[310px] rounded-t-xl">
                     <Box
                       backgroundImage={d.image}
-                      backgroundPosition={'top center'}
+                      backgroundPosition={'center center'}
                       backgroundRepeat="no-repeat"
-                      backgroundSize={'100%'}
+                      backgroundSize={'cover'}
                       pos={'absolute'}
                       top={0}
                       bottom={0}
                       w={'full'}
-                      cursor={'pointer'}
-                      _hover={{ opacity: 0.8 }}
-                      onClick={() => setActive(d.value)}
-                    >
-                      <Center h={'full'}>
-                        <h2 className="text-[22px] text-[#FFF] font-[500] ">
-                          {d.label}
-                        </h2>
-                      </Center>
-                    </Box>
+                    />
                   </div>
-                ))}
-              </div>
-            <div className="flex-1 pb-10">
-              <div className="grid grid-cols-2 gap-8">
-                {CARDS.filter((d) => d.cate === active).map((d, i) => (
-                  <div
-                    className="bg-[#FFF] shadow-lg rounded-xl"
-                    key={`${d.title}-${i}`}
-                  >
-                    <div className="relative overflow-hidden h-[310px] rounded-t-xl">
-                      <Box
-                        backgroundImage={d.image}
-                        backgroundPosition={'center center'}
-                        backgroundRepeat="no-repeat"
-                        backgroundSize={'cover'}
-                        pos={'absolute'}
-                        top={0}
-                        bottom={0}
-                        w={'full'}
+                  <div className="bg-[#FFF] rounded-b-xl">
+                    <div className="p-6">
+                      <h2 className="text-[20px] font-[500] pb-2">{d.title}</h2>
+                      <p
+                        className="text-[16px] font-[400]"
+                        dangerouslySetInnerHTML={{ __html: d.content }}
                       />
                     </div>
-                    <div className="bg-[#FFF] rounded-b-xl">
-                      <div className="p-6">
-                        <h2 className="text-[20px] font-[500] pb-2">
-                          {d.title}
-                        </h2>
-                        <p
-                          className="text-[16px] font-[400]"
-                          dangerouslySetInnerHTML={{ __html: d.content }}
-                        />
-                      </div>
-                    </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
+    </div>
   );
 }
 
