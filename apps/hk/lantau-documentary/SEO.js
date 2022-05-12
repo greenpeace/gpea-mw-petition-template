@@ -11,19 +11,19 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: '',
-            gBasket: '',
+            gCampaign: 'oceans',
+            gBasket: 'lantau-documentary',
           });
         `,
         }}
       />
       {/* title */}
       <title>
-      《山海大嶼》香港第一部大嶼山生態紀錄長片 Greenpeace 綠色和平 | 香港
+        《山海大嶼》香港大嶼山生態紀錄片 - Greenpeace 綠色和平 | 香港
       </title>
       <meta
         property="og:title"
-        content="《山海大嶼》香港第一部大嶼山生態紀錄長片 Greenpeace 綠色和平 | 香港"
+        content="《山海大嶼》香港大嶼山生態紀錄片 -  Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"

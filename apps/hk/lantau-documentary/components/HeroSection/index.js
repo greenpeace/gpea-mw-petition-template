@@ -9,9 +9,7 @@ import {
   ModalOverlay,
   ModalContent,
 } from '@chakra-ui/react';
-import {
-  useViewportScroll,
-} from 'framer-motion';
+import { useViewportScroll } from 'framer-motion';
 import { CloseIcon } from '@chakra-ui/icons';
 import AvatarGroup from '../../components/Avatar';
 import MobileHero from '../../images/mobile/hero.png';
@@ -82,7 +80,7 @@ function HeroSection() {
                   style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
                 >
                   <span className="block md:inline-block">香港第一部</span>
-                  <span>大嶼山生態紀錄長片</span>
+                  <span>大嶼山生態紀錄片</span>
                 </h1>
               </div>
               <div className="mb-8">
@@ -93,7 +91,7 @@ function HeroSection() {
                   <span className="md:block mb-2">單次捐款100元</span>
                   <span className="md:inline-block">收看記錄片</span>
                   <span className="block md:inline-block md:pl-2">
-                    支持守護大嶼工作
+                    支持堅守大嶼工作
                   </span>
                 </h2>
               </div>
@@ -157,7 +155,7 @@ function HeroSection() {
         >
           <div className="md:flex-1 flex flex-col gap-4">
             <h1 className="text-[24px] font-[700] leading-[36px]">
-              大嶼山生態紀錄長片
+              大嶼山生態紀錄片
             </h1>
             <p className="text-[16px] font-[500]">
               綠色和平與本地生態團隊耗時大半年製作
@@ -170,7 +168,7 @@ function HeroSection() {
             </div>
 
             <p className="text-[16px] font-[500]">
-              山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的香港第一部大嶼山生態紀錄長片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
+              山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的香港第一部大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
             </p>
 
             <p className="text-[16px] font-[500]">

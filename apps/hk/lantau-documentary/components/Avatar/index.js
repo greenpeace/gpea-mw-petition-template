@@ -9,7 +9,7 @@ import Item from './item';
 const TEAMS = [
   { image: Team01, name: '馮漢城', role: '編輯', width: 85, height: 85 },
   { image: Team02, name: '黃遂心', role: '攝影師', width: 85, height: 85 },
-  { image: Team03, name: '枼尚庭', role: '攝影師', width: 85, height: 85 },
+  { image: Team03, name: '葉尚庭', role: '攝影師', width: 85, height: 85 },
   { image: Team04, name: '郭子祈', role: '攝影助手', width: 85, height: 85 },
   { image: Team05, name: '陳志雲', role: '旁白', width: 85, height: 85 },
 ];
