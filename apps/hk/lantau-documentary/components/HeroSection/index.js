@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   AspectRatio,
   Box,
@@ -9,8 +9,9 @@ import {
   ModalOverlay,
   ModalContent,
 } from '@chakra-ui/react';
-import { useAnimation, useViewportScroll, motion, useTransform } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import {
+  useViewportScroll,
+} from 'framer-motion';
 import { CloseIcon } from '@chakra-ui/icons';
 import AvatarGroup from '../../components/Avatar';
 import MobileHero from '../../images/mobile/hero.png';
@@ -21,35 +22,10 @@ import DesktopHeroFront from '../../images/hero_front_v2.png';
 import subBanner from '../../images/sub_banner.jpeg';
 import appLogo from '../../images/app_logo.png';
 
+import Logo from './logo';
+
 function HeroSection() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { scrollY, scrollYProgress } = useViewportScroll();
-
-  const y = useTransform(scrollY, [0, 400], [0, -200]);
-  const opacity = useTransform(scrollYProgress, (value) => 1 - (value * 30));
-  const scale = useTransform(scrollYProgress, (value) => 1 - (value * 10));
-
-  const AnimationBox = ({ children }) => {
-    // const control = useAnimation();
-    const [ref, inView] = useInView({
-      /* Optional options */
-      threshold: 0.5,
-      triggerOnce: false
-    });
-
-    return (
-      <div>
-        <div className="absolute top-[100px] md:top-[180px]" ref={ref}></div> {/** InView point */}
-        {inView && <motion.div
-          className="box"
-          style={{ y: y, opacity: opacity, scale: scale}}
-        >
-          {children}
-        </motion.div>}
-      </div>
-    );
-  };
-
   return (
     <div className="relative">
       <Box
@@ -72,13 +48,13 @@ function HeroSection() {
           h={{ base: '105px', sm: '145px', lg: '215px', xl: '310px' }}
           mx={'auto'}
         >
-          <AnimationBox>
+          <Logo>
             <Image
               src={appLogo}
               m={'auto'}
               maxW={{ base: '355px', sm: '480px', lg: '720px', xl: '1040px' }}
             />
-          </AnimationBox>
+          </Logo>
         </Box>
       </div>
       <Box

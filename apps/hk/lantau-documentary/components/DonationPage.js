@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PetitionFooter from '@containers/petitionFooter';
-import { Box, Center, Image, Divider } from '@chakra-ui/react';
+import { Box, Center, Image, Divider, AspectRatio } from '@chakra-ui/react';
 import Header from '../components/Header';
 import MobileHero from '../images/mobile/hero.png';
 import MobileHeroFront from '../images/mobile/hero_front.png';
@@ -96,10 +96,13 @@ function Index({ setFormContent }) {
           >
             <div className="flex flex-col-reverse md:flex-row gap-8 relative z-10 px-[20px]">
               <div className="w-[100%] lg:w-[690px]">
-                <div className="rounded-xl bg-[#000] w-full h-[370px]">
-                  <Center h={'100%'}>
-                    <Image src={PlayButton} alt={''} />
-                  </Center>
+                <div className="rounded-xl bg-[#000] w-full overflow-hidden">
+                <AspectRatio w="100%" ratio={16 / 9}>
+            <iframe
+              src="https://www.youtube.com/embed/LJeuw6MzuRQ"
+              allowFullScreen
+            />
+          </AspectRatio>
                 </div>
                 <div className="pt-[45px]">
                   <div className="flex flex-row items-center">

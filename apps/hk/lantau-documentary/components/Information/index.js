@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Center, Button } from '@chakra-ui/react';
+import { Box, Center } from '@chakra-ui/react';
 import Card from './card';
-import joinBackground from '../../images/mobile/join_background.jpeg';
-import joinBackgroundDesktop from '../../images/join_background.jpeg';
 import image01 from '../../images/information/01.jpeg';
 import image02 from '../../images/information/02.jpeg';
 import image03 from '../../images/information/03.jpeg';
@@ -77,7 +75,7 @@ const CARDS = [
   },
 ];
 
-function Information() {
+function Information({children}) {
   const [active, setActive] = useState('河溪');
 
   const menuStyle = {
@@ -86,13 +84,6 @@ function Information() {
   };
 
   return (
-    <Box
-      backgroundImage={{ base: joinBackground, md: joinBackgroundDesktop }}
-      backgroundPosition={'bottom center'}
-      backgroundSize={{ base: '100%' }}
-      backgroundRepeat={'no-repeat'}
-      w={'full'}
-    >
       <div className="container mx-auto px-[30px] py-[36px] lg:max-w-[1180px] xl:px-0">
         <div className="pb-[26px] md:pt-[126px] md:pb-[60px]">
           <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[6px]">
@@ -200,25 +191,6 @@ function Information() {
           </div>
         </div>
       </div>
-
-      <div className="container max-w-[1180px] mx-auto px-[30px] py-[36px] min-h-[480px] lg:min-h-[600px]">
-        <div className="md:ml-[60%]">
-          <h1 className="text-[24px] font-[700] leading-[36px] pb-[26px]">
-            參與聯署
-          </h1>
-          <p className="text-[16px] font-[500] leading-[24px] pb-[26px]">
-            你的聯署將有助推動政府撤回「明日大嶼」填海計劃，守護本地珍貴海洋生態，善用現存土地資源。
-          </p>
-          <Button
-            color="white"
-            bgColor={'orange.500'}
-            _hover={{ bg: 'orange.300' }}
-          >
-            立即聯署
-          </Button>
-        </div>
-      </div>
-    </Box>
   );
 }
 

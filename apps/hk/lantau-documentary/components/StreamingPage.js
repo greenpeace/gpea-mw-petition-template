@@ -1,27 +1,36 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Box, Center, Image, Divider, Button } from '@chakra-ui/react';
+import { Box, Image, Button, AspectRatio } from '@chakra-ui/react';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 import Form from '../components/Form/StreamingForm';
-
 import MobileHero from '../images/mobile/hero.png';
 import MobileHeroFront from '../images/mobile/hero_front.png';
 import DesktopHero from '../images/hero_v2.jpg';
 import DesktopHeroFront from '../images/hero_front_v2.png';
-
-import PlayButton from '../images/donate/play_button.png';
-
 import appLogo from '../images/app_logo.png';
-
 import { connect } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 
+import PASSCODE from '../passcode.json'
+
 function Index() {
   const logoRef = useRef(null);
+  const [showVideo, setShowVideo] = useState(false);
+  // const PASSCODE_LIST = PASSCODE.data
+
+  // const handleCheckPasscode = (passcode) => {
+  //   const getPasscode = PASSCODE_LIST.find(d=> d === passcode)
+  //   if(getPasscode){
+  //     console.log('hv ar')
+  //   } else {
+  //     console.log('wp')
+  //   }
+  // }
+
   return (
     <>
       <Box h={'100vh'} pos={'relative'}>
         <div className="relative h-[100%]">
-          <div className="pageWrap">
+          {!showVideo &&<div className="pageWrap">
             <Box
               backgroundImage={{ base: MobileHero, lg: DesktopHero }}
               backgroundPosition={'top center'}
@@ -81,13 +90,19 @@ function Index() {
                       <span className="block">輸入收看密碼</span>
                     </h1>
                   </div>
-                  <Form />
+                  <Form setShowVideo={setShowVideo}/>
                 </div>
               </div>
             </div>
-          </div>
+          </div>}
 
-          <div className="videoWrap relative h-[100%] z-[10] hidden">
+          {showVideo && <div className="videoWrap relative h-[100%] z-[10]">
+          <AspectRatio w="100%" ratio={16 / 9}>
+            <iframe
+              src="https://www.youtube.com/embed/LJeuw6MzuRQ"
+              allowFullScreen
+            />
+          </AspectRatio>
             <div className="absolute bottom-0 w-full p-6 bg-[#000] text-[#FFF]">
               <div className="md:max-w-[1345px] mx-auto">
                 <div className="md:flex-1 flex flex-col gap-4">
@@ -113,7 +128,7 @@ function Index() {
                 </div>
               </div>
             </div>
-          </div>
+          </div>}
         </div>
         <Box
           pos={'absolute'}

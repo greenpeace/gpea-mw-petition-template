@@ -66,6 +66,9 @@ const DonateForm = (props) => {
 
       {!showMessage && (
         <Box>
+          <Box px={4} pt={4}>
+            <StepProgress />
+          </Box>
           <Box py="6" px="4">
             <Stack spacing="4">
               {donate_header && (

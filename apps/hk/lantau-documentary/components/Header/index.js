@@ -4,8 +4,8 @@ import useScrollPosition from './useScrollPosition';
 import { useRouter } from 'next/router';
 import logoChinese from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png';
 
-const Header = ({MENU}) => {
-  const router = useRouter()
+const Header = ({ MENU }) => {
+  const router = useRouter();
   const OFFSET = 10;
   const scrollPosition = useScrollPosition();
   const stickyStyle = {
@@ -14,8 +14,8 @@ const Header = ({MENU}) => {
   };
 
   const handleMenuOnClick = (main, link, refName, page) => {
-    router.push(`/?p=${page}&s=${refName}`, undefined, { shallow: true })
-  }
+    router.push(`/?p=${page}&s=${refName}`, undefined, { shallow: true });
+  };
 
   return (
     <div
@@ -27,16 +27,28 @@ const Header = ({MENU}) => {
       >
         <div className="flex flex-row space-x-0 items-center h-[64px]">
           <div className="flex-1">
-            <Image src={logoChinese} maxW="220px" alt={'Greenpeace 綠色和平'} />
+            <Image
+              src={logoChinese}
+              maxW="220px"
+              alt={'Greenpeace 綠色和平'}
+              onClick={() => {
+                router.push(`?p=main`, undefined, { shallow: true });
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+              }}
+              cursor={'pointer'}
+            />
           </div>
           <div>
             <div className="flex flex-row items-center gap-8">
-              {(MENU||[]).map((d) => (
+              {(MENU || []).map((d) => (
                 <div
                   className="cursor-pointer text-[16px] font-[400] text-[#FFF] hover:font-[700] hidden lg:block"
                   key={d.label}
                   onClick={() => {
-                    handleMenuOnClick(d.value, d.label, d.refName, d.page)
+                    handleMenuOnClick(d.value, d.label, d.refName, d.page);
                   }}
                 >
                   {d.label}
@@ -46,7 +58,9 @@ const Header = ({MENU}) => {
                 color="white"
                 bgColor={'orange.500'}
                 _hover={{ bg: 'orange.300' }}
-                onClick={()=>  router.push(`/?p=donation`, undefined, { shallow: true })}
+                onClick={() =>
+                  router.push(`/?p=donation`, undefined, { shallow: true })
+                }
               >
                 立即支持
               </Button>

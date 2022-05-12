@@ -14,7 +14,7 @@ function Index() {
   const visionSection = useRef(null);
   const swiperSection = useRef(null);
   const supportSection = useRef(null);
-  const informationSection = useRef(null);
+  const signupSection = useRef(null);
   const [current, setCurrent] = useState('main');
 
   useEffect(() => {
@@ -52,8 +52,8 @@ function Index() {
     {
       label: '立即聯署',
       page: 'main',
-      refName: 'informationSection',
-      ref: informationSection,
+      refName: 'signupSection',
+      ref: signupSection,
     }
   ];
 
@@ -67,12 +67,13 @@ function Index() {
           visionSection={visionSection}
           swiperSection={swiperSection}
           supportSection={supportSection}
-          informationSection={informationSection}
+          signupSection={signupSection}
         />
       )}
       {current === 'donation' && (
         <DonationPage/>
       )}
+      {/* <StreamingPage/> */}
       <PetitionFooter />
     </>
   );

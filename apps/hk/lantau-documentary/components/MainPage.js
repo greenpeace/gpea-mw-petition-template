@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, Image } from '@chakra-ui/react';
+import { Box, Image, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import HeroSection from './HeroSection';
 import AvatarGroup from './Avatar';
@@ -12,12 +12,15 @@ import subBanner from '../images/sub_banner.jpeg';
 import sectionBackground from '../images/mobile/section_background.jpeg';
 import desktopSectionBackground from '../images/section_background.jpeg';
 
+import joinBackground from '../images/mobile/join_background.jpeg';
+import joinBackgroundDesktop from '../images/join_background.jpeg';
+
 function MainPage({
   heroSection,
   visionSection,
   swiperSection,
   supportSection,
-  informationSection,
+  signupSection,
 }) {
   const router = useRouter();
   const scrollToRef = (ref) => {
@@ -29,14 +32,14 @@ function MainPage({
     { refName: 'visionSection', ref: visionSection },
     { refName: 'swiperSection', ref: swiperSection },
     { refName: 'supportSection', ref: supportSection },
-    { refName: 'informationSection', ref: informationSection}
+    { refName: 'signupSection', ref: signupSection },
   ];
 
   useEffect(() => {
-    const {s, p} = router.query
-    const mapSection = SECTIONS.find(d => d.refName === s)
-    if(mapSection){
-        scrollToRef(mapSection.ref);
+    const { s, p } = router.query;
+    const mapSection = SECTIONS.find((d) => d.refName === s);
+    if (mapSection) {
+      scrollToRef(mapSection.ref);
     }
   }, [router]);
 
@@ -74,13 +77,41 @@ function MainPage({
           <SwiperGroup />
         </div>
 
-        <div ref={supportSection}>
+        <div>
           <Support />
         </div>
 
-        <div ref={informationSection}>
-          <Information />
-        </div>
+        <Box
+          backgroundImage={{ base: joinBackground, md: joinBackgroundDesktop }}
+          backgroundPosition={'bottom center'}
+          backgroundSize={{ base: '100%' }}
+          backgroundRepeat={'no-repeat'}
+          w={'full'}
+        >
+          <div ref={supportSection}>
+            <Information />
+          </div>
+
+          <div ref={signupSection}>
+            <div className="container max-w-[1180px] mx-auto px-[30px] py-[36px] min-h-[480px] lg:min-h-[600px]">
+              <div className="md:ml-[60%]">
+                <h1 className="text-[24px] font-[700] leading-[36px] pb-[26px]">
+                  參與聯署
+                </h1>
+                <p className="text-[16px] font-[500] leading-[24px] pb-[26px]">
+                  你的聯署將有助推動政府撤回「明日大嶼」填海計劃，守護本地珍貴海洋生態，善用現存土地資源。
+                </p>
+                <Button
+                  color="white"
+                  bgColor={'orange.500'}
+                  _hover={{ bg: 'orange.300' }}
+                >
+                  立即聯署
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Box>
       </Box>
     </>
   );
