@@ -11,6 +11,10 @@ const AvatarItem = ({ image, width, height, name, role }) => {
           w={`${width}px`}
           h={`${height}px`}
           bgColor={'transparent'}
+          p="1"
+          sx={{
+            border: '2px dotted #66cc00',
+          }}
         />
       </div>
       <div className="flex-1">

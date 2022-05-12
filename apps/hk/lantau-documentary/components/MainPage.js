@@ -8,7 +8,7 @@ import SwiperGroup from './Swiper';
 import Information from './Information';
 import Support from './Support';
 
-import subBanner from '../images/sub_banner.jpeg';
+import subBanner from '../images/cc5e7113d87915b78c9b2ca.jpg';
 import sectionBackground from '../images/mobile/section_background.jpeg';
 import desktopSectionBackground from '../images/section_background.jpeg';
 
@@ -51,7 +51,7 @@ function MainPage({
         </div>
 
         <div className="container mx-auto px-[30px] pt-[48px] md:hidden">
-          <Image src={subBanner} />
+          <Image src={subBanner} w={'100%'} />
         </div>
 
         <div className="md:hidden">

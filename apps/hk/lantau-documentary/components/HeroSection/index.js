@@ -17,7 +17,7 @@ import MobileHeroFront from '../../images/mobile/hero_front.png';
 import DesktopHero from '../../images/hero_v2.jpg';
 import DesktopHeroFront from '../../images/hero_front_v2.png';
 
-import subBanner from '../../images/sub_banner.jpeg';
+import subBanner from '../../images/cc5e7113d87915b78c9b2ca.jpg';
 import appLogo from '../../images/app_logo.png';
 
 import Logo from './logo';
@@ -179,7 +179,7 @@ function HeroSection() {
               <AvatarGroup />
             </div>
           </div>
-          <div className="hidden md:block">
+          <div className="flex-1 hidden md:block">
             <Image src={subBanner} w={'100%'} />
           </div>
         </div>
