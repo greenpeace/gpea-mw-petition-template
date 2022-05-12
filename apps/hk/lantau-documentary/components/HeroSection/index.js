@@ -88,7 +88,7 @@ function HeroSection() {
                   className="text-xl md:text-2xl font-[500] leading-8"
                   style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
                 >
-                  <span className="md:block mb-2">單次捐款100元</span>
+                  <span className="md:block mb-2">立即單次捐款100元</span>
                   <span className="md:inline-block">收看記錄片</span>
                   <span className="block md:inline-block md:pl-2">
                     支持堅守大嶼工作

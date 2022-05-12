@@ -80,9 +80,9 @@ function Index({ setFormContent }) {
                     className="text-[32px] md:text-[36px] font-[900] leading-[48px] md:leading-[54px]"
                     style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
                   >
-                    <span className="block">單次捐款100元</span>
+                    <span className="block">立即單次捐款100元</span>
                     <span className="md:inline-block">
-                      看《山海大嶼》紀錄片 支持守護大嶼工作
+                      收看「山海大嶼」紀錄片
                     </span>
                   </h1>
                 </div>
@@ -97,12 +97,12 @@ function Index({ setFormContent }) {
             <div className="flex flex-col-reverse md:flex-row gap-8 relative z-10 px-[20px]">
               <div className="w-[100%] lg:w-[690px]">
                 <div className="rounded-xl bg-[#000] w-full overflow-hidden">
-                <AspectRatio w="100%" ratio={16 / 9}>
-            <iframe
-              src="https://www.youtube.com/embed/LJeuw6MzuRQ"
-              allowFullScreen
-            />
-          </AspectRatio>
+                  <AspectRatio w="100%" ratio={16 / 9}>
+                    <iframe
+                      src="https://www.youtube.com/embed/LJeuw6MzuRQ"
+                      allowFullScreen
+                    />
+                  </AspectRatio>
                 </div>
                 <div className="pt-[45px]">
                   <div className="flex flex-row items-center">
@@ -217,11 +217,11 @@ const CONTENT03 = () => (
         為了維持公正和中立，綠色和平從不接受任何政府、企業或政治團體的資助，只接受市民和獨立基金的直接捐款。因此，您的捐款對我們尤為重要。有了您的支持，綠色和平將有更多資源與力量執行守護大嶼工作，推動政府優先發展棕地，守護香港自然環境與生物多樣性。
       </p>
       <div className="flex flex-row pt-[30px]">
-      <p>
-        現時在此網頁進行單次捐款500元，我們更會送你
-        「山海大嶼」限定明信片一套與「堅守大嶼」旗幟一面， 以示謝意。
-      </p>
-      <Image src={Item} alt={'Greenpeace 綠色和平'}/>
+        <p>
+          現時在此網頁進行單次捐款500元，我們更會送你
+          「山海大嶼」限定明信片一套與「堅守大嶼」旗幟一面， 以示謝意。
+        </p>
+        <Image src={Item} alt={'Greenpeace 綠色和平'} />
       </div>
     </div>
   </div>
