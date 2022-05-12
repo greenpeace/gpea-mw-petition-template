@@ -7,7 +7,7 @@ import image03 from '../../images/information/03.jpeg';
 import image04 from '../../images/information/04.jpeg';
 
 import typea0 from '../../images/information/00.jpg';
-import typea1 from '../../images/information/typea1.png';
+// import typea1 from '../../images/information/typea1.png';
 import typea2 from '../../images/information/typea2.png';
 import typeb1 from '../../images/information/typeb1.jpg';
 import typeb2 from '../../images/information/typeb2.png';
@@ -164,7 +164,7 @@ function Information({ children }) {
                   className="bg-[#FFF] shadow-lg rounded-xl"
                   key={`${d.title}-${i}`}
                 >
-                  <div className="relative overflow-hidden h-[310px] rounded-t-xl">
+                  <div className="relative overflow-hidden h-[340px] rounded-t-xl">
                     <Box
                       backgroundImage={d.image}
                       backgroundPosition={'center center'}
@@ -174,6 +174,7 @@ function Information({ children }) {
                       top={0}
                       bottom={0}
                       w={'full'}
+                      h={'full'}
                     />
                   </div>
                   <div className="bg-[#FFF] rounded-b-xl">

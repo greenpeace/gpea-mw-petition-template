@@ -50,7 +50,7 @@ function MainPage({
           <HeroSection />
         </div>
 
-        <div className="container mx-auto px-[30px] pt-[48px] md:hidden">
+        <div className="container mx-auto p-[30px] md:hidden">
           <Image src={subBanner} w={'100%'} />
         </div>
 
