@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Box } from '@chakra-ui/react';
-import * as formActions from 'store/actions/action-types/form-actions';
 import { Helmet } from 'react-helmet';
 import StepProgress from '@components/Progress/StepProgress';
 // import MessageSection from './messageSection';
@@ -55,7 +54,9 @@ const DonateForm = (props) => {
       </Helmet>
       <div
         data-gpea-module="gpea-donation-module"
-        data-gpea-project={default_message}
+        data-gpea-market={theme.Market}
+        data-gpea-campaign={'general'}
+        data-gpea-language={'zh_TW'}
       ></div>
     </Box>
   );
