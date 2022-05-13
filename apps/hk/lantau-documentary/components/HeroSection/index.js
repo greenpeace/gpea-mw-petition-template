@@ -203,9 +203,12 @@ function HeroSection() {
           />
           <AspectRatio w="100%" ratio={16 / 9}>
             <iframe
-              src="https://www.youtube.com/embed/LJeuw6MzuRQ"
-              allowFullScreen
-            />
+              src="https://www.youtube.com/embed/W-ihGvlnSpw"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
           </AspectRatio>
         </ModalContent>
       </Modal>
