@@ -46,7 +46,13 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
   }, []);
 
   useEffect(() => {
-    const market = themeData?.Market;
+    const domain = document.location.host;
+    const market =
+      themeData?.Market || domain.indexOf('hk') > 0
+        ? 'hk'
+        : domain.indexOf('tw') > 0
+        ? 'tw'
+        : '';
     /* GTM is only applicable for production env */
     if (process.env.NODE_ENV === 'production') {
       let gtmId = '';
@@ -58,7 +64,6 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
           gtmId = 'GTM-WRM6WK6';
           break;
         default:
-          gtmId = '';
           break;
       }
       const tagManagerArgs = {

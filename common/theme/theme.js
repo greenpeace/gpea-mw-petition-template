@@ -12,6 +12,13 @@ const theme = extendTheme({
         color: 'blue.500',
       },
     },
+    Modal: {
+      baseStyle: {
+        dialogContainer: {
+          '@supports(height: -webkit-fill-available)': {},
+        },
+      },
+    },
   },
   fonts: {
     body: 'var(--font-family)',
