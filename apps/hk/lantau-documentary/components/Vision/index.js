@@ -39,11 +39,11 @@ const VisionGroup = () => {
       minH={{ md: '850px' }}
     >
       <div className="container mx-auto py-[36px] md:pt-0">
-        <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[26px] md:pt-[126px] md:pb-[60px]">
+        <h2 className="text-[24px] md:text-[28px] font-[700] text-center pb-[30px] md:pt-[126px] md:pb-[60px]">
           我們的理念
-        </h1>
+        </h2>
 
-        <div className="pl-4 lg:hidden">
+        <div className="lg:hidden">
           <div className="flex overflow-x-scroll pb-10 hide-scroll-bar">
             <div className="flex flex-nowrap">
               {CARDS.map((d) => (

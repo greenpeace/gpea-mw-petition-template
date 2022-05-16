@@ -16,7 +16,7 @@ const TEAMS = [
 
 function AvatarGroup() {
   return (
-    <div className="container mx-auto px-[30px] md:px-0 py-[36px]">
+    <div className="container mx-auto px-[20px] md:px-0 py-[36px]">
       <h1 className="text-[20px] font-[700] leading-[36px] pb-[26px]">
         製作與配音團隊
       </h1>

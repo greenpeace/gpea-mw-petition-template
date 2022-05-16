@@ -36,7 +36,7 @@ const CARDS = [
     title: '廣東米蝦',
     cate: '河溪',
     content:
-      '米蝦是溪流中嘅清潔隊伍，進食有機物與藻類。牠們會用有剛毛嘅細鉗，不斷尋找可食用的細碎有機物與藻類',
+      '米蝦是溪流中嘅清潔隊伍，進食有機物與藻類。牠們會用有剛毛的細鉗，不斷尋找可食用的細碎有機物與藻類',
   },
   {
     image: typeb1,
@@ -87,14 +87,14 @@ function Information({ children }) {
   };
 
   return (
-    <div className="container mx-auto px-[30px] py-[36px] lg:max-w-[1180px] xl:px-0">
+    <div className="container mx-auto px-[20px] py-[36px] lg:max-w-[1180px] xl:px-0">
       <div className="pb-[26px] md:pt-[126px] md:pb-[60px]">
-        <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[6px]">
+        <h2 className="text-[24px] md:text-[28px] font-[700] text-center pb-[8px]">
           細看大嶼
-        </h1>
+        </h2>
 
         <p className="text-[16px] font-[500] text-center">
-          一部紀錄片盡覽大嶼 20 種本地珍貴物種
+          一部紀錄片盡覽大嶼 20 種物種
         </p>
       </div>
 

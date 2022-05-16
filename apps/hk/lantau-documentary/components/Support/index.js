@@ -11,7 +11,7 @@ function Support() {
       backgroundPosition={'center center'}
       pos={'relative'}
     >
-      <div className="container mx-auto px-[30px] py-[36px] text-[#FFF] h-[515px] lg:h-[430px]">
+      <div className="container mx-auto px-[20px] py-[36px] text-[#FFF] h-[515px] lg:h-[430px]">
         <div className="flex h-full items-center relative z-10 max-w-[840px] lg:text-center lg:mx-auto">
           <div>
             <h1 className="text-[24px] font-[700] leading-[36px] pb-[26px]">

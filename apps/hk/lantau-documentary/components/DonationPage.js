@@ -70,7 +70,7 @@ function Index({ setFormContent }) {
             className="frontHero"
           />
           <div
-            className="container mx-auto px-[30px] relative"
+            className="container mx-auto px-[20px] relative"
             style={{ zIndex: 11 }}
           >
             <div className="flex flex-col pt-[165px] md:pt-[100px] lg:pt-[226px] pb-[50px] md:py-0">
@@ -183,7 +183,7 @@ const CONTENT01 = () => (
 const CONTENT02 = () => (
   <div className="flex flex-col py-6">
     <p className="mx-[30px] text-[16px] font-[400] pb-[30px]">
-      由現時起直至6月1日，成功登記捐助「山海大嶼」紀錄片項目者，即可邀請 2
+      由現時起，成功登記捐助「山海大嶼」紀錄片項目者，即可邀請 2
       位朋友免費觀看紀錄片！步驟如下：
     </p>
     {STEPS2.map((d, i) => (
@@ -234,7 +234,7 @@ const TABS = [
     icon: Icon01,
   },
   {
-    label: '與朋友同我紀錄片',
+    label: '與朋友同看紀錄片',
     value: 1,
     icon: Icon02,
   },
@@ -255,8 +255,7 @@ const STEPS = [
     icon: Step02,
   },
   {
-    content:
-      '在電郵連結或網頁上方「登記收看」頁面輸入確認電郵或短訊內附的個人密碼',
+    content: '點開電郵或短訊中的收看連結，並輸入您的收看密碼',
     icon: Step03,
   },
   {

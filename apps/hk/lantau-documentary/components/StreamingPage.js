@@ -86,7 +86,7 @@ function Index() {
                 className="frontHero"
               />
               <div
-                className="container mx-auto px-[30px] relative"
+                className="container mx-auto px-[20px] relative"
                 style={{ zIndex: 11 }}
               >
                 <div className="flex flex-col pb-[50px] md:py-0">
@@ -132,7 +132,7 @@ function Index() {
                     </div>
 
                     <p className="text-[16px]">
-                      山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的香港第一部大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
+                      山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
                     </p>
 
                     <Button {...OrangeCTA} maxW={'220px'}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, Image, Button } from '@chakra-ui/react';
+import { Box, Image, Button, Link } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import HeroSection from './HeroSection';
 import AvatarGroup from './Avatar';
@@ -93,21 +93,27 @@ function MainPage({
           </div>
 
           <div ref={signupSection}>
-            <div className="container max-w-[1180px] mx-auto px-[30px] py-[36px] min-h-[480px] lg:min-h-[600px]">
+            <div className="container max-w-[1180px] mx-auto px-[20px] py-[36px] min-h-[480px] lg:min-h-[600px]">
               <div className="md:ml-[60%]">
-                <h1 className="text-[24px] font-[700] leading-[36px] pb-[26px]">
+                <h2 className="text-[24px] md:text-[28px] font-[700] pb-[20px]">
                   參與聯署
-                </h1>
-                <p className="text-[16px] font-[500] leading-[24px] pb-[26px]">
+                </h2>
+                <p className="text-[16px] font-[500] leading-[24px] pb-[30px]">
                   你的聯署將有助推動政府撤回「明日大嶼」填海計劃，守護本地珍貴海洋生態，善用現存土地資源。
                 </p>
-                <Button
-                  color="white"
-                  bgColor={'orange.500'}
-                  _hover={{ bg: 'orange.300' }}
+                <Link
+                  isExternal
+                  href="https://cloud.greenhk.greenpeace.org/petition-general-elm-mw"
                 >
-                  立即聯署
-                </Button>
+                  <Button
+                    size="md"
+                    color="white"
+                    bgColor={'orange.500'}
+                    _hover={{ bg: 'orange.300' }}
+                  >
+                    立即聯署
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

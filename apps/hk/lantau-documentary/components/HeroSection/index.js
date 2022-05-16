@@ -17,7 +17,7 @@ import MobileHeroFront from '../../images/mobile/hero_front.png';
 import DesktopHero from '../../images/hero_v2.jpg';
 import DesktopHeroFront from '../../images/hero_front_v2.png';
 
-import subBanner from '../../images/cc5e7113d87915b78c9b2ca.jpg';
+import subBanner from '../../images/2022_lantau_docu_poster.jpg';
 import appLogo from '../../images/app_logo.png';
 
 import Logo from './logo';
@@ -68,7 +68,7 @@ function HeroSection() {
         className="frontHero"
       />
       <div
-        className="container mx-auto px-[30px] relative"
+        className="container mx-auto px-[20px] relative"
         style={{ zIndex: 11 }}
       >
         <div className="flex flex-col pt-[65px] md:pt-[100px] lg:pt-[140px] pb-[50px] md:py-0">
@@ -130,7 +130,7 @@ function HeroSection() {
       </div>
 
       <div
-        className="container mx-auto px-[30px] md:pt-[150px] lg:pt-[270px] md:max-w-[1180px] relative pb-[40px] md:pb-[105px] xl:pb-[60px]"
+        className="container mx-auto px-[20px] md:pt-[150px] lg:pt-[270px] md:max-w-[1180px] relative pb-[40px] md:pb-[105px] xl:pb-[60px]"
         style={{ zIndex: 10 }}
       >
         <Box
@@ -169,7 +169,7 @@ function HeroSection() {
             </div>
 
             <p className="text-[16px]">
-              山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的香港第一部大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
+              山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
             </p>
 
             <p className="text-[16px]">
