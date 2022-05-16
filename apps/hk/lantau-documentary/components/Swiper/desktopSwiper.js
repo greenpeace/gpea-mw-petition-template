@@ -69,7 +69,7 @@ const DesktopSwiper = ({ IMAGES }) => {
           return (
             <SwiperSlide
               key={`${d.title}-${i}`}
-              style={{ width: d.width === 'full' ? '530px' : '280px' }}
+              style={{ width: d.width === 'full' ? '480px' : '360px' }}
             >
               <div
                 className={`relative w-full ${

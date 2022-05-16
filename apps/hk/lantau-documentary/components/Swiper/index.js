@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
-import DesktopSwiper from './desktopSwiper'
-import MobileSwiper from './mobileSwiper'
+import DesktopSwiper from './desktopSwiper';
+import MobileSwiper from './mobileSwiper';
 
 import image01 from '../../images/swiper/01.jpeg';
 import image02 from '../../images/swiper/02.jpeg';
@@ -54,11 +54,11 @@ const IMAGES = [
 const VisionGroup = () => {
   return (
     <Box>
-      <div className="container mx-auto md:max-w-[100%] md:px-[30px] pt-[36px] md:pt-[0px] lg:pb-[60px]">
+      <div className="container mx-auto md:max-w-[100%] md:px-[20px] pt-[36px] md:pt-[0px] lg:pb-[60px]">
         <div className="pb-[26px] md:pt-[126px] md:pb-[60px]">
-          <h1 className="text-[24px] font-[700] leading-[36px] text-center pb-[6px]">
+          <h2 className="text-[24px] md:text-[28px] font-[700] text-center pb-[8px]">
             大嶼有我
-          </h1>
+          </h2>
 
           <p className="text-[16px] font-[500] text-center">
             以行動守護大嶼的「保衛者們」介紹
@@ -66,11 +66,11 @@ const VisionGroup = () => {
         </div>
 
         <div className="mb-[25px] hidden md:block">
-         <DesktopSwiper IMAGES={IMAGES}/>
+          <DesktopSwiper IMAGES={IMAGES} />
         </div>
 
         <div className="mb-[25px] block md:hidden">
-         <MobileSwiper IMAGES={IMAGES}/>
+          <MobileSwiper IMAGES={IMAGES} />
         </div>
       </div>
     </Box>

@@ -25,7 +25,7 @@ const MobileSwiper = ({ IMAGES }) => {
         {(CONTENT.DATA || []).map((d, i) => {
           if (d.type === 'group') {
             return d.items.map((item, i) => (
-              <SwiperSlide key={`${d.title}-${i}`} style={{ width: '280px' }}>
+              <SwiperSlide key={`${d.title}-${i}`} style={{ width: '90%' }}>
                 <div
                   className={`relative w-full h-[530px] max-w-xs overflow-hidden rounded-[20px] shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out`}
                   key={`${item}-${i}`}
@@ -63,7 +63,7 @@ const MobileSwiper = ({ IMAGES }) => {
           }
 
           return (
-            <SwiperSlide key={`${d.title}-${i}`} style={{ width: '280px' }}>
+            <SwiperSlide key={`${d.title}-${i}`} style={{ width: '90%' }}>
               <div
                 className={`relative w-full h-[530px] max-w-[100%] overflow-hidden rounded-[20px] shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out`}
               >
