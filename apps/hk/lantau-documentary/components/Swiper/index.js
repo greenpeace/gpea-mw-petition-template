@@ -7,7 +7,7 @@ import image01 from '../../images/swiper/01.jpeg';
 import image02 from '../../images/swiper/02.jpeg';
 import image03 from '../../images/swiper/03.jpeg';
 import image04 from '../../images/swiper/04.jpeg';
-import image05 from '../../images/swiper/05.jpeg';
+import image05 from '../../images/swiper/05.jpg';
 import image06 from '../../images/swiper/06.jpeg';
 import image07 from '../../images/swiper/07.jpeg';
 import image08 from '../../images/swiper/08.jpeg';
