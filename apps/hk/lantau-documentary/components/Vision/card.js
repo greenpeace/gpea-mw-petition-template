@@ -15,10 +15,10 @@ const Card = ({ image, title, content }) => {
           w={'full'}
         >
           <div className="absolute left-6 right-6 bottom-6">
-            <h1 className="text-[24px] font-[700] leading-[36px] text-[#FFF] border-b-2 pb-2 mb-2">
+            <p className="text-[24px] font-[700] leading-[36px] text-[#FFF] border-b-2 pb-4 mb-4">
               {title}
-            </h1>
-            <p className="text-[#FFF]">{content}</p>
+            </p>
+            <p className="mt-4 text-[#FFF]">{content}</p>
           </div>
 
           <Box

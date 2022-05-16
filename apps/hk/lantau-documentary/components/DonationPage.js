@@ -25,7 +25,9 @@ import Stepb04 from '../images/donate/stepb04.svg';
 
 import Item from '../images/donate/item.png';
 
-import DonateForm from '../components/Form/DonateForm';
+// import DonateForm from '../components/Form/DonateForm';
+
+import DonateForm from '@components/GP/DonateForm';
 
 import { connect } from 'react-redux';
 import formContent from '../form';
@@ -44,112 +46,117 @@ function Index({ setFormContent }) {
 
   return (
     <>
-      <Box>
-        <div className="relative pb-[190px]">
-          <Box
-            backgroundImage={{ base: MobileHero, lg: DesktopHero }}
-            backgroundPosition={'top center'}
-            backgroundRepeat="no-repeat"
-            backgroundSize={'100%'}
-            w={'100%'}
-            position="absolute"
-            top={0}
-            bottom={0}
-            backgroundAttachment={'fixed'}
-          />
-          <Box
-            backgroundImage={{ base: MobileHeroFront, lg: DesktopHeroFront }}
-            backgroundPosition={'top center'}
-            backgroundRepeat="no-repeat"
-            backgroundSize={'100%'}
-            w={'100%'}
-            position="absolute"
-            top={0}
-            bottom={0}
-            zIndex={2}
-            className="frontHero"
-          />
-          <div
-            className="container mx-auto px-[20px] relative"
-            style={{ zIndex: 11 }}
-          >
-            <div className="flex flex-col pt-[165px] md:pt-[100px] lg:pt-[226px] pb-[50px] md:py-0">
-              <div className="text-center text-[#FFF]">
-                <div>
-                  <h1
-                    className="text-[32px] md:text-[36px] font-[900] leading-[48px] md:leading-[54px]"
-                    style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
-                  >
-                    <span className="block">立即單次捐款100元</span>
-                    <span className="md:inline-block">
-                      收看「山海大嶼」紀錄片
-                    </span>
-                  </h1>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className="container mx-auto pt-[40px] md:pt-[140px] md:max-w-[1345px] relative"
-            style={{ zIndex: 10 }}
-          >
-            <div className="flex flex-col-reverse md:flex-row gap-8 relative z-10 px-[20px]">
-              <div className="w-[100%] lg:w-[690px]">
-                <div className="rounded-xl bg-[#000] w-full overflow-hidden">
-                  <AspectRatio w="100%" ratio={16 / 9}>
-                    <iframe
-                      src="https://www.youtube.com/embed/LJeuw6MzuRQ"
-                      allowFullScreen
-                    />
-                  </AspectRatio>
-                </div>
-                <div className="pt-[45px]">
-                  <div className="flex flex-row items-center">
-                    {TABS.map((d, i) => {
-                      const isActive =
-                        tab === d.value
-                          ? 'border-b-[#FF8100] border-solid border-b-[2px]'
-                          : 'border-b-[#000] border-solid border-b-[1px]';
-                      return (
-                        <div
-                          className="flex-1 cursor-pointer"
-                          key={`${d.value}-${i}`}
-                          onClick={() => setTab(d.value)}
-                        >
-                          <div
-                            className={`mx-auto h-[40px] flex flex-row items-center gap-2 ${isActive} pb-2 mb-2`}
-                          >
-                            <Center w="100%">
-                              <Image src={d.icon} alt={d.label} px={'10px'} />
-                              <h2
-                                className={`text-[16px] lg:text-[20px] ${
-                                  tab === d.value ? 'font-[500]' : 'font-[400]'
-                                }`}
-                              >
-                                {d.label}
-                              </h2>
-                            </Center>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  {tab === 0 && <CONTENT01 />}
-                  {tab === 1 && <CONTENT02 />}
-                  {tab === 2 && <CONTENT03 />}
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="bg-[#FFF] rounded-[20px] p-[10px]">
-                  <DonateForm />
-                </div>
+      <div className="relative pb-[80px]">
+        <Box
+          backgroundImage={{ base: MobileHero, lg: DesktopHero }}
+          backgroundPosition={'top center'}
+          backgroundRepeat="no-repeat"
+          backgroundSize={'100%'}
+          w={'100%'}
+          position="absolute"
+          top={0}
+          bottom={0}
+          backgroundAttachment={'fixed'}
+        />
+        <Box
+          backgroundImage={{ base: MobileHeroFront, lg: DesktopHeroFront }}
+          backgroundPosition={'top center'}
+          backgroundRepeat="no-repeat"
+          backgroundSize={'100%'}
+          w={'100%'}
+          position="absolute"
+          top={0}
+          bottom={0}
+          zIndex={2}
+          className="frontHero"
+        />
+        <div
+          className="container mx-auto px-[20px] relative"
+          style={{ zIndex: 11 }}
+        >
+          <div className="flex flex-col pt-[165px] md:pt-[100px] lg:pt-[226px] pb-[50px] md:py-0">
+            <div className="text-center text-[#FFF]">
+              <div>
+                <h1
+                  className="text-[32px] md:text-[36px] font-[900] leading-[48px] md:leading-[54px]"
+                  style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
+                >
+                  <span className="block">立即單次捐款100元</span>
+                  <span className="md:inline-block">
+                    收看「山海大嶼」紀錄片
+                  </span>
+                </h1>
               </div>
             </div>
           </div>
         </div>
-        <PetitionFooter />
-      </Box>
+
+        <div
+          className="container mx-auto pt-[40px] md:pt-[140px] md:max-w-[1345px] relative"
+          style={{ zIndex: 10 }}
+        >
+          <div className="flex flex-col-reverse lg:flex-row gap-8 relative z-10 px-[20px]">
+            <div className="w-[100%] flex-1">
+              <div className="rounded-xl bg-[#000] w-full overflow-hidden">
+                <AspectRatio w="100%" ratio={16 / 9}>
+                  <iframe
+                    src="https://www.youtube.com/embed/LJeuw6MzuRQ"
+                    allowFullScreen
+                  />
+                </AspectRatio>
+              </div>
+              <div className="pt-[45px]">
+                <div className="flex flex-row items-center">
+                  {TABS.map((d, i) => {
+                    const isActive =
+                      tab === d.value
+                        ? 'border-b-[#FF8100] border-solid border-b-[2px]'
+                        : 'border-b-[#000] border-solid border-b-[1px]';
+                    return (
+                      <div
+                        className="flex-1 cursor-pointer"
+                        key={`${d.value}-${i}`}
+                        onClick={() => setTab(d.value)}
+                      >
+                        <div
+                          className={`mx-auto h-[40px] flex flex-row items-center gap-2 ${isActive} pb-2 mb-2`}
+                        >
+                          <Center pb="4" w="100%">
+                            <Image src={d.icon} alt={d.label} px={'10px'} />
+                            <p
+                              className={`text-[18px] lg:text-[20px] ${
+                                tab === d.value ? 'font-[500]' : 'font-[400]'
+                              }`}
+                            >
+                              {d.label}
+                            </p>
+                          </Center>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                {tab === 0 && <CONTENT01 />}
+                {tab === 1 && <CONTENT02 />}
+                {tab === 2 && <CONTENT03 />}
+              </div>
+            </div>
+            <div className="w-[100%] flex-1">
+              <Box
+                maxW="500px"
+                mx="auto"
+                bgColor="white"
+                borderRadius={8}
+                boxShadow="lg"
+                overflow="hidden"
+              >
+                <DonateForm />
+              </Box>
+            </div>
+          </div>
+        </div>
+      </div>
+      <PetitionFooter />
     </>
   );
 }

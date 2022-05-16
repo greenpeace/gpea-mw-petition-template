@@ -5,10 +5,10 @@ const Card = ({ image, title, content }) => {
   return (
     <div className="flex-1 relative" key={title}>
       <div className="absolute left-6 right-6 -bottom-[50px] z-30 max-w-[310px]">
-        <h1 className="text-[24px] font-[700] leading-[36px] text-[#FFF] border-b-2 pb-2 mb-2">
+        <p className="text-[24px] font-[700] leading-[36px] text-[#FFF] border-b-2 pb-4 mb-4">
           {title}
-        </h1>
-        <p className="text-[#FFF]">{content}</p>
+        </p>
+        <p className="mt-4 text-[#FFF]">{content}</p>
       </div>
       <div className="relative w-[300px] h-[420px] rounded-[20px] mx-auto overflow-hidden">
         <Box
