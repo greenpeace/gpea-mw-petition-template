@@ -11,16 +11,15 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'climate',
-            gBasket: 'earthdaywebinar',
+            gCampaign: 'plastics',
+            gBasket: 'plasticfree-marketplace',
           });
         `,
         }}
       />
       {/* title */}
       <title>
-        立即登記參與「惜簡生活節」，體驗裸買市集 - Greenpeace 綠色和平 |
-        香港
+        立即登記參與「惜簡生活節」，體驗裸買市集 - Greenpeace 綠色和平 | 香港
       </title>
       <meta
         property="og:title"
@@ -36,7 +35,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/05/a54fabd4-202205-plastic-free-marketplace-kv-fb-preview.png"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/05/00c9a8ad-plastic-free-marketplace-preview.jpg"
       />
     </Head>
   );
