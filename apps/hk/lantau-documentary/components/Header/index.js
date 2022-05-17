@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { AppContext } from "../../context/appContext";
 import { Image, Button } from '@chakra-ui/react';
-import useScrollPosition from './useScrollPosition';
 import { useRouter } from 'next/router';
+import useScrollPosition from './useScrollPosition';
 import logoChinese from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png';
 
-const Header = ({ MENU }) => {
+const Header = () => {
+  const data = useContext(AppContext)
   const router = useRouter();
   const OFFSET = 10;
   const scrollPosition = useScrollPosition();
@@ -12,10 +14,44 @@ const Header = ({ MENU }) => {
     wrap: scrollPosition > OFFSET ? 'bg-[#66CC00]' : '',
     border: scrollPosition > OFFSET ? '' : 'border-b-[1px]',
   };
-
   const handleMenuOnClick = (main, link, refName, page) => {
     router.push(`/?p=${page}&s=${refName}`, undefined, { shallow: true });
   };
+
+  const {heroSection, visionSection, swiperSection, supportSection, signupSection} = data;
+
+  const MENU = [
+    {
+      label: '紀錄片介紹',
+      page: 'main',
+      refName: 'heroSection',
+      ref: heroSection,
+    },
+    {
+      label: '我們的理念',
+      page: 'main',
+      refName: 'visionSection',
+      ref: visionSection,
+    },
+    {
+      label: '大嶼有我',
+      page: 'main',
+      refName: 'swiperSection',
+      ref: swiperSection,
+    },
+    {
+      label: '細看大嶼',
+      page: 'main',
+      refName: 'supportSection',
+      ref: supportSection,
+    },
+    {
+      label: '立即聯署',
+      page: 'main',
+      refName: 'signupSection',
+      ref: signupSection,
+    },
+  ];
 
   return (
     <div

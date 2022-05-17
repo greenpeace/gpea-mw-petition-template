@@ -8,24 +8,14 @@ import DesktopHero from '../images/hero_v2.jpg';
 import DesktopHeroFront from '../images/hero_front_v2.png';
 import appLogo from '../images/app_logo.png';
 import { connect } from 'react-redux';
+import ReactPlayer from 'react-player';
 import * as formActions from 'store/actions/action-types/form-actions';
 
 import PASSCODE from '../passcode.json';
 
 function Index() {
   const logoRef = useRef(null);
-  const [showVideo, setShowVideo] = useState(false);
-  // const PASSCODE_LIST = PASSCODE.data
-
-  // const handleCheckPasscode = (passcode) => {
-  //   const getPasscode = PASSCODE_LIST.find(d=> d === passcode)
-  //   if(getPasscode){
-  //     console.log('hv ar')
-  //   } else {
-  //     console.log('wp')
-  //   }
-  // }
-
+  const [showVideo, setShowVideo] = useState(true);
   return (
     <>
       <Box h={'100vh'} pos={'relative'}>
@@ -107,14 +97,18 @@ function Index() {
           )}
 
           {showVideo && (
-            <div className="videoWrap relative h-[100%] z-[10]">
-              <AspectRatio w="100%" ratio={16 / 9}>
-                <iframe
-                  src="https://www.youtube.com/embed/LJeuw6MzuRQ"
-                  allowFullScreen
+            <div className="videoWrap relative h-[100%] z-[10] mt-[64px]">
+              {/* <div className="player-wrapper">
+                <ReactPlayer
+                  url="https://vimeo.com/180293809"
+                  className="react-player"
+                  playing
+                  width="100%"
+                  height="100%"
+                  controls={false}
                 />
-              </AspectRatio>
-              <div className="absolute bottom-0 w-full p-6 bg-[#000] text-[#FFF]">
+              </div> */}
+              {/* <div className="absolute bottom-0 w-full p-6 bg-[#000] text-[#FFF]">
                 <div className="md:max-w-[1345px] mx-auto">
                   <div className="md:flex-1 flex flex-col gap-4">
                     <h1 className="text-[28px] font-[700] leading-[36px]">
@@ -140,7 +134,7 @@ function Index() {
                     </Button>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           )}
         </div>
