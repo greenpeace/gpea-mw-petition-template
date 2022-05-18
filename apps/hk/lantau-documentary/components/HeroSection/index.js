@@ -9,6 +9,7 @@ import {
   ModalOverlay,
   ModalContent,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import { useViewportScroll } from 'framer-motion';
 import { CloseIcon } from '@chakra-ui/icons';
 import AvatarGroup from '../../components/Avatar';
@@ -22,8 +23,9 @@ import appLogo from '../../images/app_logo.png';
 
 import Logo from './logo';
 
-function HeroSection({refProp}) {
+function HeroSection({ refProp }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
   return (
     <div className="relative">
       <Box
@@ -76,7 +78,7 @@ function HeroSection({refProp}) {
             <div>
               <div className="mb-6">
                 <h1
-                  className="text-2xl md:text-4xl font-[900] leading-8"
+                  className="text-2xl md:text-4xl font-bold leading-8"
                   style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
                 >
                   <span className="block md:inline-block">香港第一部</span>
@@ -104,6 +106,9 @@ function HeroSection({refProp}) {
                     w={'100%'}
                     bgColor={'orange.500'}
                     _hover={{ bg: 'orange.300', color: '#FFF' }}
+                    onClick={() =>
+                      router.push(`/?p=donation`, undefined, { shallow: true })
+                    }
                   >
                     捐款收看
                   </Button>
@@ -187,10 +192,10 @@ function HeroSection({refProp}) {
       </div>
 
       <Modal isOpen={isOpen} size={'4xl'} onClose={onClose} isCentered={true}>
-        <ModalOverlay bgColor={'rgba(255,255,255,0.8'} />
+        <ModalOverlay />
         <ModalContent
           pos={'relative'}
-          px={{ base: '15px' }}
+          px={{ base: '20px' }}
           bgColor={'transparent'}
           shadow={'none'}
         >
@@ -204,12 +209,9 @@ function HeroSection({refProp}) {
           />
           <AspectRatio w="100%" ratio={16 / 9}>
             <iframe
-              src="https://www.youtube.com/embed/W-ihGvlnSpw"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+              src="https://www.youtube.com/embed/n1Tk6VHVfK0"
+              allowFullScreen
+            />
           </AspectRatio>
         </ModalContent>
       </Modal>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Button } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import contentDonateBackground from '../../images/mobile/content_donate_background.jpeg';
 import desktopContentDonateBackground from '../../images/content_donate_background.jpeg';
 
@@ -28,6 +29,9 @@ function Support() {
               color="white"
               bgColor={'orange.500'}
               _hover={{ bg: 'orange.300' }}
+              onClick={() =>
+                router.push(`/?p=donation`, undefined, { shallow: true })
+              }
             >
               捐款收看
             </Button>
