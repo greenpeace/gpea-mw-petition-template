@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { Box, Image, Button, AspectRatio } from '@chakra-ui/react';
+import { Box, Image, Button, AspectRatio, Link } from '@chakra-ui/react';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 import Form from '../components/Form/StreamingForm';
 import MobileHero from '../images/mobile/hero.png';
 import DesktopHero from '../images/hero_v2.jpg';
 import appLogo from '../images/app_logo.png';
 import { connect } from 'react-redux';
-// import ReactPlayer from 'react-player';
 import * as formActions from 'store/actions/action-types/form-actions';
 import ErrorIcon from '../images/error_icon.svg';
 
 function Index() {
+  const router = useRouter();
   const [showVideo, setShowVideo] = useState(false);
   const [showErrorMessage, setShowErrorMessage] = useState(false);
   return (
@@ -28,10 +28,7 @@ function Index() {
               <div className="flex flex-col pb-[50px] md:py-0">
                 <div className="text-center text-[#FFF]">
                   <div className="p-[20px]">
-                    <p
-                      className="text-[24px] md:text-[28px] font-bold"
-                      // style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
-                    >
+                    <p className="text-[24px] md:text-[28px] font-bold">
                       輸入收看密碼
                     </p>
                   </div>
@@ -65,9 +62,9 @@ function Index() {
         )}
         {showVideo && (
           <div className="videoWrap relative z-10">
-            <div className="player-wrapper">
+            <AspectRatio ratio={16 / 9}>
               {/* Testing */}
-              <iframe
+              {/* <iframe
                 src="https://player.vimeo.com/video/698087346?h=3bf82bfde4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                 frameborder="0"
                 allow="autoplay; fullscreen; picture-in-picture"
@@ -79,7 +76,7 @@ function Index() {
                   width: '100%',
                   height: '100%',
                 }}
-              ></iframe>
+              ></iframe> */}
               {/* Live */}
               <iframe
                 src="https://player.vimeo.com/video/710817416?h=f44b421221"
@@ -94,8 +91,7 @@ function Index() {
                   height: '100%',
                 }}
               ></iframe>
-            </div>
-
+            </AspectRatio>
             <Information />
           </div>
         )}
@@ -193,12 +189,20 @@ const Information = () => {
           </div>
 
           <p className="text-[16px]">
-            山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
+            山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的大嶼山生態紀錄片。
+            <br />
+            <br />
+            製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
           </p>
 
-          <Button {...OrangeCTA} mt="6" maxW={'220px'}>
-            捐助支持 守護生態
-          </Button>
+          <Link
+            href="https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=elm_mw&ref=documentary-streaming-page"
+            isExternal
+          >
+            <Button {...OrangeCTA} mt="6">
+              捐款支持 守護生態
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
