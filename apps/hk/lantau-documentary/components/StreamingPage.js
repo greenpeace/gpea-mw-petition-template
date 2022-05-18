@@ -6,7 +6,7 @@ import MobileHero from '../images/mobile/hero.png';
 import DesktopHero from '../images/hero_v2.jpg';
 import appLogo from '../images/app_logo.png';
 import { connect } from 'react-redux';
-import ReactPlayer from 'react-player';
+// import ReactPlayer from 'react-player';
 import * as formActions from 'store/actions/action-types/form-actions';
 import ErrorIcon from '../images/error_icon.svg';
 
@@ -42,7 +42,7 @@ function Index() {
                         class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4"
                         role="alert"
                       >
-                        <strong class="font-bold">密碼不正確! </strong>
+                        <strong class="font-bold">密碼不正確！</strong>
                         <span class="block sm:inline">請重新輸入</span>
                         <span class="absolute top-0 bottom-0 left-0 px-4 py-3">
                           <Image
@@ -63,14 +63,7 @@ function Index() {
         {showVideo && (
           <div className="videoWrap relative z-10">
             <div className="player-wrapper">
-              {/* <ReactPlayer
-                url="https://vimeo.com/180293809"
-                className="react-player"
-                playing
-                width="100%"
-                height="100%"
-                controls={false}
-              /> */}
+              {/* Testing */}
               <iframe
                 src="https://player.vimeo.com/video/698087346?h=3bf82bfde4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                 frameborder="0"
@@ -83,7 +76,20 @@ function Index() {
                   width: '100%',
                   height: '100%',
                 }}
-                title="Pexels Videos 1840201"
+              ></iframe>
+              {/* Live */}
+              <iframe
+                src="https://player.vimeo.com/video/710817416?h=f44b421221"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                }}
               ></iframe>
             </div>
 
@@ -165,7 +171,7 @@ const Logo = () => {
 
 const Information = () => {
   return (
-    <div className="w-full py-12 bg-[#000] text-[#FFF] px-[20px] md:px-0">
+    <div className="w-full bg-black text-white py-[60px] px-[20px] md:px-0">
       <div className="md:max-w-[1345px] mx-auto">
         <div className="md:flex-1 flex flex-col gap-4">
           <h1 className="text-[28px] font-[700] leading-[36px]">
@@ -186,7 +192,7 @@ const Information = () => {
             山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
           </p>
 
-          <Button {...OrangeCTA} maxW={'220px'}>
+          <Button {...OrangeCTA} mt="6" maxW={'220px'}>
             捐助支持 守護生態
           </Button>
         </div>
