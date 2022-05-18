@@ -78,7 +78,7 @@ function Index({ setFormContent }) {
             <div className="text-center text-[#FFF]">
               <div>
                 <h1
-                  className="text-[32px] md:text-[36px] font-[900] leading-[48px] md:leading-[54px]"
+                  className="text-[32px] md:text-[36px] font-bold leading-[48px] md:leading-[54px]"
                   style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
                 >
                   <span className="block">立即單次捐款100元</span>
@@ -106,7 +106,7 @@ function Index({ setFormContent }) {
                 </AspectRatio>
               </div>
               <div className="rounded-xl bg-white pt-[40px] pb-[40px]">
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row items-end">
                   {TABS.map((d, i) => {
                     const isActive =
                       tab === d.value
@@ -119,13 +119,18 @@ function Index({ setFormContent }) {
                         onClick={() => setTab(d.value)}
                       >
                         <div
-                          className={`mx-auto h-[40px] flex flex-row items-center gap-2 ${isActive} pb-2 mb-2`}
+                          className={`mx-auto flex flex-row items-center gap-2 ${isActive} pb-2 mb-2`}
                         >
                           <Center pb="4" w="100%">
-                            <Image src={d.icon} alt={d.label} px={'10px'} />
+                            <Image
+                              src={d.icon}
+                              alt={d.label}
+                              w="40px"
+                              px={'8px'}
+                            />
                             <p
-                              className={`text-[18px] ${
-                                tab === d.value ? 'font-[500]' : 'font-[400]'
+                              className={`text-[16px] ${
+                                tab === d.value ? 'font-[bold]' : ''
                               }`}
                             >
                               {d.label}
