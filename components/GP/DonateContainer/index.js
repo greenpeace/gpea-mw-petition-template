@@ -46,7 +46,6 @@ const DonateForm = (props) => {
     setItem(amount_monthly[0]);
     setAmount(default_amount);
   }, [amount_monthly]);
-
   return (
     <Box>
       <Helmet>
@@ -57,6 +56,7 @@ const DonateForm = (props) => {
         data-gpea-market={theme.Market}
         data-gpea-campaign={'general'}
         data-gpea-language={'zh_TW'}
+        data-gpea-formdata={JSON.stringify(signup)}
       ></div>
     </Box>
   );
