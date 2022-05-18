@@ -18,20 +18,22 @@ function Index() {
       <Box pos={'relative'}>
         {!showVideo && (
           <div className="relative pb-40 md:pb-60">
-            <Logo />
             <div
               className="container mx-auto px-[20px] relative"
               style={{ zIndex: 11 }}
             >
+              <div>
+                <Logo />
+              </div>
               <div className="flex flex-col pb-[50px] md:py-0">
                 <div className="text-center text-[#FFF]">
-                  <div>
-                    <h1
-                      className="text-[32px] md:text-[36px] font-[900] leading-[48px] md:leading-[54px]"
-                      style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
+                  <div className="p-[20px]">
+                    <p
+                      className="text-[24px] md:text-[28px] font-bold"
+                      // style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
                     >
-                      <span className="block">輸入收看密碼</span>
-                    </h1>
+                      輸入收看密碼
+                    </p>
                   </div>
                   <Form
                     setShowVideo={setShowVideo}
@@ -42,8 +44,9 @@ function Index() {
                         class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4"
                         role="alert"
                       >
-                        <strong class="font-bold">密碼不正確！</strong>
-                        <span class="block sm:inline">請重新輸入</span>
+                        <span class="block sm:inline">
+                          密碼不正確！請重新輸入
+                        </span>
                         <span class="absolute top-0 bottom-0 left-0 px-4 py-3">
                           <Image
                             src={ErrorIcon}
@@ -141,7 +144,7 @@ function Index() {
 const Logo = () => {
   return (
     <div
-      className="mx-[10px] md:mx-0 pt-[125px] md:pt-[160px] lg:pt-[130px] xl:pt-[195px] min-h-[105px] relative"
+      className="mx-[10px] md:mx-0 pt-[60px] md:pt-[120px] relative"
       style={{ zIndex: 2 }}
     >
       <Box
@@ -157,6 +160,7 @@ const Logo = () => {
         <Image
           src={appLogo}
           m={'auto'}
+          w="100%"
           maxW={{
             base: '355px',
             sm: '480px',
