@@ -7,7 +7,7 @@ import Team05 from '../../images/team05.png';
 import Item from './item';
 
 const TEAMS = [
-  { image: Team01, name: '馮漢城', role: '編輯', width: 120, height: 120 },
+  { image: Team01, name: '馮漢城', role: '編導', width: 120, height: 120 },
   { image: Team02, name: '黃遂心', role: '攝影師', width: 120, height: 120 },
   { image: Team03, name: '葉尚庭', role: '攝影師', width: 120, height: 120 },
   { image: Team04, name: '郭子祈', role: '攝影助手', width: 120, height: 120 },

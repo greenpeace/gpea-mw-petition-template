@@ -10,7 +10,7 @@ import Information from './Information';
 import Support from './Support';
 
 import subBanner from '../images/cc5e7113d87915b78c9b2ca.jpg';
-import sectionBackground from '../images/mobile/section_background.jpeg';
+import sectionBackground from '../images/mobile/docu_dolphin.jpg';
 import desktopSectionBackground from '../images/section_background.jpeg';
 
 import joinBackground from '../images/mobile/join_background.jpeg';
