@@ -22,10 +22,13 @@ import {
 const DonateForm = (props) => {
   const {
     formContent: {
-      default_message,
-      default_amount,
       amount_monthly,
       amount_onetime,
+      allow_monthly,
+      allow_oneoff,
+      default_donation_type,
+      default_message,
+      default_amount,
       donate_header,
       donate_description,
       donate_type,
@@ -49,16 +52,27 @@ const DonateForm = (props) => {
       value === 'monthly' ? amount_monthly[0].value : amount_onetime[0].value,
     );
     setURL({ ...url, type: value });
-    setShowMessage(value === 'single');
+    // Show Monthly Message
+    // Skip when default is not 'monthly'
+    if (default_donation_type === 'monthly ') {
+      setShowMessage(value === 'single');
+    }
   };
 
   useEffect(() => {
-    if (!amount_monthly) {
-      return;
+    // if (!amount_monthly) {
+    //   return;
+    // }
+    if (default_donation_type === 'monthly') {
+      setDonateType('monthly');
+      setItem(amount_monthly[0]);
+      setAmount(default_amount);
+    } else if (default_donation_type === 'single') {
+      setDonateType('single');
+      setItem(amount_onetime[0]);
+      setAmount(default_amount);
     }
-    setItem(amount_monthly[0]);
-    setAmount(default_amount);
-  }, [amount_monthly]);
+  }, [default_donation_type, amount_monthly, amount_onetime]);
 
   return (
     <Box>
@@ -66,9 +80,7 @@ const DonateForm = (props) => {
 
       {!showMessage && (
         <Box>
-          <Box px={4} pt={4}>
-            <StepProgress />
-          </Box>
+          <StepProgress />
           <Box py="6" px="4">
             <Stack spacing="4">
               {donate_header && (
