@@ -20,7 +20,7 @@ const MyForm = (props) => {
     setWebStatus,
     values,
     children,
-    setShowErrorMessage
+    setShowErrorMessage,
   } = props;
 
   useEffect(() => {
@@ -30,33 +30,35 @@ const MyForm = (props) => {
   }, [signup.submitted]);
 
   return (
-      <Box py={{ base: 6, md: 8 }} mx={'auto'} maxWidth={'400px'}>
-        <Form onSubmit={handleSubmit}>
-          <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-            <Box flex={1} color={'#000'}>
-              <Field
-                errors={errors.Password}
-                touched={touched.Password}
-                label={'密碼'}
-                name={'Password'}
-                type={'text'}
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                bgColor={'#FFF'}
-                h={'56px'}
-                value={values.Password}
-              />
-            </Box>
+    <Box py={{ base: 6, md: 8 }} mx={'auto'} maxWidth={'520px'}>
+      <Form onSubmit={handleSubmit}>
+        <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+          <Box flex={1} color={'#000'}>
+            <Field
+              errors={errors.Password}
+              touched={touched.Password}
+              label={'輸入您的收看密碼'}
+              name={'Password'}
+              type={'text'}
+              bgColor={'#FFF'}
+              _placeholder={{ fontSize: 16 }}
+              h={'56px'}
+              size={'lg'}
+              value={values.Password}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
+          </Box>
 
-            <Box flex={1}>
-              <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
-                收看紀錄片
-              </Button>
-            </Box>
-          </Stack>
-        </Form>
-        {children}
-      </Box>
+          <Box flex={1}>
+            <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+              收看紀錄片
+            </Button>
+          </Box>
+        </Stack>
+      </Form>
+      <Box>{children}</Box>
+    </Box>
   );
 };
 
@@ -70,14 +72,16 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const {setShowVideo, setShowErrorMessage} = props
+    const { setShowVideo, setShowErrorMessage } = props;
 
     setShowErrorMessage(false);
 
-    const PASSCODE_LIST = PASSCODE.data
-    const getPasscode = PASSCODE_LIST.find(d=> d.toString() === values.Password)
-    if(getPasscode){
-      setShowVideo(true)
+    const PASSCODE_LIST = PASSCODE.data;
+    const getPasscode = PASSCODE_LIST.find(
+      (d) => d.toString() === values.Password,
+    );
+    if (getPasscode) {
+      setShowVideo(true);
       setShowErrorMessage(false);
     } else {
       setShowErrorMessage(true);
@@ -104,7 +108,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     setWebStatus: (bol) => {
       dispatch({ type: statusActions.SET_FORM_SUBMITTED, data: bol });
-    }
+    },
   };
 };
 
