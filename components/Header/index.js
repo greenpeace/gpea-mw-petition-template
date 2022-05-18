@@ -2,7 +2,7 @@ import { Box, Flex, Image, Container, Link } from '@chakra-ui/react';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import logoChinese from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png';
+import logoChinese from '@common/images/logo_zh.png';
 
 const WithSubnavigation = ({ href }) => {
   return (

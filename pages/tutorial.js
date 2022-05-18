@@ -46,7 +46,7 @@ function Tutorial() {
         <title>走塑GPS 使用教學 - Greenpeace 綠色和平 | 香港</title>
       </Head>
 
-      <Box minH="300px" w={'100%'} pos={'relative'} overflow={'hidden'}>
+      <Box minH="320px" w={'100%'} pos={'relative'} overflow={'hidden'}>
         <Container maxW={`${maxWSize}px`} pos={`relative`} zIndex={2}>
           <Flex py={20} w={{ md: 'md', xl: 'xl' }} alignItems="center">
             <Box p="4" bg="var(--gps-primary)">
@@ -67,6 +67,7 @@ function Tutorial() {
           src="/images/20220318_GPS-03.jpg"
           layout="fill"
           objectFit="cover"
+          objectPosition="left center"
           quality={100}
         />
       </Box>

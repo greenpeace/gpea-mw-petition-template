@@ -5,24 +5,19 @@ import { BsWhatsapp } from 'react-icons/bs';
 
 export const CTAButton = () => (
   <Link
-    href="https://wa.me/國家區號+電話號碼?text=預設內容"
+    href="https://wa.me/85260459671?text=Hello"
     isExternal
     style={{ textDecoration: 'none' }}
   >
     <Box
       d="inline-block"
+      bgColor="var(--gps-whatsapp)"
       borderRadius={8}
+      px={8}
+      py={4}
       _hover={{ opacity: 0.9 }}
-      cursor={'pointer'}
     >
-      <Flex
-        bgColor="var(--gps-whatsapp)"
-        borderRadius={8}
-        px={8}
-        py={4}
-        alignItems="center"
-        justifyContent="center"
-      >
+      <Flex alignItems="center" justifyContent="center">
         <Icon
           as={BsWhatsapp}
           fontSize="2xl"

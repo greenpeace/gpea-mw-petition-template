@@ -29,7 +29,7 @@ const theme = extendTheme({
   textStyles: {
     heading: {
       color: 'gray.900',
-      fontSize: { base: '2xl', md: '4xl' },
+      fontSize: { base: 'xl', md: '2xl' },
       fontWeight: 'bold',
       mt: 2,
       mb: 4,

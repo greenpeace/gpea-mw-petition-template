@@ -36,7 +36,7 @@ function Content({ signup }) {
 
   return (
     <Box py={20} w={{ md: 'md', xl: 'xl' }}>
-      <Box ref={ref}>
+      <Box ref={ref} p="4" bg="var(--gps-primary)">
         <Heading
           {...headingProps}
           color={'white'}

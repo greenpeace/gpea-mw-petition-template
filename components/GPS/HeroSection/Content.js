@@ -34,8 +34,8 @@ function Content({ status, theme }) {
   }, []);
 
   return (
-    <Box py={20} w={{ md: 'md', xl: 'xl' }}>
-      <Box ref={ref}>
+    <Box py={12} w={{ md: 'md', xl: 'xl' }}>
+      <Box ref={ref} p="4" bg="var(--gps-primary)" d="inline-block">
         <Heading
           {...headingProps}
           color={'white'}
@@ -44,7 +44,7 @@ function Content({ status, theme }) {
             md: 'var(--text-2xl)',
           }}
           textShadow="0 0 1px rgba(0,0,0, .2)"
-          mb={4}
+          mb="0"
           dangerouslySetInnerHTML={{
             __html: '立即登記<br/>免費使用完整版！',
           }}

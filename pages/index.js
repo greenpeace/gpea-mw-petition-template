@@ -37,25 +37,6 @@ import c4 from '../public/images/slider/GP0STTWGV_High_res.jpg';
 import c5 from '../public/images/slider/GP0STTWGX_High_res.jpg';
 
 const maxWSize = 1200;
-const trianglePropsMD = {
-  width: 30,
-  height: 30,
-  borderLeft: '90px solid transparent',
-  borderRight: '0px solid transparent',
-  borderTop: '60px solid var(--gps-primary)',
-  right: 0,
-  zIndex: 2,
-};
-
-const triangleProps = {
-  width: 30,
-  height: 30,
-  borderLeft: '60px solid transparent',
-  borderRight: '0px solid transparent',
-  borderTop: '40px solid var(--gps-primary)',
-  left: 60,
-  zIndex: 2,
-};
 
 function Index() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -93,8 +74,9 @@ function Index() {
               flexDirection={{ base: 'column', lg: 'row' }}
               align="center"
             >
-              <Box flex="1" mb="6">
-                <Flex
+              <Box flex="1" py="6">
+                <Stack
+                  spacing="4"
                   direction="column"
                   align={{ base: 'center', md: 'flex-start' }}
                 >
@@ -103,6 +85,7 @@ function Index() {
                     as="p"
                     textStyle={'content'}
                     textAlign={{ base: 'center', md: 'left' }}
+                    mb="4"
                   >
                     綠色和平推出「走塑GPS」WhatsApp Chatbot功能，
                     <br />
@@ -111,10 +94,8 @@ function Index() {
                     做到
                     <strong>「Plastic Free, Care Free」</strong>！
                   </Text>
-                  <Box mt="4">
-                    <CTAButton />
-                  </Box>
-                </Flex>
+                  <CTAButton />
+                </Stack>
               </Box>
               <Box w="100%" flex="1">
                 <SimpleGrid columns="3" justifyContent={'space-around'}>
@@ -193,14 +174,14 @@ function Index() {
               px={{ base: 0, md: 4 }}
               direction={{ base: 'column' }}
               flex={1}
-              spacing="6"
+              spacing="4"
             >
-              <Box px="2">
+              <Box>
                 <Image
                   loader={imageLoader}
                   src={`/images/svg/sticker-free-icon-font.svg`}
-                  width="48px"
-                  height="48px"
+                  width="40px"
+                  height="40px"
                 />
               </Box>
               <Box flex={1}>
@@ -264,13 +245,13 @@ function Index() {
 
           <Stack direction={{ base: 'column', lg: 'row' }} spacing="6">
             <Box flex="1">
-              <Stack direction={{ base: 'column' }} spacing="6">
-                <Box px="2">
+              <Stack direction={{ base: 'column' }} spacing="4">
+                <Box>
                   <Image
                     loader={imageLoader}
                     src={`/images/svg/map-free-icon-font.svg`}
-                    width="48px"
-                    height="48px"
+                    width="40px"
+                    height="40px"
                   />
                 </Box>
                 <Box flex={1}>
@@ -357,111 +338,6 @@ function Index() {
     </Box>
   );
 }
-
-const HeroSection = () => {
-  const [isLargerThanMD] = useMediaQuery('(min-width: 62em)'); // default md: '62em'
-  return (
-    <Box
-      rounded={16}
-      bg="white"
-      bgGradient="linear(to-b, #ace0f9, #fff1eb)"
-      mx={4}
-      px={{ lg: 10 }}
-      pt={{ lg: 10 }}
-    >
-      <Container maxW={`${maxWSize}px`}>
-        <Flex direction={{ base: 'column', lg: 'row' }}>
-          <Box
-            flex={{ base: 1, lg: 'initial' }}
-            pt={4}
-            maxW={{ base: '480px', lg: '100%' }}
-            mx={{ md: 'auto' }}
-          >
-            <Box
-              bgColor="var(--gps-primary)"
-              borderRadius={'xl'}
-              py={{ base: 4, lg: 8 }}
-              px={{ md: 12 }}
-              position="relative"
-            >
-              <Center w={'100%'} h={'100%'}>
-                <Stack direction={'column'} textAlign={'center'}>
-                  <Text
-                    color={'#FFF'}
-                    fontSize={{ base: '2xl', lg: '5xl' }}
-                    fontWeight={700}
-                  >
-                    全港 1,100 間走塑店鋪
-                  </Text>
-                  <Text
-                    color={'#FFF'}
-                    fontSize={{ base: '2xl', lg: '6xl' }}
-                    fontWeight={700}
-                  >
-                    一鍵導航
-                  </Text>
-                </Stack>
-              </Center>
-
-              <Box
-                style={isLargerThanMD ? trianglePropsMD : triangleProps}
-                position="absolute"
-              />
-            </Box>
-            <Box d={{ base: 'none', lg: 'block' }}>
-              {' '}
-              <Box textAlign="center" pt={4}>
-                <Text
-                  as="h1"
-                  fontSize={{ base: '5xl', lg: '8xl' }}
-                  color="var(--gps-primary)"
-                  fontWeight="bold"
-                >
-                  <Box as="span" style={{ transform: 'rotate(-190deg)' }}>
-                    走
-                  </Box>
-                  塑GPS
-                </Text>
-              </Box>
-            </Box>
-          </Box>
-          <Box flex={1} alignSelf={{ base: 'flex-end', md: 'center' }} pt={6}>
-            <Stack direction={'row'} align={'center'} spacing={6} mb={'-5px'}>
-              <Box d={{ base: 'block', lg: 'none' }}>
-                {' '}
-                <Box textAlign="center" pt={4}>
-                  <Text
-                    as="h1"
-                    fontSize={{ base: '5xl', lg: '9xl' }}
-                    color="var(--gps-primary)"
-                    fontWeight="bold"
-                  >
-                    <Box as="span" style={{ transform: 'rotate(-190deg)' }}>
-                      走
-                    </Box>
-                    塑GPS
-                  </Text>
-                </Box>
-              </Box>
-              <Box
-                className="mainVisualWrap"
-                maxW={{ base: '160px', lg: '365px' }}
-              >
-                <Image
-                  loader={imageLoader}
-                  src={`/images/Plastic-free_GPS.svg`}
-                  width={533}
-                  height={767}
-                  layout={'intrinsic'}
-                />
-              </Box>
-            </Stack>
-          </Box>
-        </Flex>
-      </Container>
-    </Box>
-  );
-};
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
 

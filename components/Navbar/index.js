@@ -6,12 +6,13 @@ import {
   Stack,
   Collapse,
   useDisclosure,
+  Image,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
-import { imageLoader } from 'common/utils';
-import Image from 'next/image';
+
+import logoChinese from '@common/images/logo_zh.png';
 
 export default function WithSubnavigation({ currentPage }) {
   const { isOpen, onToggle } = useDisclosure();
@@ -26,29 +27,36 @@ export default function WithSubnavigation({ currentPage }) {
       pos={'fixed'}
       top={0}
       w="100%"
-      bgColor="white"
-      py={{ base: 2, md: 4 }}
+      bgColor="#66cc00"
+      py="2"
       ref={ref}
       borderBottom="1px"
       borderColor="gray.100"
+      minH={{ base: '50px', md: '60px' }}
+      d="flex"
     >
-      <Box maxW="1200px" mx="auto">
-        <Flex px={{ base: 4 }} align={'center'} justifyContent={'space-around'}>
+      <Box pos="relative" w="100%" maxW="1200px" mx="auto">
+        <Flex
+          w="100%"
+          px={{ base: 4 }}
+          alignItems={'center'}
+          justifyContent={'space-around'}
+        >
           <Flex
-            flex={{ base: 1, md: 'auto' }}
-            ml={{ base: -2 }}
-            display={{ base: 'flex', md: 'none' }}
+            position="absolute"
+            left="20px"
+            display={{ base: 'block', md: 'none' }}
           >
             <IconButton
               onClick={onToggle}
               icon={
                 isOpen ? (
-                  <CloseIcon w={3} h={3} />
+                  <CloseIcon color="white" w={5} h={5} />
                 ) : (
-                  <HamburgerIcon w={5} h={5} />
+                  <HamburgerIcon color="white" w={5} h={5} />
                 )
               }
-              variant={'ghost'}
+              variant={'unstyled'}
               aria-label={'Toggle Navigation'}
               sx={{
                 ':focus:not(:focus-visible)': {
@@ -57,32 +65,36 @@ export default function WithSubnavigation({ currentPage }) {
               }}
             />
           </Flex>
-          <Link
-            href={'/'}
-            sx={{
-              ':focus:not(:focus-visible)': {
-                shadow: 'none',
-              },
-            }}
-            cursor={'pointer'}
+
+          <Flex
+            flex="1"
+            alignSelf="center"
+            justify={{ base: 'center', md: 'start' }}
           >
-            <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-              <Image
-                loader={imageLoader}
-                src={`/images/greenpeace_logo.svg`}
-                layout="intrinsic"
-                width={'160px'}
-                height={'30px'}
-              />
-            </Flex>
-          </Link>
+            <Box>
+              <Link
+                href={'/'}
+                sx={{
+                  ':focus:not(:focus-visible)': {
+                    shadow: 'none',
+                  },
+                }}
+                cursor={'pointer'}
+              >
+                <Image
+                  src={logoChinese}
+                  maxW="220px"
+                  padding="2px"
+                  alt={'Greenpeace 綠色和平'}
+                />
+              </Link>
+            </Box>
+          </Flex>
 
           <Box d={{ base: 'none', md: 'block' }}>
             <DesktopNav currentPage={currentPage} />
           </Box>
-          <Box d={{ base: 'block', md: 'none' }} flex={1} />
         </Flex>
-
         <Collapse in={isOpen} animateOpacity>
           <MobileNav handleToggle={onToggle} currentPage={currentPage} />
         </Collapse>
@@ -101,10 +113,11 @@ const DesktopNav = ({ href, currentPage }) => {
               p={2}
               fontSize={'md'}
               cursor={'pointer'}
-              color={
-                currentPage === navItem.href ? 'var(--gps-primary)' : 'gray.800'
-              }
-              fontWeight={currentPage === navItem.href ? 'bold' : 300}
+              color="white"
+              // color={
+              //   currentPage === navItem.href ? 'var(--gps-primary)' : 'white'
+              // }
+              fontWeight={currentPage === navItem.href ? 'bold' : 400}
               sx={{
                 ':focus:not(:focus-visible)': {
                   shadow: 'none',
@@ -143,6 +156,7 @@ const MobileNav = ({ handleToggle, currentPage }) => {
       zIndex="1"
       spacing="6"
       bg="white"
+      mt="2"
       px="6"
       pt="6"
       pb="10"

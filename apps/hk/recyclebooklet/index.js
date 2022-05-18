@@ -59,14 +59,6 @@ function Index({ setFormContent }) {
             objectFit="cover"
             objectPosition={{ base: '20% top', md: 'center top' }}
           />
-          {/* <Box
-            pos={'absolute'}
-            top={0}
-            right={0}
-            left={0}
-            bottom={0}
-            bgColor={'rgba(0,0,0,0.25)'}
-          /> */}
         </Box>
       </Box>
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Container, useMediaQuery } from '@chakra-ui/react';
+import { Box, Container, Image, useMediaQuery } from '@chakra-ui/react';
 import TagManager from 'react-gtm-module';
 import Wrapper from '@containers/gpsWrapper';
 import HeroSection from '@components/GPS/HeroSection';
@@ -14,11 +14,13 @@ import Head from 'next/head';
 import { imageLoader } from 'common/utils';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as themeActions from 'store/actions/action-types/theme-actions';
-import Image from 'next/image';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
+
+import banner from '../public/images/20220318_GPS-03.jpg';
+import mobileBanner from '../public/images/20220318_GPS_visual_embed-02b.jpg';
 
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
@@ -33,30 +35,6 @@ function Index({ setFormContent, setTheme, themeData }) {
   };
 
   const [showCTAButton, setShowCTAButton] = useState(false);
-
-  useEffect(() => {
-    const market = themeData?.Market;
-    /* GTM is only applicable for production env */
-    if (process.env.NODE_ENV === 'production') {
-      let gtmId = '';
-      switch (market) {
-        case 'hk':
-          gtmId = 'GTM-M6LZL75';
-          break;
-        case 'tw':
-          gtmId = 'GTM-WRM6WK6';
-          break;
-        default:
-          gtmId = '';
-          break;
-      }
-      const tagManagerArgs = {
-        gtmId: gtmId,
-      };
-      TagManager.initialize(tagManagerArgs);
-    }
-    setTheme(themeData);
-  }, []);
 
   useEffect(() => {
     setFormContent(formContent);
@@ -81,26 +59,43 @@ function Index({ setFormContent, setTheme, themeData }) {
           只需簡單登記，就能使用完整版「走塑GPS」！ - Greenpeace 綠色和平 | 香港
         </title>
       </Head>
-      <Box pos={'relative'} minH={{ base: '280px', md: '400px' }}>
+      <Box pos={'relative'} minH={{ base: '100vw', md: '480px' }}>
         <Container maxW={`${maxWSize}px`} pos={'relative'} zIndex={1}>
           <HeroSection />
         </Container>
-
-        <Image
-          loader={imageLoader}
-          src="/images/20220318_GPS-03.jpg"
-          layout="fill"
-          objectFit="cover"
-          objectPosition={'center'}
-          quality={100}
-        />
+        <Box
+          pos={'absolute'}
+          top={0}
+          right={0}
+          left={0}
+          bottom={0}
+          d={{ base: 'none', md: 'block' }}
+        >
+          <Image src={banner} height="100%" width="100%" objectFit="cover" />
+        </Box>
+        <Box
+          pos={'absolute'}
+          top={0}
+          right={0}
+          left={0}
+          bottom={0}
+          d={{ base: 'block', md: 'none' }}
+        >
+          <Image
+            src={mobileBanner}
+            height="100%"
+            width="100%"
+            objectFit="fill"
+            objectPosition={'center'}
+          />
+        </Box>
       </Box>
 
       {/** Mobile form */}
       <Box ref={mobileForm}>
         <Box
           d={{ base: 'block', lg: 'none' }}
-          mt={-2}
+          mt={-4}
           ref={ref}
           pos={'relative'}
           zIndex={2}
