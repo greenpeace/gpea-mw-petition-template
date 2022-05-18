@@ -97,10 +97,10 @@ function Index({ setFormContent }) {
         >
           <div className="flex flex-col-reverse lg:flex-row gap-8 relative z-10 px-[20px]">
             <div className="w-[100%] flex-1">
-              <div className="rounded-xl bg-[#000] w-full overflow-hidden">
+              <div className="mb-[30px] rounded-xl bg-[#000] w-full overflow-hidden">
                 <AspectRatio w="100%" ratio={16 / 9}>
                   <iframe
-                    src="https://www.youtube.com/embed/LJeuw6MzuRQ"
+                    src="https://www.youtube.com/embed/n1Tk6VHVfK0"
                     allowFullScreen
                   />
                 </AspectRatio>
@@ -124,7 +124,7 @@ function Index({ setFormContent }) {
                           <Center pb="4" w="100%">
                             <Image src={d.icon} alt={d.label} px={'10px'} />
                             <p
-                              className={`text-[18px] lg:text-[20px] ${
+                              className={`text-[18px] ${
                                 tab === d.value ? 'font-[500]' : 'font-[400]'
                               }`}
                             >
@@ -189,7 +189,7 @@ const CONTENT01 = () => (
 
 const CONTENT02 = () => (
   <div className="flex flex-col py-6">
-    <p className="mx-[30px] text-[16px] font-[400] pb-[30px]">
+    <p className="mx-[30px] text-[16px] pb-[30px]">
       由現時起，成功登記捐助「山海大嶼」紀錄片項目者，即可邀請 2
       位朋友免費觀看紀錄片！步驟如下：
     </p>
