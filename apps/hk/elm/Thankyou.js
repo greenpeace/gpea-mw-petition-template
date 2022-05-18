@@ -6,7 +6,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import image01 from './images/eco-gif.gif';
+import image01 from './images/elm_flag.jpg';
 
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
@@ -62,12 +62,10 @@ const Thankyou = ({ theme, signup }) => {
         向香港自然環境伸出援手，捐助綠色和平守護大嶼工作。
       </Text>
 
-      <Heading {...headingProps}>
-        捐款守護香港自然環境，即送您一副「生態保衛隊」桌上遊戲！
-      </Heading>
+      <Heading {...headingProps}>堅持發聲 行動帶來改變</Heading>
 
       <Text as="p" {...paragraphProps}>
-        現以每月$200或以上捐款，推動政府善用棕地，守護香港自然環境，您將獲得一副「生態保衛隊」桌上遊戲，並資助低收入家庭學生參與生態導賞團！
+        現以每月$200捐款支持堅守大嶼工作，即可獲得一面「堅守大嶼」旗幟及2次「環保手作工作坊」的機會。
       </Text>
 
       <Box as="p" {...paragraphProps}>

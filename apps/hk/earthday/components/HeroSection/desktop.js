@@ -73,7 +73,7 @@ const HeroSectionDesktop = ({
                     color={'white'}
                     style={{ textShadow: '0 0 8px rgba(0,0,0,0.45)' }}
                   >
-                    減碳無難度，地球日踏出第一步
+                    減碳無難度，今天踏出第一步
                   </Text>
                 </Box>
 
