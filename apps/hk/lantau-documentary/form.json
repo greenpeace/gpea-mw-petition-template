@@ -45,20 +45,19 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "請捐助守護大嶼工作",
-  "donate_description": ["你的捐助，將有效地、直接地守護香港自然環境。"],
+  "donate_header": "立即捐款 收看《山海大嶼》紀錄片",
+  "donate_description": [
+    "請捐助堅守大嶼工作，為守護大嶼工作提供更多資源與力量，合力推動政府優先發展棕地，守護香港自然環境與生物多樣性！"
+  ],
   "default_message": "支持綠色和平持續監察政府棕地政策和土地規劃動向，及時回應並採取相應行動",
   "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
   "donate_suggestion_message": "誠邀您加入每月捐款會員的行列，因為對於非牟利團體而言，定期定額捐款別具意義：它能為組織提供穩定的收入，持續地支援我們的項目研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
   "currency": "HKD",
-  "allow_monthly": "true",
+  "allow_monthly": "false",
   "allow_oneoff": "true",
-  "default_donation_type": "monthly",
+  "default_donation_type": "single",
   "default_amount": 100,
-  "donate_type": [
-    { "label": "每月捐款", "value": "monthly" },
-    { "label": "單次捐款", "value": "single" }
-  ],
+  "donate_type": [{ "label": "單次捐款", "value": "single" }],
   "amount_onetime": [
     {
       "label": "100",
