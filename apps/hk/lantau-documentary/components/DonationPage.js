@@ -97,7 +97,7 @@ function Index({ setFormContent }) {
         >
           <div className="flex flex-col-reverse lg:flex-row gap-8 relative z-10 px-[20px]">
             <div className="w-[100%] flex-1">
-              <div className="mb-[30px] rounded-xl bg-[#000] w-full overflow-hidden">
+              <div className="mb-[30px] rounded-lg bg-[#000] w-full overflow-hidden">
                 <AspectRatio w="100%" ratio={16 / 9}>
                   <iframe
                     src="https://www.youtube.com/embed/n1Tk6VHVfK0"
@@ -105,7 +105,7 @@ function Index({ setFormContent }) {
                   />
                 </AspectRatio>
               </div>
-              <div className="pt-[45px]">
+              <div className="rounded-xl bg-white pt-[40px] pb-[40px]">
                 <div className="flex flex-row items-center">
                   {TABS.map((d, i) => {
                     const isActive =
@@ -184,6 +184,9 @@ const CONTENT01 = () => (
         </div>
       </div>
     ))}
+    <p className="px-[20px] mt-[40px]">
+      * 綠色和平月捐會員將有限量免費名額收看，詳情請參閱會員服務部電郵。
+    </p>
   </div>
 );
 
