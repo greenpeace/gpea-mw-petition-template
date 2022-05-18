@@ -19,7 +19,7 @@ const AvatarItem = ({ image, width, height, name, role }) => {
       </div>
       <div className="flex-1">
         <div className="text-center pt-2">
-          <h2 className="pb-1">{name}</h2>
+          <h2 className="pt-2 pb-2">{name}</h2>
           <h2 className="font-[700]">{role}</h2>
         </div>
       </div>

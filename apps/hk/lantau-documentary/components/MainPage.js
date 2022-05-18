@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
 import { Box, Image, Button, Link } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { AppContext } from "../context/appContext";
+import { AppContext } from '../context/appContext';
 import HeroSection from './HeroSection';
 import AvatarGroup from './Avatar';
 import VisionGroup from './Vision';
@@ -17,13 +17,19 @@ import joinBackground from '../images/mobile/join_background.jpeg';
 import joinBackgroundDesktop from '../images/join_background.jpeg';
 
 function MainPage() {
-  const data = useContext(AppContext)
+  const data = useContext(AppContext);
   const router = useRouter();
   const scrollToRef = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const {heroSection, visionSection, swiperSection, supportSection, signupSection} = data;
+  const {
+    heroSection,
+    visionSection,
+    swiperSection,
+    supportSection,
+    signupSection,
+  } = data;
 
   const SECTIONS = [
     { refName: 'heroSection', ref: heroSection },
@@ -63,8 +69,8 @@ function MainPage() {
           }}
           backgroundPosition={'center center'}
           backgroundRepeat="no-repeat"
-          backgroundSize={'100%'}
-          h={{ base: '200px', lg: '280px', xl: '415px' }}
+          backgroundSize={'cover'}
+          h={{ base: '280px', lg: '320px', xl: '400px' }}
         />
 
         <div ref={visionSection}>
