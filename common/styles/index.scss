@@ -58,16 +58,3 @@ strong {
 .hide-scroll-bar::-webkit-scrollbar {
   display: none;
 }
-
-.player-wrapper {
-  position: relative;
-  padding-top: 56.25%;
-}
-
-.react-player {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width:100%;
-  height:100%;
-}
