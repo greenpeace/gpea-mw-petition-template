@@ -50,6 +50,9 @@
   "donate_description": ["我將以捐助方式參與保護海洋項目，令海洋回復健康。"],
   "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
   "currency": "HKD",
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
   "default_amount": 200,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },

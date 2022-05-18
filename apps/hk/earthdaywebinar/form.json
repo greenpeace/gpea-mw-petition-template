@@ -51,6 +51,9 @@
   ],
   "default_message": "支持團隊持續與更多小學接洽，處理寄送繪本安排。",
   "currency": "HKD",
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
   "default_amount": 200,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
