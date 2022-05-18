@@ -10,8 +10,9 @@ import Information from './Information';
 import Support from './Support';
 
 import subBanner from '../images/cc5e7113d87915b78c9b2ca.jpg';
-import sectionBackground from '../images/mobile/docu_dolphin.jpg';
+import sectionBackground from '../images/mobile/section_background.jpeg';
 import desktopSectionBackground from '../images/section_background.jpeg';
+import dolphinBackgroound from '../images/docu_dolphin.jpg';
 
 import joinBackground from '../images/mobile/join_background.jpeg';
 import joinBackgroundDesktop from '../images/join_background.jpeg';
@@ -64,13 +65,13 @@ function MainPage() {
 
         <Box
           backgroundImage={{
-            base: sectionBackground,
-            md: desktopSectionBackground,
+            base: dolphinBackgroound,
+            md: dolphinBackgroound,
           }}
           backgroundPosition={'center center'}
           backgroundRepeat="no-repeat"
           backgroundSize={'cover'}
-          h={{ base: '280px', lg: '320px', xl: '400px' }}
+          h={{ base: '360px', lg: '520px' }}
         />
 
         <div ref={visionSection}>
