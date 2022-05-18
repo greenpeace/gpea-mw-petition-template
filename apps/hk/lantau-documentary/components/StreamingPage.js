@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Image, Button, AspectRatio, Link } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 import Form from '../components/Form/StreamingForm';
 import MobileHero from '../images/mobile/hero.png';
@@ -199,7 +200,7 @@ const Information = () => {
             href="https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=elm_mw&ref=documentary-streaming-page"
             isExternal
           >
-            <Button {...OrangeCTA} mt="6">
+            <Button {...OrangeCTA} mt="6" maxW="240px">
               捐款支持 守護生態
             </Button>
           </Link>
