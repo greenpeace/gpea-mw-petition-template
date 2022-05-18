@@ -183,17 +183,23 @@ const Information = () => {
             綠色和平與本地生態團隊耗時大半年製作
           </p>
 
-          <div className="grid grid-cols-3 md:max-w-[360px]">
+          <div className="py-4 grid grid-cols-3 md:max-w-[360px]">
             <span>片長:25分鐘</span>
             <span>編導:馮漢城</span>
             <span>配音:陳志雲</span>
           </div>
 
-          <p className="text-[16px]">
-            山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的大嶼山生態紀錄片。
+          <p className="text-[16px] leading-loose">
+            山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
             <br />
+            我們邀請到本地資深傳媒人陳志雲先生為本片配音，全方位帶領大眾了解大嶼山豐富生物多樣性，也認識發展項目對於環境與生態的嚴重破壞，破壞一旦造成即不可逆轉，或令大嶼山的獨特生態蕩然無存。
+          </p>
+
+          <p className="text-[16px] leading-loose">
+            堅守大嶼，需要更多香港人的聲音！
             <br />
-            製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
+            如果您也希望可以發揮影響力，請以每月$200
+            （約每日$6）延續綠色和平堅守大嶼使命，合力留住香港青山綠水。
           </p>
 
           <Link
@@ -201,7 +207,7 @@ const Information = () => {
             isExternal
           >
             <Button {...OrangeCTA} mt="6" maxW="240px">
-              捐款支持 守護生態
+              月捐支持 守護生態
             </Button>
           </Link>
         </div>
