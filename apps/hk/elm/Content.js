@@ -1,14 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  Box,
-  Heading,
-  Text,
-  Image,
-  List,
-  ListItem,
-  UnorderedList,
-} from '@chakra-ui/react';
+import { Box, Heading, Text, Image } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
@@ -23,7 +15,6 @@ const Content = ({ theme }) => {
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         聯署守護大嶼 優先發展棕地
-        {process.env.BASEPATH}
       </Heading>
 
       <Text as="p" {...paragraphProps}>

@@ -10,14 +10,13 @@ import contentPic1 from '../../images/202205-plastic-free-marketplace-thankyou-p
 import contentPic2 from '../../images/202205-plastic-free-marketplace-thankyou-page-image2.jpeg';
 import contentPic3 from '../../images/202205-plastic-free-marketplace-thankyou-page-image3.jpeg';
 
-
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
   const { FirstName } = signup;
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        感謝您登記參與「惜簡生活節」！
+        感謝您登記參與「惜簡生活節」環保工作坊！
       </Heading>
 
       <Text as="p" {...paragraphProps}>
@@ -36,13 +35,9 @@ const Thankyou = ({ theme, signup }) => {
         您的捐款將直接資助我們持續調查塑膠污染問題、讓可重用概念紮根香港，同時督促企業和政府推出積極的減塑目標與政策，邁向全城走塑。
       </Text>
 
-      <Text as="p" {...paragraphProps}>
-        在6月2日前以每月$150捐款支持走塑工作，即可優先報名參與工作坊，並於活動當日獲得免費食品裸買體驗！
-      </Text>
-
-      <Box {...paragraphProps}>
+      {/* <Box {...paragraphProps}>
         <Image src={contentPic1} />
-      </Box>
+      </Box> */}
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         即棄塑膠永久傷害海洋、環境與人體健康，您願意出手減緩危機嗎？
@@ -60,13 +55,13 @@ const Thankyou = ({ theme, signup }) => {
         緩解塑膠污染，捐助綠色和平走塑工作。
       </Text>
 
-      <Box {...paragraphProps}>
+      {/* <Box {...paragraphProps}>
         <Image src={contentPic2} />
       </Box>
 
       <Box {...paragraphProps}>
         <Image src={contentPic3} />
-      </Box>
+      </Box> */}
     </>
   );
 };

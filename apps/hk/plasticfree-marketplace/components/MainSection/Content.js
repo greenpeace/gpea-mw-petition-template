@@ -1,12 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  Box,
-  Heading,
-  Image,
-  ListItem,
-  UnorderedList
-} from '@chakra-ui/react';
+import { Box, Heading, Image, ListItem, UnorderedList } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
@@ -20,7 +14,7 @@ const SeminarContent = {
   title: '',
   date: '日期：6月4日及5日',
   time: '時間：中午12時至下午8時',
-  description: '地點：荃灣D・PARK 愉景新城L1(籃球場旁)',
+  description: '地點：荃灣D・PARK 愉景新城L1 (籃球場旁）',
   other: '',
 };
 
@@ -29,11 +23,11 @@ const Content = ({ theme }) => {
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        立即登記參與「惜簡生活節」，體驗裸買市集！
+        立即登記參與「惜簡生活節」環保工作坊！
       </Heading>
 
       <Box {...paragraphProps}>
-        今年6月，適逢世界環境日和國際海洋日，綠色和平舉辦「惜簡生活節」，帶領更多市民在日常中實踐裸買生活。現只需網上登記，即可參與「惜簡生活節」以及報名環保好生活工作坊。
+        今年6月，適逢世界環境日和國際海洋日，綠色和平舉辦「惜簡生活節」，鼓勵更多市民在日常中實踐裸買生活。現只需網上登記，即可報名環保工作坊。
       </Box>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -45,7 +39,9 @@ const Content = ({ theme }) => {
       </Box>
 
       <Box {...paragraphProps}>
-        屆時會以多項有趣活動，讓公眾體驗日常生活中輕鬆減塑的方法。是次活動設置綠色和平與裸買店Loop Store 首次合作的裸買概念店「綠色和平士多」，以及邀請本地手作人合辦走塑及懷舊主題市集；一起實驗「無塑市集」的想像藍本，現場多款美味零食及精美的好生活用品讓你選擇；更會提供多款環保工作坊讓您體驗DIY。
+        屆時會以多項有趣活動，讓公眾體驗日常生活中輕鬆減塑的方法。是次活動設置綠色和平與裸買店Loop
+        Store
+        首次合作的裸買概念店「綠色和平士多」，以及邀請本地手作人合辦走塑及懷舊主題市集；一起實驗「無塑市集」的想像藍本，現場多款美味零食及精美的好生活用品讓你選擇；更會提供多款環保工作坊讓您體驗DIY。
       </Box>
 
       <Box {...paragraphProps}>
@@ -63,21 +59,21 @@ const Content = ({ theme }) => {
           <ListItem>懷舊市集攤檔</ListItem>
           <ListItem>懷舊時光拍照打卡點</ListItem>
           <ListItem>「塑膠與海洋的關係」展覽</ListItem>
+          <ListItem>環保工作坊（需報名參加）</ListItem>
         </UnorderedList>
       </Box>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        環保好生活工作坊
+        環保工作坊
       </Heading>
 
       <Box {...paragraphProps}>
         <Image src={heroBannerImage} />
       </Box>
 
-      <Box {...paragraphProps} >
+      <Box {...paragraphProps}>
         <FlowChart />
       </Box>
-
     </>
   );
 };

@@ -35,7 +35,7 @@ const FlowChart = () => {
         <Feature
           icon={icon_notes}
           subtitle="登記參加活動"
-          text="填妥資料<br>參加惜簡生活節"
+          text="填妥資料<br>參加環保工作坊"
         />
 
         <Feature
