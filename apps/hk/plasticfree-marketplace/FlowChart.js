@@ -11,21 +11,23 @@ import icon_house from './images/session2-house.png';
 const FlowChart = () => {
   const Feature = ({ icon, subtitle, text }) => {
     return (
-      <Flex align={'center'}>
-        <Box bgColor={`gray.0`} p={4} borderRadius={'8px'}>
-          <Image src={icon} maxW={'80px'} margin={'0 auto'} />
-        </Box>
-        <Box ml={4}>
-          <Text as={'h3'} fontWeight={700} fontSize={'2xl'}>
-            {subtitle}
-          </Text>
-          <Text
-            as={'p'}
-            fontSize={'md'}
-            dangerouslySetInnerHTML={{ __html: text }}
-          ></Text>
-        </Box>
-      </Flex>
+      <Box mb="2">
+        <Flex align={'center'}>
+          <Box bgColor={`gray.0`} p={4} borderRadius={'8px'}>
+            <Image src={icon} maxW={'80px'} margin={'0 auto'} />
+          </Box>
+          <Box ml={4}>
+            <Text fontWeight="bold" fontSize={'2xl'} mb="0">
+              {subtitle}
+            </Text>
+            <Text
+              as={'p'}
+              fontSize={'md'}
+              dangerouslySetInnerHTML={{ __html: text }}
+            ></Text>
+          </Box>
+        </Flex>
+      </Box>
     );
   };
 

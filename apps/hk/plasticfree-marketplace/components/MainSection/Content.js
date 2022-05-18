@@ -6,7 +6,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 import * as statusActions from 'store/actions/action-types/status-actions';
-import heroBannerImage from '../../images/202205-plastic-free-marketplace-banner.png';
+import eventBanner from '../../images/Plastic-free-Marketplace-banner-new.jpg';
 import Seminar from '../../Seminar';
 import FlowChart from '../../FlowChart';
 
@@ -68,7 +68,7 @@ const Content = ({ theme }) => {
       </Heading>
 
       <Box {...paragraphProps}>
-        <Image src={heroBannerImage} />
+        <Image src={eventBanner} alt="環保工作坊" />
       </Box>
 
       <Box {...paragraphProps}>
