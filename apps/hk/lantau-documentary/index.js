@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Box } from '@chakra-ui/react';
 import { AppContext } from "./context/appContext";
 import AppProvider from "./context/appContext";
 import PetitionFooter from '@containers/petitionFooter';
@@ -30,6 +31,7 @@ const SwitchHeader = () => {
 
 const SwitchPage = () => {
   const data = useContext(AppContext)
+
   switch (data.page) {
     case 'main':
       return (<MainPage/>)
@@ -41,7 +43,7 @@ const SwitchPage = () => {
       return (<StreamingPage/>)
   
     default:
-      return (<MainPage/>)
+      return (<Box minH={'100vh'}></Box>)
   }
 }
 

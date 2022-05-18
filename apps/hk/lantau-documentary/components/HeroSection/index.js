@@ -22,7 +22,7 @@ import appLogo from '../../images/app_logo.png';
 
 import Logo from './logo';
 
-function HeroSection() {
+function HeroSection({refProp}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <div className="relative">
@@ -132,6 +132,7 @@ function HeroSection() {
       <div
         className="container mx-auto px-[20px] md:pt-[150px] lg:pt-[270px] md:max-w-[1180px] relative pb-[40px] md:pb-[105px] xl:pb-[60px]"
         style={{ zIndex: 10 }}
+        ref={refProp}
       >
         <Box
           bgGradient={{

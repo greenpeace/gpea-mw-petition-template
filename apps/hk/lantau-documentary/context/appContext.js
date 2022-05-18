@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 const AppContext = createContext();
 
 export default function ThemeContext({ children }) {
-  const [current, setCurrent] = useState('main');
+  const [current, setCurrent] = useState(null);
   const router = useRouter();
   const heroSection = useRef(null);
   const visionSection = useRef(null);
@@ -13,12 +13,16 @@ export default function ThemeContext({ children }) {
   const signupSection = useRef(null);
 
   useEffect(() => {
-    const { p } = router.query;
-    if (p) {
-      setCurrent(p);
+    if(router.isReady){
+      const { p } = router.query;
+      if (p) {
+        setCurrent(p);
+      } else {
+        setCurrent('main')
+      }      
     }
-  }, [router]);
-
+  }, [router.isReady, router.query]);
+  
   return (
     <AppContext.Provider
       value={{

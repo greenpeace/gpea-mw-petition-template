@@ -5,10 +5,9 @@ import logoChinese from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png'
 
 const Header = () => {
   const router = useRouter();
-
   return (
     <div
-      className={`px-4 fixed top-0 bg-[#66CC00] w-full transition-all duration-500`}
+      className={`px-4 bg-[#66CC00] w-full transition-all duration-500`}
       style={{ zIndex: 99 }}
     >
       <div

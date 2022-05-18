@@ -44,8 +44,8 @@ function MainPage() {
   return (
     <>
       <Box>
-        <div ref={heroSection}>
-          <HeroSection />
+        <div>
+          <HeroSection refProp={heroSection} />
         </div>
 
         <div className="container mx-auto p-[30px] md:hidden">
