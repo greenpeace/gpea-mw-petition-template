@@ -83,7 +83,7 @@ function Information({ children }) {
 
   const menuStyle = {
     normal: 'flex-1 py-2',
-    active: 'flex-1 py-2 bg-[#000] text-[#FFF] rounded-[20px]',
+    active: 'flex-1 py-2 bg-[#66cc00] font-bold text-[#FFF] rounded-full',
   };
 
   return (
@@ -99,7 +99,7 @@ function Information({ children }) {
       </div>
 
       <div className="lg:hidden">
-        <div className="flex flex-row rounded-[40px] p-2 border-2 shadow-md bg-[#FFF]">
+        <div className="flex flex-row rounded-[40px] bg-[#FFF]">
           {CATEGORIES.map((d) => (
             <button
               key={d.value}

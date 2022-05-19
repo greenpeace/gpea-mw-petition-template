@@ -15,7 +15,7 @@ import desktopSectionBackground from '../images/section_background.jpeg';
 import dolphinBackgroound from '../images/docu_dolphin.jpg';
 
 import joinBackground from '../images/mobile/join_background.jpeg';
-import joinBackgroundDesktop from '../images/join_background.jpeg';
+import joinBackgroundDesktop from '../images/join_background.jpg';
 
 function MainPage() {
   const data = useContext(AppContext);
