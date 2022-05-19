@@ -28,7 +28,7 @@ import iconC from './images/ce/Asset1-moneybag.png';
 
 const handleOpenLink = () => {
   window.open(
-    `https://supporter.ea.greenpeace.org/hk/s/donate/donation-new?language=zh_HK&campaign=climate&ref=climate-challenge-thankyou`,
+    'https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=climate_mw',
   );
 };
 

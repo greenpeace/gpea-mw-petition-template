@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
@@ -10,6 +10,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
+import { getUrlParams } from '@common/utils/helper';
 
 import heroBannerImage from './images/DJI_0457_r_c.jpg';
 
@@ -25,6 +26,7 @@ const SignupForm = dynamic(() => import('@components/GP/HKForm'));
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
 function Index({ status, theme, setFormContent, signup }) {
+  const [utmSource, setUtmSource] = useState('');
   const { submitted } = status;
   const { FirstName } = signup;
   const scrollToRef = (ref) =>
@@ -42,6 +44,13 @@ function Index({ status, theme, setFormContent, signup }) {
     setFormContent(formContent);
   }, []);
 
+  useEffect(() => {
+    const params = getUrlParams();
+    if (params.utm_source) {
+      setUtmSource(params.utm_source);
+    }
+  }, []);
+
   return (
     <>
       <SEO />
@@ -50,14 +59,13 @@ function Index({ status, theme, setFormContent, signup }) {
           <ThanksBanner
             bgImage={heroBannerImage}
             content={{
-              title: `${
-                FirstName ? FirstName : '綠色和平支持者'
-              }，感謝您加入守護大嶼行列！`,
+              title: `${FirstName ? FirstName : '綠色和平支持者'
+                }，感謝您加入守護大嶼行列！`,
               description: [
-                '現以每月$200或以上捐款，推動政府善用棕地，守護香港自然環境，您將獲得一副「生態保衛隊」桌上遊戲，並資助低收入家庭學生參與生態導賞團！',
+                '現以每月$200捐款支持堅守大嶼工作，即可獲得一面「堅守大嶼」旗幟及2次「環保手作工作坊」的機會。',
               ],
             }}
-            // removeMask="true"
+          // removeMask="true"
           ></ThanksBanner>
         ) : (
           <HeroBanner
@@ -66,7 +74,7 @@ function Index({ status, theme, setFormContent, signup }) {
               title: '請即聯署<br/>要求政府撤回<br/>明日大嶼填海計劃',
               description: [''],
             }}
-            // removeMask="true"
+          // removeMask="true"
           ></HeroBanner>
         )}
       </Box>
@@ -87,11 +95,23 @@ function Index({ status, theme, setFormContent, signup }) {
               </ContentContainer>
             </Box>
             <Box flex={1} ref={myRef}>
-              <FormContainer>
-                <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
-                </Box>
-              </FormContainer>
+              {submitted ? (
+                utmSource != 'dd' ? (
+                  <FormContainer>
+                    <Box ref={ref}>
+                      <DonateForm />
+                    </Box>
+                  </FormContainer>
+                ) : (
+                  <Box h="40px" />
+                )
+              ) : (
+                <FormContainer>
+                  <Box ref={ref}>
+                    <SignupForm />
+                  </Box>
+                </FormContainer>
+              )}
             </Box>
           </Flex>
         </OverflowWrapper>
