@@ -52,11 +52,6 @@ const Description = ({ setSurveyPage }) => {
                 <Text as="p" color={'black'} {...paragraphProps} mb={0}>
                   4月22日是世界地球日，邀請你完成心理測驗，找出最適合你的投資地球方法，讓我們一起用行動投資地球，改善氣候，擁抱好生活。
                 </Text>
-                <Text as="p" color={'black'} {...paragraphProps} mb={0}>
-                  <strong>
-                    完成測驗，就有機會抽中綠色和平氣候大使謝哲青的驚喜二手書與手寫信一封。
-                  </strong>
-                </Text>
               </Box>
             </LazyShow>
             <Box>
