@@ -15,7 +15,10 @@ const Header = () => {
     border: scrollPosition > OFFSET ? '' : 'border-b-[1px]',
   };
   const handleMenuOnClick = (main, link, refName, page) => {
-    router.push(`/?p=${page}&s=${refName}`, undefined, { shallow: true });
+    // let url = new URL(window.location);
+    // console.log('params-',url)
+    // history.pushState({}, null, `${url.origin}/?p=${page}&s=${refName}`)
+    router.push(`${router.basePath}/?p=${page}&s=${refName}`, undefined, { shallow: true });
   };
 
   const {heroSection, visionSection, swiperSection, supportSection, signupSection} = data;
