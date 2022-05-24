@@ -48,11 +48,11 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
   useEffect(() => {
     const domain = document.location.host;
     const market =
-      themeData?.Market || domain.indexOf('hk') > 0
+      themeData?.Market || (domain.indexOf('hk') > 0
         ? 'hk'
         : domain.indexOf('tw') > 0
         ? 'tw'
-        : '';
+        : '');
     /* GTM is only applicable for production env */
     if (process.env.NODE_ENV === 'production') {
       let gtmId = '';
