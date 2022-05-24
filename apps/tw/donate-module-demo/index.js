@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect, useRef } from 'react';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import PageContainer from '@containers/pageContainer';
@@ -10,7 +9,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import Content from './Content';
 import Thankyou from './Thankyou';
 import SignupForm from '@components/GP/TWForm';
-import DonateForm from '@components/GP/DonateForm';
+import DonateForm from '@components/GP/DonateContainer';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Icon } from '@chakra-ui/react';
@@ -27,14 +26,6 @@ import heroBannerImageMobile from './images/banner_mobile.jpg';
 // import heroBannerImageBMobile from './images/climatebanner2_mobile.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
-  // const utmSource = queryString.parse(location.search);
-  // console.log(utmSource)
-  const router = useRouter();
-  const [utmSource, setUtmSource] = useState('');
-  useEffect(() => {
-    setUtmSource(router.query?.utm_source);
-  }, [router]);
-
   const { submitted } = status;
   const { FirstName } = signup;
   const themeInterests = theme.interests;
@@ -108,15 +99,7 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? (
-                    utmSource != 'dd' ? (
-                      <DonateForm />
-                    ) : (
-                      ''
-                    )
-                  ) : (
-                    <SignupForm />
-                  )}
+                  {submitted ? <DonateForm /> : <SignupForm />}
                 </Box>
               </FormContainer>
             </Box>
