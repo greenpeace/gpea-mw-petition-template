@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=elm_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-alt?language=zh_HK&campaign=elm_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -51,7 +51,7 @@
   "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
   "donate_suggestion_message": "誠邀您加入每月捐款會員的行列，因為對於非牟利團體而言，定期定額捐款別具意義：它能為組織提供穩定的收入，持續地支援我們的項目研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
   "currency": "HKD",
-  "default_amount": 200,
+  "default_amount": 100,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -60,19 +60,19 @@
     {
       "label": "500",
       "value": 500,
-      "description": "支持發起聯署行動，號召更多市民加入守護香港自然環境",
+      "description": "資助2支橫額製作，讓守護大嶼的聲音遍地開花",
       "currency": "HKD"
     },
     {
       "label": "700",
       "value": 700,
-      "description": "支持綠色和平揭露現時土地規劃弊端",
+      "description": "資助3次義工培訓，令更多人成為環境行動者",
       "currency": "HKD"
     },
     {
       "label": "900",
       "value": 900,
-      "description": "支持綠色和平調查被低估發展潛力的土地資源，向政府提倡優先發展棕地",
+      "description": "資助召開2次記者會，推動環境知情權",
       "currency": "HKD"
     },
     {
@@ -83,21 +83,21 @@
   ],
   "amount_monthly": [
     {
+      "label": "100",
+      "value": 100,
+      "description": "資助4小時高清航拍，記錄新界棕地亂象的證據",
+      "currency": "HKD"
+    },
+    {
       "label": "200",
       "value": 200,
-      "description": "支持綠色和平揭露現時土地規劃弊端，並製作調查報告以證明香港存在棕地，被低估發展價值的覓地選項，無必要破壞自然環境",
+      "description": "資助3次實地考察，呈現大嶼生態價值",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持綠色和平與專家合作，進一步就環境、經濟、融資方式展開調查，多方面揭露填海工程弊端。",
-      "currency": "HKD"
-    },
-    {
-      "label": "400",
-      "value": 400,
-      "description": "支持綠色和平繼續生態保育工作，制止政府發展具生態價值的郊野與海洋生態環境，將大自然留給下一代。",
+      "description": "資助2本研究報告的出版，呈現填海工程的環境影響",
       "currency": "HKD"
     },
     {
