@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Box, Heading, Text, Image } from '@chakra-ui/react';
+import { Box, Heading, Text, Image, Icon, others } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
@@ -9,17 +9,37 @@ import {
 import contentB from './images/gp-climate-photo.jpg';
 
 const subHeadingProps = {
-  lineHeight: 1.2,
+  lineHeight: (40/30),
+  letterSpacing: '.075em',
   mb: 6,
   fontWeight: 'bold',
   fontSize: { base: '20px' },
 };
 
+const baseTextColor = '#3f3f3f';
+const coloredBoxAPorps = {
+  backgroundColor: '#eee',
+  color: baseTextColor,
+  ml: -4,
+  mr: -4,
+  padding: 4
+}
+
+const IconText = ( props ) => {
+  const { className, ...other } = props;
+
+  return (
+    <p className={className} {...other} />
+  )
+}
+
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
-  console.log(themeInterests);
+  //console.log(themeInterests);
+  
   return (
     <>
+      <IconText>12346</IconText>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         <Text as="span" color={`theme.${themeInterests}`}>
           氣候變遷：未來世界的生存考驗
@@ -149,6 +169,16 @@ const Content = ({ theme }) => {
           帶來看的見的改變與進步！
         </Text>
       </Heading>
+
+
+      <Box {...coloredBoxAPorps}>
+        <Heading {...subHeadingProps} textAlign={`center`}>
+          <Text as="span" color={`${baseTextColor}!important`}>
+            您的連署<br/>能改變消極的政府與敦促被動的企業
+          </Text>
+        </Heading>
+      </Box>
+
     </>
   );
 };
