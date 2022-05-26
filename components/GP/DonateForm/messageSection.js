@@ -65,6 +65,8 @@ const DonateForm = (props) => {
         <Button
           {...OutlineCTA}
           variant="outline"
+          color="gray.700"
+          fontWeight="400"
           flex={1}
           onClick={() => {
             setShowMessage(false);
