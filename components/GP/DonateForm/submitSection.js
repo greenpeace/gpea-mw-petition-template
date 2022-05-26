@@ -23,8 +23,8 @@ const SubmitSection = (props) => {
 
   const targetDonateURL = donateURL;
 
+  //
   const handleOpenLink = () => {
-    //
     window.dataLayer = window.dataLayer || [];
 
     window.dataLayer.push({
@@ -33,7 +33,7 @@ const SubmitSection = (props) => {
       eventAction: 'form_steps',
       eventLabel: 'form_step:1_amount',
     });
-    //
+
     window.open(`${targetDonateURL}&donate_amt=${donateType}:${amount}`);
   };
 
@@ -89,10 +89,31 @@ const MyEnhancedForm = withFormik({
 
   validate: async (values, props) => {
     const errors = {};
-    const { formContent } = props;
+    const { formContent, donateType } = props;
 
+    // Set error if empty value
     if (!values.Donate) {
       errors.Donate = formContent.empty_data_alert;
+    }
+
+    // Check if amount config available
+    // Set error if value less than requirement
+    if (
+      formContent.min_amount_monthly &&
+      formContent.min_amount_oneoff &&
+      formContent.min_amount_alert
+    ) {
+      if (donateType === 'monthly') {
+        if (!values.Donate <= formContent.min_amount_monthly) {
+          errors.Donate =
+            formContent.min_amount_alert + formContent.min_amount_monthly;
+        }
+      } else if (donateType === 'single') {
+        if (!values.Donate <= formContent.min_amount_oneoff) {
+          errors.Donate =
+            formContent.min_amount_alert + formContent.min_amount_oneoff;
+        }
+      }
     }
 
     return errors;
@@ -100,7 +121,7 @@ const MyEnhancedForm = withFormik({
 
   handleSubmit: async (values, { props }) => {
     const { formContent, donateType } = props;
-    //
+
     window.dataLayer = window.dataLayer || [];
 
     window.dataLayer.push({
