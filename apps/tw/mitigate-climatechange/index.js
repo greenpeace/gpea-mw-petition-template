@@ -80,7 +80,7 @@ function Index({ status, theme, setFormContent, signup }) {
           <HeroBanner
             defaultImage={heroBannerImage}
             content={{
-              title: '<b>立即連署<br/>您能扭轉氣候危機</b>',
+              title: '<b>立即連署<br/>改寫氣候未來</b>',
               description: [''],
             }}
             imageSrcset={[
