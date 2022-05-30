@@ -90,10 +90,8 @@ const IconText = ( props ) => {
   }
   return (
     <Text as="p" {...props} {...advHeadingProps} {...style} >
-      <Image src={icon} width={`1em`} display={'inline-block'} verticalAlign={'top'} mr={2} mt={1.5} />
-      <strong style={{
-        borderBottom: `4px solid ${baseTextColor}`
-      }} >{props.children}</strong>
+      <Image src={icon} height={`1em`} display={'inline-block'} verticalAlign={'top'} mr={2} mt={1.5} />
+      <strong>{props.children}</strong>
     </Text>
   )
 }
@@ -113,8 +111,12 @@ const advAccButtonProps = {
   color: 'brand.500',
   textAlign: 'center',
   justifyContent: 'center',
+  fontWeight: 'bold',
   _hover:{
     bg: 'inherit'
+  },
+  _focus:{
+    
   }
 }
 const advAccPanelProps = {
@@ -156,7 +158,7 @@ const Content = ({ theme }) => {
       <Box {...coloredBoxAPorps} >
         <Heading {...advHeadingProps} textAlign={`center`}>
           <Text as="span" color={`${baseTextColor}!important`}>
-            您的連署<br/>能改變消極的政府與敦促被動的企業
+            您的連署<br/>能改變消極的政府與企業
           </Text>
         </Heading>
         <Box mx={4} my={4}>
@@ -184,7 +186,7 @@ const Content = ({ theme }) => {
         
         <Box maxW={'258px'} mx={`auto`} mt={10}>
           <Heading {...advHeadingProps} lineHeight={1.3}>
-          您的連署支持能對政府與企業形成更大壓力<br/>進一步改寫氣候未來！
+            <Text as="span" color={`theme.general`}>您的連署支持能對政府與企業形成更大壓力<br/>進一步改寫氣候未來！</Text>
           </Heading>
         </Box>
         
@@ -230,9 +232,12 @@ const Content = ({ theme }) => {
           <strong>目前，我們正在進行以下專案，需要您的連署支持。</strong>
           </Text>
         </Box>
-        <Text textAlign={'center'} my={6}>
+        <IconText icon={ iconGov } my={6}>
+        改變政策
+        </IconText>
+        {/* <Text textAlign={'center'} my={6}>
           <Text as="span" {...contentCTAProps} >改變政策</Text>
-        </Text>
+        </Text> */}
         <Heading {...advHeadingProps} textAlign={`center`}>
           <Text as="span" color={`${baseTextColor}!important`}>
           要求政府制定有效碳定價
@@ -280,9 +285,12 @@ const Content = ({ theme }) => {
       </Box>
 
       <Box {...coloredBoxCPorps}>
-        <Text textAlign={'center'} mb={6}>
+        <IconText icon={ iconIndustry } mb={6}>
+        改變企業
+        </IconText>
+        {/* <Text textAlign={'center'} mb={6}>
           <Text as="span" {...contentCTAProps} >改變企業</Text>
-        </Text>
+        </Text> */}
         <Heading {...advHeadingProps} textAlign={`center`}>
           <Text as="span" color={`${baseTextColor}!important`}>
           要求碳排大戶展開綠能轉型
