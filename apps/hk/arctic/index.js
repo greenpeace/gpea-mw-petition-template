@@ -46,9 +46,6 @@ function Index({ status, theme, setFormContent, signup }) {
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
             }，感謝您加入守護北極行列！`,
-            description: [
-              '為北極多走一步，以每月$200捐款支持守護北極項目，您將獲得兩次「環保手作工作坊」或導賞團機會！',
-            ],
           }}
         />
       ) : (

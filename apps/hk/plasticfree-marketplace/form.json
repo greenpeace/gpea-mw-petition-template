@@ -2,7 +2,6 @@
   "form_header": "立即登記參與「惜簡生活節」環保工作坊！",
   "form_description": "登記參與在6月4日及5日的「惜簡生活節」環保工作坊！",
   "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
-  "min_amount_alert": "為維持最低行政支出，最低捐款金額為：",
   "label_yes": "是",
   "label_no": "否",
   "label_name": "稱謂",
@@ -46,7 +45,7 @@
 
   "donate_header": "感謝報名參加，誠邀您進一步捐款支持綠色和平環境工作！",
   "donate_description": [
-    "綠色和平團隊一直推動社區實踐可重用概念、督促政府訂立更積極的減塑目標與政策。在5月30日前以每月$200捐款支持走塑工作，您即可優先報名參與工作坊，並於活動當日獲得免費零食裸買體驗！"
+    "綠色和平團隊一直推動社區實踐可重用概念、督促政府訂立更積極的減塑目標與政策。"
   ],
   "default_message": "",
   "donate_suggestion_header": "每月捐款，成就更多！",
