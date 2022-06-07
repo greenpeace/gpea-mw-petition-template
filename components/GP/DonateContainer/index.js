@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Box } from '@chakra-ui/react';
 import { Helmet } from 'react-helmet';
 import StepProgress from '@components/Progress/StepProgress';
-// import MessageSection from './messageSection';
-// import SubmitSection from './submitSection';
 
 const DonateForm = (props) => {
   const {
@@ -49,13 +47,14 @@ const DonateForm = (props) => {
   return (
     <Box>
       <Helmet>
-        <script src="https://change.greenpeace.org.tw/2022/test-donation-module/main.js"></script>
+        <script src="https://api.greenpeace.org.hk/2022/donate-module/main.js"></script>
       </Helmet>
       <div
         data-gpea-module="gpea-donation-module"
-        data-gpea-market={theme.Market}
-        data-gpea-campaign={'general'}
-        data-gpea-language={'zh_TW'}
+        data-gpea-market="TW"
+        data-gpea-campaign="oceans"
+        data-gpea-language="zh_TW"
+        data-gpea-env="test"
         data-gpea-formdata={JSON.stringify(signup)}
       ></div>
     </Box>
