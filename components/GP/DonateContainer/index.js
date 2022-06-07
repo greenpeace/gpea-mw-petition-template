@@ -52,7 +52,7 @@ const DonateForm = (props) => {
       <div
         data-gpea-module="gpea-donation-module"
         data-gpea-market="TW"
-        data-gpea-campaign="general"
+        data-gpea-campaign="oceans"
         data-gpea-language="zh_TW"
         data-gpea-env="test"
         data-gpea-formdata={JSON.stringify(signup)}
