@@ -1,6 +1,6 @@
 {
-  "form_header": "下載綠色生活手冊 獲得素食食譜與大掃除指南",
-  "form_description": "新一年新習慣，逐步實踐環保減廢生活！",
+  "form_header": "下載綠色生活手冊 獲得素食食譜與收納打掃指南",
+  "form_description": "生活新習慣，逐步實踐環保減廢生活！",
   "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
   "signed_number": "已聯署人數",
 
@@ -45,7 +45,7 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "我願意解決塑膠污染！",
+  "donate_header": "指南將於數分鐘內寄送到您的電郵<br>我願意解決塑膠污染！",
   "donate_description": [
     "我要捐款解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。"
   ],
