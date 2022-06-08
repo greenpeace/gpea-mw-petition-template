@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Box } from '@chakra-ui/react';
 import { Helmet } from 'react-helmet';
 import StepProgress from '@components/Progress/StepProgress';
-// import MessageSection from './messageSection';
-// import SubmitSection from './submitSection';
 
 
 const DonateForm = (props) => {
@@ -58,7 +56,7 @@ const DonateForm = (props) => {
         data-gpea-module="gpea-donation-module"
         data-gpea-market={theme.Market.toUpperCase()}//← TW 或 HK
         data-gpea-language={"zh_TW"} //schema原始資料沒有這個設定需依專案手動填寫 zh_TW 或 zh_HK 或 en_HK
-        data-gpea-campaign={"general"} //schema原始資料沒有這個設定需依專案手動填寫
+        data-gpea-campaign={"oceans"} //schema原始資料沒有這個設定需依專案手動填寫
         data-gpea-campaign-id={theme.CampaignId} //← 非必填（未填寫時會依照 env 與 market 來決定一個預設值）
         data-gpea-env={"test"}
         data-gpea-formdata={JSON.stringify(signup)}
