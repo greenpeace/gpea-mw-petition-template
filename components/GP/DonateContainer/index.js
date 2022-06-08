@@ -45,21 +45,20 @@ const DonateForm = (props) => {
     setAmount(default_amount);
   }, [amount_monthly]);
 
-
   return (
     <Box>
       <Helmet>
         {/* <script src={process.env.donateModule}></script> */}
-        <script src={process.env.donateModule}></script>
+        <script src="https://api.greenpeace.org.hk/2022/donate-module/main.js"></script>
       </Helmet>
       <div
-        data-gpea-module="gpea-donation-module"
-        data-gpea-market={theme.Market.toUpperCase()}//← TW 或 HK
-        data-gpea-language={"zh_TW"} //schema原始資料沒有這個設定需依專案手動填寫 zh_TW 或 zh_HK 或 en_HK
-        data-gpea-campaign={"general"} //schema原始資料沒有這個設定需依專案手動填寫
-        data-gpea-campaign-id={theme.CampaignId} //← 非必填（未填寫時會依照 env 與 market 來決定一個預設值）
-        data-gpea-env={"test"}
-        data-gpea-formdata={JSON.stringify(signup)}
+        data-gpea-module="gpea-donation-module" //不變
+        data-gpea-market={theme.Market.toUpperCase()} //← TW 或 HK
+        data-gpea-language={'zh_TW'} //schema原始資料沒有這個設定需依專案手動填寫 zh_TW 或 zh_HK 或 en_HK
+        data-gpea-campaign={'general'} //schema原始資料沒有這個設定需依專案手動填寫
+        data-gpea-campaign-id={''} //依 Donation campaign 手動填寫
+        data-gpea-env={'test'} //手動填寫
+        data-gpea-formdata={JSON.stringify(signup)} //非必填
       ></div>
     </Box>
   );
