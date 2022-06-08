@@ -36,23 +36,8 @@ const DonateForm = (props) => {
 
 const mapStateToProps = ({ signup }) => {
   return {
-    // formContent: form.content,
-    // theme: theme.data,
-    // showMessage: form.showMessage,
-    // donateType: form.donateType,
     signup: signup.data,
   };
 };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     setShowMessage: (data) => {
-//       dispatch({ type: formActions.SET_SHOW_MESSAGE, data });
-//     },
-//     setDonateType: (data) => {
-//       dispatch({ type: formActions.SET_DONATE_TYPE, data });
-//     },
-//   };
-// };
 
 export default connect(mapStateToProps)(DonateForm);
