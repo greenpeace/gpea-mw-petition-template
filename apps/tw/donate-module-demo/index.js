@@ -98,16 +98,14 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? (
-                    <DonateForm
-                      market={'TW'}
-                      language={'zh_TW'}
-                      campaign={'oceans'}
-                      env={'test'}
-                    />
-                  ) : (
-                    <SignupForm />
-                  )}
+                  {submitted ? <DonateForm 
+                    market={theme.Market} 
+                    language={"zh_TW"}
+                    campaign={"oceans"}
+                    // campaignId={''}
+                    env={"test"} 
+                    moduleUrl={process.env.donateModule}
+                  /> : <SignupForm />}
                 </Box>
               </FormContainer>
             </Box>
