@@ -21,6 +21,11 @@ const DonateForm = (props) => {
     donateType,
     setDonateType,
     signup,
+    market,
+    language,
+    campaign,
+    campaignId,
+    env,
   } = props;
   const [item, setItem] = useState();
   const [amount, setAmount] = useState(default_amount);
@@ -53,12 +58,12 @@ const DonateForm = (props) => {
       </Helmet>
       <div
         data-gpea-module="gpea-donation-module" //不變
-        data-gpea-market={theme.Market.toUpperCase()} //← TW 或 HK
-        data-gpea-language={'zh_TW'} //schema原始資料沒有這個設定需依專案手動填寫 zh_TW 或 zh_HK 或 en_HK
-        data-gpea-campaign={'general'} //schema原始資料沒有這個設定需依專案手動填寫
-        data-gpea-campaign-id={''} //依 Donation campaign 手動填寫
-        data-gpea-env={'test'} //手動填寫
-        data-gpea-formdata={JSON.stringify(signup)} //非必填
+        data-gpea-market={market.toUpperCase()} //← TW 或 HK
+        data-gpea-language={language} //手動填寫← zh_TW 或 zh_HK 或 en_HK
+        data-gpea-campaign={campaign} //手動填寫，schema原始資料沒有這個設定
+        data-gpea-campaign-id={campaignId || ''} //手動填寫，依 Donation campaign 手動填寫
+        data-gpea-env={env} //手動填寫← test 或 full 或 prod
+        data-gpea-formdata={JSON.stringify(signup)} //非必填，繼承自 petition daisy chain
       ></div>
     </Box>
   );
