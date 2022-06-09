@@ -9,7 +9,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import Content from './Content';
 import Thankyou from './Thankyou';
 import SignupForm from '@components/GP/TWForm';
-import DonateForm from '@components/GP/DonateContainer';
+import DonationModule from '@components/GP/DonationModule';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Icon } from '@chakra-ui/react';
@@ -98,14 +98,20 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm 
-                    market={theme.Market} 
-                    language={"zh_TW"}
-                    campaign={"oceans"}
-                    // campaignId={''}
-                    env={"test"} 
-                    moduleUrl={process.env.donateModule}
-                  /> : <SignupForm />}
+                  {submitted ? (
+                    <DonationModule
+                      market={theme.Market}
+                      language={'zh_TW'}
+                      campaign={'oceans'}
+                      // campaignId={''}
+                      env={'test'}
+                      moduleUrl={
+                        'https://api.greenpeace.org.hk/2022/donate-module/main.js'
+                      }
+                    />
+                  ) : (
+                    <SignupForm />
+                  )}
                 </Box>
               </FormContainer>
             </Box>

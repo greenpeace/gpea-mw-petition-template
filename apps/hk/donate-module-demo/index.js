@@ -10,7 +10,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
-import DonateContainer from '@components/GP/DonateContainer';
+import DonationModule from '@components/GP/DonationModule';
 
 import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
 
@@ -76,7 +76,7 @@ function Index({ status, theme, setFormContent, signup }) {
               <FormContainer>
                 <Box ref={ref}>
                   {submitted ? (
-                    <DonateContainer
+                    <DonationModule
                       market={theme.Market}
                       language={'zh_HK'}
                       campaign={'oceans'}
