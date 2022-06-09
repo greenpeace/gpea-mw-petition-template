@@ -15,7 +15,7 @@ import { HKChinese, TWChinese, HKEnglish } from './footerContent';
 import logo from '@common/images/logo/GP-logo-2019-white-[web].png';
 
 const SFFormat = ({ locale }) => {
-  const [content, setContent] = useState(HKEnglish);
+  const [content, setContent] = useState(HKChinese);
 
   useEffect(() => {
     if (locale) {
@@ -39,7 +39,7 @@ const SFFormat = ({ locale }) => {
     <FooterBGBlue>
       <Container maxW={'1200px'} py={8} px={4}>
         <Box pt={4} pb={6}>
-          <Image src={logo} maxW={'180px'} alt={'Greenpeace 綠色和平'} />
+          <Image src={logo} maxW={'220px'} alt={'Greenpeace 綠色和平'} />
         </Box>
         <Stack
           as="flex"
