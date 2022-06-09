@@ -4,13 +4,13 @@ import { Box } from '@chakra-ui/react';
 const Card = ({ image, title, content }) => {
   return (
     <div className="flex-1 relative" key={title}>
-      <div className="absolute left-6 right-6 -bottom-[50px] z-30 max-w-[310px]">
+      <div className="absolute left-6 right-6 -bottom-[60px] z-30 max-w-[80%]">
         <p className="text-[20px] font-bold text-[#FFF] border-b-2 pb-4 mb-4">
           {title}
         </p>
         <p className="mt-4 text-[#FFF] min-h-[120px]">{content}</p>
       </div>
-      <div className="relative w-[300px] h-[420px] rounded-[20px] mx-auto overflow-hidden">
+      <div className="relative w-[80%] h-[420px] rounded-[20px] mx-auto overflow-hidden">
         <Box
           backgroundImage={image}
           backgroundRepeat="no-repeat"
