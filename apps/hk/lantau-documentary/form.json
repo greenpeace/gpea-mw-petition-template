@@ -85,20 +85,20 @@
   ],
   "amount_monthly": [
     {
+      "label": "100",
+      "value": 100,
+      "description": "收看《山海大嶼》紀錄片",
+      "currency": "HKD"
+    },
+    {
       "label": "200",
       "value": 200,
-      "description": "收看《山海大嶼》紀錄片",
+      "description": "收看《山海大嶼》紀錄片<br/>獲得綠色和平《山海大嶼》限定明信片一套",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "收看《山海大嶼》紀錄片<br/>獲得綠色和平《山海大嶼》限定明信片一套",
-      "currency": "HKD"
-    },
-    {
-      "label": "400",
-      "value": 400,
       "description": "收看《山海大嶼》紀錄片<br/>獲得綠色和平《山海大嶼》限定明信片一套<br/>獲得綠色和平「守護大嶼」旗幟一面",
       "currency": "HKD"
     },

@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=plastics_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -49,14 +49,14 @@
   "donate_description": [
     "我要捐款解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。每月$200捐款支持綠色和平的項目工作，即可以慈善捐款免稅額扣稅，同時獲得「環保手作工作坊」或導賞團的機會！"
   ],
-  "default_message": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策。",
-  "donate_suggestion_header": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
-  "donate_suggestion_message": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
+  "default_message": "資助4次社區工作坊，建立無塑社區網絡",
+  "donate_suggestion_header": "資助3次實驗室化驗，分析塑膠污染的影響",
+  "donate_suggestion_message": "資助2本研究報告的出版，呈現塑膠污染的影響",
   "currency": "HKD",
   "allow_monthly": "true",
   "allow_oneoff": "true",
   "default_donation_type": "monthly",
-  "default_amount": 200,
+  "default_amount": 100,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -65,19 +65,19 @@
     {
       "label": "500",
       "value": 500,
-      "description": "支持綠色和平發起聯署行動，集合民眾力量向企業、政府發聲，要求減塑。",
+      "description": "資助2支橫額製作，讓走塑聲音遍地開花",
       "currency": "HKD"
     },
     {
       "label": "700",
       "value": 700,
-      "description": "支持綠色和平推廣減塑議題，提高公眾對塑膠污染的意識和關注。",
+      "description": "資助3次義工培訓，令更多人成為環境行動者",
       "currency": "HKD"
     },
     {
       "label": "900",
       "value": 900,
-      "description": "支持綠色和平在全球搜集可行的減塑模式或替代方案，推動香港企業、政府參考及採納。",
+      "description": "資助2次企業高峰會，鼓勵商界探納更多無塑措施",
       "currency": "HKD"
     },
     {
@@ -88,21 +88,21 @@
   ],
   "amount_monthly": [
     {
+      "label": "100",
+      "value": 100,
+      "description": "資助4次社區工作坊，建立無塑社區網絡",
+      "currency": "HKD"
+    },
+    {
       "label": "200",
       "value": 200,
-      "description": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策。",
+      "description": "資助3次實驗室化驗，分析塑膠污染的影響",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
-      "currency": "HKD"
-    },
-    {
-      "label": "400",
-      "value": 400,
-      "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
+      "description": "資助2本研究報告的出版，呈現塑膠污染的影響",
       "currency": "HKD"
     },
     {

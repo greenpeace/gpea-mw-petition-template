@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=oceans_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=oceans_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -56,7 +56,7 @@
   "allow_monthly": "true",
   "allow_oneoff": "true",
   "default_donation_type": "monthly",
-  "default_amount": 200,
+  "default_amount": 100,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -88,20 +88,20 @@
   ],
   "amount_monthly": [
     {
+      "label": "100",
+      "value": 100,
+      "description": "資助2次實地考察，以前線記錄呈現海洋危機真相",
+      "currency": "HKD"
+    },
+    {
       "label": "200",
       "value": 200,
-      "description": "您的捐款，協助發起全球聯署行動，擴大要求制定「全球海洋公約」的聲音力量！",
+      "description": "支持綠色和平船艦持續監察企業最新動向，及時阻止破壞海洋的行為！",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持綠色和平船艦持續監察企業最新動向，及時阻止破壞海洋的行為！",
-      "currency": "HKD"
-    },
-    {
-      "label": "400",
-      "value": 400,
       "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意制定「全球海洋公約」，推進守護30%海洋保護區目標！",
       "currency": "HKD"
     },

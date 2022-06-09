@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=elm_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=elm_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -54,7 +54,7 @@
   "allow_monthly": "true",
   "allow_oneoff": "true",
   "default_donation_type": "monthly",
-  "default_amount": 200,
+  "default_amount": 100,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -86,20 +86,20 @@
   ],
   "amount_monthly": [
     {
+      "label": "100",
+      "value": 100,
+      "description": "支持綠色和平持續監察政府棕地政策和土地規劃動向，及時回應並採取相應行動",
+      "currency": "HKD"
+    },
+    {
       "label": "200",
       "value": 200,
-      "description": "支持綠色和平持續監察政府棕地政策和土地規劃動向，及時回應並採取相應行動",
+      "description": "支持綠色和平揭露現時土地規劃弊端，並製作調查報告以證明香港存在棕地等，被低估發展價值的覓地選項，無必要破壞自然環境",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持綠色和平揭露現時土地規劃弊端，並製作調查報告以證明香港存在棕地等，被低估發展價值的覓地選項，無必要破壞自然環境",
-      "currency": "HKD"
-    },
-    {
-      "label": "400",
-      "value": 400,
       "description": "支持綠色和平促請政府以謹慎態度，嚴正審視被低估發展潛力的棕地，優先發展現存可用的土地資源，滿足市民住屋需要，讓城市發展與自然環境和諧共存，締造宜居環境",
       "currency": "HKD"
     },
