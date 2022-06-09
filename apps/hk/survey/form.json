@@ -58,6 +58,9 @@
   "min_amount_monthly": 50,
   "default_oneoff": 500,
   "min_amount_oneoff": 100,
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }

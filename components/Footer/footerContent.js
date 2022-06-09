@@ -40,12 +40,24 @@ export const HKEnglish = {
     'Greenpeace is an independent, nonprofit, global organization that stands for positive change through action. We investigate, campaign, document and lobby for a sustainable balance between humans and the environment worldwide.',
   ],
   link: [
-    { label: 'Home', value: '#' },
-    { label: 'Privacy Policy and Collection of Personal', value: '#' },
-    { label: 'Data', value: '#' },
-    { label: 'Copyright', value: '#' },
-    { label: 'Contact Us', value: '#' },
-    { label: 'About Us', value: '#' },
+    { label: 'Home', value: 'https://greenpeace.org/eastasia' },
+    {
+      label: 'Privacy Policy and Collection of Personal Data',
+      value: 'https://www.greenpeace.org/hongkong/policies/privacy-and-cookies',
+    },
+    {
+      label: 'Copyright',
+      value:
+        'https://www.greenpeace.org/hongkong/policies/terms-and-conditions',
+    },
+    {
+      label: 'Contact Us',
+      value: 'https://www.greenpeace.org/hongkong/about/contact',
+    },
+    {
+      label: 'About Us',
+      value: 'https://www.greenpeace.org/hongkong/about/overview',
+    },
   ],
   rightContent: [
     'This is a secure webpage. Your personal details are protected at all times.',

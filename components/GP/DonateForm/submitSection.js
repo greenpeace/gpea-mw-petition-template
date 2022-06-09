@@ -58,7 +58,10 @@ const SubmitSection = (props) => {
             />
           </Box>
           <Box py={6}>
-            <Text fontSize={'md'}>{description}</Text>
+            <Text
+              fontSize={'md'}
+              dangerouslySetInnerHTML={{ __html: description }}
+            ></Text>
           </Box>
           <Box>
             <Button {...OrangeCTA} type={'submit'}>
@@ -69,7 +72,10 @@ const SubmitSection = (props) => {
       ) : (
         <Box>
           <Box py={6}>
-            <Text fontSize={'md'}>{description}</Text>
+            <Text
+              fontSize={'md'}
+              dangerouslySetInnerHTML={{ __html: description }}
+            ></Text>
           </Box>
           <Box>
             <Button {...OrangeCTA} onClick={handleOpenLink}>

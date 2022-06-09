@@ -15,7 +15,7 @@ import { HKChinese, TWChinese, HKEnglish } from './footerContent';
 import logo from '@common/images/logo/GP-logo-2019-white-[web].png';
 
 const SFFormat = ({ locale }) => {
-  const [content, setContent] = useState(HKChinese);
+  const [content, setContent] = useState(HKEnglish);
 
   useEffect(() => {
     if (locale) {
@@ -47,7 +47,7 @@ const SFFormat = ({ locale }) => {
           direction={{ base: 'column-reverse', md: 'row' }}
           color={'white'}
         >
-          <Stack direction="column" spacing={4} mb={8} flex={1}>
+          <Stack direction="column" spacing={4} mb={8}>
             <Box>
               {content.leftContent.map((d, i) => (
                 <Box key={i}>
@@ -73,7 +73,7 @@ const SFFormat = ({ locale }) => {
               ))}
             </Stack>
           </Stack>
-          <Stack direction="column" spacing={4} mb={8} flex={1}>
+          <Stack direction="column" spacing={4} mb={8}>
             {content.rightContent.map((d, i) => (
               <Box key={i}>
                 <Text as="p" dangerouslySetInnerHTML={{ __html: d }} />

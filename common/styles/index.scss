@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import './tokens.css';
 
 @import './scss/theme', './scss/content', './scss/step', './scss/override';

@@ -47,6 +47,9 @@
   "donate_suggestion_header": "您的每月小額捐款是我們最大的後盾！",
   "donate_suggestion_message": "誠心邀請您加入每月捐款會員的行列，因為對於非營利團體而言，定期定額捐款具有莫大的意義：它能提供組織穩定的收入，持續地支援我們的專案研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
   "currency": "新臺幣",
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
   "default_amount": 600,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
