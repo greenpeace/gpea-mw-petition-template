@@ -5,7 +5,6 @@ const optimizedImages = require('next-optimized-images');
 const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
-  // basePath: `${process.env.NEXT_PUBLIC_BASE_PATH}`,
   env: {
     project: process.env.PROJECT,
     form: process.env.FORM,
@@ -30,7 +29,11 @@ const nextConfig = {
     }
   },
   images: {
-    domains: ['api.greenpeace.org.hk', 'change.greenpeace.org.hk'],
+    domains: [
+      'api.greenpeace.org.hk',
+      'change.greenpeace.org.hk',
+      'change.greenpeace.org.tw',
+    ],
     disableStaticImages: true,
   },
 };
