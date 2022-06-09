@@ -38,7 +38,7 @@ const VisionGroup = () => {
       backgroundRepeat="no-repeat"
       backgroundSize={'100%'}
     >
-      <div className="container mx-auto pt-[60px] pb-[180px] md:pb-[160px] md:pt-[100px]">
+      <div className="container mx-auto pt-[60px] pb-[160px] md:pb-[220px] md:pt-[120px] lg:pt-[160px]">
         <h2 className="text-[24px] md:text-[28px] font-bold text-center md:pt-[80px] pb-[30px] md:pb-[60px]">
           我們的理念
         </h2>

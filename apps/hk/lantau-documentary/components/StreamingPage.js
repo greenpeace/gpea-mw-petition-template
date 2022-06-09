@@ -147,7 +147,7 @@ function Index() {
 
 const Logo = () => {
   return (
-    <div className="pt-[60px] md:pt-[120px] relative" style={{ zIndex: 2 }}>
+    <div className="pt-[60px] md:pt-[140px] relative" style={{ zIndex: 2 }}>
       <Box
         maxW={{
           base: '355px',
