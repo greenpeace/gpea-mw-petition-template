@@ -1,33 +1,31 @@
 import React, { useEffect, useRef } from 'react';
-import dynamic from 'next/dynamic';
+import HeroBanner from '@components/ResponsiveBanner/hero';
+import ThanksBanner from '@components/ResponsiveBanner/thanks';
+import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
+import Content from './Content';
+import Thankyou from './Thankyou';
+import SignupForm from '@components/GP/TWForm';
+import DonationModule from '@components/GP/DonationModule';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Flex } from '@chakra-ui/react';
-import formContent from './form';
+import { Box, Flex, Icon } from '@chakra-ui/react';
+import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
+import FixedCTA from '@components/GP/FixedCTA';
 import SEO from './SEO';
+import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
-import DonationModule from '@components/GP/DonationModule';
 
-import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
-
-const Content = dynamic(() => import('./Content'));
-const Thankyou = dynamic(() => import('./Thankyou'));
-
-const HeroBanner = dynamic(() => import('@components/Banner/hero'));
-const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
-const PageContainer = dynamic(() => import('@containers/pageContainer'));
-
-const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
-const SignupForm = dynamic(() => import('@components/GP/HKForm'));
-const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
+import heroBannerImage from './images/banner.jpg';
+import heroBannerImageMobile from './images/banner.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
   const { FirstName } = signup;
+  const themeInterests = theme.interests;
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -45,25 +43,50 @@ function Index({ status, theme, setFormContent, signup }) {
   return (
     <>
       <SEO />
-      {submitted ? (
-        <ThanksBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: `${
-              FirstName ? FirstName : '綠色和平支持者'
-            }，感謝您加入守護海洋行列！`,
-            description: ['為海洋多走一步，捐助支持保護海洋項目。'],
-          }}
-        />
-      ) : (
-        <HeroBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: '請即聯署<br/>將全球 30% 海洋<br/>納入保護區',
-            description: [''],
-          }}
-        />
-      )}
+      <div>
+        {submitted ? (
+          <ThanksBanner
+            defaultImage={heroBannerImage}
+            content={{
+              title: `${
+                FirstName ? FirstName : '綠色和平支持者'
+              }，請收下海洋捎來的謝意`,
+              description: [
+                '能不能多幫海洋一個忙？<br/>邀請您的朋友、家人、同事一起支持全球海洋保護區',
+              ],
+            }}
+            imageSrcset={[
+              {
+                media: '(min-width: 48em)',
+                srcset: heroBannerImage,
+              },
+              {
+                media: '',
+                srcset: heroBannerImageMobile,
+              },
+            ]}
+          />
+        ) : (
+          <HeroBanner
+            defaultImage={heroBannerImage}
+            content={{
+              title: '現在連署<br/><b>您能保護 30% 全球海洋</b>',
+              description: [''],
+            }}
+            imageSrcset={[
+              {
+                media: '(min-width: 48em)',
+                srcset: heroBannerImage,
+              },
+              {
+                media: '',
+                srcset: heroBannerImageMobile,
+              },
+            ]}
+          />
+        )}
+      </div>
+
       <PageContainer>
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
@@ -78,10 +101,10 @@ function Index({ status, theme, setFormContent, signup }) {
                   {submitted ? (
                     <DonationModule
                       market={theme.Market}
-                      language={'zh_HK'}
+                      language={'zh_TW'}
                       campaign={'oceans'}
                       // campaignId={''}
-                      env={'full'}
+                      env={'production'}
                       moduleUrl={
                         'https://api.greenpeace.org.hk/2022/donate-module/main.js'
                       }
@@ -95,11 +118,9 @@ function Index({ status, theme, setFormContent, signup }) {
           </Flex>
         </OverflowWrapper>
       </PageContainer>
-      <PetitionFooter locale={'HKChinese'} />
+      <PetitionFooter locale={'TWChinese'} />
       {!inView && (
-        <FixedCTA onClick={executeScroll}>
-          {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}
-        </FixedCTA>
+        <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
       )}
     </>
   );

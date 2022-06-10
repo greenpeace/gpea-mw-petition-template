@@ -81,7 +81,7 @@ function Index({ status, theme, setFormContent, signup }) {
                       language={'zh_HK'}
                       campaign={'oceans'}
                       // campaignId={''}
-                      env={'full'}
+                      env={'production'}
                       moduleUrl={
                         'https://api.greenpeace.org.hk/2022/donate-module/main.js'
                       }
