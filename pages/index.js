@@ -83,8 +83,8 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
   useEffect(() => {
     const domain = document.location.host;
     const market =
-      themeData?.Market ||
-      (domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : '');
+      themeData?.Market.toUpperCase() ||
+      (domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : ''); // Return 'HK' 'TW' ''
     /* GTM is only applicable for production env */
     initTagManager(market);
 
