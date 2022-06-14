@@ -6,8 +6,6 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import image00 from '../images/GIY工作坊_R1.jpg';
-
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
   return (
@@ -31,20 +29,6 @@ const Content = ({ theme }) => {
       <Text as="p" {...paragraphProps}>
         綠色和平一直以行動、科學研究、政策倡議等方式守護海洋，您願意多走一步，捐助守護海洋的工作嗎？
       </Text>
-
-      <Text as="p" {...paragraphProps}>
-        現以每月$200捐款支持守護海洋，您將獲得兩次「環保手作工作坊」或導賞團的機會！
-        名額有限，額滿即止！
-      </Text>
-
-      <Box {...paragraphProps}>
-        <Image
-          src={image00}
-          p={4}
-          maxW={{ base: '100%', md: '480px' }}
-          mx="auto"
-        />
-      </Box>
 
       <Text as="p" {...paragraphProps}>
         您的捐款將直接資助我們的海上科研任務、揭露企業破壞海洋的行為、以及國際間的倡議工作，直接幫助達成2030年30%全球海洋保護區的目標。

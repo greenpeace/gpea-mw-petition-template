@@ -39,7 +39,7 @@ const SFFormat = ({ locale }) => {
     <FooterBGBlue>
       <Container maxW={'1200px'} py={8} px={4}>
         <Box pt={4} pb={6}>
-          <Image src={logo} maxW={'180px'} alt={'Greenpeace 綠色和平'} />
+          <Image src={logo} maxW={'220px'} alt={'Greenpeace 綠色和平'} />
         </Box>
         <Stack
           as="flex"
@@ -47,7 +47,7 @@ const SFFormat = ({ locale }) => {
           direction={{ base: 'column-reverse', md: 'row' }}
           color={'white'}
         >
-          <Stack direction="column" spacing={4} mb={8} flex={1}>
+          <Stack direction="column" spacing={4} mb={8}>
             <Box>
               {content.leftContent.map((d, i) => (
                 <Box key={i}>
@@ -73,7 +73,7 @@ const SFFormat = ({ locale }) => {
               ))}
             </Stack>
           </Stack>
-          <Stack direction="column" spacing={4} mb={8} flex={1}>
+          <Stack direction="column" spacing={4} mb={8}>
             {content.rightContent.map((d, i) => (
               <Box key={i}>
                 <Text as="p" dangerouslySetInnerHTML={{ __html: d }} />

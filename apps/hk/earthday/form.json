@@ -51,8 +51,11 @@
   ],
   "default_message": "您的捐助，支持綠色和平以公正獨立的身份，持續推動塑膠項目工作！",
   "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
-  "donate_suggestion_message": "誠邀您加入每月捐款會員的行列，因為對於非牟利團體而言，定期定額捐款別具意義：它能為組織提供穩定的收入，持續地支援我們的項目研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
+  "donate_suggestion_message": "感謝您對綠色和平的支持！每月捐款可令環保項目得到更持久的成效，為地球嬴取更大的環保成果。",
   "currency": "HKD",
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
   "default_amount": 200,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
@@ -108,5 +111,6 @@
       "description": ""
     }
   ],
+  "min_amount_alert": "為維持最低行政支出，最低捐款金額為：",
   "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"
 }

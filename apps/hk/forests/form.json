@@ -31,7 +31,7 @@
   "share_button": "分享出去",
   "donate_button": "下一步",
   "donate_cta": "立即捐款",
-  "donateURL": "https://dev-gpea.cs57.force.com/hk/s/donate/alt-layout?language=zh_HK&campaign=oceans_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=forests_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -50,6 +50,9 @@
   "donate_description": ["我將以捐助方式參與保護海洋項目，令海洋回復健康。"],
   "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
   "currency": "HKD",
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
   "default_amount": 200,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
@@ -105,5 +108,6 @@
       "description": ""
     }
   ],
+  "min_amount_alert": "為維持最低行政支出，最低捐款金額為：",
   "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"
 }

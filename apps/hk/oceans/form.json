@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?campaign=oceans_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=oceans_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -51,9 +51,16 @@
   ],
   "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
   "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
-  "donate_suggestion_message": "誠邀您加入每月捐款會員的行列，因為對於非牟利團體而言，定期定額捐款別具意義：它能為組織提供穩定的收入，持續地支援我們的項目研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
+  "donate_suggestion_message": "感謝您對綠色和平的支持！每月捐款可令環保項目得到更持久的成效，為地球嬴取更大的環保成果。",
   "currency": "HKD",
-  "default_amount": 200,
+  "default_amount": 100,
+  "default_monthly": 100,
+  "min_amount_monthly": 50,
+  "default_oneoff": 500,
+  "min_amount_oneoff": 100,
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -62,19 +69,19 @@
     {
       "label": "500",
       "value": 500,
-      "description": "支持綠色和平持續搜集第一手海洋真相，透過傳播媒體送到您與全球的眼前！",
+      "description": "資助2張高清衛星圖片，揭露海洋破壞真相",
       "currency": "HKD"
     },
     {
       "label": "700",
       "value": 700,
-      "description": "支持綠色和平船艦調查所需裝備，監察破壞海洋的行為，實時前赴應對突發環境災難！",
+      "description": "資助3件個人防護裝備，讓調查員在海上安全執行研究任務",
       "currency": "HKD"
     },
     {
       "label": "900",
       "value": 900,
-      "description": "支持綠色和平團隊聯同科學家，到各個海域進行實地考察與研究工作，並展開國際倡議行動！",
+      "description": "資助2名項目主任參與國際海洋會議，推動跨地域的政策改變",
       "currency": "HKD"
     },
     {
@@ -85,21 +92,21 @@
   ],
   "amount_monthly": [
     {
+      "label": "100",
+      "value": 100,
+      "description": "資助2次實地考察，以前線記錄呈現海洋危機真相",
+      "currency": "HKD"
+    },
+    {
       "label": "200",
       "value": 200,
-      "description": "您的捐款，協助發起全球聯署行動，擴大要求制定「全球海洋公約」的聲音力量！",
+      "description": "資助3次實驗室化驗，為海洋保育提供有力證據",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持綠色和平船艦持續監察企業最新動向，及時阻止破壞海洋的行為！",
-      "currency": "HKD"
-    },
-    {
-      "label": "400",
-      "value": 400,
-      "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意制定「全球海洋公約」，推進守護30%海洋保護區目標！",
+      "description": "資助4天的船隊運作，助船隊遠航公海，截擊海洋破壞者",
       "currency": "HKD"
     },
     {
@@ -108,5 +115,6 @@
       "description": ""
     }
   ],
+  "min_amount_alert": "為維持最低行政支出，最低捐款金額為：",
   "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"
 }

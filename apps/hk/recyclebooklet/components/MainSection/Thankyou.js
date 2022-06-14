@@ -7,7 +7,6 @@ import {
 } from '@common/styles/components/contentStyle';
 
 import borrow from '../../images/plastics_borrow_event.jpg';
-import banner from '../../images/GIY工作坊-捐款頁_R111_無插圖.jpg';
 
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
@@ -49,14 +48,6 @@ const Thankyou = ({ theme, signup }) => {
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         緩解塑膠污染，捐助綠色和平走塑工作。
       </Heading>
-
-      <Box {...paragraphProps}>
-        <Image src={banner} />
-      </Box>
-
-      <Text as="p" {...paragraphProps}>
-        每月$200捐款支持綠色和平的項目工作，即可以慈善捐款免稅額扣稅，同時獲得「環保手作工作坊」或導賞團的機會！
-      </Text>
     </>
   );
 };

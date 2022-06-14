@@ -1,8 +1,12 @@
 import { extendTheme } from '@chakra-ui/react';
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "../../tailwind.config";
 
 import styles from './styles';
 import colors from './colors';
 import { Button } from './components/Button';
+
+const tailwind = resolveConfig(tailwindConfig);
 
 const theme = extendTheme({
   components: {
