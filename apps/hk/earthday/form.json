@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "立即支持",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate?language=zh_HK",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -56,7 +56,7 @@
   "allow_monthly": "true",
   "allow_oneoff": "true",
   "default_donation_type": "monthly",
-  "default_amount": 200,
+  "default_amount": 100,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -88,20 +88,20 @@
   ],
   "amount_monthly": [
     {
+      "label": "100",
+      "value": 100,
+      "description": "揭露塑膠污染真相，透過實地研究，採樣調查海洋塑膠污染，要求企業、政府作出積極改變。",
+      "currency": "HKD"
+    },
+    {
       "label": "200",
       "value": 200,
-      "description": "揭露塑膠污染真相，透過實地研究，採樣調查海洋塑膠污染，要求企業、政府作出積極改變。",
+      "description": "持續實地調查非法破壞海洋、森林與環境的行為，以推動政府及企業加強監督及規管。",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "持續實地調查非法破壞海洋、森林與環境的行為，以推動政府及企業加強監督及規管。",
-      "currency": "HKD"
-    },
-    {
-      "label": "400",
-      "value": 400,
       "description": "幫助綠色和平進行環境研究及國際倡議行動，監察石油企業動向，制止對環境不能逆轉的傷害。",
       "currency": "HKD"
     },
