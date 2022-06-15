@@ -1,0 +1,217 @@
+{
+  "DATA": [
+    {
+      "image": 0,
+      "name": "馮漢城",
+      "nameEng": "Fung Hon Shing",
+      "role": "本片編導",
+      "content": "「我覺得野生物種好似活生生嘅藝術品，因為佢哋有不同顏色、羽毛、行為，會同你交流，呢個就係接觸生態嘅有趣之處。」",
+      "width": "full",
+      "height": "full"
+    },
+    {
+      "image": 1,
+      "name": "陳志雲",
+      "nameEng": "Stephen Chan",
+      "role": "本片旁白",
+      "content": "「想認識多啲大嶼山，想認識多啲香港，一定要睇《山海大嶼》；睇完之後唔只睇一次，仲要分享出去，等更多人睇到」",
+      "width": "full",
+      "height": "full"
+    },
+    {
+      "image": 2,
+      "name": "陳可淳",
+      "nameEng": "Chan Hall Sion",
+      "role": "綠色和平城市發展資深項目主任",
+      "content": "「要話畀人聽，進行調查、追尋真相對於守護大嶼有幾重要，仲有希望、可能性同空間喺度」",
+      "width": "half",
+      "height": "full"
+    },
+    {
+      "image": 20,
+      "name": "黃遂心",
+      "nameEng": "Daphne Wong",
+      "role": "本片攝影師",
+      "content": "「拍攝中最深刻嘅時刻係見到中華白海豚擱淺，我好心痛，希望破壞發生咗，先驚覺我們正失去一些自然環境。」",
+      "width": "full",
+      "height": "full"
+    },
+    {
+      "image": 21,
+      "name": "郭子祈",
+      "nameEng": "James Kwok",
+      "role": "本片攝影助手",
+      "content": "「如果我哋想保護環境，可以積極參與發展公眾諮詢、聯署，以及支持不同環團嘅工作。」",
+      "width": "full",
+      "height": "full"
+    },
+    {
+      "image": 3,
+      "name": "鄭振揚",
+      "nameEng": "Tugo Cheng",
+      "role": "風景攝影師",
+      "content": "「希望透過攝影能從自己的角度紀錄大嶼的美之餘，更能讓更多香港人看見大嶼的美，從而尋找他們的角度去欣賞大嶼，共同以教育和保育留住這個香港人的後花園。」",
+      "width": "half",
+      "height": "full"
+    },
+    {
+      "type": "group",
+      "items": [
+        {
+          "image": 4,
+          "name": "阿寶",
+          "nameEng": "",
+          "role": "麵店「多多車仔麵」店主",
+          "content": "「將心比己，當我們是動物，又可如何面對？」",
+          "width": "full",
+          "height": "half"
+        },
+        {
+          "image": 5,
+          "name": "滑翔傘飛行員",
+          "nameEng": "",
+          "role": "風景攝影師",
+          "content": "「又落雨，唔啱風，然後喺舊雲中間，見到彩虹。就喺好辛苦的時候，嗰吓好似叫你不要放棄，得嘅、得嘅、堅持、堅持，堅持吓可能又得」",
+          "width": "full",
+          "height": "half"
+        }
+      ]
+    },
+    {
+      "image": 6,
+      "name": "本地行山團體「山脈旅孩」創辦人",
+      "nameEng": "",
+      "role": "",
+      "content": "「填海會用盡庫房猶如掏盡金礦，香港儲備萬億隨時風光殮葬，明明大嶼是香港最可保育的曙光，為了錢填平海港，如今已沒退路，應該一起對抗。」",
+      "width": "full",
+      "height": "full"
+    },
+    {
+      "image": 7,
+      "name": "Kata",
+      "nameEng": "",
+      "role": "OL、越野跑者",
+      "content": "「我相信所有愛香港的人來說，所謂的價值不只有金錢。希望愛香港的人能一起保護這彈丸之地的自然面貌，堅守大嶼！」",
+      "width": "half",
+      "height": "full"
+    },
+    {
+      "image": 8,
+      "name": "杜學如",
+      "nameEng": "Max",
+      "role": "藍染工房「片藍造」創辦人",
+      "content": "「項目或會逼走一些想以低價居住鄉村的藝術家，或喜愛大自然、注重生活質素的人。他們已經由市區搬入大西北，再搬入離島，之後還可以搬去哪裏？」",
+      "width": "half",
+      "height": "full"
+    },
+    {
+      "type": "group",
+      "items": [
+        {
+          "image": 9,
+          "name": "池太",
+          "nameEng": "",
+          "role": "水口士多老闆",
+          "content": "「要面臨的污染無從估計，將來用多少錢都不能復原。這個舉動是就像一滴墨水滴入杯中，這杯水已變得不能飲了。」",
+          "width": "full",
+          "height": "half"
+        },
+        {
+          "image": 10,
+          "name": "Nicole",
+          "nameEng": "",
+          "role": "西貢裸買小店「點籽」店主",
+          "content": "「先是打郊野公園主意，現在想在海上變出平地。我不想小朋友日後沒有海洋、郊野公園；難道在馬路旁起個公園就叫郊野公園？」",
+          "width": "full",
+          "height": "half"
+        }
+      ]
+    },
+    {
+      "image": 11,
+      "name": "Eric Wong",
+      "nameEng": "",
+      "role": "登山家、極地嚮導及攝影師",
+      "content": "「因工作關係，我自己一直都與世界各地的海洋生物學家交流。香港的海域其實孕育著多樣的海洋生物。若然發展「明日大嶼」，大興土木會嚴重破壞當地的生態，也會令整個環境變得一遍狼藉。」",
+      "width": "full",
+      "height": "full"
+    },
+    {
+      "image": 12,
+      "name": "Nicole",
+      "nameEng": "Max",
+      "role": "西貢裸買小店店主",
+      "content": "「相信填海而得的土地除了造價貴，加上面向海景，售價定必高昂；公營房屋的數目亦相當有限，而且屬於偏遠地區，並不會吸引我這類年輕人居住。」",
+      "width": "full",
+      "height": "full"
+    },
+    {
+      "image": 13,
+      "name": "Mandy",
+      "nameEng": "",
+      "role": "中西區甜品店「甜家」店主",
+      "content": "「若發展沿岸地區，擔心當局會如何規劃連接發展，不希望西環最有特色、人人打卡『Instagram Pier』等景點會消失，令社區變得欠缺特色。」",
+      "width": "half",
+      "height": "full"
+    },
+    {
+      "image": 14,
+      "name": "KK",
+      "nameEng": "",
+      "role": "城市設計工作者及「舊物孤兒院 - 拾莊」創辦人",
+      "content": "「荷蘭出盡力排洪，香港反而花大錢興建有機會陸沉的人工島，到底有沒有仔細研究可行性？生態當真可以承受到？還是當香港人無腦？」",
+      "width": "full",
+      "height": "full"
+    },
+    {
+      "image": 15,
+      "name": "Christopher Wong",
+      "nameEng": "",
+      "role": "媒體傳訊工作者、攀山愛好者",
+      "content": "「堅守大嶼，堅守我們所剩無幾的土地，作為熱愛大自然的人，這是一份義務。」",
+      "width": "full",
+      "height": "full"
+    },
+    {
+      "type": "group",
+      "items": [
+        {
+          "image": 16,
+          "name": "阿龍",
+          "nameEng": "",
+          "role": "零食店「菓紫龍」店主",
+          "content": "「可能會令香港最後淨土、能享受寧靜的地方也沒了，海洋已所剩無幾，連自然風景都失去，還算是香港嗎？」",
+          "width": "full",
+          "height": "half"
+        },
+        {
+          "image": 17,
+          "name": "Maggie",
+          "nameEng": "",
+          "role": "燉湯小店「拾祝」老闆娘",
+          "content": "「解決土地問題的方法有很多，並非鐵定要發展造價高昂的填海項目，發展棕地都是方法之一。」",
+          "width": "full",
+          "height": "half"
+        }
+      ]
+    },
+    {
+      "image": 18,
+      "name": "Chappie",
+      "nameEng": "",
+      "role": "幼兒復康服務項目主任、行山、跑山、攀石愛好者",
+      "content": "「如果不能夠堅守大嶼，失去之後，恐怕香港人只會失去更多。破壞生態是一種不可逆轉的傷害。失去大嶼之後，香港人聽日可以承擔多少個「失去」？」",
+      "width": "full",
+      "height": "full"
+    },
+    {
+      "image": 19,
+      "name": "Gary Brightman",
+      "nameEng": "",
+      "role": "梅窩書店「Vibe」店主",
+      "content": "「大嶼山如香港的肺部，有大量未被開發的天然環境。明日大嶼項目一旦落實，工程歷時漫長，其間產生的沙塵等污染物會嚴重影響環境及生活質素。」",
+      "width": "full",
+      "height": "full"
+    }
+  ]
+}

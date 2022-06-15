@@ -14,6 +14,8 @@ export const Field = (props) => {
     max,
     size = 'lg',
     value,
+    bgColor = 'transparent',
+    h = '48px',
   } = props;
 
   return (
@@ -22,14 +24,17 @@ export const Field = (props) => {
       <Input
         name={name}
         type={type}
-        placeholder={label}
         onChange={handleChange}
         onBlur={handleBlur}
-        _placeholder={{ fontSize: 16 }}
+        placeholder={label}
+        _placeholder={{ fontSize: 16, color: 'gray.500' }}
         size={size}
         min={min}
         max={max}
         value={value}
+        errorBorderColor="var(--error-900)"
+        bgColor={bgColor}
+        h={h}
       />
       <FormErrorMessage color="red">{errors}</FormErrorMessage>
     </FormControl>

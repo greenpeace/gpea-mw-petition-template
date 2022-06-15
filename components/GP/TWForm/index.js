@@ -128,7 +128,7 @@ const MyForm = (props) => {
   return (
     <Box py="8" px="4">
       <Stack spacing="4">
-        {numberOfResponses && numberOfTarget ? (
+        {formContent.signed_number && numberOfResponses && numberOfTarget ? (
           <Box>
             <Box
               borderRadius={'20px'}

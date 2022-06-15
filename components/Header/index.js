@@ -8,8 +8,8 @@ const WithSubnavigation = ({ href }) => {
   return (
     <Box
       bgColor={'brand.500'}
-      borderBottom={'1px solid var(--shades-100)'}
-      boxShadow={'var(--shadow-1)'}
+      // borderBottom={'1px solid var(--shades-100)'}
+      // boxShadow={'var(--shadow-1)'}
       pos={'relative'}
       zIndex={3}
     >

@@ -3,21 +3,19 @@ import { connect } from 'react-redux';
 import { Box } from '@chakra-ui/react';
 import Nav from '@components/Header';
 
-function Layout({ children }) {
+function Layout({ children, showHeader }) {
   return (
     <Box>
-      <Nav />
+      {showHeader && <Nav />}
       {children}
     </Box>
   );
 }
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = ({theme}) => {
+  return {
+    showHeader: theme.showGlobalHeader
+  };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+export default connect(mapStateToProps)(Layout);

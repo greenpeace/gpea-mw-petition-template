@@ -13,6 +13,7 @@ const nextConfig = {
     themeEndpoint: process.env.THEME_ENDPOINT,
     signupNumbersHK: process.env.SIGN_UP_NUMBERS_HK,
     signupNumbersTW: process.env.SIGN_UP_NUMBERS_TW,
+    donateModule: process.env.DONATE_MODULE,
     dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.green${process.env.MARKET}.greenpeace.org/websign-dummy`,
   },
   // Use the CDN in production and localhost for development.
@@ -29,7 +30,11 @@ const nextConfig = {
     }
   },
   images: {
-    domains: ['api.greenpeace.org.hk', 'change.greenpeace.org.hk'],
+    domains: [
+      'api.greenpeace.org.hk',
+      'change.greenpeace.org.hk',
+      'change.greenpeace.org.tw',
+    ],
     disableStaticImages: true,
   },
 };

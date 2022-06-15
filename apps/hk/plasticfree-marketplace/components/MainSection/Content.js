@@ -40,8 +40,8 @@ const Content = ({ theme }) => {
 
       <Box {...paragraphProps}>
         屆時會以多項有趣活動，讓公眾體驗日常生活中輕鬆減塑的方法。是次活動設置綠色和平與裸買店Loop
-        Store
-        首次合作的裸買概念店「綠色和平士多」，以及邀請本地手作人合辦走塑及懷舊主題市集；一起實驗「無塑市集」的想像藍本，現場多款美味零食及精美的好生活用品讓你選擇；更會提供多款環保工作坊讓您體驗DIY。
+        Store 首次合作的裸買概念店「綠色和平 X LOOP
+        士多」，以及邀請本地手作人合辦走塑及懷舊主題市集；一起實驗「無塑市集」的想像藍本，現場多款美味零食及精美的好生活用品讓你選擇；更會提供多款環保工作坊讓您體驗DIY。
       </Box>
 
       <Box {...paragraphProps}>
@@ -54,7 +54,7 @@ const Content = ({ theme }) => {
 
       <Box {...paragraphProps} bgColor="#F9F9F9" borderRadius={8} p={4}>
         <UnorderedList>
-          <ListItem>裸買生活概念店「綠色和平士多」</ListItem>
+          <ListItem>裸買生活概念店「綠色和平 X LOOP 士多」</ListItem>
           <ListItem>環保好生活工作坊</ListItem>
           <ListItem>懷舊市集攤檔</ListItem>
           <ListItem>懷舊時光拍照打卡點</ListItem>

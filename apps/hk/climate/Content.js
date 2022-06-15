@@ -26,12 +26,6 @@ import iconA from './images/ce/Asset1-earth.png';
 import iconB from './images/ce/Asset1-icemelt.png';
 import iconC from './images/ce/Asset1-moneybag.png';
 
-const handleOpenLink = () => {
-  window.open(
-    'https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=climate_mw',
-  );
-};
-
 const Content = ({ theme, formContent }) => {
   const themeInterests = theme.interests;
   return (
@@ -162,11 +156,6 @@ const Content = ({ theme, formContent }) => {
           <Text as="p" {...paragraphProps}>
             綠色和平一直積極採取應對氣候危機的行動，今年請攜手推動各國企業、政府實現能源轉型，加速發展可再生能源，設法讓全球暖化控制在攝氏1.5度，減緩影響一代又一代人類、物種存亡的氣候危機。
           </Text>
-        </Box>
-        <Box mb={4}>
-          <Button {...OrangeCTA} onClick={() => handleOpenLink()}>
-            {formContent.donate_cta}
-          </Button>
         </Box>
         <Text as="p" {...paragraphProps}>
           綠色和平成立50年以來，堅持不接受政府、企業捐助，您捐助的一分一毫，能支持我們以公正獨立的身份，持續推動環境工作！

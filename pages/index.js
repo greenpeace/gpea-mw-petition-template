@@ -9,6 +9,13 @@ import * as themeActions from 'store/actions/action-types/theme-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 
+import {
+  hkDevTagManagerArgs,
+  twDevTagManagerArgs,
+  hkTagManagerArgs,
+  twTagManagerArgs,
+} from '@common/constants/tagManagerArgs';
+
 /* Determine the returned project index by env variable */
 const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
 const envProjectName = process.env.projectName;
@@ -16,6 +23,42 @@ const envProjectMarket = process.env.projectMarket;
 const themeEndpointURL = process.env.themeEndpoint;
 const signupNumbersHKURL = process.env.signupNumbersHK;
 const signupNumbersTWURL = process.env.signupNumbersTW;
+
+const initTagManager = (marketName) => {
+  const trackDomains = [
+    'greenpeace.org',
+    'change.greenpeace.org.hk',
+    'change.greenpeace.org.tw',
+    'cloud.greenhk.greenpeace.org',
+    'cloud.greentw.greenpeace.org',
+  ];
+  if (
+    process.env.NODE_ENV === 'production' &&
+    trackDomains.includes(window.location.hostname) &&
+    !window.location.href.indexOf('daisy-chain-oceans-sanctuaries') > 0
+  ) {
+    switch (marketName) {
+      case 'HK':
+        TagManager.initialize(hkTagManagerArgs);
+        break;
+      case 'TW':
+        TagManager.initialize(twTagManagerArgs);
+      default:
+        break;
+    }
+  } else {
+    switch (marketName) {
+      case 'HK':
+        TagManager.initialize(hkDevTagManagerArgs);
+        break;
+      case 'TW':
+        TagManager.initialize(twDevTagManagerArgs);
+        break;
+      default:
+        break;
+    }
+  }
+};
 
 function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
   const router = useRouter();
@@ -48,29 +91,11 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
   useEffect(() => {
     const domain = document.location.host;
     const market =
-      themeData?.Market || domain.indexOf('hk') > 0
-        ? 'hk'
-        : domain.indexOf('tw') > 0
-        ? 'tw'
-        : '';
+      themeData?.Market.toUpperCase() ||
+      (domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : ''); // Return 'HK' 'TW' ''
     /* GTM is only applicable for production env */
-    if (process.env.NODE_ENV === 'production') {
-      let gtmId = '';
-      switch (market) {
-        case 'hk':
-          gtmId = 'GTM-M6LZL75';
-          break;
-        case 'tw':
-          gtmId = 'GTM-WRM6WK6';
-          break;
-        default:
-          break;
-      }
-      const tagManagerArgs = {
-        gtmId: gtmId,
-      };
-      TagManager.initialize(tagManagerArgs);
-    }
+    initTagManager(market);
+
     setTheme(themeData);
   }, [themeData]);
 

@@ -1,6 +1,6 @@
 {
-  "form_header": "萬人齊聲，改變成真",
-  "form_description": "我支持綠色和平的全球氣候行動，要求政府與企業對氣候問題負責！",
+  "form_header": "您可以讓全球升溫到此為止",
+  "form_description": "我願意支持綠色和平，<b>改變寬鬆的碳費政策，推動企業的綠能轉型</b>，以全面的減碳行動根治氣候問題，改寫地球未來。",
   "form_remind": "",
   "signed_number": "已連署人數",
 
@@ -16,7 +16,6 @@
   "label_year_of_birth_optional": "出生年份（選填）",
   "label_counties": "居住縣市",
   "label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/' target='_blank'>隱私保護政策</a>。",
-  "label_namelist": "本人同意綠色和平於本專案進行期間，基於專案需求、政策建議等目的，將本人此次連署留下的資料（包括但不限於姓名），以紙本、電子、口頭或其他適當方式，列於支持者名單中，並利用於本會及訴求機構之所在地區。",
 
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
@@ -72,10 +71,6 @@
     { "label": "是", "value": true },
     { "label": "否", "value": false }
   ],
-  "namelist": [
-    { "label": "是", "value": 1 },
-    { "label": "否", "value": 0 }
-  ],
 
   "donate_header": "是的！我想要改變氣候危機",
   "donate_description": [""],
@@ -83,6 +78,9 @@
   "donate_suggestion_header": "您的每月小額捐款是我們最大的後盾！",
   "donate_suggestion_message": "誠心邀請您加入每月捐款會員的行列，因為對於非營利團體而言，定期定額捐款具有莫大的意義：它能提供組織穩定的收入，持續地支援我們的專案研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
   "currency": "新臺幣",
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
   "default_amount": 600,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
@@ -138,5 +136,6 @@
       "description": ""
     }
   ],
+  "min_amount_alert": "為維持最低行政支出，最低捐款金額為：",
   "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"
 }

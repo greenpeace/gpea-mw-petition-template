@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import PageContainer from '@containers/pageContainer';
@@ -20,12 +21,20 @@ import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
 // import heroBannerImage from './images/gp-climate-banner.jpg';
-import heroBannerImageA from './images/climatebanner_web.jpg';
-import heroBannerImageAMobile from './images/climatebanner_mobile.jpg';
-import heroBannerImageB from './images/climatebanner2_web.jpg';
-import heroBannerImageBMobile from './images/climatebanner2_mobile.jpg';
+import heroBannerImage from './images/banner_web.jpg';
+import heroBannerImageMobile from './images/banner_mobile.jpg';
+// import heroBannerImageB from './images/climatebanner2_web.jpg';
+// import heroBannerImageBMobile from './images/climatebanner2_mobile.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
+  // const utmSource = queryString.parse(location.search);
+  // console.log(utmSource)
+  const router = useRouter();
+  const [utmSource, setUtmSource] = useState('');
+  useEffect(() => {
+    setUtmSource(router.query?.utm_source);
+  }, [router]);
+
   const { submitted } = status;
   const { FirstName } = signup;
   const themeInterests = theme.interests;
@@ -46,10 +55,10 @@ function Index({ status, theme, setFormContent, signup }) {
   return (
     <>
       <SEO />
-      <div className="banner-a">
+      <div>
         {submitted ? (
           <ThanksBanner
-            defaultImage={heroBannerImageA}
+            defaultImage={heroBannerImage}
             content={{
               title: `${
                 FirstName ? FirstName : '綠色和平支持者'
@@ -59,70 +68,29 @@ function Index({ status, theme, setFormContent, signup }) {
             imageSrcset={[
               {
                 media: '(min-width: 48em)',
-                srcset: heroBannerImageA,
+                srcset: heroBannerImage,
               },
               {
                 media: '',
-                srcset: heroBannerImageAMobile,
+                srcset: heroBannerImageMobile,
               },
             ]}
           />
         ) : (
           <HeroBanner
-            defaultImage={heroBannerImageA}
+            defaultImage={heroBannerImage}
             content={{
-              title: '<b>立即連署<br/>您能扭轉氣候危機</b>',
+              title: '<b>立即連署<br/>改寫氣候未來</b>',
               description: [''],
             }}
             imageSrcset={[
               {
                 media: '(min-width: 48em)',
-                srcset: heroBannerImageA,
+                srcset: heroBannerImage,
               },
               {
                 media: '',
-                srcset: heroBannerImageAMobile,
-              },
-            ]}
-          />
-        )}
-      </div>
-      <div className="banner-b" style={{ display: 'none' }}>
-        {submitted ? (
-          <ThanksBanner
-            defaultImage={heroBannerImageB}
-            content={{
-              title: `${
-                FirstName ? FirstName : '綠色和平支持者'
-              }，謝謝您參與這次的連署`,
-              description: ['能更進一步支持我們的氣候行動嗎？'],
-            }}
-            imageSrcset={[
-              {
-                media: '(min-width: 48em)',
-                srcset: heroBannerImageB,
-              },
-              {
-                media: '',
-                srcset: heroBannerImageBMobile,
-              },
-            ]}
-          />
-        ) : (
-          <HeroBanner
-            defaultImage={heroBannerImageB}
-            content={{
-              title: '<b>立即連署<br/>您能扭轉氣候危機</b>',
-              description: [''],
-            }}
-            imageSrcset={[
-              {
-                media: '(min-width: 48em)',
-                srcset: heroBannerImageB,
-              },
-              {
-                media: '',
-                srcset: heroBannerImageBMobile,
+                srcset: heroBannerImageMobile,
               },
             ]}
           />
@@ -140,7 +108,15 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
+                  {submitted ? (
+                    utmSource != 'dd' ? (
+                      <DonateForm />
+                    ) : (
+                      ''
+                    )
+                  ) : (
+                    <SignupForm />
+                  )}
                 </Box>
               </FormContainer>
             </Box>
