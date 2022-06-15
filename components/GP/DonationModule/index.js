@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Box } from '@chakra-ui/react';
-import { Helmet } from 'react-helmet';
+import { Box, Fade, Flex, Spinner } from '@chakra-ui/react';
+
+import useScript from './useScript';
 
 /*
 
@@ -48,11 +49,28 @@ const DonationModule = (props) => {
   const { market, language, campaign, campaignId, env, moduleUrl, signup } =
     props;
 
+  const status = useScript(moduleUrl);
+
   return (
-    <Box minH="400px">
-      <Helmet>
-        <script src={moduleUrl}></script>
-      </Helmet>
+    <Box pos="relative" minH="400px">
+      {/* Script loading */}
+      <Fade in={status != 'ready'}>
+        <Flex
+          zIndex="99"
+          pos="absolute"
+          top="0"
+          right="0"
+          width="100%"
+          height="100%"
+          direction="column"
+          align="center"
+          justifyContent="center"
+          bg="white"
+        >
+          <Spinner size="xl" color="#66cc00" />
+        </Flex>
+      </Fade>
+      {/* React DOM render here */}
       <div
         data-gpea-module="gpea-donation-module"
         data-gpea-market={market.toUpperCase()} //手動填寫← TW 或 HK
