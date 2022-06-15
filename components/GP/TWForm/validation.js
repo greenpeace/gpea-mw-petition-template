@@ -26,6 +26,11 @@ export function validation(values, formContent) {
   if (!values.Counties && typeof formContent.counties != 'undefined') {
     errors.Counties = formContent.empty_data_alert;
   }
+  
+  if (!values.Address && typeof formContent.counties != 'undefined') {
+    errors.Address = formContent.empty_data_alert;
+  }
+
 
   if (values.MobilePhone) {
     const phoneReg6 = new RegExp(/^(0|886|\+886)?(9\d{8})$/).test(

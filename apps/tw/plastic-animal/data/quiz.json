@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "question": {
+      "value": "你認為臺灣哪一種類型的棲地受微塑膠污染最為嚴重？",
+      "label": "你認為臺灣哪一種類型的棲地受微塑膠污染最為嚴重？"
+    },
+    "content": {
+      "value": "",
+      "label": ""
+    },
+    "options": [
+      { "value": "A", "point": 400, "label": "高山湖泊" },
+      { "value": "B", "point": 10, "label": "淡水河流" },
+      { "value": "C", "point": 0, "label": "山林古道" }
+    ],
+    "image": "questions/q-1.jpg",
+    "maximum": 1,
+    "type": "single",
+    "correct": false
+  },
+  {
+    "id": "2",
+    "question": {
+      "value": "根據綠色和平研究調查，以下有關臺灣保育類野生動物受微塑膠影響的敘述何者已被研究證實？",
+      "label": "根據綠色和平研究調查，以下有關臺灣保育類野生動物受微塑膠影響的敘述何者已被研究證實？"
+    },
+    "content": {
+      "value": "",
+      "label": ""
+    },
+    "options": [
+      { "value": "A", "point": 0, "label": "飲用水源檢出微塑膠" },
+      { "value": "B", "point": 0, "label": "動物排遺物中驗出微塑膠" },
+      { "value": "C", "point": 100, "label": "以上皆是" }
+    ],
+    "image": "questions/q-2.jpg",
+    "maximum": 1,
+    "type": "single",
+    "correct": "C"
+  },
+  {
+    "id": "3",
+    "question": {
+      "value": "根據全球淨灘數據及綠色和平淨山及淨灘經驗，山林跟海洋最常見的垃圾是什麼？",
+      "label": "根據全球淨灘數據及綠色和平淨山及淨灘經驗，山林跟海洋最常見的垃圾是什麼？"
+    },
+    "content": {
+      "value": "",
+      "label": ""
+    },
+    "options": [
+      { "value": "A", "point": 100, "label": "塑膠包裝" },
+      { "value": "B", "point": 0, "label": "玻璃瓶" },
+      { "value": "C", "point": 0, "label": "鐵鋁罐" }
+    ],
+    "image": "questions/q-3.jpg",
+    "maximum": 1,
+    "type": "single",
+    "correct": "A"
+  },
+  {
+    "id": "4",
+    "question": {
+      "value": "一次性塑膠包裝不斷增加，是造成塑膠污染的主因。你知道全臺超市、量販店一年至少產生多少一次性塑膠包裝垃圾嗎？",
+      "label": "一次性塑膠包裝不斷增加，是造成塑膠污染的主因。你知道全臺超市、量販店一年至少產生多少一次性塑膠包裝垃圾嗎？"
+    },
+    "content": {
+      "value": "",
+      "label": ""
+    },
+    "options": [
+      { "value": "A", "point": 0, "label": "1 億" },
+      { "value": "B", "point": 0, "label": "23 億" },
+      { "value": "C", "point": 100, "label": "36 億" }
+    ],
+    "image": "questions/q-4.jpg",
+    "maximum": 1,
+    "type": "single",
+    "correct": "C"
+  }
+]
