@@ -43,7 +43,7 @@ const Quiz = ({
       {currentQuiz?.options?.map((d, i) => {
         let getCurrentAnswers = answer[current] || [];
         const selected = getCurrentAnswers.indexOf(d.value) > -1;
-        const icon =  ( d.value === currentQuiz.correct ? CorrectIcon : ( selected ? FalseIcon : null ) )
+        const icon =  ( d.value === currentQuiz.correct ? CorrectIcon : ( (selected && currentQuiz.correct ) ? FalseIcon : null ) )
         return (
           <Box
             key={i}

@@ -57,6 +57,20 @@ function Index({
   const dynamicContent = RESULT[result]?.content;
   const [supportType, setSupportType] = useState('');
 
+  const handleOpenLink = (targetDonateURL) => {
+    //
+    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer.push({
+      event: 'gaEvent',
+      eventCategory: 'donations',
+      eventAction: 'form_steps',
+      eventLabel: 'form_step:1_amount',
+    });
+    //
+    window.open(`${targetDonateURL}`);
+  };
+
   useEffect(() => {
     setFormContent(formContent);
     if(Number(hiddenForm?.ad_landing_page) === 1) setSupportType('support');
@@ -70,7 +84,6 @@ function Index({
     }else{
       setFormContent(formContent);
     }
-    console.log("supportType "+supportType)
   }, [submitted, supportType]); // switch Form by result
 
   useEffect(async () => {
@@ -84,7 +97,7 @@ function Index({
       .reduce((b, c) => {
         return b + c;
       });
-    console.log('calAnswer: ' + calAnswer);
+    
     setScore(calAnswer);
     // const getMostLargerValue = calAnswer.filter(
     //   (d) => d.totalPoints === calAnswer[0].totalPoints, // get largest points only
@@ -148,6 +161,7 @@ function Index({
     });
   }, [result, supportType]);
 
+
   
 
   const RenderForm = () => (
@@ -179,11 +193,9 @@ function Index({
             }>
             我願意
           </Button>
-          <Button {...OrangeCTA} onClick={
-              () => {
-                setSupportType('subscribe');
-              }
-            }>
+          <Button {...OrangeCTA} onClick={() => {
+            handleOpenLink(formContent.donateURL);
+          }}>
             以其他方式支持減塑
           </Button>
         </SimpleGrid>
