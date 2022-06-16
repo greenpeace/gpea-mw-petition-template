@@ -9,7 +9,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import Content from './Content';
 import Thankyou from './Thankyou';
 import SignupForm from '@components/GP/TWForm';
-import DonateForm from '@components/GP/DonateContainer';
+import DonationModule from '@components/GP/DonationModule';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Icon } from '@chakra-ui/react';
@@ -19,11 +19,8 @@ import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-// import heroBannerImage from './images/gp-climate-banner.jpg';
-import heroBannerImage from './images/banner_web.jpg';
-import heroBannerImageMobile from './images/banner_mobile.jpg';
-// import heroBannerImageB from './images/climatebanner2_web.jpg';
-// import heroBannerImageBMobile from './images/climatebanner2_mobile.jpg';
+import heroBannerImage from './images/banner.jpg';
+import heroBannerImageMobile from './images/banner.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
@@ -53,8 +50,10 @@ function Index({ status, theme, setFormContent, signup }) {
             content={{
               title: `${
                 FirstName ? FirstName : '綠色和平支持者'
-              }，謝謝您參與這次的連署`,
-              description: ['能更進一步支持我們的氣候行動嗎？'],
+              }，請收下海洋捎來的謝意`,
+              description: [
+                '能不能多幫海洋一個忙？<br/>邀請您的朋友、家人、同事一起支持全球海洋保護區',
+              ],
             }}
             imageSrcset={[
               {
@@ -71,7 +70,7 @@ function Index({ status, theme, setFormContent, signup }) {
           <HeroBanner
             defaultImage={heroBannerImage}
             content={{
-              title: '<b>立即連署<br/>您能扭轉氣候危機</b>',
+              title: '現在連署<br/><b>您能保護 30% 全球海洋</b>',
               description: [''],
             }}
             imageSrcset={[
@@ -99,7 +98,17 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
+                  {submitted ? (
+                    <DonationModule
+                      market={theme.Market}
+                      language={'zh_TW'}
+                      campaign={'oceans'}
+                      // campaignId={''}
+                      env={'full'}
+                    />
+                  ) : (
+                    <SignupForm />
+                  )}
                 </Box>
               </FormContainer>
             </Box>

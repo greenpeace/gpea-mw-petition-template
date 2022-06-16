@@ -1,7 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import PetitionFooter from '@containers/petitionFooter';
+import React, { useEffect, useState } from 'react';
 import { Box, Center, Image, Divider, AspectRatio } from '@chakra-ui/react';
-import Header from '../components/Header';
 import MobileHero from '../images/mobile/hero.png';
 import MobileHeroFront from '../images/mobile/hero_front.png';
 import DesktopHero from '../images/hero_v2.jpg';
@@ -26,7 +24,7 @@ import Stepb04 from '../images/donate/stepb04.svg';
 import Item1 from '../images/item1.jpg';
 import Item2 from '../images/item2.jpg';
 
-import DonateForm from '@components/GP/DonateForm';
+import DonationModule from '@components/GP/DonationModule';
 
 import { connect } from 'react-redux';
 import formContent from '../form';
@@ -157,7 +155,13 @@ function Index({ setFormContent }) {
                 boxShadow="lg"
                 overflow="hidden"
               >
-                <DonateForm />
+                <DonationModule
+                  market={'HK'}
+                  language={'zh_HK'}
+                  campaign={'documentary'}
+                  campaignId={'7012u0000008t8NAAQ'}
+                  env={'production'}
+                />
               </Box>
             </div>
           </div>

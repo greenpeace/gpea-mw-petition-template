@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=plastics_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -53,10 +53,14 @@
   "donate_suggestion_header": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
   "donate_suggestion_message": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
   "currency": "HKD",
+  "default_amount": 100,
+  "default_monthly": 100,
+  "min_amount_monthly": 50,
+  "default_oneoff": 500,
+  "min_amount_oneoff": 100,
   "allow_monthly": "true",
   "allow_oneoff": "true",
   "default_donation_type": "monthly",
-  "default_amount": 200,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -88,20 +92,20 @@
   ],
   "amount_monthly": [
     {
+      "label": "100",
+      "value": 100,
+      "description": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策。",
+      "currency": "HKD"
+    },
+    {
       "label": "200",
       "value": 200,
-      "description": "支持綠色和平聯署行動，集合更強群眾力量，持續督促企業、政府推出積極的減塑目標與政策。",
+      "description": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持綠色和平持續調查塑膠污染問題，以科學實證遊說企業和政府減塑的急切性，並提出相應解決方案。",
-      "currency": "HKD"
-    },
-    {
-      "label": "400",
-      "value": 400,
       "description": "支持綠色和平推動超市淘汰即棄塑膠、招募商戶成為走塑店鋪、督促政府訂立更積極的減塑目標與政策，全面減緩塑膠污染問題。",
       "currency": "HKD"
     },

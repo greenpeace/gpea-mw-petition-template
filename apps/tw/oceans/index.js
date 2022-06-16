@@ -19,7 +19,7 @@ import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/banner.png';
+import heroBannerImage from './images/banner.jpg';
 
 function Index({
   status,
