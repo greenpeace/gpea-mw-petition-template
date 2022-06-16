@@ -236,7 +236,7 @@ function Index({
                       color={'black'}
                       fontSize={{ base: '2xl', md: '3xl' }}
                       dangerouslySetInnerHTML={RESULT[result] && {
-                        __html: RESULT[result]?.value + ' <br> ' +  RESULT[result]?.title,
+                        __html: RESULT[result]?.title,
                       }} 
                     />
                   </Box>

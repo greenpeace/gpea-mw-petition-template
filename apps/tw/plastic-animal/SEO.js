@@ -19,21 +19,18 @@ const SEO = () => {
         }}
       />
       {/* title */}
-      <title>
-        2022地球日限定人格測驗！3分鐘測出最適合你的永續投資方式 - Greenpeace
-        綠色和平 | 台灣
-      </title>
+      <title>難逃一塑！臺灣保育類動物需要您的幫助 - Greenpeace 綠色和平 | 台灣</title>
       <meta
         property="og:title"
-        content="2022地球日限定人格測驗！3分鐘測出最適合你的永續投資方式 - Greenpeace 綠色和平 | 台灣"
+        content="難逃一塑！臺灣保育類動物需要您的幫助 - Greenpeace 綠色和平 | 台灣"
       />
       <meta
         name="description"
-        content="2022世界地球日主題是投資我們的星球，理財節目主持人暨綠色和平氣候大使謝哲青與你分享投資最重要的事不只ESG、CSR。快用人格測驗測出你是哪一型投資人，找到適合你的愛地球投資組合！"
+        content="測你多了解臺灣自然棲地，野生保育類動物有話要說！"
       />
       <meta
         property="og:description"
-        content="2022世界地球日主題是投資我們的星球，理財節目主持人暨綠色和平氣候大使謝哲青與你分享投資最重要的事不只ESG、CSR。快用人格測驗測出你是哪一型投資人，找到適合你的愛地球投資組合！"
+        content="測你多了解臺灣自然棲地，野生保育類動物有話要說！"
       />
       <meta property="og:image" content={shareImage} />
     </Head>
