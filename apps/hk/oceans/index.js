@@ -80,11 +80,8 @@ function Index({ status, theme, setFormContent, signup }) {
                       market={theme.Market || 'HK'}
                       language={'zh_HK'}
                       campaign={'oceans'}
-                      campaignId={''}
+                      // campaignId={''}
                       env={'production'}
-                      moduleUrl={
-                        'https://api.greenpeace.org.hk/2022/donate-module/main.js'
-                      }
                     />
                   ) : (
                     <SignupForm />

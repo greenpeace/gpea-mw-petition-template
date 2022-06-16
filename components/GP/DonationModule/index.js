@@ -46,9 +46,11 @@ import useScript from './useScript';
 */
 
 const DonationModule = (props) => {
-  const { market, language, campaign, campaignId, env, moduleUrl, signup } =
-    props;
+  const { market, language, campaign, campaignId, env, signup } = props;
 
+  // Define constant module url
+  const moduleUrl = 'https://api.greenpeace.org.hk/app/donation-module/main.js';
+  // Import module
   const status = useScript(moduleUrl);
 
   return (

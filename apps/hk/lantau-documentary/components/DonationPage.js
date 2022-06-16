@@ -155,25 +155,12 @@ function Index({ setFormContent }) {
                 boxShadow="lg"
                 overflow="hidden"
               >
-                {/* <DonationModule
-                  market={'HK'}
-                  language={'zh_HK'}
-                  campaign={'documentary'}
-                  campaignId={''}
-                  env={'test'}
-                  moduleUrl={
-                    'https://api.greenpeace.org.hk/2022/donate-module/main.js'
-                  }
-                /> */}
                 <DonationModule
                   market={'HK'}
                   language={'zh_HK'}
                   campaign={'documentary'}
                   campaignId={'7012u0000008t8NAAQ'}
                   env={'production'}
-                  moduleUrl={
-                    'https://api.greenpeace.org.hk/2022/donate-module/main.js'
-                  }
                 />
               </Box>
             </div>
