@@ -12,7 +12,7 @@ During the build, the project will pull the basic campaign data from the schema 
 
 ## Quick start
 
-1. Run `npm run install` to install the dependencies.
+1. Run `npm run install` to install the dependencies. ( or `npm install`)
 2. Run `npm run dev` to start the localhost.
 3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
