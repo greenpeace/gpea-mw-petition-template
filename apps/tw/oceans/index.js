@@ -10,6 +10,7 @@ import Content from './Content';
 import Thankyou from './Thankyou';
 import SignupForm from '@components/GP/TWForm';
 import DonateForm from '@components/GP/DonateForm';
+import DonationModule from '@components/GP/DonationModule';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Icon } from '@chakra-ui/react';
@@ -180,7 +181,17 @@ function Index({
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
+                  {submitted ? (
+                    <DonationModule
+                      market={theme.Market}
+                      language={'zh_TW'}
+                      campaign={'oceans'}
+                      // campaignId={''}
+                      env={'production'}
+                    />
+                  ) : (
+                    <SignupForm />
+                  )}
                 </Box>
               </FormContainer>
             </Box>

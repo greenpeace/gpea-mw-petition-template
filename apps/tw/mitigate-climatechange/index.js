@@ -11,6 +11,7 @@ import Content from './Content';
 import Thankyou from './Thankyou';
 import SignupForm from '@components/GP/TWForm';
 import DonateForm from '@components/GP/DonateForm';
+import DonationModule from '@components/GP/DonationModule';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Icon } from '@chakra-ui/react';
@@ -110,7 +111,13 @@ function Index({ status, theme, setFormContent, signup }) {
                 <Box ref={ref}>
                   {submitted ? (
                     utmSource != 'dd' ? (
-                      <DonateForm />
+                      <DonationModule
+                        market={theme.Market}
+                        language={'zh_TW'}
+                        campaign={'mitigate_climatechange'}
+                        // campaignId={''}
+                        env={'production'}
+                      />
                     ) : (
                       ''
                     )
