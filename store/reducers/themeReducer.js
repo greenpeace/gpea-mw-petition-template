@@ -4,8 +4,9 @@ const initState = {
   data: {
     ProjectName: '',
     CampaignId: '',
-    interests: '',
+    interests: ''
   },
+  showGlobalHeader: true,
 };
 
 const themeReducer = (state = initState, action) => {
@@ -23,6 +24,13 @@ const themeReducer = (state = initState, action) => {
           ...action.data,
           interests: action.data?.interests?.toLowerCase(),
         },
+        lastAction: action.type,
+      };
+
+    case themeActions.SET_SHOW_GLOBAL_HEADER:
+      return {
+        ...state,
+        showGlobalHeader: action.data,
         lastAction: action.type,
       };
 

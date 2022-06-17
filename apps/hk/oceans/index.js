@@ -20,6 +20,7 @@ const HeroBanner = dynamic(() => import('@components/Banner/hero'));
 const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
 
+const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/HKForm'));
 const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
@@ -74,7 +75,17 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
+                  {submitted ? (
+                    <DonationModule
+                      market={theme.Market || 'HK'}
+                      language={'zh_HK'}
+                      campaign={'oceans'}
+                      // campaignId={''}
+                      env={'production'}
+                    />
+                  ) : (
+                    <SignupForm />
+                  )}
                 </Box>
               </FormContainer>
             </Box>

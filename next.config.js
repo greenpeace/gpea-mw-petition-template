@@ -30,7 +30,11 @@ const nextConfig = {
     }
   },
   images: {
-    domains: ['api.greenpeace.org.hk', 'change.greenpeace.org.hk'],
+    domains: [
+      'api.greenpeace.org.hk',
+      'change.greenpeace.org.hk',
+      'change.greenpeace.org.tw',
+    ],
     disableStaticImages: true,
   },
 };

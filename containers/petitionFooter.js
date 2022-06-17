@@ -12,7 +12,7 @@ const footerContent = [
 const PetitionFooter = ({ locale }) => {
   return (
     <>
-      <Message locale={locale} />
+      {/* <Message locale={locale} /> */}
       {/* <OtherInformation
         content={{
           footerContent: footerContent,

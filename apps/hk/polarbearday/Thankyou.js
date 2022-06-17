@@ -16,17 +16,6 @@ const Thankyou = ({ theme, signup }) => {
   return (
     <>
       <Text as="p" {...paragraphProps}>
-        <b>
-          為守護脆弱北極多走一步，以每月$200捐款支持綠色和平北極項目，您將獲得兩次「環保手作工作坊」或探訪的機會！
-        </b>
-        2月工作坊主題是「北極熊和諧粉彩體驗班」，讓您對北極熊的現況有更深體會。名額有限，額滿即止。
-      </Text>
-
-      <Box {...paragraphProps}>
-        <Image src={image00} maxW="480px" mx="auto" />
-      </Box>
-
-      <Text as="p" {...paragraphProps}>
         您的參與意義重大，我們將一起了解北極熊生存危機與極地實況，以採取行動為守護北極出一分力。
       </Text>
 

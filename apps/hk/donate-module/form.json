@@ -30,7 +30,7 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?campaign=oceans_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?campaign=oceans_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -53,7 +53,14 @@
   "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
   "donate_suggestion_message": "誠邀您加入每月捐款會員的行列，因為對於非牟利團體而言，定期定額捐款別具意義：它能為組織提供穩定的收入，持續地支援我們的項目研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
   "currency": "HKD",
-  "default_amount": 200,
+  "default_amount": 100,
+  "default_monthly": 100,
+  "min_amount_monthly": 50,
+  "default_oneoff": 500,
+  "min_amount_oneoff": 100,
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -85,20 +92,20 @@
   ],
   "amount_monthly": [
     {
+      "label": "100",
+      "value": 100,
+      "description": "您的捐款，協助發起全球聯署行動，擴大要求制定「全球海洋公約」的聲音力量！",
+      "currency": "HKD"
+    },
+    {
       "label": "200",
       "value": 200,
-      "description": "您的捐款，協助發起全球聯署行動，擴大要求制定「全球海洋公約」的聲音力量！",
+      "description": "支持綠色和平船艦持續監察企業最新動向，及時阻止破壞海洋的行為！",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "支持綠色和平船艦持續監察企業最新動向，及時阻止破壞海洋的行為！",
-      "currency": "HKD"
-    },
-    {
-      "label": "400",
-      "value": 400,
       "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意制定「全球海洋公約」，推進守護30%海洋保護區目標！",
       "currency": "HKD"
     },
