@@ -58,7 +58,7 @@ const Description = ({ setSurveyPage }) => {
               <Flex mt={4} justifyContent={{ base: 'center' }}>
                 <Button
                   variant={'quizSquare'}
-                  fontSize={{ base: 'xl', lg: '2Âxl' }}
+                  fontSize={{ base: 'xl', lg: '2xl' }}
                   px={{ base: 10, md: 14 }}
                   py={{ base: 6, md: 8 }}
                   onClick={() => setSurveyPage('quiz')}

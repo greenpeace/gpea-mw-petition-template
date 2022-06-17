@@ -12,7 +12,7 @@ const Index = ({ survey, hiddenForm, setSurveyPage, setHiddenForm }) => {
     return state.hiddenForm.data?.ad_landing_page;
   });
   
-  const currentPage = (adPage === '1') ? 'result' : survey?.page;
+  const currentPage = (adPage === '1' && survey?.page != 'result') ? 'cta' : survey?.page;
   const Page = dynamic(() => import(`./${currentPage}`));
   
   return (

@@ -18,9 +18,9 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import leafImage from './images/beforeresult.jpg';
+import leafImage from './images/px.jpg';
 
-const Description = ({ setSurveyPage }) => {
+const Cta = ({ setSurveyPage }) => {
   return (
     <>
       <Container maxW={{ base: 'xl', xl: '2xl' }} pos={'relative'} zIndex={10}>
@@ -32,7 +32,7 @@ const Description = ({ setSurveyPage }) => {
                 color={'black'}
                 textAlign={{ base: 'center' }}
               >
-                微塑膠污染已遍佈海、陸、空<br/>入侵臺灣野生動物棲地！
+                請支援減塑！您願意支持全聯福利中心兌現減塑承諾，保護臺灣環境的社會責任嗎？
               </Heading>
             </Box>
             <Box
@@ -50,7 +50,9 @@ const Description = ({ setSurveyPage }) => {
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Box bgColor={'rgba(255,255,255,0.8)'} borderRadius={'8px'} p={4}>
                 <Text as="p" color={'black'} {...paragraphProps} mb={0}>
-                海洋塑膠廢棄物、空氣中驗出微塑膠等塑膠污染的消息層出不窮...<br/>綠色和平與研究團隊針對臺灣多個野生動物棲地進行科學研究，首度發現連臺灣保育類動物也難倖免於塑膠污染。
+                綠色和平與研究團隊針對臺灣多個野生動物棲地進行科學研究，首度發現連臺灣保育類動物也難倖免於塑膠污染。
+                <br/>目前檢測出最主要的塑膠材質為 PP 聚丙烯，該材質多用於食品容器及餐具。而每年超市、量販業至少產生 36 億件一次性塑膠包裝，其中就包含了蔬果、肉品等食品包裝。<br/>其中，全臺市占率最高的超市量販業者——全聯福利中心，曾於 2020 年的社會企業責任報告書中宣布「 2021 年達成 50% 蔬果裸賣 」，卻未實踐其諾言，成為臺灣減塑的拖油瓶。
+                <br/><strong>邀請您一起要求全聯兌現減塑承諾，讓消費者擁有更友善環境的選擇！</strong>
                 </Text>
               </Box>
             </LazyShow>
@@ -63,7 +65,7 @@ const Description = ({ setSurveyPage }) => {
                   py={{ base: 6, md: 8 }}
                   onClick={() => setSurveyPage('result')}
                 >
-                  <Text>看目前研究結果</Text>
+                  <Text>我願意</Text>
                 </Button>
               </Flex>
             </Box>
@@ -87,4 +89,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Description);
+export default connect(mapStateToProps, mapDispatchToProps)(Cta);
