@@ -3,7 +3,11 @@ export function validation(values, formContent) {
 
   if (!values.Email) {
     errors.Email = formContent.empty_data_alert;
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.Email)) {
+  } else if (
+    !/^(?!.*(?:''|\.\.))[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(
+      values.Email,
+    )
+  ) {
     errors.Email = formContent.invalid_email_alert;
   }
 

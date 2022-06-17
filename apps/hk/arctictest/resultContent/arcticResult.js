@@ -33,20 +33,6 @@ const Content = ({ theme }) => {
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        現以每月$200捐款支持守護北極，您將獲得兩次「環保手作工作坊」或導賞團的機會！
-        名額有限，額滿即止！
-      </Text>
-
-      <Box {...paragraphProps}>
-        <Image
-          src={image00}
-          p={4}
-          maxW={{ base: '100%', md: '480px' }}
-          mx="auto"
-        />
-      </Box>
-
-      <Text as="p" {...paragraphProps}>
         您的捐款將直接資助我們的實地科研任務、揭露各國企業與政府破壞北極的行為、以及國際間的倡議工作，直接幫助達成制止破壞行為，守護北極生態的目標。
       </Text>
     </>
