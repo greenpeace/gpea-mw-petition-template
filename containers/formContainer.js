@@ -8,7 +8,7 @@ const FormContainer = ({ children }) => {
         maxW="500px"
         mx="auto"
         bgColor="white"
-        borderRadius={8}
+        borderRadius="var(--radius-xl)"
         boxShadow="lg"
         overflow="hidden"
       >

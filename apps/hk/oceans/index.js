@@ -77,7 +77,7 @@ function Index({ status, theme, setFormContent, signup }) {
                 <Box ref={ref}>
                   {submitted ? (
                     <DonationModule
-                      market={theme.Market || 'HK'}
+                      market={theme.Market}
                       language={'zh_HK'}
                       campaign={'oceans'}
                       // campaignId={''}
