@@ -19,7 +19,7 @@ import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/banner.jpg';
+import heroBannerImage from './images/banner.png';
 
 function Index({
   status,
@@ -30,103 +30,99 @@ function Index({
   setSignupNumbers,
 }) {
   // get global response number
+  
   const [globalNum, setGlobalNum] = useState(0);
-  // fetch('https://global-petition-counter-v2.appspot.com/api/campaign/protect-oceans-2019')
-  //   .then((response) => {
-  //     return response.json()
-  //   }).then((res) => {
-  //     setGlobalNum(res.unique_count);
-  //   });
+  useEffect(() => {
+    //console.log('>============start================');
+    //setGlobalNum(541);
+    fetch('https://global-petition-counter-v2.appspot.com/api/campaign/protect-oceans-2019')
+    .then((response) => {
+      return response.json()
+    }).then((res) => {
+      console.log(res)
+      setGlobalNum(res.unique_count);
+      
+    }).catch((error) => {
+      console.log(`Error: ${error}`);
+    });
+  }, [])
+  
   useEffect(() => {
     //console.log('>============================');
+    let newData = form.signupNumbers;
 
-    if (form.signupNumbers.tw.Id && globalNum <= 0) {
-      //console.log(form.signupNumbers.tw)
-      let newData = form.signupNumbers;
-      if (!newData.tw.NumberOfResponsesLocal)
-        newData.tw.NumberOfResponsesLocal =
-          form.signupNumbers.tw.NumberOfResponses;
-      newData.tw.NumberOfResponses = '0';
-      setSignupNumbers(newData);
-
-      fetch(
-        'https://global-petition-counter-v2.appspot.com/api/campaign/protect-oceans-2019',
-      )
-        .then((response) => {
-          return response.json();
-        })
-        .then((res) => {
-          setGlobalNum(res.unique_count);
-
-          let numResponses =
-            res.unique_count +
-            Number(form.signupNumbers.tw.NumberOfResponsesLocal);
-          newData.tw.NumberOfResponses = String(numResponses);
-          let numSignupTarget = 0;
-          switch (true) {
-            case numResponses < 1000:
-              numSignupTarget = 5000;
-              break;
-            case numResponses >= 1000 && numResponses < 5000:
-              numSignupTarget = 10000;
-              break;
-            case numResponses >= 5000 && numResponses < 10000:
-              numSignupTarget = 20000;
-              break;
-            case numResponses >= 10000 && numResponses < 50000:
-              numSignupTarget = 100000;
-              break;
-            case numResponses >= 50000 && numResponses < 150000:
-              numSignupTarget = 200000;
-              break;
-            case numResponses >= 150000 && numResponses < 200000:
-              numSignupTarget = 250000;
-              break;
-            case numResponses >= 200000 && numResponses < 300000:
-              numSignupTarget = 350000;
-              break;
-            case numResponses >= 300000 && numResponses < 400000:
-              numSignupTarget = 450000;
-              break;
-            case numResponses >= 400000 && numResponses < 500000:
-              numSignupTarget = 550000;
-              break;
-            case numResponses >= 500000 && numResponses < 1000000:
-              numSignupTarget = 1000000;
-              break;
-            case numResponses >= 1000000 && numResponses < 2000000:
-              numSignupTarget = 2000000;
-              break;
-            case numResponses >= 2000000 && numResponses < 3000000:
-              numSignupTarget = 3000000;
-              break;
-            case numResponses >= 3000000 && numResponses < 4000000:
-              numSignupTarget = 4000000;
-              break;
-            case numResponses >= 4000000 && numResponses < 5000000:
-              numSignupTarget = 5000000;
-              break;
-            case numResponses >= 5000000 && numResponses < 6000000:
-              numSignupTarget = 6000000;
-              break;
-            case numResponses >= 6000000 && numResponses < 7000000:
-              numSignupTarget = 7000000;
-              break;
-            case numResponses >= 8000000 && numResponses < 9000000:
-              numSignupTarget = 9000000;
-              break;
-            case numResponses >= 9000000 && numResponses < 10000000:
-              numSignupTarget = 10000000;
-              break;
-            default:
-              numSignupTarget = 20000000;
-          }
-          newData.tw.Petition_Signup_Target__c = numSignupTarget.toString();
-          //console.log(form,newData,res.unique_count)
-          setSignupNumbers(newData);
-        });
+    if (form.signupNumbers.tw.Id && !form.signupNumbers.tw.NumberOfResponsesLocal && globalNum > 0) {
+      
+      //if(globalNum > 0){
+        console.log('**************************');
+        newData.tw.NumberOfResponsesLocal = form.signupNumbers.tw.NumberOfResponses;
+        let numResponses = globalNum + Number(form.signupNumbers.tw.NumberOfResponsesLocal);
+        newData.tw.NumberOfResponses = String(numResponses);
+        let numSignupTarget = 0;
+        switch (true) {
+          case numResponses < 1000:
+            numSignupTarget = 5000;
+            break;
+          case numResponses >= 1000 && numResponses < 5000:
+            numSignupTarget = 10000;
+            break;
+          case numResponses >= 5000 && numResponses < 10000:
+            numSignupTarget = 20000;
+            break;
+          case numResponses >= 10000 && numResponses < 50000:
+            numSignupTarget = 100000;
+            break;
+          case numResponses >= 50000 && numResponses < 150000:
+            numSignupTarget = 200000;
+            break;
+          case numResponses >= 150000 && numResponses < 200000:
+            numSignupTarget = 250000;
+            break;
+          case numResponses >= 200000 && numResponses < 300000:
+            numSignupTarget = 350000;
+            break;
+          case numResponses >= 300000 && numResponses < 400000:
+            numSignupTarget = 450000;
+            break;
+          case numResponses >= 400000 && numResponses < 500000:
+            numSignupTarget = 550000;
+            break;
+          case numResponses >= 500000 && numResponses < 1000000:
+            numSignupTarget = 1000000;
+            break;
+          case numResponses >= 1000000 && numResponses < 2000000:
+            numSignupTarget = 2000000;
+            break;
+          case numResponses >= 2000000 && numResponses < 3000000:
+            numSignupTarget = 3000000;
+            break;
+          case numResponses >= 3000000 && numResponses < 4000000:
+            numSignupTarget = 4000000;
+            break;
+          case numResponses >= 4000000 && numResponses < 5000000:
+            numSignupTarget = 5000000;
+            break;
+          case numResponses >= 5000000 && numResponses < 6000000:
+            numSignupTarget = 6000000;
+            break;
+          case numResponses >= 6000000 && numResponses < 7000000:
+            numSignupTarget = 7000000;
+            break;
+          case numResponses >= 8000000 && numResponses < 9000000:
+            numSignupTarget = 9000000;
+            break;
+          case numResponses >= 9000000 && numResponses < 10000000:
+            numSignupTarget = 10000000;
+            break;
+          default:
+            numSignupTarget = 20000000;
+        }
+        newData.tw.Petition_Signup_Target__c = numSignupTarget.toString();
+        //console.log(form,newData,res.unique_count)
+        setSignupNumbers(newData);
+      //}
     }
-  }, [form]);
+  }, [form,globalNum]);
 
   const { submitted } = status;
   const { FirstName } = signup;
