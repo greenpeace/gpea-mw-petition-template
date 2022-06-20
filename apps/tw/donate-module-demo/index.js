@@ -13,8 +13,7 @@ import DonationModule from '@components/GP/DonationModule';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Icon } from '@chakra-ui/react';
-import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
-import FixedCTA from '@components/GP/FixedCTA';
+import ScrollToTargetButton from '@common/button/ScrollToTargetButton';
 import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -33,7 +32,7 @@ function Index({ status, theme, setFormContent, signup }) {
     /* Optional options */
     threshold: 0,
   });
-  const myRef = useRef(null);
+  const mobileForm = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
 
   useEffect(() => {
@@ -95,7 +94,7 @@ function Index({ status, theme, setFormContent, signup }) {
                 {submitted ? <Thankyou /> : <Content />}
               </ContentContainer>
             </Box>
-            <Box flex={1} ref={myRef}>
+            <Box flex={1} ref={mobileForm}>
               <FormContainer>
                 <Box ref={ref}>
                   {submitted ? (
@@ -116,9 +115,11 @@ function Index({ status, theme, setFormContent, signup }) {
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'TWChinese'} />
-      {!inView && (
-        <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
-      )}
+      <ScrollToTargetButton
+        target={mobileForm}
+        targetInView={inView}
+        text={formContent.mobile_cta ?? '立即捐助'}
+      />
     </>
   );
 }

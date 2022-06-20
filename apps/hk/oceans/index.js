@@ -6,23 +6,22 @@ import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Flex, Slide } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
+import ScrollToTargetButton from '@common/button/ScrollToTargetButton';
+
 import formContent from './form';
 import SEO from './SEO';
-import ScrollToTargetButton from "../../../common/button/ScrollToTargetButton"
+
 import * as formActions from 'store/actions/action-types/form-actions';
 
 import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
-
 const HeroBanner = dynamic(() => import('@components/Banner/hero'));
 const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
-
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
-const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/HKForm'));
 
 function Index({ status, theme, setFormContent, signup }) {
@@ -89,7 +88,11 @@ function Index({ status, theme, setFormContent, signup }) {
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
-      <ScrollToTargetButton target={mobileForm} targetInView={inView} text={formContent.mobile_cta??'立即捐款'}/>
+      <ScrollToTargetButton
+        target={mobileForm}
+        targetInView={inView}
+        text={formContent.mobile_cta ?? '立即捐款'}
+      />
     </>
   );
 }
