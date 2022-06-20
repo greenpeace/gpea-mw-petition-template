@@ -6,9 +6,10 @@ import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Slide } from '@chakra-ui/react';
 import formContent from './form';
 import SEO from './SEO';
+import ScrollToTargetButton from "../../../common/button/ScrollToTargetButton"
 import * as formActions from 'store/actions/action-types/form-actions';
 
 import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
@@ -23,20 +24,15 @@ const PageContainer = dynamic(() => import('@containers/pageContainer'));
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/HKForm'));
-const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
   const { FirstName } = signup;
 
-  const scrollToRef = (ref) =>
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
-  const { ref, inView } = useInView({
-    /* Optional options */
+  const [ref, inView] = useInView({
     threshold: 0,
   });
-  const myRef = useRef(null);
-  const executeScroll = () => scrollToRef(myRef);
+  const mobileForm = useRef(null);
 
   useEffect(() => {
     setFormContent(formContent);
@@ -72,7 +68,7 @@ function Index({ status, theme, setFormContent, signup }) {
                 {submitted ? <Thankyou /> : <Content />}
               </ContentContainer>
             </Box>
-            <Box flex={1} ref={myRef}>
+            <Box flex={1} ref={mobileForm}>
               <FormContainer>
                 <Box ref={ref}>
                   {submitted ? (
@@ -93,11 +89,7 @@ function Index({ status, theme, setFormContent, signup }) {
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
-      {!inView && (
-        <FixedCTA onClick={executeScroll}>
-          {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}
-        </FixedCTA>
-      )}
+      <ScrollToTargetButton target={mobileForm} targetInView={inView} text={formContent.mobile_cta??'立即捐款'}/>
     </>
   );
 }
