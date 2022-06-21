@@ -88,7 +88,7 @@ const SFFormat = ({ locale }) => {
             ))}
           </Stack>
         </Stack>
-        <Box color={`#FFF`} mb={{ base: 16, sm: 8 }}>
+        <Box color={'white'} mb={{ base: '96px', sm: 8 }}>
           <Text as="span">© Greenpeace {new Date().getFullYear()}</Text>
         </Box>
       </Container>
