@@ -13,7 +13,7 @@ import DonationModule from '@components/GP/DonationModule';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
-import ScrollToTargetButton from '@common/button/ScrollToTargetButton';
+import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -115,11 +115,7 @@ function Index({ status, theme, setFormContent, signup }) {
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'TWChinese'} />
-      <ScrollToTargetButton
-        target={mobileForm}
-        targetInView={inView}
-        text={formContent.mobile_cta ?? '立即捐助'}
-      />
+      <ScrollToTargetButton target={mobileForm} targetInView={inView} />
     </>
   );
 }

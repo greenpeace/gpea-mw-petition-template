@@ -7,7 +7,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
-import ScrollToTargetButton from '@common/button/ScrollToTargetButton';
+import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -93,7 +93,6 @@ function Index({ status, theme, setFormContent, signup }) {
       <ScrollToTargetButton
         target={mobileForm}
         targetInView={inView}
-        text={formContent.mobile_cta ?? '立即捐款'}
       />
     </>
   );

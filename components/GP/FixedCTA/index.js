@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Button, Center } from '@chakra-ui/react';
-import { useMediaQuery } from '@chakra-ui/media-query';
 import { connect } from 'react-redux';
 
 const FixedCTA = ({ onClick, status, form }) => {
   const { submitted } = status;
-  const [matches] = useMediaQuery('(max-width:600px)');
   const buttonText = !submitted
     ? form.submit_text
     : form.mobile_fixed_cta

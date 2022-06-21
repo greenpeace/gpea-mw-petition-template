@@ -1,7 +1,15 @@
 import React from 'react';
 import { Slide, Center, Button } from '@chakra-ui/react';
+import { connect } from 'react-redux';
 
-const ScrollToTargetButton = ({ target, text, targetInView }) => {
+const ScrollToTargetButton = ({ target, targetInView, status, form }) => {
+  const { submitted } = status;
+  const buttonText = !submitted
+    ? form.submit_text
+    : form.mobile_fixed_cta
+    ? form.mobile_fixed_cta
+    : '立即捐款';
+
   const handleScroll = (target) => {
     if (!target) {
       return;
@@ -13,7 +21,7 @@ const ScrollToTargetButton = ({ target, text, targetInView }) => {
     <Slide direction="bottom" in={!targetInView} style={{ zIndex: 10 }}>
       <Center {...styleProps}>
         <Button {...buttonStyleProps} onClick={() => handleScroll(target)}>
-          {text}
+          {buttonText}
         </Button>
       </Center>
     </Slide>
@@ -32,7 +40,7 @@ const styleProps = {
   width: '100%',
   p: '4',
   paddingBottom: `calc(1rem + env(safe-area-inset-bottom))`,
-  d: {md: 'none'}
+  d: { md: 'none' },
 };
 
 const buttonStyleProps = {
@@ -46,4 +54,8 @@ const buttonStyleProps = {
   _hover: { bg: 'orange.300' },
 };
 
-export default ScrollToTargetButton;
+const mapStateToProps = ({ status, form }) => {
+  return { status, form: form.content };
+};
+
+export default connect(mapStateToProps)(ScrollToTargetButton);
