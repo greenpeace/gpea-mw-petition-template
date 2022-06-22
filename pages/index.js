@@ -25,18 +25,7 @@ const signupNumbersHKURL = process.env.signupNumbersHK;
 const signupNumbersTWURL = process.env.signupNumbersTW;
 
 const initTagManager = (marketName) => {
-  const trackDomains = [
-    'greenpeace.org',
-    'change.greenpeace.org.hk',
-    'change.greenpeace.org.tw',
-    'cloud.greenhk.greenpeace.org',
-    'cloud.greentw.greenpeace.org',
-  ];
-  if (
-    process.env.NODE_ENV === 'production' &&
-    trackDomains.includes(window.location.hostname) &&
-    !window.location.href.indexOf('daisy-chain-oceans-sanctuaries') > 0
-  ) {
+  if (process.env.NODE_ENV === 'production') {
     switch (marketName) {
       case 'HK':
         TagManager.initialize(hkTagManagerArgs);
