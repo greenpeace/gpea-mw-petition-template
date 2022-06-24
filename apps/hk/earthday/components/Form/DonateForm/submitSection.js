@@ -89,10 +89,34 @@ const MyEnhancedForm = withFormik({
 
   validate: async (values, props) => {
     const errors = {};
-    const { formContent } = props;
+    const { formContent, donateType } = props;
 
+    // Set error if empty value
     if (!values.Donate) {
       errors.Donate = formContent.empty_data_alert;
+    }
+
+    // Check if amount config available
+    const donate_amount = parseInt(values.Donate);
+    const min_amount_monthly_amount = parseInt(formContent.min_amount_monthly);
+    const min_amount_oneoff_amount = parseInt(formContent.min_amount_oneoff);
+    // Set error if value less than requirement
+    if (
+      formContent.min_amount_monthly &&
+      formContent.min_amount_oneoff &&
+      formContent.min_amount_alert
+    ) {
+      if (donateType === 'monthly') {
+        if (donate_amount <= min_amount_monthly_amount) {
+          errors.Donate =
+            formContent.min_amount_alert + formContent.min_amount_monthly;
+        }
+      } else if (donateType === 'single') {
+        if (donate_amount <= min_amount_oneoff_amount) {
+          errors.Donate =
+            formContent.min_amount_alert + formContent.min_amount_oneoff;
+        }
+      }
     }
 
     return errors;

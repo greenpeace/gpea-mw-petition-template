@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Center } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 
+import { useMediaQuery } from '@chakra-ui/react';
+
 const FixedCTA = ({ onClick, status, form }) => {
   const { submitted } = status;
+  const [matches] = useMediaQuery('(max-width:600px)');
   const buttonText = !submitted
     ? form.submit_text
     : form.mobile_fixed_cta
@@ -13,9 +16,10 @@ const FixedCTA = ({ onClick, status, form }) => {
   return (
     <Center
       zIndex={99}
-      pos={'fixed'}
-      left="0"
-      bottom="0"
+      d={{ base: 'block', lg: 'none' }}
+      // pos={'fixed'}
+      // left="0"
+      // bottom="0"
       // bottom="env(safe-area-inset-bottom)"
       borderTopRightRadius="4px"
       borderTopLeftRadius="4px"
