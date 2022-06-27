@@ -4,7 +4,7 @@ import { Box, Heading, Stack } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 
 import Form from '../Form';
-import { useWindowSize } from '../../util';
+import { useWindowSize } from '@common/utils/index';
 import { headingProps } from '@common/styles/components/contentStyle';
 
 const formWidth = 500;
