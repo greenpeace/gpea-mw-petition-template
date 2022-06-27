@@ -30,8 +30,6 @@ export default function WithSubnavigation({ currentPage }) {
       bgColor="#66cc00"
       py="2"
       ref={ref}
-      borderBottom="1px"
-      borderColor="gray.100"
       minH={{ base: '50px', md: '60px' }}
       d="flex"
     >
@@ -114,9 +112,6 @@ const DesktopNav = ({ href, currentPage }) => {
               fontSize={'md'}
               cursor={'pointer'}
               color="white"
-              // color={
-              //   currentPage === navItem.href ? 'var(--gps-primary)' : 'white'
-              // }
               fontWeight={currentPage === navItem.href ? 'bold' : 400}
               sx={{
                 ':focus:not(:focus-visible)': {
@@ -131,7 +126,7 @@ const DesktopNav = ({ href, currentPage }) => {
       ))}
       <Box cursor="pointer" d="inline-block">
         <Link
-          href="https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout?language=zh_HK&campaign=plastics_mw&ref=gps-header-donate-button"
+          href="https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=plastics_mw&ref=gps-header-donate-button"
           isExterna
         >
           <Text
@@ -142,7 +137,7 @@ const DesktopNav = ({ href, currentPage }) => {
             color={'white'}
             borderRadius={'4px'}
           >
-            捐助支持
+            捐款支持
           </Text>
         </Link>
       </Box>

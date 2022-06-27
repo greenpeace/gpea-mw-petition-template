@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Container, Image, useMediaQuery } from '@chakra-ui/react';
-import TagManager from 'react-gtm-module';
 import Wrapper from '@containers/gpsWrapper';
 import HeroSection from '@components/GPS/HeroSection';
 import MainSection from '@components/GPS/MainSection';
@@ -11,13 +10,8 @@ import Form from '@components/GPS/GPSForm';
 import formContent from '@components/GPS/formContent';
 import Head from 'next/head';
 
-import { imageLoader } from 'common/utils';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as themeActions from 'store/actions/action-types/theme-actions';
-import {
-  headingProps,
-  paragraphProps,
-} from '@common/styles/components/contentStyle';
 
 import banner from '../public/images/20220318_GPS-03.jpg';
 import mobileBanner from '../public/images/20220318_GPS_visual_embed-02b.jpg';

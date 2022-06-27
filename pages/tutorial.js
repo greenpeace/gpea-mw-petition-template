@@ -147,7 +147,7 @@ function Tutorial() {
                 </Text>
                 <Text as="p" textStyle={'content'}>
                   {
-                    '點選左下角「+」號 > 選擇「位置 / Location」 > 選擇「傳送您目前的位置 / Send Your Current Location'
+                    '點選左下角「 + 」號 > 選擇「位置 / Location」 > 選擇「傳送您目前的位置 / Send Your Current Location'
                   }
                 </Text>
               </Box>
@@ -198,7 +198,7 @@ function Tutorial() {
                 </Text>
                 <Text as="p" textStyle={'content'}>
                   {
-                    '點擊「萬字夾」圖示 > 選擇「位置 / Location」 > 選擇「傳送您目前的位置 / Send Your Current Location)'
+                    '點擊「萬字夾」圖示 > 選擇「位置 / Location」 > 選擇「傳送您目前的位置 / Send Your Current Location」'
                   }
                 </Text>
               </Box>

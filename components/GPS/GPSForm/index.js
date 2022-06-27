@@ -2,12 +2,23 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
 import { Container, Box } from '@chakra-ui/react';
+const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 
 const Index = ({ status }) => {
   const RenderForm = () =>
-    status?.submitted ? <DonateForm /> : <SignupForm />;
+    status?.submitted ? (
+      <DonationModule
+        market={'HK'}
+        language={'zh_HK'}
+        campaign={'plastics'}
+        // campaignId={''}
+        env={'production'}
+      />
+    ) : (
+      <SignupForm />
+    );
   return (
     <Container maxW={'100%'}>
       <Box

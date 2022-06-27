@@ -8,15 +8,11 @@ import {
   AspectRatio,
   Stack,
   SimpleGrid,
-  Flex,
-  Center,
-  Heading,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalBody,
   ModalCloseButton,
-  useMediaQuery,
   useDisclosure,
 } from '@chakra-ui/react';
 
@@ -24,11 +20,6 @@ import Image from 'next/image';
 import { CTAButton } from '@components/GPS/CTA/button';
 import SwiperCarousel from '@components/Swiper';
 import { imageLoader } from 'common/utils';
-
-import {
-  headingProps,
-  paragraphProps,
-} from '@common/styles/components/contentStyle';
 
 import c1 from '../public/images/slider/20210508_SSPHunting_17.jpg';
 import c2 from '../public/images/slider/20210508_SSPHunting_5.jpg';
@@ -49,22 +40,25 @@ function Index() {
         </title>
       </Head>
 
+      {/* Hero banner */}
       <Box d={{ base: 'block', md: 'none' }}>
         <Image
           loader={imageLoader}
-          src={`/images/20220318_GPS-02.jpg`}
+          src={`/images/20220624_GPS_visual_embed-02.jpg`}
           width="1000"
           height="1000"
         />
       </Box>
+
       <Box d={{ base: 'none', md: 'block' }}>
         <Image
           loader={imageLoader}
-          src={`/images/20220318_GPS-01.jpg`}
+          src={`/images/20220624_GPS_visual_embed-01.jpg`}
           width="1920"
           height="700"
         />
       </Box>
+      {/* Hero banner */}
 
       <Container maxW={`${maxWSize}px`} py="6" px="4">
         <Stack spacing={{ base: '40px', md: '80px' }}>
@@ -80,12 +74,17 @@ function Index() {
                   direction="column"
                   align={{ base: 'center', md: 'flex-start' }}
                 >
-                  <Text textStyle={'heading'}>全港走塑店鋪定位地圖</Text>
+                  <Text
+                    textStyle={'heading'}
+                    fontSize={{ base: '2xl', md: '4xl' }}
+                  >
+                    全港走塑店鋪定位地圖
+                  </Text>
                   <Text
                     as="p"
                     textStyle={'content'}
                     textAlign={{ base: 'center', md: 'left' }}
-                    mb="4"
+                    mb="6"
                   >
                     綠色和平推出「走塑GPS」WhatsApp Chatbot功能，
                     <br />
@@ -97,8 +96,12 @@ function Index() {
                   <CTAButton />
                 </Stack>
               </Box>
-              <Box w="100%" flex="1">
-                <SimpleGrid columns="3" justifyContent={'space-around'}>
+              <Box w="100%" flex="1.5">
+                <SimpleGrid
+                  spacing="4"
+                  columns="3"
+                  justifyContent={'space-around'}
+                >
                   <Image
                     loader={imageLoader}
                     src={`/images/svg/22.svg`}
@@ -129,17 +132,20 @@ function Index() {
             <Text as="p" textStyle={'content'} textAlign="center">
               只須於WhatsApp分享實時位置，
               <br />
-              「走塑GPS」將立即搜尋5間鄰近走塑小店，內附地圖連結助你規劃路線光顧心水小店。
+              「走塑GPS」將立即搜尋5間鄰近走塑小店，
+              <br />
+              內附地圖連結助你規劃路線光顧心水小店。
             </Text>
           </Box>
 
           <SimpleGrid
             p="4"
-            spacing="6"
+            spacing="8"
             columns={{ base: 2, md: 4 }}
             justifyContent={'space-around'}
           >
             <Image
+              p="4"
               loader={imageLoader}
               src={`/images/svg/25.svg`}
               layout="responsive"
@@ -147,6 +153,7 @@ function Index() {
               height={1440}
             />
             <Image
+              p="4"
               loader={imageLoader}
               src={`/images/svg/26.svg`}
               layout="responsive"
@@ -154,6 +161,7 @@ function Index() {
               height={1440}
             />
             <Image
+              p="4"
               loader={imageLoader}
               src={`/images/svg/27.svg`}
               layout="responsive"
@@ -161,6 +169,7 @@ function Index() {
               height={1440}
             />
             <Image
+              p="4"
               loader={imageLoader}
               src={`/images/svg/28.svg`}
               layout="responsive"
@@ -201,18 +210,14 @@ function Index() {
                     width={1440}
                     height={1440}
                   />
-                  {/* <Image
-                    loader={imageLoader}
-                    src={`/images/grade1-ribbon.svg`}
-                    px={{ base: 8, md: 12 }}
-                    layout="responsive"
-                    width={150}
-                    height={30}
-                  /> */}
                   <Text textStyle={'subTitle'} textAlign="center">
                     一級走塑店鋪
                   </Text>
-                  <Text textStyle={'content'} textAlign="center">
+                  <Text
+                    textStyle={'content'}
+                    textAlign="center"
+                    fontSize={'sm'}
+                  >
                     提供走塑優惠
                   </Text>
                 </Stack>
@@ -224,18 +229,14 @@ function Index() {
                     width={1440}
                     height={1440}
                   />
-                  {/* <Image
-                    loader={imageLoader}
-                    src={`/images/grade2-ribbon.svg`}
-                    px={{ base: 8, md: 12 }}
-                    layout="responsive"
-                    width={150}
-                    height={30}
-                  /> */}
                   <Text textStyle={'subTitle'} textAlign="center">
                     二級走塑店鋪
                   </Text>
-                  <Text textStyle={'content'} textAlign="center">
+                  <Text
+                    textStyle={'content'}
+                    textAlign="center"
+                    fontSize={'sm'}
+                  >
                     歡迎自備餐具 / 器皿購物
                   </Text>
                 </Stack>
@@ -275,28 +276,6 @@ function Index() {
                 <SwiperCarousel images={[c1, c2, c3, c4, c5]} />
               </Box>
             </Box>
-            {/* <Stack spacing="6">
-              <Box borderRadius="xl" overflow="hidden">
-                <Image
-                  loader={imageLoader}
-                  src={`/images/20210508_SSPHunting_8.jpg`}
-                  layout="responsive"
-                  width={1920}
-                  height={1280}
-                  priority={true}
-                />
-              </Box>
-              <Box borderRadius="xl" overflow="hidden">
-                <Image
-                  loader={imageLoader}
-                  src={`/images/20210508_SSPHunting_17.jpg`}
-                  layout="responsive"
-                  width={1920}
-                  height={1280}
-                  priority={true}
-                />
-              </Box>
-            </Stack> */}
           </Stack>
 
           <Stack spacing="4" maxW={'680px'} align="center" alignSelf={'center'}>
@@ -310,6 +289,7 @@ function Index() {
           </Stack>
         </Stack>
       </Container>
+
       <Modal isOpen={isOpen} onClose={onClose} isCentered={true} size={'2xl'}>
         <ModalOverlay />
         <ModalContent

@@ -21,11 +21,13 @@ const Content = ({ theme }) => {
       </Text>
 
       <Text {...paragraphProps}>
-        **「走塑GPS」WhatsApp對話將顯示您成功登記的確認訊息。
+        * 「走塑GPS」WhatsApp對話將顯示您成功登記的確認訊息。
       </Text>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        尚未試用過「走塑GPS」？立即免費體驗，輕鬆搜尋全港走塑店鋪！
+        尚未試用「走塑GPS」？
+        <br />
+        立即免費體驗，輕鬆搜尋全港走塑店鋪！
       </Heading>
     </>
   );

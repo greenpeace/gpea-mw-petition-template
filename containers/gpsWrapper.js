@@ -38,28 +38,28 @@ function Layout({ children, setTheme, preSetForm }) {
   }, []);
 
   useEffect(async () => {
-    const {i, p} = router.query;
+    const { i, p } = router.query;
 
-    if(p&&i){
+    if (p && i) {
       const DATA = decodeURI(p).replace(/ /g, '');
       const KEY = CryptoJS.enc.Utf8.parse(process.env.GPS_KEY);
       const IV = CryptoJS.enc.Utf8.parse(decodeURI(i).replace(/ /g, ''));
 
       const Decrypt = (data) => {
-          let decrypt = CryptoJS.AES.decrypt(data, KEY, {
-              iv: IV,
-              mode: CryptoJS.mode.CBC,
-              padding: CryptoJS.pad.Pkcs7
-          });
-          let decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
-          return decryptedStr.toString();
-      }
+        let decrypt = CryptoJS.AES.decrypt(data, KEY, {
+          iv: IV,
+          mode: CryptoJS.mode.CBC,
+          padding: CryptoJS.pad.Pkcs7,
+        });
+        let decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
+        return decryptedStr.toString();
+      };
 
-      const DecryptedData = await Decrypt(DATA)
+      const DecryptedData = await Decrypt(DATA);
 
       preSetForm({
-        UserID: DecryptedData
-      })
+        UserID: DecryptedData,
+      });
     }
 
     if (router.pathname) {
@@ -72,29 +72,38 @@ function Layout({ children, setTheme, preSetForm }) {
       return;
     }
     setShowChat(true);
-
-
   }, [router]);
 
   return (
-    <Box>
+    <>
       <Nav currentPage={currentPage} />
-      {children}
+
+      <Box>{children}</Box>
+
       <PetitionFooter locale={'HKChinese'} />
-      <Box pos={'fixed'} bottom={'20px'} right={'20px'} d={{ md: 'none' }}>
-        <a
-          href="https://wa.me/15551234567/?text=走塑GPS 全港走塑店鋪定位地圖"
-          target="_blank"
+
+      {showChat && (
+        <Box
+          zIndex="10"
+          pos={'fixed'}
+          bottom={'20px'}
+          right={'20px'}
+          d={{ md: 'none' }}
         >
-          <Image
-            loader={imageLoader}
-            src={`/images/whatsapp.svg`}
-            width="48px"
-            height="48px"
-          />
-        </a>
-      </Box>
-    </Box>
+          <a
+            href="https://wa.me/+85260459671/?text=走塑GPS 全港走塑店鋪定位地圖"
+            target="_blank"
+          >
+            <Image
+              loader={imageLoader}
+              src={`/images/whatsapp.svg`}
+              width="60px"
+              height="60px"
+            />
+          </a>
+        </Box>
+      )}
+    </>
   );
 }
 
@@ -111,7 +120,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     preSetForm: (data) => {
       dispatch({ type: formActions.PRE_SET_DATA, data });
-    }
+    },
   };
 };
 
