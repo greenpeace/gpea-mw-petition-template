@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
+import * as signupActions from 'store/actions/action-types/signup-actions';
 
 import {
   hkDevTagManagerArgs,
@@ -49,7 +50,7 @@ const initTagManager = (marketName) => {
   }
 };
 
-function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
+function Index({ setTheme, themeData, setSignupNumbers, setWebStatus, setSignFormData }) {
   const router = useRouter();
 
   /** page=2 force to result page */
@@ -61,20 +62,23 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
   }, [router]);
 
   /** Fetch signup data on load */
-  useEffect(async () => {
-    const fetchURLs = {
-      hk: signupNumbersHKURL,
-      tw: signupNumbersTWURL,
-    };
-
-    const signupData = await axios
-      .get(fetchURLs[themeData?.Market])
-      .then((response) => {
-        return response.data.find((d) => d.Id === themeData?.CampaignId);
-      })
-      .catch((error) => console.log(error));
-
-    setSignupNumbers({ [themeData?.Market]: signupData });
+  useEffect(() => {
+    async function fetchSignupData() {
+      const fetchURLs = {
+        hk: signupNumbersHKURL,
+        tw: signupNumbersTWURL,
+      };
+  
+      const signupData = await axios
+        .get(fetchURLs[themeData?.Market])
+        .then((response) => {
+          return response.data.find((d) => d.Id === themeData?.CampaignId);
+        })
+        .catch((error) => console.log(error));
+  
+      setSignupNumbers({ [themeData?.Market]: signupData });
+    }
+    fetchSignupData(); 
   }, []);
 
   useEffect(() => {
@@ -84,8 +88,39 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
       (domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : ''); // Return 'HK' 'TW' ''
     /* GTM is only applicable for production env */
     initTagManager(market);
-
     setTheme(themeData);
+
+
+    /* Pre-fill signup data */
+    let FormObj = {};
+    const selectForm = document.forms['mc-form'];
+    const documentFormsArray = Array.from(selectForm);
+    if (documentFormsArray) {
+      documentFormsArray.map((data) => {
+        if (!data.defaultValue) {
+          return;
+        }
+
+        if (data.name === 'MobilePhone') {
+          setFieldValue('MobileCountryCode', data.defaultValue?.split(' ')[0]);
+          setFieldValue('MobilePhone', data.defaultValue?.split(' ')[1]);
+          return;
+        }
+
+        if (data.name === 'Birthdate') {
+          setFieldValue(
+            'Birthdate',
+            `${data.defaultValue?.split('/')[2].substring(0, 4)}-01-01`,
+          );
+          return;
+        }
+
+        FormObj[`${data.name}`] = data.defaultValue??"";
+      });
+
+      setSignFormData(FormObj)
+    }
+
   }, [themeData]);
 
   if (DynamicComponent) {
@@ -106,6 +141,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setWebStatus: (bol) => {
       dispatch({ type: statusActions.SET_FORM_SUBMITTED, data: bol });
+    },
+    setSignFormData: (data) => {
+      dispatch({ type: signupActions.SET_SIGN_UP_FORM_DATA, data });
     },
   };
 };
