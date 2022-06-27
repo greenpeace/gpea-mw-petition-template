@@ -113,12 +113,12 @@ const MyEnhancedForm = withFormik({
       formContent.min_amount_alert
     ) {
       if (donateType === 'monthly') {
-        if (donate_amount <= min_amount_monthly_amount) {
+        if (donate_amount < min_amount_monthly_amount) {
           errors.Donate =
             formContent.min_amount_alert + formContent.min_amount_monthly;
         }
       } else if (donateType === 'single') {
-        if (donate_amount <= min_amount_oneoff_amount) {
+        if (donate_amount < min_amount_oneoff_amount) {
           errors.Donate =
             formContent.min_amount_alert + formContent.min_amount_oneoff;
         }
