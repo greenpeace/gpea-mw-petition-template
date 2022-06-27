@@ -2,6 +2,7 @@ import * as signupActions from 'store/actions/action-types/signup-actions';
 
 const initState = {
   data: {},
+  preFill: {},
   submitted: false,
   lastAction: null,
 };
@@ -25,7 +26,14 @@ const signupReducer = (state = initState, action) => {
     case signupActions.SIGN_UP_FAILED:
       return {
         ...state,
-        submitted: true,
+        submitted: false,
+        lastAction: action.type,
+      };
+
+    case signupActions.SET_SIGN_UP_FORM_DATA:
+      return {
+        ...state,
+        preFill: action.data,
         lastAction: action.type,
       };
 

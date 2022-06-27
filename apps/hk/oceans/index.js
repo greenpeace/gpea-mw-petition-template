@@ -24,7 +24,7 @@ const PageContainer = dynamic(() => import('@containers/pageContainer'));
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const SignupForm = dynamic(() => import('@components/GP/HKForm'));
 
-function Index({ status, theme, setFormContent, signup }) {
+function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
   const { submitted } = status;
   const { FirstName } = signup;
 
@@ -35,6 +35,44 @@ function Index({ status, theme, setFormContent, signup }) {
 
   useEffect(() => {
     setFormContent(formContent);
+  }, []);
+
+  useEffect(() => {
+    let FormObj = {};
+    const selectForm = document.forms['mc-form'];
+    const documentFormsArray = Array.from(selectForm);
+    if (documentFormsArray) {
+      documentFormsArray.map((data) => {
+        if (!data.defaultValue) {
+          return;
+        }
+
+        FormObj[`${data.name}`] = data.defaultValue??"";
+
+        return
+
+        // if (data.name === 'MobilePhone') {
+        //   setFieldValue('MobileCountryCode', data.defaultValue?.split(' ')[0]);
+        //   setFieldValue('MobilePhone', data.defaultValue?.split(' ')[1]);
+        //   return;
+        // }
+
+        // if (data.name === 'Birthdate') {
+        //   setFieldValue(
+        //     'Birthdate',
+        //     `${data.defaultValue?.split('/')[2].substring(0, 4)}-01-01`,
+        //   );
+        //   return;
+        // }
+
+        // setFieldValue(data.name, data.defaultValue);
+
+        // console.log('data.name', data.name)
+        // console.log('data.defaultValue', data.defaultValue)
+      });
+
+      console.log('FormObj-',FormObj)
+    }
   }, []);
 
   return (
@@ -101,6 +139,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setFormContent: (data) => {
       dispatch({ type: formActions.SET_FORM, data });
+    },
+    setHiddenForm: (value) => {
+      dispatch({ type: hiddenFormActions.SET_HIDDEN_FORM, data: value });
     },
   };
 };

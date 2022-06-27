@@ -52,6 +52,7 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
+    setValues
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -179,7 +180,7 @@ const MyForm = (props) => {
             <Stack spacing="4">
               <Box>
                 <Stack direction={`row`}>
-                  <Box flex={1}>
+                  <Box>
                     <Field
                       errors={errors.LastName}
                       touched={touched.LastName}
@@ -188,10 +189,11 @@ const MyForm = (props) => {
                       type={'text'}
                       handleChange={handleChange}
                       handleBlur={handleBlur}
+                      value={values.LastName}
                     />
                   </Box>
 
-                  <Box flex={1}>
+                  <Box>
                     <Field
                       errors={errors.FirstName}
                       touched={touched.FirstName}
@@ -200,6 +202,7 @@ const MyForm = (props) => {
                       type={'text'}
                       handleChange={handleChange}
                       handleBlur={handleBlur}
+                      value={values.FirstName}
                     />
                   </Box>
                 </Stack>
@@ -249,7 +252,7 @@ const MyForm = (props) => {
 
               <Box>
                 <HStack align="flex-start">
-                  <Box>
+                  <Box minWidth={'100px'}>
                     <FormControl id="mobileCountryCode">
                       <Select
                         name="MobileCountryCode"
@@ -265,7 +268,7 @@ const MyForm = (props) => {
                       </Select>
                     </FormControl>
                   </Box>
-                  <Box flex={1}>
+                  <Box w={'100%'}>
                     <Field
                       errors={errors.MobilePhone}
                       touched={touched.MobilePhone}
@@ -305,7 +308,7 @@ const MyForm = (props) => {
 
               <Box>
                 <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-                  <Box flex={1} mr={2} pt={1}>
+                  <Box mr={2} pt={1}>
                     <Checkbox
                       name="OptIn"
                       defaultChecked
@@ -337,14 +340,15 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-  mapPropsToValues: ({ props }) => ({
-    Email: '',
-    FirstName: '',
-    LastName: '',
+  enableReinitialize: true,
+  mapPropsToValues: ({ signup }) => ({
+    Email: signup?.preFill?.Email,
+    FirstName: signup?.preFill?.FirstName,
+    LastName: signup?.preFill?.LastName,
     MobileCountryCode: '852',
-    MobilePhone: '',
+    MobilePhone: signup?.preFill?.MobilePhone,
     OptIn: true,
-    Birthdate: '',
+    Birthdate: signup?.preFill?.Birthdate
   }),
 
   validate: async (values, props) => {
