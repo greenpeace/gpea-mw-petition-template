@@ -32,7 +32,7 @@ const moviePageUrl =
 const MessageContainer = ({ children }) => {
   return (
     <Stack
-      z_index="99"
+      zIndex="99"
       pos="fixed"
       width="100%"
       height="100%"
