@@ -1,52 +1,70 @@
-import { Button, Box, Image, Stack, Center } from '@chakra-ui/react';
+import { Button, Box, Image, Stack, Center, Text, Heading } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 import LazyShow from './components/LazyShow';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
+import {paragraphProps, headingProps} from '@common/styles/components/contentStyle';
 
 import bg from './images/landing-bg.jpg';
-import mobileBG from './images/landing-bg.jpg';
+import mobileBG from './images/landing-bg-m.jpg';
+import TitleKeyVisual from './images/title.png';
 
 const Landing = ({ setSurveyPage }) => {
   return (
-    <Box h={'100vh'} w={'100%'} mt={{ base: '-55px' }} pos={`relative`}>
-      <Center
-        transform={{ md: 'translate(0,-20%)', lg: 'translate(0,0)' }}
+    <Box h={'100vh'} w={'100%'} pos={`relative`}>
+      <Box
+        display={'flex'}
+        mt={'-55px'}
         h={'100%'}
-        w={{ base: '50%', md: '48%', xl: '50%' }}
         minWidth={'180px'}
-        alignItems={{ base: 'flex-start', md: 'center' }}
-        ml={{ xl: '6%' }}
+        alignItems={{ base: 'flex-start', lg: 'flex-end' }}
+        
       >
-        <Stack direction="column">
+        <Stack 
+          mt={{ base: 24, lg: 0}}
+          ml={{ base: 4, lg: '2.5%' }}
+          mr={4}
+          mb={{ lg: '4.5%' }}
+        >
           <Box
             p={{ base: 0 }}
-            mx="auto"
             w={{ base: 'auto', md: 'auto' }}
-            maxWidth={{ base: '360px', '2xl': '420px' }}
-            pt={{ base: 20, md: 6, lg: 0 }}
-            mt={{ base: '5vh', '2xl': '-5vh' }}
+            minWidth={'280px'}
+            maxWidth={{ base: '70%', lg: '480px', '2xl': '520px' }}
           >
-            {/* <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
+            <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Image
                 src={TitleKeyVisual}
-                ml={{ base: 6, md: 4 }}
-                alt="你是哪種地球投資者"
+                alt="難逃一塑"
               />
-            </LazyShow> */}
+            </LazyShow>
+          </Box>
+          <Box {...paragraphProps}
+          >
+            <Heading {...headingProps} 
+              color={"white"} 
+              fontSize={{base:'2xl', lg: '4xl', '2xl': '42px'}} 
+              mb={'.3em'} 
+              lineHeight={1.3}
+            >測你多了解臺灣自然棲地！<br/>野生保育類動物有話要說！
+            </Heading>
+            <Text 
+              color={"white"} 
+              fontSize={{lg: 'xl', '2xl': '2xl'}} 
+              lineHeight={1.5}
+            >綠色和平自 2021 年展開「臺灣保育類野生動物微塑膠污染調查」，我們發現......<br/>完成測驗，您也能為臺灣保育類動物及其棲地發聲，並有機會獲得手作環保動物紙模型！</Text>
           </Box>
           <Box
             my={4}
             maxWidth={{ base: 'auto', sm: 'auto' }}
-            alignSelf={'center'}
           >
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Button
-                mt={4}
-                ml={{ base: 6, md: 4 }}
+                mt={'.5em'}
+                rounded={{lg:12}}
                 variant={'quizSquare'}
-                fontSize={{ base: 'xl', sm: '2xl' }}
-                px={{ base: 10, sm: 16 }}
-                py={{ base: 4, sm: 8 }}
+                fontSize={{ base: 'xl', sm: '2xl' , '2xl': '3xl'}}
+                px={{ base: 10, sm: 16, '2xl': 20 }}
+                py={{ base: 4, sm: 8, '2xl': 12 }}
                 onClick={() => setSurveyPage('quiz')}
               >
                 我來聽牠們的心聲
@@ -68,7 +86,7 @@ const Landing = ({ setSurveyPage }) => {
               </LazyShow>
             </Box> */}
         </Stack>
-      </Center>
+      </Box>
       <Box
         position="absolute"
         top={0}
@@ -78,10 +96,10 @@ const Landing = ({ setSurveyPage }) => {
         bgSize={'cover'}
         bgRepeat={'no-repeat'}
         objectFit={'cover'}
-        bgImage={{ base: mobileBG, md: bg }}
+        bgImage={{ base: mobileBG, lg: bg }}
         bgPosition={{
-          base: 'center center',
-          // md: '65% 40px',
+          base: 'center bottom',
+          lg: 'right center',
           // lg: 'center center',
         }}
         zIndex={'-1'}

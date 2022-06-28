@@ -5,7 +5,7 @@ import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
-import contentImage from '../images/thanks.png';
+import contentImage from '../images/action1.jpg';
 
 const Content = (props) => {
   const {status, theme, type} = props;
@@ -34,12 +34,12 @@ const Content = (props) => {
         </Heading>
 
         <Text as="p" {...paragraphProps}>
-        全聯福利中心作為全臺市占率超過 60% 的龍頭超市，單店營業額高達 1.4 億
+        全聯福利中心作為全臺市占率超過 60% 的龍頭超市，全年營業額高達 1.4 億
         <br/>卻不如其他零售企業嘗試減塑、重複使用模式，因此綠色和平邀請您一起要求全聯：
         </Text>
 
         <UnorderedList>
-          <ListItem>發展「自備容器填裝」以及「可歸還包裝」的替代方案</ListItem>
+          <ListItem>發展裸賣、自備容器填裝、可歸還包裝的替代方案</ListItem>
           <ListItem>投入消費者溝通，促進消費者了解並參與減塑行動，並定期向大眾公開減量成效</ListItem>
         </UnorderedList>
 

@@ -5,7 +5,7 @@ import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
-import contentImage from '../images/earthday-tks.png';
+import contentImage from '../images/thanks.jpg';
 
 const Content = ({ theme, signup }) => {
   const themeInterests = theme.interests;

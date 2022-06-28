@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Script from 'next/script';
-import shareImage from './images/earthday-share.jpg';
+import shareImage from './images/share.jpg';
 
 const SEO = () => {
   return (

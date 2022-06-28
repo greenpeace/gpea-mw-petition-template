@@ -14,6 +14,8 @@ import {
   GridItem,
   Flex,
   SimpleGrid,
+  UnorderedList,
+  ListItem
 } from '@chakra-ui/react';
 import PetitionFooter from '@containers/petitionFooter';
 import FormContainer from '@containers/formContainer';
@@ -27,13 +29,14 @@ import * as formActions from 'store/actions/action-types/form-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 import {
   headingProps,
-  paragraphProps
+  paragraphProps,
 } from '@common/styles/components/contentStyle';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 
 const SignContent = dynamic(() => import('./content/signContent'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const SignupForm = dynamic(() => import('@components/GP/TWForm'));
+const ResultContent = dynamic(() => import('./content/resultContent'));
 
 const ThankyouContent = dynamic(() => import('./content/thankyouContent'));
 
@@ -169,22 +172,7 @@ function Index({
     { supportType ? (submitted ? <DonateForm /> : <SignupForm />) : 
     <Box py="8" px="4">
       <Stack spacing="4">
-        <Box>
-          <Heading
-            as="h2"
-            {...headingProps}
-            mb="0"
-            dangerouslySetInnerHTML={{ __html: RESULT[result]?.boxTitle }}
-          />
-        </Box>
-        <Box>
-          <Text
-            as="p"
-            {...paragraphProps}
-            mb="0"
-            dangerouslySetInnerHTML={{ __html: RESULT[result]?.boxContent }}
-          />
-        </Box>
+        <ResultContent result={result} />
         <SimpleGrid columns={2} spacing={4} pt={10}>
           <Button {...OrangeCTA} onClick={
               () => {
@@ -208,7 +196,7 @@ function Index({
 
   return (
     <>
-      <Box pos={'relative'}>
+      <Box pos={'relative'} bgColor={'#fffaf0'} pb={12}>
         <PageContainer>
           <Grid
             templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
@@ -240,19 +228,19 @@ function Index({
                       }} 
                     />
                   </Box>
-                  {/* <Flex justifyContent={{ base: 'center', md: 'flex-start' }}>
+                  <Flex justifyContent={{ base: 'center', md: 'flex-start' }}>
                     <Box position="relative">
                       <Image
                         src={image}
                         onLoad={(e) => setDynamicImage(e.target.clientHeight)}
                         pos={'relative'}
-                        w="90%"
-                        p={4}
+                        w="100%"
+                        py={4}
                         //maxW={{ base: '280px', md: '380px' }}
                         zIndex={2}
                       />
                     </Box>
-                  </Flex> */}
+                  </Flex>
                   <Box>
                     <Heading
                       {...headingProps}

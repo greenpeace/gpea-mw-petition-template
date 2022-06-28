@@ -1,6 +1,6 @@
 {
-  "form_header": "請支援減塑！我們將寄送給您動物摺紙教具",
-  "form_description": "",
+  "form_header": "請支援減塑！我們將寄送給您手作環保動物紙模型",
+  "form_description": "一起呼籲全聯福利中心加強減塑，我們將以您的名義寄出信件給全聯福利中心，以表達消費者希望企業減塑的聲音<br>紙模型數量有限，款式將隨機寄送",
   "form_remind": "",
 
   "label_yes": "是",
@@ -24,13 +24,13 @@
   "minimum_8_characters": "請輸入8位數字",
   "suggestion_message": "您是否想輸入",
 
-  "submit_text": "支援減塑 獲得教具",
+  "submit_text": "支援減塑 獲得環保紙模型",
   "thanks_title": "",
   "thanks_ask": "",
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "立即捐助",
-  "donateURL": "https://supporter.ea.greenpeace.org/tw/s/donate/alt-layout?campaign=2022earthday",
+  "donateURL": "https://supporter.ea.greenpeace.org/tw/s/donate/alt-layout?campaign=plastic-animal",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -50,15 +50,14 @@
   "donate_suggestion_header": "您的每月小額捐款是我們最大的後盾！",
   "donate_suggestion_message": "誠心邀請您加入每月捐款會員的行列，因為對於非營利團體而言，定期定額捐款具有莫大的意義：它能提供組織穩定的收入，持續地支援我們的專案研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
   "currency": "新臺幣",
-  "default_amount": 600, 
-  "default_monthly": 100,
-  "min_amount_monthly": 50,
-  "default_oneoff": 500,
-  "min_amount_oneoff": 100,
   "allow_monthly": "true",
   "allow_oneoff": "true",
   "default_donation_type": "monthly",
-  "min_amount_alert": "為維持最低行政支出，最低捐款金額為：",
+  "default_amount": 600,
+  "default_monthly": 600,
+  "min_amount_monthly": 100,
+  "default_oneoff": 3000,
+  "min_amount_oneoff": 300,
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -67,13 +66,13 @@
     {
       "label": "2000",
       "value": 2000,
-      "description": "資助 1 天數位媒體推廣費用，幫助綠色和平推廣減塑議題，提高公眾對塑膠污染的意識和關注。",
+      "description": "資助 2 個樣本採集和檢測費用，幫助綠色和平進行實地環境採樣與進一步分析，能夠更順利完成研究調查報告。",
       "currency": "新臺幣"
     },
     {
       "label": "3000",
       "value": 3000,
-      "description": "資助 1 次公民連署行動費用，幫助綠色和平加速推動減塑時程，使更多民眾得以向政府及企業發聲、要求減塑。",
+      "description": "資資助 1 次公民連署行動費用，幫助綠色和平加速推動減塑時程，使更多民眾得以向政府及企業發聲、要求減塑。",
       "currency": "新臺幣"
     },
     {
@@ -113,5 +112,6 @@
       "description": ""
     }
   ],
+  "min_amount_alert": "推薦至少$400元，讓捐款運用達最高效益。最低捐款金額為：$",
   "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"
 }
