@@ -46,7 +46,9 @@ import useScript from './useScript';
 */
 
 const DonationModule = (props) => {
-  const { market, language, campaign, campaignId, env, signup } = props;
+  const { market, language, campaign, campaignId, env, signup, preFill } = props;
+
+  console.log('preFill-',preFill)
 
   // Define constant module url
   const moduleUrl = 'https://api.greenpeace.org.hk/app/donation-module/main.js';
@@ -75,7 +77,7 @@ const DonationModule = (props) => {
       {/* React DOM render here */}
       <div
         data-gpea-module="gpea-donation-module"
-        data-gpea-market={market.toUpperCase()} //手動填寫← TW 或 HK
+        data-gpea-market={market?.toUpperCase()} //手動填寫← TW 或 HK
         data-gpea-language={language} //手動填寫← zh_TW 或 zh_HK 或 en_HK
         data-gpea-campaign={campaign} //手動填寫，schema原始資料沒有這個設定
         data-gpea-campaign-id={campaignId || ''} //手動填寫，依 Donation campaign 手動填寫
