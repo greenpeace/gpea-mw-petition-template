@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Box, Container, Image, Spinner, Center } from '@chakra-ui/react';
 import HeroSection from './components/HeroSection';
 import MainSection from './components/MainSection';
+import DonationSection from './components/HeroSection/Donation'
 import Form from './components/Form';
 import formContent from './form';
 import SEO from './SEO';
@@ -99,7 +100,7 @@ const DonationPage = () => {
     <>
       <Box pos={'relative'} minH={{ base: '380px', md: '500px' }}>
         <Container maxW="1200px">
-          <HeroSection />
+          <DonationSection />
         </Container>
         <Box
           zIndex="-1"
@@ -135,8 +136,8 @@ const DonationPage = () => {
           </Box>
         </Box>
 
-        <Box w={{ base: '100%', lg: '50%' }} py={10} pr={{ xl: 10 }} pb={16}>
-          <MainSection />
+        <Box w={{ base: '100%', lg: '50%' }} minH={{ base: '380px', md: '500px' }} py={10} pr={{ xl: 10 }} pb={16}>
+          Donation
         </Box>
       </Container>
       <ScrollToTargetButton target={mobileForm} targetInView={inView} />
@@ -154,7 +155,7 @@ const Index = () => {
 
     if (router.isReady) {
       const { page } = router.query;
-      setPage(page);
+      setPage(page??"default");
     }
   }, [router]);
 
