@@ -88,7 +88,8 @@ const DonationModule = (props) => {
 
 const mapStateToProps = ({ signup }) => {
   return {
-    signup: signup.data,
+    signup: signup?.data,
+    preFill: signup?.preFill,
   };
 };
 
