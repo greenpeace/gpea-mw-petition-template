@@ -43,25 +43,25 @@ class NextDocument extends Document {
               placeholder="Email"
               name="Email"
               type="email"
-              defaultValue="Demoemail"
+              defaultValue="demo@mail.com"
             />
             <input
               placeholder="MobilePhone"
               name="MobilePhone"
               type="tel"
-              defaultValue=""
+              defaultValue="98765432"
             />
             <input
               placeholder="Birthdate"
               name="Birthdate"
               type="text"
-              defaultValue=""
+              defaultValue="2000-01-01"
             />
             <input
               placeholder="MobileCountryCode"
               name="MobileCountryCode"
               type="text"
-              defaultValue="88888888"
+              defaultValue="852"
             />
             <input
               placeholder="OptIn"
