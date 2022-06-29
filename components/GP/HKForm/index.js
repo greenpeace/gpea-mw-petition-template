@@ -277,6 +277,7 @@ const MyForm = (props) => {
                       type="tel"
                       handleChange={handleChange}
                       handleBlur={handleBlur}
+                      value={values.MobilePhone}
                     />
                   </Box>
                 </HStack>
@@ -292,6 +293,7 @@ const MyForm = (props) => {
                     fontSize={'16px'}
                     placeholder={formContent.label_year_of_birth}
                     size={'lg'}
+                    value={values.Birthdate}
                   >
                     {birthDateYear &&
                       birthDateYear.map((d) => (

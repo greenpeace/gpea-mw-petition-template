@@ -84,7 +84,7 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus, setSignFor
   useEffect(() => {
     const domain = document.location.host;
     const market =
-      themeData?.Market.toUpperCase() ||
+      themeData?.Market?.toUpperCase() ||
       (domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : ''); // Return 'HK' 'TW' ''
     /* GTM is only applicable for production env */
     initTagManager(market);
@@ -100,21 +100,7 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus, setSignFor
         if (!data.defaultValue) {
           return;
         }
-
-        if (data.name === 'MobilePhone') {
-          setFieldValue('MobileCountryCode', data.defaultValue?.split(' ')[0]);
-          setFieldValue('MobilePhone', data.defaultValue?.split(' ')[1]);
-          return;
-        }
-
-        if (data.name === 'Birthdate') {
-          setFieldValue(
-            'Birthdate',
-            `${data.defaultValue?.split('/')[2].substring(0, 4)}-01-01`,
-          );
-          return;
-        }
-
+        
         FormObj[`${data.name}`] = data.defaultValue??"";
       });
 

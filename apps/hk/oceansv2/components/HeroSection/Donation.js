@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
-import { Box, Heading, Stack } from '@chakra-ui/react';
+import { Box, Heading, Stack, } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import { useWindowSize } from '@common/utils/index';
 import { headingProps } from '@common/styles/components/contentStyle';
@@ -9,7 +9,7 @@ import DonationModule from '@components/GP/DonationModule';
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 const formWidth = 500;
 
-function Donation({ children }) {
+function Donation({ children, theme }) {
   const [readyToShow, setReadyToShow] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0,
@@ -64,7 +64,13 @@ function Donation({ children }) {
               pos="relative"
               zIndex={10}
             >
-              <DonateForm />
+              <DonationModule
+                market={theme.Market}
+                language={'zh_HK'}
+                campaign={'oceans'}
+                // campaignId={''}
+                env={'production'}
+               />
             </Box>
           </Box>
         )}

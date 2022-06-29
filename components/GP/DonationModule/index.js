@@ -82,7 +82,10 @@ const DonationModule = (props) => {
         data-gpea-campaign={campaign} //手動填寫，schema原始資料沒有這個設定
         data-gpea-campaign-id={campaignId || ''} //手動填寫，依 Donation campaign 手動填寫
         data-gpea-env={env} //手動填寫← test 或 full 或 production
-        data-gpea-formdata={JSON.stringify(signup)} //非必填，繼承自 petition daisy chain
+        data-gpea-formdata={JSON.stringify({
+          ...preFill,
+          ...signup
+        })} //非必填，繼承自 petition daisy chain
       ></div>
     </Box>
   );
