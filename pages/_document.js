@@ -49,7 +49,7 @@ class NextDocument extends Document {
               placeholder="MobilePhone"
               name="MobilePhone"
               type="tel"
-              defaultValue="987654321 "
+              defaultValue="91234567"
             />
             <input
               placeholder="Birthdate"
