@@ -56,8 +56,9 @@ function Index({
   const [dynamicImageHeight, setDynamicImage] = useState(null);
   const [bgElementHeight, setBgElementHeight] = useState(null);
   const { loading, error, image } = useImage(RESULT[result]?.image); // animal
+  const photo = useImage(RESULT[result]?.photo);
   const topSection = useRef(null);
-  const dynamicContent = RESULT[result]?.content;
+  // const dynamicContent = RESULT[result]?.content;
   const [supportType, setSupportType] = useState('');
 
   const handleOpenLink = (targetDonateURL) => {
@@ -139,6 +140,7 @@ function Index({
     ) {
       setResult('F');
     }
+    
   }, [answer]);
 
   // useEffect(() => {
@@ -228,19 +230,17 @@ function Index({
                       }} 
                     />
                   </Box>
-                  <Flex justifyContent={{ base: 'center', md: 'flex-start' }}>
-                    <Box position="relative">
-                      <Image
-                        src={image}
-                        onLoad={(e) => setDynamicImage(e.target.clientHeight)}
-                        pos={'relative'}
-                        w="100%"
-                        py={4}
-                        //maxW={{ base: '280px', md: '380px' }}
-                        zIndex={2}
-                      />
-                    </Box>
-                  </Flex>
+                  <Box position="relative">
+                    <Image
+                      src={image}
+                      onLoad={(e) => setDynamicImage(e.target.clientHeight)}
+                      pos={'relative'}
+                      w="100%"
+                      py={4}
+                      //maxW={{ base: '280px', md: '380px' }}
+                      zIndex={2}
+                    />
+                  </Box>
                   <Box>
                     <Heading
                       {...headingProps}
@@ -256,11 +256,34 @@ function Index({
                       as="p"
                       color={'black'}
                       {...paragraphProps}
+                      mb={0}
                       dangerouslySetInnerHTML={{
-                        __html: RESULT[result]?.content,
+                        __html: RESULT[result]?.content[0],
                       }}
                     />
-                  </Box> </>) }
+                  </Box> 
+                  <Box position="relative">
+                    <Image
+                      src={photo?.image}
+                      pos={'relative'}
+                      w="100%"
+                      py={4}
+                      //maxW={{ base: '280px', md: '380px' }}
+                      zIndex={2}
+                    />
+                  </Box>
+                  <Box>
+                    <Text
+                      as="p"
+                      color={'black'}
+                      {...paragraphProps}
+                      dangerouslySetInnerHTML={{
+                        __html: RESULT[result]?.content[1],
+                      }}
+                    />
+                  </Box> 
+                
+                </>) }
                 </Stack>
               </Box>)}
               <Box flex={1} position="relative" zIndex={3}>

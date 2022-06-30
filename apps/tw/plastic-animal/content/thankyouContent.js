@@ -37,7 +37,7 @@ const Content = ({ theme, signup, type }) => {
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        膠污染問題，攸關全球 78 億人口。
+        塑膠污染問題，攸關全球 78 億人口。
         <br/><br/>
         每年估計有 <HighlightText>1,270 萬公噸</HighlightText>的塑膠流入海洋，代表每分每秒都有塑膠破壞我們的環境，
         <br/>而您的支持，將成為守護環境最有力的幫助。

@@ -34,7 +34,7 @@ const Cta = ({ setSurveyPage }) => {
                 color={'black'}
                 textAlign={{ base: 'center' }}
               >
-                請支援減塑！您願意支持全聯福利中心兌現減塑承諾，保護臺灣環境的社會責任嗎？
+                請支援減塑！您願意支持全聯兌現減塑承諾，共同保護臺灣環境嗎？
               </Heading>
             </Box>
             <Box
@@ -61,7 +61,7 @@ const Cta = ({ setSurveyPage }) => {
                   <ListItem><Text as="span" color={`var(--error-900)`}>減塑替代方案進展少</Text>：曾承諾提供容器租用、洗潔精填充站等，至今僅於兩家分店內導入循環杯機台，大幅落後其他通路業</ListItem>
                 </UnorderedList>
                 <br/>
-                <Text as="p" color={'black'} {...paragraphProps} fontWeight='bold'>邀請您一起要求全聯兌現減塑承諾，透過與企業對話、研究調查，盼全聯提供給消費者更多元、友善環境的選擇！</Text>
+                <Text as="p" color={'black'} {...paragraphProps} fontWeight='bold'>邀請您一起要求全聯成為臺灣減塑的助力，實踐蔬果裸賣、重複使用包裝，讓塑膠變少，環境更好！</Text>
               </Box>
             </LazyShow>
             <Box>

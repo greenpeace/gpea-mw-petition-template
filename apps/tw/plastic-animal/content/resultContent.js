@@ -6,6 +6,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 import RESULT from '../data/result.json';
+import boxImg from '../images/formbox.jpg';
 
 const listStyle = {
 
@@ -27,7 +28,7 @@ const Content = ({ theme, signup, result }) => {
             <ListItem><Text as="span" color={`var(--error-900)`}>減塑替代方案進展少</Text>：曾承諾提供容器租用、洗潔精填充站等，至今僅於兩家分店內導入循環杯機台，大幅落後其他通路業</ListItem>
         </UnorderedList>
         <Text><br/>
-          <strong>請您一起要求全聯兌現減塑承諾，透過與企業對話、研究調查，盼全聯提供給消費者更多元、友善環境的選擇！</strong>
+          <strong>請您一起要求全聯成為臺灣減塑的助力，實踐蔬果裸賣、重複使用包裝，讓塑膠變少，環境更好！</strong>
         </Text>
       </Box>
     </>
@@ -40,6 +41,16 @@ const Content = ({ theme, signup, result }) => {
           {...headingProps}
           mb="0"
           dangerouslySetInnerHTML={{ __html: RESULT[result]?.boxTitle }}
+        />
+      </Box>
+      <Box >
+        <Image
+          src={boxImg}
+          pos={'relative'}
+          w="100%"
+          py={4}
+          //maxW={{ base: '280px', md: '380px' }}
+          zIndex={2}
         />
       </Box>
       <Box>
