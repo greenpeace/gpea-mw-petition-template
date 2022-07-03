@@ -175,7 +175,7 @@ function Index({
     <Box py="8" px="4">
       <Stack spacing="4">
         <ResultContent result={result} />
-        <SimpleGrid columns={2} spacing={4} pt={10}>
+        <SimpleGrid columns={{base:1, lg:2}} spacing={4} pt={10}>
           <Button {...OrangeCTA} onClick={
               () => {
                 setSupportType('support');

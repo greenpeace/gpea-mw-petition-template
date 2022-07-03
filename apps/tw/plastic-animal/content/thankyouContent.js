@@ -18,7 +18,7 @@ const Content = ({ theme, signup, type }) => {
     </Text>
   )
   return (
-    <>
+    <Box px={4}>
       <Heading {...headingProps}
         color={`theme.${themeInterests}`}
         fontSize={{ base: '2xl', md: '3xl' }}
@@ -74,8 +74,8 @@ const Content = ({ theme, signup, type }) => {
         為環境行善是一種選擇<br/>改變，就趁現在！
       </Heading>
 
-     
-    </>
+    
+    </Box>
   );
 };
 
