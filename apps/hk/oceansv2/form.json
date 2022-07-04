@@ -3,7 +3,7 @@
   "form_description": "我願意聯署加入守護海洋行列！",
   "form_remind": "",
   "signed_number": "已聯署人數",
-  
+
   "label_yes": "是",
   "label_no": "否",
   "label_name": "稱謂",
@@ -24,7 +24,7 @@
   "minimum_8_characters": "請輸入8位數字",
   "suggestion_message": "您是否想輸入",
 
-  "submit_text": "立即登記",
+  "submit_text": "立即捐款",
   "mobile_fixed_cta": "立即捐款",
   "thanks_title": "",
   "thanks_ask": "",

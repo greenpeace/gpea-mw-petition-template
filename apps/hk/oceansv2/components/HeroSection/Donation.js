@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
-import { Box, Heading, Stack, } from '@chakra-ui/react';
+import { Box, Heading, Stack } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
 import { useWindowSize } from '@common/utils/index';
 import { headingProps } from '@common/styles/components/contentStyle';
@@ -43,12 +43,12 @@ function Donation({ children, theme }) {
           color={'white'}
           fontSize={{
             base: 'var(--text-xl)',
-            md: 'var(--text-xl)',
+            md: 'var(--text-2xl)',
           }}
           textShadow="0 0 1px rgba(0,0,0, .2)"
           mb={4}
           dangerouslySetInnerHTML={{
-            __html: '感謝您加入守護海洋行列！<br/>為海洋多走一步，捐助支持保護海洋項目。',
+            __html: '請即捐款<br/>讓全球 30% 海洋<br/>納入保護區',
           }}
         />
       </Box>
@@ -70,7 +70,7 @@ function Donation({ children, theme }) {
                 campaign={'oceans'}
                 // campaignId={''}
                 env={'production'}
-               />
+              />
             </Box>
           </Box>
         )}
