@@ -76,7 +76,7 @@ const DefaultPage = () => {
             height="100%"
             width="100%"
             objectFit="cover"
-            objectPosition="65% 25%"
+            objectPosition="center"
           />
           <Box
             bgColor="rgba(0, 0, 0, 0.2)"
@@ -112,7 +112,7 @@ const DonationPage = () => {
   const theme = useSelector((state) => state.theme?.data);
   return (
     <>
-      <Box pos={'relative'} minH={{ base: '380px', md: '500px' }}>
+      <Box pos={'relative'} minH={{ base: '380px', md: '540px' }}>
         <Container maxW="1200px">
           <DonationSection />
         </Container>
@@ -129,7 +129,7 @@ const DonationPage = () => {
             height="100%"
             width="100%"
             objectFit="cover"
-            objectPosition="65% 25%"
+            objectPosition="center"
           />
           <Box
             bgColor="rgba(0, 0, 0, 0.2)"
@@ -150,15 +150,11 @@ const DonationPage = () => {
           </Box>
         </Box>
 
-        <Box
-          w={{ base: '100%', lg: '50%' }}
-          minH={{ base: '380px', md: '500px' }}
-          py={10}
-          pr={{ xl: 10 }}
-          pb={16}
-        >
+        <Box w={{ base: '100%', lg: '50%' }} py={10} pr={{ xl: 10 }} pb={16}>
           <Heading {...headingProps} color={`theme.${theme?.interests}`}>
-            您願意進一步守護珍貴海洋嗎？立即捐款，攜手守護珍貴海洋。
+            您願意進一步守護珍貴海洋嗎？
+            <br />
+            立即捐款，攜手守護珍貴海洋。
           </Heading>
 
           <Text as="p" {...paragraphProps}>
@@ -167,21 +163,20 @@ const DonationPage = () => {
           </Text>
 
           <Heading {...headingProps} color={`theme.${theme?.interests}`}>
-          海洋正向我們發出求救信號，您可以施以援手！
+            海洋正向我們發出求救信號，您可以施以援手！
           </Heading>
 
           <Text as="p" {...paragraphProps}>
-          海洋現正面臨多方面的威脅，包括過度捕魚、深海採礦、塑膠及鑽油污染等，不少生物面臨滅絕危機，生物多樣性瀕臨崩潰邊緣。
+            海洋現正面臨多方面的威脅，包括過度捕魚、深海採礦、塑膠及鑽油污染等，不少生物面臨滅絕危機，生物多樣性瀕臨崩潰邊緣。
           </Text>
 
           <Text as="p" {...paragraphProps}>
-          有您的捐助支持，綠色和平便能有更多資源與力量執行保護海洋工作，幫助海洋逐步回復美麗健康，守護海洋生態。
+            有您的捐助支持，綠色和平便能有更多資源與力量執行保護海洋工作，幫助海洋逐步回復美麗健康，守護海洋生態。
           </Text>
 
           <Heading {...headingProps} color={`theme.${theme?.interests}`}>
-          向美麗大海伸出援手，捐助綠色和平海洋工作。
+            向美麗大海伸出援手，捐助綠色和平海洋工作。
           </Heading>
-
         </Box>
       </Container>
       <ScrollToTargetButton target={mobileForm} targetInView={inView} />
