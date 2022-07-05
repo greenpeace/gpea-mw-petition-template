@@ -51,25 +51,27 @@ function Content({ children }) {
         />
       </Box>
       <Box pos={'relative'}>
-        <Box {...formProps} d={{ base: 'none', lg: 'block' }}>
-          <Box
-            mx="auto"
-            bgColor="white"
-            borderRadius={8}
-            boxShadow="lg"
-            overflow="hidden"
-            pos="relative"
-            zIndex={10}
-          >
-            <DonationModule
-              market={'HK'}
-              language={'zh_HK'}
-              campaign={'general'}
-              // campaignId={''}
-              env={'production'}
-            />
+        {readyToShow && (
+          <Box {...formProps} d={{ base: 'none', lg: 'block' }}>
+            <Box
+              mx="auto"
+              bgColor="white"
+              borderRadius={8}
+              boxShadow="lg"
+              overflow="hidden"
+              pos="relative"
+              zIndex={10}
+            >
+              <DonationModule
+                market={'HK'}
+                language={'zh_HK'}
+                campaign={'general'}
+                // campaignId={''}
+                env={'production'}
+              />
+            </Box>
           </Box>
-        </Box>
+        )}
       </Box>
     </Stack>
   );
