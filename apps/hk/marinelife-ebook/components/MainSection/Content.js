@@ -6,7 +6,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 import * as statusActions from 'store/actions/action-types/status-actions';
-import heroBannerImage from '../../images/202205-lantau-booklet-KV-main-launch.jpg';
+import heroBannerImage from '../../images/2022-ocean-ebook-main-launch.jpg';
 import contentImage from '../../images/202206-marinelife-booklet-content-image01.gif';
 
 const Content = ({ theme }) => {
@@ -14,7 +14,7 @@ const Content = ({ theme }) => {
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        下載《瀕危的海洋生物手冊》電子圖鑑 一起揭開海洋奧秘！
+        下載《瀕危的海洋生物手冊》電子圖鑑，一起揭開海洋奧秘！
       </Heading>
 
       <Box {...paragraphProps}>

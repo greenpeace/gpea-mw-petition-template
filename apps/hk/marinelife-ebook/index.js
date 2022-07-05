@@ -6,11 +6,13 @@ import { Box, Container, Image, useMediaQuery, Slide } from '@chakra-ui/react';
 import HeroSection from './components/HeroSection';
 import MainSection from './components/MainSection';
 import Form from './components/Form';
+// import FormContainer from '@containers/formContainer';
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
 import FixedCTA from './components/FixedCTA';
-import heroBannerImage from './images/202206-marinelife-booklet-KV-website-banner.jpg';
+import desktopBannerImage from './images/2022-ocean-ebook-desktop-banner.jpg';
+import mobileBannerImage from './images/2022-ocean-ebook-mobile-banner.jpg';
 
 const maxWSize = 1200;
 
@@ -42,19 +44,37 @@ function Index({ setFormContent }) {
           <HeroSection />
         </Container>
         <Box
-          zIndex="-1"
-          height="100%"
-          width="100%"
+          zIndex={-1}
           pos={'absolute'}
           top={0}
+          right={0}
           left={0}
+          bottom={0}
+          d={{ base: 'none', md: 'block' }}
         >
           <Image
-            src={heroBannerImage}
+            src={desktopBannerImage}
             height="100%"
             width="100%"
             objectFit="cover"
             objectPosition="65% 25%"
+          />
+        </Box>
+        <Box
+          zIndex={-1}
+          pos={'absolute'}
+          top={0}
+          right={0}
+          left={0}
+          bottom={0}
+          d={{ base: 'block', md: 'none' }}
+        >
+          <Image
+            src={mobileBannerImage}
+            height="100%"
+            width="100%"
+            objectFit="contain"
+            objectPosition="center"
           />
         </Box>
       </Box>
@@ -65,6 +85,23 @@ function Index({ setFormContent }) {
           <Form />
         </Box>
       </Box>
+      {/* <Box flex={1} ref={mobileForm}>
+        <FormContainer>
+          <Box ref={ref}>
+            {submitted ? (
+              <DonationModule
+                market={theme.Market}
+                language={'zh_HK'}
+                campaign={'oceans'}
+                // campaignId={''}
+                env={'production'}
+              />
+            ) : (
+              <SignupForm />
+            )}
+          </Box>
+        </FormContainer>
+      </Box> */}
       {/** Mobile form End */}
 
       <Container maxW={`${maxWSize}px`}>

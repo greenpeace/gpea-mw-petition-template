@@ -6,9 +6,6 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-// import contentPic from '../../images/202206-marinelife-booklet-thankyou-image01.gif';
-import contentPic_02 from '../../images/202206-marinelife-booklet-thankyou-image02.jpg';
-
 
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
@@ -30,11 +27,6 @@ const Thankyou = ({ theme, signup }) => {
       <Text as="p" {...paragraphProps}>
         我們特別製作《瀕危的海洋生物手冊》電子圖鑑，目標讓更多人進一步了解海洋生物的生存危機，並一起以行動守護海洋。
       </Text>
-
-      {/* <Box {...paragraphProps}>
-        <Image src={contentPic} />
-        <Text fontSize={'sm'}>(© Schindler Leung / Greenpeace)</Text>
-      </Box> */}
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         您願意一起守護珍貴海洋嗎？
@@ -59,10 +51,6 @@ const Thankyou = ({ theme, signup }) => {
       <Text as="p" {...paragraphProps}>
         您的捐款將直接資助我們與全球頂尖科學家，進行海上科研任務、揭露企業破壞海洋的行為、以及國際間的倡議工作，直接幫助爭取訂立《全球海洋公約》，達成 2030 年 30% 全球海洋保護區的目標，幫助海洋回復美麗健康。
       </Text>
-      {/* 
-      <Box {...paragraphProps}>
-        <Image src={contentPic_02} />
-      </Box> */}
 
     </>
   );

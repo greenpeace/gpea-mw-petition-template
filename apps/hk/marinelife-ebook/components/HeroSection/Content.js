@@ -38,15 +38,15 @@ function Content({ children }) {
         <Heading
           as="h1"
           {...headingProps}
-          color={'white'}
+          color={'#108ee9'}
           fontSize={{
-            base: 'var(--text-xl)',
+            base: 'var(--text-lg)',
             md: 'var(--text-2xl)',
           }}
           textShadow="0 0 1px rgba(0,0,0, .2)"
           mb={4}
           dangerouslySetInnerHTML={{
-            __html: '請即下載<br/>《瀕危的海洋生物手冊》<br/>電子圖鑑',
+            __html: '請即下載<br/>《瀕危海洋生物手冊》<br/>電子圖鑑',
           }}
         />
       </Box>

@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import Form from '../Form';
 import { useWindowSize } from '@common/utils/index';
 import { headingProps } from '@common/styles/components/contentStyle';
-
+// const mobileForm = useRef(null);
 const formWidth = 500;
 
 function Content({ signup }) {
@@ -39,9 +39,9 @@ function Content({ signup }) {
         <Heading
           as="h1"
           {...headingProps}
-          color={'white'}
+          color={'#108ee9'}
           fontSize={{
-            base: 'var(--text-xl)',
+            base: 'var(--text-lg)',
             md: 'var(--text-2xl)',
           }}
           textShadow="0 0 1px rgba(0,0,0, .2)"
@@ -52,25 +52,19 @@ function Content({ signup }) {
         />
       </Box>
       <Box pos={'relative'}>
-        {/* <Flex pos="relative" zIndex="2" py={4} flexDirection="column">
-          <Text fontSize="xl" px="2" mb="4" fontWeight="bold" color="white">
-            講者：
-          </Text>
-          <AvatarGroup size="xl" max={4}>
-            <Avatar
-              name="MeeliMami"
-              src={speaker1}
-              cursor={'pointer'}
-              bg="climate.500"
-            />
-          </AvatarGroup>
-        </Flex> */}
         <Box
           {...formProps}
           d={{ base: 'none', md: readyToShow ? 'block' : 'none' }}
         >
           <Form />
         </Box>
+        {/* <Box flex={1} ref={mobileForm}>
+          <FormContainer>
+            <Box ref={ref}>
+              <Form />
+            </Box>
+          </FormContainer>
+        </Box> */}
       </Box>
     </Stack>
   );

@@ -1,7 +1,15 @@
+// import React, { useEffect, useRef } from 'react';
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
 import { Container, Box } from '@chakra-ui/react';
+// import FormContainer from '@containers/formContainer';
+import { useInView } from 'react-intersection-observer';
+
+// const [ref, inView] = useInView({
+//   threshold: 0,
+// });
+// const mobileForm = useRef(null);
 
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 // const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
@@ -13,8 +21,8 @@ const Index = ({ status }) => {
       <DonationModule
         market={'HK'}
         language={'zh_HK'}
-        campaign={'marinelife-ebook'}
-        // campaignId={'7012u000000owceAAA'}
+        campaign={'oceans'}
+        // campaignId={''}
         env={'production'}
       />
       // <DonateForm />
@@ -35,11 +43,20 @@ const Index = ({ status }) => {
         <RenderForm />
       </Box>
     </Container>
+    // <FormContainer>
+    //   <Box ref={ref}>
+    //     <RenderForm />
+    //   </Box>
+    // </FormContainer>
   );
 };
 
 //Prevent refresh child component
 function propsAreEqual(prevStatus, nextStatus) {
+  // const [ref, inView] = useInView({
+  //   threshold: 0,
+  // });
+  // const mobileForm = useRef(null);
   return prevStatus.status.submitted === nextStatus.status.submitted;
 }
 
