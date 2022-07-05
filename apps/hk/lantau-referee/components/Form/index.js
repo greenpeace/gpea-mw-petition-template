@@ -1,7 +1,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
-import { Container, Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
@@ -21,19 +21,17 @@ const Index = ({ status }) => {
       <SignupForm />
     );
   return (
-    <Container maxW={'100%'}>
-      <Box
-        mx="auto"
-        bgColor="white"
-        borderRadius={8}
-        boxShadow="lg"
-        overflow="hidden"
-        pos="relative"
-        zIndex={10}
-      >
-        <RenderForm />
-      </Box>
-    </Container>
+    <Box
+      mx="auto"
+      bgColor="white"
+      borderRadius={8}
+      boxShadow="lg"
+      overflow="hidden"
+      pos="relative"
+      zIndex={10}
+    >
+      <RenderForm />
+    </Box>
   );
 };
 
