@@ -6,10 +6,6 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import contentPic from '../../images/DJI_0386.jpg';
-import contentPic_02 from '../../images/elm_flag.jpg';
-
-
 const Thankyou = ({ theme, signup }) => {
   const themeInterests = theme.interests;
   const { FirstName } = signup;
@@ -27,11 +23,6 @@ const Thankyou = ({ theme, signup }) => {
         您的捐款將直接資助綠色和平繼續以紮實研究，揭露真相，推動政府善用棕地，直接幫助守護大嶼與自然環境的目標！
       </Text>
 
-      <Box {...paragraphProps}>
-        <Image src={contentPic} />
-        <Text fontSize={'sm'}>(© Schindler Leung / Greenpeace)</Text>
-      </Box>
-
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         填海將嚴重危害海洋生態，您可以施以援手！
       </Heading>
@@ -48,16 +39,13 @@ const Thankyou = ({ theme, signup }) => {
         向香港自然環境伸出援手，捐助綠色和平守護大嶼工作。
       </Text>
 
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>堅持發聲 行動帶來改變</Heading>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+        堅持發聲 行動帶來改變
+      </Heading>
 
       <Text as="p" {...paragraphProps}>
         現以每月$200捐款支持堅守大嶼工作，即可獲得一面「堅守大嶼」旗幟及2次「環保手作工作坊」的機會。
       </Text>
-
-      <Box {...paragraphProps}>
-        <Image src={contentPic_02} />
-      </Box>
-
     </>
   );
 };
