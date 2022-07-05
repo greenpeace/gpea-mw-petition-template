@@ -112,7 +112,7 @@ const DonationPage = () => {
   const theme = useSelector((state) => state.theme?.data);
   return (
     <>
-      <Box pos={'relative'} minH={{ base: '380px', md: '540px' }}>
+      <Box pos={'relative'} minH={{ base: '380px', md: '500px' }}>
         <Container maxW="1200px">
           <DonationSection />
         </Container>
