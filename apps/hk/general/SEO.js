@@ -11,32 +11,29 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'climate',
-            gBasket: 'earthdaywebinar',
+            gCampaign: 'general',
+            gBasket: 'general',
           });
         `,
         }}
       />
       {/* title */}
-      <title>
-        立即下載：《山海大嶼》大嶼山自然與生態主題電子書 - Greenpeace 綠色和平 |
-        香港
-      </title>
+      <title>款支持綠色和平 - Greenpeace 綠色和平 | 香港</title>
       <meta
         property="og:title"
-        content="立即下載：《山海大嶼》大嶼山自然與生態主題電子書 - Greenpeace 綠色和平 | 香港"
+        content="款支持綠色和平 - Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"
-        content="綠色和平推出《山海大嶼》自然與生態主題電子書，內含豐富資訊，例如3條大嶼精選行山路線、攝影比賽作品巡禮、大嶼珍貴物種介紹等，展示大嶼山的生物多樣性與美態，推動大眾了解大嶼山物種與自然風光，守護大嶼。"
+        content="為維持公正獨立，綠色和平從不接受政府、企業資助，全有賴如您一般有心的市民得以持續為脆弱的地球盡一份力。綠色和平承諾善用一分一毫，將您的心意轉化為改變環境的力量。懇請您，加入我們，為脆弱的地球環境發聲！"
       />
       <meta
         property="og:description"
-        content="綠色和平推出《山海大嶼》自然與生態主題電子書，內含豐富資訊，例如3條大嶼精選行山路線、攝影比賽作品巡禮、大嶼珍貴物種介紹等，展示大嶼山的生物多樣性與美態，推動大眾了解大嶼山物種與自然風光，守護大嶼。"
+        content="為維持公正獨立，綠色和平從不接受政府、企業資助，全有賴如您一般有心的市民得以持續為脆弱的地球盡一份力。綠色和平承諾善用一分一毫，將您的心意轉化為改變環境的力量。懇請您，加入我們，為脆弱的地球環境發聲！"
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/05/675b5db0-202205-lantau-booklet-kv-fb-preview.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/07/f9c30073-gp0ahu_pressmedia.jpg"
       />
     </Head>
   );
