@@ -18,10 +18,10 @@ const SEO = () => {
         }}
       />
       {/* title */}
-      <title>款支持綠色和平 - Greenpeace 綠色和平 | 香港</title>
+      <title>捐款支持綠色和平 - Greenpeace 綠色和平 | 香港</title>
       <meta
         property="og:title"
-        content="款支持綠色和平 - Greenpeace 綠色和平 | 香港"
+        content="捐款支持綠色和平 - Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"
