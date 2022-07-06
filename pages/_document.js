@@ -49,19 +49,13 @@ class NextDocument extends Document {
               placeholder="MobilePhone"
               name="MobilePhone"
               type="tel"
-              defaultValue="91234567"
+              defaultValue="+852 91234567"
             />
             <input
               placeholder="Birthdate"
               name="Birthdate"
               type="text"
-              defaultValue="2000-01-01"
-            />
-            <input
-              placeholder="MobileCountryCode"
-              name="MobileCountryCode"
-              type="text"
-              defaultValue="852"
+              defaultValue="1/1/1999 12:00:00 AM"
             />
             <input
               placeholder="OptIn"
