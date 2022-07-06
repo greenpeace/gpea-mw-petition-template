@@ -50,7 +50,13 @@ const initTagManager = (marketName) => {
   }
 };
 
-function Index({ setTheme, themeData, setSignupNumbers, setWebStatus, setSignFormData }) {
+function Index({
+  setTheme,
+  themeData,
+  setSignupNumbers,
+  setWebStatus,
+  setSignFormData,
+}) {
   const router = useRouter();
 
   /** page=2 force to result page */
@@ -68,17 +74,17 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus, setSignFor
         hk: signupNumbersHKURL,
         tw: signupNumbersTWURL,
       };
-  
+
       const signupData = await axios
         .get(fetchURLs[themeData?.Market])
         .then((response) => {
           return response.data.find((d) => d.Id === themeData?.CampaignId);
         })
         .catch((error) => console.log(error));
-  
+
       setSignupNumbers({ [themeData?.Market]: signupData });
     }
-    fetchSignupData(); 
+    fetchSignupData();
   }, []);
 
   useEffect(() => {
@@ -90,23 +96,37 @@ function Index({ setTheme, themeData, setSignupNumbers, setWebStatus, setSignFor
     initTagManager(market);
     setTheme(themeData);
 
-
     /* Pre-fill signup data */
     let FormObj = {};
     const selectForm = document.forms['mc-form'];
     const documentFormsArray = Array.from(selectForm);
     if (documentFormsArray) {
       documentFormsArray.map((data) => {
+        // missing default value in field
         if (!data.defaultValue) {
           return;
         }
-        
-        FormObj[`${data.name}`] = data.defaultValue??"";
+        // format MobilePhone and CountryCode field
+        if (data.name === 'MobilePhone') {
+          FormObj['MobileCountryCode'] = data.defaultValue
+            ?.split(' ')[0]
+            .replace('+', '');
+          FormObj['MobilePhone'] = data.defaultValue?.split(' ')[1];
+          return;
+        }
+        // format Birthdate field
+        if (data.name === 'Birthdate') {
+          FormObj['Birthdate'] = `${data.defaultValue
+            ?.split('/')[2]
+            .substring(0, 4)}-01-01`;
+          return;
+        }
+        // other normal field
+        FormObj[`${data.name}`] = data.defaultValue ?? '';
       });
 
-      setSignFormData(FormObj)
+      setSignFormData(FormObj);
     }
-
   }, [themeData]);
 
   if (DynamicComponent) {
