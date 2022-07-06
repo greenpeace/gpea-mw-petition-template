@@ -12,7 +12,7 @@ export const Field = (props) => {
     handleBlur,
     min,
     max,
-    size = 'lg',
+    size = 'md',
     value,
     bgColor = 'transparent',
     h = '48px',
@@ -27,7 +27,7 @@ export const Field = (props) => {
         onChange={handleChange}
         onBlur={handleBlur}
         placeholder={label}
-        _placeholder={{ fontSize: 16, color: 'gray.500' }}
+        _placeholder={{ color: 'gray.500' }}
         size={size}
         min={min}
         max={max}
