@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Box, Fade, Flex, Spinner } from '@chakra-ui/react';
 
@@ -46,9 +46,8 @@ import useScript from './useScript';
 */
 
 const DonationModule = (props) => {
-  const { market, language, campaign, campaignId, env, signup, preFill } = props;
-
-  console.log('preFill-',preFill)
+  const { market, language, campaign, campaignId, env, signup, preFill } =
+    props;
 
   // Define constant module url
   const moduleUrl = 'https://api.greenpeace.org.hk/app/donation-module/main.js';
@@ -84,7 +83,7 @@ const DonationModule = (props) => {
         data-gpea-env={env} //手動填寫← test 或 full 或 production
         data-gpea-formdata={JSON.stringify({
           ...preFill,
-          ...signup
+          ...signup,
         })} //非必填，繼承自 petition daisy chain
       ></div>
     </Box>
