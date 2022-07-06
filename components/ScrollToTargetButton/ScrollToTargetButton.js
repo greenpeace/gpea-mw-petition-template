@@ -44,12 +44,14 @@ const styleProps = {
 };
 
 const buttonStyleProps = {
-  fontSize: 'xl',
-  px: 2,
-  py: 8,
   width: '100%',
-  color: 'white',
   borderRadius: '4px',
+  fontSize: '20px',
+  fontWeight: '500',
+  minHeight: '56px',
+  py: '12px',
+  px: '4px',
+  color: 'white',
   bg: 'orange.500',
   _hover: { bg: 'orange.300' },
 };
