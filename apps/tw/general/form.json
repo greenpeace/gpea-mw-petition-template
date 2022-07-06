@@ -1,6 +1,6 @@
 {
-  "form_header": "萬人齊聲，改變成真",
-  "form_description": "我支持成立全球海洋保護區！",
+  "form_header": "您可以讓全球升溫到此為止",
+  "form_description": "我願意支持綠色和平，<b>改變寬鬆的碳費政策，推動企業的綠能轉型</b>，以全面的減碳行動根治氣候問題，改寫地球未來。",
   "form_remind": "",
   "signed_number": "已連署人數",
 
@@ -14,7 +14,8 @@
   "label_phone_optional": "手提號碼（選填）",
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",
-  "label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考隱私保護政策。",
+  "label_counties": "居住縣市",
+  "label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/' target='_blank'>隱私保護政策</a>。",
 
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
@@ -30,12 +31,38 @@
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "立即捐助",
-  "donateURL": "https://supporter.ea.greenpeace.org/tw/s/donate/alt-layout?campaign=oceans_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/tw/s/donate/alt-layout?campaign=mitigate_climatechange",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
   "whatsappURL": "",
 
+  "counties": [
+    { "label": "臺北市", "value": "臺北市" },
+    { "label": "新北市", "value": "新北市" },
+    { "label": "基隆市", "value": "基隆市" },
+    { "label": "桃園市", "value": "桃園市" },
+    { "label": "新竹縣", "value": "新竹縣" },
+    { "label": "新竹市", "value": "新竹市" },
+    { "label": "苗栗縣", "value": "苗栗縣" },
+    { "label": "臺中市", "value": "臺中市" },
+    { "label": "彰化縣", "value": "彰化縣" },
+    { "label": "南投縣", "value": "南投縣" },
+    { "label": "雲林縣", "value": "雲林縣" },
+    { "label": "嘉義縣", "value": "嘉義縣" },
+    { "label": "嘉義市", "value": "嘉義市" },
+    { "label": "臺南市", "value": "臺南市" },
+    { "label": "高雄市", "value": "高雄市" },
+    { "label": "屏東縣", "value": "屏東縣" },
+    { "label": "宜蘭縣", "value": "宜蘭縣" },
+    { "label": "花蓮縣", "value": "花蓮縣" },
+    { "label": "臺東縣", "value": "臺東縣" },
+    { "label": "澎湖縣", "value": "澎湖縣" },
+    { "label": "金門縣", "value": "金門縣" },
+    { "label": "連江縣", "value": "連江縣" },
+    { "label": "海外", "value": "海外" },
+    { "label": "不提供", "value": "不提供" }
+  ],
   "mobile_country_code": [
     { "label": "+852", "value": 852 },
     { "label": "+853", "value": 853 }
@@ -45,11 +72,9 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "是的！我想要守護大海",
-  "donate_description": [
-    "目前僅不到 1% 的公海受到保護，支持成立《全球海洋公約》，保護這片蔚藍大海！"
-  ],
-  "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
+  "donate_header": "是的！我想要改變氣候危機",
+  "donate_description": [""],
+  "default_message": "與政府與企業合作，提升再生能源於臺灣總電力的占比，讓臺灣逐步邁入淨零排放。",
   "donate_suggestion_header": "您的每月小額捐款是我們最大的後盾！",
   "donate_suggestion_message": "誠心邀請您加入每月捐款會員的行列，因為對於非營利團體而言，定期定額捐款具有莫大的意義：它能提供組織穩定的收入，持續地支援我們的專案研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
   "currency": "新臺幣",
@@ -69,19 +94,19 @@
     {
       "label": "2000",
       "value": 2000,
-      "description": "支持綠色和平持續搜集第一手海洋真相，透過傳播媒體送到您與全球的眼前！",
+      "description": "媒體宣傳與數位社群上的議題推廣，凝聚群眾力量，要求政府企業採取對環境友善的措施及政策。",
       "currency": "新臺幣"
     },
     {
       "label": "3000",
       "value": 3000,
-      "description": "支持綠色和平船艦調查所需裝備，監察破壞海洋的行為，需時前赴應對突發環境災難！",
+      "description": "與專家學者展開臺灣在地再生能源研究，積極提升再生能源使用的可行性。",
       "currency": "新臺幣"
     },
     {
       "label": "5000",
       "value": 5000,
-      "description": "支持綠色和平團隊聯同科學家，到各個海域進行實地考察與研究工作，並展開國際倡議行動！",
+      "description": "向專家、學者交流更多可行之能源方案，促進產、官、學之間的交流。",
       "currency": "新臺幣"
     },
     {
@@ -92,21 +117,21 @@
   ],
   "amount_monthly": [
     {
+      "label": "300",
+      "value": 300,
+      "description": "持續進行公眾宣傳，舉辦講座、展覽等，深入教育體系，推廣環境議題，普及環保意識。",
+      "currency": "新臺幣"
+    },
+    {
       "label": "600",
       "value": 600,
-      "description": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
+      "description": "與政府與企業合作，提升再生能源於臺灣總電力的占比，讓臺灣逐步邁入淨零排放。",
       "currency": "新臺幣"
     },
     {
       "label": "800",
       "value": 800,
-      "description": "支持綠色和平船艦持績監察企業最新動向，及時阻止破壞海洋的行為。",
-      "currency": "新臺幣"
-    },
-    {
-      "label": "1200",
-      "value": 1200,
-      "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意制定「全球海洋公約」，推進守護30%海洋保護區目標！",
+      "description": "推動政府將綠電使用揭露納入企業公開資訊的範疇，讓臺灣早日達到淨零碳排目標。",
       "currency": "新臺幣"
     },
     {
