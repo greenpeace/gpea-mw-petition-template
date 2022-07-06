@@ -2,7 +2,13 @@ import React from 'react';
 import { Heading, Box, Stack, Text, Image } from '@chakra-ui/react';
 import PageContainer from '@containers/pageContainer';
 
-export default function Index({ content, bgImage, removeMask, children }) {
+const Index = ({
+  content,
+  bgImage,
+  bgPos = 'top center',
+  removeMask = false,
+  children,
+}) => {
   return (
     <>
       <Box
@@ -54,7 +60,7 @@ export default function Index({ content, bgImage, removeMask, children }) {
             height="100%"
             width="100%"
             objectFit="cover"
-            objectPosition="center top"
+            objectPosition={bgPos}
           />
         </Box>
 
@@ -65,10 +71,12 @@ export default function Index({ content, bgImage, removeMask, children }) {
             right={0}
             left={0}
             bottom={0}
-            bgColor={'rgba(0,0,0,0.5)'}
+            bgColor={'rgba(0,0,0,0.35)'}
           />
         )}
       </Box>
     </>
   );
-}
+};
+
+export default Index;
