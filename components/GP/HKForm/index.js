@@ -52,7 +52,7 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
-    setValues
+    setValues,
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -223,7 +223,7 @@ const MyForm = (props) => {
                       mailSuggestion(e.target.value);
                     }}
                     value={values.Email}
-                    _placeholder={{ fontSize: 16 }}
+                    fontSize={'16px'}
                     size={'lg'}
                   />
                   <FormErrorMessage color="red">
@@ -290,10 +290,10 @@ const MyForm = (props) => {
                 >
                   <Select
                     onChange={handleChange}
-                    fontSize={'16px'}
                     placeholder={formContent.label_year_of_birth}
-                    size={'lg'}
                     value={values.Birthdate}
+                    fontSize={'16px'}
+                    size={'lg'}
                   >
                     {birthDateYear &&
                       birthDateYear.map((d) => (
@@ -344,13 +344,13 @@ const MyForm = (props) => {
 const MyEnhancedForm = withFormik({
   enableReinitialize: true,
   mapPropsToValues: ({ signup }) => ({
-    Email: signup?.preFill?.Email??"",
-    FirstName: signup?.preFill?.FirstName??"",
-    LastName: signup?.preFill?.LastName??"",
+    Email: signup?.preFill?.Email ?? '',
+    FirstName: signup?.preFill?.FirstName ?? '',
+    LastName: signup?.preFill?.LastName ?? '',
     MobileCountryCode: '852',
-    MobilePhone: signup?.preFill?.MobilePhone??"",
+    MobilePhone: signup?.preFill?.MobilePhone ?? '',
     OptIn: true,
-    Birthdate: signup?.preFill?.Birthdate??""
+    Birthdate: signup?.preFill?.Birthdate ?? '',
   }),
 
   validate: async (values, props) => {
