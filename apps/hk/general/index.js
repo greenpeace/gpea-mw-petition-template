@@ -23,7 +23,14 @@ const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 
-function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
+function Index({
+  status,
+  theme,
+  setFormContent,
+  signup,
+  preFill,
+  setHiddenForm,
+}) {
   const { submitted } = status;
   const { FirstName } = signup;
 
@@ -44,9 +51,7 @@ function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
           bgImage={heroBannerImage}
           bgPos={'bottom center'}
           content={{
-            title: `${
-              FirstName ? FirstName : '綠色和平支持者'
-            }，感謝您捐款支持！`,
+            title: '感謝您捐款支持！',
             description: [''],
           }}
           imageSrcset={[
@@ -65,7 +70,9 @@ function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
           bgImage={heroBannerImage}
           bgPos={'bottom center'}
           content={{
-            title: '請即捐款<br/>拯救脆弱的地球生態！',
+            title:
+              `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
+              '延續彩虹勇士號使命，<br/>為海洋而戰！',
             description: [''],
           }}
           imageSrcset={[
@@ -96,7 +103,7 @@ function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
                     language={'zh_HK'}
                     campaign={'general'}
                     // campaignId={''}
-                    env={'test'}
+                    env={'production'}
                   />
                 </Box>
               </FormContainer>
@@ -111,7 +118,12 @@ function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
 }
 
 const mapStateToProps = ({ status, theme, signup }) => {
-  return { status, theme: theme.data, signup: signup.data };
+  return {
+    status,
+    theme: theme.data,
+    signup: signup?.data,
+    preFill: signup?.preFill,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
