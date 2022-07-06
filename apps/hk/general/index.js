@@ -14,7 +14,7 @@ import SEO from './SEO';
 
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/GP0AHU_PressMedia_16_9.jpg';
+import heroBannerImage from './images/GP1SWCVD_PressMedia_updated.jpg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
@@ -42,6 +42,7 @@ function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
       {submitted ? (
         <ThanksBanner
           bgImage={heroBannerImage}
+          bgPos={'bottom center'}
           content={{
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
@@ -58,11 +59,11 @@ function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
               srcset: heroBannerImage,
             },
           ]}
-          removeMask={true}
         />
       ) : (
         <HeroBanner
           bgImage={heroBannerImage}
+          bgPos={'bottom center'}
           content={{
             title: '請即捐款<br/>拯救脆弱的地球生態！',
             description: [''],
@@ -77,7 +78,6 @@ function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
               srcset: heroBannerImage,
             },
           ]}
-          removeMask={true}
         />
       )}
       <PageContainer>
@@ -96,7 +96,7 @@ function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
                     language={'zh_HK'}
                     campaign={'general'}
                     // campaignId={''}
-                    env={'production'}
+                    env={'test'}
                   />
                 </Box>
               </FormContainer>
