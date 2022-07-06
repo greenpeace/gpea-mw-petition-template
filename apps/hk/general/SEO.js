@@ -33,7 +33,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/07/f9c30073-gp0ahu_pressmedia.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/07/0d9f9f8a-gp1swcvd_pressmedia.jpg"
       />
     </Head>
   );
