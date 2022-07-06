@@ -6,106 +6,59 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import contentImg1 from './images/image6.jpg';
-import contentImg2 from './images/GP01B4T_PressMedia.jpg';
-import contentImg3 from './images/image8.jpg';
-import contentImg4 from './images/image10.jpg';
+import image1 from './images/2022-donate_general1.jpg';
+import image2 from './images/2022-donate_general2.jpg';
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        連署是一份支持海洋保育的力量
+        地球家園，需要您的力量
       </Heading>
+
       <Text as="p" {...paragraphProps}>
-        您的連署不只是一個簽名，而是照進深海的一道微光，能推動制定《全球海洋公約》與臺灣《海洋保育法》，在2030年前成立至少30%海洋保護區，為萬千海洋生物找到庇蔭。
+        氣候變遷已逐漸衝擊您我的生活，對自然環境更是帶來前所未有的威脅，使我們快速失去健康的森林、海洋和生物多樣性。
       </Text>
+
       <Text as="p" {...paragraphProps}>
-        此刻，綠色和平正持續推動各國政府攜手制定《全球海洋公約》，為浩瀚海洋建立完善且長久的保護機制。並敦促臺灣政府催生《海洋保育法》，擴大臺灣海洋保護區，共同響應全球海洋公約，於2030年前達到30%的海洋保護區。
+        我們必須重新思考與地球的關係，改變企業與政府過度奪取自然資源、依賴化石燃料的習慣，為人類、環境爭取公平且永續的未來。
       </Text>
+
+      <Box {...paragraphProps}>
+        <Image src={image1} />
+      </Box>
+
       <Text as="p" {...paragraphProps}>
         如果我們成功了，將是環保運動的重要里程碑，能讓至少三分之一以上的海洋生態不受人為干預，生生不息。
       </Text>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        您願意一起守護海洋嗎？
-        <br />
-        現在就連署！
-      </Heading>
-      <Box {...paragraphProps}>
-        <Image src={contentImg1} />
-      </Box>
-
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        全球海洋面臨重重危機
-      </Heading>
-      <Text as="p" {...paragraphProps}>
-        由於缺少全球保護機制，地球上的公海只有不到1%受到保護，成為強勢石油、捕撈漁業、深海採礦產業的「海洋大戰」競技場，以及面臨塑膠污染和氣候變遷等問題。
-      </Text>
-      <Text as="p" {...paragraphProps}>
-        鯨魚、海龜、企鵝、北極熊以至人類幾乎一無所知的深海生物正面臨各種存亡危機。
-      </Text>
-      <Box {...paragraphProps}>
-        <Image src={contentImg4} />
-      </Box>
-
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        臺灣四面環海，但我們卻沒有好好愛護它
-      </Heading>
-      <Text as="p" {...paragraphProps}>
-        除了珊瑚白化、海洋污染之外，過度捕撈與棲地破壞，是破壞沿海海域甚鉅的原因。
-      </Text>
-      <Text as="p" {...paragraphProps}>
-        根據漁業署統計年報顯示，臺灣近10年的近海漁獲量，已不到30年前的50%。
-      </Text>
-      <Text as="p" {...paragraphProps}>
-        根據中研院在臺灣北海岸近15年來的長期監測調查，發現野生魚種數量已銳減超過70%。
-      </Text>
-      <Text as="p" {...paragraphProps}>
-        顯示臺灣魚類物種多樣性包括魚群數量與豐富度都正在快速地消失。
-      </Text>
-      <Text as="p" {...paragraphProps}>
-        如再不努力推動海洋保育，「年年有魚」恐將成為過去式。
-      </Text>
-      <Box {...paragraphProps}>
-        <Image src={contentImg3} />
-      </Box>
-
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        蓬勃的海洋正凋萎...
-        <br />
-        需要您給大海最實質的幫助！
+        現在，就是守護地球的關鍵時刻
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        神秘的海洋孕育了自然萬物，淨化我們的空氣，提供我們充足的食物與工作機會，但如今，海洋正面臨前所未有的威脅
+        綠色和平之所以存在，是因為脆弱的自然環境需要人類改變、需要您我行動。作為國際環保倡議組織，綠色和平致力於推動地球生態永續，從源頭尋求解決方案，以面對眼前急迫的氣候變遷、生物多樣性衰退、污染等環境問題。50年來，綠色和平堅持不接受企業、政府與政黨的捐贈，保持絕對的公正與獨立。
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        氣候變遷讓海水溫度提高、酸化；大量塑膠垃圾流入海中，被鯨豚海龜吞下吐；過度捕撈與大型企業的深海採礦計畫，幾乎快把豐沛的海洋資源吃乾抹淨。
+        我們透過實地調查、見證記錄、揭露真相、政策倡議與非暴力直接行動，為無法發聲的環境與弱勢族群挺身而出。在地團隊透過串連全球的力量，以科學實證和專業策略，成功推動一個個環境專案與成果。
+      </Text>
+
+      <Text as="p" {...paragraphProps}>
+        而每一位在乎環境的您，就是改變的關鍵力量，有您與綠色和平站在一起，就能推動社會邁向更永續、豐饒的地球家園！
       </Text>
 
       <Box {...paragraphProps}>
-        <Image src={contentImg2} />
+        <Image src={image2} />
       </Box>
-      <Text as="p" {...paragraphProps}>
-        海洋就要枯竭！我們必須做點什麼！
-      </Text>
 
-      <Text as="p" {...paragraphProps}>
-        現在就加入連署，和綠色和平一起推動《全球海洋公約》與臺灣《海洋保育法》，在
-        2030 年前成立至少 30% 海洋保護區，禁止各國在保護區內從事商業行為。
-      </Text>
-
-      <Text as="p" {...paragraphProps}>
-        讓枯竭的海洋喘口氣，就是我們所能提供最實質的幫助。
-      </Text>
-
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        立即連署
-        <br />
-        拯救脆弱海洋，有您有我
+      <Heading
+        {...headingProps}
+        color={`theme.${themeInterests}`}
+        textAlign={'center'}
+      >
+        一人力量或許有限，但凝聚眾人力量 我們可以為地球帶來改變！
       </Heading>
     </>
   );

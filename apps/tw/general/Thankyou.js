@@ -1,15 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  Heading,
-  Text,
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
-  Box,
-} from '@chakra-ui/react';
+import { Heading, Text, Box } from '@chakra-ui/react';
 
 import {
   headingProps,
@@ -22,46 +13,25 @@ const Thankyou = ({ theme, signup }) => {
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        感謝您加入連署，推動全球海洋保護區
+        感謝您成為推動環境改變的一員
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        每一個偉大的成就，背後都有無數人前仆後繼的努力。
+        衷心感謝您的捐助支持，您的捐款將更進一步幫助推動環境保護。您捐助的一分一毫，都參與了綠色和平在當地與全球的環境工作，而每一項環境成果也都有您的力量！
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        現在，恭喜您成為無數人之一，
-        <br />
-        我們都是守護脆弱海洋的重要力量！
+        為環境帶來改變，難以一蹴而成，但我們會堅守環境優先的原則，以科學為依據，不斷向利害關係者與政策制定者施壓，推動改變發生。
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        因為有您的連署支持，綠色和平才能出席國際會議，以全球支持者為後盾，要求各國政治領袖必須制定《全球海洋公約》，有了國際法作為依歸，全球海洋保護區才能真正發揮影響力、確實執行，讓工業捕撈、商業活動撤出保護區範圍，也讓我們能夠持續敦促臺灣政府盡速成立《海洋保育法》，讓海洋得以復甦，讓海底動物能稍稍喘息。
+        綠色和平維持 100%
+        公正獨立，從不接受政府、企業或政治團體資助。因此，您與每一位支持者的捐款，
+        對推動長期環境工作尤其重要，因為穩定的捐款收入，是綠色和平環境專案得以長遠實行、應對連場環境硬仗的致勝關鍵！
       </Text>
 
       <Text as="p" {...paragraphProps}>
-        能更進一步支持我們的海洋行動嗎？請捐款資助我們做更有力的行動！
-      </Text>
-
-      <Text as="p" {...paragraphProps}>
-        捐款將幫助綠色和平做調查研究、阻止破壞行動、進行倡議，更重要的是，在
-        2030 年前，爭取成立《全球海洋公約》與臺灣《海洋保育法》，推動至少 30%
-        海洋保護區。
-      </Text>
-
-      <Box {...paragraphProps}>
-        《全球海洋公約》所帶來的幫助：
-        <OrderedList>
-          <ListItem>守護海洋生態，維護生物多樣性</ListItem>
-          <ListItem>限制公海的人為活動</ListItem>
-          <ListItem>妥善監管、制定審議及處分機制</ListItem>
-          <ListItem>制定具有約束力的規範</ListItem>
-          <ListItem>填補現行公約漏洞，提升規範效益</ListItem>
-        </OrderedList>
-      </Box>
-
-      <Text as="p" {...paragraphProps}>
-        您的捐款，將有助於推動這一切，一同守護蔚藍大海！
+        當眾人攜手行動，本來微弱的聲音，可以擴大成各國領袖無法忽視的力量，感謝您的加入，成為環境守護的堅實力量！
       </Text>
     </>
   );
