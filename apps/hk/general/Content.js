@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Heading, Text, Image } from '@chakra-ui/react';
+import { Box, Heading, Text, Image } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
-import * as statusActions from 'store/actions/action-types/status-actions';
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
@@ -42,12 +41,4 @@ const mapStateToProps = ({ status, theme }) => {
   return { status, theme: theme.data };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setScrollToTarget: (data) => {
-      dispatch({ type: statusActions.SET_SCROLL_TO_TARGET, data });
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default connect(mapStateToProps)(Content);
