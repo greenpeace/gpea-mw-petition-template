@@ -10,29 +10,25 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'oceans',
-            gBasket: 'sanctuaries',
+            gCampaign: 'general',
+            gBasket: 'general',
           });
         `,
         }}
       />
       {/* title */}
-      <title>現在連署 您能保護 30% 全球海洋 - Greenpeace 綠色和平 | 台灣</title>
+      <title>捐款支持- 綠色和平，環保·行動 - Greenpeace 綠色和平 | 台灣</title>
       <meta
         property="og:title"
-        content="現在連署 您能保護 30% 全球海洋 - Greenpeace 綠色和平 | 台灣"
+        content="捐款支持- 綠色和平，環保·行動 - Greenpeace 綠色和平 | 台灣"
       />
       <meta
         name="description"
-        content="海洋的面積占地球71%，是世界最大的供氧來源，也孕育豐富的生物多樣性，包含企鵝、鯨魚、海豚、海龜、珊瑚等美妙海洋生物。然而，海洋現在卻因塑膠污染、非法捕魚、氣候變遷等面臨前所未有的重大生態危機。我們需要更多人一起站出來連署加入，並捐款資助綠色和平！"
+        content="從不接受政商資助，只靠民眾捐助，您的每月捐款支持，能幫助綠色和平推動環境永續方案，並在全球各地落實環保工作，謝謝您！"
       />
       <meta
         property="og:description"
-        content="海洋的面積占地球71%，是世界最大的供氧來源，也孕育豐富的生物多樣性，包含企鵝、鯨魚、海豚、海龜、珊瑚等美妙海洋生物。然而，海洋現在卻因塑膠污染、非法捕魚、氣候變遷等面臨前所未有的重大生態危機。我們需要更多人一起站出來連署加入，並捐款資助綠色和平！"
-      />
-      <meta
-        property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/07/8122f00d-gp01wpp.jpg"
+        content="從不接受政商資助，只靠民眾捐助，您的每月捐款支持，能幫助綠色和平推動環境永續方案，並在全球各地落實環保工作，謝謝您！"
       />
     </Head>
   );
