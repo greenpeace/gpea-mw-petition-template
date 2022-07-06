@@ -28,7 +28,7 @@ const Thankyou = ({ theme, signup }) => {
 
       <Box {...paragraphProps}>
         <Image src={contentPic} />
-        <Text fontSize={'sm'}>(© Schindler Leung / Greenpeace)</Text>
+        <Text fontSize={'sm'}>© Schindler Leung / Greenpeace</Text>
       </Box>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
