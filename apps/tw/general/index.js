@@ -14,14 +14,21 @@ import Thankyou from './Thankyou';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Icon } from '@chakra-ui/react';
-import FixedCTA from '@components/GP/FixedCTA';
+import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
 import heroBannerImage from './images/2022-donate_general.jpg';
 
-function Index({ status, theme, setFormContent, signup }) {
+function Index({
+  status,
+  theme,
+  setFormContent,
+  signup,
+  preFill,
+  setHiddenForm,
+}) {
   const { submitted } = status;
   const { FirstName } = signup;
   const themeInterests = theme.interests;
@@ -32,8 +39,9 @@ function Index({ status, theme, setFormContent, signup }) {
     /* Optional options */
     threshold: 0,
   });
+
+  const mobileForm = useRef(null);
   const myRef = useRef(null);
-  const executeScroll = () => scrollToRef(myRef);
 
   useEffect(() => {
     setFormContent(formContent);
@@ -47,9 +55,7 @@ function Index({ status, theme, setFormContent, signup }) {
           <ThanksBanner
             defaultImage={heroBannerImage}
             content={{
-              title: `${
-                FirstName ? FirstName : '綠色和平支持者'
-              }，感謝您的捐助支持！`,
+              title: '感謝您的捐助支持！',
               description: [''],
             }}
             imageSrcset={[
@@ -68,7 +74,9 @@ function Index({ status, theme, setFormContent, signup }) {
           <HeroBanner
             defaultImage={heroBannerImage}
             content={{
-              title: '今天您的捐款支持，<br/>能促成大自然與社會共存的未來',
+              title:
+                `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
+                '今天您的捐款支持，<br/>能促成大自然與社會共存的未來',
               description: [''],
             }}
             imageSrcset={[
@@ -94,7 +102,7 @@ function Index({ status, theme, setFormContent, signup }) {
                 {submitted ? <Thankyou /> : <Content />}
               </ContentContainer>
             </Box>
-            <Box flex={1} ref={myRef}>
+            <Box flex={1} ref={mobileForm}>
               <FormContainer>
                 <Box ref={ref}>
                   <DonationModule
@@ -102,7 +110,7 @@ function Index({ status, theme, setFormContent, signup }) {
                     language={'zh_TW'}
                     campaign={'general'}
                     // campaignId={''}
-                    env={'production'}
+                    env={'test'}
                   />
                 </Box>
               </FormContainer>
@@ -111,15 +119,18 @@ function Index({ status, theme, setFormContent, signup }) {
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'TWChinese'} />
-      {!inView && (
-        <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
-      )}
+      <ScrollToTargetButton target={mobileForm} targetInView={inView} />
     </>
   );
 }
 
 const mapStateToProps = ({ status, theme, signup }) => {
-  return { status, theme: theme.data, signup: signup.data };
+  return {
+    status,
+    theme: theme.data,
+    signup: signup.data,
+    preFill: signup?.preFill,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
