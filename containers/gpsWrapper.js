@@ -6,7 +6,7 @@ import Nav from 'components/Navbar';
 import PetitionFooter from 'containers/petitionFooter';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
-import { imageLoader } from 'common/utils';
+import { imageLoader } from '@common/utils';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import CryptoJS from 'crypto-js';

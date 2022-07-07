@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script';
 
 const SEO = () => {
   return (
@@ -10,8 +11,8 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'forests',
-            gBasket: 'global',
+            gCampaign: 'plastics',
+            gBasket: 'plastic-gps',
           });
         `,
         }}

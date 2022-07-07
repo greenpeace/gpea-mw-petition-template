@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import { useInView } from 'react-intersection-observer';
-import Form from '@components/GPS/GPSForm';
-import { useWindowSize } from '@components/GPS/util';
+import Form from '@apps/hk/gps/components/GPSForm';
+import { useWindowSize } from '@common/utils/index';
 import { headingProps } from '@common/styles/components/contentStyle';
 
 const formWidth = 500;
 
-function Content({ status, theme }) {
-  const { scrollToTarget } = status;
-  const [readyToShow, setReadyToShow] = useState(false);
+function Content({ signup }) {
+  const { FirstName = '綠色和平支持者' } = signup;
   const { ref, inView } = useInView({
     threshold: 0,
   });
   const getSize = useWindowSize();
+  const [readyToShow, setReadyToShow] = useState(false);
+
   const formProps = inView // switch form position when TITLE inView
     ? {
         position: 'absolute',
@@ -30,12 +31,12 @@ function Content({ status, theme }) {
       };
 
   useEffect(() => {
-    setTimeout(() => setReadyToShow(true), 500);
+    setReadyToShow(true);
   }, []);
 
   return (
-    <Box py={12} w={{ md: 'md', xl: 'xl' }}>
-      <Box ref={ref} p="4" bg="var(--gps-primary)" d="inline-block">
+    <Box py={20} w={{ md: 'md', xl: 'xl' }}>
+      <Box ref={ref} p="4" bg="var(--gps-primary)">
         <Heading
           {...headingProps}
           color={'white'}
@@ -44,14 +45,20 @@ function Content({ status, theme }) {
             md: 'var(--text-2xl)',
           }}
           textShadow="0 0 1px rgba(0,0,0, .2)"
-          mb="0"
+          mb={4}
           dangerouslySetInnerHTML={{
-            __html: '立即登記<br/>免費使用完整版！',
+            __html: `${FirstName}，您現在可以免費使用完整版走塑GPS！`,
           }}
         />
+        <Text as="p" color={'white'} fontSize="md" fontWeight="bold">
+          * WhatsApp對話將於1分鐘內顯示確認訊息。
+        </Text>
       </Box>
       <Box pos={'relative'}>
-        <Box {...formProps} d={{ base: 'none', lg: 'block' }}>
+        <Box
+          {...formProps}
+          d={{ base: 'none', md: readyToShow ? 'block' : 'none' }}
+        >
           <Form />
         </Box>
       </Box>
@@ -63,12 +70,4 @@ const mapStateToProps = ({ status, theme, signup }) => {
   return { status, theme: theme.data, signup: signup.data };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setFormContent: (data) => {
-      dispatch({ type: formActions.SET_FORM, data });
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default connect(mapStateToProps)(Content);

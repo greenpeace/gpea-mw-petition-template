@@ -1,5 +1,4 @@
 import React from 'react';
-import Wrapper from '@containers/gpsWrapper';
 import Head from 'next/head';
 import {
   Container,
@@ -15,11 +14,11 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from '@chakra-ui/react';
-
 import Image from 'next/image';
-import { CTAButton } from '@components/GPS/CTA/button';
+import Wrapper from '@containers/gpsWrapper';
+import { CTAButton } from '@apps/hk/gps/components/CTA/button';
 import SwiperCarousel from '@components/Swiper';
-import { imageLoader } from 'common/utils';
+import { imageLoader } from '@common/utils';
 
 import c1 from '../public/images/slider/20210508_SSPHunting_17.jpg';
 import c2 from '../public/images/slider/20210508_SSPHunting_5.jpg';

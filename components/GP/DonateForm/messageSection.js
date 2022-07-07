@@ -7,7 +7,7 @@ import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
-import { imageLoader } from 'common/utils';
+import { imageLoader } from '@common/utils';
 import Image from 'next/image';
 
 const DonateForm = (props) => {

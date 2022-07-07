@@ -17,8 +17,8 @@ import {
 } from '@chakra-ui/react';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
-import { CTAButton } from '@components/GPS/CTA/button';
-import { imageLoader } from 'common/utils';
+import { CTAButton } from '@apps/hk/gps/components/CTA/button';
+import { imageLoader } from '@common/utils';
 
 import {
   headingProps,

@@ -11,8 +11,8 @@ import {
   Stack,
   SimpleGrid,
 } from '@chakra-ui/react';
-import { CTAButton } from '@components/GPS/CTA/button';
-import { imageLoader } from 'common/utils';
+import { CTAButton } from '@apps/hk/gps/components/CTA/button';
+import { imageLoader } from '@common/utils';
 import { AiFillAndroid, AiFillApple } from 'react-icons/ai';
 import Image from 'next/image';
 

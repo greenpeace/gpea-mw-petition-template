@@ -1,6 +1,6 @@
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
-import { usePrevious } from 'common/utils';
+import { usePrevious } from '@common/utils';
 
 function useOnScreen(ref, rootMargin = '0px') {
   // State and setter for storing whether element is visible
