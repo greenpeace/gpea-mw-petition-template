@@ -17,7 +17,6 @@ import {
 import data from './index.json';
 
 const DonateFAQ = ({ locale = 'HKChinese' }) => {
-  console.log(data);
   return (
     <Accordion my="4" allowToggle={true}>
       {data[locale].accordions.map((d, i) => {
