@@ -5,44 +5,47 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Box,
+  Text,
 } from '@chakra-ui/react';
 
-const DonateFAQ = () => {
-  return (
-    <Accordion>
-      <AccordionItem>
-        <h2>
-          <AccordionButton>
-            <Box flex="1" textAlign="left">
-              Section 1 title
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-        </h2>
-        <AccordionPanel pb={4}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </AccordionPanel>
-      </AccordionItem>
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
 
-      <AccordionItem>
-        <h2>
-          <AccordionButton>
-            <Box flex="1" textAlign="left">
-              Section 2 title
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-        </h2>
-        <AccordionPanel pb={4}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </AccordionPanel>
-      </AccordionItem>
+import data from './index.json';
+
+const DonateFAQ = ({ locale = 'HKChinese' }) => {
+  console.log(data);
+  return (
+    <Accordion my="4" allowToggle={true}>
+      {data[locale].accordions.map((d, i) => {
+        return (
+          <AccordionItem key={i}>
+            <AccordionButton
+              _expanded={{ fontWeight: 'bold', bg: '', color: '' }}
+            >
+              <AccordionIcon mr="2" />
+              <Box py="6" p="4" flex="1" textAlign="left">
+                <Text as="p" fontSize="md">
+                  {d.title}
+                </Text>
+              </Box>
+            </AccordionButton>
+            <AccordionPanel py="6" px="4">
+              <Text
+                as="p"
+                mb="0"
+                {...paragraphProps}
+                dangerouslySetInnerHTML={{
+                  __html: d.desc,
+                }}
+              ></Text>
+            </AccordionPanel>
+          </AccordionItem>
+        );
+      })}
     </Accordion>
   );
 };
