@@ -59,7 +59,7 @@ const SFFormat = ({ locale }) => {
             </Box>
             <Stack direction="column" spacing={2}>
               {content.link.map((d, i) => (
-                <Box key={i}>
+                <Box key={i} py="4px">
                   <Link
                     href={d.value}
                     target={'_blank'}
