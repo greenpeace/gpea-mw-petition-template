@@ -32,7 +32,10 @@ const SEO = () => {
         property="og:description"
         content="從不接受政商資助，只靠民眾捐助，您的每月捐款支持，能幫助綠色和平推動環境永續方案，並在全球各地落實環保工作，謝謝您！"
       />
-      <meta property="og:image" content={banner} />
+      <meta
+        property="og:image"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/07/8253b889-general_desktop_new.jpg"
+      />
     </Head>
   );
 };
