@@ -1,18 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Box, Image, Heading, Text } from '@chakra-ui/react';
+import { Heading, Text } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-
 const Thankyou = ({ theme, signup }) => {
-  const themeInterests = theme.interests;
-  const { FirstName } = signup;
   return (
     <>
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+      <Heading {...headingProps}>
         歡迎您成為愛護的海洋一分子！
       </Heading>
 
@@ -28,7 +25,7 @@ const Thankyou = ({ theme, signup }) => {
         我們特別製作《瀕危的海洋生物手冊》電子圖鑑，目標讓更多人進一步了解海洋生物的生存危機，並一起以行動守護海洋。
       </Text>
 
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+      <Heading {...headingProps}>
         您願意一起守護珍貴海洋嗎？
       </Heading>
 
@@ -44,14 +41,13 @@ const Thankyou = ({ theme, signup }) => {
         訂立《全球海洋公約》對海洋未來攸關重要 ，誠邀您在這關鍵時刻，向美麗大海伸出援手，捐助綠色和平海洋工作。
       </Text>
 
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+      <Heading {...headingProps}>
         立即捐款，攜手守護珍貴海洋！
       </Heading>
 
       <Text as="p" {...paragraphProps}>
         您的捐款將直接資助我們與全球頂尖科學家，進行海上科研任務、揭露企業破壞海洋的行為、以及國際間的倡議工作，直接幫助爭取訂立《全球海洋公約》，達成 2030 年 30% 全球海洋保護區的目標，幫助海洋回復美麗健康。
       </Text>
-
     </>
   );
 };

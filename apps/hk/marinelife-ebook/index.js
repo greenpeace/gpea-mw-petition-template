@@ -1,132 +1,118 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
+import OverflowWrapper from '@containers/overflowWrapper';
+import ContentContainer from '@containers/contentContainer';
+import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Container, Image, useMediaQuery, Slide } from '@chakra-ui/react';
-import HeroSection from './components/HeroSection';
-import MainSection from './components/MainSection';
-import Form from './components/Form';
-// import FormContainer from '@containers/formContainer';
+import { Box, Flex } from '@chakra-ui/react';
+import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
+
 import formContent from './form';
 import SEO from './SEO';
+
 import * as formActions from 'store/actions/action-types/form-actions';
-import FixedCTA from './components/FixedCTA';
-import desktopBannerImage from './images/2022-ocean-ebook-desktop-banner.jpg';
-import mobileBannerImage from './images/2022-ocean-ebook-mobile-banner.jpg';
 
-const maxWSize = 1200;
+import heroBannerImage from './images/2022-ocean-ebook-desktop-banner.jpg';
+import heroBannerImageMobile from './images/2022-ocean-ebook-mobile-banner.jpg';
 
-function Index({ setFormContent }) {
-  const [isLargerThanLG] = useMediaQuery('(min-width: 62em)'); // default md: '62em'
-  const { ref, inView } = useInView({ threshold: 0 });
-  const [showCTAButton, setShowCTAButton] = useState(false);
+const Content = dynamic(() => import('./Content'));
+const Thankyou = dynamic(() => import('./Thankyou'));
+const HeroBanner = dynamic(() => import('@components/ResponsiveBanner/hero'));
+const ThanksBanner = dynamic(() => import('@components/ResponsiveBanner/thanks'));
+const PageContainer = dynamic(() => import('@containers/pageContainer'));
+const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
+const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
+
+function Index({ status, theme, setFormContent, signup }) {
+  const { submitted } = status;
+  const { FirstName } = signup;
+
+  const [ref, inView] = useInView({
+    threshold: 0,
+  });
   const mobileForm = useRef(null);
 
   useEffect(() => {
     setFormContent(formContent);
   }, []);
 
-  useEffect(() => {
-    if (isLargerThanLG) {
-      setTimeout(() => {
-        setShowCTAButton(false);
-      }, 500);
-      return;
-    }
-    setShowCTAButton(!inView && !isLargerThanLG);
-  }, [inView, isLargerThanLG]);
-
   return (
     <>
       <SEO />
-      <Box pos={'relative'} w="100%" minH={{ base: '380px', md: '500px' }}>
-        <Container maxW={`${maxWSize}px`}>
-          <HeroSection />
-        </Container>
-        <Box
-          zIndex={-1}
-          pos={'absolute'}
-          top={0}
-          right={0}
-          left={0}
-          bottom={0}
-          d={{ base: 'none', md: 'block' }}
-        >
-          <Image
-            src={desktopBannerImage}
-            height="100%"
-            width="100%"
-            objectFit="cover"
-            objectPosition="65% 25%"
-          />
-        </Box>
-        <Box
-          zIndex={-1}
-          pos={'absolute'}
-          top={0}
-          right={0}
-          left={0}
-          bottom={0}
-          d={{ base: 'block', md: 'none' }}
-        >
-          <Image
-            src={mobileBannerImage}
-            height="100%"
-            width="100%"
-            objectFit="contain"
-            objectPosition="center"
-          />
-        </Box>
-      </Box>
-
-      {/** Mobile form */}
-      <Box ref={mobileForm}>
-        <Box d={{ base: 'block', lg: 'none' }} mt={-4} ref={ref}>
-          <Form />
-        </Box>
-      </Box>
-      {/* <Box flex={1} ref={mobileForm}>
-        <FormContainer>
-          <Box ref={ref}>
-            {submitted ? (
-              <DonationModule
-                market={theme.Market}
-                language={'zh_HK'}
-                campaign={'oceans'}
-                // campaignId={''}
-                env={'production'}
-              />
-            ) : (
-              <SignupForm />
-            )}
-          </Box>
-        </FormContainer>
-      </Box> */}
-      {/** Mobile form End */}
-
-      <Container maxW={`${maxWSize}px`}>
-        <Box
-          w={{ base: '100%', lg: 'md', xl: maxWSize / 2 }}
-          py={10}
-          pr={{ xl: 10 }}
-          pb={16}
-        >
-          <MainSection />
-        </Box>
-      </Container>
-
+      {submitted ? (
+        <ThanksBanner
+          bgImage={heroBannerImage}
+          content={{
+            title: `${FirstName ? FirstName : '綠色和平支持者'
+              }，歡迎您成為愛護的海洋一分子！`,
+            description: ['向陷入危機的海洋生物伸出援手，誠邀您捐助支持綠色和平守護海洋工作！'],
+          }}
+          removeMask={true}
+          imageSrcset={[
+            {
+              media: '(min-width: 48em)',
+              srcset: heroBannerImage,
+            },
+            {
+              media: '',
+              srcset: heroBannerImageMobile,
+            },
+          ]}
+          headingTextColor='#008fe2'
+        />
+      ) : (
+        <HeroBanner
+          bgImage={heroBannerImage}
+          content={{
+            title: '請即下載<br/>瀕危海洋生物手冊<br/>電子圖鑑',
+            description: [''],
+          }}
+          removeMask={true}
+          imageSrcset={[
+            {
+              media: '(min-width: 48em)',
+              srcset: heroBannerImage,
+            },
+            {
+              media: '',
+              srcset: heroBannerImageMobile,
+            },
+          ]}
+          headingTextColor='#008fe2'
+        />
+      )}
+      <PageContainer>
+        <OverflowWrapper>
+          <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
+            <Box flex={1} mt={{ base: 10, sm: 60 }}>
+              <ContentContainer theme={theme}>
+                {submitted ? <Thankyou /> : <Content />}
+              </ContentContainer>
+            </Box>
+            <Box flex={1} ref={mobileForm}>
+              <FormContainer>
+                <Box ref={ref} >
+                  {submitted ? (
+                    <DonationModule
+                      market={theme.Market}
+                      language={'zh_HK'}
+                      campaign={'oceans'}
+                      // campaignId={''}
+                      env={'production'}
+                    />
+                  ) : (
+                    <SignupForm />
+                  )}
+                </Box>
+              </FormContainer>
+            </Box>
+          </Flex>
+        </OverflowWrapper>
+      </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
-
-      <Slide
-        direction="bottom"
-        in={showCTAButton}
-        style={{ zIndex: 10 }}
-        d={showCTAButton ? 'block' : 'none'}
-      >
-        <FixedCTA onClick={() => executeScroll(mobileForm)}>
-          {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}
-        </FixedCTA>
-      </Slide>
+      <ScrollToTargetButton target={mobileForm} targetInView={inView} />
     </>
   );
 }

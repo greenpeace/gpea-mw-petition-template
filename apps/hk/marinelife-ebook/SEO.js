@@ -19,8 +19,7 @@ const SEO = () => {
       />
       {/* title */}
       <title>
-        立即下載：《瀕危的海洋生物手冊》電子圖鑑 - Greenpeace 綠色和平 |
-        香港
+        立即下載：《瀕危的海洋生物手冊》電子圖鑑 - Greenpeace 綠色和平 | 香港
       </title>
       <meta
         property="og:title"
@@ -36,7 +35,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/06/14a9d37d-gp1sub1a_pressmedia.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/07/8185a1e6-2022-ocean-ebook-fb-preview.jpg"
       />
     </Head>
   );

@@ -2,7 +2,7 @@
   "form_header": "下載《瀕危的海洋生物手冊》電子圖鑑 ，一起揭開海洋奧秘！",
   "form_description": "完成登記後，電子書連結將於15分鐘內以短訊及電子郵件傳送給您，敬請留意。",
   "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
-  "signed_number": "已聯署人數",
+  "signed_number": "",
   "label_yes": "是",
   "label_no": "否",
   "label_name": "稱謂",
@@ -10,10 +10,10 @@
   "label_last_name": "姓氏",
   "label_email": "電郵地址",
   "label_phone": "手提號碼",
-  "label_phone_optional": "手提號碼（接收活動SMS提示）",
+  "label_phone_optional": "手提號碼（選填）",
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",
-  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank'><u>私隱政策</u></a>。",
+  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
 
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
@@ -24,6 +24,7 @@
   "suggestion_message": "您是否想輸入",
 
   "submit_text": "立即下載",
+  "mobile_fixed_cta": "立即捐款",
   "thanks_title": "",
   "thanks_ask": "",
   "thanks_content": "",
@@ -44,22 +45,22 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "《瀕危的海洋生物手冊》電子圖鑑將會在 3 分鐘內透過電郵與短訊發送給您。",
+  "donate_header": "請捐助守護海洋工作",
   "donate_description": [
-    "向陷入危機的海洋生物伸出援手，誠邀您捐助綠色和平海洋工作，一起爭取在今年訂立《全球海洋公約》，將 30% 海洋納入保護區！"
+    "您的捐助，將有效地、直接地保護全球海洋，令海洋回復健康。"
   ],
-  "default_message": "支持綠色和平持續監察政府棕地政策和土地規劃動向，及時回應並採取相應行動。",
+  "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
   "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
   "donate_suggestion_message": "感謝您對綠色和平的支持！每月捐款可令環保項目得到更持久的成效，為地球嬴取更大的環保成果。",
   "currency": "HKD",
-  "allow_monthly": "true",
-  "allow_oneoff": "true",
-  "default_donation_type": "monthly",
   "default_amount": 100,
   "default_monthly": 100,
   "min_amount_monthly": 50,
   "default_oneoff": 500,
   "min_amount_oneoff": 100,
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
   "donate_type": [
     { "label": "每月捐款", "value": "monthly" },
     { "label": "單次捐款", "value": "single" }
@@ -68,19 +69,19 @@
     {
       "label": "500",
       "value": 500,
-      "description": "資助2支橫額製作，讓守護大嶼的聲音遍地開花",
+      "description": "資助2張高清衛星圖片，揭露海洋破壞真相",
       "currency": "HKD"
     },
     {
       "label": "700",
       "value": 700,
-      "description": "資助3次義工培訓，令更多人成為環境行動者",
+      "description": "資助3件個人防護裝備，讓調查員在海上安全執行研究任務",
       "currency": "HKD"
     },
     {
       "label": "900",
       "value": 900,
-      "description": "資助召開2次記者會，推動環境知情權",
+      "description": "資助2名項目主任參與國際海洋會議，推動跨地域的政策改變",
       "currency": "HKD"
     },
     {
@@ -93,19 +94,19 @@
     {
       "label": "100",
       "value": 100,
-      "description": "資助4小時高清航拍，記錄新界棕地亂象的證據",
+      "description": "資助2次實地考察，以前線記錄呈現海洋危機真相",
       "currency": "HKD"
     },
     {
       "label": "200",
       "value": 200,
-      "description": "資助3次實地考察，呈現大嶼生態價值",
+      "description": "資助3次實驗室化驗，為海洋保育提供有力證據",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "資助2本研究報告的出版，呈現填海工程的環境影響",
+      "description": "資助4天的船隊運作，助船隊遠航公海，截擊海洋破壞者",
       "currency": "HKD"
     },
     {
