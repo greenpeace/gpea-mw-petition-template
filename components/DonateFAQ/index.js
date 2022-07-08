@@ -32,11 +32,11 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
                 </Text>
               </Box>
             </AccordionButton>
-            <AccordionPanel py="6" px="4">
+            <AccordionPanel p="4">
               <Text
                 as="p"
-                mb="0"
                 {...paragraphProps}
+                textAlign={'initial'}
                 dangerouslySetInnerHTML={{
                   __html: d.desc,
                 }}
