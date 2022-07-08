@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
+import { useInView } from 'react-intersection-observer';
+import { connect } from 'react-redux';
+import { Box, Flex } from '@chakra-ui/react';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
-import { useInView } from 'react-intersection-observer';
-import { connect } from 'react-redux';
-import { Box, Flex } from '@chakra-ui/react';
+import HeroBanner from '@components/ResponsiveBanner/hero';
+import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 
 import formContent from './form';
@@ -18,8 +20,6 @@ import heroBannerImage from './images/GP1SWCVD_PressMedia_updated.jpg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
-const HeroBanner = dynamic(() => import('@components/Banner/hero'));
-const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 
@@ -49,7 +49,6 @@ function Index({
       {submitted ? (
         <ThanksBanner
           bgImage={heroBannerImage}
-          bgPos={'bottom center'}
           content={{
             title: '感謝您捐款支持！',
             description: [''],
@@ -64,15 +63,17 @@ function Index({
               srcset: heroBannerImage,
             },
           ]}
+          // removeMask={true}
+          objectPosition={'bottom center'}
+          minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
         />
       ) : (
         <HeroBanner
           bgImage={heroBannerImage}
-          bgPos={'bottom center'}
           content={{
             title:
               `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
-              '延續彩虹勇士號使命，<br/>為海洋而戰！',
+              '延續彩虹勇士號使命，為海洋而戰！',
             description: [''],
           }}
           imageSrcset={[
@@ -85,6 +86,9 @@ function Index({
               srcset: heroBannerImage,
             },
           ]}
+          // removeMask={true}
+          objectPosition={'bottom center'}
+          minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
         />
       )}
       <PageContainer>

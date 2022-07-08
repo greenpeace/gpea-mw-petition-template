@@ -13,13 +13,17 @@ import Thankyou from './Thankyou';
 
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
-import { Box, Flex, Icon } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
+// Default General Banner
 import heroBannerImage from './images/2022-donate_general.jpg';
+// DRTV Genral Banner
+import drtvBannerDesktop from './images/8253b889-general_desktop_new.jpg';
+import drtvBannerMobile from './images/cdc393f4-l_general_mobile_final.jpg';
 
 function Index({
   status,
@@ -53,43 +57,47 @@ function Index({
       <div>
         {submitted ? (
           <ThanksBanner
-            defaultImage={heroBannerImage}
+            defaultImage={drtvBannerDesktop}
             content={{
-              title: '感謝您的捐助支持！',
+              // title: '感謝您的捐助支持！',
+              title: '',
               description: [''],
             }}
             imageSrcset={[
               {
                 media: '(min-width: 48em)',
-                srcset: heroBannerImage,
+                srcset: drtvBannerDesktop,
               },
               {
                 media: '',
-                srcset: heroBannerImage,
+                srcset: drtvBannerMobile,
               },
             ]}
             removeMask={true}
+            minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
           />
         ) : (
           <HeroBanner
-            defaultImage={heroBannerImage}
+            defaultImage={drtvBannerDesktop}
             content={{
-              title:
-                `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
-                '今天您的捐款支持，<br/>能促成大自然與社會共存的未來',
+              // title:
+              //   `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
+              //   '今天您的捐款支持，<br/>能促成大自然與社會共存的未來',
+              titel: '',
               description: [''],
             }}
             imageSrcset={[
               {
                 media: '(min-width: 48em)',
-                srcset: heroBannerImage,
+                srcset: drtvBannerDesktop,
               },
               {
                 media: '',
-                srcset: heroBannerImage,
+                srcset: drtvBannerMobile,
               },
             ]}
             removeMask={true}
+            minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
           />
         )}
       </div>
