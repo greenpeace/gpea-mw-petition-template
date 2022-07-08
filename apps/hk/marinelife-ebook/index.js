@@ -60,7 +60,7 @@ function Index({ status, theme, setFormContent, signup }) {
               srcset: heroBannerImageMobile,
             },
           ]}
-          headingTextColor='#008fe2'
+        // headingTextColor='#008fe2'
         />
       ) : (
         <HeroBanner
@@ -80,7 +80,7 @@ function Index({ status, theme, setFormContent, signup }) {
               srcset: heroBannerImageMobile,
             },
           ]}
-          headingTextColor='#008fe2'
+        // headingTextColor='#008fe2'
         />
       )}
       <PageContainer>
