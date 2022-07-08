@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Box, Heading, Text, Image } from '@chakra-ui/react';
+import DonateFAQ from '@components/DonateFAQ';
+
 import {
   headingProps,
   paragraphProps,
@@ -30,9 +32,20 @@ const Content = ({ theme }) => {
         有您的捐助支持，綠色和平便能有更多資源與力量執行守護環境的工作，讓地球欣欣向榮，生生不息，為下一代創造美好未來。
       </Text>
 
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+      <Text as="p" {...paragraphProps}>
         請即伸出援手，捐助綠色和平環境工作。
+      </Text>
+
+      <Heading
+        textAlign="center"
+        py="6"
+        {...headingProps}
+        color={`theme.${themeInterests}`}
+      >
+        常見問題
       </Heading>
+
+      <DonateFAQ locale="HKChinese" />
     </>
   );
 };

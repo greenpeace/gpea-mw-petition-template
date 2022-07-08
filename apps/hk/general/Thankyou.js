@@ -11,17 +11,7 @@ const Thankyou = ({ theme, signup }) => {
   const { FirstName } = signup;
   return (
     <>
-      {/* <Heading {...headingProps}>感謝您加入守護海洋行列！</Heading>
-
-      <Text as="p" {...paragraphProps}>
-        為海洋多走一步，捐助支持保護海洋項目。
-      </Text>
-
-      <Text as="p" {...paragraphProps} color={`theme.${themeInterests}`}>
-        感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。
-      </Text> */}
-
-      <Heading {...headingProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。
       </Heading>
 
@@ -38,7 +28,7 @@ const Thankyou = ({ theme, signup }) => {
         2030年30%全球海洋保護區的目標。
       </Text>
 
-      <Heading {...headingProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         海洋正向我們發出求救信號，您可以施以援手！
       </Heading>
 
