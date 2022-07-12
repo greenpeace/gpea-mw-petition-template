@@ -1,8 +1,7 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import { Box } from '@chakra-ui/react';
 import { connect } from 'react-redux';
-const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+import DonateForm from '@components/GP/DonateForm';
 
 const Index = () => {
   return (
