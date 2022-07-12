@@ -6,6 +6,7 @@ import {
   Spinner,
   Center,
 } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -13,6 +14,38 @@ import * as formActions from 'store/actions/action-types/form-actions';
 import SignupPage from './pages/signup'
 import ThankyouPage from './pages/thankyou'
 import DonationPage from './pages/donation'
+
+const Index = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const [page, setPage] = useState('');
+  const status = useSelector((state) => state?.status);
+
+  useEffect(() => {
+    dispatch({ type: formActions.SET_FORM, data: formContent });
+
+    if (router.isReady) {
+      const { page } = router.query;
+      setPage(page ?? 'default');
+    }
+  }, [router]);
+
+  useEffect(() => {
+    if (status?.submitted) {
+      router.push({ query: { page: 'thankyou' } });
+    }
+  }, [status]);
+
+  return (
+    <>
+      <SEO />
+
+      <RenderContent page={page} />
+
+      <PetitionFooter locale={'HKChinese'} />
+    </>
+  );
+};
 
 const RenderContent = ({ page }) => {
   if (!page) {
@@ -42,31 +75,6 @@ const RenderContent = ({ page }) => {
     default:
       return <SignupPage />;
   }
-};
-
-const Index = () => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const [page, setPage] = useState('');
-
-  useEffect(() => {
-    dispatch({ type: formActions.SET_FORM, data: formContent });
-
-    if (router.isReady) {
-      const { page } = router.query;
-      setPage(page ?? 'default');
-    }
-  }, [router]);
-
-  return (
-    <>
-      <SEO />
-
-      <RenderContent page={page} />
-
-      <PetitionFooter locale={'HKChinese'} />
-    </>
-  );
 };
 
 export default Index;

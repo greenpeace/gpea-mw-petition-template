@@ -180,7 +180,7 @@ const MyForm = (props) => {
             <Stack spacing="4">
               <Box>
                 <Stack direction={`row`}>
-                  <Box>
+                  <Box w={'100%'}>
                     <Field
                       errors={errors.LastName}
                       touched={touched.LastName}
@@ -193,7 +193,7 @@ const MyForm = (props) => {
                     />
                   </Box>
 
-                  <Box>
+                  <Box w={'100%'}>
                     <Field
                       errors={errors.FirstName}
                       touched={touched.FirstName}

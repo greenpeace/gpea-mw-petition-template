@@ -66,11 +66,10 @@ const DonationPage = () => {
               {delayDisplay && (
                 <Box {...formProps} d={{ base: 'none', lg: 'block' }}>
                   <DonationModule
-                    market={theme?.Market}
-                    language={'zh_HK'}
-                    campaign={'oceans'}
-                    // campaignId={''}
-                    env={'production'}
+                     market={'HK'}
+                      language={'zh_HK'}
+                      campaign={'oceans'}
+                      env={'full'}
                   />
                 </Box>
               )}
@@ -108,10 +107,9 @@ const DonationPage = () => {
         <Box ref={mobileForm}>
           <Box d={{ base: 'block', lg: 'none' }} mt={-4}>
             <DonationModule
-              market={theme?.Market}
+              market={'HK'}
               language={'zh_HK'}
               campaign={'oceans'}
-              // campaignId={''}
               env={'production'}
             />
           </Box>
