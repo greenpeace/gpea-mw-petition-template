@@ -118,7 +118,7 @@ function Index({
                     language={'zh_TW'}
                     campaign={'general'}
                     // campaignId={''}
-                    env={'test'}
+                    env={'production'}
                   />
                 </Box>
               </FormContainer>
