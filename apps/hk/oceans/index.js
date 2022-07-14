@@ -74,9 +74,9 @@ function Index() {
       {signup?.step === 'donation' && (
         <>
           <HeroBanner
-            bgImage={heroBannerImage}
+            bgImage={theme?.params?.hero_image_desktop??heroBannerImage}
             content={{
-              title: '請即聯署<br/>將全球 30% 海洋<br/>納入保護區',
+              title: `${theme?.params?.headline_prefix??""}請即聯署<br/>將全球 30% 海洋<br/>納入保護區`,
               description: [''],
             }}
           />
@@ -122,7 +122,7 @@ function Index() {
             <HeroBanner
               bgImage={heroBannerImage}
               content={{
-                title: '請即聯署<br/>將全球 30% 海洋<br/>納入保護區',
+                title: '請即捐款<br/>讓全球30%海洋<br/>納入保護區',
                 description: [''],
               }}
             />
