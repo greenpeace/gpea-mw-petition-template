@@ -5,6 +5,7 @@ import axios from 'axios';
 import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
@@ -58,12 +59,22 @@ function Index({
   setSignFormData,
 }) {
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  /** page=2 force to result page */
   useEffect(() => {
-    const currentPage = router.query?.page;
-    if (currentPage === '2') {
-      setWebStatus(true);
+    if (router.isReady) {
+      const { step, donation_module_campaign, headline_prefix, hero_image_desktop, hero_image_mobile, page } = router.query;
+      if (page === '2') {   /** page=2 force to result page */
+        setWebStatus(true);
+      }
+
+      dispatch({ type: signupActions.SET_STEP, data: step??'default' });
+      dispatch({ type: themeActions.SET_PARAMS, data: {
+        donation_module_campaign,
+        headline_prefix,
+        hero_image_desktop,
+        hero_image_mobile
+      }});
     }
   }, [router]);
 
