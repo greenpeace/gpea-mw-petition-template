@@ -4,6 +4,7 @@ const initState = {
   data: {},
   preFill: {},
   submitted: false,
+  step: "default",
   lastAction: null,
 };
 
@@ -34,6 +35,13 @@ const signupReducer = (state = initState, action) => {
       return {
         ...state,
         preFill: action.data,
+        lastAction: action.type,
+      };
+
+    case signupActions.SET_STEP:
+      return {
+        ...state,
+        step: action.data,
         lastAction: action.type,
       };
 
