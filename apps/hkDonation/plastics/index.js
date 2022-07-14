@@ -16,7 +16,7 @@ import SEO from './SEO';
 
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
+import heroBannerImage from './images/GP0STRF5F_PressMedia.jpg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
@@ -73,7 +73,7 @@ function Index({
           content={{
             title:
               `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
-              '請即捐款<br/>讓全球 30% 海洋<br/>納入保護區',
+              '請即捐款<br/>支持解決塑膠污染！',
             description: [''],
           }}
           imageSrcset={[
@@ -105,7 +105,7 @@ function Index({
                   <DonationModule
                     market={'HK'}
                     language={'zh_HK'}
-                    campaign={'oceans'}
+                    campaign={'plastics'}
                     // campaignId={''}
                     env={'production'}
                   />
