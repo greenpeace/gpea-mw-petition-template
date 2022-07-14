@@ -4,3 +4,5 @@ export const SIGN_UP_FAIL = 'SIGN_UP_FAIL';
 export const SIGN_UP_FAILED = 'SIGN_UP_FAILED';
 
 export const SET_SIGN_UP_FORM_DATA = 'SET_SIGN_UP_FORM_DATA';
+
+export const SET_STEP = 'SET_STEP';

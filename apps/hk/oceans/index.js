@@ -1,18 +1,20 @@
 import React, { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
+import { useSelector } from 'react-redux';
 import { useInView } from 'react-intersection-observer';
-import { connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
-
 import formContent from './form';
 import SEO from './SEO';
-
 import * as formActions from 'store/actions/action-types/form-actions';
+import * as signupActions from 'store/actions/action-types/signup-actions';
+import * as themeActions from 'store/actions/action-types/theme-actions';
 
 import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
 
@@ -24,9 +26,14 @@ const PageContainer = dynamic(() => import('@containers/pageContainer'));
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const SignupForm = dynamic(() => import('@components/GP/HKForm'));
 
-function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
+function Index() {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const status = useSelector((state) => state?.status);
+  const theme = useSelector((state) => state?.theme);
+  const signup = useSelector((state) => state?.signup);
   const { submitted } = status;
-  const { FirstName } = signup;
+  const { FirstName } = signup?.data;
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -34,12 +41,29 @@ function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
   const mobileForm = useRef(null);
 
   useEffect(() => {
-    setFormContent(formContent);
-  }, []);
+    dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
+
+    if (router.isReady) {
+      const { step, donation_module_campaign, headline_prefix, hero_image_desktop, hero_image_mobile } = router.query;
+      dispatch({ type: signupActions.SET_STEP, data: step??'default' });
+      dispatch({ type: themeActions.SET_PARAMS, data: {
+        donation_module_campaign,
+        headline_prefix,
+        hero_image_desktop,
+        hero_image_mobile
+      } });
+    }
+  }, [router]);
+
+  // console.log('theme.params', theme?.params);
+  // console.log('signup', signup?.step);
 
   return (
     <>
       <SEO />
+
+
+      <>
       {submitted ? (
         <ThanksBanner
           bgImage={heroBannerImage}
@@ -87,25 +111,11 @@ function Index({ status, theme, setFormContent, signup, setHiddenForm }) {
           </Flex>
         </OverflowWrapper>
       </PageContainer>
+      </>
       <PetitionFooter locale={'HKChinese'} />
       <ScrollToTargetButton target={mobileForm} targetInView={inView} />
     </>
   );
 }
 
-const mapStateToProps = ({ status, theme, signup }) => {
-  return { status, theme: theme.data, signup: signup.data };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setFormContent: (data) => {
-      dispatch({ type: formActions.SET_FORM, data });
-    },
-    setHiddenForm: (value) => {
-      dispatch({ type: hiddenFormActions.SET_HIDDEN_FORM, data: value });
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default Index
