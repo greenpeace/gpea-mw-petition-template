@@ -87,7 +87,7 @@ function Index({
             },
           ]}
           // removeMask={true}
-          objectPosition={'center'}
+          objectPosition={'20% center'}
           minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
         />
       )}
