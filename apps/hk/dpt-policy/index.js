@@ -14,8 +14,7 @@ import SEO from './SEO';
 
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/202207-plastic-dpt-policy-banner.jpeg';
-import heroBannerImageMobile from './images/202207-plastic-dpt-policy-banner.jpeg';
+import heroBannerImage from './images/202207-plastic-dpt-policy-banner.jpg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
@@ -60,7 +59,7 @@ function Index({ status, theme, setFormContent, signup }) {
             },
             {
               media: '',
-              srcset: heroBannerImageMobile,
+              srcset: heroBannerImage,
             },
           ]}
         />
@@ -79,7 +78,7 @@ function Index({ status, theme, setFormContent, signup }) {
             },
             {
               media: '',
-              srcset: heroBannerImageMobile,
+              srcset: heroBannerImage,
             },
           ]}
         />
