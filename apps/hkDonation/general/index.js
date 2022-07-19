@@ -16,7 +16,8 @@ import SEO from './SEO';
 
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/GP1SWCVD_PressMedia_updated.jpg';
+// import heroBannerImage from './images/GP1SWCVD_PressMedia_updated.jpg';
+import heroBannerImage from './images/general_donate_page_bg.jpg';
 
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
@@ -63,8 +64,8 @@ function Index({
               srcset: heroBannerImage,
             },
           ]}
-          // removeMask={true}
-          objectPosition={'bottom center'}
+          removeMask={true}
+          objectPosition={'center top'}
           minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
         />
       ) : (
@@ -73,7 +74,7 @@ function Index({
           content={{
             title:
               `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
-              '延續彩虹勇士號使命，為海洋而戰！',
+              '請即捐款<br/>拯救脆弱的地球生態！',
             description: [''],
           }}
           imageSrcset={[
@@ -86,8 +87,8 @@ function Index({
               srcset: heroBannerImage,
             },
           ]}
-          // removeMask={true}
-          objectPosition={'bottom center'}
+          removeMask={true}
+          objectPosition={'center top'}
           minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
         />
       )}
