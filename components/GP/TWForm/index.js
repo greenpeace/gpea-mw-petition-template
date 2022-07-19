@@ -96,6 +96,7 @@ const MyForm = (props) => {
       if (formContent.counties) setFieldValue('Counties', '');
       if (formContent.namelist)
         setFieldValue('Namelist', formContent.namelist[0].value);
+      if (formContent.address) setFieldValue('Address', '');
     }
   }, [formContent]);
 
@@ -311,6 +312,20 @@ const MyForm = (props) => {
               </Box>
             )}
 
+            {formContent.address && (
+              <Box>
+                <Field
+                  errors={errors.Address}
+                  touched={touched.Address}
+                  label={formContent.label_address}
+                  name={'Address'}
+                  handleChange={handleChange}
+                  handleBlur={handleBlur}
+                />
+              </Box>
+
+            )}
+
             <Box>
               <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
                 <Box flex={1} mr={2} pt={1}>
@@ -382,7 +397,7 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const { submitForm, theme, hiddenFormData } = props;
+    const { submitForm, theme, hiddenFormData, formContent } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
@@ -403,8 +418,16 @@ const MyEnhancedForm = withFormik({
       CompletionURL: window.location.href ? window.location.href : '',
     };
 
-    if (values.Counties) formData.CampaignData1__c = values.Counties;
-    if (values.Namelist) formData.CampaignData2__c = values.Namelist;
+    // need to set additional field for counties, namelist and others
+    if (values.Counties){
+      const countiesField = formContent?.counties_field || "CampaignData1__c"; 
+      formData[countiesField] = values.Counties;
+    }
+    if (values.Namelist){
+      const namelistField = formContent?.namelist_field || "CampaignData2__c";
+      formData[namelistField] = values.Namelist;
+    }
+    if (values.Address) formData[formContent.address_field] = values.Address;
 
     setSubmitting(true);
     submitForm(formData, endPoint);
