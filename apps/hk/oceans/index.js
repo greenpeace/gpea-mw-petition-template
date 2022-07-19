@@ -8,10 +8,7 @@ import { useSelector } from 'react-redux';
 import { useInView } from 'react-intersection-observer';
 import { Box, Flex } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-import {
-  Spinner,
-  Center,
-} from '@chakra-ui/react';
+import { Spinner, Center } from '@chakra-ui/react';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 import formContent from './form';
 import SEO from './SEO';
@@ -51,9 +48,6 @@ function Index() {
     }
   }, [router]);
 
-  // console.log('theme.params', theme?.params);
-  // console.log('signup', signup?.step);
-
   if (!routeReady) {
     return (
       <Center minH={{ base: '380px', md: '500px' }}>
@@ -71,12 +65,14 @@ function Index() {
   return (
     <>
       <SEO />
-      {signup?.step === 'donation' && (
+      {signup?.step === 'donation' ? (
         <>
           <HeroBanner
-            bgImage={theme?.params?.hero_image_desktop??heroBannerImage}
+            bgImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
             content={{
-              title: `${theme?.params?.headline_prefix??""}請即聯署<br/>將全球 30% 海洋<br/>納入保護區`,
+              title: `${
+                theme?.params?.headline_prefix ?? ''
+              }請即聯署<br/>將全球 30% 海洋<br/>納入保護區`,
               description: [''],
             }}
           />
@@ -105,8 +101,7 @@ function Index() {
             </OverflowWrapper>
           </PageContainer>
         </>
-      )}
-      {signup?.step === 'default' && (
+      ) : (
         <>
           {submitted ? (
             <ThanksBanner
@@ -157,13 +152,22 @@ function Index() {
           </PageContainer>
         </>
       )}
-      {signup?.step !== 'donation' && signup?.step !== 'default' && (
-        <Box>其他</Box>
-      )}
       <PetitionFooter locale={'HKChinese'} />
       <ScrollToTargetButton target={mobileForm} targetInView={inView} />
     </>
   );
 }
 
-export default Index;
+const mapStateToProps = ({ status, theme, signup }) => {
+  return { status, theme: theme.data, signup: signup.data };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setFormContent: (data) => {
+      dispatch({ type: formActions.SET_FORM, data });
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index);
