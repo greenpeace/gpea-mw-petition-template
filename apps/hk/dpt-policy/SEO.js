@@ -35,7 +35,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/07/ac740984-202207-plastic-dpt-policy-banner-scaled.jpeg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/07/0719aef3-20220713_plastic_dpt_sns-05.jpg"
       />
     </Head>
   );
