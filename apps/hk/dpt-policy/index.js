@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
@@ -20,12 +21,20 @@ import heroBannerImageMobile from './images/202207-plastic-dpt-policy-banner.jpe
 const Content = dynamic(() => import('./Content'));
 const Thankyou = dynamic(() => import('./Thankyou'));
 const HeroBanner = dynamic(() => import('@components/ResponsiveBanner/hero'));
-const ThanksBanner = dynamic(() => import('@components/ResponsiveBanner/thanks'));
+const ThanksBanner = dynamic(() =>
+  import('@components/ResponsiveBanner/thanks'),
+);
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 
 function Index({ status, theme, setFormContent, signup }) {
+  const router = useRouter();
+  const [utmSource, setUtmSource] = useState('');
+  useEffect(() => {
+    setUtmSource(router.query?.utm_source);
+  }, [router]);
+
   const { submitted } = status;
   const { FirstName } = signup;
 
@@ -45,11 +54,12 @@ function Index({ status, theme, setFormContent, signup }) {
         <ThanksBanner
           bgImage={heroBannerImage}
           content={{
-            title: `${FirstName ? FirstName : '綠色和平支持者'
-              }，感謝您加入推動政府全面管制即棄餐具，訂立全面走塑時間表！`,
+            title: `${
+              FirstName ? FirstName : '綠色和平支持者'
+            }，感謝您加入推動政府全面管制即棄餐具，訂立全面走塑時間表！`,
             description: [''],
           }}
-          removeMask={false}
+          removeMask={true}
           imageSrcset={[
             {
               media: '(min-width: 48em)',
@@ -65,10 +75,10 @@ function Index({ status, theme, setFormContent, signup }) {
         <HeroBanner
           bgImage={heroBannerImage}
           content={{
-            title: '請即聯署<br/>要求政府於 22/23 年度立法<br/>落實管制即棄膠餐具',
+            title: '請即聯署<br/>要求政府於 22/23 年度立法落實管制即棄膠餐具',
             description: [''],
           }}
-          removeMask={false}
+          removeMask={true}
           imageSrcset={[
             {
               media: '(min-width: 48em)',
@@ -90,27 +100,37 @@ function Index({ status, theme, setFormContent, signup }) {
               </ContentContainer>
             </Box>
             <Box flex={1} ref={mobileForm}>
-              <FormContainer>
-                <Box ref={ref} >
-                  {submitted ? (
-                    <DonationModule
-                      market={theme.Market}
-                      language={'zh_HK'}
-                      campaign={'plastics'}
-                      // campaignId={''}
-                      env={'production'}
-                    />
-                  ) : (
+              {submitted ? (
+                utmSource != 'dd' ? (
+                  <FormContainer>
+                    <Box ref={ref}>
+                      <DonationModule
+                        market={theme.Market}
+                        language={'zh_HK'}
+                        campaign={'plastics'}
+                        // campaignId={''}
+                        env={'production'}
+                      />
+                    </Box>
+                  </FormContainer>
+                ) : (
+                  <Box h="40px" />
+                )
+              ) : (
+                <FormContainer>
+                  <Box ref={ref}>
                     <SignupForm />
-                  )}
-                </Box>
-              </FormContainer>
+                  </Box>
+                </FormContainer>
+              )}
             </Box>
           </Flex>
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
-      <ScrollToTargetButton target={mobileForm} targetInView={inView} />
+      {!submitted && (
+        <ScrollToTargetButton target={mobileForm} targetInView={inView} />
+      )}
     </>
   );
 }
