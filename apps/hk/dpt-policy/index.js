@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
@@ -29,12 +28,6 @@ const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 
 function Index({ status, theme, setFormContent, signup }) {
-  const router = useRouter();
-  const [utmSource, setUtmSource] = useState('');
-  useEffect(() => {
-    setUtmSource(router.query?.utm_source);
-  }, [router]);
-
   const { submitted } = status;
   const { FirstName } = signup;
 
@@ -101,21 +94,7 @@ function Index({ status, theme, setFormContent, signup }) {
             </Box>
             <Box flex={1} ref={mobileForm}>
               {submitted ? (
-                utmSource != 'dd' ? (
-                  <FormContainer>
-                    <Box ref={ref}>
-                      <DonationModule
-                        market={theme.Market}
-                        language={'zh_HK'}
-                        campaign={'plastics'}
-                        // campaignId={''}
-                        env={'production'}
-                      />
-                    </Box>
-                  </FormContainer>
-                ) : (
-                  <Box h="40px" />
-                )
+                <RenderDonationModule />
               ) : (
                 <FormContainer>
                   <Box ref={ref}>
@@ -134,6 +113,30 @@ function Index({ status, theme, setFormContent, signup }) {
     </>
   );
 }
+
+const RenderDonationModule = () => {
+  let utmSource = new URLSearchParams(document.location.search).get(
+    'utm_source',
+  );
+
+  if (utmSource == 'dd') {
+    return <Box h="40px" />;
+  } else {
+    return (
+      <FormContainer>
+        <Box ref={ref}>
+          <DonationModule
+            market={theme.Market}
+            language={'zh_HK'}
+            campaign={'plastics'}
+            // campaignId={''}
+            env={'production'}
+          />
+        </Box>
+      </FormContainer>
+    );
+  }
+};
 
 const mapStateToProps = ({ status, theme, signup }) => {
   return { status, theme: theme.data, signup: signup.data };
