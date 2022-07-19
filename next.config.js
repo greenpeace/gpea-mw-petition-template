@@ -31,6 +31,7 @@ const nextConfig = {
   },
   images: {
     domains: [
+      'greenpeace.org',
       'api.greenpeace.org.hk',
       'change.greenpeace.org.hk',
       'change.greenpeace.org.tw',

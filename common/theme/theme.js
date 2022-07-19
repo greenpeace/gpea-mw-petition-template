@@ -1,21 +1,14 @@
 import { extendTheme } from '@chakra-ui/react';
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "../../tailwind.config";
 
 import styles from './styles';
 import colors from './colors';
 import { Button } from './components/Button';
-
-const tailwind = resolveConfig(tailwindConfig);
+import { Link } from './components/Link';
 
 const theme = extendTheme({
   components: {
     Button,
-    Link: {
-      baseStyle: {
-        color: 'blue.500',
-      },
-    },
+    Link,
     Modal: {
       baseStyle: {
         dialogContainer: {

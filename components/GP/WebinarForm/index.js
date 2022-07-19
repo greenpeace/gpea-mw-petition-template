@@ -96,34 +96,6 @@ const MyForm = (props) => {
     }
   }, [signup.submitted]);
 
-  useEffect(() => {
-    const selectForm = document.forms['mc-form'];
-    const documentFormsArray = Array.from(selectForm);
-    if (documentFormsArray) {
-      documentFormsArray.map((data) => {
-        if (!data.defaultValue) {
-          return;
-        }
-
-        if (data.name === 'MobilePhone') {
-          setFieldValue('MobileCountryCode', data.defaultValue?.split(' ')[0]);
-          setFieldValue('MobilePhone', data.defaultValue?.split(' ')[1]);
-          return;
-        }
-
-        if (data.name === 'Birthdate') {
-          setFieldValue(
-            'Birthdate',
-            `${data.defaultValue?.split('/')[2].substring(0, 4)}-01-01`,
-          );
-          return;
-        }
-
-        setFieldValue(data.name, data.defaultValue);
-      });
-    }
-  }, []);
-
   const mailSuggestion = (value) => {
     const domains = MAIL_DOMAINS;
     const topLevelDomains = MAIL_TOP_DOMAINS;
