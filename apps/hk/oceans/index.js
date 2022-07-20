@@ -26,7 +26,8 @@ import SignupForm from '@components/GP/HKForm';
 
 function Index() {
   const dispatch = useDispatch();
-  const step = useSelector((state) => state?.signup?.step);
+  const signup = useSelector((state) => state?.signup);
+  const {step} = signup
   const submitted = useSelector((state) => state?.status?.submitted);
   const theme = useSelector((state) => state?.theme);
 
@@ -101,7 +102,7 @@ const ContentCom = ({ step, submitted }) => {
   return submitted ? <Thankyou /> : <Content />;
 };
 
-const HeroBannerCom = ({ step, submitted, theme }) => {
+const HeroBannerCom = ({ step, submitted, theme, signup }) => {
   if (step === 'donation') {
     return (
       <HeroBanner

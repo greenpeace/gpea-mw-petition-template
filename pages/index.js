@@ -65,21 +65,22 @@ function Index({
 
   useEffect(() => {
     if (router.isReady) {
-      const { step, donation_module_campaign, headline_prefix, hero_image_desktop, hero_image_mobile, page, utm_source } = router.query;
+      const { step, donation_module_campaign, headline_prefix, hero_image_desktop, hero_image_mobile, page, utm_source, utm_campaign, utm_content, utm_term } = router.query;
 
       if (page === '2') {   /** page=2 force to result page */
         setWebStatus(true);
       }
 
-      if(utm_source){
-        dispatch({
-          type: hiddenFormActions.SET_HIDDEN_FORM,
-          data: {
-            ...hiddenFormDefaultValue,
-            utm_source: utm_source
-          },
-        });
-      }
+      dispatch({
+        type: hiddenFormActions.SET_HIDDEN_FORM,
+        data: {
+          ...hiddenFormDefaultValue,
+          utm_source: utm_source,
+          utm_campaign: utm_campaign,
+          utm_content: utm_content,
+          utm_term: utm_term
+        },
+      });
 
       dispatch({ type: signupActions.SET_STEP, data: step??'default' });
       dispatch({ type: themeActions.SET_PARAMS, data: {
