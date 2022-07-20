@@ -16,19 +16,24 @@ import * as formActions from 'store/actions/action-types/form-actions';
 
 import heroBannerImage from './images/202207-plastic-dpt-policy-banner.jpg';
 
-const Content = dynamic(() => import('./Content'));
-const Thankyou = dynamic(() => import('./Thankyou'));
 const HeroBanner = dynamic(() => import('@components/ResponsiveBanner/hero'));
 const ThanksBanner = dynamic(() =>
   import('@components/ResponsiveBanner/thanks'),
 );
-const PageContainer = dynamic(() => import('@containers/pageContainer'));
-const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
-const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
+
+import Content from './Content';
+import Thankyou from './Thankyou';
+import PageContainer from '@containers/pageContainer';
+import DonationModule from '@components/GP/DonationModule';
+import SignupForm from '@components/GP/WebinarForm';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
   const { FirstName } = signup;
+
+  let utmSource = new URLSearchParams(document.location.search).get(
+    'utm_source',
+  );
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -51,7 +56,7 @@ function Index({ status, theme, setFormContent, signup }) {
             }，感謝您加入推動政府全面管制即棄餐具，訂立全面走塑時間表！`,
             description: [''],
           }}
-          removeMask={true}
+          // removeMask={true}
           imageSrcset={[
             {
               media: '(min-width: 48em)',
@@ -70,7 +75,7 @@ function Index({ status, theme, setFormContent, signup }) {
             title: '請即聯署<br/>要求政府於 22/23 年度立法落實管制即棄膠餐具',
             description: [''],
           }}
-          removeMask={true}
+          // removeMask={true}
           imageSrcset={[
             {
               media: '(min-width: 48em)',
@@ -93,7 +98,21 @@ function Index({ status, theme, setFormContent, signup }) {
             </Box>
             <Box flex={1} ref={mobileForm}>
               {submitted ? (
-                <RenderDonationModule />
+                <FormContainer>
+                  <Box ref={ref}>
+                    {utmSource == 'dd' ? (
+                      <Box mb="40px" />
+                    ) : (
+                      <DonationModule
+                        market={'HK'}
+                        language={'zh_HK'}
+                        campaign={'plastics'}
+                        // campaignId={''}
+                        env={'production'}
+                      />
+                    )}
+                  </Box>
+                </FormContainer>
               ) : (
                 <FormContainer>
                   <Box ref={ref}>
@@ -112,30 +131,6 @@ function Index({ status, theme, setFormContent, signup }) {
     </>
   );
 }
-
-const RenderDonationModule = () => {
-  let utmSource = new URLSearchParams(document.location.search).get(
-    'utm_source',
-  );
-
-  if (utmSource == 'dd') {
-    return <Box h="40px" />;
-  } else {
-    return (
-      <FormContainer>
-        <Box ref={ref}>
-          <DonationModule
-            market={theme.Market}
-            language={'zh_HK'}
-            campaign={'plastics'}
-            // campaignId={''}
-            env={'production'}
-          />
-        </Box>
-      </FormContainer>
-    );
-  }
-};
 
 const mapStateToProps = ({ status, theme, signup }) => {
   return { status, theme: theme.data, signup: signup.data };
