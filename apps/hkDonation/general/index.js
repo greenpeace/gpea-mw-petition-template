@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import dynamic from 'next/dynamic';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
@@ -19,10 +18,10 @@ import * as formActions from 'store/actions/action-types/form-actions';
 // import heroBannerImage from './images/GP1SWCVD_PressMedia_updated.jpg';
 import heroBannerImage from './images/general_donate_page_bg.jpg';
 
-const Content = dynamic(() => import('./Content'));
-const Thankyou = dynamic(() => import('./Thankyou'));
-const PageContainer = dynamic(() => import('@containers/pageContainer'));
-const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
+import Content from './Content';
+import Thankyou from './Thankyou';
+import PageContainer from '@containers/pageContainer';
+import DonationModule from '@components/GP/DonationModule';
 
 function Index({
   status,
