@@ -61,13 +61,28 @@ function Index({
 }) {
   const router = useRouter();
   const dispatch = useDispatch();
-  const hiddenFormDefaultValue = useSelector((state) => state?.hiddenForm?.data);
+  const hiddenFormDefaultValue = useSelector(
+    (state) => state?.hiddenForm?.data,
+  );
 
   useEffect(() => {
     if (router.isReady) {
-      const { step, donation_module_campaign, headline_prefix, hero_image_desktop, hero_image_mobile, page, utm_source, utm_campaign, utm_content, utm_term } = router.query;
+      const {
+        step,
+        donation_module_campaign,
+        headline_prefix,
+        hero_image_desktop,
+        hero_image_mobile,
+        page,
+        utm_campaign,
+        utm_source,
+        utm_medium,
+        utm_content,
+        utm_term,
+      } = router.query;
 
-      if (page === '2') {   /** page=2 force to result page */
+      if (page === '2') {
+        /** page=2 force to result page */
         setWebStatus(true);
       }
 
@@ -75,20 +90,24 @@ function Index({
         type: hiddenFormActions.SET_HIDDEN_FORM,
         data: {
           ...hiddenFormDefaultValue,
-          utm_source: utm_source,
           utm_campaign: utm_campaign,
+          utm_source: utm_source,
+          utm_medium: utm_medium,
           utm_content: utm_content,
-          utm_term: utm_term
+          utm_term: utm_term,
         },
       });
 
-      dispatch({ type: signupActions.SET_STEP, data: step??'default' });
-      dispatch({ type: themeActions.SET_PARAMS, data: {
-        donation_module_campaign,
-        headline_prefix,
-        hero_image_desktop,
-        hero_image_mobile
-      }});
+      dispatch({ type: signupActions.SET_STEP, data: step ?? 'default' });
+      dispatch({
+        type: themeActions.SET_PARAMS,
+        data: {
+          donation_module_campaign,
+          headline_prefix,
+          hero_image_desktop,
+          hero_image_mobile,
+        },
+      });
     }
   }, [router]);
 
