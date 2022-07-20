@@ -4,12 +4,13 @@ import dynamic from 'next/dynamic';
 import axios from 'axios';
 import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
+import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 
 import {
   hkDevTagManagerArgs,
@@ -60,12 +61,24 @@ function Index({
 }) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const hiddenFormDefaultValue = useSelector((state) => state?.hiddenForm?.data);
 
   useEffect(() => {
     if (router.isReady) {
-      const { step, donation_module_campaign, headline_prefix, hero_image_desktop, hero_image_mobile, page } = router.query;
+      const { step, donation_module_campaign, headline_prefix, hero_image_desktop, hero_image_mobile, page, utm_source } = router.query;
+
       if (page === '2') {   /** page=2 force to result page */
         setWebStatus(true);
+      }
+
+      if(utm_source){
+        dispatch({
+          type: hiddenFormActions.SET_HIDDEN_FORM,
+          data: {
+            ...hiddenFormDefaultValue,
+            utm_source: utm_source
+          },
+        });
       }
 
       dispatch({ type: signupActions.SET_STEP, data: step??'default' });
@@ -140,7 +153,7 @@ function Index({
     }
   }, [themeData]);
 
-  if (DynamicComponent) {
+  if (router.isReady && DynamicComponent) {
     return <DynamicComponent />;
   }
   return <div>Loading...</div>;
