@@ -21,6 +21,8 @@ import {
 
 /* Determine the returned project index by env variable */
 const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
+
+/* Get env variables */
 const envProjectName = process.env.projectName;
 const envProjectMarket = process.env.projectMarket;
 const themeEndpointURL = process.env.themeEndpoint;
@@ -38,7 +40,8 @@ const initTagManager = (marketName) => {
       default:
         break;
     }
-  } else {
+  }
+  /* else {
     switch (marketName) {
       case 'HK':
         TagManager.initialize(hkDevTagManagerArgs);
@@ -49,7 +52,7 @@ const initTagManager = (marketName) => {
       default:
         break;
     }
-  }
+  } */
 };
 
 function Index({
@@ -65,27 +68,30 @@ function Index({
     (state) => state?.hiddenForm?.data,
   );
 
+  /* Set dynamic theme parameters */
   useEffect(() => {
     if (router.isReady) {
+      /* Cater these query parameters */
       const {
+        page,
         step,
         donation_module_campaign,
         headline_prefix,
         hero_image_desktop,
         hero_image_mobile,
-        page,
-        utm_campaign,
-        utm_source,
-        utm_medium,
-        utm_content,
-        utm_term,
+        // utm_campaign,
+        // utm_source,
+        // utm_medium,
+        // utm_content,
+        // utm_term,
       } = router.query;
 
+      /* page=2 force to result page */
       if (page === '2') {
-        /** page=2 force to result page */
         setWebStatus(true);
       }
 
+      /*
       dispatch({
         type: hiddenFormActions.SET_HIDDEN_FORM,
         data: {
@@ -97,6 +103,7 @@ function Index({
           utm_term: utm_term,
         },
       });
+      */
 
       dispatch({ type: signupActions.SET_STEP, data: step ?? 'default' });
       dispatch({
@@ -131,16 +138,36 @@ function Index({
     fetchSignupData();
   }, []);
 
+  /* Set parameters to hiddenForm data */
+  useEffect(() => {
+    let params = {};
+
+    window.location.search
+      .slice(1)
+      .split('&')
+      .forEach((elm) => {
+        if (elm === '') return;
+        let spl = elm.split('=');
+        const d = decodeURIComponent;
+        params[d(spl[0])] = spl.length >= 2 ? d(spl[1]) : true;
+      });
+
+    dispatch({
+      type: hiddenFormActions.SET_HIDDEN_FORM,
+      data: params,
+    });
+  }, []);
+
+  /* Pre-fill signup data */
   useEffect(() => {
     const domain = document.location.host;
     const market =
       themeData?.Market?.toUpperCase() ||
-      (domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : ''); // Return 'HK' 'TW' ''
+      (domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : '');
     /* GTM is only applicable for production env */
     initTagManager(market);
     setTheme(themeData);
 
-    /* Pre-fill signup data */
     let FormObj = {};
     const selectForm = document.forms['mc-form'];
     const documentFormsArray = Array.from(selectForm);
