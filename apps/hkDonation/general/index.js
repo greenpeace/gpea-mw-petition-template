@@ -64,7 +64,7 @@ function Index({
             },
           ]}
           removeMask={true}
-          objectPosition={'center top'}
+          objectPosition={'bottom center'}
           minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
         />
       ) : (
@@ -73,7 +73,7 @@ function Index({
           content={{
             title:
               `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
-              '請即捐款<br/>拯救脆弱的地球生態！',
+              '延續彩虹勇士號使命，為海洋而戰！',
             description: [''],
           }}
           imageSrcset={[
@@ -87,7 +87,7 @@ function Index({
             },
           ]}
           removeMask={true}
-          objectPosition={'center top'}
+          objectPosition={'bottom center'}
           minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
         />
       )}
