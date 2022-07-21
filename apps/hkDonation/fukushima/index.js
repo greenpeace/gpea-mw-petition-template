@@ -15,7 +15,7 @@ import SEO from './SEO';
 
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/1920x1080.png';
+import heroBannerImage from './images/GP0STRLP4.jpg';
 
 import Content from './Content';
 import Thankyou from './Thankyou';
@@ -45,51 +45,27 @@ function Index({
   return (
     <>
       <SEO />
-      {submitted ? (
-        <ThanksBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: '感謝您捐款支持！',
-            description: [''],
-          }}
-          imageSrcset={[
-            {
-              media: '(min-width: 48em)',
-              srcset: heroBannerImage,
-            },
-            {
-              media: '',
-              srcset: heroBannerImage,
-            },
-          ]}
-          removeMask={true}
-          objectPosition={'center'}
-          minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
-        />
-      ) : (
-        <HeroBanner
-          bgImage={heroBannerImage}
-          content={{
-            title:
-              `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
-              '請即捐款<br/>拯救脆弱的地球生態！',
-            description: [''],
-          }}
-          imageSrcset={[
-            {
-              media: '(min-width: 48em)',
-              srcset: heroBannerImage,
-            },
-            {
-              media: '',
-              srcset: heroBannerImage,
-            },
-          ]}
-          removeMask={true}
-          objectPosition={'center'}
-          minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
-        />
-      )}
+      <HeroBanner
+        bgImage={heroBannerImage}
+        content={{
+          title:
+            `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
+            '請即捐款<br/>拯救脆弱的地球生態！',
+          description: [''],
+        }}
+        imageSrcset={[
+          {
+            media: '(min-width: 48em)',
+            srcset: heroBannerImage,
+          },
+          {
+            media: '',
+            srcset: heroBannerImage,
+          },
+        ]}
+        objectPosition={'center 30%'}
+        minH={{ base: 'lg', md: 'xl', '2xl': '2xl' }}
+      />
       <PageContainer>
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
@@ -106,7 +82,7 @@ function Index({
                     language={'zh_HK'}
                     campaign={'fukushima'}
                     // campaignId={''}
-                    env={'full'}
+                    env={'production'}
                   />
                 </Box>
               </FormContainer>
