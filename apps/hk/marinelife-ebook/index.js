@@ -17,12 +17,11 @@ import * as formActions from 'store/actions/action-types/form-actions';
 import heroBannerImage from './images/2022-ocean-ebook-desktop-banner.jpg';
 import heroBannerImageMobile from './images/2022-ocean-ebook-mobile-banner.jpg';
 
-const Content = dynamic(() => import('./Content'));
-const Thankyou = dynamic(() => import('./Thankyou'));
-const HeroBanner = dynamic(() => import('@components/ResponsiveBanner/hero'));
-const ThanksBanner = dynamic(() =>
-  import('@components/ResponsiveBanner/thanks'),
-);
+import Content from './Content';
+import Thankyou from './Thankyou';
+import HeroBanner from './components/ResponsiveBanner/hero';
+import ThanksBanner from './components/ResponsiveBanner/thanks';
+
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
