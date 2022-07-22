@@ -15,7 +15,7 @@ import SEO from './SEO';
 
 import * as formActions from 'store/actions/action-types/form-actions';
 
-import heroBannerImage from './images/GP0STRF5F_PressMedia.jpg';
+import heroBannerImage from './images/1920x1080.png';
 
 import Content from './Content';
 import Thankyou from './Thankyou';
@@ -72,7 +72,7 @@ function Index({
           content={{
             title:
               `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
-              '請即捐款<br/>支持解決塑膠污染！',
+              'DEBUGGER',
             description: [''],
           }}
           imageSrcset={[
@@ -104,9 +104,9 @@ function Index({
                   <DonationModule
                     market={'HK'}
                     language={'zh_HK'}
-                    campaign={'plastics'}
+                    campaign={'general'}
                     // campaignId={''}
-                    env={'production'}
+                    env={'full'}
                   />
                 </Box>
               </FormContainer>

@@ -1,0 +1,120 @@
+{
+  "form_header": "下載《山海大嶼》電子書 認識大嶼環境與生態",
+  "form_description": "登記後，請於3分鐘內檢查電子郵箱與短訊，以下載電子書。",
+  "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
+  "signed_number": "已聯署人數",
+  "label_yes": "是",
+  "label_no": "否",
+  "label_name": "稱謂",
+  "label_first_name": "名字",
+  "label_last_name": "姓氏",
+  "label_email": "電郵地址",
+  "label_phone": "手提號碼",
+  "label_phone_optional": "手提號碼（接收活動SMS提示）",
+  "label_year_of_birth": "出生年份",
+  "label_year_of_birth_optional": "出生年份（選填）",
+  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank'><u>私隱政策</u></a>。",
+
+  "empty_data_alert": "請填寫資料",
+  "empty_select_data_alert": "請選擇",
+
+  "invalid_email_alert": "請填上有效電郵地址",
+  "invalid_format_alert": "請輸入有效格式",
+  "minimum_8_characters": "請輸入8位數字",
+  "suggestion_message": "您是否想輸入",
+
+  "submit_text": "立即捐款",
+  "mobile_fixed_cta": "立即捐款",
+  "thanks_title": "",
+  "thanks_ask": "",
+  "thanks_content": "",
+  "share_button": "分享出去",
+  "donate_button": "立即捐款",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=elm_mw",
+  "shareMessage": "",
+  "fbURL": "",
+  "mainURL": "",
+  "whatsappURL": "",
+
+  "mobile_country_code": [
+    { "label": "+852", "value": 852 },
+    { "label": "+853", "value": 853 }
+  ],
+  "new_letter": [
+    { "label": "是", "value": true },
+    { "label": "否", "value": false }
+  ],
+
+  "donate_header": "邀請您進一步捐助支持守護大嶼工作",
+  "donate_description": [
+    "您的捐助，將有效地、直接地守護香港自然環境。電子書將以短訊及電郵寄送給您。"
+  ],
+  "default_message": "支持綠色和平持續監察政府棕地政策和土地規劃動向，及時回應並採取相應行動。",
+  "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
+  "donate_suggestion_message": "感謝您對綠色和平的支持！每月捐款可令環保項目得到更持久的成效，為地球嬴取更大的環保成果。",
+  "currency": "HKD",
+  "allow_monthly": "true",
+  "allow_oneoff": "true",
+  "default_donation_type": "monthly",
+  "default_amount": 100,
+  "default_monthly": 100,
+  "min_amount_monthly": 50,
+  "default_oneoff": 500,
+  "min_amount_oneoff": 100,
+  "donate_type": [
+    { "label": "每月捐款", "value": "monthly" },
+    { "label": "單次捐款", "value": "single" }
+  ],
+  "amount_onetime": [
+    {
+      "label": "500",
+      "value": 500,
+      "description": "資助2支橫額製作，讓守護大嶼的聲音遍地開花",
+      "currency": "HKD"
+    },
+    {
+      "label": "700",
+      "value": 700,
+      "description": "資助3次義工培訓，令更多人成為環境行動者",
+      "currency": "HKD"
+    },
+    {
+      "label": "900",
+      "value": 900,
+      "description": "資助召開2次記者會，推動環境知情權",
+      "currency": "HKD"
+    },
+    {
+      "label": "其他金額",
+      "value": "other",
+      "description": ""
+    }
+  ],
+  "amount_monthly": [
+    {
+      "label": "100",
+      "value": 100,
+      "description": "資助4小時高清航拍，記錄新界棕地亂象的證據",
+      "currency": "HKD"
+    },
+    {
+      "label": "200",
+      "value": 200,
+      "description": "資助3次實地考察，呈現大嶼生態價值",
+      "currency": "HKD"
+    },
+    {
+      "label": "300",
+      "value": 300,
+      "description": "資助2本研究報告的出版，呈現填海工程的環境影響",
+      "currency": "HKD"
+    },
+    {
+      "label": "其他金額",
+      "value": "other",
+      "description": ""
+    }
+  ],
+  "min_amount_alert": "為維持最低行政支出，最低捐款金額為：",
+  "thanks_message": "您的每月捐款，將幫助綠色和平為環境問題找到出路，並在全球落實更多環保工作。謝謝！"
+}

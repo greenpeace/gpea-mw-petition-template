@@ -1,26 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text, Image } from '@chakra-ui/react';
+import DonateFAQ from '@components/DonateFAQ';
+
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
-import DonateFAQ from '@components/DonateFAQ';
-import { useSelector } from 'react-redux';
 
-const Content = () => {
-  const theme = useSelector((state) => state?.theme?.data);
-  const signup = useSelector((state) => state?.signup?.data);
+const Content = ({ theme }) => {
   const themeInterests = theme.interests;
   return (
     <>
-      <Heading {...headingProps}>您願意進一步拯救脆弱的地球生態嗎？</Heading>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+        您願意進一步拯救脆弱的地球生態嗎？
+      </Heading>
 
       <Text as="p" {...paragraphProps}>
         您的捐款將直接資助我們揭露破壞環境真相、進行嚴謹的科學研究、直接行動，積極遊說政府、企業，凝聚社區力量，倡議對環境有利的政策和解決方案。
       </Text>
 
-      <Heading {...headingProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         地球的承受能力快將超出負荷，您可以施以援手！
       </Heading>
 
