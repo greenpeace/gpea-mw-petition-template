@@ -87,7 +87,7 @@ export default function Index({
 
         <Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
           <picture>
-            {imageSrcset.map((item, index) => {
+            {imageSrcset?.map((item, index) => {
               return (
                 <source media={item.media} srcSet={item.srcset} key={index} />
               );
