@@ -1,44 +1,48 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import HeroBanner from '@components/ResponsiveBanner/hero';
-import ThanksBanner from '@components/ResponsiveBanner/thanks';
+import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import * as formActions from 'store/actions/action-types/form-actions';
+// Import library
+import { useInView } from 'react-intersection-observer';
+import { Box, Flex } from '@chakra-ui/react';
+// Import custom containers
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
+// Import custom components
+import HeroBanner from '@components/ResponsiveBanner/hero';
+import ThanksBanner from '@components/ResponsiveBanner/thanks';
+import SignupForm from '@components/GP/TWForm';
+import DonationModule from '@components/GP/DonationModule';
+import FixedCTA from '@components/GP/FixedCTA';
+// Import Contents
 import Content from './Content';
 import Thankyou from './Thankyou';
-import SignupForm from '@components/GP/TWForm';
-import DonateForm from '@components/GP/DonateForm';
-import DonationModule from '@components/GP/DonationModule';
-import { useInView } from 'react-intersection-observer';
-import { connect } from 'react-redux';
-import { Box, Flex, Icon } from '@chakra-ui/react';
-import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
-import FixedCTA from '@components/GP/FixedCTA';
+
 import SEO from './SEO';
 import formContent from './form';
-import * as formActions from 'store/actions/action-types/form-actions';
-
-// import heroBannerImage from './images/gp-climate-banner.jpg';
+// Import static
 import heroBannerImage from './images/banner_web.jpg';
 import heroBannerImageMobile from './images/banner_mobile.jpg';
+// import heroBannerImage from './images/gp-climate-banner.jpg';
 // import heroBannerImageB from './images/climatebanner2_web.jpg';
 // import heroBannerImageBMobile from './images/climatebanner2_mobile.jpg';
 
-function Index({ status, theme, setFormContent, signup }) {
-  // const utmSource = queryString.parse(location.search);
-  // console.log(utmSource)
+function Index({ setFormContent }) {
   const router = useRouter();
   const [utmSource, setUtmSource] = useState('');
   useEffect(() => {
     setUtmSource(router.query?.utm_source);
   }, [router]);
 
-  const { submitted } = status;
+  const signup = useSelector((state) => state?.signup);
+  const { step } = signup;
+  const submitted = useSelector((state) => state?.status?.submitted);
+  const theme = useSelector((state) => state?.theme);
   const { FirstName } = signup;
-  const themeInterests = theme.interests;
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -81,7 +85,12 @@ function Index({ status, theme, setFormContent, signup }) {
           <HeroBanner
             defaultImage={heroBannerImage}
             content={{
-              title: '<b>立即連署<br/>改寫氣候未來</b>',
+              title:
+                `${
+                  theme?.params?.headline_prefix
+                    ? theme?.params?.headline_prefix + '<br/>'
+                    : ''
+                }` + '立即連署<br/>改寫氣候未來',
               description: [''],
             }}
             imageSrcset={[
@@ -102,7 +111,7 @@ function Index({ status, theme, setFormContent, signup }) {
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer theme={theme}>
+              <ContentContainer>
                 {submitted ? <Thankyou /> : <Content />}
               </ContentContainer>
             </Box>
@@ -112,9 +121,12 @@ function Index({ status, theme, setFormContent, signup }) {
                   {submitted ? (
                     utmSource != 'dd' ? (
                       <DonationModule
-                        market={theme.Market}
+                        market={'TW'}
                         language={'zh_TW'}
-                        campaign={'mitigate_climatechange'}
+                        campaign={
+                          theme?.params?.donation_module_campaign ??
+                          'mitigate_climatechange'
+                        }
                         // campaignId={''}
                         env={'production'}
                       />
