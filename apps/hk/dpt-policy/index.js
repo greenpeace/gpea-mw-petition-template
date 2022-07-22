@@ -52,28 +52,17 @@ function Index() {
       <Box>
         {submitted ? (
           <ThanksBanner
-            bgImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
+            defaultImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
             content={{
               title: `${
                 FirstName ? FirstName : '綠色和平支持者'
               }，感謝您加入推動政府全面管制即棄餐具，訂立全面走塑時間表！`,
               description: [''],
             }}
-            // removeMask={true}
-            imageSrcset={[
-              {
-                media: '(min-width: 48em)',
-                srcset: theme?.params?.hero_image_desktop ?? heroBannerImage,
-              },
-              {
-                media: '',
-                srcset: theme?.params?.hero_image_mobile ?? heroBannerImage,
-              },
-            ]}
           />
         ) : (
           <HeroBanner
-            bgImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
+            defaultImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
             content={{
               title:
                 `${
@@ -83,17 +72,6 @@ function Index() {
                 }` + '請即聯署<br/>要求政府於 22/23 年度立法落實管制即棄膠餐具',
               description: [''],
             }}
-            // removeMask={true}
-            imageSrcset={[
-              {
-                media: '(min-width: 48em)',
-                srcset: heroBannerImage,
-              },
-              {
-                media: '',
-                srcset: heroBannerImage,
-              },
-            ]}
           />
         )}
       </Box>

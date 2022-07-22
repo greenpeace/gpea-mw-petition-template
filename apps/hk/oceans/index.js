@@ -11,8 +11,8 @@ import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
-import HeroBanner from '@components/Banner/hero';
-import ThanksBanner from '@components/Banner/thanks';
+import HeroBanner from '@components/ResponsiveBanner/hero';
+import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/HKForm';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
@@ -62,7 +62,9 @@ function Index() {
           } else {
             return submitted ? (
               <ThanksBanner
-                bgImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
+                defaultImage={
+                  theme?.params?.hero_image_desktop ?? heroBannerImage
+                }
                 content={{
                   title: `${
                     signup?.data?.FirstName
@@ -74,7 +76,9 @@ function Index() {
               />
             ) : (
               <HeroBanner
-                bgImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
+                defaultImage={
+                  theme?.params?.hero_image_desktop ?? heroBannerImage
+                }
                 content={{
                   title:
                     `${
