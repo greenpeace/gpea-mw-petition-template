@@ -38,7 +38,7 @@ export default function Index({
                         base: 'var(--text-xl)',
                         md: 'var(--text-2xl)',
                       }}
-                      color="white"
+                      color="#008fe2"
                       textShadow="0 0 1px rgba(0,0,0, .2)"
                       dangerouslySetInnerHTML={{ __html: content.title }}
                     />
@@ -50,13 +50,13 @@ export default function Index({
                           <Text
                             key={i}
                             fontSize="var(--text-base)"
-                            color="white"
+                            color="#008fe2"
                             dangerouslySetInnerHTML={{ __html: d }}
                           ></Text>
                         ))}
                         {content.inviteMessage && (
                           <Text
-                            color="white"
+                            color="#008fe2"
                             dangerouslySetInnerHTML={{
                               __html: content.inviteMessage,
                             }}
@@ -87,7 +87,7 @@ export default function Index({
 
         <Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
           <picture>
-            {imageSrcset?.map((item, index) => {
+            {imageSrcset.map((item, index) => {
               return (
                 <source media={item.media} srcSet={item.srcset} key={index} />
               );

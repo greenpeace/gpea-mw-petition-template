@@ -17,10 +17,11 @@ import * as formActions from 'store/actions/action-types/form-actions';
 import heroBannerImage from './images/2022-ocean-ebook-desktop-banner.jpg';
 import heroBannerImageMobile from './images/2022-ocean-ebook-mobile-banner.jpg';
 
-const Content = dynamic(() => import('./Content'));
-const Thankyou = dynamic(() => import('./Thankyou'));
-const HeroBanner = dynamic(() => import('@components/ResponsiveBanner/hero'));
-const ThanksBanner = dynamic(() => import('@components/ResponsiveBanner/thanks'));
+import Content from './Content';
+import Thankyou from './Thankyou';
+import HeroBanner from './components/ResponsiveBanner/hero';
+import ThanksBanner from './components/ResponsiveBanner/thanks';
+
 const PageContainer = dynamic(() => import('@containers/pageContainer'));
 const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
@@ -45,9 +46,12 @@ function Index({ status, theme, setFormContent, signup }) {
         <ThanksBanner
           bgImage={heroBannerImage}
           content={{
-            title: `${FirstName ? FirstName : '綠色和平支持者'
-              }，歡迎您成為愛護的海洋一分子！`,
-            description: ['向陷入危機的海洋生物伸出援手，誠邀您捐助支持綠色和平守護海洋工作！'],
+            title: `${
+              FirstName ? FirstName : '綠色和平支持者'
+            }，歡迎您成為愛護的海洋一分子！`,
+            description: [
+              '向陷入危機的海洋生物伸出援手，誠邀您捐助支持綠色和平守護海洋工作！',
+            ],
           }}
           removeMask={true}
           imageSrcset={[
@@ -60,7 +64,6 @@ function Index({ status, theme, setFormContent, signup }) {
               srcset: heroBannerImageMobile,
             },
           ]}
-        // headingTextColor='#008fe2'
         />
       ) : (
         <HeroBanner
@@ -80,7 +83,6 @@ function Index({ status, theme, setFormContent, signup }) {
               srcset: heroBannerImageMobile,
             },
           ]}
-        // headingTextColor='#008fe2'
         />
       )}
       <PageContainer>
@@ -93,12 +95,12 @@ function Index({ status, theme, setFormContent, signup }) {
             </Box>
             <Box flex={1} ref={mobileForm}>
               <FormContainer>
-                <Box ref={ref} >
+                <Box ref={ref}>
                   {submitted ? (
                     <DonationModule
                       market={theme.Market}
                       language={'zh_HK'}
-                      campaign={'oceans'}
+                      campaign={'oceans_marine'}
                       // campaignId={''}
                       env={'production'}
                     />

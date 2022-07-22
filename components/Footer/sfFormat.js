@@ -42,7 +42,6 @@ const SFFormat = ({ locale }) => {
           <Image src={logo} maxW={'220px'} alt={'Greenpeace 綠色和平'} />
         </Box>
         <Stack
-          as="flex"
           spacing={8}
           direction={{ base: 'column-reverse', md: 'row' }}
           color={'white'}
