@@ -1,27 +1,29 @@
 import React, { useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import * as formActions from 'store/actions/action-types/form-actions';
+// Import library
+import { useInView } from 'react-intersection-observer';
+import { Box, Flex } from '@chakra-ui/react';
+// Import custom containers
+import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
-import { useSelector } from 'react-redux';
-import { useInView } from 'react-intersection-observer';
-import { Box, Flex } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
-import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
-import formContent from './form';
-import SEO from './SEO';
-import * as formActions from 'store/actions/action-types/form-actions';
-
+// Import custom components
 import HeroBanner from '@components/Banner/hero';
 import ThanksBanner from '@components/Banner/thanks';
-import PageContainer from '@containers/pageContainer';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/HKForm';
+import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 // Import Contents
 import Donation from './Donation';
 import Content from './Content';
 import Thankyou from './Thankyou';
-// Import Images
+
+import formContent from './form';
+import SEO from './SEO';
+// Import static
 import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
 
 function Index() {
@@ -74,9 +76,12 @@ function Index() {
               <HeroBanner
                 bgImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
                 content={{
-                  title: `${
-                    theme?.params?.headline_prefix ?? ''
-                  }請即聯署<br/>將全球 30% 海洋<br/>納入保護區`,
+                  title:
+                    `${
+                      theme?.params?.headline_prefix
+                        ? theme?.params?.headline_prefix + '<br/>'
+                        : ''
+                    }` + '請即聯署<br/>將全球 30% 海洋<br/>納入保護區',
                   description: [''],
                 }}
               />
@@ -88,7 +93,7 @@ function Index() {
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer theme={theme}>
+              <ContentContainer>
                 {(() => {
                   if (step === 'donation') {
                     return <Donation />;
