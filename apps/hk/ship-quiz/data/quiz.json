@@ -1,0 +1,229 @@
+[
+  {
+    "id": "1",
+    "question": {
+      "value": "Q1.登船後，你會立即做甚麼？",
+      "label": "Q1.登船後，你會立即做甚麼？"
+    },
+    "content": {
+      "value": "",
+      "label": ""
+    },
+    "options": [
+      {
+        "value": "AE",
+        "point": 10001,
+        "label": "進入自己房間整頓"
+      },
+      {
+        "value": "CD",
+        "point": 110,
+        "label": "檢查船隻設施"
+      },
+      {
+        "value": "B",
+        "point": 1000,
+        "label": "查看逃生門位置"
+      }
+    ],
+    "image": "questions/Q1-100.jpg",
+    "maximum": 1,
+    "type": "single"
+  },
+  {
+    "id": "2",
+    "question": {
+      "value": "Q2. 船上廣播召集各人來到甲板，講解任務注意事項時，你的反應是？",
+      "label": "Q2. 船上廣播召集各人來到甲板，講解任務注意事項時，你的反應是？"
+    },
+    "content": { "value": "", "label": "" },
+    "options": [
+      {
+        "value": "ADE",
+        "point": 10011,
+        "label": "仔細聆聽"
+      },
+      {
+        "value": "B",
+        "point": 1000,
+        "label": "腦內模擬危機發生"
+      },
+      {
+        "value": "C",
+        "point": 100,
+        "label": "舉手發問"
+      }
+    ],
+    "image": "questions/Q2-100.jpg",
+    "maximum": 1,
+    "type": "single"
+  },
+  {
+    "id": "3",
+    "question": {
+      "value": "Q3.任務說明完畢，船隊開始出航。你最希望獲得的第一任務是？",
+      "label": "Q3.任務說明完畢，船隊開始出航。你最希望獲得的第一任務是？"
+    },
+    "content": { "value": "", "label": "" },
+    "options": [
+      {
+        "value": "BD",
+        "point": 1010,
+        "label": "在甲板觀察海面情況"
+      },
+      {
+        "value": "AC",
+        "point": 10100,
+        "label": "在掌舵室指揮大局"
+      },
+      {
+        "value": "E",
+        "point": 1,
+        "label": "測量風向，預估航程狀況"
+      }
+    ],
+    "image": "questions/Q3-100.jpg",
+    "maximum": 1,
+    "type": "single"
+  },
+  {
+    "id": "4",
+    "question": {
+      "value": "Q4.首次登船的你突然「暈船浪」，感到不適，你首先會......？",
+      "label": "Q4.首次登船的你突然「暈船浪」，感到不適，你首先會......？"
+    },
+    "content": { "value": "", "label": "" },
+    "options": [
+      {
+        "value": "BD",
+        "point": 1010,
+        "label": "走出甲板呼吸新鮮空氣"
+      },
+      {
+        "value": "C",
+        "point": 100,
+        "label": "向其他船員詢問解決方法"
+      },
+      {
+        "value": "AE",
+        "point": 10001,
+        "label": "回房間稍作休息"
+      }
+    ],
+    "image": "questions/Q4-100.jpg",
+    "maximum": 1,
+    "type": "single"
+  },
+  {
+    "id": "5",
+    "question": {
+      "value": "Q5.經過一輪休息後，你恢復得很快。之後走到船艙，你發現船員們正在......？",
+      "label": "Q5.經過一輪休息後，你恢復得很快。之後走到船艙，你發現船員們正在......？"
+    },
+    "content": { "value": "", "label": "" },
+    "options": [
+      {
+        "value": "BE",
+        "point": 1001,
+        "label": "討論阻止過度捕撈行動細節"
+      },
+      {
+        "value": "AD",
+        "point": 10010,
+        "label": "觀察遠方的不明船隻"
+      },
+      {
+        "value": "C",
+        "point": 100,
+        "label": "製作「支持成立海洋保護區」橫額"
+      }
+    ],
+    "image": "questions/Q5-100.jpg",
+    "maximum": 1,
+    "type": "single"
+  },
+  {
+    "id": "6",
+    "question": {
+      "value": "Q6.經了解後，原來遠方的船隻正在進行工業捕撈、破壞海洋！這時候，你會自告奮勇做什麼呢？",
+      "label": "Q6.經了解後，原來遠方的船隻正在進行工業捕撈、破壞海洋！這時候，你會自告奮勇做什麼呢？"
+    },
+    "content": { "value": "", "label": "" },
+    "options": [
+      {
+        "value": "B",
+        "point": 1000,
+        "label": "乘坐小艇靠近船隻，阻止破壞"
+      },
+      {
+        "value": "CD",
+        "point": 110,
+        "label": "紀錄破壞證據，向公眾披露"
+      },
+      {
+        "value": "AE",
+        "point": 10001,
+        "label": "支援同伴，給予行動建議與補給"
+      }
+    ],
+    "image": "questions/Q6-100.jpg",
+    "maximum": 1,
+    "type": "single"
+  },
+  {
+    "id": "7",
+    "question": {
+      "value": "Q7.數天行動過去，你們成功制止這次破壞。你認為行動成功的首要元素是甚麼？",
+      "label": "Q7.數天行動過去，你們成功制止這次破壞。你認為行動成功的首要元素是甚麼？"
+    },
+    "content": { "value": "", "label": "" },
+    "options": [
+      {
+        "value": "E",
+        "point": 1,
+        "label": "詳盡計劃與事前研究"
+      },
+      {
+        "value": "ABD",
+        "point": 11010,
+        "label": "團隊臨場應變與拼搏精神"
+      },
+      {
+        "value": "C",
+        "point": 100,
+        "label": "大眾的關注與支持"
+      }
+    ],
+    "image": "questions/Q7-100.jpg",
+    "maximum": 1,
+    "type": "single"
+  },
+  {
+    "id": "8",
+    "question": {
+      "value": "Q8.返航途中，甚麼景象最令你一見難忘？",
+      "label": "Q8.返航途中，甚麼景象最令你一見難忘？"
+    },
+    "content": { "value": "", "label": "" },
+    "options": [
+      {
+        "value": "E",
+        "point": 1,
+        "label": "無際大海映照日落"
+      },
+      {
+        "value": "CD",
+        "point": 110,
+        "label": "海豚在船隊旁跳躍嬉戲"
+      },
+      {
+        "value": "AB",
+        "point": 11000,
+        "label": "船隊在大風浪中航行"
+      }
+    ],
+    "image": "questions/Q8-100.jpg",
+    "maximum": 1,
+    "type": "single"
+  }
+]
