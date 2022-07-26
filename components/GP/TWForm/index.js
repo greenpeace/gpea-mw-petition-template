@@ -185,6 +185,7 @@ const MyForm = (props) => {
                   type={'text'}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
+                  value={values.LastName}
                 />
               </Box>
 
@@ -197,6 +198,7 @@ const MyForm = (props) => {
                   type={'text'}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
+                  value={values.FirstName}
                 />
               </Box>
             </Stack>
@@ -216,9 +218,12 @@ const MyForm = (props) => {
                   }}
                   value={values.Email}
                   _placeholder={{ fontSize: 16 }}
-                  size={'lg'}
+                  size="md"
+                  minH="48px"
                 />
-                <FormErrorMessage color="red">{errors.Email}</FormErrorMessage>
+                <FormErrorMessage px={2} color="var(--error-900)">
+                  {errors.Email}
+                </FormErrorMessage>
                 {suggestion && (
                   <Box
                     onClick={() => {
@@ -249,6 +254,7 @@ const MyForm = (props) => {
                   name={'MobilePhone'}
                   handleChange={handleChange}
                   handleBlur={handleBlur}
+                  value={values.MobilePhone}
                 />
                 <Box pt="1" pl="2">
                   <Text color="gray.700" fontSize="sm" as="span">
@@ -265,8 +271,8 @@ const MyForm = (props) => {
               >
                 <Select
                   onChange={handleChange}
-                  fontSize={'16px'}
                   placeholder={formContent.label_year_of_birth}
+                  fontSize={'16px'}
                   size={'lg'}
                 >
                   {birthDateYear &&
@@ -276,7 +282,7 @@ const MyForm = (props) => {
                       </option>
                     ))}
                 </Select>
-                <FormErrorMessage color="red">
+                <FormErrorMessage px={2} color="var(--error-900)">
                   {errors.Birthdate}
                 </FormErrorMessage>
               </FormControl>
@@ -304,7 +310,7 @@ const MyForm = (props) => {
                       </option>
                     ))}
                   </Select>
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Counties}
                   </FormErrorMessage>
                 </FormControl>

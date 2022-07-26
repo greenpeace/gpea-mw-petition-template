@@ -296,9 +296,10 @@ const MyForm = (props) => {
                     }}
                     value={values.Email}
                     _placeholder={{ fontSize: 16 }}
-                    size={'lg'}
+                    size="md"
+                    minH="48px"
                   />
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Email}
                   </FormErrorMessage>
                   {suggestion && (
@@ -374,7 +375,7 @@ const MyForm = (props) => {
                         </option>
                       ))}
                   </Select>
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Birthdate}
                   </FormErrorMessage>
                 </FormControl>
@@ -401,7 +402,7 @@ const MyForm = (props) => {
                       >
                         你的鼓勵字句將有機會出現在「我做得到」！
                       </Text>
-                      <FormErrorMessage color="red">
+                      <FormErrorMessage px={2} color="var(--error-900)">
                         {errors.Thoughts}
                       </FormErrorMessage>
                     </FormControl>

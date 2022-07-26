@@ -223,10 +223,11 @@ const MyForm = (props) => {
                       mailSuggestion(e.target.value);
                     }}
                     value={values.Email}
-                    fontSize={'16px'}
-                    size={'lg'}
+                    _placeholder={{ fontSize: 16 }}
+                    size="md"
+                    minH="48px"
                   />
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Email}
                   </FormErrorMessage>
                   {suggestion && (
@@ -302,7 +303,7 @@ const MyForm = (props) => {
                         </option>
                       ))}
                   </Select>
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Birthdate}
                   </FormErrorMessage>
                 </FormControl>

@@ -269,9 +269,12 @@ const MyForm = (props) => {
                   }}
                   value={values.Email}
                   _placeholder={{ fontSize: 16 }}
-                  size={'lg'}
+                  size="md"
+                  minH="48px"
                 />
-                <FormErrorMessage color="red">{errors.Email}</FormErrorMessage>
+                <FormErrorMessage px={2} color="var(--error-900)">
+                  {errors.Email}
+                </FormErrorMessage>
                 {suggestion && (
                   <Box
                     onClick={() => {
@@ -325,7 +328,7 @@ const MyForm = (props) => {
                       </option>
                     ))}
                 </Select>
-                <FormErrorMessage color="red">
+                <FormErrorMessage px={2} color="var(--error-900)">
                   {errors.Birthdate}
                 </FormErrorMessage>
               </FormControl>
@@ -351,7 +354,7 @@ const MyForm = (props) => {
                     ))}
                   </Select>
                 )}
-                <FormErrorMessage color="red">
+                <FormErrorMessage px={2} color="var(--error-900)">
                   {errors.CampaignData1__c}
                 </FormErrorMessage>
               </FormControl>
@@ -376,7 +379,7 @@ const MyForm = (props) => {
                       </option>
                     ))}
                 </Select>
-                <FormErrorMessage color="red">
+                <FormErrorMessage px={2} color="var(--error-900)">
                   {errors.PaymentMethod}
                 </FormErrorMessage>
               </FormControl>

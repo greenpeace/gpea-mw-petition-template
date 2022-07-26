@@ -205,9 +205,10 @@ const MyForm = (props) => {
                     }}
                     value={values.Email}
                     _placeholder={{ fontSize: 16 }}
-                    size={'lg'}
+                    size="md"
+                    minH="48px"
                   />
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Email}
                   </FormErrorMessage>
                   {suggestion && (
@@ -283,7 +284,7 @@ const MyForm = (props) => {
                         </option>
                       ))}
                   </Select>
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Birthdate}
                   </FormErrorMessage>
                 </FormControl>
