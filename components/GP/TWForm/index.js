@@ -217,9 +217,6 @@ const MyForm = (props) => {
                     mailSuggestion(e.target.value);
                   }}
                   value={values.Email}
-                  _placeholder={{ fontSize: 16 }}
-                  size="md"
-                  minH="48px"
                 />
                 <FormErrorMessage px={2} color="var(--error-900)">
                   {errors.Email}
@@ -238,7 +235,7 @@ const MyForm = (props) => {
                       <b>
                         <u>{suggestion}</u>
                       </b>
-                      ?
+                      ？
                     </Text>
                   </Box>
                 )}

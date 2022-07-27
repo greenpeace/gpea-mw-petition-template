@@ -268,9 +268,6 @@ const MyForm = (props) => {
                     mailSuggestion(e.target.value);
                   }}
                   value={values.Email}
-                  _placeholder={{ fontSize: 16 }}
-                  size="md"
-                  minH="48px"
                 />
                 <FormErrorMessage px={2} color="var(--error-900)">
                   {errors.Email}
@@ -282,10 +279,14 @@ const MyForm = (props) => {
                       initSuggestion();
                     }}
                     pt={2}
-                    cursor={`pointer`}
+                    cursor="pointer"
                   >
                     <Text fontSize={`sm`} color={`theme.${themeInterests}`}>
-                      {formContent.suggestion_message} <b>{suggestion}</b>
+                      {formContent.suggestion_message}
+                      <b>
+                        <u>{suggestion}</u>
+                      </b>
+                      ？
                     </Text>
                   </Box>
                 )}
@@ -341,12 +342,7 @@ const MyForm = (props) => {
               >
                 <FormLabel>{formContent.label_campaign_type}</FormLabel>
                 {formContent.campaign_type && (
-                  <Select
-                    onChange={handleChange}
-                    fontSize={'16px'}
-                    size={'lg'}
-                    name="CampaignData1__c"
-                  >
+                  <Select onChange={handleChange} name="CampaignData1__c">
                     {formContent.campaign_type.map((d, index) => (
                       <option key={index} value={d}>
                         {d}
