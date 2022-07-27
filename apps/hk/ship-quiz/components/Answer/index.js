@@ -15,7 +15,7 @@ const Quiz = ({
 
   const handleNextButton = () => {
     if (current + 1 >= quiz.length) {
-      setSurveyPage('checkResult');
+      setSurveyPage('result');
     } else {
       setCurrentQuiz((current += 1));
     }
@@ -35,10 +35,10 @@ const Quiz = ({
             key={i}
             p={4}
             border="2px"
-            borderColor="#025177"
+            borderColor='white'
             borderRadius={'md'}
-            bgColor={selected ? '#025177' : 'arctic.100'}
-            color={selected ? 'white' : '#025177'}
+            bgColor={selected ? 'white' : 'blue.500'}
+            color={selected ? 'blue.500' : 'white'}
             cursor="pointer"
             transition="0.2s ease"
             onClick={async () => {

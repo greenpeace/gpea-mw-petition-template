@@ -30,7 +30,7 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
             as="span"
             fontWeight="bold"
             fontSize={{ base: 'md' }}
-            color="#025177"
+            color="#108ee9"
           >
             上一頁
           </Text>
@@ -48,9 +48,9 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
           {quiz.map((d, i) => (
             <Box
               key={i}
-              border="2px solid #025177"
+              border="2px solid #108ee9"
               bgColor={
-                currentQuiz.id === (i + 1).toString() ? '#025177' : '#FFF'
+                currentQuiz.id === (i + 1).toString() ? '#108ee9' : '#FFF'
               }
               borderRadius={'50%'}
               w={'8px'}
@@ -64,7 +64,7 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
           as="span"
           fontWeight="bold"
           fontSize={{ base: 'md', md: 'xl' }}
-          color="#025177"
+          color="#108ee9"
         >
           {current + 1} / {quiz.length}
         </Text>

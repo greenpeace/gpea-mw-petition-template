@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
 import {
+  Avatar,
   Box,
   Container,
   Stack,
@@ -60,11 +61,11 @@ function Index({
 
   useEffect(() => {
     const isArcticResult = ['A', 'B', 'C', 'D', 'E'].includes(result?.answer);
-    if (!isArcticResult) {
-      setFormContent(oceansContent);
-    } else {
-      setFormContent(formContent);
-    }
+    // if (!isArcticResult) {
+    setFormContent(oceansContent);
+    // } else {
+    // setFormContent(formContent);
+    // }
   }, [submitted]); // switch Form by result
 
   useEffect(async () => {
@@ -72,34 +73,22 @@ function Index({
       return;
     }
 
-    const calAnswer = await Object.values(answer)
-      .map((item) => item.toString())
+    const sumTotalPointArray = await Object.values(answer)
+      .map((answer_item) => answer_item[1]) // get the point part
       .reduce(
-        (b, c) => (
-          (
-            b[b.findIndex((d) => d.el === c)] ||
-            b[
-            b.push({
-              el: c,
-              answer: c.substring(0, 1),
-              count: 0,
-              point: parseInt(c.substring(2)),
-            }) - 1
-            ]
-          ).count++,
-          b
-        ),
-        [],
+        (sum, current_point) => (sum + current_point)
       )
-      .sort((a, b) => (a.count * a.point > b.count * b.point ? -1 : 1)) // sort by calculated points
-      .map((d) => ({ ...d, totalPoints: d.count * d.point }));
+      .toString()
+      .split("");
 
-    const getMostLargerValue = calAnswer.filter(
-      (d) => d.totalPoints === calAnswer[0].totalPoints, // get largest points only
-    );
+    const maxAnswerCount = Math.max(...sumTotalPointArray);
+    const maxAnswerCountIndex = sumTotalPointArray.indexOf(maxAnswerCount.toString());
+    const answerType = ["A", "B", "C", "D", "E"];
 
     setResult(
-      getMostLargerValue[Math.floor(Math.random() * getMostLargerValue.length)], // random item if duplicate
+      {
+        answer: answerType[maxAnswerCountIndex],
+      },
     );
   }, [answer]);
 
@@ -230,6 +219,10 @@ function Index({
                 {submitted && (
                   <ContentContainer theme={theme} py={4}>
                     <Box>{handleDynamicContent(result)}</Box>
+                    <Box>
+                      <Avatar name='Dan Abrahmov' src={RESULT[result?.answer]?.icon} />
+                      我有些話對您說⋯⋯
+                    </Box>
                   </ContentContainer>
                 )}
               </Box>
@@ -293,6 +286,8 @@ const mapDispatchToProps = (dispatch) => {
     },
     setAnswerToSubmitForm: (data) => {
       dispatch({ type: hiddenFormActions.SET_HIDDEN_FORM, data });
+      console.log("setAnswerToSubmitForm data");
+      console.log(data);
     },
   };
 };

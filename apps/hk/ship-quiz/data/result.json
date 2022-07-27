@@ -1,37 +1,42 @@
 {
   "A": {
     "value": "船長",
-    "image": "animals/result_北極熊.png",
+    "image": "result/character/A_船長 Mike 2.jpeg",
     "title": "原來您是 船長",
     "content": "崗位關鍵特質：務實沉穩、領導力強、果斷<br>您冷靜沉穩，船隊中的船長崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深船長，他日常的工作是⋯⋯",
-    "color": "#ACCCCB"
+    "color": "#ACCCCB",
+    "icon": "result/icon/A_Captain.jpeg"
   },
   "B": {
     "value": "行動者",
-    "image": "animals/result_雪鴞.png",
+    "image": "result/character/B_activist victor.jpeg",
     "title": "原來您是 行動者",
     "content": "崗位關鍵特質：勇敢、堅毅、富正義感<br>您勇敢不屈，船隊中的行動者崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深行動者，他日常的工作是⋯⋯",
-    "color": "#ACCCCB"
-  },
-  "C": {
-    "value": "水手",
-    "image": "animals/result_獨角鯨.png",
-    "title": "原來您是 水手",
-    "content": "崗位關鍵特質：細心、勤勞、靈活變通<br>您細心靈活，船隊中的水手崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深水手，她日常的工作是⋯⋯>",
-    "color": "#E2CCCC"
+    "color": "#ACCCCB",
+    "icon": "result/icon/B_Activist.jpeg"
   },
   "D": {
+    "value": "水手",
+    "image": "result/character/C_水手 小豚.jpeg",
+    "title": "原來您是 水手",
+    "content": "崗位關鍵特質：細心、勤勞、靈活變通<br>您細心靈活，船隊中的水手崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深水手，她日常的工作是⋯⋯>",
+    "color": "#E2CCCC",
+    "icon": "result/icon/D_Sailor.jpeg"
+  },
+  "C": {
     "value": "項目主任",
-    "image": "animals/result_馴鹿.png",
+    "image": "result/character/D_Campaigner Will (1).jpeg",
     "title": "原來您是 項目主任",
     "content": "崗位關鍵特質：富魅力、口齒伶俐、思維創新<br>您能言善辯，船隊中的項目主任崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深海洋項目主任，他日常的工作是⋯⋯",
-    "color": "#ACCCCB"
+    "color": "#ACCCCB",
+    "icon": "result/icon/C_Campaigner.jpeg"
   },
   "E": {
     "value": "研究員",
-    "image": "animals/result_藍鯨.png",
+    "image": "result/character/E_研究員CHUN.jpeg",
     "title": "原來您是 研究員",
     "content": "崗位關鍵特質：理性、心思慎密、分析力強<br>您客觀理性，船隊中的研究員崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深研究員，她日常的工作是⋯⋯",
-    "color": "#E2CCCC"
+    "color": "#E2CCCC",
+    "icon": "result/icon/E_Researcher.jpeg"
   }
 }
