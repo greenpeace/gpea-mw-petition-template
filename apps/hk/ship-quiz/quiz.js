@@ -34,7 +34,7 @@ const Quiz = ({ quiz, current }) => {
               >
                 <Center h="100%">
                   <Text as="span" mr="2">
-                    {current + 1}.
+                    Q{current + 1}.
                   </Text>
                   {currentQuiz?.question.label}
                 </Center>
