@@ -16,6 +16,38 @@ const theme = extendTheme({
         },
       },
     },
+    Input: {
+      baseStyle: {
+        field: {
+          fontSize: 'md',
+          minHeight: '48px',
+          background: 'white',
+          borderWidth: 1,
+          _hover: {
+            borderColor: '#66cc00',
+          },
+          _focus: {
+            borderColor: '#66cc00',
+          },
+        },
+      },
+    },
+    Select: {
+      baseStyle: {
+        field: {
+          fontSize: 'md',
+          minHeight: '48px',
+          background: 'white',
+          borderWidth: 1,
+          _hover: {
+            borderColor: '#66cc00',
+          },
+          _focus: {
+            borderColor: '#66cc00',
+          },
+        },
+      },
+    },
   },
   fonts: {
     body: 'var(--font-family)',

@@ -202,10 +202,9 @@ const MyForm = (props) => {
                       mailSuggestion(e.target.value);
                     }}
                     value={values.Email}
-                    _placeholder={{ fontSize: 16 }}
-                    size={'lg'}
+                    size="md"
                   />
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Email}
                   </FormErrorMessage>
                   {suggestion && (
@@ -216,7 +215,7 @@ const MyForm = (props) => {
                       }}
                       pt={2}
                       pl={2}
-                      cursor={`pointer`}
+                      cursor="pointer"
                     >
                       <Text fontSize={`sm`} color={`theme.${themeInterests}`}>
                         {formContent.suggestion_message} <b>{suggestion}</b>
@@ -233,8 +232,6 @@ const MyForm = (props) => {
                       <Select
                         name="MobileCountryCode"
                         onChange={handleChange}
-                        fontSize={'16px'}
-                        size={'lg'}
                         value={values.mobileCountry}
                       >
                         {(formContent.mobile_country_code || []).map((d) => (
@@ -265,12 +262,7 @@ const MyForm = (props) => {
                   id="Birthdate"
                   isInvalid={errors.Birthdate && touched.Birthdate}
                 >
-                  <Select
-                    onChange={handleChange}
-                    fontSize={'16px'}
-                    size={'lg'}
-                    value={values.Birthdate}
-                  >
+                  <Select onChange={handleChange} value={values.Birthdate}>
                     <option value={''}>
                       {formContent.label_year_of_birth}
                     </option>
@@ -281,7 +273,7 @@ const MyForm = (props) => {
                         </option>
                       ))}
                   </Select>
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Birthdate}
                   </FormErrorMessage>
                 </FormControl>
@@ -299,8 +291,6 @@ const MyForm = (props) => {
                 >
                   <Select
                     onChange={handleChange}
-                    fontSize={'16px'}
-                    size={'lg'}
                     value={values.NumberOfChildren}
                   >
                     {numberOfChildren.map((d) => (
@@ -309,7 +299,7 @@ const MyForm = (props) => {
                       </option>
                     ))}
                   </Select>
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Birthdate}
                   </FormErrorMessage>
                 </FormControl>
