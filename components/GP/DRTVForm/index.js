@@ -268,10 +268,10 @@ const MyForm = (props) => {
                     mailSuggestion(e.target.value);
                   }}
                   value={values.Email}
-                  _placeholder={{ fontSize: 16 }}
-                  size={'lg'}
                 />
-                <FormErrorMessage color="red">{errors.Email}</FormErrorMessage>
+                <FormErrorMessage px={2} color="var(--error-900)">
+                  {errors.Email}
+                </FormErrorMessage>
                 {suggestion && (
                   <Box
                     onClick={() => {
@@ -279,10 +279,14 @@ const MyForm = (props) => {
                       initSuggestion();
                     }}
                     pt={2}
-                    cursor={`pointer`}
+                    cursor="pointer"
                   >
                     <Text fontSize={`sm`} color={`theme.${themeInterests}`}>
-                      {formContent.suggestion_message} <b>{suggestion}</b>
+                      {formContent.suggestion_message}
+                      <b>
+                        <u>{suggestion}</u>
+                      </b>
+                      ？
                     </Text>
                   </Box>
                 )}
@@ -325,7 +329,7 @@ const MyForm = (props) => {
                       </option>
                     ))}
                 </Select>
-                <FormErrorMessage color="red">
+                <FormErrorMessage px={2} color="var(--error-900)">
                   {errors.Birthdate}
                 </FormErrorMessage>
               </FormControl>
@@ -338,12 +342,7 @@ const MyForm = (props) => {
               >
                 <FormLabel>{formContent.label_campaign_type}</FormLabel>
                 {formContent.campaign_type && (
-                  <Select
-                    onChange={handleChange}
-                    fontSize={'16px'}
-                    size={'lg'}
-                    name="CampaignData1__c"
-                  >
+                  <Select onChange={handleChange} name="CampaignData1__c">
                     {formContent.campaign_type.map((d, index) => (
                       <option key={index} value={d}>
                         {d}
@@ -351,7 +350,7 @@ const MyForm = (props) => {
                     ))}
                   </Select>
                 )}
-                <FormErrorMessage color="red">
+                <FormErrorMessage px={2} color="var(--error-900)">
                   {errors.CampaignData1__c}
                 </FormErrorMessage>
               </FormControl>
@@ -376,7 +375,7 @@ const MyForm = (props) => {
                       </option>
                     ))}
                 </Select>
-                <FormErrorMessage color="red">
+                <FormErrorMessage px={2} color="var(--error-900)">
                   {errors.PaymentMethod}
                 </FormErrorMessage>
               </FormControl>

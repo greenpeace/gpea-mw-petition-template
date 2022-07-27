@@ -144,7 +144,7 @@ const DonateForm = (props) => {
                           : setItem(amount_monthly[0]);
                         handleSetDonateType(d.value);
                       }}
-                      cursor={`pointer`}
+                      cursor="pointer"
                     >
                       {d.label}
                     </Box>

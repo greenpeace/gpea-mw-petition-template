@@ -14,7 +14,8 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/WebinarForm';
+// import SignupForm from '@components/GP/WebinarForm';
+import SignupForm from '@components/GP/HKForm';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 
 import Content from './Content';
@@ -88,12 +89,14 @@ function Index() {
                 <FormContainer>
                   <Box ref={ref}>
                     {utmSource == 'dd' ? (
-                      <Box mb="40px" />
+                      <Box h="40px" />
                     ) : (
                       <DonationModule
                         market={'HK'}
                         language={'zh_HK'}
-                        campaign={'plastics'}
+                        campaign={
+                          theme?.params?.donation_module_campaign ?? 'plastics'
+                        }
                         // campaignId={''}
                         env={'production'}
                       />
