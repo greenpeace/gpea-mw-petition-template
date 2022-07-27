@@ -22,7 +22,7 @@ const MyForm = (props) => {
     children,
     setShowErrorMessage,
     placeholderContent,
-    buttonContent
+    buttonContent,
   } = props;
 
   useEffect(() => {
@@ -43,7 +43,6 @@ const MyForm = (props) => {
               name={'Password'}
               type={'text'}
               bgColor={'#FFF'}
-              _placeholder={{ fontSize: 16 }}
               h={'56px'}
               size={'lg'}
               value={values.Password}

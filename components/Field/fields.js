@@ -1,5 +1,10 @@
 import React from 'react';
-import { FormControl, FormErrorMessage, Input } from '@chakra-ui/react';
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Input,
+} from '@chakra-ui/react';
 
 export const Field = (props) => {
   const {
@@ -14,29 +19,31 @@ export const Field = (props) => {
     max,
     size = 'md',
     value,
-    bgColor = 'transparent',
-    h = '48px',
+    bgColor = 'white',
+    h,
   } = props;
 
   return (
-    <FormControl id={name} isInvalid={errors && touched}>
-      {/* <FormLabel {...labelStyle}>{label}</FormLabel> */}
+    <FormControl id={name} isInvalid={errors && touched} pos="relative">
+      <FormLabel d="none" fontSize="xs">
+        {label}
+      </FormLabel>
       <Input
         name={name}
         type={type}
         onChange={handleChange}
         onBlur={handleBlur}
         placeholder={label}
-        _placeholder={{ color: 'gray.500' }}
         size={size}
         min={min}
         max={max}
         value={value}
-        errorBorderColor="var(--error-900)"
         bgColor={bgColor}
         h={h}
       />
-      <FormErrorMessage color="red">{errors}</FormErrorMessage>
+      <FormErrorMessage px={2} color="var(--error-900)">
+        {errors}
+      </FormErrorMessage>
     </FormControl>
   );
 };

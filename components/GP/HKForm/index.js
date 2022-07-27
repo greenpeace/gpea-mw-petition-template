@@ -223,10 +223,9 @@ const MyForm = (props) => {
                       mailSuggestion(e.target.value);
                     }}
                     value={values.Email}
-                    fontSize={'16px'}
-                    size={'lg'}
+                    size="md"
                   />
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Email}
                   </FormErrorMessage>
                   {suggestion && (
@@ -243,7 +242,7 @@ const MyForm = (props) => {
                         <b>
                           <u>{suggestion}</u>
                         </b>
-                        ?
+                        ？
                       </Text>
                     </Box>
                   )}
@@ -254,12 +253,7 @@ const MyForm = (props) => {
                 <HStack align="flex-start">
                   <Box minWidth={'100px'}>
                     <FormControl id="mobileCountryCode">
-                      <Select
-                        name="MobileCountryCode"
-                        onChange={handleChange}
-                        fontSize={'16px'}
-                        size={'lg'}
-                      >
+                      <Select name="MobileCountryCode" onChange={handleChange}>
                         {(formContent.mobile_country_code || []).map((d) => (
                           <option key={d.value} value={d.value}>
                             {d.label}
@@ -292,8 +286,6 @@ const MyForm = (props) => {
                     onChange={handleChange}
                     placeholder={formContent.label_year_of_birth}
                     value={values.Birthdate}
-                    fontSize={'16px'}
-                    size={'lg'}
                   >
                     {birthDateYear &&
                       birthDateYear.map((d) => (
@@ -302,7 +294,7 @@ const MyForm = (props) => {
                         </option>
                       ))}
                   </Select>
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Birthdate}
                   </FormErrorMessage>
                 </FormControl>
