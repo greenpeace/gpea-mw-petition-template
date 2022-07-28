@@ -25,8 +25,10 @@ import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
-import HeroBanner from '@components/ResponsiveBanner/hero';
-import ThanksBanner from '@components/ResponsiveBanner/thanks';
+// import HeroBanner from '@components/ResponsiveBanner/hero';
+import HeroBanner from './components/ResponsiveBanner/hero.js';
+// import ThanksBanner from '@components/ResponsiveBanner/thanks';
+import ThanksBanner from './components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/WebinarForm';
 
@@ -39,7 +41,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-const ArcticResult = dynamic(() => import('./resultContent/arcticResult'));
+// const ArcticResult = dynamic(() => import('./resultContent/arcticResult'));
 const OceanResult = dynamic(() => import('./resultContent/oceanResult'));
 
 import resultBG from './images/result_page_background.jpg';
@@ -53,7 +55,8 @@ function Index({
 }) {
   const signup = useSelector((state) => state?.signup);
   const { step } = signup;
-  const submitted = useSelector((state) => state?.status?.submitted);
+  const submitted = useSelector((state) => state?.signup?.submitted);
+  // const submitted = useSelector((state) => state?.status?.submitted);
   const theme = useSelector((state) => state?.theme);
 
   let utmSource = new URLSearchParams(document.location.search).get(
@@ -74,6 +77,8 @@ function Index({
 
   useEffect(() => {
     setFormContent(formContent);
+    console.log("bigining submitted");
+    console.log(submitted);
   }, []); // init Form
 
   useEffect(() => {
@@ -107,37 +112,25 @@ function Index({
     });
   }, [answer]);
 
-  // useEffect(() => {
-  //   if (result) {
-  //     setBgElementHeight(topSection.current.clientHeight);
-  //   }
-  // }, [
-  //   topSection.current?.clientHeight,
-  //   dynamicContent,
-  //   dynamicImageHeight,
-  //   submitted,
-  // ]);
 
   useEffect(() => {
     setAnswerToSubmitForm({
       ...hiddenForm,
       CampaignData1__c: result?.answer,
       CampaignData2__c: RESULT[result?.answer]?.value,
-      CampaignData3__c: ['A', 'B', 'C', 'D', 'E'].includes(result?.answer)
-        ? 'Arctic'
-        : 'Oceans',
+      CampaignData3__c: 'Oceans',
     });
   }, [result?.answer]);
 
   // Determine Content Result
   const handleDynamicContent = (result) =>
-    ['A', 'B', 'C', 'D', 'E'].includes(result?.answer) ? (
-      <ArcticResult />
-    ) : (
-      <OceanResult />
-    );
+    // ['A', 'B', 'C', 'D', 'E'].includes(result?.answer) ? (
+    //   <ArcticResult />
+    // ) : (
+    <OceanResult />;
+  // );
 
-  const RenderForm = () => (submitted ? <DonateForm /> : <SignupForm />);
+  // const RenderForm = () => (submitted ? <DonateForm /> : <SignupForm />);
 
   return (
     <>
@@ -150,19 +143,22 @@ function Index({
                 title: '完整測驗結果將在15分鐘內送至您的電子郵箱',
                 description: [''],
               }}
+              quizResult={RESULT[result?.answer]}
+              removeMask={true}
             />
           ) : (
             <HeroBanner
               defaultImage={theme?.params?.hero_image_desktop ?? resultBG}
               content={{
                 title:
-                  `${
-                    theme?.params?.headline_prefix
-                      ? theme?.params?.headline_prefix + '<br/>'
-                      : ''
+                  `${theme?.params?.headline_prefix
+                    ? theme?.params?.headline_prefix + '<br/>'
+                    : ''
                   }` + '認識現實中與您匹配的船隊成員',
                 description: [''],
               }}
+              quizResult={RESULT[result?.answer]}
+              removeMask={true}
             />
           )}
         </Box>
@@ -379,8 +375,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     setAnswerToSubmitForm: (data) => {
       dispatch({ type: hiddenFormActions.SET_HIDDEN_FORM, data });
-      console.log('setAnswerToSubmitForm data');
-      console.log(data);
     },
   };
 };
