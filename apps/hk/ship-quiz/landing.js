@@ -3,31 +3,39 @@ import { connect } from 'react-redux';
 import LazyShow from './components/LazyShow';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
-import bgPlasticsImage from './images/openingending/keyVisualBackground.png';
-import mobileBG from './images/KV_mobile.png';
-import TitleKeyVisual from './images/openingending/titleKeyVisual.png';
-import TitleKeyVisualMobile from './images/openingending/headline_mobile.png';
+import bgImage from './images/openingending/keyVisualBackground.jpeg';
+import mobileBG from './images/openingending/KV_mobile.jpg';
+import StartButton from './images/openingending/start_button.png';
+import StartButtonMobile from './images/openingending/start_button_mobile.png';
 
 const Landing = ({ setSurveyPage }) => {
   return (
     <Box h={'100vh'} mt={{ base: '-55px' }} pos={'relative'}>
       <Center h={'100%'} w={'100%'}>
         <Stack direction="column">
-          <Box p={6} mx="auto" maxWidth={{ base: 'auto', md: '680px' }}>
+          {/* <Box
+            px={{ base: 10, md: 14 }}
+            py={{ base: 6, md: 8 }}
+            mx="auto"
+            maxWidth={{ base: '50%', sm: 'auto' }}
+          >
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Image
                 d={{ base: 'none', md: 'block' }}
-                src={TitleKeyVisual}
-                alt="2分鐘心理測驗"
+                maxWidth={{ base: '50%', sm: 'auto' }}
+                src={StartButton}
+                alt="開始測驗"
+                onClick={() => setSurveyPage('description')}
               />
               <Image
                 d={{ base: 'block', md: 'none' }}
-                src={TitleKeyVisualMobile}
-                alt="2分鐘心理測驗"
+                src={StartButtonMobile}
+                alt="開始測驗"
+                onClick={() => setSurveyPage('description')}
               />
             </LazyShow>
-          </Box>
-          <Box
+          </Box> */}
+          {/* <Box
             my={4}
             maxWidth={{ base: '50%', sm: 'auto' }}
             alignSelf={'center'}
@@ -41,22 +49,22 @@ const Landing = ({ setSurveyPage }) => {
                 py={{ base: 6, md: 8 }}
                 onClick={() => setSurveyPage('description')}
               >
-                立即開始
+                開始測驗
               </Button>
             </LazyShow>
-          </Box>
+          </Box> */}
         </Stack>
       </Center>
       <Box
         position="absolute"
-        top={0}
+        top={10}
         bottom={0}
         w={'100%'}
         h={'100%'}
         bgSize={'cover'}
         bgRepeat={'no-repeat'}
         objectFit={'cover'}
-        bgImage={{ base: mobileBG, md: bgPlasticsImage }}
+        bgImage={{ base: mobileBG, md: bgImage }}
         bgPosition={'40% center'}
         zIndex={'-1'}
       ></Box>
