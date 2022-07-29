@@ -74,7 +74,6 @@ const Quiz = ({ quiz, current }) => {
         position="absolute"
         blur={'0.5'}
       />
-      {/* <DynamicBackground currentQuiz={currentQuiz} /> */}
     </>
   );
 };

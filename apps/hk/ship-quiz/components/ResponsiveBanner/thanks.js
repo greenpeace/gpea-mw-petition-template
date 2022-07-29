@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Box, Flex, Text, Image, Stack } from '@chakra-ui/react';
+import { Heading, Box, Flex, Text, Image, Stack, AspectRatio } from '@chakra-ui/react';
 import PageContainer from '@containers/pageContainer';
 import SocialButton from '@components/SocialButton/socialButton';
 
@@ -39,15 +39,15 @@ export default function Index({
                                                 base: 'var(--text-xl)',
                                                 md: 'var(--text-2xl)',
                                             }}
-                                            color="white"
+                                            color="#0075BA"
                                             textShadow="0 0 1px rgba(0,0,0, .2)"
                                             dangerouslySetInnerHTML={{ __html: content.title }}
                                         />
                                     </Box>
-                                    {quizResult?.description && (
+                                    {content?.description && (
                                         <Box>
                                             <Stack spacing="4">
-                                                {quizResult?.description.map((d, i) => (
+                                                {content?.description.map((d, i) => (
                                                     <Text
                                                         key={i}
                                                         fontSize="var(--text-base)"
@@ -66,11 +66,6 @@ export default function Index({
                                             </Stack>
                                         </Box>
                                     )}
-                                    <Box>
-                                        <Stack spacing="4">
-                                            <Avatar size='xl' name={quizResult?.value} src={quizResult?.image} />
-                                        </Stack>
-                                    </Box>
                                     {content.inviteMessage && (
                                         <Box>
                                             <Stack direction="row" spacing={6}>
@@ -85,6 +80,14 @@ export default function Index({
                                             </Stack>
                                         </Box>
                                     )}
+                                    <div className="mb-[30px] rounded-lg bg-[#000] w-full overflow-hidden">
+                                        <AspectRatio w="100%" ratio={16 / 9}>
+                                            <iframe
+                                                src={quizResult?.iframe_src}
+                                                allowFullScreen
+                                            />
+                                        </AspectRatio>
+                                    </div>
                                 </Stack>
                             </Flex>
                         </Box>
