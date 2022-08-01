@@ -13,25 +13,40 @@ const Landing = ({ setSurveyPage }) => {
     <Box h={'100vh'} mt={{ base: '-55px' }} pos={'relative'}>
       <Center w={'100%'}>
         <Stack direction="column">
+          {/* Desktop Button */}
           <Box
+            d={{ base: 'none', md: 'block' }}
             px={{ base: 10, md: 14 }}
             py={{ base: 6, md: 8 }}
             mx="auto"
             maxWidth={{ base: '50%', sm: 'auto' }}
             position="absolute"
-            bottom='2px'
+            bottom="2px"
             right="200px"
           >
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Image
-                d={{ base: 'none', md: 'block' }}
                 maxWidth={{ base: '30%', sm: 'auto' }}
                 src={StartButton}
                 alt="開始測驗"
                 onClick={() => setSurveyPage('description')}
               />
+            </LazyShow>
+          </Box>
+          {/* Mobile Button */}
+          <Box
+            d={{ base: 'block', md: 'none' }}
+            px={{ base: 10, md: 14 }}
+            py={{ base: 6, md: 8 }}
+            mx="auto"
+            maxWidth={{ base: '50%', sm: 'auto' }}
+            position="absolute"
+            bottom="2px"
+            left="50%"
+            transform={'translateX(-50%)'}
+          >
+            <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Image
-                d={{ base: 'block', md: 'none' }}
                 src={StartButtonMobile}
                 alt="開始測驗"
                 onClick={() => setSurveyPage('description')}
@@ -71,7 +86,7 @@ const Landing = ({ setSurveyPage }) => {
         bgPosition={'40% center'}
         zIndex={'-1'}
       ></Box>
-    </Box >
+    </Box>
   );
 };
 
