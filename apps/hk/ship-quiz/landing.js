@@ -11,18 +11,21 @@ import StartButtonMobile from './images/openingending/start_button_mobile.png';
 const Landing = ({ setSurveyPage }) => {
   return (
     <Box h={'100vh'} mt={{ base: '-55px' }} pos={'relative'}>
-      <Center h={'100%'} w={'100%'}>
+      <Center w={'100%'}>
         <Stack direction="column">
-          {/* <Box
+          <Box
             px={{ base: 10, md: 14 }}
             py={{ base: 6, md: 8 }}
             mx="auto"
             maxWidth={{ base: '50%', sm: 'auto' }}
+            position="absolute"
+            bottom='2px'
+            right="200px"
           >
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Image
                 d={{ base: 'none', md: 'block' }}
-                maxWidth={{ base: '50%', sm: 'auto' }}
+                maxWidth={{ base: '30%', sm: 'auto' }}
                 src={StartButton}
                 alt="開始測驗"
                 onClick={() => setSurveyPage('description')}
@@ -34,7 +37,7 @@ const Landing = ({ setSurveyPage }) => {
                 onClick={() => setSurveyPage('description')}
               />
             </LazyShow>
-          </Box> */}
+          </Box>
           {/* <Box
             my={4}
             maxWidth={{ base: '50%', sm: 'auto' }}
@@ -68,7 +71,7 @@ const Landing = ({ setSurveyPage }) => {
         bgPosition={'40% center'}
         zIndex={'-1'}
       ></Box>
-    </Box>
+    </Box >
   );
 };
 
