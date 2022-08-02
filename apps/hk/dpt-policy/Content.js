@@ -7,9 +7,9 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import contentImageA from './images/202207-plastic-dpt-policy-content-image01.jpeg';
-import contentImageB from './images/202207-plastic-dpt-policy-content-image02.jpeg';
-import contentImageC from './images/202207-plastic-dpt-policy-content-image03.jpeg';
+import contentImageA from './images/202207-plastic-dpt-policy-content-image01.jpeg?webp';
+import contentImageB from './images/202207-plastic-dpt-policy-content-image02.jpeg?webp';
+import contentImageC from './images/202207-plastic-dpt-policy-content-image03.jpeg?webp';
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
@@ -29,12 +29,13 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <StaticNextImage
+        <Image src={contentImageA} layout="fill" alt="Greenpeace 綠色和平" />
+        {/* <StaticNextImage
           src={contentImageA}
           alt="content"
           width="2084"
           height="1260"
-        />
+        /> */}
       </Box>
 
       <Text as="p" {...paragraphProps}>
@@ -60,12 +61,13 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <StaticNextImage
+        <Image src={contentImageB} layout="fill" alt="Greenpeace 綠色和平" />
+        {/* <StaticNextImage
           src={contentImageB}
           alt="content"
           width="1920"
           height="964"
-        />
+        /> */}
       </Box>
 
       <Heading {...headingProps}>立法管制即棄餐具 並非遙不可及</Heading>
@@ -85,12 +87,13 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <StaticNextImage
+        <Image src={contentImageC} layout="fill" alt="Greenpeace 綠色和平" />
+        {/* <StaticNextImage
           src={contentImageC}
           alt="content"
           width="1920"
           height="979"
-        />
+        /> */}
       </Box>
 
       <Text as="p" {...paragraphProps}>
