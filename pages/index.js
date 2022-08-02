@@ -20,7 +20,7 @@ import {
 } from '@common/constants/tagManagerArgs';
 
 /* Determine the returned project index by env variable */
-const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
+const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`),{ loading: () => <p>loading</p> });
 
 /* Get env variables */
 const envProjectName = process.env.projectName;
@@ -200,10 +200,7 @@ function Index({
     }
   }, [themeData]);
 
-  if (router.isReady && DynamicComponent) {
-    return <DynamicComponent />;
-  }
-  return <div>Loading...</div>;
+  return <DynamicComponent/>;
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
