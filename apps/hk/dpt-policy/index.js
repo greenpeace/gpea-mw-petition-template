@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -12,8 +13,8 @@ import FormContainer from '@containers/formContainer';
 import FormWrapper from '@containers/formWrapper';
 import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
-import HeroBanner from '@components/ResponsiveBanner/hero';
-import ThanksBanner from '@components/ResponsiveBanner/thanks';
+import Hero from '@components/ResponsiveBanner/hero';
+import Thanks from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/HKForm';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
@@ -24,7 +25,7 @@ import Thankyou from './Thankyou';
 import formContent from './form';
 import SEO from './SEO';
 // Import static
-import heroBannerImage from './images/202207-plastic-dpt-policy-banner.jpg';
+import heroBannerImage from './images/202207-plastic-dpt-policy-banner.jpg?webp';
 
 function Index() {
   const dispatch = useDispatch();
@@ -34,9 +35,11 @@ function Index() {
   const theme = useSelector((state) => state?.theme);
   const { FirstName } = signup;
 
-  let utmSource = new URLSearchParams(document.location.search).get(
-    'utm_source',
-  );
+  const router = useRouter();
+  const [utmSource, setUtmSource] = useState('');
+  useEffect(() => {
+    setUtmSource(router.query?.utm_source);
+  }, [router]);
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -52,7 +55,7 @@ function Index() {
       <SEO />
       <Box>
         {submitted ? (
-          <ThanksBanner
+          <Thanks
             defaultImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
             content={{
               title: `${
@@ -64,7 +67,7 @@ function Index() {
             }}
           />
         ) : (
-          <HeroBanner
+          <Hero
             defaultImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
             content={{
               title:
