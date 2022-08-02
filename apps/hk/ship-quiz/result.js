@@ -22,6 +22,7 @@ import formContent from './form';
 import RESULT from './data/result.json';
 
 const ShipResult = dynamic(() => import('./resultContent/shipResult'));
+const RoleIntroduction = dynamic(() => import('./resultContent/roleIntroduction'));
 
 import resultBG from './images/result_page_background.jpg';
 
@@ -120,10 +121,18 @@ function Index({
           <OverflowWrapper>
             <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
               <Box flex={1} mt={{ base: 10, sm: 60 }}>
-                {submitted && (
+                {submitted ? (
                   <ContentContainer>
                     <Box>
                       <ShipResult quizResult={RESULT[result?.answer]} />
+                    </Box>
+                  </ContentContainer>
+                ) : (
+                  <ContentContainer>
+                    <Box>
+                      <RoleIntroduction
+                        quizResult={RESULT[result?.answer]}
+                      />
                     </Box>
                   </ContentContainer>
                 )}

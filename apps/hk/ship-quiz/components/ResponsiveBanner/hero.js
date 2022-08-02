@@ -2,8 +2,6 @@ import React from 'react';
 import { Heading, Box, Stack, Text, Image, Center, Flex } from '@chakra-ui/react';
 import PageContainer from '@containers/pageContainer';
 import useImage from '../../useImage';
-// Import custom components
-import IconContent from './iconSession/iconContent.js';
 
 export default function Index({
     content,
@@ -27,8 +25,8 @@ export default function Index({
                                     <Heading
                                         as="h1"
                                         fontSize={{
-                                            base: 'var(--text-xl)',
-                                            md: 'var(--text-2xl)',
+                                            base: 'var(--text-md)',
+                                            md: 'var(--text-lg)',
                                         }}
                                         color="#0075BA"
                                         textShadow="0 0 1px rgba(0,0,0, .2)"
@@ -66,8 +64,8 @@ export default function Index({
                                     <Box py='2'>
                                         <Text
                                             fontSize={{
-                                                base: 'var(--text-mg)',
-                                                md: 'var(--text-lg)',
+                                                base: 'var(--text-sm)',
+                                                md: 'var(--text-md)',
                                             }}
                                             color="#0075BA"
                                             fontWeight="bold"
@@ -78,8 +76,8 @@ export default function Index({
                                     <Box px='4'>
                                         <Text
                                             fontSize={{
-                                                base: 'var(--text-lg)',
-                                                md: 'var(--text-xl)',
+                                                base: 'var(--text-md)',
+                                                md: 'var(--text-lg)',
                                             }}
                                             color="#0075BA"
                                             fontWeight="bold"
@@ -93,8 +91,8 @@ export default function Index({
                                     <Text
                                         as="p"
                                         fontSize={{
-                                            base: 'var(--text-mg)',
-                                            md: 'var(--text-lg)',
+                                            base: 'var(--text-sm)',
+                                            md: 'var(--text-md)',
                                         }}
                                         color="#0075BA"
                                         fontWeight="bold"
@@ -110,21 +108,8 @@ export default function Index({
                                         {quizResult?.content}
                                     </Text>
                                 </Box>
-                                <Box>
-                                    <Text
-                                        as="p"
-                                        fontSize={{
-                                            base: 'var(--text-mg)',
-                                            md: 'var(--text-lg)',
-                                        }}
-                                        color="#0075BA"
-                                        fontWeight="bold"
-                                    >
-                                        認識現實中與您匹配的船隊成員
-                                    </Text>
-                                </Box>
                             </Stack>
-                            <IconContent quizResult={quizResult} />
+                            {/* <IconContent quizResult={quizResult} />
                             <Box>
                                 <Text
                                     as="p"
@@ -137,7 +122,7 @@ export default function Index({
                                 >
                                     立即登記獲取完整測驗結果與<br />{quizResult?.character}的獨家彩蛋片段！
                                 </Text>
-                            </Box>
+                            </Box> */}
                         </Box>
                     </PageContainer>
                 </Box>

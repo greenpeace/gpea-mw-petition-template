@@ -54,7 +54,7 @@ const Description = ({ setSurveyPage }) => {
                   color={'#025177'}
                   lineHeight="1.7"
                 >
-                  您即將登上綠色和平「彩虹勇士號」，執行守護海洋任務！
+                  您即將登上綠色和平「彩虹勇士號」船艦，執行守護海洋任務！
                   <br />
                   您會適合擔任船隊中的哪個崗位？
                 </Heading>
@@ -63,13 +63,13 @@ const Description = ({ setSurveyPage }) => {
             <Box>
               <Flex mt={4} justifyContent={{ base: 'center' }}>
                 <Button
-                  variant={'quiz'}
+                  variant={'quizSquare'}
                   fontSize={{ base: '2xl', md: '4xl' }}
-                  px={{ base: 10, md: 14 }}
+                  px={{ base: 6, md: 10 }}
                   py={{ base: 6, md: 8 }}
                   onClick={() => setSurveyPage('quiz')}
                 >
-                  <Text fontSize={{ base: 'sm', sm: 'md' }}>立即登船</Text>
+                  <Text >立即登船</Text>
                 </Button>
               </Flex>
             </Box>

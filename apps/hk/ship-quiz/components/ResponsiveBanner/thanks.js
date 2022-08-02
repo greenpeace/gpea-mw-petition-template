@@ -36,8 +36,8 @@ export default function Index({
                                         <Heading
                                             as="h1"
                                             fontSize={{
-                                                base: 'var(--text-xl)',
-                                                md: 'var(--text-2xl)',
+                                                base: 'var(--text-md)',
+                                                md: 'var(--text-lg)',
                                             }}
                                             color="#0075BA"
                                             textShadow="0 0 1px rgba(0,0,0, .2)"
