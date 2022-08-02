@@ -111,7 +111,7 @@ function Index({
                   `${theme?.params?.headline_prefix
                     ? theme?.params?.headline_prefix + '<br/>'
                     : ''
-                  }` + '認識現實中與您匹配的船隊成員',
+                  }` + '立即登記解鎖測驗結果！',
                 description: [''],
               }}
               quizResult={RESULT[result?.answer]}

@@ -6,7 +6,7 @@ import * as surveyActions from 'store/actions/action-types/survey-actions';
 import bgImage from './images/openingending/keyVisualBackground.jpeg';
 import mobileBG from './images/openingending/KV_mobile.jpg';
 import StartButton from './images/openingending/start_button.png';
-import StartButtonMobile from './images/openingending/start_button_mobile.png';
+import StartButtonMobile from './images/openingending/start_button.png';
 
 const Landing = ({ setSurveyPage }) => {
   return (
@@ -19,14 +19,14 @@ const Landing = ({ setSurveyPage }) => {
             px={{ base: 10, md: 14 }}
             py={{ base: 6, md: 8 }}
             mx="auto"
-            maxWidth={{ base: '50%', sm: 'auto' }}
+            maxWidth={{ base: '30%', sm: 'auto' }}
             position="absolute"
             bottom="2px"
-            right="200px"
+            right="525px"
           >
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Image
-                maxWidth={{ base: '30%', sm: 'auto' }}
+                minWidth={{ base: '30%', sm: 'auto' }}
                 src={StartButton}
                 alt="開始測驗"
                 onClick={() => setSurveyPage('description')}
@@ -39,7 +39,7 @@ const Landing = ({ setSurveyPage }) => {
             px={{ base: 10, md: 14 }}
             py={{ base: 6, md: 8 }}
             mx="auto"
-            maxWidth={{ base: '50%', sm: 'auto' }}
+            minWidth={{ base: '70%', sm: 'auto' }}
             position="absolute"
             bottom="2px"
             left="50%"

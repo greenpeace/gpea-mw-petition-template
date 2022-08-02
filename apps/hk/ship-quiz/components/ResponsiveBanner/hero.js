@@ -110,8 +110,34 @@ export default function Index({
                                         {quizResult?.content}
                                     </Text>
                                 </Box>
+                                <Box>
+                                    <Text
+                                        as="p"
+                                        fontSize={{
+                                            base: 'var(--text-mg)',
+                                            md: 'var(--text-lg)',
+                                        }}
+                                        color="#0075BA"
+                                        fontWeight="bold"
+                                    >
+                                        認識現實中與您匹配的船隊成員
+                                    </Text>
+                                </Box>
                             </Stack>
                             <IconContent quizResult={quizResult} />
+                            <Box>
+                                <Text
+                                    as="p"
+                                    fontSize={{
+                                        base: 'var(--text-mg)',
+                                        md: 'var(--text-lg)',
+                                    }}
+                                    color="#0075BA"
+                                    fontWeight="bold"
+                                >
+                                    立即登記獲取完整測驗結果與<br />{quizResult?.character}的獨家彩蛋片段！
+                                </Text>
+                            </Box>
                         </Box>
                     </PageContainer>
                 </Box>
