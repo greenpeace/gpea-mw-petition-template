@@ -2,14 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { useInView } from 'react-intersection-observer';
-import useImage from './useImage';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 // Import library
-import {
-  Box,
-  Flex,
-} from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
@@ -79,7 +75,6 @@ function Index({
     });
   }, [answer]);
 
-
   useEffect(() => {
     setAnswerToSubmitForm({
       ...hiddenForm,
@@ -108,9 +103,10 @@ function Index({
               defaultImage={theme?.params?.hero_image_desktop ?? resultBG}
               content={{
                 title:
-                  `${theme?.params?.headline_prefix
-                    ? theme?.params?.headline_prefix + '<br/>'
-                    : ''
+                  `${
+                    theme?.params?.headline_prefix
+                      ? theme?.params?.headline_prefix + '<br/>'
+                      : ''
                   }` + '立即登記解鎖測驗結果！',
                 description: [''],
               }}
@@ -127,9 +123,7 @@ function Index({
                 {submitted && (
                   <ContentContainer>
                     <Box>
-                      <ShipResult
-                        quizResult={RESULT[result?.answer]}
-                      />
+                      <ShipResult quizResult={RESULT[result?.answer]} />
                     </Box>
                   </ContentContainer>
                 )}
@@ -138,19 +132,15 @@ function Index({
                 {submitted ? (
                   <FormContainer>
                     <Box ref={ref}>
-                      {utmSource == 'dd' ? (
-                        <Box h="40px" />
-                      ) : (
-                        <DonationModule
-                          market={'HK'}
-                          language={'zh_HK'}
-                          campaign={
-                            theme?.params?.donation_module_campaign ?? 'oceans'
-                          }
-                          // campaignId={''}
-                          env={'production'}
-                        />
-                      )}
+                      <DonationModule
+                        market={'HK'}
+                        language={'zh_HK'}
+                        campaign={
+                          theme?.params?.donation_module_campaign ?? 'oceans'
+                        }
+                        // campaignId={''}
+                        env={'production'}
+                      />
                     </Box>
                   </FormContainer>
                 ) : (

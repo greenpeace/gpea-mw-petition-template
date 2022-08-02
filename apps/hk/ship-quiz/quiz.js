@@ -26,18 +26,16 @@ const Quiz = ({ quiz, current }) => {
       <Container maxW={{ base: 'xl', xl: '2xl' }} pos={'relative'} zIndex={10}>
         <Center py={4}>
           <Stack w="100%" direction="column" spacing={4}>
-            <Box bgColor={'blue.500'} borderRadius={'8px'} p={4}>
+            <Box p={4}>
               <Heading
-                fontSize={{ base: 'md', md: 'xl' }}
-                color={'#FFF'}
+                fontSize={{ base: 'lg', md: '2xl' }}
+                color={'blue.500'}
                 lineHeight="1.7"
               >
-                <Center h="100%">
-                  <Text as="span" mr="2">
-                    Q{current + 1}.
-                  </Text>
-                  {currentQuiz?.question.label}
-                </Center>
+                <Text as="span" mr="2">
+                  Q{current + 1}.
+                </Text>
+                {currentQuiz?.question.label}
               </Heading>
             </Box>
             <Box>
@@ -47,11 +45,12 @@ const Quiz = ({ quiz, current }) => {
                 reTrigger={currentQuiz.id}
               >
                 <Box
-                  borderRadius={'8px'}
-                  border={'4px solid #108ee9'}
-                  minH={{ base: 'auto', md: '240px' }}
+                  borderRadius={'md'}
+                  // border={'4px solid #108ee9'}
+                  minH={{ base: 'auto', md: '240px', lg: '360px' }}
+                  overflow={'hidden'}
                 >
-                  <Image src={image} loading="lazy" />
+                  <Image src={image} alt={currentQuiz?.question.label} />
                 </Box>
               </LazyShow>
             </Box>
@@ -69,10 +68,11 @@ const Quiz = ({ quiz, current }) => {
         w="100%"
         h="100%"
         top={0}
+        left={0}
         objectFit={'cover'}
-        objectPosition={'center top'}
+        objectPosition={'center'}
         position="absolute"
-        blur={'0.5'}
+        // blur={'0.5'}
       />
     </>
   );

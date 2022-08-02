@@ -37,8 +37,8 @@ const Quiz = ({
             border="2px"
             borderColor='white'
             borderRadius={'md'}
-            bgColor={selected ? 'white' : 'blue.500'}
-            color={selected ? 'blue.500' : 'white'}
+            bgColor={selected ? 'white' : 'blue.400'}
+            color={selected ? 'blue.400' : 'white'}
             cursor="pointer"
             transition="0.2s ease"
             onClick={async () => {

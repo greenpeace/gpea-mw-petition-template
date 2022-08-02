@@ -10,19 +10,19 @@ import StartButtonMobile from './images/openingending/start_button.png';
 
 const Landing = ({ setSurveyPage }) => {
   return (
-    <Box h={'100vh'} mt={{ base: '-55px' }} pos={'relative'}>
+    <Box minH={'100vh'} mt={{ base: '-55px' }} pos={'relative'}>
       <Center w={'100%'}>
         <Stack direction="column">
           {/* Desktop Button */}
           <Box
             d={{ base: 'none', md: 'block' }}
-            px={{ base: 10, md: 14 }}
-            py={{ base: 6, md: 8 }}
+            p="8"
             mx="auto"
             maxWidth={{ base: '30%', sm: 'auto' }}
             position="absolute"
             bottom="2px"
-            right="525px"
+            left="50%"
+            transform={'translateX(-50%)'}
           >
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Image
@@ -36,8 +36,7 @@ const Landing = ({ setSurveyPage }) => {
           {/* Mobile Button */}
           <Box
             d={{ base: 'block', md: 'none' }}
-            px={{ base: 10, md: 14 }}
-            py={{ base: 6, md: 8 }}
+            p="6"
             mx="auto"
             minWidth={{ base: '70%', sm: 'auto' }}
             position="absolute"
@@ -83,7 +82,7 @@ const Landing = ({ setSurveyPage }) => {
         bgRepeat={'no-repeat'}
         objectFit={'cover'}
         bgImage={{ base: mobileBG, md: bgImage }}
-        bgPosition={'40% center'}
+        bgPosition={'center'}
         zIndex={'-1'}
       ></Box>
     </Box>

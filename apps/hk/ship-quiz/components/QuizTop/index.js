@@ -25,10 +25,10 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
     >
       <Box cursor={'pointer'} onClick={() => handleBackButton()}>
         <Flex alignContent={'center'}>
-          <ChevronLeftIcon w={6} h={6} pt="1" pr="1" />
+          <ChevronLeftIcon w={6} h={6} pt="1" pr="1" color="#108ee9"/>
           <Text
             as="span"
-            fontWeight="bold"
+            fontWeight="500"
             fontSize={{ base: 'md' }}
             color="#108ee9"
           >
@@ -48,7 +48,7 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
           {quiz.map((d, i) => (
             <Box
               key={i}
-              border="2px solid #108ee9"
+              border="1px solid #108ee9"
               bgColor={
                 currentQuiz.id === (i + 1).toString() ? '#108ee9' : '#FFF'
               }
@@ -62,7 +62,7 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
       <Box>
         <Text
           as="span"
-          fontWeight="bold"
+          fontWeight="500"
           fontSize={{ base: 'md', md: 'xl' }}
           color="#108ee9"
         >

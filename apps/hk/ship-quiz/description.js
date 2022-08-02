@@ -13,8 +13,8 @@ import {
 } from '@chakra-ui/react';
 import LazyShow from './components/LazyShow';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
-import bgPlasticsImage from './images/openingending/Starting.png';
 
+import bgPlasticsImage from './images/openingending/Starting.png';
 import BackgroundVisual from './images/Question Interface Background.png';
 
 const Description = ({ setSurveyPage }) => {
@@ -39,7 +39,10 @@ const Description = ({ setSurveyPage }) => {
             >
               <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.5}>
                 <Box borderRadius={'4px'} border={'4px solid #FFF'}>
-                  <Image src={bgPlasticsImage} loading="lazy" />
+                  <Image
+                    src={bgPlasticsImage}
+                    alt="【航海心理測驗】找出您的第二人生職業！"
+                  />
                 </Box>
               </LazyShow>
             </Box>
@@ -51,7 +54,9 @@ const Description = ({ setSurveyPage }) => {
                   color={'#025177'}
                   lineHeight="1.7"
                 >
-                  您即將登上綠色和平「彩虹勇士號」，執行守護海洋任務！您會適合擔任船隊中的哪個崗位?
+                  您即將登上綠色和平「彩虹勇士號」，執行守護海洋任務！
+                  <br />
+                  您會適合擔任船隊中的哪個崗位？
                 </Heading>
               </Box>
             </LazyShow>
@@ -64,9 +69,7 @@ const Description = ({ setSurveyPage }) => {
                   py={{ base: 6, md: 8 }}
                   onClick={() => setSurveyPage('quiz')}
                 >
-                  <Text fontSize={{ base: 'sm', sm: 'md' }}>
-                    立即登船
-                  </Text>
+                  <Text fontSize={{ base: 'sm', sm: 'md' }}>立即登船</Text>
                 </Button>
               </Flex>
             </Box>
