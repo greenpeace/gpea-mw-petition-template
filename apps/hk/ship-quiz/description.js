@@ -14,8 +14,8 @@ import {
 import LazyShow from './components/LazyShow';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
-import bgPlasticsImage from './images/openingending/Starting.png';
-import BackgroundVisual from './images/Question Interface Background.png';
+import bgPlasticsImage from './images/optimized/Starting.jpg?webp';
+import BackgroundVisual from './images/optimized/Question Interface Background.png';
 
 const Description = ({ setSurveyPage }) => {
   return (
@@ -26,7 +26,7 @@ const Description = ({ setSurveyPage }) => {
             <Box borderRadius={'8px'} p={4}>
               <Heading
                 fontSize={{ base: 'xl', md: '2xl' }}
-                color={'#025177'}
+                color={'#108ee9'}
                 textAlign={{ base: 'center' }}
               >
                 【航海心理測驗】找出您的第二人生職業！
@@ -51,7 +51,7 @@ const Description = ({ setSurveyPage }) => {
               <Box bgColor={'rgba(255,255,255,0.8)'} borderRadius={'8px'} p={4}>
                 <Heading
                   fontSize={{ base: 'md', md: 'xl' }}
-                  color={'#025177'}
+                  color={'#108ee9'}
                   lineHeight="1.7"
                 >
                   您即將登上綠色和平「彩虹勇士號」船艦，執行守護海洋任務！

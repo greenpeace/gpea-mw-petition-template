@@ -26,7 +26,7 @@
         "label": "查看逃生門位置"
       }
     ],
-    "image": "questions/Q1.png",
+    "image": "optimized/Q1.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -54,7 +54,7 @@
         "label": "舉手發問"
       }
     ],
-    "image": "questions/Q2.png",
+    "image": "optimized/Q2.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -82,7 +82,7 @@
         "label": "測量風向，預估航程狀況"
       }
     ],
-    "image": "questions/Q3.png",
+    "image": "optimized/Q3.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -110,7 +110,7 @@
         "label": "回房間稍作休息"
       }
     ],
-    "image": "questions/Q4.png",
+    "image": "optimized/Q4.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -138,7 +138,7 @@
         "label": "製作「支持成立海洋保護區」橫額"
       }
     ],
-    "image": "questions/Q5.png",
+    "image": "optimized/Q5.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -166,7 +166,7 @@
         "label": "支援同伴，給予行動建議與補給"
       }
     ],
-    "image": "questions/Q6.png",
+    "image": "optimized/Q6.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -194,7 +194,7 @@
         "label": "大眾的關注與支持"
       }
     ],
-    "image": "questions/Q7.png",
+    "image": "optimized/Q7.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -222,7 +222,7 @@
         "label": "船隊在大風浪中航行"
       }
     ],
-    "image": "questions/Q8.png",
+    "image": "optimized/Q8.jpg",
     "maximum": 1,
     "type": "single"
   }
