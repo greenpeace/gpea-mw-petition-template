@@ -12,8 +12,8 @@ import FormContainer from '@containers/formContainer';
 import FormWrapper from '@containers/formWrapper';
 import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
-import HeroBanner from '@components/ResponsiveBanner/hero';
-import ThanksBanner from '@components/ResponsiveBanner/thanks';
+import { NextHero } from '@components/ResponsiveBanner/nextHero';
+import { NextThanks } from '@components/ResponsiveBanner/nextThanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/HKForm';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
@@ -52,7 +52,7 @@ function Index() {
       <SEO />
       <Box>
         {submitted ? (
-          <ThanksBanner
+          <NextThanks
             defaultImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
             content={{
               title: `${
@@ -64,7 +64,7 @@ function Index() {
             }}
           />
         ) : (
-          <HeroBanner
+          <NextHero
             defaultImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
             content={{
               title:
