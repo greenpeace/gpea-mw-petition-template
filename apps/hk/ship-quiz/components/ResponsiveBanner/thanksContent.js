@@ -58,31 +58,13 @@ export default function Index({
               </Stack>
             </Box>
           )}
-          <div className="mb-[30px] rounded-lg bg-[#000] w-full overflow-hidden">
-            <AspectRatio w="100%" ratio={16 / 9}>
+          <Box>
+            <AspectRatio w="100%" ratio={16 / 9} mb="4">
               <iframe src={quizResult?.iframe_src} allowFullScreen />
             </AspectRatio>
-          </div>
+          </Box>
         </Stack>
       </Flex>
-
-      {/* <Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
-          <picture>
-            {imageSrcset?.map((item, index) => {
-              return (
-                <source media={item.media} srcSet={item.srcset} key={index} />
-              );
-            })}
-
-            <Image
-              src={defaultImage}
-              height="100%"
-              width="100%"
-              objectFit="cover"
-              objectPosition={objectPosition}
-            />
-          </picture>
-        </Box> */}
     </>
   );
 }
