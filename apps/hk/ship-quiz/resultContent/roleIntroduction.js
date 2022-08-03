@@ -15,10 +15,16 @@ const Content = ({ theme, quizResult }) => {
   return (
     <>
       <Box>
-        <Heading {...headingProps} color="#0075BA" mb="6" lineHeight="1.5">
+        <Text
+          {...headingProps}
+          color="#0075BA"
+          mb="6"
+          lineHeight="1.5"
+          fontWeight="bold"
+        >
           立即登記獲取完整測驗結果
           <br />與 {quizResult?.character} 的獨家彩蛋片段！
-        </Heading>
+        </Text>
       </Box>
       <IconContent quizResult={quizResult} />
     </>
