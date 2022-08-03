@@ -34,7 +34,7 @@ export default function Index({
                     as="h1"
                     fontSize={{
                       base: 'var(--text-md)',
-                      md: 'var(--text-lg)',
+                      md: 'var(--text-md)',
                     }}
                     color="#0075BA"
                     textShadow="0 0 1px rgba(0,0,0, .2)"
@@ -63,7 +63,8 @@ export default function Index({
                       src={image}
                       pos={'relative'}
                       p="4"
-                      maxW={{ base: '240px', md: '320px' }}
+                      // maxW={{ base: '210px', md: '280px' }}
+                      maxW={{ base: '150px', md: '200px' }}
                     />
                   </Box>
                 </Center>
