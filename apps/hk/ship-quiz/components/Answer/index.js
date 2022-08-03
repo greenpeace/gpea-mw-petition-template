@@ -35,10 +35,10 @@ const Quiz = ({
             key={i}
             p={4}
             border="2px"
-            borderColor="white"
+            borderColor="blue.400"
             borderRadius={'md'}
-            bgColor={selected ? 'white' : 'blue.400'}
-            color={selected ? 'blue.400' : 'white'}
+            bgColor={selected ? 'blue.400' : 'white'}
+            color={selected ? 'rgba(255,255,255,0.8)' : 'blue.400'}
             cursor="pointer"
             transition="0.2s ease"
             onClick={async () => {
