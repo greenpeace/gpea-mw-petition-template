@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import dynamic from 'next/dynamic';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { useInView } from 'react-intersection-observer';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -8,7 +7,6 @@ import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actio
 import { Box, Image, Stack, Grid, GridItem } from '@chakra-ui/react';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
-import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
@@ -23,12 +21,10 @@ import SignupForm from '@components/GP/WebinarForm';
 import formContent from './form';
 import RESULT from './data/result.json';
 
-const ShipResult = dynamic(() => import('./resultContent/shipResult'));
-const RoleIntroduction = dynamic(() =>
-  import('./resultContent/roleIntroduction'),
-);
+import ShipResult from './resultContent/shipResult';
+import RoleIntroduction from './resultContent/roleIntroduction';
 
-import resultBG from './images/result_page_background.jpg';
+import resultBG from './images/result_page_background.png?webp';
 
 function Index({
   status,
@@ -93,86 +89,85 @@ function Index({
     <>
       <Box pos={'relative'}>
         <PageContainer>
-          <Box>
-            <Grid
-              templateColumns={{
-                base: 'repeat(1, 1fr)',
-                md: 'repeat(2, 1fr)',
-              }}
-              gap={0}
-              zIndex={2}
-              flexDirection={'column-reverse'}
-            >
-              <GridItem w="100%">
-                <Box
-                  py={4}
-                  zIndex={4}
-                  pos={'relative'}
-                  ref={topSection}
-                  minH={{ base: 'auto', md: '550px' }}
-                >
-                  <Stack>
-                    {/* Hero Content */}
-                    {submitted ? (
-                      <ThanksContent
-                        defaultImage={
-                          theme?.params?.hero_image_desktop ?? resultBG
-                        }
-                        content={{
-                          title: '完整測驗結果將在15分鐘內送至您的電子郵箱',
-                          description: [''],
-                        }}
-                        quizResult={RESULT[result?.answer]}
-                        removeMask={true}
-                      />
-                    ) : (
-                      <HeroContent
-                        defaultImage={
-                          theme?.params?.hero_image_desktop ?? resultBG
-                        }
-                        content={{
-                          title:
-                            `${
-                              theme?.params?.headline_prefix
-                                ? theme?.params?.headline_prefix + '<br/>'
-                                : ''
-                            }` + '立即登記解鎖完整測驗結果！',
-                          description: [''],
-                        }}
-                        quizResult={RESULT[result?.answer]}
-                        removeMask={true}
-                      />
-                    )}
-                  </Stack>
-                </Box>
-              </GridItem>
-              <GridItem w="100%">
-                <Box py={4}>
+          {/* Hero Content */}
+          <Grid
+            templateColumns={{
+              base: 'repeat(1, 1fr)',
+              md: 'repeat(2, 1fr)',
+            }}
+            gap={0}
+            zIndex={2}
+            flexDirection={'column-reverse'}
+          >
+            <GridItem w="100%">
+              <Box
+                py={4}
+                zIndex={4}
+                pos={'relative'}
+                ref={topSection}
+                minH={{ base: 'auto', md: '550px' }}
+              >
+                <Stack>
+                  {/* Hero Content */}
                   {submitted ? (
-                    <FormContainer>
-                      <Box>
-                        <DonationModule
-                          market={'HK'}
-                          language={'zh_HK'}
-                          campaign={
-                            theme?.params?.donation_module_campaign ?? 'oceans'
-                          }
-                          // campaignId={''}
-                          env={'production'}
-                        />
-                      </Box>
-                    </FormContainer>
+                    <ThanksContent
+                      defaultImage={
+                        theme?.params?.hero_image_desktop ?? resultBG
+                      }
+                      content={{
+                        title: '完整測驗結果將在15分鐘內送至您的電子郵箱',
+                        description: [''],
+                      }}
+                      quizResult={RESULT[result?.answer]}
+                      removeMask={true}
+                    />
                   ) : (
-                    <FormContainer>
-                      <Box ref={ref}>
-                        <SignupForm />
-                      </Box>
-                    </FormContainer>
+                    <HeroContent
+                      defaultImage={
+                        theme?.params?.hero_image_desktop ?? resultBG
+                      }
+                      content={{
+                        title:
+                          `${
+                            theme?.params?.headline_prefix
+                              ? theme?.params?.headline_prefix + '<br/>'
+                              : ''
+                          }` + '立即登記解鎖完整測驗結果！',
+                        description: [''],
+                      }}
+                      quizResult={RESULT[result?.answer]}
+                      removeMask={true}
+                    />
                   )}
-                </Box>
-              </GridItem>
-            </Grid>
-          </Box>
+                </Stack>
+              </Box>
+            </GridItem>
+            <GridItem w="100%">
+              <Box py={4}>
+                {submitted ? (
+                  <FormContainer>
+                    <Box>
+                      <DonationModule
+                        market={'HK'}
+                        language={'zh_HK'}
+                        campaign={
+                          theme?.params?.donation_module_campaign ?? 'oceans'
+                        }
+                        // campaignId={''}
+                        env={'production'}
+                      />
+                    </Box>
+                  </FormContainer>
+                ) : (
+                  <FormContainer>
+                    <Box ref={ref}>
+                      <SignupForm />
+                    </Box>
+                  </FormContainer>
+                )}
+              </Box>
+            </GridItem>
+          </Grid>
           {/* Supporting Content */}
           <Box maxW={{ base: '100%', md: '50%' }}>
             {submitted ? (
@@ -188,11 +183,11 @@ function Index({
         </PageContainer>
         <Box zIndex="-1" pos={'absolute'} top={0} right={0} left={0} bottom={0}>
           <Image
-            src={theme?.params?.hero_image_desktop ?? resultBG}
+            src={resultBG}
             height="100%"
             width="100%"
             objectFit="cover"
-            objectPosition={'center'}
+            objectPosition={'center bottom'}
           />
         </Box>
       </Box>

@@ -32,21 +32,27 @@ const Description = ({ setSurveyPage }) => {
                 【航海心理測驗】找出您的第二人生職業！
               </Heading>
             </Box>
-            <Box
-              borderRadius={'8px'}
-              pb={4}
-              minH={{ base: 'auto', md: '240px' }}
-            >
-              <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.5}>
-                <Box borderRadius={'4px'} border={'4px solid #FFF'}>
-                  <Image
-                    src={bgPlasticsImage}
-                    alt="【航海心理測驗】找出您的第二人生職業！"
-                  />
-                </Box>
-              </LazyShow>
+            <Box pos="relative" h={{ base: '220px', md: '320px', xl: '400px' }}>
+              <Image
+                w="100%"
+                h="100%"
+                top={0}
+                left={0}
+                objectFit={'cover'}
+                objectPosition={'center'}
+                position="absolute"
+                src={bgPlasticsImage}
+                alt="【航海心理測驗】找出您的第二人生職業！"
+              />
             </Box>
-
+            {/* <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.5}>
+              <Box>
+                <Image
+                  src={bgPlasticsImage}
+                  alt="【航海心理測驗】找出您的第二人生職業！"
+                />
+              </Box>
+            </LazyShow> */}
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Box bgColor={'rgba(255,255,255,0.8)'} borderRadius={'8px'} p={4}>
                 <Heading
@@ -60,19 +66,18 @@ const Description = ({ setSurveyPage }) => {
                 </Heading>
               </Box>
             </LazyShow>
-            <Box>
-              <Flex mt={4} justifyContent={{ base: 'center' }}>
-                <Button
-                  variant={'quizSquare'}
-                  fontSize={{ base: '2xl', md: '4xl' }}
-                  px={{ base: 6, md: 10 }}
-                  py={{ base: 6, md: 8 }}
-                  onClick={() => setSurveyPage('quiz')}
-                >
-                  <Text >立即登船</Text>
-                </Button>
-              </Flex>
-            </Box>
+            <Flex mt={4} justifyContent={{ base: 'center' }}>
+              <Button
+                size="lg"
+                variant={'quizSquare'}
+                fontSize={'xl'}
+                px={6}
+                py={4}
+                onClick={() => setSurveyPage('quiz')}
+              >
+                立即登船
+              </Button>
+            </Flex>
           </Stack>
         </Center>
       </Container>

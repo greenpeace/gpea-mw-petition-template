@@ -35,7 +35,7 @@ const Quiz = ({
             key={i}
             p={4}
             border="2px"
-            borderColor='white'
+            borderColor="white"
             borderRadius={'md'}
             bgColor={selected ? 'white' : 'blue.400'}
             color={selected ? 'blue.400' : 'white'}
@@ -54,8 +54,7 @@ const Quiz = ({
             <Center h="100%">
               <Text
                 fontSize={{ base: 'base', md: 'md' }}
-                fontWeight={700}
-                lineHeight="1.7"
+                fontWeight={500}
                 letterSpacing="1px"
                 dangerouslySetInnerHTML={{ __html: d.label }}
               ></Text>
