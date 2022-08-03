@@ -29,7 +29,9 @@ const Description = ({ setSurveyPage }) => {
                 color={'#108ee9'}
                 textAlign={{ base: 'center' }}
               >
-                【航海心理測驗】找出您的第二人生職業！
+                【航海心理測驗】
+                <br />
+                找出您的第二人生職業！
               </Heading>
             </Box>
             <Box pos="relative" h={{ base: '220px', md: '320px', xl: '400px' }}>
@@ -56,9 +58,9 @@ const Description = ({ setSurveyPage }) => {
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Box bgColor={'rgba(255,255,255,0.8)'} borderRadius={'8px'} p={4}>
                 <Heading
-                  fontSize={{ base: 'md', md: 'xl' }}
+                  fontSize={{ base: 'lg', md: 'xl' }}
                   color={'#108ee9'}
-                  lineHeight="1.7"
+                  lineHeight="2"
                 >
                   您即將登上綠色和平「彩虹勇士號」船艦，執行守護海洋任務！
                   <br />

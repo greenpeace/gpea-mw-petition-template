@@ -20,7 +20,8 @@ export default function Index({ quizResult }) {
               您好，很高興認識您，
               <br />
               我是與您匹配、現實中的
-              {quizResult?.value} {quizResult?.character}，有些話想對您說⋯⋯
+              {quizResult?.value} {quizResult?.character}，<br />
+              有些話想對您說⋯⋯
             </Text>
           </Flex>
         </Stack>

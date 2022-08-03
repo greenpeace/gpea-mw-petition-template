@@ -42,7 +42,7 @@ const Landing = ({ setSurveyPage }) => {
             mx="auto"
             minWidth={{ base: '70%', sm: 'auto' }}
             position="absolute"
-            bottom="30"
+            bottom="56px"
             left="50%"
             transform={'translateX(-50%)'}
           >
