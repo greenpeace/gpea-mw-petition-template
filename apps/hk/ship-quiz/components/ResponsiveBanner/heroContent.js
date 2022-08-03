@@ -24,7 +24,7 @@ export default function Index({
   const { loading, error, image } = useImage(quizResult?.image);
   return (
     <>
-      <Box py={8} px={4}>
+      <Box py={4} px={4}>
         <Stack spacing="4">
           {content.title && (
             <Heading

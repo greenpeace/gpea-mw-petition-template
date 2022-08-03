@@ -1,5 +1,9 @@
 import React from 'react';
 import { Avatar, Box, Flex, Stack, Text } from '@chakra-ui/react';
+import {
+  headingProps,
+  paragraphProps,
+} from '@common/styles/components/contentStyle';
 import useImage from '../useImage';
 
 export default function Index({ quizResult }) {
@@ -12,7 +16,7 @@ export default function Index({ quizResult }) {
             <Avatar size="xl" name={quizResult?.value} src={image} />
           </Box>
           <Flex align="center" borderRadius={'8px'} bg="#F7FAFC" p={4}>
-            <Text as="p" color={'#0075BA'} fontWeight="bold" fontSize="md">
+            <Text {...paragraphProps} color={'#0075BA'} mb="0">
               您好，很高興認識您，
               <br />
               我是與您匹配、現實中的
