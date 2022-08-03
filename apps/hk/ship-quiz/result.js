@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 // Import library
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Image, Stack, Grid, GridItem } from '@chakra-ui/react';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
@@ -15,6 +15,8 @@ import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
 import HeroBanner from './components/ResponsiveBanner/hero.js';
 import ThanksBanner from './components/ResponsiveBanner/thanks';
+import HeroContent from './components/ResponsiveBanner/heroContent';
+import ThanksContent from './components/ResponsiveBanner/thanksContent';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/WebinarForm';
 
@@ -51,6 +53,7 @@ function Index({
     threshold: 0,
   });
   const mobileForm = useRef(null);
+  const topSection = useRef(null);
 
   useEffect(() => {
     setFormContent(formContent);
@@ -90,6 +93,122 @@ function Index({
   return (
     <>
       <Box pos={'relative'}>
+        <Box pos={'relative'}>
+          <PageContainer>
+            <Box>
+              <Grid
+                templateColumns={{
+                  base: 'repeat(1, 1fr)',
+                  md: 'repeat(2, 1fr)',
+                }}
+                gap={0}
+                zIndex={2}
+                flexDirection={'column-reverse'}
+              >
+                <GridItem w="100%">
+                  <Box
+                    px={4}
+                    zIndex={4}
+                    pos={'relative'}
+                    ref={topSection}
+                    minH={{ base: 'auto', md: '550px' }}
+                  >
+                    <Stack py={4}>
+                      {/* Hero Content */}
+                      <Box>
+                        {submitted ? (
+                          <ThanksContent
+                            defaultImage={
+                              theme?.params?.hero_image_desktop ?? resultBG
+                            }
+                            content={{
+                              title: '完整測驗結果將在15分鐘內送至您的電子郵箱',
+                              description: [''],
+                            }}
+                            quizResult={RESULT[result?.answer]}
+                            removeMask={true}
+                          />
+                        ) : (
+                          <HeroContent
+                            defaultImage={
+                              theme?.params?.hero_image_desktop ?? resultBG
+                            }
+                            content={{
+                              title:
+                                `${
+                                  theme?.params?.headline_prefix
+                                    ? theme?.params?.headline_prefix + '<br/>'
+                                    : ''
+                                }` + '立即登記解鎖測驗結果！',
+                              description: [''],
+                            }}
+                            quizResult={RESULT[result?.answer]}
+                            removeMask={true}
+                          />
+                        )}
+                      </Box>
+                    </Stack>
+                  </Box>
+                </GridItem>
+                <GridItem w="100%">
+                  {submitted ? (
+                    <FormContainer>
+                      <Box ref={ref}>
+                        <DonationModule
+                          market={'HK'}
+                          language={'zh_HK'}
+                          campaign={
+                            theme?.params?.donation_module_campaign ?? 'oceans'
+                          }
+                          // campaignId={''}
+                          env={'production'}
+                        />
+                      </Box>
+                    </FormContainer>
+                  ) : (
+                    <FormContainer>
+                      <Box ref={ref}>
+                        <SignupForm />
+                      </Box>
+                    </FormContainer>
+                  )}
+                </GridItem>
+              </Grid>
+            </Box>
+            {/* Supporting Content */}
+            <Box px={4}>
+              {submitted ? (
+                <ContentContainer>
+                  <Box>
+                    <ShipResult quizResult={RESULT[result?.answer]} />
+                  </Box>
+                </ContentContainer>
+              ) : (
+                <ContentContainer>
+                  <Box>
+                    <RoleIntroduction quizResult={RESULT[result?.answer]} />
+                  </Box>
+                </ContentContainer>
+              )}
+            </Box>
+          </PageContainer>
+          <Box
+            zIndex="-1"
+            pos={'absolute'}
+            top={0}
+            right={0}
+            left={0}
+            bottom={0}
+          >
+            <Image
+              src={theme?.params?.hero_image_desktop ?? resultBG}
+              height="100%"
+              width="100%"
+              objectFit="cover"
+              objectPosition={'center'}
+            />
+          </Box>
+        </Box>
         <Box>
           {submitted ? (
             <ThanksBanner
