@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import LazyShow from './components/LazyShow';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
-import bgImage from './images/openingending/keyVisualBackground.jpeg';
-import mobileBG from './images/openingending/KV_mobile.jpg';
+// import bgImage from './images/openingending/keyVisualBackground.jpeg';
+// import mobileBG from './images/openingending/KV_mobile.jpg';
+import bgImage from './images/openingending/2022-ocean-quiz-desktop-kv_compressed.jpg?webp';
+import mobileBG from './images/openingending/2022-ocean-quiz-mobile-kv_compressed.jpg?webp';
 import StartButton from './images/openingending/start_button.png';
 import StartButtonMobile from './images/openingending/start_button.png';
 

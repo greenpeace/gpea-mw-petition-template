@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Heading, Box, Text, Image, AspectRatio, Center } from '@chakra-ui/react';
+import { Heading, Box, Text, Image } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,

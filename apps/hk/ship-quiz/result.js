@@ -22,7 +22,9 @@ import formContent from './form';
 import RESULT from './data/result.json';
 
 const ShipResult = dynamic(() => import('./resultContent/shipResult'));
-const RoleIntroduction = dynamic(() => import('./resultContent/roleIntroduction'));
+const RoleIntroduction = dynamic(() =>
+  import('./resultContent/roleIntroduction'),
+);
 
 import resultBG from './images/result_page_background.jpg';
 
@@ -130,9 +132,7 @@ function Index({
                 ) : (
                   <ContentContainer>
                     <Box>
-                      <RoleIntroduction
-                        quizResult={RESULT[result?.answer]}
-                      />
+                      <RoleIntroduction quizResult={RESULT[result?.answer]} />
                     </Box>
                   </ContentContainer>
                 )}

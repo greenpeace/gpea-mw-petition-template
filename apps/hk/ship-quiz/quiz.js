@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
+  chakra,
   Stack,
   Container,
   Box,
@@ -26,7 +27,7 @@ const Quiz = ({ quiz, current }) => {
       <Container maxW={{ base: 'xl', xl: '2xl' }} pos={'relative'} zIndex={10}>
         <Center py={4}>
           <Stack w="100%" direction="column" spacing={4}>
-            <Box p={4}>
+            <Box py={2}>
               <Heading
                 fontSize={{ base: 'lg', md: '2xl' }}
                 color={'blue.500'}
@@ -39,20 +40,26 @@ const Quiz = ({ quiz, current }) => {
               </Heading>
             </Box>
             <Box>
-              <LazyShow
+              {/* <LazyShow
                 initial={{ opacity: 0, x: 0, y: 0 }}
-                duration={0.5}
+                duration={0.35}
                 reTrigger={currentQuiz.id}
               >
                 <Box
                   borderRadius={'md'}
-                  // border={'4px solid #108ee9'}
                   minH={{ base: 'auto', md: '240px', lg: '360px' }}
                   overflow={'hidden'}
                 >
                   <Image src={image} alt={currentQuiz?.question.label} />
                 </Box>
-              </LazyShow>
+              </LazyShow> */}
+              <Box
+                borderRadius={'md'}
+                minH={{ base: 'auto', md: '240px', lg: '360px' }}
+                overflow={'hidden'}
+              >
+                <Image src={image} alt={currentQuiz?.question.label} />
+              </Box>
             </Box>
             <Box>
               <Answer py={4} quiz={quiz} />
