@@ -61,6 +61,7 @@ export default function Index({
                 pos={'relative'}
                 p="4"
                 maxW={{ base: '240px', md: '320px' }}
+                loading="eager"
               />
             </Box>
           </Center>

@@ -24,7 +24,8 @@ import RESULT from './data/result.json';
 import ShipResult from './resultContent/shipResult';
 import RoleIntroduction from './resultContent/roleIntroduction';
 
-import resultBG from './images/result_page_background.png?webp';
+import resultBG from './images/optimized/Question Interface Background.png';
+import PureBG from './images/optimized/ocean-quiz-pure-background.jpg?webp';
 
 function Index({
   status,
@@ -193,13 +194,22 @@ function Index({
             )}
           </Box>
         </PageContainer>
-        <Box zIndex="-1" pos={'absolute'} top={0} right={0} left={0} bottom={0}>
+        <Box
+          zIndex="-1"
+          pos={'absolute'}
+          top={0}
+          right={0}
+          left={0}
+          bottom={0}
+          filter="grayscale(50%)"
+        >
           <Image
-            src={resultBG}
+            src={PureBG}
             height="100%"
             width="100%"
             objectFit="cover"
             objectPosition={'center bottom'}
+            opacity={'0.25'}
           />
         </Box>
       </Box>

@@ -1,10 +1,8 @@
-import { Button, Box, Image, Stack, Center } from '@chakra-ui/react';
+import { Box, Center, Image, Stack } from '@chakra-ui/react';
+import Fade from 'react-reveal/Fade';
 import { connect } from 'react-redux';
-import LazyShow from './components/LazyShow';
-import * as surveyActions from 'store/actions/action-types/survey-actions';
 
-// import bgImage from './images/openingending/keyVisualBackground.jpeg';
-// import mobileBG from './images/openingending/KV_mobile.jpg';
+import * as surveyActions from 'store/actions/action-types/survey-actions';
 import bgImage from './images/openingending/2022-ocean-quiz-desktop-kv_compressed.jpg?webp';
 import mobileBG from './images/openingending/2022-ocean-quiz-mobile-kv_compressed.jpg?webp';
 import StartButton from './images/openingending/start_button.png';
@@ -26,14 +24,12 @@ const Landing = ({ setSurveyPage }) => {
             left="50%"
             transform={'translateX(-50%)'}
           >
-            <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
-              <Image
-                minWidth={{ base: '30%', sm: 'auto' }}
-                src={StartButton}
-                alt="開始測驗"
-                onClick={() => setSurveyPage('description')}
-              />
-            </LazyShow>
+            <Image
+              minWidth={{ base: '30%', sm: 'auto' }}
+              src={StartButton}
+              alt="開始測驗"
+              onClick={() => setSurveyPage('description')}
+            />
           </Box>
           {/* Mobile Button */}
           <Box
@@ -42,17 +38,15 @@ const Landing = ({ setSurveyPage }) => {
             mx="auto"
             minWidth={{ base: '70%', sm: 'auto' }}
             position="absolute"
-            bottom="56px"
+            bottom="80px"
             left="50%"
             transform={'translateX(-50%)'}
           >
-            <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
-              <Image
-                src={StartButtonMobile}
-                alt="開始測驗"
-                onClick={() => setSurveyPage('description')}
-              />
-            </LazyShow>
+            <Image
+              src={StartButtonMobile}
+              alt="開始測驗"
+              onClick={() => setSurveyPage('description')}
+            />
           </Box>
           {/* <Box
             my={4}

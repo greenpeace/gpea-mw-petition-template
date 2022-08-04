@@ -41,7 +41,7 @@ const Quiz = ({
             color={selected ? 'rgba(255,255,255,0.8)' : 'blue.400'}
             cursor="pointer"
             transition="0.2s ease"
-            onClick={async () => {
+            onClick={() => {
               if (currentQuiz.maximum === 1) {
                 setSurveyAnswer({
                   index: current,
