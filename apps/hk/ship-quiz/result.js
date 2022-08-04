@@ -85,6 +85,18 @@ function Index({
     });
   }, [result?.answer]);
 
+  useEffect(() => {
+    if (submitted) {
+      console.log('submitted');
+      // Send fbq Subscription event
+      window.dataLayer.push({
+        event: 'fbqEvent',
+        contentName: 'ship-quiz',
+        contentCategory: 'Subscription',
+      });
+    }
+  }, [submitted]);
+
   return (
     <>
       <Box pos={'relative'}>
