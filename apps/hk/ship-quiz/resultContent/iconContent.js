@@ -16,7 +16,7 @@ export default function Index({ quizResult }) {
             <Avatar size="xl" name={quizResult?.value} src={image} />
           </Box>
           <Flex align="center" borderRadius={'8px'} bg="#F7FAFC" p={4}>
-            <Text {...paragraphProps} color={'#0075BA'} mb="0">
+            <Text {...paragraphProps} color={'#0075BA'} mb="0" textAlign="left">
               您好，很高興認識您，
               <br />
               我是與您匹配、現實中的

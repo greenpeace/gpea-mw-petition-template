@@ -22,7 +22,7 @@ const Content = ({ theme, quizResult }) => {
           lineHeight="1.5"
           fontWeight="bold"
         >
-          立即登記獲取完整測驗結果
+          立即登記獲得完整測驗結果
           <br />與 {quizResult?.character} 的獨家彩蛋片段！
         </Text>
       </Box>
