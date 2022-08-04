@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Heading,
   Box,
@@ -28,6 +28,12 @@ export default function Index({
   minH = { base: 'lg', md: 'xl' },
   quizResult,
 }) {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto',
+    });
+  }, []);
   return (
     <>
       <Box py={4} px={4}>
