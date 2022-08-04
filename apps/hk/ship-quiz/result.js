@@ -92,7 +92,7 @@ function Index({
       window.dataLayer.push({
         event: 'fbqEvent',
         contentName: 'ship-quiz',
-        contentCategory: 'Subscription',
+        contentCategory: 'Subscribe',
       });
     }
   }, [submitted]);
