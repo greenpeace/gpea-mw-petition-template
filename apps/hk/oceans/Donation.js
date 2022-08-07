@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 const Content = () => {
   const theme = useSelector((state) => state?.theme?.data);
   const signup = useSelector((state) => state?.signup?.data);
+  const strapi = useSelector((state) => state?.theme?.strapi);
   const themeInterests = theme.interests;
   return (
     <>

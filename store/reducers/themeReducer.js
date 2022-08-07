@@ -4,13 +4,14 @@ const initState = {
   data: {
     ProjectName: '',
     CampaignId: '',
-    interests: ''
+    interests: '',
   },
+  strapi: {},
   params: {
-    donation_module_campaign: "",
-    headline_prefix: "",
-    hero_image_desktop: "",
-    hero_image_mobile: ""
+    donation_module_campaign: '',
+    headline_prefix: '',
+    hero_image_desktop: '',
+    hero_image_mobile: '',
   },
   showGlobalHeader: true,
 };
@@ -33,12 +34,19 @@ const themeReducer = (state = initState, action) => {
         lastAction: action.type,
       };
 
-      case themeActions.SET_PARAMS:
-        return {
-          ...state,
-          params: action.data,
-          lastAction: action.type,
-        };
+    case themeActions.SET_STRAPI_DATA:
+      return {
+        ...state,
+        strapi: action.data,
+        lastAction: action.type,
+      };
+
+    case themeActions.SET_PARAMS:
+      return {
+        ...state,
+        params: action.data,
+        lastAction: action.type,
+      };
 
     case themeActions.SET_SHOW_GLOBAL_HEADER:
       return {

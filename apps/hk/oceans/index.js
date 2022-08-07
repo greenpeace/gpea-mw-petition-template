@@ -29,9 +29,10 @@ import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
 function Index() {
   const dispatch = useDispatch();
   const signup = useSelector((state) => state?.signup);
+  const strapi = useSelector((state) => state?.theme?.strapi);
   const { step } = signup;
   const submitted = useSelector((state) => state?.status?.submitted);
-  const theme = useSelector((state) => state?.theme);
+  const pageType = strapi?.page_type?.data?.attributes?.name
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -41,20 +42,18 @@ function Index() {
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
   }, [dispatch]);
-
+  
   return (
     <>
       <SEO />
       <Box>
         {(() => {
-          if (step === 'donation') {
+          if (pageType.toLowerCase() === 'donation') {
             return (
               <HeroBanner
-                bgImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
+                defaultImage={strapi?.contentHero?.desktopImageURL ?? heroBannerImage}
                 content={{
-                  title: `${
-                    theme?.params?.headline_prefix ?? ''
-                  }請即聯署<br/>將全球 30% 海洋<br/>納入保護區`,
+                  title: strapi?.contentHero?.richContent,
                   description: [''],
                 }}
               />
@@ -63,29 +62,18 @@ function Index() {
             return submitted ? (
               <ThanksBanner
                 defaultImage={
-                  theme?.params?.hero_image_desktop ?? heroBannerImage
+                  strapi?.thankyouHero?.desktopImageURL ?? heroBannerImage
                 }
                 content={{
-                  title: `${
-                    signup?.data?.FirstName
-                      ? signup?.data?.FirstName
-                      : '綠色和平支持者'
-                  }，感謝您加入守護海洋行列！`,
-                  description: ['為海洋多走一步，捐助支持保護海洋項目。'],
+                  title: strapi?.thankyouHero?.richContent,
+                  description: [''],
                 }}
               />
             ) : (
               <HeroBanner
-                defaultImage={
-                  theme?.params?.hero_image_desktop ?? heroBannerImage
-                }
+                defaultImage={strapi?.contentHero?.desktopImageURL ?? heroBannerImage}
                 content={{
-                  title:
-                    `${
-                      theme?.params?.headline_prefix
-                        ? theme?.params?.headline_prefix + '<br/>'
-                        : ''
-                    }` + '請即聯署<br/>將全球 30% 海洋<br/>納入保護區',
+                  title: strapi?.contentHero?.richContent,
                   description: [''],
                 }}
               />
@@ -99,7 +87,7 @@ function Index() {
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer>
                 {(() => {
-                  if (step === 'donation') {
+                  if (pageType.toLowerCase() === 'donation') {
                     return <Donation />;
                   } else {
                     return submitted ? <Thankyou /> : <Content />;
@@ -111,28 +99,22 @@ function Index() {
               <FormContainer>
                 <Box ref={ref}>
                   {(() => {
-                    if (step === 'donation') {
+                    if (pageType.toLowerCase() === 'donation') {
                       return (
                         <DonationModule
-                          market={'HK'}
-                          language={'zh_HK'}
-                          campaign={
-                            theme?.params?.donation_module_campaign ?? 'oceans'
-                          }
-                          // campaignId={''}
-                          env={'production'}
+                          market={strapi?.market?.data?.attributes?.market === 'Hong Kong' ? 'HK' : 'TW'}
+                          language={strapi?.donationModuleLanguage}
+                          campaign={strapi?.donationModuleCampaign}
+                          env={strapi?.donationModuleEnv}
                         />
                       );
                     } else {
                       return submitted ? (
                         <DonationModule
-                          market={'HK'}
-                          language={'zh_HK'}
-                          campaign={
-                            theme?.params?.donation_module_campaign ?? 'oceans'
-                          }
-                          // campaignId={''}
-                          env={'production'}
+                           market={strapi?.market?.data?.attributes?.market === 'Hong Kong' ? 'HK' : 'TW'}
+                          language={strapi?.donationModuleLanguage}
+                          campaign={strapi?.donationModuleCampaign}
+                          env={strapi?.donationModuleEnv}
                         />
                       ) : (
                         <SignupForm />

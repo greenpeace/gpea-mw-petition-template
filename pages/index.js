@@ -58,6 +58,7 @@ const initTagManager = (marketName) => {
 function Index({
   setTheme,
   themeData,
+  theme,
   setSignupNumbers,
   setWebStatus,
   setSignFormData,
@@ -115,6 +116,8 @@ function Index({
           hero_image_mobile,
         },
       });
+      console.log('theme-',theme)
+      dispatch({ type: themeActions.SET_STRAPI_DATA, data: theme });
     }
   }, [router]);
 
@@ -240,9 +243,22 @@ export async function getStaticProps() {
 
   !singleResult && console.warn('PROJECT NAME NOT FOUND');
 
+  const app = envProjectName ?? "";
+
+  const endpoint =
+    process.env.NODE_ENV === "development"
+      ? process.env.API_ENDPOINT_LOCAL
+      : process.env.API_ENDPOINT;
+  const res = await fetch(
+    `${endpoint}/pages?filters[market][slug][$eq]=hk&[campaign][$eq]=${app}&populate=*`
+  ).then((response) => response);
+  const themes = await res.json();
+  const theme = themes?.data[0] ?? {};
+
   return {
     props: {
       themeData: singleResult || {},
+      theme: theme?.attributes,
     },
   };
 }
