@@ -13,7 +13,6 @@
   "label_phone_optional": "手提號碼（選填）",
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",
-  "label_address": "地址",
   "label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/' target='_blank'>隱私保護政策</a>。",
 
   "empty_data_alert": "請填寫資料",
@@ -41,8 +40,6 @@
     { "label": "是", "value": true },
     { "label": "否", "value": false }
   ],
-  "address": true,
-  "address_field": "CampaignData4__c",
 
   "donate_header": "是的！我想要投資地球",
   "donate_description": [""],
