@@ -1,32 +1,37 @@
 import React, { useEffect, useRef } from 'react';
-import dynamic from 'next/dynamic';
+import { useSelector, useDispatch } from 'react-redux';
+import * as formActions from 'store/actions/action-types/form-actions';
+// Import library
+import { useInView } from 'react-intersection-observer';
+import { Box, Flex } from '@chakra-ui/react';
+// Import custom containers
+import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
-import { useInView } from 'react-intersection-observer';
-import { connect } from 'react-redux';
-import { Box, Flex } from '@chakra-ui/react';
+// Import custom components
+import HeroBanner from '@components/ResponsiveBanner/hero';
+import ThanksBanner from '@components/ResponsiveBanner/thanks';
+import DonationModule from '@components/GP/DonationModule';
+import SignupForm from '@components/GP/HKForm';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
+// Import Contents
+import Donation from './Donation';
+import Content from './Content';
+import Thankyou from './Thankyou';
 
 import formContent from './form';
 import SEO from './SEO';
-
-import * as formActions from 'store/actions/action-types/form-actions';
-
+// Import static
 import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
 
-const Content = dynamic(() => import('./Content'));
-const Thankyou = dynamic(() => import('./Thankyou'));
-const HeroBanner = dynamic(() => import('@components/Banner/hero'));
-const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
-const PageContainer = dynamic(() => import('@containers/pageContainer'));
-const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
-const SignupForm = dynamic(() => import('@components/GP/HKForm'));
-
-function Index({ status, theme, setFormContent, signup }) {
-  const { submitted } = status;
-  const { FirstName } = signup;
+function Index() {
+  const dispatch = useDispatch();
+  const signup = useSelector((state) => state?.signup);
+  const { step } = signup;
+  const submitted = useSelector((state) => state?.status?.submitted);
+  const theme = useSelector((state) => state?.theme);
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -34,53 +39,106 @@ function Index({ status, theme, setFormContent, signup }) {
   const mobileForm = useRef(null);
 
   useEffect(() => {
-    setFormContent(formContent);
-  }, []);
+    dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
+  }, [dispatch]);
 
   return (
     <>
       <SEO />
-      {submitted ? (
-        <ThanksBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: `${
-              FirstName ? FirstName : '綠色和平支持者'
-            }，感謝您加入守護海洋行列！`,
-            description: ['為海洋多走一步，捐助支持保護海洋項目。'],
-          }}
-        />
-      ) : (
-        <HeroBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: '請即聯署<br/>將全球 30% 海洋<br/>納入保護區',
-            description: [''],
-          }}
-        />
-      )}
+      <Box>
+        {(() => {
+          if (step === 'donation') {
+            return (
+              <HeroBanner
+                bgImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
+                content={{
+                  title: `${
+                    theme?.params?.headline_prefix ?? ''
+                  }請即聯署<br/>將全球 30% 海洋<br/>納入保護區`,
+                  description: [''],
+                }}
+              />
+            );
+          } else {
+            return submitted ? (
+              <ThanksBanner
+                defaultImage={
+                  theme?.params?.hero_image_desktop ?? heroBannerImage
+                }
+                content={{
+                  title: `${
+                    signup?.data?.FirstName
+                      ? signup?.data?.FirstName
+                      : '綠色和平支持者'
+                  }，感謝您加入守護海洋行列！`,
+                  description: ['為海洋多走一步，捐助支持保護海洋項目。'],
+                }}
+              />
+            ) : (
+              <HeroBanner
+                defaultImage={
+                  theme?.params?.hero_image_desktop ?? heroBannerImage
+                }
+                content={{
+                  title:
+                    `${
+                      theme?.params?.headline_prefix
+                        ? theme?.params?.headline_prefix + '<br/>'
+                        : ''
+                    }` + '請即聯署<br/>將全球 30% 海洋<br/>納入保護區',
+                  description: [''],
+                }}
+              />
+            );
+          }
+        })()}
+      </Box>
       <PageContainer>
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer theme={theme}>
-                {submitted ? <Thankyou /> : <Content />}
+              <ContentContainer>
+                {(() => {
+                  if (step === 'donation') {
+                    return <Donation />;
+                  } else {
+                    return submitted ? <Thankyou /> : <Content />;
+                  }
+                })()}
               </ContentContainer>
             </Box>
             <Box flex={1} ref={mobileForm}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? (
-                    <DonationModule
-                      market={theme.Market}
-                      language={'zh_HK'}
-                      campaign={'oceans'}
-                      // campaignId={''}
-                      env={'production'}
-                    />
-                  ) : (
-                    <SignupForm />
-                  )}
+                  {(() => {
+                    if (step === 'donation') {
+                      return (
+                        <DonationModule
+                          market={'HK'}
+                          language={'zh_HK'}
+                          campaign={
+                            theme?.params?.donation_module_campaign ?? 'oceans'
+                          }
+                          // campaignId={''}
+                          env={'production'}
+                        />
+                      );
+                    } else {
+                      return submitted ? (
+                        <DonationModule
+                          market={'HK'}
+                          language={'zh_HK'}
+                          campaign={
+                            theme?.params?.donation_module_campaign ?? 'oceans'
+                          }
+                          // campaignId={''}
+                          env={'production'}
+                        />
+                      ) : (
+                        <SignupForm />
+                      );
+                    }
+                  })()}
                 </Box>
               </FormContainer>
             </Box>
@@ -93,16 +151,4 @@ function Index({ status, theme, setFormContent, signup }) {
   );
 }
 
-const mapStateToProps = ({ status, theme, signup }) => {
-  return { status, theme: theme.data, signup: signup.data };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setFormContent: (data) => {
-      dispatch({ type: formActions.SET_FORM, data });
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default Index;

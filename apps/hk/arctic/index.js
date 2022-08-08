@@ -6,14 +6,17 @@ import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
-import Content from './Content';
-import Thankyou from './Thankyou';
+
 import SignupForm from '@components/GP/HKForm';
-import DonateForm from '@components/GP/DonateForm';
+import DonationModule from '@components/GP/DonationModule';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
-import FixedCTA from '@components/GP/FixedCTA';
+import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
+
+import Content from './Content';
+import Thankyou from './Thankyou';
+
 import SEO from './SEO';
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -29,6 +32,7 @@ function Index({ status, theme, setFormContent, signup }) {
   const { ref, inView } = useInView({
     threshold: 0,
   });
+  const mobileForm = useRef(null);
   const myRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
 
@@ -67,10 +71,20 @@ function Index({ status, theme, setFormContent, signup }) {
                 {submitted ? <Thankyou /> : <Content />}
               </ContentContainer>
             </Box>
-            <Box flex={1} ref={myRef}>
+            <Box flex={1} ref={mobileForm}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
+                  {submitted ? (
+                    <DonationModule
+                      market={'HK'}
+                      language={'zh_HK'}
+                      campaign={'arctic'}
+                      // campaignId={''}
+                      env={'production'}
+                    />
+                  ) : (
+                    <SignupForm />
+                  )}
                 </Box>
               </FormContainer>
             </Box>
@@ -78,11 +92,7 @@ function Index({ status, theme, setFormContent, signup }) {
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
-      {!inView && (
-        <FixedCTA onClick={executeScroll}>
-          {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}
-        </FixedCTA>
-      )}
+      <ScrollToTargetButton target={mobileForm} targetInView={inView} />
     </>
   );
 }

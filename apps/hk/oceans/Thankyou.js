@@ -1,26 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Heading, Text } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
+import { useSelector } from 'react-redux';
 
-const Thankyou = ({ theme, signup }) => {
+const Thankyou = () => {
+  const theme = useSelector((state) => state?.theme?.data);
+  const signup = useSelector((state) => state?.signup?.data);
   const themeInterests = theme.interests;
-  const { FirstName } = signup;
+
   return (
     <>
-      {/* <Heading {...headingProps}>感謝您加入守護海洋行列！</Heading>
-
-      <Text as="p" {...paragraphProps}>
-        為海洋多走一步，捐助支持保護海洋項目。
-      </Text>
-
-      <Text as="p" {...paragraphProps} color={`theme.${themeInterests}`}>
-        感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。
-      </Text> */}
-
       <Heading {...headingProps}>
         感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。
       </Heading>
@@ -57,8 +49,4 @@ const Thankyou = ({ theme, signup }) => {
   );
 };
 
-const mapStateToProps = ({ status, theme, signup }) => {
-  return { status, theme: theme.data, signup: signup.data };
-};
-
-export default connect(mapStateToProps)(Thankyou);
+export default Thankyou;

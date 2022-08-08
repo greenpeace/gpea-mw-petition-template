@@ -153,34 +153,6 @@ const MyForm = (props) => {
     }
   }, [signup.submitted]);
 
-  useEffect(() => {
-    const selectForm = document.forms['mc-form'];
-    const documentFormsArray = Array.from(selectForm);
-    if (documentFormsArray) {
-      documentFormsArray.map((data) => {
-        if (!data.defaultValue) {
-          return;
-        }
-
-        if (data.name === 'MobilePhone') {
-          setFieldValue('MobileCountryCode', data.defaultValue?.split(' ')[0]);
-          setFieldValue('MobilePhone', data.defaultValue?.split(' ')[1]);
-          return;
-        }
-
-        if (data.name === 'Birthdate') {
-          setFieldValue(
-            'Birthdate',
-            `${data.defaultValue?.split('/')[2].substring(0, 4)}-01-01`,
-          );
-          return;
-        }
-
-        setFieldValue(data.name, data.defaultValue);
-      });
-    }
-  }, []);
-
   const mailSuggestion = (value) => {
     const domains = MAIL_DOMAINS;
     const topLevelDomains = MAIL_TOP_DOMAINS;
@@ -323,10 +295,9 @@ const MyForm = (props) => {
                       mailSuggestion(e.target.value);
                     }}
                     value={values.Email}
-                    _placeholder={{ fontSize: 16 }}
-                    size={'lg'}
+                    size="md"
                   />
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Email}
                   </FormErrorMessage>
                   {suggestion && (
@@ -337,7 +308,7 @@ const MyForm = (props) => {
                       }}
                       pt={2}
                       pl={2}
-                      cursor={`pointer`}
+                      cursor="pointer"
                     >
                       <Text fontSize={`sm`} color={`theme.${themeInterests}`}>
                         {formContent.suggestion_message} <b>{suggestion}</b>
@@ -354,8 +325,6 @@ const MyForm = (props) => {
                       <Select
                         name="MobileCountryCode"
                         onChange={handleChange}
-                        fontSize={'16px'}
-                        size={'lg'}
                         value={values.mobileCountry}
                       >
                         {(formContent.mobile_country_code || []).map((d) => (
@@ -386,12 +355,7 @@ const MyForm = (props) => {
                   id="Birthdate"
                   isInvalid={errors.Birthdate && touched.Birthdate}
                 >
-                  <Select
-                    onChange={handleChange}
-                    fontSize={'16px'}
-                    size={'lg'}
-                    value={values.Birthdate}
-                  >
+                  <Select onChange={handleChange} value={values.Birthdate}>
                     <option value={''}>
                       {formContent.label_year_of_birth}
                     </option>
@@ -402,7 +366,7 @@ const MyForm = (props) => {
                         </option>
                       ))}
                   </Select>
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Birthdate}
                   </FormErrorMessage>
                 </FormControl>
@@ -429,7 +393,7 @@ const MyForm = (props) => {
                       >
                         你的鼓勵字句將有機會出現在「我做得到」！
                       </Text>
-                      <FormErrorMessage color="red">
+                      <FormErrorMessage px={2} color="var(--error-900)">
                         {errors.Thoughts}
                       </FormErrorMessage>
                     </FormControl>

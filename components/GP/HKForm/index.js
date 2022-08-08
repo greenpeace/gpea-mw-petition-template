@@ -52,6 +52,7 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
+    setValues,
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -179,7 +180,7 @@ const MyForm = (props) => {
             <Stack spacing="4">
               <Box>
                 <Stack direction={`row`}>
-                  <Box flex={1}>
+                  <Box w={'100%'}>
                     <Field
                       errors={errors.LastName}
                       touched={touched.LastName}
@@ -188,10 +189,11 @@ const MyForm = (props) => {
                       type={'text'}
                       handleChange={handleChange}
                       handleBlur={handleBlur}
+                      value={values.LastName}
                     />
                   </Box>
 
-                  <Box flex={1}>
+                  <Box w={'100%'}>
                     <Field
                       errors={errors.FirstName}
                       touched={touched.FirstName}
@@ -200,6 +202,7 @@ const MyForm = (props) => {
                       type={'text'}
                       handleChange={handleChange}
                       handleBlur={handleBlur}
+                      value={values.FirstName}
                     />
                   </Box>
                 </Stack>
@@ -220,10 +223,9 @@ const MyForm = (props) => {
                       mailSuggestion(e.target.value);
                     }}
                     value={values.Email}
-                    _placeholder={{ fontSize: 16 }}
-                    size={'lg'}
+                    size="md"
                   />
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Email}
                   </FormErrorMessage>
                   {suggestion && (
@@ -240,7 +242,7 @@ const MyForm = (props) => {
                         <b>
                           <u>{suggestion}</u>
                         </b>
-                        ?
+                        ？
                       </Text>
                     </Box>
                   )}
@@ -249,14 +251,9 @@ const MyForm = (props) => {
 
               <Box>
                 <HStack align="flex-start">
-                  <Box>
+                  <Box minWidth={'100px'}>
                     <FormControl id="mobileCountryCode">
-                      <Select
-                        name="MobileCountryCode"
-                        onChange={handleChange}
-                        fontSize={'16px'}
-                        size={'lg'}
-                      >
+                      <Select name="MobileCountryCode" onChange={handleChange}>
                         {(formContent.mobile_country_code || []).map((d) => (
                           <option key={d.value} value={d.value}>
                             {d.label}
@@ -265,7 +262,7 @@ const MyForm = (props) => {
                       </Select>
                     </FormControl>
                   </Box>
-                  <Box flex={1}>
+                  <Box w={'100%'}>
                     <Field
                       errors={errors.MobilePhone}
                       touched={touched.MobilePhone}
@@ -274,6 +271,7 @@ const MyForm = (props) => {
                       type="tel"
                       handleChange={handleChange}
                       handleBlur={handleBlur}
+                      value={values.MobilePhone}
                     />
                   </Box>
                 </HStack>
@@ -286,9 +284,8 @@ const MyForm = (props) => {
                 >
                   <Select
                     onChange={handleChange}
-                    fontSize={'16px'}
                     placeholder={formContent.label_year_of_birth}
-                    size={'lg'}
+                    value={values.Birthdate}
                   >
                     {birthDateYear &&
                       birthDateYear.map((d) => (
@@ -297,7 +294,7 @@ const MyForm = (props) => {
                         </option>
                       ))}
                   </Select>
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Birthdate}
                   </FormErrorMessage>
                 </FormControl>
@@ -305,7 +302,7 @@ const MyForm = (props) => {
 
               <Box>
                 <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-                  <Box flex={1} mr={2} pt={1}>
+                  <Box mr={2} pt={1}>
                     <Checkbox
                       name="OptIn"
                       defaultChecked
@@ -337,14 +334,15 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-  mapPropsToValues: ({ props }) => ({
-    Email: '',
-    FirstName: '',
-    LastName: '',
+  enableReinitialize: true,
+  mapPropsToValues: ({ signup }) => ({
+    Email: signup?.preFill?.Email ?? '',
+    FirstName: signup?.preFill?.FirstName ?? '',
+    LastName: signup?.preFill?.LastName ?? '',
     MobileCountryCode: '852',
-    MobilePhone: '',
+    MobilePhone: signup?.preFill?.MobilePhone ?? '',
     OptIn: true,
-    Birthdate: '',
+    Birthdate: signup?.preFill?.Birthdate ?? '',
   }),
 
   validate: async (values, props) => {

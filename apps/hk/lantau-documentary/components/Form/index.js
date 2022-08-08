@@ -1,27 +1,25 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';
-import { Container, Box } from '@chakra-ui/react';
-const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
-import SignupForm from '../WebinarForm';
+import { Box } from '@chakra-ui/react';
+import DonateForm from '@components/GP/DonateForm';
+import SignupForm from '@components/GP/WebinarForm';
+import DonationModule from '@components/GP/DonationModule';
 
 const Index = ({ status }) => {
   const RenderForm = () =>
     status?.submitted ? <DonateForm /> : <SignupForm />;
   return (
-    <Container maxW={'100%'}>
-      <Box
-        mx="auto"
-        bgColor="white"
-        borderRadius={8}
-        boxShadow="lg"
-        overflow="hidden"
-        pos="relative"
-        zIndex={10}
-      >
-        <RenderForm />
-      </Box>
-    </Container>
+    <Box
+      mx="auto"
+      bgColor="white"
+      borderRadius={8}
+      boxShadow="lg"
+      overflow="hidden"
+      pos="relative"
+      zIndex={10}
+    >
+      <RenderForm />
+    </Box>
   );
 };
 

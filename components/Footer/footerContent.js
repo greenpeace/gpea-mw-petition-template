@@ -88,6 +88,10 @@ export const TWChinese = {
       value: 'https://www.greenpeace.org/taiwan/about/contact/',
     },
     {
+      label: '新聞中心',
+      value: 'https://www.greenpeace.org/taiwan/press-media/press-releases/',
+    },
+    {
       label: '關於綠色和平',
       value: 'https://www.greenpeace.org/taiwan/about/overview/',
     },

@@ -31,37 +31,31 @@ class NextDocument extends Document {
               placeholder="FirstName"
               name="FirstName"
               type="text"
-              defaultValue=""
+              defaultValue="DemoFirstName"
             />
             <input
-              placeholder="LastName"
+              placeholder="LastNameName"
               name="LastName"
               type="text"
-              defaultValue=""
+              defaultValue="DemoLastName"
             />
             <input
               placeholder="Email"
               name="Email"
               type="email"
-              defaultValue=""
+              defaultValue="test@test.com"
             />
             <input
               placeholder="MobilePhone"
               name="MobilePhone"
               type="tel"
-              defaultValue=""
+              defaultValue="+852 91234567"
             />
             <input
               placeholder="Birthdate"
               name="Birthdate"
               type="text"
-              defaultValue=""
-            />
-            <input
-              placeholder="MobileCountryCode"
-              name="MobileCountryCode"
-              type="text"
-              defaultValue=""
+              defaultValue="1/1/1999 12:00:00 AM"
             />
             <input
               placeholder="OptIn"

@@ -5,7 +5,7 @@ import { Field } from '@components/Field/fields';
 import { capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
-import axios from "axios";
+import axios from 'axios';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -34,7 +34,7 @@ import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
-import {useRouter} from "next/router";
+import { useRouter } from 'next/router';
 
 const MyForm = (props) => {
   const {
@@ -106,34 +106,6 @@ const MyForm = (props) => {
       setWebStatus(true);
     }
   }, [signup.submitted]);
-
-  useEffect(() => {
-    const selectForm = document.forms['mc-form'];
-    const documentFormsArray = Array.from(selectForm);
-    if (documentFormsArray) {
-      documentFormsArray.map((data) => {
-        if (!data.defaultValue) {
-          return;
-        }
-
-        if (data.name === 'MobilePhone') {
-          setFieldValue('MobileCountryCode', data.defaultValue?.split(' ')[0]);
-          setFieldValue('MobilePhone', data.defaultValue?.split(' ')[1]);
-          return;
-        }
-
-        if (data.name === 'Birthdate') {
-          setFieldValue(
-            'Birthdate',
-            `${data.defaultValue?.split('/')[2].substring(0, 4)}-01-01`,
-          );
-          return;
-        }
-
-        setFieldValue(data.name, data.defaultValue);
-      });
-    }
-  }, []);
 
   const mailSuggestion = (value) => {
     const domains = MAIL_DOMAINS;
@@ -232,10 +204,9 @@ const MyForm = (props) => {
                       mailSuggestion(e.target.value);
                     }}
                     value={values.Email}
-                    _placeholder={{ fontSize: 16 }}
-                    size={'lg'}
+                    size="md"
                   />
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Email}
                   </FormErrorMessage>
                   {suggestion && (
@@ -246,7 +217,7 @@ const MyForm = (props) => {
                       }}
                       pt={2}
                       pl={2}
-                      cursor={`pointer`}
+                      cursor="pointer"
                     >
                       <Text fontSize={`sm`} color={`theme.${themeInterests}`}>
                         {formContent.suggestion_message} <b>{suggestion}</b>
@@ -263,8 +234,6 @@ const MyForm = (props) => {
                       <Select
                         name="MobileCountryCode"
                         onChange={handleChange}
-                        fontSize={'16px'}
-                        size={'lg'}
                         value={values.mobileCountry}
                       >
                         {(formContent.mobile_country_code || []).map((d) => (
@@ -295,12 +264,7 @@ const MyForm = (props) => {
                   id="Birthdate"
                   isInvalid={errors.Birthdate && touched.Birthdate}
                 >
-                  <Select
-                    onChange={handleChange}
-                    fontSize={'16px'}
-                    size={'lg'}
-                    value={values.Birthdate}
-                  >
+                  <Select onChange={handleChange} value={values.Birthdate}>
                     <option value={''}>
                       {formContent.label_year_of_birth}
                     </option>
@@ -311,7 +275,7 @@ const MyForm = (props) => {
                         </option>
                       ))}
                   </Select>
-                  <FormErrorMessage color="red">
+                  <FormErrorMessage px={2} color="var(--error-900)">
                     {errors.Birthdate}
                   </FormErrorMessage>
                 </FormControl>
@@ -382,42 +346,40 @@ const MyEnhancedForm = withFormik({
       CampaignId: isProd ? theme.CampaignId : '7012u000000OxDYAA0',
       LeadSource: LeadSource,
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
-      CompletionURL: completionURL
+      CompletionURL: completionURL,
     };
 
     setSubmitting(true);
     submitForm(formData, endPoint);
 
-    if(!token){
-      return
+    if (!token) {
+      return;
     }
 
     const gSheetFormData = [
       {
         timestamp: Date.now(),
         referral_id: token,
-        referee_id: values.Email
+        referee_id: values.Email,
       },
     ];
 
     axios
-        .post(
-            `https://gsheet-toolkit.small-service.gpeastasia.org/v1/db/referee-registration`,
-            gSheetFormData,
-            {
-              headers: {
-                'content-type': 'application/json',
-              },
-            },
-        )
-        .then(function (res) {
-          return res;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
-
+      .post(
+        `https://gsheet-toolkit.small-service.gpeastasia.org/v1/db/referee-registration`,
+        gSheetFormData,
+        {
+          headers: {
+            'content-type': 'application/json',
+          },
+        },
+      )
+      .then(function (res) {
+        return res;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   },
 
   displayName: 'SignupForm',

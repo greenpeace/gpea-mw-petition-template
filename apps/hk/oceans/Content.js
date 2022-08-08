@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Box, Heading, Text, Image } from '@chakra-ui/react';
+import { Box, Heading, Image, Text } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import contentA from './images/GP0STU61Y_PressMedia.jpg';
-import contentD from './images/GP01B4T_PressMedia.jpg';
+import Image01 from './images/GP0STU61Y_PressMedia.jpg';
+import Image02 from './images/GP01B4T_PressMedia.jpg';
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
@@ -25,13 +25,15 @@ const Content = ({ theme }) => {
         綠色和平正推動各國政府支持《全球海洋公約》，為海洋建立完善保護機制，以長久保護、維持、復育海洋健康，並在2030年前成立至少30%的海洋保護區。
       </Text>
 
-      <Heading {...headingProps}>您願意聯署加入守護海洋行列嗎？</Heading>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+        您願意聯署加入守護海洋行列嗎？
+      </Heading>
 
       <Box {...paragraphProps}>
-        <Image src={contentA} layout="fill" alt="Greenpeace 綠色和平" />
+        <Image src={Image01} layout="fill" alt="Greenpeace 綠色和平" />
       </Box>
 
-      <Heading {...headingProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         海洋正向我們發出求救信號，我們需要施予援手！
       </Heading>
 
@@ -44,14 +46,14 @@ const Content = ({ theme }) => {
       </Text>
 
       <Box {...paragraphProps}>
-        <Image src={contentD} layout="fill" alt="Greenpeace 綠色和平" />
+        <Image src={Image02} layout="fill" alt="Greenpeace 綠色和平" />
       </Box>
 
       <Text as="p" {...paragraphProps}>
         綠色和平正號召全球支持者加入海洋聯署，亦誠意邀請您參與聯署，壯大守護海洋力量。您的力量，是推動2030年前成立至少30%海洋保護區的關鍵。
       </Text>
 
-      <Heading {...headingProps}>
+      <Heading {...headingProps} color={`theme.${themeInterests}`}>
         請即聯署，向正受破壞的美麗大海伸出援手，支持訂立《全球海洋公約》！
       </Heading>
     </>

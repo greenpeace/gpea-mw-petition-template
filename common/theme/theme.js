@@ -1,25 +1,50 @@
 import { extendTheme } from '@chakra-ui/react';
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "../../tailwind.config";
 
 import styles from './styles';
 import colors from './colors';
 import { Button } from './components/Button';
-
-const tailwind = resolveConfig(tailwindConfig);
+import { Link } from './components/Link';
 
 const theme = extendTheme({
   components: {
     Button,
-    Link: {
-      baseStyle: {
-        color: 'blue.500',
-      },
-    },
+    Link,
     Modal: {
       baseStyle: {
         dialogContainer: {
           '@supports(height: -webkit-fill-available)': {},
+        },
+      },
+    },
+    Input: {
+      baseStyle: {
+        field: {
+          fontSize: 'md',
+          minHeight: '48px',
+          background: 'white',
+          borderWidth: 1,
+          _hover: {
+            borderColor: '#66cc00',
+          },
+          _focus: {
+            borderColor: '#66cc00',
+          },
+        },
+      },
+    },
+    Select: {
+      baseStyle: {
+        field: {
+          fontSize: 'md',
+          minHeight: '48px',
+          background: 'white',
+          borderWidth: 1,
+          _hover: {
+            borderColor: '#66cc00',
+          },
+          _focus: {
+            borderColor: '#66cc00',
+          },
         },
       },
     },

@@ -4,10 +4,13 @@ import dynamic from 'next/dynamic';
 import axios from 'axios';
 import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
+import * as signupActions from 'store/actions/action-types/signup-actions';
+import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 
 import {
   hkDevTagManagerArgs,
@@ -17,7 +20,9 @@ import {
 } from '@common/constants/tagManagerArgs';
 
 /* Determine the returned project index by env variable */
-const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
+const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`),{ loading: () => <p>loading</p> });
+
+/* Get env variables */
 const envProjectName = process.env.projectName;
 const envProjectMarket = process.env.projectMarket;
 const themeEndpointURL = process.env.themeEndpoint;
@@ -35,7 +40,8 @@ const initTagManager = (marketName) => {
       default:
         break;
     }
-  } else {
+  }
+  /* else {
     switch (marketName) {
       case 'HK':
         TagManager.initialize(hkDevTagManagerArgs);
@@ -46,52 +52,155 @@ const initTagManager = (marketName) => {
       default:
         break;
     }
-  }
+  } */
 };
 
-function Index({ setTheme, themeData, setSignupNumbers, setWebStatus }) {
+function Index({
+  setTheme,
+  themeData,
+  setSignupNumbers,
+  setWebStatus,
+  setSignFormData,
+}) {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const hiddenFormDefaultValue = useSelector(
+    (state) => state?.hiddenForm?.data,
+  );
 
-  /** page=2 force to result page */
+  /* Set dynamic theme parameters */
   useEffect(() => {
-    const currentPage = router.query?.page;
-    if (currentPage === '2') {
-      setWebStatus(true);
+    if (router.isReady) {
+      /* Cater these query parameters */
+      const {
+        page,
+        step,
+        donation_module_campaign,
+        headline_prefix,
+        hero_image_desktop,
+        hero_image_mobile,
+        // utm_campaign,
+        // utm_source,
+        // utm_medium,
+        // utm_content,
+        // utm_term,
+      } = router.query;
+
+      /* page=2 force to result page */
+      if (page === '2') {
+        setWebStatus(true);
+      }
+
+      /*
+      dispatch({
+        type: hiddenFormActions.SET_HIDDEN_FORM,
+        data: {
+          ...hiddenFormDefaultValue,
+          utm_campaign: utm_campaign,
+          utm_source: utm_source,
+          utm_medium: utm_medium,
+          utm_content: utm_content,
+          utm_term: utm_term,
+        },
+      });
+      */
+
+      dispatch({ type: signupActions.SET_STEP, data: step ?? 'default' });
+      dispatch({
+        type: themeActions.SET_PARAMS,
+        data: {
+          donation_module_campaign,
+          headline_prefix,
+          hero_image_desktop,
+          hero_image_mobile,
+        },
+      });
     }
   }, [router]);
 
   /** Fetch signup data on load */
-  useEffect(async () => {
-    const fetchURLs = {
-      hk: signupNumbersHKURL,
-      tw: signupNumbersTWURL,
-    };
+  useEffect(() => {
+    async function fetchSignupData() {
+      const fetchURLs = {
+        hk: signupNumbersHKURL,
+        tw: signupNumbersTWURL,
+      };
 
-    const signupData = await axios
-      .get(fetchURLs[themeData?.Market])
-      .then((response) => {
-        return response.data.find((d) => d.Id === themeData?.CampaignId);
-      })
-      .catch((error) => console.log(error));
+      const signupData = await axios
+        .get(fetchURLs[themeData?.Market])
+        .then((response) => {
+          return response.data.find((d) => d.Id === themeData?.CampaignId);
+        })
+        .catch((error) => console.log(error));
 
-    setSignupNumbers({ [themeData?.Market]: signupData });
+      setSignupNumbers({ [themeData?.Market]: signupData });
+    }
+    fetchSignupData();
   }, []);
 
+  /* Set parameters to hiddenForm data */
+  useEffect(() => {
+    let params = {};
+
+    window.location.search
+      .slice(1)
+      .split('&')
+      .forEach((elm) => {
+        if (elm === '') return;
+        let spl = elm.split('=');
+        const d = decodeURIComponent;
+        params[d(spl[0])] = spl.length >= 2 ? d(spl[1]) : true;
+      });
+
+    dispatch({
+      type: hiddenFormActions.SET_HIDDEN_FORM,
+      data: params,
+    });
+  }, []);
+
+  /* Pre-fill signup data */
   useEffect(() => {
     const domain = document.location.host;
     const market =
-      themeData?.Market.toUpperCase() ||
-      (domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : ''); // Return 'HK' 'TW' ''
+      themeData?.Market?.toUpperCase() ||
+      (domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : '');
     /* GTM is only applicable for production env */
     initTagManager(market);
-
     setTheme(themeData);
+
+    let FormObj = {};
+    const selectForm = document.forms['mc-form'];
+    const documentFormsArray = Array.from(selectForm);
+    if (documentFormsArray) {
+      documentFormsArray.map((data) => {
+        // missing default value in field
+        if (!data.defaultValue) {
+          return;
+        }
+        // format MobilePhone and CountryCode field
+        if (data.name === 'MobilePhone') {
+          FormObj['MobileCountryCode'] = data.defaultValue
+            ?.split(' ')[0]
+            .replace('+', '');
+          FormObj['MobilePhone'] = data.defaultValue?.split(' ')[1];
+          return;
+        }
+        // format Birthdate field
+        if (data.name === 'Birthdate') {
+          FormObj['Birthdate'] = `${data.defaultValue
+            ?.split('/')[2]
+            .substring(0, 4)}-01-01`;
+          return;
+        }
+        // other normal field
+        FormObj[`${data.name}`] = data.defaultValue ?? '';
+      });
+
+      setSignFormData(FormObj);
+    }
   }, [themeData]);
 
-  if (DynamicComponent) {
-    return <DynamicComponent />;
-  }
-  return <div>Loading...</div>;
+  return <DynamicComponent/>;
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
@@ -106,6 +215,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setWebStatus: (bol) => {
       dispatch({ type: statusActions.SET_FORM_SUBMITTED, data: bol });
+    },
+    setSignFormData: (data) => {
+      dispatch({ type: signupActions.SET_SIGN_UP_FORM_DATA, data });
     },
   };
 };

@@ -42,7 +42,6 @@ const SFFormat = ({ locale }) => {
           <Image src={logo} maxW={'220px'} alt={'Greenpeace 綠色和平'} />
         </Box>
         <Stack
-          as="flex"
           spacing={8}
           direction={{ base: 'column-reverse', md: 'row' }}
           color={'white'}
@@ -59,7 +58,7 @@ const SFFormat = ({ locale }) => {
             </Box>
             <Stack direction="column" spacing={2}>
               {content.link.map((d, i) => (
-                <Box key={i}>
+                <Box key={i} py="4px">
                   <Link
                     href={d.value}
                     target={'_blank'}
