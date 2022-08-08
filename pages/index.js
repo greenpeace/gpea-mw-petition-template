@@ -12,6 +12,8 @@ import * as statusActions from 'store/actions/action-types/status-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 
+import PreviewComponent from '../apps/hk/preview'
+
 import {
   hkDevTagManagerArgs,
   twDevTagManagerArgs,
@@ -20,7 +22,9 @@ import {
 } from '@common/constants/tagManagerArgs';
 
 /* Determine the returned project index by env variable */
-const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
+const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`), {
+  loading: () => '讀取中',
+});
 
 /* Get env variables */
 const envProjectName = process.env.projectName;
@@ -62,12 +66,10 @@ function Index({
   setSignupNumbers,
   setWebStatus,
   setSignFormData,
+  isPreview
 }) {
   const router = useRouter();
   const dispatch = useDispatch();
-  const hiddenFormDefaultValue = useSelector(
-    (state) => state?.hiddenForm?.data,
-  );
 
   /* Set dynamic theme parameters */
   useEffect(() => {
@@ -92,20 +94,6 @@ function Index({
         setWebStatus(true);
       }
 
-      /*
-      dispatch({
-        type: hiddenFormActions.SET_HIDDEN_FORM,
-        data: {
-          ...hiddenFormDefaultValue,
-          utm_campaign: utm_campaign,
-          utm_source: utm_source,
-          utm_medium: utm_medium,
-          utm_content: utm_content,
-          utm_term: utm_term,
-        },
-      });
-      */
-
       dispatch({ type: signupActions.SET_STEP, data: step ?? 'default' });
       dispatch({
         type: themeActions.SET_PARAMS,
@@ -116,7 +104,6 @@ function Index({
           hero_image_mobile,
         },
       });
-      console.log('theme-',theme)
       dispatch({ type: themeActions.SET_STRAPI_DATA, data: theme });
     }
   }, [router]);
@@ -203,10 +190,7 @@ function Index({
     }
   }, [themeData]);
 
-  if (router.isReady && DynamicComponent) {
-    return <DynamicComponent />;
-  }
-  return <div>Loading...</div>;
+  return isPreview ? (<PreviewComponent/>) : (<DynamicComponent />);
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
@@ -228,7 +212,12 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
+  // console.log('context?.query?.preview', context?.query?.preview)
+  // console.log('context?.query?.preview', context?.query?.preview3)
+
+  const isPreview = context?.query?.preview !== undefined
+
   const singleResult = await axios
     .get(themeEndpointURL)
     .then((response) => {
@@ -259,6 +248,7 @@ export async function getStaticProps() {
     props: {
       themeData: singleResult || {},
       theme: theme?.attributes,
+      isPreview: isPreview
     },
   };
 }

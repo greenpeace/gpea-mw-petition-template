@@ -28,9 +28,7 @@ import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
 
 function Index() {
   const dispatch = useDispatch();
-  const signup = useSelector((state) => state?.signup);
   const strapi = useSelector((state) => state?.theme?.strapi);
-  const { step } = signup;
   const submitted = useSelector((state) => state?.status?.submitted);
   const pageType = strapi?.page_type?.data?.attributes?.name
 
@@ -86,6 +84,7 @@ function Index() {
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer>
+              [PREVIEW]
                 {(() => {
                   if (pageType?.toLowerCase() === 'donation') {
                     return <Donation />;
