@@ -30,7 +30,7 @@ function Index() {
   const dispatch = useDispatch();
   const strapi = useSelector((state) => state?.theme?.strapi);
   const submitted = useSelector((state) => state?.status?.submitted);
-  const pageType = strapi?.page_type?.data?.attributes?.name
+  const pageType = strapi?.page_type?.data?.attributes?.name;
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -40,7 +40,7 @@ function Index() {
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
   }, [dispatch]);
-  
+
   return (
     <>
       <SEO />
@@ -49,7 +49,9 @@ function Index() {
           if (pageType?.toLowerCase() === 'donation') {
             return (
               <HeroBanner
-                defaultImage={strapi?.contentHero?.desktopImageURL ?? heroBannerImage}
+                defaultImage={
+                  strapi?.contentHero?.desktopImageURL ?? heroBannerImage
+                }
                 content={{
                   title: strapi?.contentHero?.richContent,
                   description: [''],
@@ -69,7 +71,9 @@ function Index() {
               />
             ) : (
               <HeroBanner
-                defaultImage={strapi?.contentHero?.desktopImageURL ?? heroBannerImage}
+                defaultImage={
+                  strapi?.contentHero?.desktopImageURL ?? heroBannerImage
+                }
                 content={{
                   title: strapi?.contentHero?.richContent,
                   description: [''],
@@ -84,7 +88,7 @@ function Index() {
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer>
-              [PREVIEW]
+                [PREVIEW]
                 {(() => {
                   if (pageType?.toLowerCase() === 'donation') {
                     return <Donation />;
@@ -101,7 +105,12 @@ function Index() {
                     if (pageType?.toLowerCase() === 'donation') {
                       return (
                         <DonationModule
-                          market={strapi?.market?.data?.attributes?.market === 'Hong Kong' ? 'HK' : 'TW'}
+                          market={
+                            strapi?.market?.data?.attributes?.market ===
+                            'Hong Kong'
+                              ? 'HK'
+                              : 'TW'
+                          }
                           language={strapi?.donationModuleLanguage}
                           campaign={strapi?.donationModuleCampaign}
                           env={strapi?.donationModuleEnv}
@@ -110,7 +119,12 @@ function Index() {
                     } else {
                       return submitted ? (
                         <DonationModule
-                           market={strapi?.market?.data?.attributes?.market === 'Hong Kong' ? 'HK' : 'TW'}
+                          market={
+                            strapi?.market?.data?.attributes?.market ===
+                            'Hong Kong'
+                              ? 'HK'
+                              : 'TW'
+                          }
                           language={strapi?.donationModuleLanguage}
                           campaign={strapi?.donationModuleCampaign}
                           env={strapi?.donationModuleEnv}
