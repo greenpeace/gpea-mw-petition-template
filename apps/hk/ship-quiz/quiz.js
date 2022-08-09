@@ -9,7 +9,6 @@ import {
   Center,
   Image,
   Fade,
-  ScaleFade,
 } from '@chakra-ui/react';
 import useImage from './useImage';
 import Answer from './components/Answer';
@@ -23,11 +22,11 @@ const Quiz = ({ quiz, current }) => {
   const currentQuiz = quiz[current];
   const { loading, error, image } = useImage(currentQuiz?.image);
   useEffect(() => {
-    console.log('rendered');
+    // console.log('rendered');
     setIsOpen(false);
     setTimeout(() => {
       setIsOpen(true);
-    }, 400);
+    }, 200);
   }, [currentQuiz]);
   return (
     <>

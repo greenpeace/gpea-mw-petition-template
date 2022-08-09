@@ -1,6 +1,6 @@
 import { Box, Center, Image, Stack } from '@chakra-ui/react';
-import Fade from 'react-reveal/Fade';
 import { connect } from 'react-redux';
+import { motion } from 'framer-motion';
 
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 import bgImage from './images/openingending/2022-ocean-quiz-desktop-kv_compressed.jpg?webp';
@@ -10,7 +10,14 @@ import StartButtonMobile from './images/openingending/start_button.png';
 
 const Landing = ({ setSurveyPage }) => {
   return (
-    <Box minH={'100vh'} mt={{ base: '-55px' }} pos={'relative'}>
+    <Box
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      minH={'100vh'}
+      mt={{ base: '-55px' }}
+      pos={'relative'}
+    >
       <Center w={'100%'}>
         <Stack direction="column">
           {/* Desktop Button */}
