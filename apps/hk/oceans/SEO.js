@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import Script from 'next/script';
-
+import { useSelector } from 'react-redux';
 const SEO = () => {
+  const strapi = useSelector((state) => state?.theme?.strapi);
   return (
     <Head>
       {/* campaign dataLayer */}
@@ -11,7 +12,7 @@ const SEO = () => {
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'oceans',
+            gCampaign: ${strapi?.campaign},
             gBasket: 'sanctuaries',
           });
         `,
@@ -19,23 +20,23 @@ const SEO = () => {
       />
       {/* title */}
       <title>
-        請即聯署支持2030年前成立至少30%海洋保護區 - Greenpeace 綠色和平 | 香港
+       {strapi?.seo?.metaTitle}
       </title>
       <meta
         property="og:title"
-        content="請即聯署支持2030年前成立至少30%海洋保護區 - Greenpeace 綠色和平 | 香港"
+        content={strapi?.seo?.metaTitle}
       />
       <meta
         name="description"
-        content="海洋的面積占地球71%，是世界最大的供氧來源，也孕育豐富的生物多樣性，包含鯨魚、海豚、海龜、珊瑚等美妙海洋生物。然而，海洋現在卻因塑膠污染、非法捕魚、氣候變遷等面臨前所未有的重大生態危機。我們需要更多人一起站出來聯署加入，並捐款資助綠色和平！"
+        content={strapi?.seo?.metaDescription}
       />
       <meta
         property="og:description"
-        content="海洋的面積占地球71%，是世界最大的供氧來源，也孕育豐富的生物多樣性，包含鯨魚、海豚、海龜、珊瑚等美妙海洋生物。然而，海洋現在卻因塑膠污染、非法捕魚、氣候變遷等面臨前所未有的重大生態危機。我們需要更多人一起站出來聯署加入，並捐款資助綠色和平！"
+        content={strapi?.seo?.metaDescription}
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/07/8122f00d-gp01wpp.jpg"
+        content={strapi?.seo?.metaImageURL}
       />
     </Head>
   );

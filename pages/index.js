@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Wrapper from '@containers/wrapper';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
@@ -66,10 +66,10 @@ function Index({
   setSignupNumbers,
   setWebStatus,
   setSignFormData,
-  isPreview
 }) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [isPreview, setIsPreview] = useState(false)
 
   /* Set dynamic theme parameters */
   useEffect(() => {
@@ -82,12 +82,17 @@ function Index({
         headline_prefix,
         hero_image_desktop,
         hero_image_mobile,
+        preview
         // utm_campaign,
         // utm_source,
         // utm_medium,
         // utm_content,
         // utm_term,
       } = router.query;
+
+      if(preview !== undefined){
+        setIsPreview(true)
+      }
 
       /* page=2 force to result page */
       if (page === '2') {
@@ -213,10 +218,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export async function getStaticProps(context) {
-  // console.log('context?.query?.preview', context?.query?.preview)
-  // console.log('context?.query?.preview', context?.query?.preview3)
-
-  const isPreview = context?.query?.preview !== undefined
 
   const singleResult = await axios
     .get(themeEndpointURL)
@@ -247,8 +248,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       themeData: singleResult || {},
-      theme: theme?.attributes,
-      isPreview: isPreview
+      theme: theme?.attributes
     },
   };
 }

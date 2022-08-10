@@ -1,21 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Heading, Text } from '@chakra-ui/react';
-import {
-  headingProps,
-  paragraphProps,
-} from '@common/styles/components/contentStyle';
-import DonateFAQ from '@components/DonateFAQ';
+import { Heading, Box, Text } from '@chakra-ui/react';
+// import {
+//   headingProps,
+//   paragraphProps,
+// } from '@common/styles/components/contentStyle';
+// import DonateFAQ from '@components/DonateFAQ';
 import { useSelector } from 'react-redux';
 
 const Content = () => {
-  const theme = useSelector((state) => state?.theme?.data);
   const signup = useSelector((state) => state?.signup?.data);
   const strapi = useSelector((state) => state?.theme?.strapi);
-  const themeInterests = theme.interests;
+
   return (
     <>
-      <Heading {...headingProps}>您願意進一步拯救脆弱的地球生態嗎？</Heading>
+      {strapi?.contentBlocks?.map((d) => (
+        <Box key={d.id} dangerouslySetInnerHTML={{ __html: d?.richContent }} />
+      ))}
+      {/* <Heading {...headingProps}>您願意進一步拯救脆弱的地球生態嗎？</Heading>
 
       <Text as="p" {...paragraphProps}>
         您的捐款將直接資助我們揭露破壞環境真相、進行嚴謹的科學研究、直接行動，積極遊說政府、企業，凝聚社區力量，倡議對環境有利的政策和解決方案。
@@ -46,7 +48,7 @@ const Content = () => {
         常見問題
       </Heading>
 
-      <DonateFAQ locale="HKChinese" />
+      <DonateFAQ locale="HKChinese" /> */}
     </>
   );
 };
