@@ -1,19 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Box, Heading, Image, Text } from '@chakra-ui/react';
-import {
-  headingProps,
-  paragraphProps,
-} from '@common/styles/components/contentStyle';
-
-import Image01 from './images/GP0STU61Y_PressMedia.jpg';
-import Image02 from './images/GP01B4T_PressMedia.jpg';
+// import {
+//   headingProps,
+//   paragraphProps,
+// } from '@common/styles/components/contentStyle';
+import { useSelector, useDispatch } from 'react-redux';
+// import Image01 from './images/GP0STU61Y_PressMedia.jpg';
+// import Image02 from './images/GP01B4T_PressMedia.jpg';
 
 const Content = ({ theme }) => {
   const themeInterests = theme.interests;
+  const strapi = useSelector((state) => state?.theme?.strapi);
   return (
     <>
-      <Heading {...headingProps} color={`theme.${themeInterests}`}>
+     {strapi?.contentBlocks?.map((d) => (
+        <Box key={d.id} dangerouslySetInnerHTML={{ __html: d?.richContent }} />
+      ))}
+      {/* <Heading {...headingProps} color={`theme.${themeInterests}`}>
         聯署守護海洋
       </Heading>
 
@@ -55,7 +59,7 @@ const Content = ({ theme }) => {
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
         請即聯署，向正受破壞的美麗大海伸出援手，支持訂立《全球海洋公約》！
-      </Heading>
+      </Heading> */}
     </>
   );
 };

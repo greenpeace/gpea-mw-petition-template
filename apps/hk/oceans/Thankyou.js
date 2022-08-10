@@ -11,9 +11,14 @@ const Thankyou = () => {
   const signup = useSelector((state) => state?.signup?.data);
   const themeInterests = theme.interests;
 
+  const strapi = useSelector((state) => state?.theme?.strapi);
+
   return (
     <>
-      <Heading {...headingProps}>
+      {strapi?.thankyouBlocks?.map((d) => (
+        <Box key={d.id} dangerouslySetInnerHTML={{ __html: d?.richContent }} />
+      ))}
+      {/* <Heading {...headingProps}>
         感謝您聯署支持成立全球海洋保護區與訂立《全球海洋公約》。
       </Heading>
 
@@ -44,7 +49,7 @@ const Thankyou = () => {
 
       <Text as="p" {...paragraphProps}>
         向美麗大海伸出援手，捐助綠色和平海洋工作。
-      </Text>
+      </Text> */}
     </>
   );
 };

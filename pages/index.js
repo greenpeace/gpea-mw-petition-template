@@ -212,7 +212,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   // console.log('context?.query?.preview', context?.query?.preview)
   // console.log('context?.query?.preview', context?.query?.preview3)
 
