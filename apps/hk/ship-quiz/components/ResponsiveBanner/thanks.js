@@ -9,7 +9,7 @@ import {
   AspectRatio,
 } from '@chakra-ui/react';
 import PageContainer from '@containers/pageContainer';
-// import SocialButton from '@components/SocialButton/socialButton';
+import SocialButton from '@components/SocialButton/socialButton';
 
 const iconWrapProps = {
   bgColor: '#FFF',
@@ -45,7 +45,7 @@ export default function Index({
                       as="h1"
                       fontSize={{
                         base: 'var(--text-md)',
-                        md: 'var(--text-md)',
+                        md: 'var(--text-lg)',
                       }}
                       color="#0075BA"
                       textShadow="0 0 1px rgba(0,0,0, .2)"
