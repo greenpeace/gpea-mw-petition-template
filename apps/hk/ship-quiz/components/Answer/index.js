@@ -35,13 +35,13 @@ const Quiz = ({
             key={i}
             p={4}
             border="2px"
-            borderColor='white'
+            borderColor="blue.400"
             borderRadius={'md'}
-            bgColor={selected ? 'white' : 'blue.400'}
-            color={selected ? 'blue.400' : 'white'}
+            bgColor={selected ? 'blue.400' : 'white'}
+            color={selected ? 'rgba(255,255,255,0.8)' : 'blue.400'}
             cursor="pointer"
             transition="0.2s ease"
-            onClick={async () => {
+            onClick={() => {
               if (currentQuiz.maximum === 1) {
                 setSurveyAnswer({
                   index: current,
@@ -54,8 +54,7 @@ const Quiz = ({
             <Center h="100%">
               <Text
                 fontSize={{ base: 'base', md: 'md' }}
-                fontWeight={700}
-                lineHeight="1.7"
+                fontWeight={500}
                 letterSpacing="1px"
                 dangerouslySetInnerHTML={{ __html: d.label }}
               ></Text>

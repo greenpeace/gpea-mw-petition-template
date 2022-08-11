@@ -24,7 +24,7 @@ export default function Index({
   const { loading, error, image } = useImage(quizResult?.image);
   return (
     <>
-      <Box py={8} px={4}>
+      <Box py={4} px={4}>
         <Stack spacing="4">
           {content.title && (
             <Heading
@@ -39,7 +39,7 @@ export default function Index({
               dangerouslySetInnerHTML={{ __html: content.title }}
             />
           )}
-          {content.description && (
+          {/* {content.description && (
             <Box>
               <Stack spacing="4">
                 {content.description.map((d, i) => (
@@ -52,15 +52,16 @@ export default function Index({
                 ))}
               </Stack>
             </Box>
-          )}
+          )} */}
           {children && <Box>{children}</Box>}
-          <Center h="100%">
+          <Center h="100%" mt="0">
             <Box position="relative">
               <Image
                 src={image}
                 pos={'relative'}
                 p="4"
                 maxW={{ base: '240px', md: '320px' }}
+                loading="eager"
               />
             </Box>
           </Center>
@@ -76,24 +77,12 @@ export default function Index({
               </Text>
             </Box>
           </Flex>
-          <Box>
-            <Text
-              as="p"
-              fontSize={{
-                base: 'var(--text-sm)',
-                md: 'var(--text-md)',
-              }}
-              color="#0075BA"
-              fontWeight="bold"
-            >
-              {quizResult?.title}
-            </Text>
-          </Box>
-          <Box>
-            <Text as="p" color={'#0075BA'}>
-              {quizResult?.content}
-            </Text>
-          </Box>
+          <Text as="p" color="#0075BA" fontWeight="bold">
+            {quizResult?.title}
+          </Text>
+          <Text as="p" color={'#0075BA'}>
+            {quizResult?.content}
+          </Text>
         </Stack>
       </Box>
 
