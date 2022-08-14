@@ -45,28 +45,80 @@ function Index() {
     <>
       <SEO />
       <Box>
-        <RenderBanner
-          pageType={pageType}
-          strapi={strapi}
-          submitted={submitted}
-        />
+        {(() => {
+          if (pageType?.toLowerCase() === 'donation') {
+            return (
+              <HeroBanner
+                defaultImage={
+                  strapi?.contentHero?.desktopImageURL ?? heroBannerImage
+                }
+                content={{
+                  title: strapi?.contentHero?.richContent,
+                  description: [''],
+                }}
+              />
+            );
+          } else {
+            return submitted ? (
+              <ThanksBanner
+                defaultImage={
+                  strapi?.thankyouHero?.desktopImageURL ?? heroBannerImage
+                }
+                content={{
+                  title: strapi?.thankyouHero?.richContent,
+                  description: [''],
+                }}
+              />
+            ) : (
+              <HeroBanner
+                defaultImage={
+                  strapi?.contentHero?.desktopImageURL ?? heroBannerImage
+                }
+                content={{
+                  title: strapi?.contentHero?.richContent,
+                  description: [''],
+                }}
+              />
+            );
+          }
+        })()}
       </Box>
       <PageContainer>
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer>
-                <RenderContent pageType={pageType} submitted={submitted} />
+                {(() => {
+                  if (pageType?.toLowerCase() === 'donation') {
+                    return <Donation />;
+                  } else {
+                    return submitted ? <Thankyou /> : <Content />;
+                  }
+                })()}
               </ContentContainer>
             </Box>
             <Box flex={1} ref={FormRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  <RenderForm
-                    pageType={pageType}
-                    strapi={strapi}
-                    submitted={submitted}
-                  />
+                  {(() => {
+                    if (pageType?.toLowerCase() === 'donation' || submitted) {
+                      return (
+                        <DonationModule
+                          market={
+                            strapi?.market?.data?.attributes?.market ===
+                            'Hong Kong'
+                              ? 'HK'
+                              : 'TW'
+                          }
+                          language={strapi?.donationModuleLanguage}
+                          campaign={strapi?.donationModuleCampaign}
+                          env={strapi?.donationModuleEnv}
+                        />
+                      );
+                    } else {
+                      return <SignupForm />;
+                    }
+                  })()}
                 </Box>
               </FormContainer>
             </Box>
@@ -78,72 +130,5 @@ function Index() {
     </>
   );
 }
-
-const RenderBanner = ({ pageType, strapi, submitted }) => {
-  if (!pageType) {
-    return <></>;
-  }
-
-  if (pageType?.toLowerCase() === 'donation') {
-    return (
-      <HeroBanner
-        defaultImage={strapi?.contentHero?.desktopImageURL ?? heroBannerImage}
-        content={{
-          title: strapi?.contentHero?.richContent,
-          description: [''],
-        }}
-      />
-    );
-  }
-
-  return submitted ? (
-    <ThanksBanner
-      defaultImage={strapi?.thankyouHero?.desktopImageURL ?? heroBannerImage}
-      content={{
-        title: strapi?.thankyouHero?.richContent,
-        description: [''],
-      }}
-    />
-  ) : (
-    <HeroBanner
-      defaultImage={strapi?.contentHero?.desktopImageURL ?? heroBannerImage}
-      content={{
-        title: strapi?.contentHero?.richContent,
-        description: [''],
-      }}
-    />
-  );
-};
-
-const RenderContent = ({ pageType }) => {
-  if (!pageType) {
-    return <></>;
-  }
-  if (pageType?.toLowerCase() === 'donation') {
-    return <Donation />;
-  }
-
-  return submitted ? <Thankyou /> : <Content />;
-};
-
-const RenderForm = ({ pageType, strapi, submitted }) => {
-  if (!pageType) {
-    return <></>;
-  }
-  if (pageType?.toLowerCase() === 'donation' || submitted) {
-    return (
-      <DonationModule
-        market={
-          strapi?.market?.data?.attributes?.market === 'Hong Kong' ? 'HK' : 'TW'
-        }
-        language={strapi?.donationModuleLanguage}
-        campaign={strapi?.donationModuleCampaign}
-        env={strapi?.donationModuleEnv}
-      />
-    );
-  }
-
-  return <SignupForm />;
-};
 
 export default Index;
