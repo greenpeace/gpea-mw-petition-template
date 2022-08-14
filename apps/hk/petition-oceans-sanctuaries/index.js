@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
 import * as formActions from 'store/actions/action-types/form-actions';
-import * as themeActions from 'store/actions/action-types/theme-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
 import { Box, Flex } from '@chakra-ui/react';
@@ -33,7 +31,7 @@ function Index() {
   const strapi = useSelector((state) => state?.theme?.strapi);
   const submitted = useSelector((state) => state?.status?.submitted);
   const pageType = strapi?.page_type?.data?.attributes?.name;
-  const router = useRouter();
+
   const [ref, inView] = useInView({
     threshold: 0,
   });
@@ -42,27 +40,6 @@ function Index() {
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
   }, [dispatch]);
-
-  useEffect(
-    async () => {
-      if (router?.isReady) {
-        const { preview } = router?.query;
-
-        const endpoint = 'https://strapi.small-service.gpeastasia.org/api'
-        const res = await fetch(
-          `${endpoint}/pages?filters[campaign][$eq]=${preview}&populate=*`,
-        ).then((response) => response);
-        const themes = await res.json();
-        const theme = themes?.data[0] ?? {};
-
-        dispatch({
-          type: themeActions.SET_STRAPI_DATA,
-          data: theme?.attributes,
-        });
-      }
-    },
-    [router],
-  );
 
   return (
     <>
@@ -79,7 +56,6 @@ function Index() {
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer>
-                [preview]
                 <RenderContent pageType={pageType} submitted={submitted} />
               </ContentContainer>
             </Box>
@@ -139,7 +115,7 @@ const RenderBanner = ({ pageType, strapi, submitted }) => {
   );
 };
 
-const RenderContent = ({ pageType }) => {
+const RenderContent = ({ pageType, submitted }) => {
   if (!pageType) {
     return <></>;
   }
