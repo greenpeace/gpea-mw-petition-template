@@ -99,11 +99,11 @@ function Index({ status, theme, setFormContent, signup }) {
                 <Box ref={ref}>
                   {submitted ? (
                     <DonationModule
-                      market={theme.Market}
+                      market={'TW'}
                       language={'zh_TW'}
                       campaign={'oceans'}
                       // campaignId={''}
-                      env={'production'}
+                      env={'test'}
                     />
                   ) : (
                     <SignupForm />
