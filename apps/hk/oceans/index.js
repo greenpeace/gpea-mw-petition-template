@@ -39,7 +39,7 @@ function Index() {
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
   }, [dispatch]);
-
+  
   return (
     <>
       <SEO />

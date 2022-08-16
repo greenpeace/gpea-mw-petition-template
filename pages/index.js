@@ -12,7 +12,7 @@ import * as statusActions from 'store/actions/action-types/status-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 
-import PreviewComponent from '../apps/hk/preview'
+import PreviewComponent from '../apps/hk/preview';
 
 import {
   hkDevTagManagerArgs,
@@ -69,7 +69,7 @@ function Index({
 }) {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [isPreview, setIsPreview] = useState(false)
+  const [isPreview, setIsPreview] = useState(false);
 
   /* Set dynamic theme parameters */
   useEffect(() => {
@@ -82,7 +82,7 @@ function Index({
         headline_prefix,
         hero_image_desktop,
         hero_image_mobile,
-        preview
+        preview,
         // utm_campaign,
         // utm_source,
         // utm_medium,
@@ -90,8 +90,8 @@ function Index({
         // utm_term,
       } = router.query;
 
-      if(preview !== undefined){
-        setIsPreview(true)
+      if (preview !== undefined) {
+        setIsPreview(true);
       }
 
       /* page=2 force to result page */
@@ -195,7 +195,7 @@ function Index({
     }
   }, [themeData]);
 
-  return isPreview ? (<PreviewComponent/>) : (<DynamicComponent />);
+  return isPreview ? <PreviewComponent /> : <DynamicComponent />;
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
@@ -218,7 +218,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export async function getStaticProps(context) {
-
   const singleResult = await axios
     .get(themeEndpointURL)
     .then((response) => {
@@ -233,14 +232,14 @@ export async function getStaticProps(context) {
 
   !singleResult && console.warn('PROJECT NAME NOT FOUND');
 
-  const app = envProjectName ?? "";
+  const app = envProjectName ?? '';
 
   const endpoint =
-    process.env.NODE_ENV === "development"
+    process.env.NODE_ENV === 'development'
       ? process.env.API_ENDPOINT_LOCAL
       : process.env.API_ENDPOINT;
   const res = await fetch(
-    `${endpoint}/pages?filters[market][slug][$eq]=hk&[campaign][$eq]=${app}&populate=*`
+    `${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate=*`,
   ).then((response) => response);
   const themes = await res.json();
   const theme = themes?.data[0] ?? {};
@@ -248,7 +247,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       themeData: singleResult || {},
-      theme: theme?.attributes
+      theme: theme?.attributes,
     },
   };
 }
