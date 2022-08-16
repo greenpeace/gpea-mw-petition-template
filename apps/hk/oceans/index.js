@@ -24,7 +24,6 @@ import Thankyou from './Thankyou';
 import formContent from './form';
 import SEO from './SEO';
 // Import static
-import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
 
 function Index() {
   const dispatch = useDispatch();
@@ -50,7 +49,7 @@ function Index() {
             return (
               <HeroBanner
                 defaultImage={
-                  strapi?.contentHero?.desktopImageURL ?? heroBannerImage
+                  strapi?.contentHero?.desktopImageURL
                 }
                 content={{
                   title: strapi?.contentHero?.richContent,
@@ -62,7 +61,7 @@ function Index() {
             return submitted ? (
               <ThanksBanner
                 defaultImage={
-                  strapi?.thankyouHero?.desktopImageURL ?? heroBannerImage
+                  strapi?.thankyouHero?.desktopImageURL
                 }
                 content={{
                   title: strapi?.thankyouHero?.richContent,
@@ -72,7 +71,7 @@ function Index() {
             ) : (
               <HeroBanner
                 defaultImage={
-                  strapi?.contentHero?.desktopImageURL ?? heroBannerImage
+                  strapi?.contentHero?.desktopImageURL
                 }
                 content={{
                   title: strapi?.contentHero?.richContent,
