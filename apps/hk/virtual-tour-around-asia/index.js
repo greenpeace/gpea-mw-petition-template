@@ -39,6 +39,18 @@ function Index({ status, theme, setFormContent, signup }) {
     setFormContent(formContent);
   }, []);
 
+  useEffect(() => {
+    if (submitted) {
+      console.log('submitted');
+      // Send fbq Subscription event
+      window.dataLayer.push({
+        event: 'fbqEvent',
+        contentName: 'annual-report-webinar',
+        contentCategory: 'Subscribe',
+      });
+    }
+  }, [submitted]);
+
   return (
     <>
       <SEO />
@@ -46,11 +58,10 @@ function Index({ status, theme, setFormContent, signup }) {
         <ThanksBanner
           bgImage={heroBannerImage}
           content={{
-            title: `${FirstName ? FirstName : '綠色和平支持者'
-              }，感謝您報名分享會！`,
-            description: [
-              '',
-            ],
+            title: `${
+              FirstName ? FirstName : '綠色和平支持者'
+            }，感謝您報名分享會！`,
+            description: [''],
           }}
           removeMask={false}
           imageSrcset={[
