@@ -19,7 +19,7 @@ const Thankyou = ({ theme, signup }) => {
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        確認電郵將於 20 分鐘內向您發送，內含講座連結和密碼，敬請留意。活動開始前一小時，綠色和平會向您發送電郵和短訊提醒。
+        確認電郵將於 12 小時內向您發送，內含講座連結和密碼，敬請留意。活動開始前一小時，綠色和平會向您發送電郵和短訊提醒。
       </Text>
 
       <Text as="p" {...paragraphProps}>
