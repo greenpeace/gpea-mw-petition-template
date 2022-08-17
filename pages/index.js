@@ -242,12 +242,12 @@ export async function getStaticProps(context) {
     `${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate=*`,
   ).then((response) => response);
   const themes = await res.json();
-  const theme = themes?.data[0] ?? {};
+  const theme = themes?.data[0] !== undefined ? themes?.data[0]?.attributes : {};
 
   return {
     props: {
       themeData: singleResult || {},
-      theme: theme?.attributes,
+      theme: theme,
     },
   };
 }
