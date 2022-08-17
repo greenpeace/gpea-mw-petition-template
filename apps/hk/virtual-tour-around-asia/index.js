@@ -39,6 +39,19 @@ function Index({ status, theme, setFormContent, signup }) {
     setFormContent(formContent);
   }, []);
 
+  useEffect(() => {
+    if (submitted) {
+      //
+      window.dataLayer = window.dataLayer || [];
+
+      window.dataLayer.push({
+        event: 'fbqEvent',
+        contentName: 'annual-report-webinar',
+        contentCategory: 'Subscribe',
+      });
+    }
+  }, [submitted]);
+
   return (
     <>
       <SEO />
@@ -46,10 +59,11 @@ function Index({ status, theme, setFormContent, signup }) {
         <ThanksBanner
           bgImage={heroBannerImage}
           content={{
-            title: `${FirstName ? FirstName : '綠色和平支持者'
-              }，感謝您報名分享會！`,
+            title: `${
+              FirstName ? FirstName : '綠色和平支持者'
+            }，感謝您報名分享會！`,
             description: [
-              '',
+              '確認電郵將於 12 小時內向您發送，內含講座連結和密碼，敬請留意。活動開始前一小時，綠色和平會向您發送電郵和短訊提醒。',
             ],
           }}
           removeMask={false}
@@ -88,7 +102,7 @@ function Index({ status, theme, setFormContent, signup }) {
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer theme={theme}>
+              <ContentContainer>
                 {submitted ? <Thankyou /> : <Content />}
               </ContentContainer>
             </Box>
@@ -97,9 +111,9 @@ function Index({ status, theme, setFormContent, signup }) {
                 <Box ref={ref}>
                   {submitted ? (
                     <DonationModule
-                      market={theme.Market}
+                      market={'HK'}
                       language={'zh_HK'}
-                      campaign={'plastics'}
+                      campaign={'general'}
                       // campaignId={''}
                       env={'production'}
                     />
