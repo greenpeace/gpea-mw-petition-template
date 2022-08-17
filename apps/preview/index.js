@@ -42,27 +42,24 @@ function Index() {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
   }, [dispatch]);
 
-  useEffect(
-    async () => {
-      if (router?.isReady) {
-        const envProjectMarket = process.env.projectMarket;
-        const { preview } = router?.query;
-        const endpoint = 'https://strapi.small-service.gpeastasia.org/api'
-        const res = await fetch(
-          `${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${preview}&populate=*`,
-        ).then((response) => response);
-        const themes = await res.json();
-        const theme = themes?.data[0] ?? {};
+  useEffect(async () => {
+    if (router?.isReady) {
+      const envProjectMarket = process.env.projectMarket;
+      const { preview } = router?.query;
+      const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
+      const res = await fetch(
+        `${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${preview}&populate=*`,
+      ).then((response) => response);
+      const themes = await res.json();
+      const theme = themes?.data[0] ?? {};
 
-        dispatch({
-          type: themeActions.SET_STRAPI_DATA,
-          data: theme?.attributes,
-        });
-      }
-    },
-    [router],
-  );
-  
+      dispatch({
+        type: themeActions.SET_STRAPI_DATA,
+        data: theme?.attributes,
+      });
+    }
+  }, [router]);
+
   return (
     <>
       <SEO />
@@ -71,9 +68,7 @@ function Index() {
           if (pageType?.toLowerCase() === 'donation') {
             return (
               <HeroBanner
-                defaultImage={
-                  strapi?.contentHero?.desktopImageURL
-                }
+                defaultImage={strapi?.contentHero?.desktopImageURL}
                 content={{
                   title: strapi?.contentHero?.richContent,
                   description: [''],
@@ -83,9 +78,7 @@ function Index() {
           } else {
             return submitted ? (
               <ThanksBanner
-                defaultImage={
-                  strapi?.thankyouHero?.desktopImageURL
-                }
+                defaultImage={strapi?.thankyouHero?.desktopImageURL}
                 content={{
                   title: strapi?.thankyouHero?.richContent,
                   description: [''],
@@ -93,9 +86,7 @@ function Index() {
               />
             ) : (
               <HeroBanner
-                defaultImage={
-                  strapi?.contentHero?.desktopImageURL
-                }
+                defaultImage={strapi?.contentHero?.desktopImageURL}
                 content={{
                   title: strapi?.contentHero?.richContent,
                   description: [''],
@@ -147,7 +138,7 @@ function Index() {
           </Flex>
         </OverflowWrapper>
       </PageContainer>
-      <PetitionFooter locale={'HKChinese'} />
+      {/* <PetitionFooter locale={'HKChinese'} /> */}
       <ScrollToTargetButton target={FormRef} targetInView={inView} />
     </>
   );

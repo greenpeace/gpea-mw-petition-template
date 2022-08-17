@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Wrapper from '@containers/wrapper';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
 import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
-
-import PreviewComponent from '../apps/hk/preview';
 
 import {
   hkDevTagManagerArgs,
@@ -69,7 +67,6 @@ function Index({
 }) {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [isPreview, setIsPreview] = useState(false);
 
   /* Set dynamic theme parameters */
   useEffect(() => {
@@ -82,17 +79,12 @@ function Index({
         headline_prefix,
         hero_image_desktop,
         hero_image_mobile,
-        preview,
         // utm_campaign,
         // utm_source,
         // utm_medium,
         // utm_content,
         // utm_term,
       } = router.query;
-
-      if (preview !== undefined) {
-        setIsPreview(true);
-      }
 
       /* page=2 force to result page */
       if (page === '2') {
@@ -195,7 +187,7 @@ function Index({
     }
   }, [themeData]);
 
-  return isPreview ? <PreviewComponent /> : <DynamicComponent />;
+  return <DynamicComponent />;
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
@@ -242,7 +234,8 @@ export async function getStaticProps(context) {
     `${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate=*`,
   ).then((response) => response);
   const themes = await res.json();
-  const theme = themes?.data[0] !== undefined ? themes?.data[0]?.attributes : {};
+  const theme =
+    themes?.data[0] !== undefined ? themes?.data[0]?.attributes : {};
 
   return {
     props: {
