@@ -90,6 +90,8 @@ function Index({
     if (submitted) {
       console.log('submitted');
       // Send fbq Subscription event
+      window.dataLayer = window.dataLayer || [];
+
       window.dataLayer.push({
         event: 'fbqEvent',
         contentName: 'ship-quiz',
