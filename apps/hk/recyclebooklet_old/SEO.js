@@ -19,12 +19,12 @@ const SEO = () => {
       />
       {/* title */}
       <title>
-        立即下載：裸買地圖、重用系統與紙包飲品盒回收全攻略（增訂版）｜電子指南 - Greenpeace
+        立即下載：裸買地圖、重用資源與紙包飲品盒回收全攻略（增訂版）｜電子指南 - Greenpeace
         綠色和平 | 香港
       </title>
       <meta
         property="og:title"
-        content="立即下載：裸買地圖、重用系統與紙包飲品盒回收全攻略（增訂版）｜電子指南 - Greenpeace 綠色和平 | 香港"
+        content="立即下載：裸買地圖、重用資源與紙包飲品盒回收全攻略（增訂版）｜電子指南 - Greenpeace 綠色和平 | 香港"
       />
       <meta
         name="description"
