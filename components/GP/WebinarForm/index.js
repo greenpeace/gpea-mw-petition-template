@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
-import { capitalize, clearURL } from '@common/utils';
+import { numberFormat, capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
@@ -13,6 +13,7 @@ import {
   FormErrorMessage,
   Button,
   Box,
+  Flex,
   Text,
   HStack,
   Stack,
@@ -20,7 +21,6 @@ import {
   Input,
   Heading,
   useDisclosure,
-  Flex,
 } from '@chakra-ui/react';
 import {
   MAIL_DOMAINS,
@@ -52,6 +52,7 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
+    setValues,
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -150,35 +151,37 @@ const MyForm = (props) => {
           </Box>
           <Form onSubmit={handleSubmit}>
             <Stack spacing="4">
-              <Stack direction={`row`}>
-                <Box flex={1}>
-                  <Field
-                    errors={errors.LastName}
-                    touched={touched.LastName}
-                    label={formContent.label_last_name}
-                    name={'LastName'}
-                    type={'text'}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                    value={values.LastName}
-                  />
-                </Box>
+              <Box>
+                <Stack direction={`row`}>
+                  <Box w={'100%'}>
+                    <Field
+                      errors={errors.LastName}
+                      touched={touched.LastName}
+                      label={formContent.label_last_name}
+                      name={'LastName'}
+                      type={'text'}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                      value={values.LastName}
+                    />
+                  </Box>
 
-                <Box flex={1}>
-                  <Field
-                    errors={errors.FirstName}
-                    touched={touched.FirstName}
-                    label={formContent.label_first_name}
-                    name={'FirstName'}
-                    type={'text'}
-                    handleChange={handleChange}
-                    handleBlur={handleBlur}
-                    value={values.FirstName}
-                  />
-                </Box>
-              </Stack>
+                  <Box w={'100%'}>
+                    <Field
+                      errors={errors.FirstName}
+                      touched={touched.FirstName}
+                      label={formContent.label_first_name}
+                      name={'FirstName'}
+                      type={'text'}
+                      handleChange={handleChange}
+                      handleBlur={handleBlur}
+                      value={values.FirstName}
+                    />
+                  </Box>
+                </Stack>
+              </Box>
 
-              <Box flex={1}>
+              <Box>
                 <FormControl
                   id="email"
                   isInvalid={errors.Email && touched.Email}
@@ -204,11 +207,10 @@ const MyForm = (props) => {
                         setFieldValue('Email', suggestion);
                         initSuggestion();
                       }}
-                      pt={2}
-                      pl={2}
-                      cursor="pointer"
+                      p={2}
+                      cursor={'pointer'}
                     >
-                      <Text fontSize={`sm`} color={`theme.${themeInterests}`}>
+                      <Text fontSize={'sm'} color={`theme.${themeInterests}`}>
                         {formContent.suggestion_message}
                         <b>
                           <u>{suggestion}</u>
@@ -222,13 +224,9 @@ const MyForm = (props) => {
 
               <Box>
                 <HStack align="flex-start">
-                  <Box>
+                  <Box minWidth={'100px'}>
                     <FormControl id="mobileCountryCode">
-                      <Select
-                        name="MobileCountryCode"
-                        onChange={handleChange}
-                        value={values.mobileCountry}
-                      >
+                      <Select name="MobileCountryCode" onChange={handleChange}>
                         {(formContent.mobile_country_code || []).map((d) => (
                           <option key={d.value} value={d.value}>
                             {d.label}
@@ -237,7 +235,7 @@ const MyForm = (props) => {
                       </Select>
                     </FormControl>
                   </Box>
-                  <Box flex={1}>
+                  <Box w={'100%'}>
                     <Field
                       errors={errors.MobilePhone}
                       touched={touched.MobilePhone}
@@ -257,10 +255,11 @@ const MyForm = (props) => {
                   id="Birthdate"
                   isInvalid={errors.Birthdate && touched.Birthdate}
                 >
-                  <Select onChange={handleChange} value={values.Birthdate}>
-                    <option value={''}>
-                      {formContent.label_year_of_birth}
-                    </option>
+                  <Select
+                    onChange={handleChange}
+                    placeholder={formContent.label_year_of_birth}
+                    value={values.Birthdate}
+                  >
                     {birthDateYear &&
                       birthDateYear.map((d) => (
                         <option key={d.value} value={`${d.value}-01-01`}>
@@ -299,14 +298,15 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-  mapPropsToValues: () => ({
-    Email: '',
-    FirstName: '',
-    LastName: '',
+  enableReinitialize: true,
+  mapPropsToValues: ({ signup }) => ({
+    Email: signup?.preFill?.Email ?? '',
+    FirstName: signup?.preFill?.FirstName ?? '',
+    LastName: signup?.preFill?.LastName ?? '',
     MobileCountryCode: '852',
-    MobilePhone: '',
+    MobilePhone: signup?.preFill?.MobilePhone ?? '',
     OptIn: true,
-    Birthdate: '',
+    Birthdate: signup?.preFill?.Birthdate ?? '',
   }),
 
   validate: async (values, props) => {
