@@ -1,8 +1,9 @@
 {
-  "form_header": "下載裸買重用回收攻略 盡覽裸買地圖與回收須知",
-  "form_description": "完成登記後，電子書連結將於15分鐘內以短訊及電子郵件傳送給您，敬請留意。",
+  "form_header": "下載裸買回收攻略 盡覽裸買地圖與回收須知",
+  "form_description": "登記後，請於數分鐘內檢查電子郵箱，以下載電子指南。",
   "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
-  "signed_number": "",
+  "signed_number": "已聯署人數",
+
   "label_yes": "是",
   "label_no": "否",
   "label_name": "稱謂",
@@ -24,13 +25,12 @@
   "suggestion_message": "您是否想輸入",
 
   "submit_text": "立即下載",
-  "mobile_fixed_cta": "立即捐款",
   "thanks_title": "",
   "thanks_ask": "",
   "thanks_content": "",
   "share_button": "分享出去",
   "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=oceans_mw",
+  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=plastics_mw",
   "shareMessage": "",
   "fbURL": "",
   "mainURL": "",
@@ -45,13 +45,13 @@
     { "label": "否", "value": false }
   ],
 
-  "donate_header": "請捐助守護海洋工作",
+  "donate_header": "請捐助支持走塑工作",
   "donate_description": [
-    "您的捐助，將有效地、直接地保護全球海洋，令海洋回復健康。"
+    "我要捐款解決塑膠污染問題，令海洋、環境逐步回復潔淨健康。每月$200捐款支持綠色和平的項目工作，即可以慈善捐款免稅額扣稅，同時獲得「環保手作工作坊」或導賞團的機會！"
   ],
-  "default_message": "支持發起全球連署行動，擴大要求制定「全球海洋公約」的聲音力量！",
-  "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
-  "donate_suggestion_message": "感謝您對綠色和平的支持！每月捐款可令環保項目得到更持久的成效，為地球嬴取更大的環保成果。",
+  "default_message": "資助4次社區工作坊，建立無塑社區網絡",
+  "donate_suggestion_header": "資助3次實驗室化驗，分析塑膠污染的影響",
+  "donate_suggestion_message": "資助2本研究報告的出版，呈現塑膠污染的影響",
   "currency": "HKD",
   "default_amount": 100,
   "default_monthly": 100,
@@ -69,19 +69,19 @@
     {
       "label": "500",
       "value": 500,
-      "description": "資助2張高清衛星圖片，揭露海洋破壞真相",
+      "description": "資助2支橫額製作，讓走塑聲音遍地開花",
       "currency": "HKD"
     },
     {
       "label": "700",
       "value": 700,
-      "description": "資助3件個人防護裝備，讓調查員在海上安全執行研究任務",
+      "description": "資助3次義工培訓，令更多人成為環境行動者",
       "currency": "HKD"
     },
     {
       "label": "900",
       "value": 900,
-      "description": "資助2名項目主任參與國際海洋會議，推動跨地域的政策改變",
+      "description": "資助2次企業高峰會，鼓勵商界探納更多無塑措施",
       "currency": "HKD"
     },
     {
@@ -94,19 +94,19 @@
     {
       "label": "100",
       "value": 100,
-      "description": "資助2次實地考察，以前線記錄呈現海洋危機真相",
+      "description": "資助4次社區工作坊，建立無塑社區網絡",
       "currency": "HKD"
     },
     {
       "label": "200",
       "value": 200,
-      "description": "資助3次實驗室化驗，為海洋保育提供有力證據",
+      "description": "資助3次實驗室化驗，分析塑膠污染的影響",
       "currency": "HKD"
     },
     {
       "label": "300",
       "value": 300,
-      "description": "資助4天的船隊運作，助船隊遠航公海，截擊海洋破壞者",
+      "description": "資助2本研究報告的出版，呈現塑膠污染的影響",
       "currency": "HKD"
     },
     {

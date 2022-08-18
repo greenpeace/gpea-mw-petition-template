@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 import DonateForm from '@components/GP/DonateForm';
 import SignupForm from '@components/GP/WebinarForm';
 import DonationModule from '@components/GP/DonationModule';
-const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
+// const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 
 const Index = ({ status }) => {
   const RenderForm = () =>
