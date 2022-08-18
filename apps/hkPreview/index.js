@@ -44,11 +44,10 @@ function Index() {
 
   useEffect(async () => {
     if (router?.isReady) {
-      const envProjectMarket = process.env.projectMarket;
       const { preview } = router?.query;
       const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
       const res = await fetch(
-        `${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${preview}&populate=*`,
+        `${endpoint}/pages?filters[market][slug]=hk&filters[campaign]=${preview}&populate=*`,
       ).then((response) => response);
       const themes = await res.json();
       const theme = themes?.data[0] ?? {};
@@ -100,7 +99,7 @@ function Index() {
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer>
+              <ContentContainer issue={strapi?.donationModuleCampaign}>
                 {(() => {
                   if (pageType?.toLowerCase() === 'donation') {
                     return <Donation />;
@@ -138,7 +137,7 @@ function Index() {
           </Flex>
         </OverflowWrapper>
       </PageContainer>
-      {/* <PetitionFooter locale={'HKChinese'} /> */}
+      <PetitionFooter locale={'HKChinese'} />
       <ScrollToTargetButton target={FormRef} targetInView={inView} />
     </>
   );
