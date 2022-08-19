@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -32,6 +32,7 @@ function Index() {
   const strapi = useSelector((state) => state?.theme?.strapi);
   const submitted = useSelector((state) => state?.status?.submitted);
   const pageType = strapi?.page_type?.data?.attributes?.name;
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -40,7 +41,10 @@ function Index() {
 
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
-  }, [dispatch]);
+    if(pageType!==undefined){
+      setIsLoaded(true)
+    }
+  }, [dispatch, pageType]);
 
   useEffect(async () => {
     if (router?.isReady) {
@@ -109,7 +113,7 @@ function Index() {
                 })()}
               </ContentContainer>
             </Box>
-            <Box flex={1} ref={FormRef}>
+            <Box flex={1} ref={FormRef} {...{d: isLoaded ? 'block' : 'none' }}>
               <FormContainer>
                 <Box ref={ref}>
                   {(() => {
