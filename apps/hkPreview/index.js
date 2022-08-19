@@ -32,7 +32,7 @@ function Index() {
   const strapi = useSelector((state) => state?.theme?.strapi);
   const submitted = useSelector((state) => state?.status?.submitted);
   const pageType = strapi?.page_type?.data?.attributes?.name;
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -41,8 +41,8 @@ function Index() {
 
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
-    if(pageType!==undefined){
-      setIsLoaded(true)
+    if (pageType !== undefined) {
+      setIsLoaded(true);
     }
   }, [dispatch, pageType]);
 
@@ -113,7 +113,7 @@ function Index() {
                 })()}
               </ContentContainer>
             </Box>
-            <Box flex={1} ref={FormRef} {...{d: isLoaded ? 'block' : 'none' }}>
+            <Box flex={1} ref={FormRef} {...{ d: isLoaded ? 'block' : 'none' }}>
               <FormContainer>
                 <Box ref={ref}>
                   {(() => {

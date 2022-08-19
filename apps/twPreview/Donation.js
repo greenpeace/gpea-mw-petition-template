@@ -17,7 +17,7 @@ const Donation = () => {
           );
         })}
       </div>
-      <DonateFAQ locale="HKChinese" />
+      <DonateFAQ locale="TWChinese" />
     </>
   );
 };
