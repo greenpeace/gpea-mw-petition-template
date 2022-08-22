@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Box, Heading, Text, Image } from '@chakra-ui/react';
 import DonateFAQ from '@components/DonateFAQ';
 
 const Donation = () => {
@@ -17,6 +18,9 @@ const Donation = () => {
           );
         })}
       </div>
+      <Heading as="h2" textAlign="center" py="6" fontSize="2xl">
+        常見問題
+      </Heading>
       <DonateFAQ locale="HKChinese" />
     </>
   );
