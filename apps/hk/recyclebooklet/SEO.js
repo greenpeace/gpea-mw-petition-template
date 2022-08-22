@@ -36,7 +36,7 @@ const SEO = () => {
       />
       <meta
         property="og:image"
-        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/03/39f7fd41-recycle-ebook-preview.jpg"
+        content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/08/791d148e-202208-recycle-booklet-fb-preview.jpg"
       />
     </Head>
   );
