@@ -25,8 +25,9 @@ import formContent from './form';
 function Index() {
   const dispatch = useDispatch();
   const strapi = useSelector((state) => state?.theme?.strapi);
-  const submitted = useSelector((state) => state?.status?.submitted);
   const pageType = strapi?.page_type?.data?.attributes?.name;
+  const submitted = useSelector((state) => state?.status?.submitted);
+  const theme = useSelector((state) => state?.theme);
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -45,28 +46,39 @@ function Index() {
           if (pageType?.toLowerCase() === 'donation') {
             return (
               <HeroBanner
-                defaultImage={strapi?.contentHero?.desktopImageURL}
+                defaultImage={
+                  theme?.params?.hero_image_desktop ||
+                  strapi?.contentHero?.desktopImageURL
+                }
                 content={{
-                  title: strapi?.contentHero?.richContent,
-                  description: [''],
+                  title: theme?.params?.headline_prefix
+                    ? theme?.params?.headline_prefix +
+                      '<br/>' +
+                      strapi?.contentHero?.richContent
+                    : strapi?.contentHero?.richContent,
                 }}
               />
             );
           } else {
             return submitted ? (
               <ThanksBanner
-                defaultImage={strapi?.thankyouHero?.desktopImageURL}
+                defaultImage={
+                  theme?.params?.hero_image_desktop ||
+                  strapi?.thankyouHero?.desktopImageURL
+                }
                 content={{
                   title: strapi?.thankyouHero?.richContent,
-                  description: [''],
                 }}
               />
             ) : (
               <HeroBanner
                 defaultImage={strapi?.contentHero?.desktopImageURL}
                 content={{
-                  title: strapi?.contentHero?.richContent,
-                  description: [''],
+                  title: theme?.params?.headline_prefix
+                    ? theme?.params?.headline_prefix +
+                      '<br/>' +
+                      strapi?.contentHero?.richContent
+                    : strapi?.contentHero?.richContent,
                 }}
               />
             );
@@ -77,7 +89,7 @@ function Index() {
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer>
+              <ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
                 {(() => {
                   if (pageType?.toLowerCase() === 'donation') {
                     return <StrapiDynamicBlocks blocks={'contentBlocks'} />;

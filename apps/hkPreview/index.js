@@ -76,16 +76,11 @@ function Index() {
                   strapi?.contentHero?.desktopImageURL
                 }
                 content={{
-                  title:
-                    `${
-                      theme?.params?.headline_prefix
-                        ? theme?.params?.headline_prefix +
-                          '<br/>' +
-                          strapi?.contentHero?.richContent
-                        : strapi?.contentHero?.richContent
-                    }` + strapi?.contentHero?.richContent
-                      ? strapi?.contentHero?.richContent
-                      : null,
+                  title: theme?.params?.headline_prefix
+                    ? theme?.params?.headline_prefix +
+                      '<br/>' +
+                      strapi?.contentHero?.richContent
+                    : strapi?.contentHero?.richContent,
                 }}
               />
             );
@@ -107,16 +102,11 @@ function Index() {
                   strapi?.thankyouHero?.desktopImageURL
                 }
                 content={{
-                  title:
-                    `${
-                      theme?.params?.headline_prefix
-                        ? theme?.params?.headline_prefix +
-                          '<br/>' +
-                          strapi?.contentHero?.richContent
-                        : strapi?.contentHero?.richContent
-                    }` + strapi?.contentHero?.richContent
-                      ? strapi?.contentHero?.richContent
-                      : null,
+                  title: theme?.params?.headline_prefix
+                    ? theme?.params?.headline_prefix +
+                      '<br/>' +
+                      strapi?.contentHero?.richContent
+                    : strapi?.contentHero?.richContent,
                 }}
               />
             );
@@ -127,7 +117,7 @@ function Index() {
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer issue={strapi?.donationModuleCampaign}>
+              <ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
                 {(() => {
                   if (pageType?.toLowerCase() === 'donation') {
                     return <StrapiDynamicBlocks blocks={'contentBlocks'} />;
