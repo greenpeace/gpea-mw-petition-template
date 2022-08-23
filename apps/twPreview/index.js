@@ -18,12 +18,10 @@ import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/TWForm';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
+import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
+import StrapiSEO from '@components/Strapi/StrapiSEO';
 // Import Contents
-import Donation from './Donation';
-import Content from './Content';
-import Thankyou from './Thankyou';
 import formContent from './form';
-import SEO from './SEO';
 // Import static
 
 function Index() {
@@ -31,6 +29,8 @@ function Index() {
   const router = useRouter();
   const strapi = useSelector((state) => state?.theme?.strapi);
   const submitted = useSelector((state) => state?.status?.submitted);
+  const theme = useSelector((state) => state?.theme);
+
   const pageType = strapi?.page_type?.data?.attributes?.name;
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -65,34 +65,58 @@ function Index() {
 
   return (
     <>
-      <SEO />
+      <StrapiSEO />
       <Box>
         {(() => {
           if (pageType?.toLowerCase() === 'donation') {
             return (
               <HeroBanner
-                defaultImage={strapi?.contentHero?.desktopImageURL}
+                defaultImage={
+                  theme?.params?.hero_image_desktop ||
+                  strapi?.contentHero?.desktopImageURL
+                }
                 content={{
-                  title: strapi?.contentHero?.richContent,
-                  description: [''],
+                  title:
+                    `${
+                      theme?.params?.headline_prefix
+                        ? theme?.params?.headline_prefix +
+                          '<br/>' +
+                          strapi?.contentHero?.richContent
+                        : strapi?.contentHero?.richContent
+                    }` + strapi?.contentHero?.richContent
+                      ? strapi?.contentHero?.richContent
+                      : null,
                 }}
               />
             );
           } else {
             return submitted ? (
               <ThanksBanner
-                defaultImage={strapi?.thankyouHero?.desktopImageURL}
+                defaultImage={
+                  theme?.params?.hero_image_desktop ||
+                  strapi?.thankyouHero?.desktopImageURL
+                }
                 content={{
                   title: strapi?.thankyouHero?.richContent,
-                  description: [''],
                 }}
               />
             ) : (
               <HeroBanner
-                defaultImage={strapi?.contentHero?.desktopImageURL}
+                defaultImage={
+                  theme?.params?.hero_image_desktop ||
+                  strapi?.thankyouHero?.desktopImageURL
+                }
                 content={{
-                  title: strapi?.contentHero?.richContent,
-                  description: [''],
+                  title:
+                    `${
+                      theme?.params?.headline_prefix
+                        ? theme?.params?.headline_prefix +
+                          '<br/>' +
+                          strapi?.contentHero?.richContent
+                        : strapi?.contentHero?.richContent
+                    }` + strapi?.contentHero?.richContent
+                      ? strapi?.contentHero?.richContent
+                      : null,
                 }}
               />
             );
@@ -106,9 +130,13 @@ function Index() {
               <ContentContainer issue={strapi?.donationModuleCampaign}>
                 {(() => {
                   if (pageType?.toLowerCase() === 'donation') {
-                    return <Donation />;
+                    return <StrapiDynamicBlocks blocks={'contentBlocks'} />;
                   } else {
-                    return submitted ? <Thankyou /> : <Content />;
+                    return submitted ? (
+                      <StrapiDynamicBlocks blocks={'thankyouBlocks'} />
+                    ) : (
+                      <StrapiDynamicBlocks blocks={'contentBlocks'} />
+                    );
                   }
                 })()}
               </ContentContainer>
