@@ -17,9 +17,10 @@ import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/TWForm';
-import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
-import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
+// Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
+import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -160,7 +161,7 @@ function Index() {
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'TWChinese'} />
-      <ScrollToTargetButton target={FormRef} targetInView={inView} />
+      <StrapiFixedButton target={FormRef} targetInView={inView} />
     </>
   );
 }
