@@ -20,7 +20,7 @@ import {
 } from '@common/constants/tagManagerArgs';
 
 /* Determine the returned project index by env variable */
-const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`), {
+const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`), {ssr: false, 
   loading: () => '讀取中',
 });
 
