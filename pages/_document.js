@@ -16,6 +16,7 @@ class NextDocument extends Document {
             href="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/01aca3df-favicon-96x96-1.png"
           />
           {/* Load google fonts */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             rel="stylesheet"
