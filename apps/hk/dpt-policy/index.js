@@ -58,11 +58,10 @@ function Index() {
           <Thanks
             defaultImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
             content={{
-              title: `${
-                FirstName ? FirstName : '綠色和平支持者'
-              }，感謝您加入實現減塑政策！`,
+              title: `${FirstName ? FirstName : '綠色和平支持者'
+                }，感謝您加入實現減塑政策！`,
               description: [
-                '塑膠圍城極為嚴重，誠邀您捐助支持綠色和平走塑項目工作！',
+                '塑膠污染逼在眉睫，誠邀您捐助支持綠色和平走塑項目工作！',
               ],
             }}
           />
@@ -71,10 +70,9 @@ function Index() {
             defaultImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
             content={{
               title:
-                `${
-                  theme?.params?.headline_prefix
-                    ? theme?.params?.headline_prefix + '<br/>'
-                    : ''
+                `${theme?.params?.headline_prefix
+                  ? theme?.params?.headline_prefix + '<br/>'
+                  : ''
                 }` + '請即聯署<br/>要求政府於 22/23 年度立法落實管制即棄膠餐具',
               description: [''],
             }}

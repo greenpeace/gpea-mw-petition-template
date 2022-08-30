@@ -1,0 +1,84 @@
+{
+  "A": {
+    "value": "船長",
+    "image": "result/character/A-Captain-result-page-mike.png",
+    "title": "崗位關鍵特質：務實沉穩、領導力強、果斷",
+    "content": "您冷靜沉穩，船隊中的船長崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深船長，他日常的工作是⋯⋯",
+    "color": "#ACCCCB",
+    "icon": "result/icon/A_Captain.jpeg",
+    "description": [
+      "您好，很高興認識您，我是與您匹配、現實中的船長 Mike Fincken！",
+      "加入綠色和平 27 年間，我帶領船隊到訪世界各地，追蹤破壞行為、確保船員能安全完成研究或直接行動。",
+      "大海中，變幻莫測的天氣、行動的風險，都需要每位船員付出許多心力，以完成每個任務。雖然過程歷盡辛勞，可是我們都沒有停歇的理由，因為破壞海洋的行為，依然遍佈在未被保護的廣闊海洋。",
+      "現在，我們正在爭取在今年順利訂立《全球海洋公約》，為擴大全球海洋保護區至 30% 奠定根基。",
+      "誠邀您捐款支持船隊工作，完成這個與對全球海洋命運攸關重要的任務！"
+    ],
+    "iframe_src": "https://www.youtube.com/embed/shZZDCFG4gQ",
+    "character": "Mike Fincken"
+  },
+  "B": {
+    "value": "行動者",
+    "image": "result/character/B-Activist-result-page-victor.png",
+    "title": "崗位關鍵特質：勇敢、堅毅、富正義感",
+    "content": "您勇敢不屈，船隊中的行動者崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深行動者，他日常的工作是⋯⋯",
+    "color": "#ACCCCB",
+    "icon": "result/icon/B_Activist_face.jpg",
+    "description": [
+      "您好，很高興認識您，我是與您匹配、現實中綠色和平的行動者 Victor Pickering！",
+      "擔任行動者的 12 年間，我對抗過深海採礦、捕漁船等破壞行為，在前線目擊海洋變得的千瘡百孔震撼，令我無法放下守護她的責任與勇氣。",
+      "現在，我們正在爭取在今年順利訂立《全球海洋公約》，為擴大全球海洋保護區至 30% 奠定根基。",
+      "誠邀您捐款支持船隊工作，完成這個與對全球海洋命運攸關重要的任務！"
+    ],
+    "iframe_src": "https://www.youtube.com/embed/ZCO1-NzQCbY",
+    "character": "Victor Pickering"
+  },
+  "C": {
+    "value": "項目主任",
+    "image": "result/character/C-Campaigner-result-page-will.png",
+    "title": "崗位關鍵特質：富魅力、口齒伶俐、思維創新",
+    "content": "您能言善辯，船隊中的項目主任崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深海洋項目主任，他日常的工作是⋯⋯",
+    "color": "#ACCCCB",
+    "icon": "result/icon/C_Campaigner.jpeg",
+    "description": [
+      "您好，很高興認識您，我是與您匹配、現實中綠色和平的項目主任 Will Mccallum！",
+      "自1975年的反捕鯨行動，為守護海洋揭開序幕，我們未曾休止的腳步，走遍世界各地：大堡礁、亞馬遜珊瑚礁、南極羅斯海... 留下了許多改變足跡，卻未足以覆蓋廣闊海洋，令猖狂的破壞絕跡。",
+      "今天，我們花了10年構思訂立《全球海洋公約》、建立 30%海洋保護區的討論，正式進入最後關鍵時刻。",
+      "誠邀您捐款支持船隊工作，完成這個與對全球海洋命運攸關重要的任務！"
+    ],
+    "iframe_src": "https://www.youtube.com/embed/TNMmVWjWH2c",
+    "character": "Will Mccallum"
+  },
+  "D": {
+    "value": "水手",
+    "image": "result/character/D-Sailor-result-page-dolphin.png",
+    "title": "崗位關鍵特質：細心、勤勞、靈活變通",
+    "content": "您細心靈活，船隊中的水手崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深水手，她日常的工作是⋯⋯",
+    "color": "#E2CCCC",
+    "icon": "result/icon/D_Sailor.jpeg",
+    "description": [
+      "您好，很高興認識您，我是與您匹配、現實中的水手黃懿萱（小豚） ！",
+      "這些年來， 我目擊也聽聞過許多破壞海洋的駭人故事，面對相類行為遍佈廣闊海洋的此刻，單靠綠色和平在前線阻攔，絕不能讓四散的海洋生物安然無恙。",
+      "現在，我們正在爭取在今年順利訂立《全球海洋公約》，為擴大全球海洋保護區至 30% 奠定根基。",
+      "誠邀您捐款支持船隊工作，完成這個與對全球海洋命運攸關重要的任務！"
+    ],
+    "iframe_src": "https://www.youtube.com/embed/5AHr5p0JANg",
+    "character": "黃懿萱（小豚）"
+  },
+  "E": {
+    "value": "研究員",
+    "image": "result/character/E-Researcher-result-page-chun.png",
+    "title": "崗位關鍵特質：理性、心思慎密、分析力強",
+    "content": "您客觀理性，船隊中的研究員崗位非您莫屬！現實中，綠色和平船隊也有一位與您匹配的資深研究員，她日常的工作是⋯⋯",
+    "color": "#E2CCCC",
+    "icon": "result/icon/E_Researcher.jpeg",
+    "description": [
+      "您好，很高興認識您，我是與您匹配、現實中綠色和平的研究員 Chun！",
+      "作為研究員，進行實地考察、點算，向企業對象收集資料、整理數據... 辛苦背後的信念在於：我們相信，作為環保組織，要推動改變，必先以理服人。游說企業、教育公眾，第一要有確切、理性的數據和證明。",
+      "綠色和平發佈眾多研究報告，以科學角度證實無私提供資源的海洋，在部分人類苛索無度的消耗中，已變得千瘡百孔。",
+      "現在，我們正在爭取在今年順利訂立《全球海洋公約》，為擴大全球海洋保護區至 30% 奠定根基。",
+      "誠邀您捐款支持船隊工作，完成這個與對全球海洋命運攸關重要的任務！"
+    ],
+    "iframe_src": "https://www.youtube.com/embed/QQZY4MlCYSE",
+    "character": "Chun"
+  }
+}
