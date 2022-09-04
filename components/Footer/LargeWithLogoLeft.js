@@ -32,7 +32,7 @@ export default function LargeWithLogoLeft() {
               <Image
                 htmlWidth="200px"
                 src="https://www.greenpeace.org/hongkong/wp-content/themes/planet4-child-theme-hongkong/static/images/logo_zh_gp_w%20footer.svg"
-                alt="Greenpeace 綠色和平"
+                alt="Greenpeace"
               />
             </Box>
             <Text fontSize={'sm'} maxWidth={'480px'}>

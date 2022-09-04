@@ -64,8 +64,8 @@ const upload_folder = function (settings, localDir) {
     .exec(function (err, res) {
       // err will be null (to respect async convention)
       // res is an hash with { error: stderr || null, data: stdout }
-      if (err) {
-        console.error(err);
+      if (err || res.error) {
+        return console.log('Error on adding file:', err || res.error);
       } else {
         console.info('Successfully uploaded.');
         console.info(res.data);

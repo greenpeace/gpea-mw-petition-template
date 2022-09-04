@@ -16,15 +16,12 @@ export default function Index({
   imageSrcset,
   removeMask,
   defaultImage,
+  objectPosition = 'center top',
+  minH = { base: 'lg', md: 'xl' },
 }) {
   return (
     <>
-      <Box
-        minH={{ base: 'lg', md: 'xl' }}
-        pos={'relative'}
-        zIndex={2}
-        paddingBottom={'4rem'}
-      >
+      <Box minH={minH} pos={'relative'} zIndex={2} paddingBottom={'4rem'}>
         <Box pos={'relative'} zIndex={4}>
           <PageContainer>
             <Box py={8} px={4} height="100%" maxW={{ base: '100%', md: '50%' }}>
@@ -90,7 +87,7 @@ export default function Index({
 
         <Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
           <picture>
-            {imageSrcset.map((item, index) => {
+            {imageSrcset?.map((item, index) => {
               return (
                 <source media={item.media} srcSet={item.srcset} key={index} />
               );
@@ -101,7 +98,7 @@ export default function Index({
               height="100%"
               width="100%"
               objectFit="cover"
-              objectPosition="center top"
+              objectPosition={objectPosition}
             />
           </picture>
         </Box>

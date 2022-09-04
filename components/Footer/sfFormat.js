@@ -39,10 +39,9 @@ const SFFormat = ({ locale }) => {
     <FooterBGBlue>
       <Container maxW={'1200px'} py={8} px={4}>
         <Box pt={4} pb={6}>
-          <Image src={logo} maxW={'220px'} alt={'Greenpeace 綠色和平'} />
+          <Image src={logo} maxW={'220px'} alt={'Greenpeace'} />
         </Box>
         <Stack
-          as="flex"
           spacing={8}
           direction={{ base: 'column-reverse', md: 'row' }}
           color={'white'}
@@ -59,7 +58,7 @@ const SFFormat = ({ locale }) => {
             </Box>
             <Stack direction="column" spacing={2}>
               {content.link.map((d, i) => (
-                <Box key={i}>
+                <Box key={i} py="4px">
                   <Link
                     href={d.value}
                     target={'_blank'}
@@ -88,7 +87,7 @@ const SFFormat = ({ locale }) => {
             ))}
           </Stack>
         </Stack>
-        <Box color={`#FFF`} mb={{ base: 16, sm: 8 }}>
+        <Box color={'white'} mb={{ base: '96px', sm: 8 }}>
           <Text as="span">© Greenpeace {new Date().getFullYear()}</Text>
         </Box>
       </Container>

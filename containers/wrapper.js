@@ -12,9 +12,9 @@ function Layout({ children, showHeader }) {
   );
 }
 
-const mapStateToProps = ({theme}) => {
+const mapStateToProps = ({ theme }) => {
   return {
-    showHeader: theme.showGlobalHeader
+    showHeader: theme.showGlobalHeader,
   };
 };
 
