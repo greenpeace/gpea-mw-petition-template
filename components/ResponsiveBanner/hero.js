@@ -18,7 +18,7 @@ export default function Index({
           <PageContainer>
             <Box py={8} px={4} maxW={{ base: '100%', md: '50%' }}>
               <Stack spacing="4">
-                {content.title && (
+                {content?.title && (
                   <Heading
                     as="h1"
                     fontSize={{
@@ -28,10 +28,9 @@ export default function Index({
                     color="white"
                     textShadow="0 0 1px rgba(0,0,0, .2)"
                     mb={4}
-                    dangerouslySetInnerHTML={{ __html: content.title }}
-                  />
+                  ><span dangerouslySetInnerHTML={{ __html: content?.title }}/></Heading>
                 )}
-                {content.description && (
+                {content?.description && (
                   <Box>
                     <Stack spacing="4">
                       {content.description.map((d, i) => (
@@ -39,8 +38,7 @@ export default function Index({
                           key={i}
                           fontSize="var(--text-base)"
                           color="white"
-                          dangerouslySetInnerHTML={{ __html: d }}
-                        />
+                        ><span dangerouslySetInnerHTML={{ __html: d }} /></Text>
                       ))}
                     </Stack>
                   </Box>

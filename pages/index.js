@@ -20,9 +20,7 @@ import {
 } from '@common/constants/tagManagerArgs';
 
 /* Determine the returned project index by env variable */
-const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`), {ssr: false, 
-  loading: () => '讀取中',
-});
+const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
 
 /* Get env variables */
 const envProjectName = process.env.projectName;
@@ -60,7 +58,7 @@ const initTagManager = (marketName) => {
 function Index({
   setTheme,
   themeData,
-  theme,
+  strapi,
   setSignupNumbers,
   setWebStatus,
   setSignFormData,
@@ -101,7 +99,7 @@ function Index({
           hero_image_mobile,
         },
       });
-      dispatch({ type: themeActions.SET_STRAPI_DATA, data: theme });
+      dispatch({ type: themeActions.SET_STRAPI_DATA, data: strapi });
     }
   }, [router]);
 
@@ -187,7 +185,10 @@ function Index({
     }
   }, [themeData]);
 
-  return <DynamicComponent />;
+  return <DynamicComponent 
+    strapi={strapi}
+    themeData={themeData}
+  />;
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
@@ -240,7 +241,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       themeData: singleResult || {},
-      theme: theme,
+      strapi: theme,
     },
   };
 }

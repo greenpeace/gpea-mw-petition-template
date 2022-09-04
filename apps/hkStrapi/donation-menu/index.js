@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
@@ -23,13 +23,9 @@ import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 import formContent from './form';
 // Import static
 
-function Index() {
+function Index({ submitted = false, strapi }) {
   const dispatch = useDispatch();
-  const strapi = useSelector((state) => state?.theme?.strapi);
   const pageType = strapi?.page_type?.data?.attributes?.name;
-  const submitted = useSelector((state) => state?.status?.submitted);
-  const theme = useSelector((state) => state?.theme);
-
   const [ref, inView] = useInView({
     threshold: 0,
   });
@@ -48,42 +44,26 @@ function Index() {
             return (
               <HeroBanner
                 defaultImage={
-                  theme?.params?.hero_image_desktop ||
                   strapi?.contentHero?.desktopImageURL
                 }
                 content={{
-                  title: theme?.params?.headline_prefix
-                    ? theme?.params?.headline_prefix +
-                      '<br/>' +
-                      strapi?.contentHero?.richContent
-                    : strapi?.contentHero?.richContent,
+                  title: strapi?.contentHero?.richContent,
                 }}
               />
             );
           } else {
             return submitted ? (
               <ThanksBanner
-                defaultImage={
-                  theme?.params?.hero_image_desktop ||
-                  strapi?.thankyouHero?.desktopImageURL
-                }
+                defaultImage={strapi?.thankyouHero?.desktopImageURL}
                 content={{
                   title: strapi?.thankyouHero?.richContent,
                 }}
               />
             ) : (
               <HeroBanner
-                defaultImage={
-                  theme?.params?.hero_image_desktop ||
-                  strapi?.contentHero?.desktopImageURL
-                }
+                defaultImage={strapi?.contentHero?.desktopImageURL}
                 content={{
-                  title: theme?.params?.headline_prefix
-                    ? theme?.params?.headline_prefix +
-                      '<br/>' +
-                      strapi?.contentHero?.richContent
-                    : strapi?.contentHero?.richContent,
-                }}
+                  title: strapi?.contentHero?.richContent}}
               />
             );
           }
@@ -96,12 +76,23 @@ function Index() {
               <ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
                 {(() => {
                   if (pageType?.toLowerCase() === 'donation') {
-                    return <StrapiDynamicBlocks blocks={'contentBlocks'} />;
+                    return (
+                      <StrapiDynamicBlocks
+                        blocks={'contentBlocks'}
+                        strapi={strapi}
+                      />
+                    );
                   } else {
                     return submitted ? (
-                      <StrapiDynamicBlocks blocks={'thankyouBlocks'} />
+                      <StrapiDynamicBlocks
+                        blocks={'thankyouBlocks'}
+                        strapi={strapi}
+                      />
                     ) : (
-                      <StrapiDynamicBlocks blocks={'contentBlocks'} />
+                      <StrapiDynamicBlocks
+                        blocks={'contentBlocks'}
+                        strapi={strapi}
+                      />
                     );
                   }
                 })()}
@@ -141,4 +132,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Index
