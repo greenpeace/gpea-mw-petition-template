@@ -10,24 +10,18 @@ import {
 } from '@chakra-ui/react';
 import { FooterBGBlue } from './footer.style';
 
-import { HKChinese, TWChinese, HKEnglish } from './footerContent';
+import { Korean } from './footerContent';
 
 import logo from '@common/images/logo/GP-logo-2019-white-[web].png';
 
 const SFFormat = ({ locale }) => {
-  const [content, setContent] = useState(HKChinese);
+  const [content, setContent] = useState(Korean);
 
   useEffect(() => {
     if (locale) {
       switch (locale) {
-        case 'HKChinese':
-          setContent(HKChinese);
-          break;
-        case 'HKEnglish':
-          setContent(HKEnglish);
-          break;
-        case 'TWChinese':
-          setContent(TWChinese);
+        case 'Korean':
+          setContent(Korean);
           break;
         default:
           break;

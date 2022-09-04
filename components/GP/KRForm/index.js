@@ -285,7 +285,7 @@ const MyForm = (props) => {
               </FormControl>
             </Box> */}
 
-            {formContent.counties && (
+            {/* {formContent.counties && (
               <Box>
                 <FormControl
                   id="Counties"
@@ -312,11 +312,11 @@ const MyForm = (props) => {
                   </FormErrorMessage>
                 </FormControl>
               </Box>
-            )}
+            )} */}
 
             <Box>
-              <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-                <Box flex={1} mr={2} pt={1}>
+              <Flex direction={{ base: 'row' }} align={'flex-start'}>
+                <Box mr={2}>
                   <Checkbox
                     id="OptIn"
                     name="OptIn"
@@ -328,13 +328,64 @@ const MyForm = (props) => {
                   fontSize="xs"
                   color={'gray.700'}
                   dangerouslySetInnerHTML={{
-                    __html: formContent.label_newsletter,
+                    __html: formContent.label_newsletter_all,
+                  }}
+                ></Text>
+              </Flex>
+              <Flex direction={{ base: 'row' }} align={'flex-start'}>
+                <Box mr={2}>
+                  <Checkbox
+                    id="OptIn1"
+                    name="OptIn1"
+                    onChange={handleChange}
+                    defaultChecked
+                  />
+                </Box>
+                <Text
+                  fontSize="xs"
+                  color={'gray.700'}
+                  dangerouslySetInnerHTML={{
+                    __html: formContent.label_newsletter_donate,
+                  }}
+                ></Text>
+              </Flex>
+              <Flex direction={{ base: 'row' }} align={'flex-start'}>
+                <Box mr={2}>
+                  <Checkbox
+                    id="OptIn2"
+                    name="OptIn2"
+                    onChange={handleChange}
+                    defaultChecked
+                  />
+                </Box>
+                <Text
+                  fontSize="xs"
+                  color={'gray.700'}
+                  dangerouslySetInnerHTML={{
+                    __html: formContent.label_newsletter_privacy,
+                  }}
+                ></Text>
+              </Flex>
+              <Flex direction={{ base: 'row' }} align={'flex-start'}>
+                <Box mr={2}>
+                  <Checkbox
+                    id="OptIn3"
+                    name="OptIn3"
+                    onChange={handleChange}
+                    defaultChecked
+                  />
+                </Box>
+                <Text
+                  fontSize="xs"
+                  color={'gray.700'}
+                  dangerouslySetInnerHTML={{
+                    __html: formContent.label_newsletter_third_party,
                   }}
                 ></Text>
               </Flex>
             </Box>
 
-            {formContent.namelist && (
+            {/* {formContent.namelist && (
               <Box>
                 <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
                   <Box flex={1} mr={2} pt={1}>
@@ -355,7 +406,7 @@ const MyForm = (props) => {
                   ></Text>
                 </Flex>
               </Box>
-            )}
+            )} */}
 
             <Box>
               <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
@@ -376,6 +427,9 @@ const MyEnhancedForm = withFormik({
     LastName: '',
     MobilePhone: '',
     OptIn: true,
+    OptIn1: true,
+    OptIn2: true,
+    OptIn3: true,
     Birthdate: '',
   }),
 
@@ -385,7 +439,7 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    console.log(`handleSubmit`, values, props);
+    //console.log(`handleSubmit`, values, props);
     const { submitForm, theme, hiddenFormData } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
@@ -403,6 +457,7 @@ const MyEnhancedForm = withFormik({
       MobileCountryCode: '',
       CampaignId: isProd ? theme.CampaignId : '7012u000000OxDYAA0',
       LeadSource: LeadSource,
+      req: 'post_data',
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: window.location.href ? window.location.href : '',
     };

@@ -51,7 +51,7 @@ const DonationModule = (props) => {
 
   // Define constant module url
   //FIXME: KR AND UP TO DATE
-  const moduleUrl = 'main.js'; 
+  const moduleUrl = `${window.location.href}/main.js`; 
   // Import module
   const status = useScript(moduleUrl);
 

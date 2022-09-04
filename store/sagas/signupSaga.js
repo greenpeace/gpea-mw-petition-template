@@ -39,7 +39,7 @@ export function* submitForm(actions) {
       yield put({ type: statusActions.SET_FORM_SUBMITTED, data: true });
       // Tracking
       if (ProjectName || EventLabel) {
-        console.log('submitted:', `${EventLabel ? EventLabel : ProjectName}`);
+        //console.log('submitted:', `${EventLabel ? EventLabel : ProjectName}`);
         helper.sendPetitionTracking(`${EventLabel ? EventLabel : ProjectName}`);
       } else {
         console.log('Project undefined');

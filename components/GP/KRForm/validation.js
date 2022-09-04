@@ -32,7 +32,7 @@ export function validation(values, formContent) {
   }
 
   if (values.MobilePhone) {
-    const phoneReg6 = new RegExp(/^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/).test(
+    const phoneReg6 = new RegExp(/^01([0|1|6|7|8|9])?-([0-9]{3,4})?-([0-9]{4})$/).test(
       values.MobilePhone,
     );
     
@@ -42,6 +42,16 @@ export function validation(values, formContent) {
     } else {
       errors.MobilePhone = formContent.invalid_format_alert;
     }
+  }
+
+  if(!values.OptIn1){
+    errors.OptIn1 = formContent.empty_data_alert;
+  }
+  if(!values.OptIn2){
+    errors.OptIn2 = formContent.empty_data_alert;
+  }
+  if(!values.OptIn3){
+    errors.OptIn3 = formContent.empty_data_alert;
   }
 
   return errors;

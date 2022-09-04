@@ -37,9 +37,9 @@ export default function Custom404() {
               404
             </Text>
             <Text fontSize={'2xl'} fontWeight="bold" color="white">
-              抱歉，此網頁可能已經不存在
+              죄송합니다. 이 페이지가 더 이상 존재하지 않을 수 있습니다.
               <br />
-              （就像我們的冬天）...
+              （우리의 겨울처럼）...
             </Text>
           </Stack>
         </VStack>

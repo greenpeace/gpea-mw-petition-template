@@ -28,34 +28,31 @@ const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`), {
 const envProjectName = process.env.projectName;
 const envProjectMarket = process.env.projectMarket;
 const themeEndpointURL = process.env.themeEndpoint;
-const signupNumbersHKURL = process.env.signupNumbersHK;
-const signupNumbersTWURL = process.env.signupNumbersTW;
+const signupNumbersKRURL = process.env.signupNumbersKR;
 
-const initTagManager = (marketName) => {
-  if (process.env.NODE_ENV === 'production') {
-    switch (marketName) {
-      case 'HK':
-        TagManager.initialize(hkTagManagerArgs);
-        break;
-      case 'TW':
-        TagManager.initialize(twTagManagerArgs);
-      default:
-        break;
-    }
-  }
-  /* else {
-    switch (marketName) {
-      case 'HK':
-        TagManager.initialize(hkDevTagManagerArgs);
-        break;
-      case 'TW':
-        TagManager.initialize(twDevTagManagerArgs);
-        break;
-      default:
-        break;
-    }
-  } */
-};
+// const initTagManager = (marketName) => {
+//   if (process.env.NODE_ENV === 'production') {
+//     switch (marketName) {
+//       case 'KR':
+//         TagManager.initialize(hkTagManagerArgs);
+//         break;
+//       default:
+//         break;
+//     }
+//   }
+//   /* else {
+//     switch (marketName) {
+//       case 'HK':
+//         TagManager.initialize(hkDevTagManagerArgs);
+//         break;
+//       case 'TW':
+//         TagManager.initialize(twDevTagManagerArgs);
+//         break;
+//       default:
+//         break;
+//     }
+//   } */
+// };
 
 function Index({
   setTheme,
@@ -121,24 +118,23 @@ function Index({
   }, [router]);
 
   /** Fetch signup data on load */
-  useEffect(() => {
-    async function fetchSignupData() {
-      const fetchURLs = {
-        hk: signupNumbersHKURL,
-        tw: signupNumbersTWURL,
-      };
+  // useEffect(() => {
+  //   async function fetchSignupData() {
+  //     const fetchURLs = {
+  //       kr: signupNumbersKRURL,
+  //     };
 
-      const signupData = await axios
-        .get(fetchURLs[themeData?.Market])
-        .then((response) => {
-          return response.data.find((d) => d.Id === themeData?.CampaignId);
-        })
-        .catch((error) => console.log(error));
+  //     const signupData = await axios
+  //       .get(fetchURLs[themeData?.Market])
+  //       .then((response) => {
+  //         return response.data.find((d) => d.Id === themeData?.CampaignId);
+  //       })
+  //       .catch((error) => console.log(error));
 
-      setSignupNumbers({ [themeData?.Market]: signupData });
-    }
-    fetchSignupData();
-  }, []);
+  //     setSignupNumbers({ [themeData?.Market]: signupData });
+  //   }
+  //   fetchSignupData();
+  // }, []);
 
   /* Set parameters to hiddenForm data */
   useEffect(() => {
@@ -163,11 +159,9 @@ function Index({
   /* Pre-fill signup data */
   useEffect(() => {
     const domain = document.location.host;
-    const market =
-      themeData?.Market?.toUpperCase() ||
-      (domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : '');
+    const market = themeData?.Market?.toUpperCase()
     /* GTM is only applicable for production env */
-    initTagManager(market);
+    //initTagManager(market);
     setTheme(themeData);
 
     let FormObj = {};

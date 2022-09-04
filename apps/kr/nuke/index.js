@@ -160,7 +160,7 @@ function Index() {
           </Flex>
         </OverflowWrapper>
       </PageContainer>
-      <PetitionFooter locale={'HKChinese'} />
+      <PetitionFooter locale={'Korean'} />
       <ScrollToTargetButton target={mobileForm} targetInView={inView} />
     </>
   );
