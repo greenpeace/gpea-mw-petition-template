@@ -6,24 +6,28 @@ export const Korean = {
     '자동이체의 경우 결제일이 공휴일, 주말에 겹치는 경우 그 다음 도래하는 은행 영업일에 결제됩니다.(*결제일 전날이 서울사무소 휴일인 경우 결제가 하루 지연될 수 있습니다.) 신용카드의 경우 휴일 여부와 상관 없이 결제일에 결제됩니다. 다만, 시스템 처리 과정에서 다음 영업일에 결제될 수 있습니다.'
   ],
   link: [
-    { label: '主頁', value: 'https://www.greenpeace.org/hongkong/' },
+    { label: '홈페이지', value: 'https://www.greenpeace.org/korea/' },
     {
-      label: '私隱政策與個人資料收集聲明',
+      label: '개인정보 보호정책',
       value:
-        'https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/',
+        'https://www.greenpeace.org/korea/privacy-and-cookies/',
     },
     {
-      label: '版權',
+      label: '저작권',
       value:
-        'https://www.greenpeace.org/hongkong/policies/terms-and-conditions/',
+        'https://www.greenpeace.org/korea/terms-and-conditions/',
     },
     {
-      label: '聯絡我們',
-      value: 'https://www.greenpeace.org/hongkong/about/contact/',
+      label: '연락처',
+      value: 'https://www.greenpeace.org/korea/about/contact/',
     },
     {
-      label: '關於綠色和平',
-      value: 'https://www.greenpeace.org/hongkong/about/overview/',
+      label: '보도자료와 미디어',
+      value: 'https://www.greenpeace.org/korea/press-media/press-releases/',
+    },
+    {
+      label: '그린피스 소개',
+      value: 'https://www.greenpeace.org/korea/about/overview/',
     },
   ],
   rightContent: [
