@@ -23,17 +23,16 @@ import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 import formContent from './form';
 // Import static
 
-function Index() {
+function Index({ submitted = false, strapi }) {
   const dispatch = useDispatch();
-  const strapi = useSelector((state) => state?.theme?.strapi);
-  const pageType = strapi?.page_type?.data?.attributes?.name;
-  const submitted = useSelector((state) => state?.status?.submitted);
   const theme = useSelector((state) => state?.theme);
-
+  const pageType = strapi?.page_type?.data?.attributes?.name;
   const [ref, inView] = useInView({
     threshold: 0,
   });
   const FormRef = useRef(null);
+
+  submitted = useSelector((state) => state?.status?.submitted);
 
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
@@ -96,12 +95,23 @@ function Index() {
               <ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
                 {(() => {
                   if (pageType?.toLowerCase() === 'donation') {
-                    return <StrapiDynamicBlocks blocks={'contentBlocks'} />;
+                    return (
+                      <StrapiDynamicBlocks
+                        blocks={'contentBlocks'}
+                        strapi={strapi}
+                      />
+                    );
                   } else {
                     return submitted ? (
-                      <StrapiDynamicBlocks blocks={'thankyouBlocks'} />
+                      <StrapiDynamicBlocks
+                        blocks={'thankyouBlocks'}
+                        strapi={strapi}
+                      />
                     ) : (
-                      <StrapiDynamicBlocks blocks={'contentBlocks'} />
+                      <StrapiDynamicBlocks
+                        blocks={'contentBlocks'}
+                        strapi={strapi}
+                      />
                     );
                   }
                 })()}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
@@ -25,11 +25,14 @@ import formContent from './form';
 
 function Index({ submitted = false, strapi }) {
   const dispatch = useDispatch();
+  const theme = useSelector((state) => state?.theme);
   const pageType = strapi?.page_type?.data?.attributes?.name;
   const [ref, inView] = useInView({
     threshold: 0,
   });
   const FormRef = useRef(null);
+
+  submitted = useSelector((state) => state?.status?.submitted);
 
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
@@ -44,26 +47,42 @@ function Index({ submitted = false, strapi }) {
             return (
               <HeroBanner
                 defaultImage={
+                  theme?.params?.hero_image_desktop ||
                   strapi?.contentHero?.desktopImageURL
                 }
                 content={{
-                  title: strapi?.contentHero?.richContent,
+                  title: theme?.params?.headline_prefix
+                    ? theme?.params?.headline_prefix +
+                      '<br/>' +
+                      strapi?.contentHero?.richContent
+                    : strapi?.contentHero?.richContent,
                 }}
               />
             );
           } else {
             return submitted ? (
               <ThanksBanner
-                defaultImage={strapi?.thankyouHero?.desktopImageURL}
+                defaultImage={
+                  theme?.params?.hero_image_desktop ||
+                  strapi?.thankyouHero?.desktopImageURL
+                }
                 content={{
                   title: strapi?.thankyouHero?.richContent,
                 }}
               />
             ) : (
               <HeroBanner
-                defaultImage={strapi?.contentHero?.desktopImageURL}
+                defaultImage={
+                  theme?.params?.hero_image_desktop ||
+                  strapi?.contentHero?.desktopImageURL
+                }
                 content={{
-                  title: strapi?.contentHero?.richContent}}
+                  title: theme?.params?.headline_prefix
+                    ? theme?.params?.headline_prefix +
+                      '<br/>' +
+                      strapi?.contentHero?.richContent
+                    : strapi?.contentHero?.richContent,
+                }}
               />
             );
           }
@@ -132,4 +151,4 @@ function Index({ submitted = false, strapi }) {
   );
 }
 
-export default Index
+export default Index;
