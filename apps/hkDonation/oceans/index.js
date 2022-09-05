@@ -107,7 +107,7 @@ function Index({ status, setFormContent }) {
                     campaign={
                       theme?.params?.donation_module_campaign ?? 'oceans'
                     }
-                    // campaignId={''}
+                    campaignId={theme?.params?.campaignId ?? ''}
                     env={'production'}
                   />
                 </Box>
