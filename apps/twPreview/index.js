@@ -25,11 +25,9 @@ import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 import formContent from './form';
 // Import static
 
-function Index() {
+function Index({ submitted = false, strapi }) {
   const dispatch = useDispatch();
   const router = useRouter();
-  const strapi = useSelector((state) => state?.theme?.strapi);
-  const submitted = useSelector((state) => state?.status?.submitted);
   const theme = useSelector((state) => state?.theme);
 
   const pageType = strapi?.page_type?.data?.attributes?.name;
