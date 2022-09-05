@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
 const StrapiDynamicBlocks = ({ blocks = 'contentBlocks', strapi }) => {
   return (
