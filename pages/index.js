@@ -20,7 +20,9 @@ import {
 } from '@common/constants/tagManagerArgs';
 
 /* Determine the returned project index by env variable */
-const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`),{ loading: () => <p>loading</p> });
+const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`), {
+  loading: () => <p>loading</p>,
+});
 
 /* Get env variables */
 const envProjectName = process.env.projectName;
@@ -75,6 +77,7 @@ function Index({
       const {
         page,
         step,
+        campaignId,
         donation_module_campaign,
         headline_prefix,
         hero_image_desktop,
@@ -109,6 +112,7 @@ function Index({
       dispatch({
         type: themeActions.SET_PARAMS,
         data: {
+          campaignId,
           donation_module_campaign,
           headline_prefix,
           hero_image_desktop,
@@ -200,7 +204,7 @@ function Index({
     }
   }, [themeData]);
 
-  return <DynamicComponent/>;
+  return <DynamicComponent />;
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
