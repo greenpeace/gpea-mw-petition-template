@@ -73,15 +73,11 @@ function Index({
       const {
         page,
         step,
+        campaignId,
         donation_module_campaign,
         headline_prefix,
         hero_image_desktop,
         hero_image_mobile,
-        // utm_campaign,
-        // utm_source,
-        // utm_medium,
-        // utm_content,
-        // utm_term,
       } = router.query;
 
       /* page=2 force to result page */
@@ -93,6 +89,7 @@ function Index({
       dispatch({
         type: themeActions.SET_PARAMS,
         data: {
+          campaignId,
           donation_module_campaign,
           headline_prefix,
           hero_image_desktop,
@@ -185,10 +182,7 @@ function Index({
     }
   }, [themeData]);
 
-  return <DynamicComponent 
-    strapi={strapi}
-    themeData={themeData}
-  />;
+  return <DynamicComponent strapi={strapi} themeData={themeData} />;
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
