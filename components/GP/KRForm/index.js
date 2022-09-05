@@ -55,7 +55,7 @@ const MyForm = (props) => {
     numberOfTarget,
   } = props;
   //const [birthDateYear, setBirthDateYear] = useState([]);
-  const [progressNumber, setProgressNumber] = useState(0);
+  //const [progressNumber, setProgressNumber] = useState(0);
   const themeInterests = theme.interests;
 
   // useEffect(() => {
@@ -74,30 +74,30 @@ const MyForm = (props) => {
   //   initSuggestion();
   // }, []);
 
-  useEffect(() => {
-    const currentNumber = numberOfResponses;
-    const currentNumberOfTarget = numberOfTarget ? numberOfTarget : 10000;
-    const number =
-      Math.round((currentNumber / currentNumberOfTarget) * 10000) / 100;
-    if (isNaN(number)) {
-      return;
-    }
+  // useEffect(() => {
+  //   const currentNumber = numberOfResponses;
+  //   const currentNumberOfTarget = numberOfTarget ? numberOfTarget : 10000;
+  //   const number =
+  //     Math.round((currentNumber / currentNumberOfTarget) * 10000) / 100;
+  //   if (isNaN(number)) {
+  //     return;
+  //   }
 
-    const timer = () => setTimeout(() => setProgressNumber(`${number}%`), 1000);
-    const timerId = timer();
-    return () => {
-      clearTimeout(timerId);
-    };
-  }, [numberOfResponses]);
+  //   const timer = () => setTimeout(() => setProgressNumber(`${number}%`), 1000);
+  //   const timerId = timer();
+  //   return () => {
+  //     clearTimeout(timerId);
+  //   };
+  // }, [numberOfResponses]);
 
-  //setting additional fileds for formik
-  useEffect(() => {
-    if (Object.keys(formContent).length > 0) {
-      if (formContent.counties) setFieldValue('Counties', '');
-      if (formContent.namelist)
-        setFieldValue('Namelist', formContent.namelist[0].value);
-    }
-  }, [formContent]);
+  // //setting additional fileds for formik
+  // useEffect(() => {
+  //   if (Object.keys(formContent).length > 0) {
+  //     if (formContent.counties) setFieldValue('Counties', '');
+  //     if (formContent.namelist)
+  //       setFieldValue('Namelist', formContent.namelist[0].value);
+  //   }
+  // }, [formContent]);
 
   useEffect(() => {
     if (signup.submitted) {
@@ -255,7 +255,7 @@ const MyForm = (props) => {
                 />
                 <Box pt="1" pl="2">
                   <Text color="gray.700" fontSize="sm" as="span">
-                    전화번호 예：010-0000-0000
+                    전화번호 예：010XXXXXXXX(숫자 11자리)
                   </Text>
                 </Box>
               </Box>
@@ -318,27 +318,13 @@ const MyForm = (props) => {
               <Flex direction={{ base: 'row' }} align={'flex-start'}>
                 <Box mr={2}>
                   <Checkbox
-                    id="OptIn"
-                    name="OptIn"
-                    onChange={handleChange}
-                    defaultChecked
-                  />
-                </Box>
-                <Text
-                  fontSize="xs"
-                  color={'gray.700'}
-                  dangerouslySetInnerHTML={{
-                    __html: formContent.label_newsletter_all,
-                  }}
-                ></Text>
-              </Flex>
-              <Flex direction={{ base: 'row' }} align={'flex-start'}>
-                <Box mr={2}>
-                  <Checkbox
                     id="OptIn1"
                     name="OptIn1"
                     onChange={handleChange}
+                    isInvalid={errors.OptIn1}
                     defaultChecked
+                    //isChecked={checkedItems[0]}
+                    //onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1], checkedItems[2]])}
                   />
                 </Box>
                 <Text
@@ -355,7 +341,10 @@ const MyForm = (props) => {
                     id="OptIn2"
                     name="OptIn2"
                     onChange={handleChange}
+                    isInvalid={errors.OptIn2}
                     defaultChecked
+                    //isChecked={checkedItems[1]}
+                    //onChange={(e) => setCheckedItems([checkedItems[0], e.target.checked, checkedItems[2]])}
                   />
                 </Box>
                 <Text
@@ -372,7 +361,10 @@ const MyForm = (props) => {
                     id="OptIn3"
                     name="OptIn3"
                     onChange={handleChange}
+                    isInvalid={errors.OptIn3}
                     defaultChecked
+                    //isChecked={checkedItems[2]}
+                    //onChange={(e) => setCheckedItems([checkedItems[0], checkedItems[1], e.target.checked])}
                   />
                 </Box>
                 <Text
@@ -439,7 +431,6 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    //console.log(`handleSubmit`, values, props);
     const { submitForm, theme, hiddenFormData } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
@@ -461,6 +452,8 @@ const MyEnhancedForm = withFormik({
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: window.location.href ? window.location.href : '',
     };
+
+    console.log(`handleSubmit formData`, formData);
 
     if (values.Counties) formData.CampaignData1__c = values.Counties;
     if (values.Namelist) formData.CampaignData2__c = values.Namelist;
