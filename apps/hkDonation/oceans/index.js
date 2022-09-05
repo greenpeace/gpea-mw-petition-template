@@ -104,8 +104,10 @@ function Index({
                   <DonationModule
                     market={'HK'}
                     language={'zh_HK'}
-                    campaign={'oceans'}
-                    // campaignId={''}
+                    campaign={
+                      theme?.params?.donation_module_campaign ?? 'oceans'
+                    }
+                    campaignId={theme?.params?.campaignId ?? ''}
                     env={'production'}
                   />
                 </Box>

@@ -144,7 +144,11 @@ function Index({ submitted = false, strapi }) {
                               : 'TW'
                           }
                           language={strapi?.donationModuleLanguage}
-                          campaign={strapi?.donationModuleCampaign}
+                          campaign={
+                            theme?.params?.donation_module_campaign ??
+                            strapi?.donationModuleCampaign
+                          }
+                          campaignId={theme?.params?.campaignId ?? ''}
                           env={strapi?.donationModuleEnv}
                         />
                       );
