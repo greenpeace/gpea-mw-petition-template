@@ -95,7 +95,8 @@ function Index({ status, setFormContent }) {
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer theme={theme}>
-                {submitted ? <Thankyou /> : <Content />}
+                {/* {submitted ? <Thankyou /> : <Content />} */}
+                <Content />
               </ContentContainer>
             </Box>
             <Box flex={1} ref={mobileForm}>
