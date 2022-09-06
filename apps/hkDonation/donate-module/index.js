@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
@@ -11,18 +10,16 @@ import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTarge
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
-import DonationModule from '@components/GP/DonationModule';
 
 import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
 
-const Content = dynamic(() => import('./Content'));
-const Thankyou = dynamic(() => import('./Thankyou'));
-
-const HeroBanner = dynamic(() => import('@components/Banner/hero'));
-const ThanksBanner = dynamic(() => import('@components/Banner/thanks'));
-const PageContainer = dynamic(() => import('@containers/pageContainer'));
-const SignupForm = dynamic(() => import('@components/GP/HKForm'));
-const FixedCTA = dynamic(() => import('@components/GP/FixedCTA'));
+import Content from './Content';
+import Thankyou from './Thankyou';
+import PageContainer from '@containers/pageContainer';
+import DonationModule from '@components/GP/DonationModule';
+import HeroBanner from '@components/Banner/hero';
+import ThanksBanner from '@components/Banner/thanks';
+import SignupForm from '@components/GP/HKForm';
 
 function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
@@ -75,11 +72,11 @@ function Index({ status, theme, setFormContent, signup }) {
                 <Box ref={ref}>
                   {submitted ? (
                     <DonationModule
-                      market={theme.Market}
+                      market={'HK'}
                       language={'zh_HK'}
                       campaign={'oceans'}
                       // campaignId={''}
-                      env={'production'}
+                      env={'test'}
                     />
                   ) : (
                     <SignupForm />

@@ -1,37 +1,37 @@
 import React, { useEffect, useRef } from 'react';
-import { useInView } from 'react-intersection-observer';
+import { useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
+import * as formActions from 'store/actions/action-types/form-actions';
+// Import library
+import { useInView } from 'react-intersection-observer';
 import { Box, Flex } from '@chakra-ui/react';
+// Import custom containers
+import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
 import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
+// Import custom components
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
+import DonationModule from '@components/GP/DonationModule';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 
 import formContent from './form';
 import SEO from './SEO';
 
-import * as formActions from 'store/actions/action-types/form-actions';
-
 import Content from './Content';
 import Thankyou from './Thankyou';
-import PageContainer from '@containers/pageContainer';
-import DonationModule from '@components/GP/DonationModule';
 
-import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg';
+// Import static
+import heroBannerImage from './images/GP1SUB1C_PressMedia_ed.jpg?webp';
 
-function Index({
-  status,
-  theme,
-  setFormContent,
-  signup,
-  preFill,
-  setHiddenForm,
-}) {
+function Index({ status, setFormContent }) {
+  const dispatch = useDispatch();
+  const signup = useSelector((state) => state?.signup);
+  const theme = useSelector((state) => state?.theme);
+  const preFill = signup?.preFill;
   const { submitted } = status;
-  const { FirstName } = signup;
 
   const [ref, inView] = useInView({
     threshold: 0,
@@ -95,7 +95,8 @@ function Index({
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
               <ContentContainer theme={theme}>
-                {submitted ? <Thankyou /> : <Content />}
+                {/* {submitted ? <Thankyou /> : <Content />} */}
+                <Content />
               </ContentContainer>
             </Box>
             <Box flex={1} ref={mobileForm}>
@@ -122,12 +123,9 @@ function Index({
   );
 }
 
-const mapStateToProps = ({ status, theme, signup }) => {
+const mapStateToProps = ({ status }) => {
   return {
     status,
-    theme: theme.data,
-    signup: signup?.data,
-    preFill: signup?.preFill,
   };
 };
 
