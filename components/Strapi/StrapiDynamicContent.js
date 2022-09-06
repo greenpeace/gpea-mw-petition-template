@@ -1,6 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const StrapiDynamicBlocks = ({ blocks = 'contentBlocks', strapi }) => {
+  strapi = useSelector((state) => state?.theme?.strapi);
+
   return (
     <div className="strapi-content">
       {strapi?.[blocks]?.map((d) => {

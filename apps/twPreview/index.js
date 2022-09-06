@@ -26,17 +26,18 @@ import formContent from './form';
 // Import static
 
 function Index({ submitted = false, strapi }) {
-  const dispatch = useDispatch();
+  strapi = useSelector((state) => state?.theme?.strapi);
   const router = useRouter();
+  const dispatch = useDispatch();
   const theme = useSelector((state) => state?.theme);
-
   const pageType = strapi?.page_type?.data?.attributes?.name;
-  const [isLoaded, setIsLoaded] = useState(false);
-
   const [ref, inView] = useInView({
     threshold: 0,
   });
+  const [isLoaded, setIsLoaded] = useState(false);
   const FormRef = useRef(null);
+
+  submitted = useSelector((state) => state?.status?.submitted);
 
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
@@ -119,12 +120,23 @@ function Index({ submitted = false, strapi }) {
               <ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
                 {(() => {
                   if (pageType?.toLowerCase() === 'donation') {
-                    return <StrapiDynamicBlocks blocks={'contentBlocks'} />;
+                    return (
+                      <StrapiDynamicBlocks
+                        blocks={'contentBlocks'}
+                        strapi={strapi}
+                      />
+                    );
                   } else {
                     return submitted ? (
-                      <StrapiDynamicBlocks blocks={'thankyouBlocks'} />
+                      <StrapiDynamicBlocks
+                        blocks={'thankyouBlocks'}
+                        strapi={strapi}
+                      />
                     ) : (
-                      <StrapiDynamicBlocks blocks={'contentBlocks'} />
+                      <StrapiDynamicBlocks
+                        blocks={'contentBlocks'}
+                        strapi={strapi}
+                      />
                     );
                   }
                 })()}
