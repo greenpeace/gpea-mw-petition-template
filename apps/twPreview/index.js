@@ -49,17 +49,19 @@ function Index({ submitted = false, strapi }) {
   useEffect(async () => {
     if (router?.isReady) {
       const { preview } = router?.query;
-      const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
-      const res = await fetch(
-        `${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=*`,
-      ).then((response) => response);
-      const themes = await res.json();
-      const theme = themes?.data[0] ?? {};
+      if(preview){
+        const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
+        const res = await fetch(
+          `${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=*`,
+        ).then((response) => response);
+        const themes = await res.json();
+        const theme = themes?.data[0] ?? {};
 
-      dispatch({
-        type: themeActions.SET_STRAPI_DATA,
-        data: theme?.attributes,
-      });
+        dispatch({
+          type: themeActions.SET_STRAPI_DATA,
+          data: theme?.attributes,
+        });
+        }
     }
   }, [router]);
 
