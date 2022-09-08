@@ -49,7 +49,7 @@ function Index({ submitted = false, strapi }) {
   useEffect(async () => {
     if (router?.isReady) {
       const { preview } = router?.query;
-      if(preview){
+      if (preview) {
         const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
         const res = await fetch(
           `${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=*`,
@@ -61,13 +61,13 @@ function Index({ submitted = false, strapi }) {
           type: themeActions.SET_STRAPI_DATA,
           data: theme?.attributes,
         });
-        }
+      }
     }
   }, [router]);
 
   return (
     <>
-      <StrapiSEO />
+      <StrapiSEO strapi={strapi} />
       <Box>
         {(() => {
           if (pageType?.toLowerCase() === 'donation') {
