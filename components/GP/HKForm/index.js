@@ -365,8 +365,6 @@ const MyEnhancedForm = withFormik({
       EXCLUDE_URL_PARAMETERS,
     );
 
-    console.log('strapi',strapi)
-
     const formData = {
       ...hiddenFormData,
       ...values,

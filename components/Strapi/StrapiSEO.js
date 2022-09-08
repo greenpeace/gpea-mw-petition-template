@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Script from 'next/script';
-import { useSelector } from 'react-redux';
+
 const StrapiSEO = ({strapi}) => {
   return (
     <Head>
