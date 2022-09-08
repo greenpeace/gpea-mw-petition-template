@@ -96,7 +96,9 @@ function Index({
           hero_image_mobile,
         },
       });
-      dispatch({ type: themeActions.SET_STRAPI_DATA, data: strapi });
+      if(!Object.entries(strapi).length === 0){ //use default value, if strapi data not found
+        dispatch({ type: themeActions.SET_STRAPI_DATA, data: strapi });
+      }
     }
   }, [router]);
 
