@@ -25,8 +25,8 @@ import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 import formContent from './form';
 // Import static
 
-function Index({ submitted = false, strapi }) {
-  strapi = useSelector((state) => state?.theme?.strapi);
+function Index({ submitted = false, strapi: strapiData }) {
+  const strapi = strapiData ?? useSelector((state) => state?.theme?.strapi);
   const router = useRouter();
   const dispatch = useDispatch();
   const theme = useSelector((state) => state?.theme);
@@ -67,7 +67,7 @@ function Index({ submitted = false, strapi }) {
 
   return (
     <>
-      <StrapiSEO />
+      <StrapiSEO strapi={strapi}/>
       <Box>
         {(() => {
           if (pageType?.toLowerCase() === 'donation') {

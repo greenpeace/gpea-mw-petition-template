@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import Script from 'next/script';
 import { useSelector } from 'react-redux';
-const StrapiSEO = () => {
-  const strapi = useSelector((state) => state?.theme?.strapi);
-
+const StrapiSEO = ({strapi}) => {
   return (
     <Head>
       {/* campaign dataLayer */}
