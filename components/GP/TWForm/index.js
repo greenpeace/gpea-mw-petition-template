@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
-import { numberFormat, capitalize } from '@common/utils';
+import { numberFormat, capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
@@ -385,11 +385,17 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const { submitForm, theme, hiddenFormData } = props;
+    const { submitForm, theme, hiddenFormData, strapi } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
-    const endPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
+    const {dummyEndpointURL, websignEndpointURL} = strapi?.market?.data?.attributes
+    const endPoint = isProd ? websignEndpointURL??theme.EndpointURL : dummyEndpointURL??process.env.dummyEndpoint;
+
+    const completionURL = await clearURL(
+      window?.location.href,
+      EXCLUDE_URL_PARAMETERS,
+    );
 
     const formData = {
       ...hiddenFormData,
@@ -404,6 +410,7 @@ const MyEnhancedForm = withFormik({
       LeadSource: LeadSource,
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: window.location.href ? window.location.href : '',
+      CompletionURL: completionURL,
     };
 
     if (values.Counties) formData.CampaignData1__c = values.Counties;
@@ -433,6 +440,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     numberOfTarget: form.signupNumbers.tw?.Petition_Signup_Target__c,
     theme: theme.data,
     suggestion: form.suggestion,
+    strapi: theme.strapi
   };
 };
 

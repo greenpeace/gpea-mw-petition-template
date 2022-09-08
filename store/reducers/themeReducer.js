@@ -6,7 +6,16 @@ const initState = {
     CampaignId: '',
     interests: '',
   },
-  strapi: {},
+  strapi: {
+    market: {
+      data: {
+        attributes: {
+          dummyEndpointURL: "",
+          websignEndpointURL: "",
+        }
+      } 
+    }
+  },
   params: {
     donation_module_campaign: '',
     headline_prefix: '',

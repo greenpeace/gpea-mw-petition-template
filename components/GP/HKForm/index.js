@@ -357,8 +357,6 @@ const MyEnhancedForm = withFormik({
     const fallbackValue = (d) => (d ? d : '');
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
     const {dummyEndpointURL, websignEndpointURL} = strapi?.market?.data?.attributes
-    // TODO: Fix Access-Control-Allow-Origin issue
-    // const endPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
 
     const endPoint = isProd ? websignEndpointURL??theme.EndpointURL : dummyEndpointURL??process.env.dummyEndpoint;
 
@@ -366,6 +364,8 @@ const MyEnhancedForm = withFormik({
       window?.location.href,
       EXCLUDE_URL_PARAMETERS,
     );
+
+    console.log('strapi',strapi)
 
     const formData = {
       ...hiddenFormData,

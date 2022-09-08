@@ -96,7 +96,11 @@ function Index({
           hero_image_mobile,
         },
       });
-      dispatch({ type: themeActions.SET_STRAPI_DATA, data: strapi });
+
+      if(!!strapi){ //use default value, if strapi data not found
+        console.log('Dispatch')
+        dispatch({ type: themeActions.SET_STRAPI_DATA, data: strapi });
+      }
     }
   }, [router]);
 
@@ -230,7 +234,7 @@ export async function getStaticProps(context) {
   ).then((response) => response);
   const themes = await res.json();
   const theme =
-    themes?.data[0] !== undefined ? themes?.data[0]?.attributes : {};
+    themes?.data[0] !== undefined ? themes?.data[0]?.attributes : null;
 
   return {
     props: {
