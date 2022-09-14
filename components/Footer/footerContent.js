@@ -3,19 +3,17 @@ export const Korean = {
   english: { label: 'English', value: '#' },
   leftContent: [
     '후원 완료와 동시에 첫 후원금이 결제됩니다. 정기 후원 결제일은 매월 10일이며, 결제가 되지 않을 시 결제가 되지 않은 경우 같은 달 15일, 20일, 27일 재결제 됩니다.',
-    '자동이체의 경우 결제일이 공휴일, 주말에 겹치는 경우 그 다음 도래하는 은행 영업일에 결제됩니다.(*결제일 전날이 서울사무소 휴일인 경우 결제가 하루 지연될 수 있습니다.) 신용카드의 경우 휴일 여부와 상관 없이 결제일에 결제됩니다. 다만, 시스템 처리 과정에서 다음 영업일에 결제될 수 있습니다.'
+    '자동이체의 경우 결제일이 공휴일, 주말에 겹치는 경우 그 다음 도래하는 은행 영업일에 결제됩니다.(*결제일 전날이 서울사무소 휴일인 경우 결제가 하루 지연될 수 있습니다.) 신용카드의 경우 휴일 여부와 상관 없이 결제일에 결제됩니다. 다만, 시스템 처리 과정에서 다음 영업일에 결제될 수 있습니다.',
   ],
   link: [
     { label: '홈페이지', value: 'https://www.greenpeace.org/korea/' },
     {
       label: '개인정보 보호정책',
-      value:
-        'https://www.greenpeace.org/korea/privacy-and-cookies/',
+      value: 'https://www.greenpeace.org/korea/privacy-and-cookies/',
     },
     {
       label: '저작권',
-      value:
-        'https://www.greenpeace.org/korea/terms-and-conditions/',
+      value: 'https://www.greenpeace.org/korea/terms-and-conditions/',
     },
     {
       label: '연락처',

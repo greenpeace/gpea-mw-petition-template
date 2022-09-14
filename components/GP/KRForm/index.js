@@ -435,7 +435,9 @@ const MyEnhancedForm = withFormik({
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
-    const endPoint = isProd ? theme.EndpointURL : `https://cors-anywhere.small-service.gpeastasia.org/${theme.EndpointURL}`;
+    const endPoint = isProd
+      ? theme.EndpointURL
+      : `https://cors-anywhere.small-service.gpeastasia.org/${theme.EndpointURL}`;
 
     const formData = {
       ...hiddenFormData,

@@ -46,7 +46,11 @@ const Content = ({ theme }) => {
         <Image src={Image01} layout="fill" alt="Greenpeace" />
       </Box> */}
 
-      <Heading {...headingProps} color={`theme.${themeInterests}`} marginTop="30">
+      <Heading
+        {...headingProps}
+        color={`theme.${themeInterests}`}
+        marginTop="30"
+      >
         지금, 우리가 함께 막아야 합니다.
       </Heading>
 

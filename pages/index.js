@@ -159,7 +159,7 @@ function Index({
   /* Pre-fill signup data */
   useEffect(() => {
     const domain = document.location.host;
-    const market = themeData?.Market?.toUpperCase()
+    const market = themeData?.Market?.toUpperCase();
     /* GTM is only applicable for production env */
     //initTagManager(market);
     setTheme(themeData);

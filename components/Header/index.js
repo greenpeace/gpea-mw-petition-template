@@ -19,7 +19,7 @@ const WithSubnavigation = ({ href }) => {
               <Link href={href} isExternal="true">
                 <Image
                   src={logo}
-                  maxW="220px"
+                  maxW="145px"
                   padding="2px"
                   alt={'Greenpeace'}
                 />
