@@ -66,11 +66,11 @@ function Index() {
                   theme?.params?.hero_image_desktop ?? heroBannerImage
                 }
                 content={{
-                  title: `(${
+                  title: `${
                     signup?.data?.LastName
                       ? signup?.data?.LastName
                       : '그린피스 서포터즈'
-                  })님, 청원에 함께해 주셔서 감사합니다.`,
+                  }님, 청원에 함께해 주셔서 감사합니다.`,
                   //description: ['바다를 위해 한 걸음 더 나아가 해양 보존 프로젝트를 지원하기 위해 기부합니다.'],
                 }}
               />
