@@ -18,7 +18,7 @@ export default function Index({
           <PageContainer>
             <Box py={8} px={4} maxW={{ base: '100%', md: '50%' }}>
               <Stack spacing="4">
-                {content.title && (
+                {content?.title && (
                   <Heading
                     as="h1"
                     fontSize={{
@@ -34,7 +34,7 @@ export default function Index({
                     />
                   </Heading>
                 )}
-                {content.description && (
+                {content?.description && (
                   <Stack spacing="4">
                     <Text fontSize="var(--text-base)" color="white">
                       <span

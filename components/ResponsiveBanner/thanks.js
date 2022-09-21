@@ -31,7 +31,7 @@ export default function Index({
                 justifyContent="space-between"
               >
                 <Stack spacing={4}>
-                  {content.title && (
+                  {content?.title && (
                     <Heading
                       as="h1"
                       fontSize={{
@@ -40,43 +40,34 @@ export default function Index({
                       }}
                       color="white"
                       textShadow="0 0 1px rgba(0,0,0, .2)"
-                      dangerouslySetInnerHTML={{ __html: content.title }}
-                    />
+                    >
+                      <span
+                        dangerouslySetInnerHTML={{ __html: content?.title }}
+                      />
+                    </Heading>
                   )}
-                  {content.description && (
-                    <Box>
-                      <Stack spacing="4">
-                        <Text
-                          fontSize="var(--text-base)"
-                          color="white"
+                  {content?.description && (
+                    <Stack spacing="4">
+                      <Text fontSize="var(--text-base)" color="white">
+                        <span
                           dangerouslySetInnerHTML={{
-                            __html: content.description,
+                            __html: content?.description,
                           }}
-                        ></Text>
-                        {content.inviteMessage && (
-                          <Text
-                            color="white"
-                            dangerouslySetInnerHTML={{
-                              __html: content.inviteMessage,
-                            }}
-                          />
-                        )}
-                      </Stack>
-                    </Box>
+                        />
+                      </Text>
+                    </Stack>
                   )}
                   {content.inviteMessage && (
-                    <Box>
-                      <Stack direction="row" spacing={6}>
-                        {content.inviteMessage &&
-                          content.shareLink.map((d, i) => (
-                            <Box key={i} {...iconWrapProps}>
-                              <SocialButton href={d.link}>
-                                {d.shareComponent}
-                              </SocialButton>
-                            </Box>
-                          ))}
-                      </Stack>
-                    </Box>
+                    <Stack direction="row" spacing={6}>
+                      {content.inviteMessage &&
+                        content.shareLink.map((d, i) => (
+                          <Box key={i} {...iconWrapProps}>
+                            <SocialButton href={d.link}>
+                              {d.shareComponent}
+                            </SocialButton>
+                          </Box>
+                        ))}
+                    </Stack>
                   )}
                 </Stack>
               </Flex>
