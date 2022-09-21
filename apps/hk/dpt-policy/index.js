@@ -76,7 +76,7 @@ function Index() {
                     ? theme?.params?.headline_prefix + '<br/>'
                     : ''
                 }` + '請即聯署<br/>要求政府於 22/23 年度立法落實管制即棄膠餐具',
-              description: [''],
+
             }}
           />
         )}

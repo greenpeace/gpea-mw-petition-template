@@ -131,7 +131,6 @@ function Index({
                       }
                       content={{
                         title: '完整測驗結果將在15分鐘內送至您的電子郵箱',
-                        description: [''],
                       }}
                       quizResult={RESULT[result?.answer]}
                       removeMask={true}
@@ -148,7 +147,6 @@ function Index({
                               ? theme?.params?.headline_prefix + '<br/>'
                               : ''
                           }` + '立即登記解鎖完整測驗結果！',
-                        description: [''],
                       }}
                       quizResult={RESULT[result?.answer]}
                       removeMask={true}

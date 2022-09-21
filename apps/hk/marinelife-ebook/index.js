@@ -70,7 +70,7 @@ function Index({ status, theme, setFormContent, signup }) {
           bgImage={heroBannerImage}
           content={{
             title: '請即下載<br/>瀕危海洋生物手冊<br/>電子圖鑑',
-            description: [''],
+
           }}
           removeMask={true}
           imageSrcset={[

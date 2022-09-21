@@ -70,7 +70,7 @@ function Index({ status, theme, setFormContent, signup }) {
         <HeroBanner
           content={{
             title: '<b>用行動愛地球！<br/>你也能成為<br/>綠色和平行動者</b>',
-            description: [''],
+
           }}
           defaultImage={heroBannerImage}
           imageSrcset={[

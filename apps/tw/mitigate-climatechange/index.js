@@ -91,7 +91,7 @@ function Index({ setFormContent }) {
                     ? theme?.params?.headline_prefix + '<br/>'
                     : ''
                 }` + '立即連署<br/>改寫氣候未來',
-              description: [''],
+
             }}
             imageSrcset={[
               {

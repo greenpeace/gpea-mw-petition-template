@@ -61,7 +61,7 @@ function Index({ status, theme, setFormContent, signup }) {
           bgImage={heroBannerImage}
           content={{
             title: '請即下載<br/>綠色生活手冊',
-            description: [''],
+
           }}
           removeMask="true"
         />

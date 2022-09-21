@@ -174,7 +174,7 @@ function Index({ setFormContent, form, setSignupNumbers }) {
                   ? theme?.params?.headline_prefix + '<br/>'
                   : ''
               }` + '現在連署<br/><b>您能保護 30% 全球海洋</b>',
-            description: [''],
+
           }}
         />
       )}

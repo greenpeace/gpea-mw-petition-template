@@ -62,7 +62,7 @@ function Index({ status, theme, setFormContent, signup }) {
             content={{
               title:
                 '請即報名<br/>與極地科學家遠洋對話：<br/><span>北極熊與海冰講座</span>',
-              description: [''],
+
             }}
             removeMask="true"
           >

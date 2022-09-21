@@ -61,7 +61,6 @@ function Index({
             content={{
               // title: '感謝您的捐助支持！',
               title: '',
-              description: [''],
             }}
             imageSrcset={[
               {
@@ -84,7 +83,6 @@ function Index({
               //   `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
               //   '今天您的捐款支持，<br/>能促成大自然與社會共存的未來',
               titel: '',
-              description: [''],
             }}
             imageSrcset={[
               {
