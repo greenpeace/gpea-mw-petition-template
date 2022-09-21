@@ -63,7 +63,7 @@ function Index({ submitted = false, strapi: strapiData }) {
         });
       }
     }
-  }, [router]);
+  }, [router, submitted]);
 
   return (
     <>
@@ -147,30 +147,37 @@ function Index({ submitted = false, strapi: strapiData }) {
                 })()}
               </ContentContainer>
             </Box>
-            <Box flex={1} ref={FormRef} {...{ d: isLoaded ? 'block' : 'none' }}>
-              <FormContainer>
-                <Box ref={ref}>
-                  {pageType?.toLowerCase() === 'donation' || submitted ? (
-                    <DonationModule
-                      market={
-                        strapi?.market?.data?.attributes?.market === 'Hong Kong'
-                          ? 'HK'
-                          : 'TW'
-                      }
-                      language={strapi?.donationModuleLanguage}
-                      campaign={
-                        theme?.params?.donation_module_campaign ??
-                        strapi?.donationModuleCampaign
-                      }
-                      campaignId={theme?.params?.campaignId ?? ''}
-                      env={strapi?.donationModuleEnv}
-                    />
-                  ) : (
-                    <SignupForm />
-                  )}
-                </Box>
-              </FormContainer>
-            </Box>
+            {isLoaded && (
+              <Box
+                flex={1}
+                ref={FormRef}
+                {...{ d: isLoaded ? 'block' : 'none' }}
+              >
+                <FormContainer>
+                  <Box ref={ref}>
+                    {pageType?.toLowerCase() === 'donation' || submitted ? (
+                      <DonationModule
+                        market={
+                          strapi?.market?.data?.attributes?.market ===
+                          'Hong Kong'
+                            ? 'HK'
+                            : 'TW'
+                        }
+                        language={strapi?.donationModuleLanguage}
+                        campaign={
+                          theme?.params?.donation_module_campaign ??
+                          strapi?.donationModuleCampaign
+                        }
+                        campaignId={theme?.params?.campaignId ?? ''}
+                        env={strapi?.donationModuleEnv}
+                      />
+                    ) : (
+                      <SignupForm />
+                    )}
+                  </Box>
+                </FormContainer>
+              </Box>
+            )}
           </Flex>
         </OverflowWrapper>
       </PageContainer>
