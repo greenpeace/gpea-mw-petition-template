@@ -40,7 +40,7 @@ function Index({ submitted = false, strapi }) {
 
   return (
     <>
-      <StrapiSEO strapi={strapi}/>
+      <StrapiSEO strapi={strapi} />
       <Box>
         {(() => {
           if (pageType?.toLowerCase() === 'donation') {
@@ -68,6 +68,7 @@ function Index({ submitted = false, strapi }) {
                 }
                 content={{
                   title: strapi?.thankyouHero?.richContent,
+                  description: strapi?.contentHero?.richContentParagraph,
                 }}
               />
             ) : (

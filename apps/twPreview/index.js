@@ -83,6 +83,7 @@ function Index({ submitted = false, strapi }) {
                       '<br/>' +
                       strapi?.contentHero?.richContent
                     : strapi?.contentHero?.richContent,
+                  description: strapi?.contentHero?.richContentParagraph,
                 }}
               />
             );
@@ -95,6 +96,7 @@ function Index({ submitted = false, strapi }) {
                 }
                 content={{
                   title: strapi?.thankyouHero?.richContent,
+                  description: strapi?.contentHero?.richContentParagraph,
                 }}
               />
             ) : (
@@ -109,6 +111,7 @@ function Index({ submitted = false, strapi }) {
                       '<br/>' +
                       strapi?.contentHero?.richContent
                     : strapi?.contentHero?.richContent,
+                  description: strapi?.contentHero?.richContentParagraph,
                 }}
               />
             );

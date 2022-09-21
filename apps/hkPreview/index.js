@@ -49,14 +49,14 @@ function Index({ submitted = false, strapi: strapiData }) {
   useEffect(async () => {
     if (router?.isReady) {
       const { preview } = router?.query;
-      if(preview){
+      if (preview) {
         const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
         const res = await fetch(
           `${endpoint}/pages?filters[market][slug]=hk&filters[campaign]=${preview}&populate=*`,
         ).then((response) => response);
         const themes = await res.json();
         const theme = themes?.data[0] ?? {};
-  
+
         dispatch({
           type: themeActions.SET_STRAPI_DATA,
           data: theme?.attributes,
@@ -67,7 +67,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 
   return (
     <>
-      <StrapiSEO strapi={strapi}/>
+      <StrapiSEO strapi={strapi} />
       <Box>
         {(() => {
           if (pageType?.toLowerCase() === 'donation') {
@@ -83,6 +83,7 @@ function Index({ submitted = false, strapi: strapiData }) {
                       '<br/>' +
                       strapi?.contentHero?.richContent
                     : strapi?.contentHero?.richContent,
+                  description: strapi?.contentHero?.richContentParagraph,
                 }}
               />
             );
@@ -95,6 +96,7 @@ function Index({ submitted = false, strapi: strapiData }) {
                 }
                 content={{
                   title: strapi?.thankyouHero?.richContent,
+                  description: strapi?.contentHero?.richContentParagraph,
                 }}
               />
             ) : (
@@ -109,6 +111,7 @@ function Index({ submitted = false, strapi: strapiData }) {
                       '<br/>' +
                       strapi?.contentHero?.richContent
                     : strapi?.contentHero?.richContent,
+                  description: strapi?.contentHero?.richContentParagraph,
                 }}
               />
             );
