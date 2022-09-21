@@ -1,0 +1,34 @@
+{
+  "form_header": "攜手成立全球海洋保護區 訂立《全球海洋公約》",
+  "form_description": "我願意聯署加入守護海洋行列！",
+  "signed_number": "已聯署人數",
+  "label_name": "稱謂",
+  "label_first_name": "名字",
+  "label_last_name": "姓氏",
+  "label_email": "電郵地址",
+  "label_phone": "手提號碼",
+  "label_phone_optional": "手提號碼（選填）",
+  "label_year_of_birth": "出生年份",
+  "label_year_of_birth_optional": "出生年份（選填）",
+  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
+
+  "empty_data_alert": "請填寫資料",
+  "empty_select_data_alert": "請選擇",
+
+  "invalid_email_alert": "請填上有效電郵地址",
+  "invalid_format_alert": "請輸入有效格式",
+  "minimum_8_characters": "請輸入8位數字",
+  "suggestion_message": "您是否想輸入",
+
+  "submit_text": "立即聯署",
+  "mobile_fixed_cta": "立即捐款",
+
+  "mobile_country_code": [
+    { "label": "+852", "value": 852 },
+    { "label": "+853", "value": 853 }
+  ],
+  "new_letter": [
+    { "label": "是", "value": true },
+    { "label": "否", "value": false }
+  ]
+}
