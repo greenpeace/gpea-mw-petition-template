@@ -31,7 +31,7 @@ export default function Index({
                 justifyContent="space-between"
               >
                 <Stack spacing={4}>
-                  <Box>
+                  {content.title && (
                     <Heading
                       as="h1"
                       fontSize={{
@@ -42,18 +42,17 @@ export default function Index({
                       textShadow="0 0 1px rgba(0,0,0, .2)"
                       dangerouslySetInnerHTML={{ __html: content.title }}
                     />
-                  </Box>
+                  )}
                   {content.description && (
                     <Box>
                       <Stack spacing="4">
-                        {content.description.map((d, i) => (
-                          <Text
-                            key={i}
-                            fontSize="var(--text-base)"
-                            color="white"
-                            dangerouslySetInnerHTML={{ __html: d }}
-                          ></Text>
-                        ))}
+                        <Text
+                          fontSize="var(--text-base)"
+                          color="white"
+                          dangerouslySetInnerHTML={{
+                            __html: content.description,
+                          }}
+                        ></Text>
                         {content.inviteMessage && (
                           <Text
                             color="white"
