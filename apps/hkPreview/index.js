@@ -77,6 +77,20 @@ function Index({ submitted = false, strapi: strapiData }) {
                   theme?.params?.hero_image_desktop ||
                   strapi?.contentHero?.desktopImageURL
                 }
+                imageSrcset={[
+                  {
+                    media: '(min-width: 48em)',
+                    srcset:
+                      theme?.params?.hero_image_desktop ||
+                      strapi?.contentHero?.desktopImageURL,
+                  },
+                  {
+                    media: '',
+                    srcset:
+                      theme?.params?.hero_image_mobile ||
+                      strapi?.contentHero?.mobileImageURL,
+                  },
+                ]}
                 content={{
                   title: theme?.params?.headline_prefix
                     ? theme?.params?.headline_prefix +
@@ -94,6 +108,20 @@ function Index({ submitted = false, strapi: strapiData }) {
                   theme?.params?.hero_image_desktop ||
                   strapi?.thankyouHero?.desktopImageURL
                 }
+                imageSrcset={[
+                  {
+                    media: '(min-width: 48em)',
+                    srcset:
+                      theme?.params?.hero_image_desktop ||
+                      strapi?.contentHero?.desktopImageURL,
+                  },
+                  {
+                    media: '',
+                    srcset:
+                      theme?.params?.hero_image_mobile ||
+                      strapi?.contentHero?.mobileImageURL,
+                  },
+                ]}
                 content={{
                   title: strapi?.thankyouHero?.richContent,
                   description: strapi?.contentHero?.richContentParagraph,
@@ -105,6 +133,20 @@ function Index({ submitted = false, strapi: strapiData }) {
                   theme?.params?.hero_image_desktop ||
                   strapi?.thankyouHero?.desktopImageURL
                 }
+                imageSrcset={[
+                  {
+                    media: '(min-width: 48em)',
+                    srcset:
+                      theme?.params?.hero_image_desktop ||
+                      strapi?.contentHero?.desktopImageURL,
+                  },
+                  {
+                    media: '',
+                    srcset:
+                      theme?.params?.hero_image_mobile ||
+                      strapi?.contentHero?.mobileImageURL,
+                  },
+                ]}
                 content={{
                   title: theme?.params?.headline_prefix
                     ? theme?.params?.headline_prefix +
