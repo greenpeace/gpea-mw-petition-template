@@ -150,29 +150,24 @@ function Index({ submitted = false, strapi }) {
             <Box flex={1} ref={FormRef} {...{ d: isLoaded ? 'block' : 'none' }}>
               <FormContainer>
                 <Box ref={ref}>
-                  {(() => {
-                    if (pageType?.toLowerCase() === 'donation' || submitted) {
-                      return (
-                        <DonationModule
-                          market={
-                            strapi?.market?.data?.attributes?.market ===
-                            'Hong Kong'
-                              ? 'HK'
-                              : 'TW'
-                          }
-                          language={strapi?.donationModuleLanguage}
-                          campaign={
-                            theme?.params?.donation_module_campaign ??
-                            strapi?.donationModuleCampaign
-                          }
-                          campaignId={theme?.params?.campaignId ?? ''}
-                          env={strapi?.donationModuleEnv}
-                        />
-                      );
-                    } else {
-                      return <SignupForm />;
-                    }
-                  })()}
+                  {pageType?.toLowerCase() === 'donation' || submitted ? (
+                    <DonationModule
+                      market={
+                        strapi?.market?.data?.attributes?.market === 'Hong Kong'
+                          ? 'HK'
+                          : 'TW'
+                      }
+                      language={strapi?.donationModuleLanguage}
+                      campaign={
+                        theme?.params?.donation_module_campaign ??
+                        strapi?.donationModuleCampaign
+                      }
+                      campaignId={theme?.params?.campaignId ?? ''}
+                      env={strapi?.donationModuleEnv}
+                    />
+                  ) : (
+                    <SignupForm />
+                  )}
                 </Box>
               </FormContainer>
             </Box>
