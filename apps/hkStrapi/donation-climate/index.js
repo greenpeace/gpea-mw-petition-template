@@ -24,175 +24,176 @@ import formContent from './form';
 // Import static
 
 function Index({ submitted = false, strapi }) {
-  const dispatch = useDispatch();
-  const theme = useSelector((state) => state?.theme);
-  const pageType = strapi?.page_type?.data?.attributes?.name;
-  const [ref, inView] = useInView({
-    threshold: 0,
-  });
-  const FormRef = useRef(null);
+	const dispatch = useDispatch();
+	const theme = useSelector((state) => state?.theme);
+	const signup = useSelector((state) => state?.signup);
+	const pageType = strapi?.page_type?.data?.attributes?.name;
+	const [ref, inView] = useInView({
+		threshold: 0
+	});
+	const FormRef = useRef(null);
 
-  submitted = useSelector((state) => state?.status?.submitted);
+	submitted = useSelector((state) => state?.status?.submitted);
 
-  useEffect(() => {
-    dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
-  }, [dispatch]);
+	useEffect(() => {
+		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
+	}, [dispatch]);
 
-  return (
-    <>
-      <StrapiSEO strapi={strapi} />
-      <Box>
-        {(() => {
-          if (pageType?.toLowerCase() === 'donation') {
-            return (
-              <HeroBanner
-                defaultImage={
-                  theme?.params?.hero_image_desktop ||
-                  strapi?.contentHero?.desktopImageURL
-                }
-                imageSrcset={[
-                  {
-                    media: '(min-width: 48em)',
-                    srcset:
-                      theme?.params?.hero_image_desktop ||
-                      strapi?.contentHero?.desktopImageURL,
-                  },
-                  {
-                    media: '',
-                    srcset:
-                      theme?.params?.hero_image_mobile ||
-                      strapi?.contentHero?.mobileImageURL,
-                  },
-                ]}
-                content={{
-                  title: theme?.params?.headline_prefix
-                    ? theme?.params?.headline_prefix +
-                      '<br/>' +
-                      strapi?.contentHero?.richContent
-                    : strapi?.contentHero?.richContent,
-                  description: strapi?.contentHero?.richContentParagraph,
-                }}
-              />
-            );
-          } else {
-            return submitted ? (
-              <ThanksBanner
-                defaultImage={
-                  theme?.params?.hero_image_desktop ||
-                  strapi?.thankyouHero?.desktopImageURL
-                }
-                imageSrcset={[
-                  {
-                    media: '(min-width: 48em)',
-                    srcset:
-                      theme?.params?.hero_image_desktop ||
-                      strapi?.contentHero?.desktopImageURL,
-                  },
-                  {
-                    media: '',
-                    srcset:
-                      theme?.params?.hero_image_mobile ||
-                      strapi?.contentHero?.mobileImageURL,
-                  },
-                ]}
-                content={{
-                  title: strapi?.thankyouHero?.richContent,
-                  description: strapi?.contentHero?.richContentParagraph,
-                }}
-              />
-            ) : (
-              <HeroBanner
-                defaultImage={
-                  theme?.params?.hero_image_desktop ||
-                  strapi?.contentHero?.desktopImageURL
-                }
-                imageSrcset={[
-                  {
-                    media: '(min-width: 48em)',
-                    srcset:
-                      theme?.params?.hero_image_desktop ||
-                      strapi?.contentHero?.desktopImageURL,
-                  },
-                  {
-                    media: '',
-                    srcset:
-                      theme?.params?.hero_image_mobile ||
-                      strapi?.contentHero?.mobileImageURL,
-                  },
-                ]}
-                content={{
-                  title: theme?.params?.headline_prefix
-                    ? theme?.params?.headline_prefix +
-                      '<br/>' +
-                      strapi?.contentHero?.richContent
-                    : strapi?.contentHero?.richContent,
-                  description: strapi?.contentHero?.richContentParagraph,
-                }}
-              />
-            );
-          }
-        })()}
-      </Box>
-      <PageContainer>
-        <OverflowWrapper>
-          <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
-            <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-                {(() => {
-                  if (pageType?.toLowerCase() === 'donation') {
-                    return (
-                      <StrapiDynamicBlocks
-                        blocks={'contentBlocks'}
-                        strapi={strapi}
-                      />
-                    );
-                  } else {
-                    return submitted ? (
-                      <StrapiDynamicBlocks
-                        blocks={'thankyouBlocks'}
-                        strapi={strapi}
-                      />
-                    ) : (
-                      <StrapiDynamicBlocks
-                        blocks={'contentBlocks'}
-                        strapi={strapi}
-                      />
-                    );
-                  }
-                })()}
-              </ContentContainer>
-            </Box>
-            <Box flex={1} ref={FormRef}>
-              <FormContainer>
-                <Box ref={ref}>
-                  {pageType?.toLowerCase() === 'donation' || submitted ? (
-                    <DonationModule
-                      market={
-                        strapi?.market?.data?.attributes?.market === 'Hong Kong'
-                          ? 'HK'
-                          : 'TW'
-                      }
-                      language={strapi?.donationModuleLanguage}
-                      campaign={
-                        theme?.params?.donation_module_campaign ??
-                        strapi?.donationModuleCampaign
-                      }
-                      campaignId={theme?.params?.campaignId ?? ''}
-                      env={strapi?.donationModuleEnv}
-                    />
-                  ) : (
-                    <SignupForm />
-                  )}
-                </Box>
-              </FormContainer>
-            </Box>
-          </Flex>
-        </OverflowWrapper>
-      </PageContainer>
-      <PetitionFooter locale={'HKChinese'} />
-      <StrapiFixedButton target={FormRef} targetInView={inView} />
-    </>
-  );
+	return (
+		<>
+			<StrapiSEO strapi={strapi} />
+			<Box>
+				{(() => {
+					if (pageType?.toLowerCase() === 'donation') {
+						return (
+							<HeroBanner
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.contentHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: theme?.params?.headline_prefix
+										? theme?.params?.headline_prefix +
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
+										: strapi?.contentHero?.richContent,
+									description: strapi?.contentHero?.richContentParagraph
+								}}
+							/>
+						);
+					} else {
+						return submitted ? (
+							<ThanksBanner
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.thankyouHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: strapi?.thankyouHero?.richContent,
+									description: strapi?.contentHero?.richContentParagraph
+								}}
+							/>
+						) : (
+							<HeroBanner
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.contentHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: theme?.params?.headline_prefix
+										? theme?.params?.headline_prefix +
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
+										: strapi?.contentHero?.richContent,
+									description: strapi?.contentHero?.richContentParagraph
+								}}
+							/>
+						);
+					}
+				})()}
+			</Box>
+			<PageContainer>
+				<OverflowWrapper>
+					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
+						<Box flex={1} mt={{ base: 10, sm: 60 }}>
+							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
+								{(() => {
+									if (pageType?.toLowerCase() === 'donation') {
+										return (
+											<StrapiDynamicBlocks
+												blocks={'contentBlocks'}
+												strapi={strapi}
+											/>
+										);
+									} else {
+										return submitted ? (
+											<StrapiDynamicBlocks
+												blocks={'thankyouBlocks'}
+												strapi={strapi}
+											/>
+										) : (
+											<StrapiDynamicBlocks
+												blocks={'contentBlocks'}
+												strapi={strapi}
+											/>
+										);
+									}
+								})()}
+							</ContentContainer>
+						</Box>
+						<Box flex={1} ref={FormRef}>
+							<FormContainer>
+								<Box ref={ref}>
+									{pageType?.toLowerCase() === 'donation' || submitted ? (
+										<DonationModule
+											market={
+												strapi?.market?.data?.attributes?.market === 'Hong Kong'
+													? 'HK'
+													: 'TW'
+											}
+											language={strapi?.donationModuleLanguage}
+											campaign={
+												theme?.params?.donation_module_campaign ??
+												strapi?.donationModuleCampaign
+											}
+											campaignId={theme?.params?.campaignId ?? ''}
+											env={strapi?.donationModuleEnv}
+										/>
+									) : (
+										<SignupForm />
+									)}
+								</Box>
+							</FormContainer>
+						</Box>
+					</Flex>
+				</OverflowWrapper>
+			</PageContainer>
+			<PetitionFooter locale={'HKChinese'} />
+			<StrapiFixedButton target={FormRef} targetInView={inView} />
+		</>
+	);
 }
 
 export default Index;
