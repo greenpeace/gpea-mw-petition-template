@@ -87,7 +87,7 @@ function Index({ status, theme, setFormContent, signup }) {
           bgImage={heroBannerImage}
           content={{
             title: '氣候告急<br/>立即行動',
-            description: [''],
+
           }}
         />
       )}

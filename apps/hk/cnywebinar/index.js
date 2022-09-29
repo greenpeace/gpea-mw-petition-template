@@ -69,7 +69,7 @@ function Index({ status, theme, setFormContent, signup }) {
             content={{
               title:
                 '請即報名綠色新春教室<br/>裸買店店主同你<br/>環保辦年貨大掃除',
-              description: [''],
+
             }}
             removeMask="true"
           >

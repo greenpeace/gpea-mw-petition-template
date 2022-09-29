@@ -50,7 +50,6 @@ function Index({
           bgImage={heroBannerImage}
           content={{
             title: '感謝您捐款支持！',
-            description: [''],
           }}
           imageSrcset={[
             {
@@ -73,7 +72,6 @@ function Index({
             title:
               `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
               '減緩氣候危機<br/>急需您的支持',
-            description: [''],
           }}
           imageSrcset={[
             {

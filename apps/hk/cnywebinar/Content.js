@@ -1,14 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  Box,
-  Heading,
-  Text,
-  Image,
-  List,
-  ListItem,
-  UnorderedList,
-} from '@chakra-ui/react';
+import { Box, Heading, Text, ListItem, UnorderedList } from '@chakra-ui/react';
 import {
   headingProps,
   paragraphProps,

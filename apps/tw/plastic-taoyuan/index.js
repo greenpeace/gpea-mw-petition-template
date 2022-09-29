@@ -60,7 +60,7 @@ function Index({ status, theme, setFormContent, signup }) {
           content={{
             title:
               '<span style="font-size:1.3em;">-1 + ∞</span><br/><b>成為臺灣減塑之光！<br>支持桃園加速推動循環消費</b>',
-            description: [''],
+
           }}
         />
       )}

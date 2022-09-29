@@ -83,7 +83,7 @@ function Index({ status, theme, setFormContent, signup }) {
           bgImage={heroBannerImage}
           content={{
             title: '請即報名：<br/>眼睛去旅行<br/>港台日韓四地連線',
-            description: [''],
+
           }}
           removeMask={false}
           imageSrcset={[

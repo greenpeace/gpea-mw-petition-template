@@ -51,7 +51,7 @@ function Index({
           title:
             `${preFill.FirstName ? preFill.FirstName + '<br/>' : ''}` +
             '請即捐款<br/>拯救脆弱的地球生態！',
-          description: [''],
+
         }}
         imageSrcset={[
           {

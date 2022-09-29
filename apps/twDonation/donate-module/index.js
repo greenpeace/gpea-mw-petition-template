@@ -70,7 +70,7 @@ function Index({ status, theme, setFormContent, signup }) {
             defaultImage={heroBannerImage}
             content={{
               title: '現在連署<br/><b>您能保護 30% 全球海洋</b>',
-              description: [''],
+
             }}
             imageSrcset={[
               {

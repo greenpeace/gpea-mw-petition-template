@@ -70,7 +70,7 @@ function Index({ status, theme, setFormContent, signup }) {
             bgImage={heroBannerImage}
             content={{
               title: '請即聯署<br/>要求政府撤回<br/>明日大嶼填海計劃',
-              description: [''],
+
             }}
             // removeMask="true"
           ></HeroBanner>

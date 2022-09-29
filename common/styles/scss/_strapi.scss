@@ -1,11 +1,12 @@
 .strapi-content {
-  ol,
-  ul {
-    margin-bottom: 30px;
-    padding-left: 16px;
-    line-height: 1.5;
-    li {
-      margin-bottom: 12px;
-    }
-  }
+	ol,
+	ul {
+		list-style: initial;
+		margin-bottom: 30px;
+		padding-left: 16px;
+		line-height: 1.5;
+		li {
+			margin-bottom: 16px;
+		}
+	}
 }

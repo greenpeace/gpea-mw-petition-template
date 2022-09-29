@@ -69,7 +69,7 @@ function Index({ status, theme, setFormContent, signup }) {
           bgImage={heroBannerImage}
           content={{
             title: '請即下載<br/>裸買重用回收全攻略（增訂版）',
-            description: [''],
+
           }}
           removeMask={true}
           imageSrcset={[
