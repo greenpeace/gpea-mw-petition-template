@@ -18,7 +18,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import leafImage from './images/earthday-leaf.jpg';
+import leafImage from './images/beforeresult.jpg';
 
 const Description = ({ setSurveyPage }) => {
   return (
@@ -32,7 +32,7 @@ const Description = ({ setSurveyPage }) => {
                 color={'black'}
                 textAlign={{ base: 'center' }}
               >
-                我是哲青，邀你一起成為地球投資者！
+                微塑膠污染已遍佈海、陸、空<br/>入侵臺灣野生動物棲地！
               </Heading>
             </Box>
             <Box
@@ -50,7 +50,7 @@ const Description = ({ setSurveyPage }) => {
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Box bgColor={'rgba(255,255,255,0.8)'} borderRadius={'8px'} p={4}>
                 <Text as="p" color={'black'} {...paragraphProps} mb={0}>
-                  4月22日是世界地球日，邀請你完成心理測驗，找出最適合你的投資地球方法，讓我們一起用行動投資地球，改善氣候，擁抱好生活。
+                海洋塑膠廢棄物、空氣中驗出微塑膠等塑膠污染的消息層出不窮...<br/>綠色和平與研究團隊針對臺灣多個野生動物棲地進行科學研究，首度發現連臺灣保育類動物也難倖免於塑膠污染。
                 </Text>
               </Box>
             </LazyShow>
@@ -61,9 +61,9 @@ const Description = ({ setSurveyPage }) => {
                   fontSize={{ base: 'xl', lg: '2xl' }}
                   px={{ base: 10, md: 14 }}
                   py={{ base: 6, md: 8 }}
-                  onClick={() => setSurveyPage('quiz')}
+                  onClick={() => setSurveyPage('result')}
                 >
-                  <Text>開始測驗</Text>
+                  <Text>看目前研究結果</Text>
                 </Button>
               </Flex>
             </Box>
