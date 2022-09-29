@@ -33,6 +33,19 @@ const styles = {
     '.swiper-pagination-bullet-active': {
       background: 'brand.500',
     },
+    '.strapi-content h2': {
+      lineHeight: 1.2,
+      mb: 6,
+      fontSize: { base: 'xl', md: '2xl' },
+      fontWeight: 'bold',
+    },
+    '.strapi-content p': {
+      lineHeight: 2,
+      mb: 6,
+      fontSize: { base: '16px' },
+      whiteSpace: 'pre-line',
+      textAlign: 'justify',
+    },
   },
 };
 

@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import axios from 'axios';
 import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -20,7 +20,7 @@ import {
 } from '@common/constants/tagManagerArgs';
 
 /* Determine the returned project index by env variable */
-const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`),{ loading: () => <p>loading</p> });
+const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
 
 /* Get env variables */
 const envProjectName = process.env.projectName;
@@ -58,15 +58,13 @@ const initTagManager = (marketName) => {
 function Index({
   setTheme,
   themeData,
+  strapi,
   setSignupNumbers,
   setWebStatus,
   setSignFormData,
 }) {
   const router = useRouter();
   const dispatch = useDispatch();
-  const hiddenFormDefaultValue = useSelector(
-    (state) => state?.hiddenForm?.data,
-  );
 
   /* Set dynamic theme parameters */
   useEffect(() => {
@@ -75,15 +73,11 @@ function Index({
       const {
         page,
         step,
+        campaignId,
         donation_module_campaign,
         headline_prefix,
         hero_image_desktop,
         hero_image_mobile,
-        // utm_campaign,
-        // utm_source,
-        // utm_medium,
-        // utm_content,
-        // utm_term,
       } = router.query;
 
       /* page=2 force to result page */
@@ -91,30 +85,22 @@ function Index({
         setWebStatus(true);
       }
 
-      /*
-      dispatch({
-        type: hiddenFormActions.SET_HIDDEN_FORM,
-        data: {
-          ...hiddenFormDefaultValue,
-          utm_campaign: utm_campaign,
-          utm_source: utm_source,
-          utm_medium: utm_medium,
-          utm_content: utm_content,
-          utm_term: utm_term,
-        },
-      });
-      */
-
       dispatch({ type: signupActions.SET_STEP, data: step ?? 'default' });
       dispatch({
         type: themeActions.SET_PARAMS,
         data: {
+          campaignId,
           donation_module_campaign,
           headline_prefix,
           hero_image_desktop,
           hero_image_mobile,
         },
       });
+
+      if(!!strapi){ //use default value, if strapi data not found
+        console.log('Dispatch')
+        dispatch({ type: themeActions.SET_STRAPI_DATA, data: strapi });
+      }
     }
   }, [router]);
 
@@ -200,7 +186,7 @@ function Index({
     }
   }, [themeData]);
 
-  return <DynamicComponent/>;
+  return <DynamicComponent strapi={strapi} themeData={themeData} />;
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
@@ -222,7 +208,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
   const singleResult = await axios
     .get(themeEndpointURL)
     .then((response) => {
@@ -237,9 +223,23 @@ export async function getStaticProps() {
 
   !singleResult && console.warn('PROJECT NAME NOT FOUND');
 
+  const app = envProjectName ?? '';
+
+  const endpoint =
+    process.env.NODE_ENV === 'development'
+      ? process.env.API_ENDPOINT_LOCAL
+      : process.env.API_ENDPOINT;
+  const res = await fetch(
+    `${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate=*`,
+  ).then((response) => response);
+  const themes = await res.json();
+  const theme =
+    themes?.data[0] !== undefined ? themes?.data[0]?.attributes : null;
+
   return {
     props: {
       themeData: singleResult || {},
+      strapi: theme,
     },
   };
 }

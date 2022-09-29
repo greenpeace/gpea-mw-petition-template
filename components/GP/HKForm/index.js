@@ -352,12 +352,14 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const { submitForm, theme, hiddenFormData } = props;
+    const { submitForm, theme, hiddenFormData, strapi } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
-    // TODO: Fix Access-Control-Allow-Origin issue
-    const endPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
+    const {dummyEndpointURL, websignEndpointURL} = strapi?.market?.data?.attributes
+
+    const endPoint = isProd ? websignEndpointURL??theme.EndpointURL : dummyEndpointURL??process.env.dummyEndpoint;
+
     const completionURL = await clearURL(
       window?.location.href,
       EXCLUDE_URL_PARAMETERS,
@@ -371,7 +373,7 @@ const MyEnhancedForm = withFormik({
       UtmCampaign: fallbackValue(hiddenFormData.utm_campaign),
       UtmContent: fallbackValue(hiddenFormData.utm_content),
       UtmTerm: fallbackValue(hiddenFormData.utm_term),
-      CampaignId: isProd ? theme.CampaignId : '7012u000000OxDYAA0',
+      CampaignId: isProd ? strapi?.campaignId??theme.CampaignId : '7012u000000OxDYAA0',
       LeadSource: LeadSource,
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: completionURL,
@@ -398,6 +400,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
     theme: theme.data,
     suggestion: form.suggestion,
+    strapi: theme.strapi
   };
 };
 

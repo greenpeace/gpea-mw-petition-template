@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
-import { numberFormat, capitalize } from '@common/utils';
+import { numberFormat, capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
 import Mailcheck from 'mailcheck';
 import * as signupActions from 'store/actions/action-types/signup-actions';
@@ -96,7 +96,6 @@ const MyForm = (props) => {
       if (formContent.counties) setFieldValue('Counties', '');
       if (formContent.namelist)
         setFieldValue('Namelist', formContent.namelist[0].value);
-      if (formContent.address) setFieldValue('Address', '');
     }
   }, [formContent]);
 
@@ -315,20 +314,6 @@ const MyForm = (props) => {
               </Box>
             )}
 
-            {formContent.address && (
-              <Box>
-                <Field
-                  errors={errors.Address}
-                  touched={touched.Address}
-                  label={formContent.label_address}
-                  name={'Address'}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
-                />
-              </Box>
-
-            )}
-
             <Box>
               <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
                 <Box flex={1} mr={2} pt={1}>
@@ -400,11 +385,17 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
-    const { submitForm, theme, hiddenFormData, formContent } = props;
+    const { submitForm, theme, hiddenFormData, strapi } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
-    const endPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
+    const {dummyEndpointURL, websignEndpointURL} = strapi?.market?.data?.attributes
+    const endPoint = isProd ? websignEndpointURL??theme.EndpointURL : dummyEndpointURL??process.env.dummyEndpoint;
+
+    const completionURL = await clearURL(
+      window?.location.href,
+      EXCLUDE_URL_PARAMETERS,
+    );
 
     const formData = {
       ...hiddenFormData,
@@ -415,22 +406,15 @@ const MyEnhancedForm = withFormik({
       UtmContent: fallbackValue(hiddenFormData.utm_content),
       UtmTerm: fallbackValue(hiddenFormData.utm_term),
       MobileCountryCode: '886',
-      CampaignId: isProd ? theme.CampaignId : '7012u000000OxDYAA0',
+      CampaignId: isProd ? strapi?.campaignId??theme.CampaignId : '7012u000000OxDYAA0',
       LeadSource: LeadSource,
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: window.location.href ? window.location.href : '',
+      CompletionURL: completionURL,
     };
 
-    // need to set additional field for counties, namelist and others
-    if (values.Counties){
-      const countiesField = formContent?.counties_field || "CampaignData1__c"; 
-      formData[countiesField] = values.Counties;
-    }
-    if (values.Namelist){
-      const namelistField = formContent?.namelist_field || "CampaignData2__c";
-      formData[namelistField] = values.Namelist;
-    }
-    if (values.Address) formData[formContent.address_field] = values.Address;
+    if (values.Counties) formData.CampaignData1__c = values.Counties;
+    if (values.Namelist) formData.CampaignData2__c = values.Namelist;
 
     setSubmitting(true);
     submitForm(formData, endPoint);
@@ -456,6 +440,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     numberOfTarget: form.signupNumbers.tw?.Petition_Signup_Target__c,
     theme: theme.data,
     suggestion: form.suggestion,
+    strapi: theme.strapi
   };
 };
 

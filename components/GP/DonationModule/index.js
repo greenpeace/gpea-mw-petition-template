@@ -55,7 +55,7 @@ const DonationModule = (props) => {
   const status = useScript(moduleUrl);
 
   return (
-    <Box pos="relative" minH="400px">
+    <Box pos="relative">
       {/* Script loading */}
       <Fade in={status != 'ready'}>
         <Flex

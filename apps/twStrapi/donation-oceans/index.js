@@ -14,46 +14,48 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/HKForm';
-import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
+import SignupForm from '@components/GP/TWForm';
+// Import Strapi content components
+import StrapiSEO from '@components/Strapi/StrapiSEO';
+import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 // Import Contents
-import Donation from './Donation';
-import Content from './Content';
-import Thankyou from './Thankyou';
-
 import formContent from './form';
-import SEO from './SEO';
 // Import static
 
-function Index() {
+function Index({ submitted = false, strapi }) {
   const dispatch = useDispatch();
-  const strapi = useSelector((state) => state?.theme?.strapi);
-  const submitted = useSelector((state) => state?.status?.submitted);
+  const theme = useSelector((state) => state?.theme);
   const pageType = strapi?.page_type?.data?.attributes?.name;
-
   const [ref, inView] = useInView({
     threshold: 0,
   });
   const FormRef = useRef(null);
 
+  submitted = useSelector((state) => state?.status?.submitted);
+
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
   }, [dispatch]);
-  
+
   return (
     <>
-      <SEO />
+      <StrapiSEO strapi={strapi} />
       <Box>
         {(() => {
           if (pageType?.toLowerCase() === 'donation') {
             return (
               <HeroBanner
                 defaultImage={
+                  theme?.params?.hero_image_desktop ||
                   strapi?.contentHero?.desktopImageURL
                 }
                 content={{
-                  title: strapi?.contentHero?.richContent,
-                  description: [''],
+                  title: theme?.params?.headline_prefix
+                    ? theme?.params?.headline_prefix +
+                      '<br/>' +
+                      strapi?.contentHero?.richContent
+                    : strapi?.contentHero?.richContent,
                 }}
               />
             );
@@ -61,21 +63,25 @@ function Index() {
             return submitted ? (
               <ThanksBanner
                 defaultImage={
+                  theme?.params?.hero_image_desktop ||
                   strapi?.thankyouHero?.desktopImageURL
                 }
                 content={{
                   title: strapi?.thankyouHero?.richContent,
-                  description: [''],
                 }}
               />
             ) : (
               <HeroBanner
                 defaultImage={
+                  theme?.params?.hero_image_desktop ||
                   strapi?.contentHero?.desktopImageURL
                 }
                 content={{
-                  title: strapi?.contentHero?.richContent,
-                  description: [''],
+                  title: theme?.params?.headline_prefix
+                    ? theme?.params?.headline_prefix +
+                      '<br/>' +
+                      strapi?.contentHero?.richContent
+                    : strapi?.contentHero?.richContent,
                 }}
               />
             );
@@ -86,12 +92,27 @@ function Index() {
         <OverflowWrapper>
           <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
             <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer>
+              <ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
                 {(() => {
                   if (pageType?.toLowerCase() === 'donation') {
-                    return <Donation />;
+                    return (
+                      <StrapiDynamicBlocks
+                        blocks={'contentBlocks'}
+                        strapi={strapi}
+                      />
+                    );
                   } else {
-                    return submitted ? <Thankyou /> : <Content />;
+                    return submitted ? (
+                      <StrapiDynamicBlocks
+                        blocks={'thankyouBlocks'}
+                        strapi={strapi}
+                      />
+                    ) : (
+                      <StrapiDynamicBlocks
+                        blocks={'contentBlocks'}
+                        strapi={strapi}
+                      />
+                    );
                   }
                 })()}
               </ContentContainer>
@@ -110,7 +131,11 @@ function Index() {
                               : 'TW'
                           }
                           language={strapi?.donationModuleLanguage}
-                          campaign={strapi?.donationModuleCampaign}
+                          campaign={
+                            theme?.params?.donation_module_campaign ??
+                            strapi?.donationModuleCampaign
+                          }
+                          campaignId={theme?.params?.campaignId ?? ''}
                           env={strapi?.donationModuleEnv}
                         />
                       );
@@ -124,8 +149,8 @@ function Index() {
           </Flex>
         </OverflowWrapper>
       </PageContainer>
-      <PetitionFooter locale={'HKChinese'} />
-      <ScrollToTargetButton target={FormRef} targetInView={inView} />
+      <PetitionFooter locale={'TWChinese'} />
+      <StrapiFixedButton target={FormRef} targetInView={inView} />
     </>
   );
 }

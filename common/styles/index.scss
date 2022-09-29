@@ -3,7 +3,8 @@
 @tailwind utilities;
 @import './tokens.css';
 
-@import './scss/theme', './scss/content', './scss/step', './scss/override';
+@import './scss/theme', './scss/content', './scss/step', './scss/strapi',
+  './scss/override';
 
 html,
 body {

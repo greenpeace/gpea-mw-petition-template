@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Box } from '@chakra-ui/react';
 
-const ContentContainer = ({ children, theme }) => {
+const ContentContainer = ({ children, theme, issue }) => {
+  const interest = issue || theme?.interests;
   return (
     <Box py={6} px={4} className="content">
-      <Box className={`${theme?.interests}`}>{children}</Box>
+      <Box className={`${interest}`}>{children}</Box>
     </Box>
   );
 };
