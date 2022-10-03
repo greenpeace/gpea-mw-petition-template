@@ -165,7 +165,7 @@ function Index({ submitted = false, strapi }) {
 										);
 									}
 								})()}
-								<Heading textAlign="center" py="6" fontSize="2xl">
+                <Heading textAlign="center" py="6" fontSize="2xl">
 									常見問題
 								</Heading>
 								<DonateFAQ locale="TWChinese" />
