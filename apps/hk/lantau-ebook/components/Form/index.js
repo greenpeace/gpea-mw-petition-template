@@ -8,40 +8,40 @@ const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
 import SignupForm from '@components/GP/WebinarForm';
 
 const Index = ({ status }) => {
-  const RenderForm = () =>
-    status?.submitted ? (
-      <DonationModule
-        market={'HK'}
-        language={'zh_HK'}
-        campaign={'elm'}
-        // campaignId={''}
-        env={'production'}
-      />
-    ) : (
-      <SignupForm />
-    );
-  return (
-    <Box
-      mx="auto"
-      bgColor="white"
-      borderRadius={8}
-      boxShadow="lg"
-      overflow="hidden"
-      pos="relative"
-      zIndex={10}
-    >
-      <RenderForm />
-    </Box>
-  );
+	const RenderForm = () =>
+		status?.submitted ? (
+			<DonationModule
+				market={'HK'}
+				language={'zh_HK'}
+				campaign={'elm'}
+				// campaignId={''}
+				env={'production'}
+			/>
+		) : (
+			<SignupForm />
+		);
+	return (
+		<Box
+			mx="auto"
+			bgColor="white"
+			borderRadius={8}
+			boxShadow="lg"
+			overflow="hidden"
+			pos="relative"
+			zIndex={10}
+		>
+			<RenderForm />
+		</Box>
+	);
 };
 
 //Prevent refresh child component
 function propsAreEqual(prevStatus, nextStatus) {
-  return prevStatus.status.submitted === nextStatus.status.submitted;
+	return prevStatus.status.submitted === nextStatus.status.submitted;
 }
 
 const mapStateToProps = ({ status }) => {
-  return { status };
+	return { status };
 };
 
 export default connect(mapStateToProps)(React.memo(Index, propsAreEqual));
