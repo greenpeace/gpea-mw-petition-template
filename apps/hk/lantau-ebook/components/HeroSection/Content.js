@@ -8,61 +8,61 @@ import { headingProps } from '@common/styles/components/contentStyle';
 const formWidth = 500;
 
 function Content({ children }) {
-  const [readyToShow, setReadyToShow] = useState(false);
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
+	const [readyToShow, setReadyToShow] = useState(false);
+	const { ref, inView } = useInView({
+		threshold: 0
+	});
 
-  const getSize = useWindowSize();
-  const formProps = inView // switch form position when TITLE inView
-    ? {
-        position: 'absolute',
-        left: '100%',
-        top: 0,
-        width: `${formWidth}px`,
-      }
-    : {
-        position: 'fixed',
-        left: `${getSize?.width / 2}px`,
-        top: '0px',
-        width: `${formWidth}px`,
-      };
+	const getSize = useWindowSize();
+	const formProps = inView // switch form position when TITLE inView
+		? {
+				position: 'absolute',
+				left: '100%',
+				top: 0,
+				width: `${formWidth}px`
+		  }
+		: {
+				position: 'fixed',
+				left: `${getSize?.width / 2}px`,
+				top: '0px',
+				width: `${formWidth}px`
+		  };
 
-  useEffect(() => {
-    setTimeout(() => setReadyToShow(true), 200);
-  }, []);
+	useEffect(() => {
+		setTimeout(() => setReadyToShow(true), 200);
+	}, []);
 
-  return (
-    <Stack spacing="4" py={'40px'} w={{ md: 'md', xl: 'xl' }}>
-      <Box ref={ref}>
-        <Heading
-          as="h1"
-          {...headingProps}
-          color={'white'}
-          fontSize={{
-            base: 'var(--text-xl)',
-            md: 'var(--text-2xl)',
-          }}
-          textShadow="0 0 1px rgba(0,0,0, .2)"
-          mb={4}
-          dangerouslySetInnerHTML={{
-            __html: '請即下載<br/>山海大嶼電子書',
-          }}
-        />
-      </Box>
-      <Box pos={'relative'}>
-        {readyToShow && (
-          <Box {...formProps} d={{ base: 'none', lg: 'block' }}>
-            <Form />
-          </Box>
-        )}
-      </Box>
-    </Stack>
-  );
+	return (
+		<Stack spacing="4" py={'40px'} w={{ md: 'md', xl: 'xl' }}>
+			<Box ref={ref}>
+				<Heading
+					as="h1"
+					{...headingProps}
+					color={'white'}
+					fontSize={{
+						base: 'var(--text-xl)',
+						md: 'var(--text-2xl)'
+					}}
+					textShadow="0 0 1px rgba(0,0,0, .2)"
+					mb={4}
+					dangerouslySetInnerHTML={{
+						__html: '請即下載<br/>山海大嶼電子書'
+					}}
+				/>
+			</Box>
+			<Box pos={'relative'}>
+				{readyToShow && (
+					<Box {...formProps} d={{ base: 'none', lg: 'block' }}>
+						<Form />
+					</Box>
+				)}
+			</Box>
+		</Stack>
+	);
 }
 
 const mapStateToProps = ({ status, theme, signup }) => {
-  return { status, theme: theme.data, signup: signup.data };
+	return { status, theme: theme.data, signup: signup.data };
 };
 
 export default connect(mapStateToProps)(Content);

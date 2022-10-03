@@ -10,46 +10,46 @@ import { useState, useEffect } from 'react';
 // }
 // Hook
 export const useWindowSize = () => {
-  // Initialize state with undefined width/height so server and client renders match
-  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-  const [windowSize, setWindowSize] = useState({
-    width: undefined,
-    height: undefined,
-  });
-  useEffect(() => {
-    // Handler to call on window resize
-    function handleResize() {
-      // Set window width/height to state
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }
-    // Add event listener
-    window.addEventListener('resize', handleResize);
-    // Call handler right away so state gets updated with initial window size
-    handleResize();
-    // Remove event listener on cleanup
-    return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty array ensures that effect is only run on mount
-  return windowSize;
+	// Initialize state with undefined width/height so server and client renders match
+	// Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+	const [windowSize, setWindowSize] = useState({
+		width: undefined,
+		height: undefined
+	});
+	useEffect(() => {
+		// Handler to call on window resize
+		function handleResize() {
+			// Set window width/height to state
+			setWindowSize({
+				width: window.innerWidth,
+				height: window.innerHeight
+			});
+		}
+		// Add event listener
+		window.addEventListener('resize', handleResize);
+		// Call handler right away so state gets updated with initial window size
+		handleResize();
+		// Remove event listener on cleanup
+		return () => window.removeEventListener('resize', handleResize);
+	}, []); // Empty array ensures that effect is only run on mount
+	return windowSize;
 };
 
 export const useIntersection = (element, rootMargin) => {
-  const [isVisible, setState] = useState(false);
+	const [isVisible, setState] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setState(entry.isIntersecting);
-      },
-      { rootMargin },
-    );
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				setState(entry.isIntersecting);
+			},
+			{ rootMargin }
+		);
 
-    element.current && observer.observe(element.current);
+		element.current && observer.observe(element.current);
 
-    return () => observer.unobserve(element.current);
-  }, []);
+		return () => observer.unobserve(element.current);
+	}, []);
 
-  return isVisible;
+	return isVisible;
 };

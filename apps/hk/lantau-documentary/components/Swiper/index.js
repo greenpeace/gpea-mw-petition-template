@@ -32,54 +32,54 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 const IMAGES = [
-  image01,
-  steven,
-  image03,
-  image04,
-  image05,
-  image06,
-  image07,
-  image08,
-  image09,
-  image10,
-  image11,
-  image12,
-  image13,
-  image14,
-  image15,
-  image16,
-  image17,
-  image18,
-  image19,
-  image20,
-  imageDaphneWong,
-  imageJamesKwok,
+	image01,
+	steven,
+	image03,
+	image04,
+	image05,
+	image06,
+	image07,
+	image08,
+	image09,
+	image10,
+	image11,
+	image12,
+	image13,
+	image14,
+	image15,
+	image16,
+	image17,
+	image18,
+	image19,
+	image20,
+	imageDaphneWong,
+	imageJamesKwok
 ];
 
 const VisionGroup = () => {
-  return (
-    <Box>
-      <div className="container mx-auto md:max-w-[100%] md:px-[20px] pt-[36px] md:pt-[0px] lg:pb-[60px]">
-        <div className="pb-[26px] md:pt-[80px] md:pb-[40px]">
-          <h2 className="text-[24px] md:text-[28px] font-bold text-center mb-2">
-            大嶼有我
-          </h2>
+	return (
+		<Box>
+			<div className="container mx-auto pt-[36px] md:max-w-[100%] md:px-[20px] md:pt-[0px] lg:pb-[60px]">
+				<div className="pb-[26px] md:pt-[80px] md:pb-[40px]">
+					<h2 className="mb-2 text-center text-[24px] font-bold md:text-[28px]">
+						大嶼有我
+					</h2>
 
-          <p className="text-[16px] md-[18px] text-center">
-            以行動守護大嶼的「保衛者們」介紹
-          </p>
-        </div>
+					<p className="md-[18px] text-center text-[16px]">
+						以行動守護大嶼的「保衛者們」介紹
+					</p>
+				</div>
 
-        <div className="hidden md:block">
-          <DesktopSwiper IMAGES={IMAGES} />
-        </div>
+				<div className="hidden md:block">
+					<DesktopSwiper IMAGES={IMAGES} />
+				</div>
 
-        <div className="block md:hidden">
-          <MobileSwiper IMAGES={IMAGES} />
-        </div>
-      </div>
-    </Box>
-  );
+				<div className="block md:hidden">
+					<MobileSwiper IMAGES={IMAGES} />
+				</div>
+			</div>
+		</Box>
+	);
 };
 
 export default VisionGroup;
