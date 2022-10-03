@@ -8,5 +8,12 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/aspect-ratio')],
+  daisyui: {
+    themes: [
+      { gpea: { primary: '#66CC00', secondary: '#FF6100' } },
+      'light',
+      'cupcake',
+    ],
+  },
+  plugins: [require('daisyui'), require('@tailwindcss/aspect-ratio')],
 };

@@ -27,6 +27,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "axios": "^0.21.1",
     "crypto-js": "^4.1.1",
+    "daisyui": "^2.31.0",
     "dotenv": "^10.0.0",
     "embla-carousel-react": "^6.2.0",
     "eslint-config-prettier": "^8.3.0",
