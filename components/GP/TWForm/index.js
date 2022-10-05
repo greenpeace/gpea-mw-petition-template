@@ -393,21 +393,23 @@ const MyEnhancedForm = withFormik({
 		const isProd = process.env.NODE_ENV === 'production';
 		const fallbackValue = (d) => (d ? d : '');
 		const LeadSource = `Petition - ${capitalize(theme.interests)}`;
+
 		const { dummyEndpointURL, websignEndpointURL } =
 			strapi?.market?.data?.attributes;
 
-		/*
-		const endPoint = isProd
-			? websignEndpointURL ?? theme.EndpointURL
-			: dummyEndpointURL ?? process.env.dummyEndpoint;
-      */
+		const endpointURL = isProd
+			? websignEndpointURL !== '' && websignEndpointURL !== undefined
+				? websignEndpointURL
+				: theme.EndpointURL
+			: dummyEndpointURL !== '' && dummyEndpointURL !== undefined
+			? dummyEndpointURL
+			: process.env.dummyEndpoint;
 
-		const hotEndPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
-
-		const completionURL = await clearURL(
-			window?.location.href,
-			EXCLUDE_URL_PARAMETERS
-		);
+		const campaignId = isProd
+			? strapi?.campaignId !== '' && strapi.campaignId !== undefined
+				? strapi?.campaignId
+				: theme.CampaignId
+			: '7012u000000OxDYAA0';
 
 		const formData = {
 			...hiddenFormData,
@@ -418,9 +420,7 @@ const MyEnhancedForm = withFormik({
 			UtmContent: fallbackValue(hiddenFormData.utm_content),
 			UtmTerm: fallbackValue(hiddenFormData.utm_term),
 			MobileCountryCode: '886',
-			CampaignId: isProd
-				? strapi?.campaignId ?? theme.CampaignId
-				: '7012u000000OxDYAA0',
+			CampaignId: campaignId,
 			LeadSource: LeadSource,
 			[`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
 			CompletionURL: window.location.href ? window.location.href : '',
@@ -431,7 +431,7 @@ const MyEnhancedForm = withFormik({
 		if (values.Namelist) formData.CampaignData2__c = values.Namelist;
 
 		setSubmitting(true);
-		submitForm(formData, hotEndPoint);
+		submitForm(formData, endpointURL);
 	},
 
 	displayName: 'SignupForm'
