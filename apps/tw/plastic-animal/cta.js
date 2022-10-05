@@ -10,6 +10,8 @@ import {
   Text,
   Flex,
   Button,
+  UnorderedList,
+  ListItem
 } from '@chakra-ui/react';
 import LazyShow from './components/LazyShow';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
@@ -18,9 +20,9 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import leafImage from './images/earthday-leaf.jpg';
+import leafImage from './images/px.jpg';
 
-const Description = ({ setSurveyPage }) => {
+const Cta = ({ setSurveyPage }) => {
   return (
     <>
       <Container maxW={{ base: 'xl', xl: '2xl' }} pos={'relative'} zIndex={10}>
@@ -32,7 +34,7 @@ const Description = ({ setSurveyPage }) => {
                 color={'black'}
                 textAlign={{ base: 'center' }}
               >
-                我是哲青，邀你一起成為地球投資者！
+                請支援減塑！您願意支持全聯兌現減塑承諾，共同保護臺灣環境嗎？
               </Heading>
             </Box>
             <Box
@@ -50,8 +52,16 @@ const Description = ({ setSurveyPage }) => {
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Box bgColor={'rgba(255,255,255,0.8)'} borderRadius={'8px'} p={4}>
                 <Text as="p" color={'black'} {...paragraphProps} mb={0}>
-                  4月22日是世界地球日，邀請你完成心理測驗，找出最適合你的投資地球方法，讓我們一起用行動投資地球，改善氣候，擁抱好生活。
+                綠色和平與研究團隊針對臺灣多個野生動物棲地進行科學研究，首度發現連臺灣保育類動物也難倖免於塑膠污染。
+                <br/>根據目前我們目前取得臺灣水鹿以及金門歐亞水獺的棲地水源及排遺樣本分析，檢測出最主要的塑膠材質為 PP 聚丙烯，該材質多用於食品容器及餐具。<br/>而每年超市、量販業至少產生 36 億件一次性塑膠包裝，其中就包含了蔬果、肉品等食品包裝。<br/>其中，全臺超市市占率唯一超過 60% 的業者——全聯福利中心，在綠色和平連續三年進行的零售企業減塑評比中，今年從第一名淪至第六名，未能跟上其他通路的減塑腳步，成為臺灣減塑拖油瓶：
                 </Text>
+                <UnorderedList>
+                  <ListItem><Text as="span" color={`var(--error-900)`}>蔬果裸賣未達標</Text>：曾承諾 2021 年 50% 蔬果裸賣，至今僅部分根莖類產品裸賣</ListItem>
+                  <ListItem><Text as="span" color={`var(--error-900)`}>曾承諾會設定減塑短中程目標，至今無更新</Text></ListItem>
+                  <ListItem><Text as="span" color={`var(--error-900)`}>減塑替代方案進展少</Text>：曾承諾提供容器租用、洗潔精填充站等，至今僅於兩家分店內導入循環杯機台，大幅落後其他通路業</ListItem>
+                </UnorderedList>
+                <br/>
+                <Text as="p" color={'black'} {...paragraphProps} fontWeight='bold'>邀請您一起要求全聯成為臺灣減塑的助力，實踐蔬果裸賣、重複使用包裝，讓塑膠變少，環境更好！</Text>
               </Box>
             </LazyShow>
             <Box>
@@ -61,9 +71,9 @@ const Description = ({ setSurveyPage }) => {
                   fontSize={{ base: 'xl', lg: '2xl' }}
                   px={{ base: 10, md: 14 }}
                   py={{ base: 6, md: 8 }}
-                  onClick={() => setSurveyPage('quiz')}
+                  onClick={() => setSurveyPage('result')}
                 >
-                  <Text>開始測驗</Text>
+                  <Text>我願意</Text>
                 </Button>
               </Flex>
             </Box>
@@ -87,4 +97,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Description);
+export default connect(mapStateToProps, mapDispatchToProps)(Cta);
