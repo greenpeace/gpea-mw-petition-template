@@ -395,9 +395,14 @@ const MyEnhancedForm = withFormik({
 		const LeadSource = `Petition - ${capitalize(theme.interests)}`;
 		const { dummyEndpointURL, websignEndpointURL } =
 			strapi?.market?.data?.attributes;
+
+		/*
 		const endPoint = isProd
 			? websignEndpointURL ?? theme.EndpointURL
 			: dummyEndpointURL ?? process.env.dummyEndpoint;
+      */
+
+		const hotEndPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
 
 		const completionURL = await clearURL(
 			window?.location.href,
@@ -426,7 +431,7 @@ const MyEnhancedForm = withFormik({
 		if (values.Namelist) formData.CampaignData2__c = values.Namelist;
 
 		setSubmitting(true);
-		submitForm(formData, endPoint);
+		submitForm(formData, hotEndPoint);
 	},
 
 	displayName: 'SignupForm'

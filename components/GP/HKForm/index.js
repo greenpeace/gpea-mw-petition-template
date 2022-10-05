@@ -365,9 +365,13 @@ const MyEnhancedForm = withFormik({
 		const { dummyEndpointURL, websignEndpointURL } =
 			strapi?.market?.data?.attributes;
 
+		/*
 		const endPoint = isProd
 			? websignEndpointURL ?? theme.EndpointURL
 			: dummyEndpointURL ?? process.env.dummyEndpoint;
+    */
+
+		const hotEndPoint = isProd ? theme.EndpointURL : process.env.dummyEndpoint;
 
 		const completionURL = await clearURL(
 			window?.location.href,
@@ -391,7 +395,7 @@ const MyEnhancedForm = withFormik({
 		};
 
 		setSubmitting(true);
-		submitForm(formData, endPoint);
+		submitForm(formData, hotEndPoint);
 	},
 
 	displayName: 'SignupForm'
