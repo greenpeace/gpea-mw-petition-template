@@ -128,7 +128,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 								]}
 								content={{
 									title: strapi?.thankyouHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
+									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
 						) : (
