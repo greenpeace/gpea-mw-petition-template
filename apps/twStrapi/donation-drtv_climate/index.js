@@ -101,7 +101,7 @@ function Index({ submitted = false, strapi }) {
 								]}
 								content={{
 									title: strapi?.thankyouHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
+									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
 						) : (
@@ -165,7 +165,7 @@ function Index({ submitted = false, strapi }) {
 										);
 									}
 								})()}
-                <Heading textAlign="center" py="6" fontSize="2xl">
+								<Heading textAlign="center" py="6" fontSize="2xl">
 									常見問題
 								</Heading>
 								<DonateFAQ locale="TWChinese" />

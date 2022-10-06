@@ -5,7 +5,7 @@ import * as formActions from 'store/actions/action-types/form-actions';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
@@ -17,6 +17,7 @@ import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/HKForm';
+import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
@@ -127,7 +128,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 								]}
 								content={{
 									title: strapi?.thankyouHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
+									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
 						) : (
@@ -191,6 +192,10 @@ function Index({ submitted = false, strapi: strapiData }) {
 										);
 									}
 								})()}
+								<Heading textAlign="center" py="6" fontSize="2xl">
+									常見問題
+								</Heading>
+								<DonateFAQ locale="HKChinese" />
 							</ContentContainer>
 						</Box>
 						{isLoaded && (
