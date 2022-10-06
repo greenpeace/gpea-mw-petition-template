@@ -75,24 +75,26 @@ export default function Index({
 					</PageContainer>
 				</Box>
 
-				<Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
-					<picture>
-						{imageSrcset?.map((item, index) => {
-							return (
-								<source media={item.media} srcSet={item.srcset} key={index} />
-							);
-						})}
+				{defaultImage && (
+					<Box Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
+						<picture>
+							{imageSrcset?.map((item, index) => {
+								return (
+									<source media={item.media} srcSet={item.srcset} key={index} />
+								);
+							})}
 
-						<Image
-							src={defaultImage}
-							height="100%"
-							width="100%"
-							objectFit="cover"
-							objectPosition={objectPosition}
-							alt="Background Image"
-						/>
-					</picture>
-				</Box>
+							<Image
+								src={defaultImage}
+								height="100%"
+								width="100%"
+								objectFit="cover"
+								objectPosition={objectPosition}
+								alt="Background Image"
+							/>
+						</picture>
+					</Box>
+				)}
 
 				{!removeMask && (
 					<Box
