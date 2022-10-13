@@ -29,8 +29,8 @@ const Content = ({ theme }) => {
       </Text>
 
       <iframe
-        width="436"
-        height="245"
+        width="100%"
+        height="250"
         src="https://www.youtube.com/embed/DJjSyJCFcRQ"
         title="후쿠시마 원전의 방사성 오염수 방출 계획"
         frameBorder="0"

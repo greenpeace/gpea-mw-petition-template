@@ -51,7 +51,15 @@ const DonationModule = (props) => {
 
   // Define constant module url
   //FIXME: KR AND UP TO DATE
-  const moduleUrl = `${window.location.href}/main.js`;
+  let moduleUrl = '';
+  if (process.env.NODE_ENV === 'production') {
+    moduleUrl = `https://gpseoulwebserver.co.kr/main.js`;
+  } else if (process.env.NODE_ENV === 'development') {
+    moduleUrl = `https://gpseoulwebserver.co.kr/main.js`;
+  } else {
+    moduleUrl = `${window.location.href}/main.js`;
+  }
+
   // Import module
   const status = useScript(moduleUrl);
 
