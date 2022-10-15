@@ -21,6 +21,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
+import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 // Import Contents
 import formContent from './form';
@@ -39,6 +40,7 @@ const API_ENDPOINT = `https://strapi.small-service.gpeastasia.org/api/thoughts`;
 const Index = ({ submitted = false, strapi }) => {
 	const dispatch = useDispatch();
 	let theme = useSelector((state) => state?.theme);
+	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
@@ -49,12 +51,6 @@ const Index = ({ submitted = false, strapi }) => {
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
-
-	// Demo data
-	theme.params.hero_image_desktop =
-		'https://images.unsplash.com/photo-1533864584121-714289e0e746?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80';
-	theme.params.headline_prefix = 'Casey Murphy';
-	strapi.contentHero.richContent = '生日快樂!';
 
 	return (
 		<>
@@ -105,7 +101,29 @@ const Index = ({ submitted = false, strapi }) => {
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box flex={1}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								<Box>
+							{(() => {
+									if (pageType?.toLowerCase() === 'donation') {
+										return (
+											<StrapiDynamicBlocks
+												blocks={'contentBlocks'}
+												strapi={strapi}
+											/>
+										);
+									} else {
+										return submitted ? (
+											<StrapiDynamicBlocks
+												blocks={'thankyouBlocks'}
+												strapi={strapi}
+											/>
+										) : (
+											<StrapiDynamicBlocks
+												blocks={'contentBlocks'}
+												strapi={strapi}
+											/>
+										);
+									}
+								})()}
+								{/* <Box>
 									<Heading as="h1" {...headingProps} color={'theme.climate'}>
 										計劃描述
 									</Heading>
@@ -132,7 +150,7 @@ const Index = ({ submitted = false, strapi }) => {
 									<Text as="p" {...paragraphProps}>
 										除承諾外，你更可分享一句減碳心得，與其他「減碳達人」互相支持！立即在今天許下你的承諾吧！
 									</Text>
-								</Box>
+								</Box> */}
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
@@ -208,7 +226,7 @@ const Form = () => {
 					<div className="mb-6 w-full md:mb-0">
 						<label
 							className="text-md mb-2 block font-bold uppercase tracking-wide"
-							for="grid-first-name"
+							htmlFor="grid-first-name"
 						>
 							名字
 						</label>
@@ -226,7 +244,7 @@ const Form = () => {
 					<div className="w-full">
 						<label
 							className="text-md mb-2 block font-bold uppercase tracking-wide"
-							for="grid-password"
+							htmlFor="grid-password"
 						>
 							留言
 						</label>
