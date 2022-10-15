@@ -101,7 +101,8 @@ const Index = ({ submitted = false, strapi }) => {
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box flex={1}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-							{(() => {
+								{strapi?.contentBlocks?.map(content=> <StrapiDynamicBlocks content={content} key={content?.id} />)}
+								{/* {(() => {
 									if (pageType?.toLowerCase() === 'donation') {
 										return (
 											<StrapiDynamicBlocks
@@ -122,7 +123,7 @@ const Index = ({ submitted = false, strapi }) => {
 											/>
 										);
 									}
-								})()}
+								})()} */}
 								{/* <Box>
 									<Heading as="h1" {...headingProps} color={'theme.climate'}>
 										計劃描述
