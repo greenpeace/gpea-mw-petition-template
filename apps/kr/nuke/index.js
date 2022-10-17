@@ -32,7 +32,6 @@ function Index() {
   const { step } = signup;
   const submitted = useSelector((state) => state?.status?.submitted);
   const theme = useSelector((state) => state?.theme);
-
   const [ref, inView] = useInView({
     threshold: 0,
   });
@@ -130,12 +129,13 @@ function Index() {
                         <DonationModule
                           market={'kr'}
                           language={'ko_KR'}
-                          campaign={
-                            theme?.params?.donation_module_campaign ?? 'General'
-                          }
+                          campaign={process.env.campaign}
+                          // campaign={
+                          //   theme?.params?.donation_module_campaign ?? 'nuke'
+                          // }
                           // campaignId={''}
                           //FIXME: 추후 production으로 변경 필요
-                          env={'full'}
+                          env={process.env.envParam}
                         />
                       );
                     } else {
@@ -143,11 +143,13 @@ function Index() {
                         <DonationModule
                           market={'kr'}
                           language={'ko_KR'}
-                          campaign={
-                            theme?.params?.donation_module_campaign ?? 'General'
-                          }
+                          campaign={process.env.campaign}
+                          // campaign={
+                          //   theme?.params?.donation_module_campaign ?? 'nuke'
+                          // }
                           // campaignId={''}
-                          env={'full'}
+                          //FIXME: 추후 production으로 변경 필요
+                          env={process.env.envParam}
                         />
                       ) : (
                         <SignupForm />

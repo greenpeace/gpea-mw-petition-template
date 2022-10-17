@@ -100,15 +100,9 @@ export function validation(values, formContent) {
     }
   }
 
-  if (!values.OptIn1) {
-    errors.OptIn1 = formContent.empty_data_alert;
-  }
-  if (!values.OptIn2) {
-    errors.OptIn2 = formContent.empty_data_alert;
-  }
-  if (!values.OptIn3) {
-    errors.OptIn3 = formContent.empty_data_alert;
-  }
+  if (!values.OptIn1) errors.OptIn1 = !values.OptIn1; //formContent.empty_data_alert;
+  if (!values.OptIn2) errors.OptIn2 = !values.OptIn2; //formContent.empty_data_alert;
+  if (!values.OptIn3) errors.OptIn3 = !values.OptIn3; //formContent.empty_data_alert;
 
   return errors;
 }

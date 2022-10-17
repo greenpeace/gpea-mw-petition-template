@@ -322,7 +322,7 @@ const MyForm = (props) => {
                     name="OptIn1"
                     onChange={handleChange}
                     isInvalid={errors.OptIn1}
-                    defaultChecked
+                    //defaultChecked
                     //isChecked={checkedItems[0]}
                     //onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1], checkedItems[2]])}
                   />
@@ -342,7 +342,7 @@ const MyForm = (props) => {
                     name="OptIn2"
                     onChange={handleChange}
                     isInvalid={errors.OptIn2}
-                    defaultChecked
+                    //defaultChecked
                     //isChecked={checkedItems[1]}
                     //onChange={(e) => setCheckedItems([checkedItems[0], e.target.checked, checkedItems[2]])}
                   />
@@ -362,7 +362,7 @@ const MyForm = (props) => {
                     name="OptIn3"
                     onChange={handleChange}
                     isInvalid={errors.OptIn3}
-                    defaultChecked
+                    //defaultChecked
                     //isChecked={checkedItems[2]}
                     //onChange={(e) => setCheckedItems([checkedItems[0], checkedItems[1], e.target.checked])}
                   />
@@ -419,13 +419,13 @@ const MyEnhancedForm = withFormik({
     LastName: '',
     MobilePhone: '',
     OptIn: true,
-    OptIn1: true,
-    OptIn2: true,
-    OptIn3: true,
+    OptIn1: false,
+    OptIn2: false,
+    OptIn3: false,
     Birthdate: '',
   }),
 
-  validate: async (values, props) => {
+  validate: async (values, props) => {console.log('props',props)
     const { formContent } = props;
     return validation(values, formContent);
   },

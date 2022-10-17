@@ -162,9 +162,9 @@ let ftpSetting = {
   autoConfirm: true, // Optional, is used to auto confirm ssl questions on sftp or fish protocols, defaults to false
   cwd: '', // Optional, defaults to the directory from where the script is executed
   additionalLftpCommands: '', // Additional commands to pass to lftp, splitted by ';'
-  requireSSHKey:  false, //  Optional, defaults to false, This option for SFTP Protocol with ssh key authentication
+  requireSSHKey: false, //  Optional, defaults to false, This option for SFTP Protocol with ssh key authentication
   sshKeyPath: '', // Required if requireSSHKey: true , defaults to empty string, This option for SFTP Protocol with ssh key authentication
-  sshKeyOptions: '' // ssh key options such as 'StrictHostKeyChecking=no'
+  sshKeyOptions: '', // ssh key options such as 'StrictHostKeyChecking=no'
 };
 ftpSetting['remoteDir'] = ftpRemoteDir;
 upload_folder(ftpSetting, buildFolder);

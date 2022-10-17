@@ -2,12 +2,13 @@
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 
-const isProd = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'full';
+const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
   env: {
     project: process.env.PROJECT,
-    form: process.env.FORM,
+    campaign: process.env.CAMPAIGN,
+    envParam: process.env.ENV_PARAM,
     projectName: process.env.PROJECT_NAME,
     projectMarket: process.env.MARKET,
     themeEndpoint: process.env.THEME_ENDPOINT,
@@ -15,8 +16,8 @@ const nextConfig = {
     donateModule: process.env.DONATE_MODULE,
     dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.greenhk.greenpeace.org/websign-dummy`,
   },
-  // Use the CDN in production and localhost for development.
-  assetPrefix: 'https://gpseoulwebserver.co.kr/',//isProd ? process.env.ASSETPREFIX : '',
+  // FIXME: Use the CDN in production and localhost for development.
+  assetPrefix: isProd ? process.env.ASSETPREFIX : '',
   trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },
@@ -29,10 +30,7 @@ const nextConfig = {
     }
   },
   images: {
-    domains: [
-      'gpseoulwebserver.co.kr',
-      'greenpeace.org',
-    ],
+    domains: ['gpseoulwebserver.co.kr', 'greenpeace.org'],
     disableStaticImages: true,
   },
 };

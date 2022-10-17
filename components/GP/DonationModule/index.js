@@ -49,13 +49,12 @@ const DonationModule = (props) => {
   const { market, language, campaign, campaignId, env, signup, preFill } =
     props;
 
-  // Define constant module url
-  //FIXME: KR AND UP TO DATE
+  //FIXME: Define constant module url
   let moduleUrl = '';
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.envParam === 'production') {
     moduleUrl = `https://gpseoulwebserver.co.kr/main.js`;
-  } else if (process.env.NODE_ENV === 'development') {
-    moduleUrl = `https://gpseoulwebserver.co.kr/main.js`;
+  } else if (process.env.envParam === 'full') {
+    moduleUrl = `${window.location.href}/main.js`; //`https://gpseoulwebserver.co.kr/main.js`;
   } else {
     moduleUrl = `${window.location.href}/main.js`;
   }
