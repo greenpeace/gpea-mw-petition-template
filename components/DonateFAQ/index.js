@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react';
 
 import {
-  headingProps,
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 

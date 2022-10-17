@@ -230,7 +230,7 @@ export async function getStaticProps(context) {
       ? process.env.API_ENDPOINT_LOCAL
       : process.env.API_ENDPOINT;
   const res = await fetch(
-    `${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate=*`,
+    `${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate[contentBlocks][populate]=CardSlider.image&populate[contentHero]=%1A&populate[thankyouHero]=%1A&populate[seo]=%1A&populate[contentBlocks][populate]=TestimonialSlider.avatar`,
   ).then((response) => response);
   const themes = await res.json();
   const theme =
@@ -243,5 +243,7 @@ export async function getStaticProps(context) {
     },
   };
 }
+
+//https://strapi.small-service.gpeastasia.org/api/pages?filters[campaign][$eq]=petition-general-birthday&populate[contentBlocks][populate]=CardSlider.image&populate[contentHero]=%1A&populate[thankyouHero]=%1A&populate[seo]=%1A&populate[contentBlocks][populate]=TestimonialSlider.avatar
 
 export default connect(null, mapDispatchToProps)(Index);

@@ -1,4 +1,58 @@
 import React from 'react';
+import { Box, Image, Text } from '@chakra-ui/react';
+import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+const SwiperCarousel = ({ data, swiperConfig }) => {
+	console.log('data-',data)
+	const defaultConfig = {
+		spaceBetween: 0,
+		centeredSlides: true,
+		slidesPerView: 1,
+		loop: true,
+		fadeEffect: { crossFade: true },
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true
+		},
+		effect: 'fade'
+	};
+	const config = swiperConfig
+		? { ...defaultConfig, ...swiperConfig }
+		: defaultConfig;
+
+	return (
+		<Swiper
+			className="slider"
+			modules={[Autoplay, EffectFade, Navigation, Pagination]}
+			{...config}
+		>
+			{data?.map((d, i, alt) => (
+				<SwiperSlide key={i}>
+					<Image src={d?.image?.data?.attributes?.url} alt={alt} />
+					<Text>{d?.title}</Text>
+					<Text>{d?.text}</Text>
+				</SwiperSlide>
+			))}
+		</Swiper>
+	);
+};
+
+const Testimonial = ({data}) => {
+	console.log('data-',data)
+	return (
+		<div>123</div>
+	)
+}
 
 const StrapiDynamicBlocks = ({ content }) => {
 	switch (content?.__component) {
@@ -10,31 +64,25 @@ const StrapiDynamicBlocks = ({ content }) => {
 			);
 		case 'blocks.card-swiper':
 			return (
-				<div className="strapi-content">
-					<div>'blocks.card-swiper' {content?.title}:{content?.text}</div>
-				</div>
+				<Box>
+					<Text>{content?.title}</Text>
+					<Text>{content?.text}</Text>
+					<SwiperCarousel data={content?.CardSlider} />
+				</Box>
 			);
 
 		case 'blocks.testimonial-swiper':
 			return (
-				<div className="strapi-content">
-					<div>'blocks.testimonial-swiper' {content?.title}:{content?.text}</div>
-				</div>
+				<Box>
+					<Text>{content?.title}</Text>
+		 			<Text>{content?.text}</Text>
+					<Testimonial/>
+				</Box>
 			);
 
 		default:
 			return '';
 	}
-
-	// return (
-	// 	<div className="strapi-content">
-	// 		{strapi?.[blocks]?.map((d, i) => {
-	// 			return (
-	// 				<div key={i} dangerouslySetInnerHTML={{ __html: d?.richContent }} />
-	// 			);
-	// 		})}
-	// 	</div>
-	// );
 };
 
 export default StrapiDynamicBlocks;

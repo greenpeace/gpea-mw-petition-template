@@ -11,7 +11,13 @@ import {
 	Center,
 	Spinner,
 	SimpleGrid,
-	Button
+	Button,
+
+	Accordion,
+	AccordionItem,
+	AccordionButton,
+	AccordionPanel,
+	AccordionIcon
 } from '@chakra-ui/react';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
@@ -19,6 +25,7 @@ import ContentContainer from '@containers/contentContainer';
 import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
 import HeroBanner from '@components/ResponsiveBanner/hero';
+// import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
@@ -98,60 +105,16 @@ const Index = ({ submitted = false, strapi }) => {
 						<Box bgColor="#D2D2D2" w={'100%'} h={'60px'}></Box>
 					</ContentContainer>
 
-					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
-						<Box flex={1}>
+					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }} className="contentWrap">
+						<Box flex={1} minWidth={0}> {/** minWidth */}
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{strapi?.contentBlocks?.map(content=> <StrapiDynamicBlocks content={content} key={content?.id} />)}
-								{/* {(() => {
-									if (pageType?.toLowerCase() === 'donation') {
-										return (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										);
-									} else {
-										return submitted ? (
-											<StrapiDynamicBlocks
-												blocks={'thankyouBlocks'}
-												strapi={strapi}
-											/>
-										) : (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										);
-									}
-								})()} */}
-								{/* <Box>
-									<Heading as="h1" {...headingProps} color={'theme.climate'}>
-										計劃描述
-									</Heading>
-									<Text as="p" {...paragraphProps}>
-										推動環境工作，非一人能成就的事。今年世界地球日的主題是「
-										<b>投資我們的星球</b>」，讓我們一起承諾愛護環境的同時，再
-										<b>投資在地球</b>
-										上，這是對人類未來最好的保障。身處香港，我們都可以出一分力，讓我們一起為地球作出小小的承諾，今天踏出第一步，減緩氣候危機！
-									</Text>
-									<Text as="p" {...paragraphProps}>
-										<b>「惜碳承諾」</b>希望令我們每一位化身成為
-										<b>「減碳達人」</b>
-										，明白即使在香港這個彈丸之地，集眾人之力仍能為地球作出大大改變！讓我們檢視在日常生活中的碳足跡，珍惜寶貴的地球資源，為地球作出減碳承諾，遏止日益嚴重的環境問題。
-									</Text>
-									<Heading as="h1" {...headingProps} color={'theme.climate'}>
-										請立即加入「惜碳承諾」行列:
-									</Heading>
-									<Text as="p" {...paragraphProps}>
-										從今天承諾自己，在未來一星期，為地球作出減碳新嘗試！我們希望在
-										5 月份招募 1000 位<b>「減碳達人」</b>
-										，為地球減碳！若你能夠完成一星期承諾挑戰，更可以獲得一張電子
-										<b>「惜碳證書」</b>，以表揚你的努力！
-									</Text>
-									<Text as="p" {...paragraphProps}>
-										除承諾外，你更可分享一句減碳心得，與其他「減碳達人」互相支持！立即在今天許下你的承諾吧！
-									</Text>
-								</Box> */}
+								{strapi?.contentBlocks?.map((content) => (
+									<StrapiDynamicBlocks content={content} key={`${content?.id}-${content?.title}`} />
+								))}
+								<Heading textAlign="center" py="6" fontSize="2xl">
+									常見問題
+								</Heading>
+								<DonateFAQ/>
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
@@ -170,6 +133,57 @@ const Index = ({ submitted = false, strapi }) => {
 		</>
 	);
 };
+
+const DonateFAQ = ({ locale = 'HKChinese' }) => {
+	const [data, setData] = useState([]);
+	useEffect(async () => {
+		const faq = await axios
+			.get(
+				`https://strapi.small-service.gpeastasia.org/api/faq?populate=*&locale=zh-Hant-HK`
+			)
+			.then((response) => {
+				return response.data;
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+
+			setData(faq?.data);
+	}, []);
+
+	console.log('data-',data)
+
+	return (
+	  <Accordion my="4" allowToggle={true}>
+		{data?.attributes?.questionAnswer?.map((d, i) => {
+		  return (
+			<AccordionItem key={i}>
+			  <AccordionButton
+				_expanded={{ fontWeight: 'bold', bg: '', color: '' }}
+			  >
+				<AccordionIcon mr="2" />
+				<Box py="6" p="4" flex="1" textAlign="left">
+				  <Text as="p" fontSize="md">
+					{d.question}
+				  </Text>
+				</Box>
+			  </AccordionButton>
+			  <AccordionPanel p="4">
+				<Text
+				  as="p"
+				  {...paragraphProps}
+				  textAlign={'initial'}
+				  dangerouslySetInnerHTML={{
+					__html: d.answer,
+				  }}
+				></Text>
+			  </AccordionPanel>
+			</AccordionItem>
+		  );
+		})}
+	  </Accordion>
+	);
+  };
 
 const Form = () => {
 	const [formSubmitted, setFormSubmit] = useState(false);
