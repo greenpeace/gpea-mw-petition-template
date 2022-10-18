@@ -9,7 +9,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const SwiperCarousel = ({ data, swiperConfig }) => {
-	console.log('data-',data)
 	const defaultConfig = {
 		spaceBetween: 0,
 		centeredSlides: true,
@@ -47,12 +46,22 @@ const SwiperCarousel = ({ data, swiperConfig }) => {
 	);
 };
 
-const Testimonial = ({data}) => {
-	console.log('data-',data)
+const Testimonial = ({ data }) => {
 	return (
-		<div>123</div>
-	)
-}
+		<Box>
+			{data?.map(({avatar, description, name, quote, id})=>{
+				return (
+					<Box key={`${id}-${name}`}>
+						<Image src={avatar?.data?.attributes?.url} alt={avatar?.data?.attributes?.alternativeText} />
+						<Text>{name}</Text>
+						<div dangerouslySetInnerHTML={{ __html: quote }} />
+						<div dangerouslySetInnerHTML={{ __html: description }} />
+					</Box>
+				)
+			})}
+		</Box>
+	);
+};
 
 const StrapiDynamicBlocks = ({ content }) => {
 	switch (content?.__component) {
@@ -75,8 +84,8 @@ const StrapiDynamicBlocks = ({ content }) => {
 			return (
 				<Box>
 					<Text>{content?.title}</Text>
-		 			<Text>{content?.text}</Text>
-					<Testimonial/>
+					<Text>{content?.text}</Text>
+					<Testimonial data={content?.TestimonialSlider} />
 				</Box>
 			);
 

@@ -134,7 +134,7 @@ const Index = ({ submitted = false, strapi }) => {
 	);
 };
 
-const DonateFAQ = ({ locale = 'HKChinese' }) => {
+const DonateFAQ = () => {
 	const [data, setData] = useState([]);
 	useEffect(async () => {
 		const faq = await axios
@@ -150,8 +150,6 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
 
 			setData(faq?.data);
 	}, []);
-
-	console.log('data-',data)
 
 	return (
 	  <Accordion my="4" allowToggle={true}>
