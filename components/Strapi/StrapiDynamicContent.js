@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Stack } from '@chakra-ui/react';
+import { Box, Text, Stack, Image } from '@chakra-ui/react';
 import { Mousewheel, Autoplay, Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -13,7 +13,7 @@ const SwiperCarousel = ({ data }) => {
 	const defaultConfig = {
 		spaceBetween: 20,
 		centeredSlides: true,
-		slidesPerView: "auto",
+		slidesPerView: 'auto',
 		loop: true,
 		fadeEffect: { crossFade: true },
 		autoplay: {
@@ -35,7 +35,7 @@ const SwiperCarousel = ({ data }) => {
 			modules={[Autoplay, Mousewheel, Navigation, Pagination]}
 			{...defaultConfig}
 		>
-		<Box class="swiper-pagination"/> {/** CSS */}
+			<Box class="swiper-pagination" /> {/** CSS */}
 			{data?.map((d, i) => (
 				<SwiperSlide key={i} className="dynamic-swiper">
 					<Box>
@@ -57,7 +57,7 @@ const SwiperCarousel = ({ data }) => {
 						</Box>
 						<Box pt={2}>
 							<Text>{d?.title}</Text>
-							<Text fontSize={14}>{d?.text}</Text>
+							<Text fontSize={14} py={4}>{d?.text}</Text>
 						</Box>
 					</Box>
 				</SwiperSlide>
@@ -66,20 +66,53 @@ const SwiperCarousel = ({ data }) => {
 	);
 };
 
-const Testimonial = ({ data }) => {
+const TestimonialSwiperCarousel = ({ data }) => {
+	const defaultConfig = {
+		spaceBetween: 20,
+		centeredSlides: true,
+		slidesPerView: 1,
+		loop: true,
+		fadeEffect: { crossFade: true },
+		autoplay: {
+			delay: 5000,
+			speed: 3000,
+			disableOnInteraction: true
+		},
+		pagination: {
+			clickable: true,
+			renderBullet: function (index, className) {
+				return '<span class="' + className + '"></span>';
+			}
+		}
+	};
+
 	return (
-		<Box>
-			{/* {data?.map(({avatar, description, name, quote, id})=>{
-				return (
-					<Box key={`${id}-${name}`}>
-						<Image src={avatar?.data?.attributes?.url} alt={avatar?.data?.attributes?.alternativeText} />
-						<Text>{name}</Text>
-						<div dangerouslySetInnerHTML={{ __html: quote }} />
-						<div dangerouslySetInnerHTML={{ __html: description }} />
+		<Swiper
+			className="slider"
+			modules={[Autoplay, Mousewheel, Navigation, Pagination]}
+			{...defaultConfig}
+		>
+			<Box class="swiper-pagination" /> {/** CSS */}
+			{data?.map((d, i) => (
+				<SwiperSlide key={i}>
+					<Box>
+						<Box
+							bgPosition={'center center'}
+							objectFit={'cover'}
+							bgImage={d?.avatar?.data?.attributes?.url}
+							w={'120px'}
+							h={'120px'}
+							borderRadius={'120px'}
+							m={'0 auto'}
+						/>
+						<Box pt={2}>
+							<Text>{d?.name}</Text>
+							<Box fontSize={14} py={4} dangerouslySetInnerHTML={{ __html: d?.quote }} />
+						</Box>
 					</Box>
-				)
-			})} */}
-		</Box>
+				</SwiperSlide>
+			))}
+		</Swiper>
 	);
 };
 
@@ -87,13 +120,15 @@ const StrapiDynamicBlocks = ({ content }) => {
 	switch (content?.__component) {
 		case 'blocks.rich-content':
 			return (
-				<div className="strapi-content">
-					<div dangerouslySetInnerHTML={{ __html: content?.richContent }} />
-				</div>
+				<Box pb={10}>
+					<div className="strapi-content">
+						<div dangerouslySetInnerHTML={{ __html: content?.richContent }} />
+					</div>
+				</Box>
 			);
 		case 'blocks.card-swiper':
 			return (
-				<Box>
+				<Box pb={10}>
 					<Stack direction="column" textAlign="center" py={2}>
 						<Text as="h2" fontSize={20}>
 							{content?.title}
@@ -102,20 +137,22 @@ const StrapiDynamicBlocks = ({ content }) => {
 							{content?.text}
 						</Text>
 					</Stack>
-					<SwiperCarousel
-						title={content?.title}
-						content={content?.text}
-						data={content?.CardSlider}
-					/>
+					<SwiperCarousel data={content?.CardSlider} />
 				</Box>
 			);
 
 		case 'blocks.testimonial-swiper':
 			return (
-				<Box>
-					{/* <Text>{content?.title}</Text>
-					<Text>{content?.text}</Text> */}
-					{/* <Testimonial data={content?.TestimonialSlider} /> */}
+				<Box pb={10}>
+					<Stack direction="column" textAlign="center" py={2}>
+						<Text as="h2" fontSize={20}>
+							{content?.title}
+						</Text>
+						<Text as="p" fontSize={14}>
+							{content?.text}
+						</Text>
+					</Stack>
+					<TestimonialSwiperCarousel data={content?.TestimonialSlider} />
 				</Box>
 			);
 
