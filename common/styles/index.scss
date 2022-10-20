@@ -51,3 +51,34 @@ b,
 strong {
 	font-weight: bold;
 }
+
+.swiper {
+	width: 100%;
+	height: 100%;
+	.swiper-pagination-horizontal{
+		top: 0px !important;
+	}
+	.dynamic-swiper{
+		max-width: 90%;
+		@media only screen and (max-width: 600px) {
+			max-width: 100%;
+		}
+	}
+  }
+  
+  .swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px; // space for pagination
+  }
+  
+  .swiper-slide img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+  }

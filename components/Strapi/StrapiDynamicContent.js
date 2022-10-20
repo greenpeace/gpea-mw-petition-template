@@ -1,45 +1,65 @@
 import React from 'react';
-import { Box, Image, Text } from '@chakra-ui/react';
-import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper';
+import { Box, Text, Stack } from '@chakra-ui/react';
+import { Mousewheel, Autoplay, Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
+import 'swiper/css/bundle';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const SwiperCarousel = ({ data, swiperConfig }) => {
+const SwiperCarousel = ({ data }) => {
 	const defaultConfig = {
-		spaceBetween: 0,
+		spaceBetween: 20,
 		centeredSlides: true,
-		slidesPerView: 1,
+		slidesPerView: "auto",
 		loop: true,
 		fadeEffect: { crossFade: true },
 		autoplay: {
-			delay: 3000,
-			disableOnInteraction: false
+			delay: 5000,
+			speed: 3000,
+			disableOnInteraction: true
 		},
 		pagination: {
-			el: '.swiper-pagination',
-			clickable: true
-		},
-		effect: 'fade'
+			clickable: true,
+			renderBullet: function (index, className) {
+				return '<span class="' + className + '"></span>';
+			}
+		}
 	};
-	const config = swiperConfig
-		? { ...defaultConfig, ...swiperConfig }
-		: defaultConfig;
 
 	return (
 		<Swiper
 			className="slider"
-			modules={[Autoplay, EffectFade, Navigation, Pagination]}
-			{...config}
+			modules={[Autoplay, Mousewheel, Navigation, Pagination]}
+			{...defaultConfig}
 		>
-			{data?.map((d, i, alt) => (
-				<SwiperSlide key={i}>
-					<Image src={d?.image?.data?.attributes?.url} alt={alt} />
-					<Text>{d?.title}</Text>
-					<Text>{d?.text}</Text>
+		<Box class="swiper-pagination"/> {/** CSS */}
+			{data?.map((d, i) => (
+				<SwiperSlide key={i} className="dynamic-swiper">
+					<Box>
+						<Box
+							borderRadius={'10px'}
+							overflow={'hidden'}
+							w={'100%'}
+							h={{ base: '240px', md: '320px' }}
+							position="relative"
+						>
+							<Box
+								bgPosition={'center'}
+								objectFit={'cover'}
+								bgImage={d?.image?.data?.attributes?.url}
+								w={'100%'}
+								h={'100%'}
+								position={'absolute'}
+							/>
+						</Box>
+						<Box pt={2}>
+							<Text>{d?.title}</Text>
+							<Text fontSize={14}>{d?.text}</Text>
+						</Box>
+					</Box>
 				</SwiperSlide>
 			))}
 		</Swiper>
@@ -49,7 +69,7 @@ const SwiperCarousel = ({ data, swiperConfig }) => {
 const Testimonial = ({ data }) => {
 	return (
 		<Box>
-			{data?.map(({avatar, description, name, quote, id})=>{
+			{/* {data?.map(({avatar, description, name, quote, id})=>{
 				return (
 					<Box key={`${id}-${name}`}>
 						<Image src={avatar?.data?.attributes?.url} alt={avatar?.data?.attributes?.alternativeText} />
@@ -58,7 +78,7 @@ const Testimonial = ({ data }) => {
 						<div dangerouslySetInnerHTML={{ __html: description }} />
 					</Box>
 				)
-			})}
+			})} */}
 		</Box>
 	);
 };
@@ -74,18 +94,28 @@ const StrapiDynamicBlocks = ({ content }) => {
 		case 'blocks.card-swiper':
 			return (
 				<Box>
-					<Text>{content?.title}</Text>
-					<Text>{content?.text}</Text>
-					<SwiperCarousel data={content?.CardSlider} />
+					<Stack direction="column" textAlign="center" py={2}>
+						<Text as="h2" fontSize={20}>
+							{content?.title}
+						</Text>
+						<Text as="p" fontSize={14}>
+							{content?.text}
+						</Text>
+					</Stack>
+					<SwiperCarousel
+						title={content?.title}
+						content={content?.text}
+						data={content?.CardSlider}
+					/>
 				</Box>
 			);
 
 		case 'blocks.testimonial-swiper':
 			return (
 				<Box>
-					<Text>{content?.title}</Text>
-					<Text>{content?.text}</Text>
-					<Testimonial data={content?.TestimonialSlider} />
+					{/* <Text>{content?.title}</Text>
+					<Text>{content?.text}</Text> */}
+					{/* <Testimonial data={content?.TestimonialSlider} /> */}
 				</Box>
 			);
 
