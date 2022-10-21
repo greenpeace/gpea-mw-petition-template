@@ -12,7 +12,6 @@ import {
 	Spinner,
 	SimpleGrid,
 	Button,
-
 	Accordion,
 	AccordionItem,
 	AccordionButton,
@@ -102,19 +101,26 @@ const Index = ({ submitted = false, strapi }) => {
 			>
 				<PageContainer>
 					<ContentContainer>
-						<Box bgColor="#D2D2D2" w={'100%'} h={'60px'}></Box>
+						<Box>
+							<img
+								className="h-auto max-w-full"
+								src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/10/855db730-sl_111019_24830_70-scaled.jpg"
+							/>
+						</Box>
 					</ContentContainer>
 
-					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }} className="contentWrap">
-						<Box flex={1} minWidth={0}> {/** minWidth */}
+					<Flex
+						flexDirection={{ base: 'column-reverse', md: 'row' }}
+						className="contentWrap"
+					>
+						<Box flex={1} minWidth={0}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
 								{strapi?.contentBlocks?.map((content) => (
-									<StrapiDynamicBlocks content={content} key={`${content?.id}-${content?.title}`} />
+									<StrapiDynamicBlocks
+										content={content}
+										key={`${content?.id}-${content?.title}`}
+									/>
 								))}
-								<Heading textAlign="center" py="6" fontSize="2xl">
-									常見問題
-								</Heading>
-								<DonateFAQ/>
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
@@ -125,6 +131,12 @@ const Index = ({ submitted = false, strapi }) => {
 							</Box>
 						</Box>
 					</Flex>
+
+					<Heading textAlign="center" py="6" fontSize="2xl">
+						常見問題
+					</Heading>
+					<DonateFAQ />
+
 					<BottomMarquee />
 				</PageContainer>
 			</Box>
@@ -148,40 +160,40 @@ const DonateFAQ = () => {
 				console.log(error);
 			});
 
-			setData(faq?.data);
+		setData(faq?.data);
 	}, []);
 
 	return (
-	  <Accordion my="4" allowToggle={true}>
-		{data?.attributes?.questionAnswer?.map((d, i) => {
-		  return (
-			<AccordionItem key={i}>
-			  <AccordionButton
-				_expanded={{ fontWeight: 'bold', bg: '', color: '' }}
-			  >
-				<AccordionIcon mr="2" />
-				<Box py="6" p="4" flex="1" textAlign="left">
-				  <Text as="p" fontSize="md">
-					{d.question}
-				  </Text>
-				</Box>
-			  </AccordionButton>
-			  <AccordionPanel p="4">
-				<Text
-				  as="p"
-				  {...paragraphProps}
-				  textAlign={'initial'}
-				  dangerouslySetInnerHTML={{
-					__html: d.answer,
-				  }}
-				></Text>
-			  </AccordionPanel>
-			</AccordionItem>
-		  );
-		})}
-	  </Accordion>
+		<Accordion my="4" allowToggle={true}>
+			{data?.attributes?.questionAnswer?.map((d, i) => {
+				return (
+					<AccordionItem key={i}>
+						<AccordionButton
+							_expanded={{ fontWeight: 'bold', bg: '', color: '' }}
+						>
+							<AccordionIcon mr="2" />
+							<Box py="6" p="4" flex="1" textAlign="left">
+								<Text as="p" fontSize="md">
+									{d.question}
+								</Text>
+							</Box>
+						</AccordionButton>
+						<AccordionPanel p="4">
+							<Text
+								as="p"
+								{...paragraphProps}
+								textAlign={'initial'}
+								dangerouslySetInnerHTML={{
+									__html: d.answer
+								}}
+							></Text>
+						</AccordionPanel>
+					</AccordionItem>
+				);
+			})}
+		</Accordion>
 	);
-  };
+};
 
 const Form = () => {
 	const [formSubmitted, setFormSubmit] = useState(false);
@@ -378,7 +390,7 @@ const BottomMarquee = () => {
 						<Box
 							key={i}
 							flex={1}
-							boderRadius="xl"
+							borderRadius="4px"
 							borderWidth="1px"
 							borderLeft="4px"
 							borderLeftColor={'theme.climate'}
