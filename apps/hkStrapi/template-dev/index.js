@@ -100,21 +100,18 @@ const Index = ({ submitted = false, strapi }) => {
 				}}
 			>
 				<PageContainer>
-					<ContentContainer>
-						<Box>
-							<img
-								className="h-auto max-w-full"
-								src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/10/855db730-sl_111019_24830_70-scaled.jpg"
-							/>
-						</Box>
-					</ContentContainer>
-
 					<Flex
 						flexDirection={{ base: 'column-reverse', md: 'row' }}
 						className="contentWrap"
 					>
 						<Box flex={1} minWidth={0}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
+								<Box>
+									<img
+										className="h-auto max-w-full"
+										src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/10/855db730-sl_111019_24830_70-scaled.jpg"
+									/>
+								</Box>
 								{strapi?.contentBlocks?.map((content) => (
 									<StrapiDynamicBlocks
 										content={content}
@@ -246,6 +243,9 @@ const Form = () => {
 
 	return (
 		<div className="px-4 py-6">
+			<div className="thoughts">
+				<h1 className="">Gather your birthday wishes</h1>
+			</div>
 			<form className="w-full" onSubmit={onSubmit}>
 				<div className="mb-6 flex flex-wrap">
 					<div className="mb-6 w-full md:mb-0">

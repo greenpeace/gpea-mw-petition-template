@@ -184,7 +184,7 @@ const Form = () => {
 
 	return (
 		<div className="px-4 py-6">
-			<div className="thoughts">
+			<div>
 				<h1 className="mt-0 mb-2 text-3xl font-medium leading-tight text-blue-600">
 					Gather your birthday wishes
 				</h1>
