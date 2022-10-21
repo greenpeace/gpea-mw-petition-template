@@ -1,5 +1,10 @@
 @import './swiper-pagination', './swiper-navigation';
 
+.swiper {
+	width: 100%;
+	height: 100%;
+}
+
 .swiper-container {
 	width: 100%;
 	height: 100%;
@@ -7,41 +12,20 @@
 	position: relative;
 }
 
-// .swiper {
-// 	width: 100%;
-// 	height: 100%;
-// 	.swiper-pagination-horizontal {
-// 		top: 0px !important;
-// 	}
-// 	.dynamic-swiper {
-// 		max-width: 90%;
-// 		@media only screen and (max-width: 600px) {
-// 			max-width: 100%;
-// 		}
-// 	}
-// }
-
 .swiper-slide {
-	width: 90%;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
-	// @media (min-width: 768px) {
-	// 	max-width: 638px;
-	// }
-	// @media (min-width: 1200px) {
-	// 	max-width: 750px;
-	// }
-	&:last-child {
-		margin-right: 0;
-	}
-	img {
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+}
+
+.swiper-slide img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .swiper-container .swiper-slide,
