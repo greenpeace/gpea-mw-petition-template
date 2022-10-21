@@ -1,0 +1,52 @@
+// .swiper-button-next {
+// 	right: 20px;
+// }
+// .swiper-button-prev {
+// 	left: 20px;
+// }
+// .swiper-button-next,
+// .swiper-button-prev {
+// 	background-image: none;
+// 	background-color: white;
+// 	border-radius: 99px;
+// 	width: 40px;
+// 	height: 40px;
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
+// 	transition: all 0.25s ease-in-out;
+// 	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+// 	@media (max-width: 575.98px) {
+// 		display: none;
+// 	}
+// 	&:after {
+// 		display: none;
+// 	}
+// 	&:hover {
+// 		box-shadow: 1px 8px 24px 0 rgba(0, 0, 0, 0.2);
+// 	}
+// 	span {
+// 		color: var(--primary);
+// 		font-size: 45px;
+// 	}
+// 	.arrow {
+// 		position: absolute;
+// 		left: 50%;
+// 		top: 50%;
+// 		width: 14px;
+// 		height: 14px;
+// 		border-left: 2px solid var(--primary);
+// 		border-top: 2px solid var(--primary);
+// 		&.arrow--left {
+// 			transform: translate(-25%, -50%) rotate(-45deg);
+// 		}
+// 		&.arrow--right {
+// 			transform: translate(-75%, -50%) rotate(135deg);
+// 		}
+// 	}
+
+// 	&.swiper-button-disabled {
+// 		opacity: 0;
+// 		pointer-events: none;
+// 	}
+// }

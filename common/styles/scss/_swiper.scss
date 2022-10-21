@@ -1,0 +1,52 @@
+@import './swiper-pagination', './swiper-navigation';
+
+.swiper-container {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	position: relative;
+}
+
+// .swiper {
+// 	width: 100%;
+// 	height: 100%;
+// 	.swiper-pagination-horizontal {
+// 		top: 0px !important;
+// 	}
+// 	.dynamic-swiper {
+// 		max-width: 90%;
+// 		@media only screen and (max-width: 600px) {
+// 			max-width: 100%;
+// 		}
+// 	}
+// }
+
+.swiper-slide {
+	width: 90%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	// @media (min-width: 768px) {
+	// 	max-width: 638px;
+	// }
+	// @media (min-width: 1200px) {
+	// 	max-width: 750px;
+	// }
+	&:last-child {
+		margin-right: 0;
+	}
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.swiper-container .swiper-slide,
+.swiper-container .swiper-pagination,
+.swiper-container [class^='swiper-button-'] {
+	transition: box-shadow 140ms linear, opacity 140ms linear, filter 140ms linear,
+		transform 140ms linear;
+}
