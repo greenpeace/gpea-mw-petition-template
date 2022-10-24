@@ -170,28 +170,32 @@ function Index({ submitted = false, strapi: strapiData }) {
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{(() => {
-									if (pageType?.toLowerCase() === 'donation') {
-										return (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										);
-									} else {
-										return submitted ? (
-											<StrapiDynamicBlocks
-												blocks={'thankyouBlocks'}
-												strapi={strapi}
-											/>
-										) : (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										);
-									}
-								})()}
+								{isLoaded && (
+									<>
+										{(() => {
+											if (pageType?.toLowerCase() === 'donation') {
+												return (
+													<StrapiDynamicBlocks
+														blocks={'contentBlocks'}
+														strapi={strapi}
+													/>
+												);
+											} else {
+												return submitted ? (
+													<StrapiDynamicBlocks
+														blocks={'thankyouBlocks'}
+														strapi={strapi}
+													/>
+												) : (
+													<StrapiDynamicBlocks
+														blocks={'contentBlocks'}
+														strapi={strapi}
+													/>
+												);
+											}
+										})()}
+									</>
+								)}
 								{isLoaded && (
 									<>
 										<Heading textAlign="center" py="6" fontSize="2xl">
