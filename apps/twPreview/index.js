@@ -52,9 +52,13 @@ function Index({ submitted = false, strapi }) {
 		if (router?.isReady) {
 			const { preview } = router?.query;
 			if (preview) {
-				const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
+				const endpoint =
+					process.env.NODE_ENV === 'development'
+						? process.env.API_ENDPOINT_LOCAL
+						: process.env.API_ENDPOINT;
+
 				const res = await fetch(
-					`${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=*`
+					`${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=deep,3`
 				).then((response) => response);
 				const themes = await res.json();
 				const theme = themes?.data[0] ?? {};
@@ -65,7 +69,7 @@ function Index({ submitted = false, strapi }) {
 				});
 			}
 		}
-	}, [router, submitted]);
+	}, [router]);
 
 	return (
 		<>
