@@ -49,7 +49,8 @@ export default function Index({
                         {content.description.map((d, i) => (
                           <Text
                             key={i}
-                            fontSize="var(--text-base)"
+                            //fontSize="var(--text-base)"
+                            fontSize="var(--chakra-fontSizes-2xl)"
                             color="white"
                             dangerouslySetInnerHTML={{ __html: d }}
                           ></Text>

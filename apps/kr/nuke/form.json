@@ -16,16 +16,17 @@
   "label_year_of_birth_optional": "출생년도（선택）",
   "label_newsletter_all": "모든 항목 선택하기",
   "label_newsletter_donate": "(필수) 그린피스 후원안내 수신동의",
-  "label_newsletter_privacy": "(필수) 개인정보 수집/이용에 동의 <a href=https://www.greenpeace.org/korea/personal-info-agreement-petition' target='_blank' rel='noopener'><u>내용 보기</u></a>",
-  "label_newsletter_third_party": "(필수) 개인정보 제3자 제공동의 <a href=https://www.https://www.greenpeace.org/korea/personal-info-agreement-3rd' target='_blank' rel='noopener'><u>내용 보기</u></a>",
+  "label_newsletter_privacy": "(필수) 개인정보 수집/이용에 동의 <a href='https://www.greenpeace.org/korea/personal-info-agreement-petition' target='_blank' rel='noopener'><u>내용 보기</u></a>",
+  "label_newsletter_third_party": "(필수) 개인정보 제3자 제공동의 <a href='https://www.greenpeace.org/korea/personal-info-agreement-3rd' target='_blank' rel='noopener'><u>내용 보기</u></a>",
 
   "empty_data_alert": "필수 입력 입니다.(공백불가)",
+  "require_data_alert": "필수 입력 입니다.",
   "empty_select_data_alert": "請選擇",
 
   "invalid_email_alert": "이메일 형식이 유효하지 않습니다",
   "invalid_format_alert": "올바른 형식을 입력하세요.",
-  "minimum_8_characters": "請輸入8位數字",
-  "suggestion_message": "您是否想輸入",
+  "minimum_8_characters": "8자리를 입력해주세요",
+  "suggestion_message": "이 주소가 맞습니까?",
 
   "submit_text": "함께하기",
   "mobile_fixed_cta": "후원하기",

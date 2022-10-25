@@ -44,6 +44,10 @@ const MyForm = (props) => {
     handleSubmit,
     isLoading,
     setFieldValue,
+    setValues,
+    setTouched,
+    validateField,
+    setErrors,
     setWebStatus,
     values,
     formContent,
@@ -99,6 +103,21 @@ const MyForm = (props) => {
   //   }
   // }, [formContent]);
 
+   
+  useEffect(() => {
+    const optIn = values.OptIn;
+    setValues({...values, OptIn1:optIn,OptIn2:optIn,OptIn3:optIn}, true);
+  }, [values.OptIn]);
+
+  useEffect(() => {
+    const optIn1 = values.OptIn1; 
+    const optIn2 = values.OptIn2; 
+    const optIn3 = values.OptIn3; 
+    if(optIn1 && optIn2 && optIn3) {
+      setFieldValue('OptIn', true, false);
+    }
+  }, [values.OptIn1,values.OptIn2,values.OptIn3]);
+
   useEffect(() => {
     if (signup.submitted) {
       setWebStatus(true);
@@ -124,7 +143,7 @@ const MyForm = (props) => {
       });
     }
   };
-
+  
   return (
     <Box py="8" px="4">
       <Stack spacing="4">
@@ -231,11 +250,10 @@ const MyForm = (props) => {
                     cursor={'pointer'}
                   >
                     <Text fontSize={'sm'} color={`theme.${themeInterests}`}>
-                      {formContent.suggestion_message}
+                      {formContent.suggestion_message}？
                       <b>
                         <u>{suggestion}</u>
                       </b>
-                      ？
                     </Text>
                   </Box>
                 )}
@@ -255,7 +273,7 @@ const MyForm = (props) => {
                 />
                 <Box pt="1" pl="2">
                   <Text color="gray.700" fontSize="sm" as="span">
-                    전화번호 예：010XXXXXXXX(숫자 11자리)
+                    전화번호 예：010-0000-0000
                   </Text>
                 </Box>
               </Box>
@@ -318,13 +336,34 @@ const MyForm = (props) => {
               <Flex direction={{ base: 'row' }} align={'flex-start'}>
                 <Box mr={2}>
                   <Checkbox
+                    id="OptIn"
+                    name="OptIn"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    //isInvalid={errors.OptIn}
+                    //defaultChecked
+                    isChecked={values.OptIn}
+                  />
+                </Box>
+                <Text
+                  fontSize="xs"
+                  color={'gray.700'}
+                  dangerouslySetInnerHTML={{
+                    __html: formContent.label_newsletter_all,
+                  }}
+                ></Text>
+              </Flex>
+              <Flex direction={{ base: 'row' }} align={'flex-start'}>
+                <Box mr={2}>
+                  <Checkbox
                     id="OptIn1"
                     name="OptIn1"
                     onChange={handleChange}
-                    isInvalid={errors.OptIn1}
+                    onBlur={handleBlur}
+                    //isInvalid={errors.OptIn1}
                     //defaultChecked
-                    //isChecked={checkedItems[0]}
-                    //onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1], checkedItems[2]])}
+                    //onChange={(e) => {values.OptIn1 = e.target.checked}}
+                    isChecked={values.OptIn1}
                   />
                 </Box>
                 <Text
@@ -334,6 +373,11 @@ const MyForm = (props) => {
                     __html: formContent.label_newsletter_donate,
                   }}
                 ></Text>
+                <Text
+                  marginLeft={2}
+                  fontSize="xs"
+                  color="var(--error-900)"
+                >{errors.OptIn1}</Text>
               </Flex>
               <Flex direction={{ base: 'row' }} align={'flex-start'}>
                 <Box mr={2}>
@@ -341,10 +385,12 @@ const MyForm = (props) => {
                     id="OptIn2"
                     name="OptIn2"
                     onChange={handleChange}
-                    isInvalid={errors.OptIn2}
+                    onBlur={handleBlur}
+                    //isInvalid={errors.OptIn2}
                     //defaultChecked
-                    //isChecked={checkedItems[1]}
+                    //isChecked={values.OptIn2}
                     //onChange={(e) => setCheckedItems([checkedItems[0], e.target.checked, checkedItems[2]])}
+                    isChecked={values.OptIn2}
                   />
                 </Box>
                 <Text
@@ -354,6 +400,11 @@ const MyForm = (props) => {
                     __html: formContent.label_newsletter_privacy,
                   }}
                 ></Text>
+                <Text
+                  marginLeft={2}
+                  fontSize="xs"
+                  color="var(--error-900)"
+                >{errors.OptIn2}</Text>
               </Flex>
               <Flex direction={{ base: 'row' }} align={'flex-start'}>
                 <Box mr={2}>
@@ -361,10 +412,12 @@ const MyForm = (props) => {
                     id="OptIn3"
                     name="OptIn3"
                     onChange={handleChange}
-                    isInvalid={errors.OptIn3}
+                    onBlur={handleBlur}
+                    //isInvalid={errors.OptIn3}
                     //defaultChecked
-                    //isChecked={checkedItems[2]}
+                    //isChecked={values.OptIn3}
                     //onChange={(e) => setCheckedItems([checkedItems[0], checkedItems[1], e.target.checked])}
+                    isChecked={values.OptIn3}
                   />
                 </Box>
                 <Text
@@ -374,6 +427,11 @@ const MyForm = (props) => {
                     __html: formContent.label_newsletter_third_party,
                   }}
                 ></Text>
+                <Text
+                  marginLeft={2}
+                  fontSize="xs"
+                  color="var(--error-900)"
+                >{errors.OptIn3}</Text>
               </Flex>
             </Box>
 
@@ -418,16 +476,17 @@ const MyEnhancedForm = withFormik({
     FirstName: '',
     LastName: '',
     MobilePhone: '',
-    OptIn: true,
+    OptIn: false,
     OptIn1: false,
     OptIn2: false,
     OptIn3: false,
     Birthdate: '',
   }),
 
-  validate: async (values, props) => {console.log('props',props)
-    const { formContent } = props;
-    return validation(values, formContent);
+  validate: async (values, props) => {
+    console.log('props',values, props)
+    
+    return validation(values, props);
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
@@ -469,19 +528,20 @@ const MyEnhancedForm = withFormik({
 
 const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
   return {
+    status,
     signup,
     hiddenFormData: hiddenForm.data,
     isLoading: signup.lastAction === signupActions.SIGN_UP,
     formContent: form.content,
-    numberOfResponses:
-      theme.data.ProjectName === 'oceans'
-        ? form.signupNumbers.tw?.NumberOfResponses
-        : Math.max(
-            parseInt(form.signupNumbers.tw?.NumberOfResponses),
-            parseInt(form.signupNumbers.tw?.NumberOfLeads) +
-              parseInt(form.signupNumbers.tw?.NumberOfContacts),
-          ),
-    numberOfTarget: form.signupNumbers.tw?.Petition_Signup_Target__c,
+    numberOfResponses: 0,
+      // theme.data.ProjectName === 'oceans'
+      //   ? form.signupNumbers.tw?.NumberOfResponses
+      //   : Math.max(
+      //       parseInt(form.signupNumbers.tw?.NumberOfResponses),
+      //       parseInt(form.signupNumbers.tw?.NumberOfLeads) +
+      //         parseInt(form.signupNumbers.tw?.NumberOfContacts),
+      //     ),
+    numberOfTarget: null,//form.signupNumbers.tw?.Petition_Signup_Target__c,
     theme: theme.data,
     suggestion: form.suggestion,
   };

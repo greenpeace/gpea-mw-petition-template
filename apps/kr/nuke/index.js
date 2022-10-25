@@ -70,7 +70,7 @@ function Index() {
                       ? signup?.data?.LastName
                       : '그린피스 서포터즈'
                   }님, 청원에 함께해 주셔서 감사합니다.`,
-                  //description: ['바다를 위해 한 걸음 더 나아가 해양 보존 프로젝트를 지원하기 위해 기부합니다.'],
+                  description: ['방금 제출해주신 청원으로 국제해양법을 위반하고 있는 일본 정부를 압박하겠습니다. 또한, 여러 국가, 국제기구와 소통해 후쿠시마 오염수 방류를 꼭 막아내겠습니다.'],
                 }}
               />
             ) : (
@@ -111,19 +111,6 @@ function Index() {
               <FormContainer>
                 <Box ref={ref}>
                   {(() => {
-                    // return (
-                    //   <DonationModule
-                    //     market={'kr'}
-                    //     language={'ko_KR'}
-                    //     // campaign={
-                    //     //   theme?.params?.donation_module_campaign ?? 'oceans'
-                    //     // }
-                    //     campaign={'General'}
-                    //     // campaignId={''}
-                    //     //FIXME: 추후 production으로 변경 필요
-                    //     env={'full'}
-                    //   />
-                    // );
                     if (step === 'donation') {
                       return (
                         <DonationModule
@@ -134,7 +121,6 @@ function Index() {
                           //   theme?.params?.donation_module_campaign ?? 'nuke'
                           // }
                           // campaignId={''}
-                          //FIXME: 추후 production으로 변경 필요
                           env={process.env.envParam}
                         />
                       );
@@ -148,7 +134,6 @@ function Index() {
                           //   theme?.params?.donation_module_campaign ?? 'nuke'
                           // }
                           // campaignId={''}
-                          //FIXME: 추후 production으로 변경 필요
                           env={process.env.envParam}
                         />
                       ) : (
