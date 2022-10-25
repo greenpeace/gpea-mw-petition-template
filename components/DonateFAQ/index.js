@@ -15,10 +15,12 @@ import {
 
 import data from './index.json';
 
-const DonateFAQ = ({ locale = 'HKChinese' }) => {
+const DonateFAQ = ({ locale = 'HKChinese', faq }) => {
+  const list = faq?.attributes?.questionAnswer??data[locale]?.accordions
+
   return (
     <Accordion my="4" allowToggle={true}>
-      {data[locale].accordions.map((d, i) => {
+      {list?.map((d, i) => {
         return (
           <AccordionItem key={i}>
             <AccordionButton
@@ -27,7 +29,7 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
               <AccordionIcon mr="2" />
               <Box py="6" p="4" flex="1" textAlign="left">
                 <Text as="p" fontSize="md">
-                  {d.title}
+                  {d.question??d.title}
                 </Text>
               </Box>
             </AccordionButton>
@@ -37,7 +39,7 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
                 {...paragraphProps}
                 textAlign={'initial'}
                 dangerouslySetInnerHTML={{
-                  __html: d.desc,
+                  __html: d.answer??d.desc,
                 }}
               ></Text>
             </AccordionPanel>
