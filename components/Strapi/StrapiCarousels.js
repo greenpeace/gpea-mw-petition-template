@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Text, Stack } from '@chakra-ui/react';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
 // Core modules imports are same as usual
 import {
@@ -13,10 +14,11 @@ import {
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
+import 'swiper/css/bundle';
 import 'swiper/css';
-import 'swiper/css/effect-fade';
+// import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// import 'swiper/css/pagination';
 
 export const SwiperCarousel = ({ data }) => {
 	const defaultConfig = {
@@ -118,40 +120,67 @@ export const SingleCarousel = ({ data }) => {
 
 export const CardCarousel = ({ data, cardSide = false }) => {
 	const defaultConfig = {
-		spaceBetween: 20,
 		centeredSlides: true,
 		slidesPerView: 'auto',
 		loop: true,
-		autoplay: false,
-		pagination: {
-			clickable: true,
-			renderBullet: function (index, className) {
-				return '<span className="' + className + '"></span>';
-			}
-		}
+		autoplay: false
 	};
 
 	return (
-		<Swiper modules={[Navigation, Pagination]} {...defaultConfig}>
-			{data?.map((d, i) => (
-				<SwiperSlide key={i}>
-					<div
-						className={`card mx-4 mb-10 bg-base-100 shadow-xl ${
-							cardSide && 'card-side w-full'
-						}`}
-					>
-						<figure>
-							<img src={d?.image?.data?.attributes?.url} alt={d?.title} />
-						</figure>
-						<div className="card-body">
-							<p className="card-title">{d?.title}</p>
-							<p className="">{d?.text}</p>
+		<Box>
+			<Box className="custom-swiper-pagination" textAlign="center" mb={4} />
+			<Swiper
+				modules={[Navigation, Pagination]}
+				{...defaultConfig}
+				pagination={{
+					el: '.custom-swiper-pagination',
+					clickable: true
+				}}
+				navigation={{
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev'
+				}}
+			>
+				<Box
+					className="swiper-button-prev"
+					bgColor="#FFF"
+					borderRadius="50%"
+					w="40px"
+					height="40px"
+					shadow="md"
+				>
+					<ChevronLeftIcon w={8} h={8} color="green.400"/>
+				</Box>
+				<Box
+					className="swiper-button-next"
+					bgColor="#FFF"
+					borderRadius="50%"
+					w="40px"
+					height="40px"
+					shadow="md"
+				>
+					<ChevronRightIcon  w={8} h={8} color="green.400" />
+				</Box>
+
+				{data?.map((d, i) => (
+					<SwiperSlide key={i} style={{ maxWidth: '90%' }}>
+						<div
+							className={`card mx-4 mb-10 bg-base-100 shadow-xl ${
+								cardSide && 'card-side w-full'
+							}`}
+						>
+							<figure>
+								<img src={d?.image?.data?.attributes?.url} alt={d?.title} />
+							</figure>
+							<div className="card-body">
+								<p className="card-title">{d?.title}</p>
+								<p className="">{d?.text}</p>
+							</div>
 						</div>
-					</div>
-				</SwiperSlide>
-			))}
-			<div className="swiper-pagination"></div>
-		</Swiper>
+					</SwiperSlide>
+				))}
+			</Swiper>
+		</Box>
 	);
 };
 
