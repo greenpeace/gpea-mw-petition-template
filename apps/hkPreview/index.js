@@ -192,10 +192,14 @@ function Index({ submitted = false, strapi: strapiData }) {
 										);
 									}
 								})()}
-								<Heading textAlign="center" py="6" fontSize="2xl">
-									常見問題
-								</Heading>
-								<DonateFAQ locale="HKChinese" />
+								{isLoaded && (
+									<>
+										<Heading textAlign="center" py="6" fontSize="2xl">
+											常見問題
+										</Heading>
+										<DonateFAQ locale="HKChinese" />
+									</>
+								)}
 							</ContentContainer>
 						</Box>
 						{isLoaded && (
