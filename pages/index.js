@@ -29,6 +29,9 @@ const themeEndpointURL = process.env.themeEndpoint;
 const signupNumbersHKURL = process.env.signupNumbersHK;
 const signupNumbersTWURL = process.env.signupNumbersTW;
 
+// Pending
+const schemaEndpoint = `${themeEndpointURL}?q={"Market":${envProjectMarket}`;
+
 const initTagManager = (marketName) => {
 	if (process.env.NODE_ENV === 'production') {
 		switch (marketName) {
