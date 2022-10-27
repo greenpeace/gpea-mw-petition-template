@@ -52,10 +52,7 @@ function Index({ submitted = false, strapi }) {
 		if (router?.isReady) {
 			const { preview } = router?.query;
 			if (preview) {
-				const endpoint =
-					process.env.NODE_ENV === 'development'
-						? process.env.API_ENDPOINT_LOCAL
-						: process.env.API_ENDPOINT;
+				const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
 
 				const res = await fetch(
 					`${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=deep`
@@ -210,12 +207,8 @@ function Index({ submitted = false, strapi }) {
 								)}
 							</ContentContainer>
 						</Box>
-						{isLoaded && (
-							<Box
-								flex={1}
-								ref={FormRef}
-								{...{ d: isLoaded ? 'block' : 'none' }}
-							>
+						<Box flex={1} ref={FormRef} {...{ d: isLoaded ? 'block' : 'none' }}>
+							{isLoaded && (
 								<FormContainer>
 									<Box ref={ref}>
 										{pageType?.toLowerCase() === 'donation' || submitted ? (
@@ -239,8 +232,8 @@ function Index({ submitted = false, strapi }) {
 										)}
 									</Box>
 								</FormContainer>
-							</Box>
-						)}
+							)}
+						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
