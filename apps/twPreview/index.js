@@ -169,7 +169,7 @@ function Index({ submitted = false, strapi }) {
 			<PageContainer>
 				<OverflowWrapper>
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
-						<Box flex={1} mt={{ base: 10, sm: 60 }}>
+						<Box minWidth={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
 								{isLoaded && (
 									<>
@@ -207,7 +207,7 @@ function Index({ submitted = false, strapi }) {
 								)}
 							</ContentContainer>
 						</Box>
-						<Box flex={1} ref={FormRef} {...{ d: isLoaded ? 'block' : 'none' }}>
+						<Box minWidth={0} flex={1} ref={FormRef}>
 							{isLoaded && (
 								<FormContainer>
 									<Box ref={ref}>
