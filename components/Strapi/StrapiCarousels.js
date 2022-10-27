@@ -149,7 +149,7 @@ export const CardCarousel = ({ data, cardSide = false }) => {
 					height="40px"
 					shadow="md"
 				>
-					<ChevronLeftIcon w={8} h={8} color="green.400"/>
+					<ChevronLeftIcon w={8} h={8} color="green.400" />
 				</Box>
 				<Box
 					className="swiper-button-next"
@@ -159,7 +159,7 @@ export const CardCarousel = ({ data, cardSide = false }) => {
 					height="40px"
 					shadow="md"
 				>
-					<ChevronRightIcon  w={8} h={8} color="green.400" />
+					<ChevronRightIcon w={8} h={8} color="green.400" />
 				</Box>
 
 				{data?.map((d, i) => (
@@ -186,40 +186,87 @@ export const CardCarousel = ({ data, cardSide = false }) => {
 
 export const TestimonialCarousel = ({ data }) => {
 	const defaultConfig = {
-		spaceBetween: 20,
 		centeredSlides: true,
 		slidesPerView: 'auto',
 		loop: true,
-		autoplay: false,
-		pagination: {
-			clickable: true,
-			renderBullet: function (index, className) {
-				return '<span className="' + className + '"></span>';
-			}
-		}
+		autoplay: false
 	};
 
 	return (
-		<Swiper modules={[Navigation, Pagination]} {...defaultConfig}>
-			<Box className="swiper-pagination" /> {/** CSS */}
-			{data?.map((d, i) => (
-				<SwiperSlide key={i}>
-					<Stack
-						direction="column"
-						textAlign="center"
-						space="4"
-						alignItems={'center'}
-					>
-						<div className="avatar mt-2">
-							<div className="w-24 rounded-full ring ring-primary ring-offset-2 ring-offset-base-100">
-								<img src={d?.avatar?.data?.attributes?.url} alt={d?.name} />
-							</div>
-						</div>
-						<Text className="">{d?.name}</Text>
-						<Box className="" dangerouslySetInnerHTML={{ __html: d?.quote }} />
-					</Stack>
-				</SwiperSlide>
-			))}
-		</Swiper>
+		<Box>
+			<Box
+				className="custom-testimonial-swiper-pagination"
+				textAlign="center"
+				mb={4}
+			/>
+			<Swiper
+				modules={[Navigation, Pagination]}
+				{...defaultConfig}
+				pagination={{
+					el: '.custom-testimonial-swiper-pagination',
+					clickable: true
+				}}
+				navigation={{
+					nextEl: '.testimonial-swiper-button-next',
+					prevEl: '.testimonial-swiper-button-prev'
+				}}
+			>
+				<Box
+					className="testimonial-swiper-button-prev swiper-button-prev"
+					bgColor="#FFF"
+					borderRadius="50%"
+					w="40px"
+					height="40px"
+					shadow="md"
+				>
+					<ChevronLeftIcon w={8} h={8} color="green.400" />
+				</Box>
+				<Box
+					className="testimonial-swiper-button-next swiper-button-next"
+					bgColor="#FFF"
+					borderRadius="50%"
+					w="40px"
+					height="40px"
+					shadow="md"
+				>
+					<ChevronRightIcon w={8} h={8} color="green.400" />
+				</Box>
+
+				{data?.map((d, i) => (
+					<SwiperSlide key={i} style={{ maxWidth: '90%' }}>
+						<Box
+							bgColor="#FFF"
+							w={'100%'}
+							shadow="md"
+							pt={10}
+							pb={6}
+							borderRadius="20px"
+							m={4}
+						>
+							<Stack
+								direction="column"
+								textAlign="center"
+								space="4"
+								alignItems={'center'}
+							>
+								<div className="avatar mt-2">
+									<div className="w-24 rounded-full ring ring-[#66cc00]  ring-offset-2 ring-offset-base-100">
+										<img src={d?.avatar?.data?.attributes?.url} alt={d?.name} />
+									</div>
+								</div>
+								<Box dangerouslySetInnerHTML={{ __html: d?.quote }} p={4} alignSelf="self-start" textAlign="left"/>
+								<Box pt={2}>
+									<Text textAlign="center" fontWeight={"bold"}>{d?.name}</Text>
+									<Box
+										fontSize={"sm"}
+										dangerouslySetInnerHTML={{ __html: d?.description }}
+									/>
+								</Box>
+							</Stack>
+						</Box>
+					</SwiperSlide>
+				))}
+			</Swiper>
+		</Box>
 	);
 };

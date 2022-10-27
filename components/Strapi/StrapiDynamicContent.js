@@ -49,11 +49,13 @@ const StrapiDynamicBlocks = ({ blocks = 'contentBlocks', strapi }) => {
 						case 'blocks.testimonial-swiper':
 							return (
 								<Box py="4">
-									{/* <Heading {...headingProps}>{content?.title}</Heading>
-									<Text as="p" {...paragraphProps}>
-										{content?.text}
-									</Text>
-									<TestimonialCarousel data={content?.TestimonialSlider} /> */}
+									<Stack direction="column" textAlign="center" py={2} mb={2}>
+										<Heading {...headingProps} mb={0}>{content?.title}</Heading>
+										<Text as="p">
+											{content?.text}
+										</Text>
+									</Stack>
+									<TestimonialCarousel data={content?.TestimonialSlider} />
 								</Box>
 							);
 						default:
