@@ -234,7 +234,7 @@ export async function getStaticProps(context) {
 			: process.env.API_ENDPOINT;
 
 	const res = await fetch(
-		`${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate=deep,3`
+		`${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate=deep`
 	).then((response) => response);
 	const themes = await res.json();
 	const theme =

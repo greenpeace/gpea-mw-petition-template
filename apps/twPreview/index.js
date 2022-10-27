@@ -58,7 +58,7 @@ function Index({ submitted = false, strapi }) {
 						: process.env.API_ENDPOINT;
 
 				const res = await fetch(
-					`${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=deep,3`
+					`${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=deep`
 				).then((response) => response);
 				const themes = await res.json();
 				const theme = themes?.data[0] ?? {};
