@@ -85,8 +85,38 @@ export const SingleCarousel = ({ data }) => {
 		}
 	};
 	return (
-		<Swiper modules={[EffectFade, Pagination]} {...defaultConfig}>
-			<Box className="swiper-pagination" /> {/** CSS */}
+		<Swiper
+			modules={[EffectFade, Pagination]}
+			{...defaultConfig}
+			pagination={{
+				el: '.custom-testimonial-swiper-pagination',
+				clickable: true
+			}}
+			navigation={{
+				nextEl: '.testimonial-swiper-button-next',
+				prevEl: '.testimonial-swiper-button-prev'
+			}}
+		>
+			<Box
+				className="swiper-button-prev"
+				bgColor="#FFF"
+				borderRadius="50%"
+				w="40px"
+				height="40px"
+				shadow="md"
+			>
+				<ChevronLeftIcon w={8} h={8} color="green.400" />
+			</Box>
+			<Box
+				className="swiper-button-next"
+				bgColor="#FFF"
+				borderRadius="50%"
+				w="40px"
+				height="40px"
+				shadow="md"
+			>
+				<ChevronRightIcon w={8} h={8} color="green.400" />
+			</Box>
 			{data?.map((d, i) => (
 				<SwiperSlide key={i}>
 					<Box>
@@ -105,11 +135,9 @@ export const SingleCarousel = ({ data }) => {
 								position={'absolute'}
 							/>
 						</Box>
-						<Box pt={2}>
+						<Box pt="4">
 							<Text>{d?.title}</Text>
-							<Text fontSize={14} py={4}>
-								{d?.text}
-							</Text>
+							<Text py={4}>{d?.text}</Text>
 						</Box>
 					</Box>
 				</SwiperSlide>
@@ -118,7 +146,7 @@ export const SingleCarousel = ({ data }) => {
 	);
 };
 
-export const CardCarousel = ({ data, cardSide = false }) => {
+export const CardCarousel = ({ data }) => {
 	const defaultConfig = {
 		centeredSlides: true,
 		slidesPerView: 'auto',
@@ -164,19 +192,24 @@ export const CardCarousel = ({ data, cardSide = false }) => {
 
 				{data?.map((d, i) => (
 					<SwiperSlide key={i} style={{ maxWidth: '90%' }}>
-						<div
-							className={`card mx-4 mb-10 bg-base-100 shadow-xl ${
-								cardSide && 'card-side w-full'
-							}`}
+						<Box
+							maxWidth="32rem"
+							w={'100%'}
+							className="mx-4 overflow-hidden rounded-xl bg-base-100 shadow-xl"
 						>
-							<figure>
-								<img src={d?.image?.data?.attributes?.url} alt={d?.title} />
-							</figure>
-							<div className="card-body">
-								<p className="card-title">{d?.title}</p>
-								<p className="">{d?.text}</p>
-							</div>
-						</div>
+							<Stack direction="column" space="4">
+								<img
+									class="w-full"
+									src={d?.image?.data?.attributes?.url}
+									alt={d?.title}
+									loading="lazy"
+								/>
+								<div className="card-body">
+									<p className="card-title">{d?.title}</p>
+									<p className="">{d?.text}</p>
+								</div>
+							</Stack>
+						</Box>
 					</SwiperSlide>
 				))}
 			</Swiper>
@@ -250,15 +283,22 @@ export const TestimonialCarousel = ({ data }) => {
 								alignItems={'center'}
 							>
 								<div className="avatar mt-2">
-									<div className="w-24 rounded-full ring ring-[#66cc00]  ring-offset-2 ring-offset-base-100">
+									<div className="w-24 rounded-full ring ring-[#66cc00] ring-offset-2 ring-offset-base-100">
 										<img src={d?.avatar?.data?.attributes?.url} alt={d?.name} />
 									</div>
 								</div>
-								<Box dangerouslySetInnerHTML={{ __html: d?.quote }} p={4} alignSelf="self-start" textAlign="left"/>
+								<Box
+									dangerouslySetInnerHTML={{ __html: d?.quote }}
+									p={4}
+									alignSelf="self-start"
+									textAlign="left"
+								/>
 								<Box pt={2}>
-									<Text textAlign="center" fontWeight={"bold"}>{d?.name}</Text>
+									<Text textAlign="center" fontWeight={'bold'}>
+										{d?.name}
+									</Text>
 									<Box
-										fontSize={"sm"}
+										fontSize={'sm'}
 										dangerouslySetInnerHTML={{ __html: d?.description }}
 									/>
 								</Box>
