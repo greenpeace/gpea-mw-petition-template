@@ -3,14 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
-import {
-	Box,
-	Flex,
-	Heading
-} from '@chakra-ui/react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
 import ContentContainer from '@containers/contentContainer';
+import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
 import HeroBanner from '@components/ResponsiveBanner/hero';
@@ -133,18 +130,18 @@ const Index = ({ submitted = false, strapi }) => {
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
-							<Box zIndex="2" position="sticky" top="4px">
+							<FormContainer>
 								<Box ref={ref}>
 									<Form />
 								</Box>
-							</Box>
+							</FormContainer>
 						</Box>
 					</Flex>
 
 					<Heading textAlign="center" py="6" fontSize="2xl">
 						常見問題
 					</Heading>
-					<DonateFAQ faq={faq}/>
+					<DonateFAQ faq={faq} />
 					<ThoughList />
 				</PageContainer>
 			</Box>
