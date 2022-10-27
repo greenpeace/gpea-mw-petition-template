@@ -38,10 +38,10 @@ const StrapiDynamicBlocks = ({ blocks = 'contentBlocks', strapi }) => {
 							return (
 								<Box py="4">
 									<Stack direction="column" textAlign="center" py={2} mb={2}>
-										<Heading {...headingProps} mb={0}>{content?.title}</Heading>
-										<Text as="p">
-											{content?.text}
-										</Text>
+										<Heading {...headingProps} mb={0}>
+											{content?.title}
+										</Heading>
+										<Text as="p">{content?.text}</Text>
 									</Stack>
 									<CardCarousel data={content?.CardSlider} />
 								</Box>
@@ -50,10 +50,10 @@ const StrapiDynamicBlocks = ({ blocks = 'contentBlocks', strapi }) => {
 							return (
 								<Box py="4">
 									<Stack direction="column" textAlign="center" py={2} mb={2}>
-										<Heading {...headingProps} mb={0}>{content?.title}</Heading>
-										<Text as="p">
-											{content?.text}
-										</Text>
+										<Heading {...headingProps} mb={0}>
+											{content?.title}
+										</Heading>
+										<Text as="p">{content?.text}</Text>
 									</Stack>
 									<TestimonialCarousel data={content?.TestimonialSlider} />
 								</Box>
