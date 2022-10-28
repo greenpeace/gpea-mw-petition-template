@@ -17,11 +17,10 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
+import StrapiDonateFAQ from '@components/Strapi/StrapiFAQ';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 // Import Contents
 import formContent from './form';
-
-import axios from 'axios';
 
 const Index = ({ submitted = false, strapi }) => {
 	const dispatch = useDispatch();
@@ -31,23 +30,10 @@ const Index = ({ submitted = false, strapi }) => {
 		threshold: 0
 	});
 	const FormRef = useRef(null);
-	const [faq, setFaq] = useState([]);
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
-	useEffect(async () => {
-		const faq = await axios
-			.get(
-				`https://strapi.small-service.gpeastasia.org/api/faq?populate=*&locale=zh-Hant-HK`
-			)
-			.then((response) => {
-				return response.data;
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-
-		setFaq(faq?.data);
+	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
 
@@ -97,7 +83,7 @@ const Index = ({ submitted = false, strapi }) => {
 						flexDirection={{ base: 'column-reverse', md: 'row' }}
 						className="contentWrap"
 					>
-						<Box flex={1} minWidth={0}>
+						<Box minWidth={0} flex={1}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
 								<Box>
 									<img
@@ -141,7 +127,9 @@ const Index = ({ submitted = false, strapi }) => {
 					<Heading textAlign="center" py="6" fontSize="2xl">
 						常見問題
 					</Heading>
-					<DonateFAQ faq={faq} />
+
+					<StrapiDonateFAQ locale="zh-Hant-HK" />
+
 					<ThoughList />
 				</PageContainer>
 			</Box>
