@@ -137,7 +137,7 @@ function Index({ submitted = false, strapi }) {
 			<PageContainer>
 				<OverflowWrapper>
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
-						<Box flex={1} mt={{ base: 10, sm: 60 }}>
+						<Box minWith={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
 								{(() => {
 									if (pageType?.toLowerCase() === 'donation') {
