@@ -11,6 +11,10 @@ import {
 
 import { paragraphProps } from '@common/styles/components/contentStyle';
 
+// Accepted locale
+// zh-Hant-HK
+// zh-Hant-TW
+
 const StrapiDonateFAQ = ({ locale = 'zh-Hant-HK' }) => {
 	const [faq, setFaq] = useState([]);
 	const list = faq?.attributes?.questionAnswer;

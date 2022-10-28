@@ -17,7 +17,7 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiDonateFAQ from '@components/Strapi/StrapiFAQ';
+import StrapiDonateFAQ from '@components/Strapi/StrapiDonateFAQ';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 // Import Contents
 import formContent from './form';
