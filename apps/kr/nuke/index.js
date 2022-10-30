@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
@@ -17,7 +18,7 @@ import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/KRForm';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 // Import Contents
-import Donation from './Donation';
+//import Donation from './Donation';
 import Content from './Content';
 import Thankyou from './Thankyou';
 
@@ -35,30 +36,27 @@ function Index() {
   const [ref, inView] = useInView({
     threshold: 0,
   });
-  const mobileForm = useRef(null);
+  const mobileForm = useRef(null); 
+  const thankForm = useRef(null); 
+
+  //console.log('step isMobile',step, isMobile)
 
   useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
   }, [dispatch]);
 
+  
+  useEffect(() => {
+    if(thankForm){
+      thankForm.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [submitted]);
+
   return (
     <>
       <SEO />
-      <Box>
-        {(() => {
-          if (step === 'donation') {
-            return (
-              <HeroBanner
-                bgImage={theme?.params?.hero_image_desktop ?? heroBannerImage}
-                content={{
-                  title: `${
-                    theme?.params?.headline_prefix ?? ''
-                  }지금 가입하세요<br/>전 세계 바다의 30%가 보호 구역에<br/>포함됩니다.`,
-                  description: [''],
-                }}
-              />
-            );
-          } else {
+      <Box ref={thankForm}>
+        {(() => { 
             return submitted ? (
               <ThanksBanner
                 defaultImage={
@@ -89,42 +87,52 @@ function Index() {
                   description: [''],
                 }}
               />
-            );
-          }
+            ); 
         })()}
       </Box>
       <PageContainer>
         <OverflowWrapper>
-          <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
-            <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer>
-                {(() => {
-                  if (step === 'donation') {
-                    return <Donation />;
-                  } else {
-                    return submitted ? <Thankyou /> : <Content />;
-                  }
+        {(submitted && isMobile)?  
+          <>
+            <Box flex={1} mt={{ base: 10, sm: 60 }} style={{paddingTop: 50,}}>
+              <ContentContainer> 
+                {(() => { 
+                    return submitted ? <Thankyou /> : <Content />; 
                 })()}
               </ContentContainer>
             </Box>
             <Box flex={1} ref={mobileForm}>
               <FormContainer>
                 <Box ref={ref}>
-                  {(() => {
-                    if (step === 'donation') {
-                      return (
-                        <DonationModule
-                          market={'kr'}
-                          language={'ko_KR'}
-                          campaign={process.env.campaign}
-                          // campaign={
-                          //   theme?.params?.donation_module_campaign ?? 'nuke'
-                          // }
-                          // campaignId={''}
-                          env={process.env.envParam}
-                        />
-                      );
-                    } else {
+                  {(() => { 
+                        return submitted ? (
+                          <DonationModule
+                            market={'kr'}
+                            language={'ko_KR'}
+                            campaign={process.env.campaign}
+                            env={process.env.envParam}
+                          />
+                        ) : (
+                          <SignupForm />
+                        ); 
+                    })()}
+                </Box>
+              </FormContainer>
+            </Box>
+          </>
+          :
+          <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
+            <Box flex={1} mt={{ base: 10, sm: 60 }}>
+              <ContentContainer>
+                {(() => { 
+                    return submitted ? <Thankyou /> : <Content />; 
+                })()}
+              </ContentContainer>
+            </Box>
+            <Box flex={1} ref={mobileForm}>
+              <FormContainer>
+                <Box ref={ref}>
+                  {(() => { 
                       return submitted ? (
                         <DonationModule
                           market={'kr'}
@@ -138,13 +146,13 @@ function Index() {
                         />
                       ) : (
                         <SignupForm />
-                      );
-                    }
+                      ); 
                   })()}
                 </Box>
               </FormContainer>
             </Box>
           </Flex>
+          }
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'Korean'} />

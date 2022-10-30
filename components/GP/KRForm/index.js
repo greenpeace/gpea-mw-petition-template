@@ -484,7 +484,7 @@ const MyEnhancedForm = withFormik({
   }),
 
   validate: async (values, props) => {
-    console.log('props',values, props)
+    //console.log('props',values, props)
     
     return validation(values, props);
   },
@@ -514,7 +514,7 @@ const MyEnhancedForm = withFormik({
       CompletionURL: window.location.href ? window.location.href : '',
     };
 
-    console.log(`handleSubmit formData`, formData);
+    //console.log(`handleSubmit formData`, formData);
 
     if (values.Counties) formData.CampaignData1__c = values.Counties;
     if (values.Namelist) formData.CampaignData2__c = values.Namelist;

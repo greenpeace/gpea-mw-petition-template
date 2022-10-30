@@ -9,6 +9,7 @@ const initState = {
     Petition_Interested_In_Health__c: false,
     Petition_Interested_In_Oceans__c: false,
     Petition_Interested_In_Plastics__c: false,
+    Petition_Interested_In_Nuclear__c: false,
     CampaignData1__c: '',
     CampaignData2__c: '',
     CampaignData3__c: '',
