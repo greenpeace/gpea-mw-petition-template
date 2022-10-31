@@ -173,7 +173,18 @@ function Index({ submitted = false, strapi: strapiData }) {
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
 								{isLoaded && (
 									<>
-										{(() => {
+										{submitted ? (
+											<StrapiDynamicBlocks
+												blocks={'thankyouBlocks'}
+												strapi={strapi}
+											/>
+										) : (
+											<StrapiDynamicBlocks
+												blocks={'contentBlocks'}
+												strapi={strapi}
+											/>
+										)}
+										{/* {(() => {
 											if (pageType?.toLowerCase() === 'donation') {
 												return (
 													<StrapiDynamicBlocks
@@ -194,7 +205,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 													/>
 												);
 											}
-										})()}
+										})()} */}
 									</>
 								)}
 								{isLoaded && (
