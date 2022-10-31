@@ -15,6 +15,7 @@ import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/HKForm';
+import UploadForm from './upload';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
@@ -139,25 +140,27 @@ function Index({ submitted = false, strapi }) {
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box minWith={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{isLoaded && (
-									<>
-										{submitted ? (
-											<StrapiDynamicBlocks
-												blocks={'thankyouBlocks'}
-												strapi={strapi}
-											/>
-										) : (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										)}
-									</>
-								)}
+								<>
+									{submitted ? (
+										<StrapiDynamicBlocks
+											blocks={'thankyouBlocks'}
+											strapi={strapi}
+										/>
+									) : (
+										<StrapiDynamicBlocks
+											blocks={'contentBlocks'}
+											strapi={strapi}
+										/>
+									)}
+								</>
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
+								<div className="flex flex-col">
+								<Box p={6}>
+									<UploadForm />
+								</Box>
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
 										<DonationModule
@@ -178,6 +181,8 @@ function Index({ submitted = false, strapi }) {
 										<SignupForm />
 									)}
 								</Box>
+								</div>
+								
 							</FormContainer>
 						</Box>
 					</Flex>
