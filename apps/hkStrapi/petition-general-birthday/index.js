@@ -175,16 +175,9 @@ const Index = ({ submitted = false, strapi }) => {
 										src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/10/855db730-sl_111019_24830_70-scaled.jpg"
 									/>
 								</Box>
-								{(() => {
-									if (pageType?.toLowerCase() === 'donation') {
-										return (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										);
-									} else {
-										return submitted ? (
+								{isLoaded && (
+									<>
+										{submitted ? (
 											<StrapiDynamicBlocks
 												blocks={'thankyouBlocks'}
 												strapi={strapi}
@@ -194,9 +187,9 @@ const Index = ({ submitted = false, strapi }) => {
 												blocks={'contentBlocks'}
 												strapi={strapi}
 											/>
-										);
-									}
-								})()}
+										)}
+									</>
+								)}
 							</ContentContainer>
 							<BottomMarquee />
 						</Box>

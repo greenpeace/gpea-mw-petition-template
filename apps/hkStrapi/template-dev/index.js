@@ -170,16 +170,9 @@ const Index = ({ submitted = false, strapi }) => {
 										/>
 									)}
 								</Box>
-								{/* {(() => {
-									if (pageType?.toLowerCase() === 'donation') {
-										return (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										);
-									} else {
-										return submitted ? (
+								{/* {isLoaded && (
+									<>
+										{submitted ? (
 											<StrapiDynamicBlocks
 												blocks={'thankyouBlocks'}
 												strapi={strapi}
@@ -189,9 +182,9 @@ const Index = ({ submitted = false, strapi }) => {
 												blocks={'contentBlocks'}
 												strapi={strapi}
 											/>
-										);
-									}
-								})()} */}
+										)}
+									</>
+								)} */}
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>

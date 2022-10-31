@@ -139,16 +139,9 @@ function Index({ submitted = false, strapi }) {
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box minWidth={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{(() => {
-									if (pageType?.toLowerCase() === 'donation') {
-										return (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										);
-									} else {
-										return submitted ? (
+								{isLoaded && (
+									<>
+										{submitted ? (
 											<StrapiDynamicBlocks
 												blocks={'thankyouBlocks'}
 												strapi={strapi}
@@ -158,9 +151,9 @@ function Index({ submitted = false, strapi }) {
 												blocks={'contentBlocks'}
 												strapi={strapi}
 											/>
-										);
-									}
-								})()}
+										)}
+									</>
+								)}
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
