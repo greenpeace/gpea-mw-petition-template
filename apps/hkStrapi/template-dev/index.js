@@ -11,9 +11,9 @@ import FormContainer from '@containers/formContainer';
 import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
 import HeroBanner from '@components/ResponsiveBanner/hero';
+import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import ThoughList from './ThoughtList';
 import Form from './FormComponent';
-import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
@@ -40,35 +40,101 @@ const Index = ({ submitted = false, strapi }) => {
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
-			<HeroBanner
-				removeMask={strapi?.contentHero?.removeMask}
-				defaultImage={
-					theme?.params?.hero_image_desktop ||
-					strapi?.contentHero?.desktopImageURL
-				}
-				imageSrcset={[
-					{
-						media: '(min-width: 48em)',
-						srcset:
-							theme?.params?.hero_image_desktop ||
-							strapi?.contentHero?.desktopImageURL
-					},
-					{
-						media: '',
-						srcset:
-							theme?.params?.hero_image_mobile ||
-							strapi?.contentHero?.mobileImageURL
+			<Box>
+				{(() => {
+					if (pageType?.toLowerCase() === 'donation') {
+						return (
+							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.contentHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: theme?.params?.headline_prefix
+										? theme?.params?.headline_prefix +
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
+										: strapi?.contentHero?.richContent,
+									description: strapi?.contentHero?.richContentParagraph
+								}}
+							/>
+						);
+					} else {
+						return submitted ? (
+							<ThanksBanner
+								removeMask={strapi?.contentHero?.removeMask}
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.thankyouHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: strapi?.thankyouHero?.richContent,
+									description: strapi?.thankyouHero?.richContentParagraph
+								}}
+							/>
+						) : (
+							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.thankyouHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: theme?.params?.headline_prefix
+										? theme?.params?.headline_prefix +
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
+										: strapi?.contentHero?.richContent,
+									description: strapi?.contentHero?.richContentParagraph
+								}}
+							/>
+						);
 					}
-				]}
-				content={{
-					title: theme?.params?.headline_prefix
-						? theme?.params?.headline_prefix +
-						  '<br/>' +
-						  strapi?.contentHero?.richContent
-						: strapi?.contentHero?.richContent,
-					description: strapi?.contentHero?.richContentParagraph
-				}}
-			/>
+				})()}
+			</Box>
 			<Box
 				className="contentOverlayWrap"
 				m={{
@@ -91,7 +157,20 @@ const Index = ({ submitted = false, strapi }) => {
 										src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/10/855db730-sl_111019_24830_70-scaled.jpg"
 									/>
 								</Box>
-								{(() => {
+								<Box>
+									{submitted ? (
+										<StrapiDynamicBlocks
+											blocks={'thankyouBlocks'}
+											strapi={strapi}
+										/>
+									) : (
+										<StrapiDynamicBlocks
+											blocks={'contentBlocks'}
+											strapi={strapi}
+										/>
+									)}
+								</Box>
+								{/* {(() => {
 									if (pageType?.toLowerCase() === 'donation') {
 										return (
 											<StrapiDynamicBlocks
@@ -112,7 +191,7 @@ const Index = ({ submitted = false, strapi }) => {
 											/>
 										);
 									}
-								})()}
+								})()} */}
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>

@@ -19,6 +19,7 @@ import ContentContainer from '@containers/contentContainer';
 import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
 import HeroBanner from '@components/ResponsiveBanner/hero';
+import ThanksBanner from '@components/ResponsiveBanner/thanks';
 // import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
@@ -56,35 +57,101 @@ const Index = ({ submitted = false, strapi }) => {
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
-			<HeroBanner
-				removeMask={strapi?.contentHero?.removeMask}
-				defaultImage={
-					theme?.params?.hero_image_desktop ||
-					strapi?.contentHero?.desktopImageURL
-				}
-				imageSrcset={[
-					{
-						media: '(min-width: 48em)',
-						srcset:
-							theme?.params?.hero_image_desktop ||
-							strapi?.contentHero?.desktopImageURL
-					},
-					{
-						media: '',
-						srcset:
-							theme?.params?.hero_image_mobile ||
-							strapi?.contentHero?.mobileImageURL
+			<Box>
+				{(() => {
+					if (pageType?.toLowerCase() === 'donation') {
+						return (
+							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.contentHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: theme?.params?.headline_prefix
+										? theme?.params?.headline_prefix +
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
+										: strapi?.contentHero?.richContent,
+									description: strapi?.contentHero?.richContentParagraph
+								}}
+							/>
+						);
+					} else {
+						return submitted ? (
+							<ThanksBanner
+								removeMask={strapi?.contentHero?.removeMask}
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.thankyouHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: strapi?.thankyouHero?.richContent,
+									description: strapi?.thankyouHero?.richContentParagraph
+								}}
+							/>
+						) : (
+							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.thankyouHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: theme?.params?.headline_prefix
+										? theme?.params?.headline_prefix +
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
+										: strapi?.contentHero?.richContent,
+									description: strapi?.contentHero?.richContentParagraph
+								}}
+							/>
+						);
 					}
-				]}
-				content={{
-					title: theme?.params?.headline_prefix
-						? theme?.params?.headline_prefix +
-						  '<br/>' +
-						  strapi?.contentHero?.richContent
-						: strapi?.contentHero?.richContent,
-					description: strapi?.contentHero?.richContentParagraph
-				}}
-			/>
+				})()}
+			</Box>
 			<Box>
 				<PageContainer>
 					<ContentContainer>
