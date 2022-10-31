@@ -184,28 +184,6 @@ function Index({ submitted = false, strapi: strapiData }) {
 												strapi={strapi}
 											/>
 										)}
-										{/* {(() => {
-											if (pageType?.toLowerCase() === 'donation') {
-												return (
-													<StrapiDynamicBlocks
-														blocks={'contentBlocks'}
-														strapi={strapi}
-													/>
-												);
-											} else {
-												return submitted ? (
-													<StrapiDynamicBlocks
-														blocks={'thankyouBlocks'}
-														strapi={strapi}
-													/>
-												) : (
-													<StrapiDynamicBlocks
-														blocks={'contentBlocks'}
-														strapi={strapi}
-													/>
-												);
-											}
-										})()} */}
 									</>
 								)}
 								{isLoaded && (
