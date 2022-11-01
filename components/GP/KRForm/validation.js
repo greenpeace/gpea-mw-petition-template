@@ -19,7 +19,7 @@ export function validation(values, props) {
   if (!values.LastName) {
     errors.LastName = formContent.empty_data_alert;
   }
-
+ 
   if (!values.MobilePhone) {
     errors.MobilePhone = formContent.empty_data_alert;
   } else if (!/^01([0|1|6|7|8|9])?-([0-9]{3,4})?-([0-9]{4})$/.test(values.MobilePhone)) {

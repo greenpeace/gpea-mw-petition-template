@@ -54,7 +54,7 @@ const DonationModule = (props) => {
   if (process.env.envParam === 'production') {
     moduleUrl = `https://gpseoulwebserver.co.kr/main.js`;
   } else if (process.env.envParam === 'full') {
-    moduleUrl = `${window.location.href}/main.js`; //`https://gpseoulwebserver.co.kr/main.js`;
+    moduleUrl = `https://gpseoulwebserver.co.kr/main.js`; //`${window.location.href}/main.js`;
   } else {
     moduleUrl = `${window.location.href}/main.js`;
   }

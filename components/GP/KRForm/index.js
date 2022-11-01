@@ -143,6 +143,20 @@ const MyForm = (props) => {
       });
     }
   };
+
+  const replacePhoneNumber = (phoneNumber) => {
+    if (phoneNumber.length > 11 && phoneNumber.length < 13) {
+      return phoneNumber
+        .replace(/[^0-9]/g, "")
+        .replace(/^(\d{0,3})(\d{0,3})(\d{0,4})$/g, "$1-$2-$3")
+        .replace(/(\-{1,2})$/g, "");
+    } else {
+      return phoneNumber
+        .replace(/[^0-9]/g, "")
+        .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+        .replace(/(\-{1,2})$/g, "");
+    }
+  };
   
   return (
     <Box py="8" px="4">
@@ -267,8 +281,8 @@ const MyForm = (props) => {
                   touched={touched.MobilePhone}
                   label={formContent.label_phone}
                   name={'MobilePhone'}
-                  handleChange={handleChange}
-                  handleBlur={handleBlur}
+                  handleChange={(e)=>{ let mb = replacePhoneNumber(e.target.value); e.target.value = mb; setFieldValue('MobilePhone', mb); handleChange(e)}}
+                  handleBlur={(e)=>{ let mb = replacePhoneNumber(e.target.value); e.target.value = mb; setFieldValue('MobilePhone', mb); handleBlur(e)}}
                   value={values.MobilePhone}
                 />
                 <Box pt="1" pl="2">
