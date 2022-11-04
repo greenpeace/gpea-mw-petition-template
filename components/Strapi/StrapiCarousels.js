@@ -193,11 +193,14 @@ export const CardCarousel = ({ data }) => {
 				{data?.map((d, i) => (
 					<SwiperSlide key={i} style={{ maxWidth: '90%' }}>
 						<Box
-							maxWidth="32rem"
+							bgColor="#FFF"
 							w={'100%'}
-							className="mx-4 overflow-hidden rounded-xl bg-base-100 shadow-xl"
+							shadow="md"
+							pb={6}
+							borderRadius="20px"
+							m={4}
 						>
-							<Stack direction="column" space="4">
+							<Stack direction="column" space="4" borderRadius="20px" overflow={'hidden'}>
 								<img
 									class="w-full"
 									src={d?.image?.data?.attributes?.url}
