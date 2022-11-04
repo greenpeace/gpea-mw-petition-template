@@ -143,21 +143,19 @@ function Index({ submitted = false, strapi }) {
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box minWith={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{isLoaded && (
-									<>
-										{submitted ? (
-											<StrapiDynamicBlocks
-												blocks={'thankyouBlocks'}
-												strapi={strapi}
-											/>
-										) : (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										)}
-									</>
-								)}
+								<>
+									{submitted ? (
+										<StrapiDynamicBlocks
+											blocks={'thankyouBlocks'}
+											strapi={strapi}
+										/>
+									) : (
+										<StrapiDynamicBlocks
+											blocks={'contentBlocks'}
+											strapi={strapi}
+										/>
+									)}
+								</>
 								<Heading textAlign="center" py="6" fontSize="2xl">
 									常見問題
 								</Heading>

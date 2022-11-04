@@ -168,21 +168,19 @@ const Index = ({ submitted = false, strapi }) => {
 										/>
 									)}
 								</Box>
-								{/* {isLoaded && (
-									<>
-										{submitted ? (
-											<StrapiDynamicBlocks
-												blocks={'thankyouBlocks'}
-												strapi={strapi}
-											/>
-										) : (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										)}
-									</>
-								)} */}
+								{/* <>
+									{submitted ? (
+										<StrapiDynamicBlocks
+											blocks={'thankyouBlocks'}
+											strapi={strapi}
+										/>
+									) : (
+										<StrapiDynamicBlocks
+											blocks={'contentBlocks'}
+											strapi={strapi}
+										/>
+									)}
+								</> */}
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
