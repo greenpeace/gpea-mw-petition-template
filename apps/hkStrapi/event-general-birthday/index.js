@@ -37,8 +37,6 @@ const Index = ({ submitted = false, strapi }) => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
 
-	console.log('strapi-',strapi)
-
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
