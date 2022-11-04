@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const Form = () => {
 	const [formSubmitted, setFormSubmit] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		name: '',
 		message: ''
@@ -11,15 +12,17 @@ const Form = () => {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
+		setLoading(true);
 		// checking
 		if (!formData?.message) {
 			// do somethings
+			setLoading(false);
 			return;
 		}
 
 		const submitData = {
 			email: 'demo@mail.com',
-			firstName: formData.name,
+			firstName: '您的稱呼',
 			lastName: '',
 			campaignData1: formData.message,
 			campaignData2: '',
@@ -52,61 +55,76 @@ const Form = () => {
 	};
 
 	return (
-		<div className="px-4 py-6">
-			<div className="thoughts">
-				<h1 className="">Gather your birthday wishes</h1>
-			</div>
-			<form className="w-full" onSubmit={onSubmit}>
-				<div className="mb-6 flex flex-wrap">
-					<div className="mb-6 w-full md:mb-0">
-						<label
-							className="text-md mb-2 block font-bold uppercase tracking-wide"
-							htmlFor="grid-first-name"
-						>
-							名字
-						</label>
-						<input
-							className="mb-3 block w-full appearance-none rounded border bg-gray-100 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
-							id="grid-first-name"
-							type="text"
-							placeholder="預設"
-							name="name"
-							onChange={updateForm}
-						/>
+		<div>
+			<div className="flex items-center justify-center">
+				<div className="mx-auto w-full max-w-lg ">
+					<div className="mx-auto max-w-md">
+						<h2 className="my-4 flex flex-row flex-nowrap items-center">
+							<span
+								className="block flex-grow border-t border-[#66cc00]"
+								aria-hidden="true"
+								role="presentation"
+							></span>
+							<span className="mx-2 block flex-none py-2.5 text-xs font-bold uppercase leading-none text-[#66cc00] md:ml-4 md:text-[16px]">
+								Let’s Make a Wish!
+							</span>
+							<span className="mx-2 block flex-none bg-[#66cc00] px-2 py-2.5 text-xs font-bold uppercase leading-none text-white md:mr-4 md:text-[16px] rounded-lg">
+								<b>給地球許一個生日願望</b>
+							</span>
+							<span
+								className="block flex-grow border-t border-[#66cc00]"
+								aria-hidden="true"
+								role="presentation"
+							></span>
+						</h2>
 					</div>
 				</div>
-				<div className="mb-6 flex flex-wrap">
-					<div className="w-full">
-						<label
-							className="text-md mb-2 block font-bold uppercase tracking-wide"
-							htmlFor="grid-password"
-						>
-							留言
-						</label>
+			</div>
+			{formSubmitted && <div className="thanksMessage px-6 text-gray-700 text-md pb-4">
+			您的願望已經傳達，請相信它會成真 :)<br/>
+			感謝您為保護地球一齊努力 <br/>
+
+			瀏覽 <a href="https://www.greenpeace.org/hongkong/stories-victories" target="_blank" className="text-[#66cc00] underline">綠色和平「我們的成果」專頁</a>，了解更多因您成真的環保願望！
+
+			</div>}
+			{!formSubmitted && (<form className="w-full" onSubmit={onSubmit}>
+				<div className="mb-4 px-6">
+					<span className="mr-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800 dark:bg-green-200 dark:text-green-900">
+						您的名字
+					</span>
+					{/* <input
+						className="mb-3 block w-full appearance-none rounded border bg-gray-100 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
+						id="grid-first-name"
+						type="text"
+						placeholder="預設"
+						name="name"
+						onChange={updateForm}
+					/> */}
+				</div>
+				<div className="flex w-full flex-col items-center px-6">
+					<div className="flex w-full flex-col">
 						<textarea
-							className="mb-3 block h-[100px] w-full appearance-none rounded border border-gray-200 bg-gray-100 py-3 px-4 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
-							id="grid-password"
-							style={{ resize: 'none' }}
+							rows="3"
+							className="resize-none rounded-xl bg-gray-100 p-4 text-gray-500 focus:outline-none"
+							placeholder={'e.g. 我希望地球變得……'}
+							id="message"
 							name="message"
 							onChange={updateForm}
 						/>
-						<p className="text-xs italic text-gray-600">寫上祝福的句語 xxx</p>
-					</div>
-				</div>
-				<div className="flex justify-end">
-					{!formSubmitted ? (
+						<span className="py-2 text-xs text-gray-500">
+							<sup>**</sup>您的願望將有機會出現在「I
+							Wish…」欄目，甚至刊登於綠色和平年報！
+						</span>
 						<button
-							className="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-[#FFF] hover:bg-blue-700 focus:outline-none"
+							className="my-8 rounded-xl bg-gradient-to-r from-[#66cc00] to-green-400 py-3 text-lg font-semibold text-white hover:opacity-75"
 							type="submit"
-							disabled={formSubmitted}
+							disabled={formSubmitted||loading}
 						>
 							提交
 						</button>
-					) : (
-						<span>已提交</span>
-					)}
+					</div>
 				</div>
-			</form>
+			</form>)}
 		</div>
 	);
 };

@@ -6,27 +6,25 @@ import {
 	Center,
 	Spinner,
 	SimpleGrid,
-	Button,
+	Button
 } from '@chakra-ui/react';
 
 // Import static
-import {
-	headingProps,
-} from '@common/styles/components/contentStyle';
+import { headingProps } from '@common/styles/components/contentStyle';
 
 import axios from 'axios';
 
 const API_ENDPOINT = `https://strapi.small-service.gpeastasia.org/api/thoughts`;
 
 const ThoughList = () => {
-	const PAGE_SIZE = 2;
+	const PAGE_SIZE = 20;
 	const [thoughts, setThoughts] = useState([]);
 	const [pagination, setPagination] = useState(1);
 	const [total, setTotal] = useState(0);
 	useEffect(async () => {
 		const thoughts = await axios
 			.get(
-				`${API_ENDPOINT}?pagination[page]=${pagination}&filters[firstName][$notNull]=true&pagination[pageSize]=${PAGE_SIZE}`
+				`${API_ENDPOINT}?pagination[page]=${pagination}&filters[firstName][$notNull]=true&sort=publishedAt:desc&pagination[pageSize]=${PAGE_SIZE}`
 			)
 			.then((response) => {
 				return response.data;
@@ -44,7 +42,7 @@ const ThoughList = () => {
 			.get(
 				`${API_ENDPOINT}?pagination[page]=${
 					pagination + 1
-				}&&filters[firstName][$notNull]=true&pagination[pageSize]=${PAGE_SIZE}`
+				}&filters[firstName][$notNull]=true&sort=publishedAt:desc&pagination[pageSize]=${PAGE_SIZE}`
 			)
 			.then((response) => {
 				return response.data;
@@ -81,10 +79,11 @@ const ThoughList = () => {
 
 	return (
 		<Box bgColor={'white'} pos={'relative'} borderRadius={'8px'} px="4" py="6">
-			<Box>
-				<Heading as="h2" {...headingProps} color={'theme.climate'} mb="6">
-					我做得到！
+			<Box  mb="4">
+				<Heading as="h2" {...headingProps} color={'theme.climate'} mb="2">
+					I Wish…
 				</Heading>
+				<Text>看看您與其他綠色和平會員的生日願望，盼我們堅持環保信念，終有一天成真！</Text>
 			</Box>
 			<Box
 				maxH={{ base: '480px', md: '680px' }}
@@ -102,7 +101,7 @@ const ThoughList = () => {
 					}
 				}}
 			>
-				<SimpleGrid columns={{ base: '1', md: '2' }}>
+				<SimpleGrid columns={{ base: '1', md: '2' }} gap={4}>
 					{thoughts?.map((thought, i) => (
 						<Box
 							key={i}
@@ -115,7 +114,6 @@ const ThoughList = () => {
 							p={4}
 							overflow="hidden"
 							mb="4"
-							mx="2"
 							fontFamily={'sans-serif'}
 						>
 							<Text
@@ -127,7 +125,7 @@ const ThoughList = () => {
 								{thought?.attributes?.firstName}:
 							</Text>
 							<Text fontSize={'sm'} color={'gray.700'} lineHeight="2">
-								{thought?.attributes?.campaignData1}:
+								{thought?.attributes?.campaignData1}
 							</Text>
 						</Box>
 					))}
