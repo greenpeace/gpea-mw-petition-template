@@ -1,0 +1,470 @@
+import React, { useEffect, useState, useRef } from 'react';
+import { Form, withFormik } from 'formik';
+import { connect } from 'react-redux';
+import { Field } from '@components/Field/fields';
+import { capitalize, clearURL } from '@common/utils';
+import { validation } from './validation';
+import Mailcheck from 'mailcheck';
+import * as signupActions from 'store/actions/action-types/signup-actions';
+import * as statusActions from 'store/actions/action-types/status-actions';
+import * as formActions from 'store/actions/action-types/form-actions';
+import axios from 'axios';
+import {
+	FormControl,
+	FormErrorMessage,
+	Button,
+	Box,
+	Flex,
+	Text,
+	Stack,
+	Input,
+	Checkbox,
+	Heading,
+	Textarea,
+	Center,
+	Icon,
+	Image
+} from '@chakra-ui/react';
+import {
+	MAIL_DOMAINS,
+	MAIL_TOP_DOMAINS,
+	EXCLUDE_URL_PARAMETERS
+} from '@common/constants';
+import { OrangeCTA } from '@common/styles/components/formStyle';
+import {
+	headingProps,
+	paragraphProps
+} from '@common/styles/components/contentStyle';
+
+import { AiOutlineCloudUpload } from 'react-icons/ai';
+
+const EventForm = (props) => {
+	const {
+		signup,
+		touched,
+		errors,
+		handleChange,
+		handleBlur,
+		handleSubmit,
+		isLoading,
+		setFieldValue,
+		setWebStatus,
+		values,
+		formContent,
+		theme,
+		setSuggestion,
+		initSuggestion,
+		suggestion
+	} = props;
+	const themeInterests = theme.interests;
+	const uploadRef = useRef(null);
+	const [imagePreview, setImagePreview] = useState('');
+
+	useEffect(() => {
+		initSuggestion();
+	}, []);
+
+	useEffect(() => {
+		if (signup.submitted) {
+			setWebStatus(true);
+		}
+	}, [signup.submitted]);
+
+	const handleFileUpload = () => {
+		uploadRef.current.click();
+	};
+
+	const handleReset = () => {
+		setFieldValue('File', '');
+		setImagePreview('');
+	};
+
+	const handleDragEnter = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+	};
+	const handleDragLeave = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+	};
+	const handleDragOver = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+	};
+
+	const handleDrop = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		const files = e.dataTransfer.files;
+		if (files) {
+			setFieldValue('File', files[0]);
+		}
+	};
+
+	useEffect(() => {
+		if (values.File) {
+			setImagePreview(URL.createObjectURL(values.File));
+		}
+	}, [values.File]);
+
+	const mailSuggestion = (value) => {
+		const domains = MAIL_DOMAINS;
+		const topLevelDomains = MAIL_TOP_DOMAINS;
+
+		if (value) {
+			Mailcheck.run({
+				email: value,
+				domains: domains, // optional
+				topLevelDomains: topLevelDomains, // optional
+				// secondLevelDomains: secondLevelDomains, // optional
+				// distanceFunction: superStringDistance,  // optional
+				suggested: function (suggestion) {
+					if (value !== suggestion.full) {
+						setSuggestion(suggestion.full);
+					}
+				}
+			});
+		}
+	};
+
+	return (
+		<Box pos={'relative'}>
+			{isLoading && (
+				<Box
+					pos={'absolute'}
+					top={0}
+					right={0}
+					left={0}
+					bottom={0}
+					bgColor={'rgba(255, 255, 255, 0.25)'}
+					zIndex={9}
+				/>
+			)}
+			<Box py={{ base: 6, md: 8 }} px={{ base: 4, md: 6 }}>
+				<Stack spacing="4">
+					{formContent.form_header && (
+						<Box>
+							<Heading
+								as="h2"
+								{...headingProps}
+								mb="0"
+								dangerouslySetInnerHTML={{ __html: formContent.form_header }}
+							/>
+						</Box>
+					)}
+					{formContent.form_description && (
+						<Box>
+							<Text
+								as="p"
+								{...paragraphProps}
+								mb="0"
+								dangerouslySetInnerHTML={{
+									__html: formContent.form_description
+								}}
+							/>
+						</Box>
+					)}
+					<Form onSubmit={handleSubmit}>
+						<Stack spacing="4">
+							<Box>
+								<Stack direction={`row`}>
+									<Box w={'100%'}>
+										<Field
+											errors={errors.name}
+											touched={touched.name}
+											label={'參賽者姓名（姓名亦會列印在參賽證書之上）'}
+											name={'name'}
+											type={'text'}
+											handleChange={handleChange}
+											handleBlur={handleBlur}
+											value={values.name}
+										/>
+									</Box>
+								</Stack>
+							</Box>
+
+							<Box>
+								<FormControl
+									id="email"
+									isInvalid={errors.contact && touched.contact}
+								>
+									<Input
+										name="contact"
+										type="email"
+										placeholder={'聯絡方式（我們將聯絡閣下如你的作品得獎）'}
+										onChange={handleChange}
+										onBlur={(e) => {
+											handleBlur(e);
+											mailSuggestion(e.target.value);
+										}}
+										value={values.contact}
+										size="md"
+									/>
+									<FormErrorMessage px={2} color="var(--error-900)">
+										{errors.contact}
+									</FormErrorMessage>
+									{suggestion && (
+										<Box
+											onClick={() => {
+												setFieldValue('contact', suggestion);
+												initSuggestion();
+											}}
+											p={2}
+											cursor={'pointer'}
+										>
+											<Text fontSize={'sm'} color={`theme.${themeInterests}`}>
+												{formContent.suggestion_message}
+												<b>
+													<u>{suggestion}</u>
+												</b>
+												？
+											</Text>
+										</Box>
+									)}
+								</FormControl>
+							</Box>
+
+							<Box>
+								<Stack direction={`row`}>
+									<Box w={'100%'}>
+										<FormControl
+											id={"message"}
+											isInvalid={errors?.message && touched?.message}
+											pos="relative"
+										>
+											<Textarea
+												name="message"
+												placeholder="作品說明"
+												onChange={handleChange}
+												onBlur={handleBlur}
+												value={values.message}
+											/>
+											<FormErrorMessage px={2} color="var(--error-900)">
+												{errors?.message}
+											</FormErrorMessage>
+										</FormControl>
+									</Box>
+								</Stack>
+							</Box>
+
+							<Box flex={1}>
+								{imagePreview ? (
+									<Box>
+										<Image src={imagePreview} alt="Image" />
+										<Center my={4}>
+											<Button onClick={() => handleReset()} px={8} py={4}>
+												刪除
+											</Button>
+										</Center>
+									</Box>
+								) : (
+									<Box>
+										<Center
+											border={`1px dashed #d9d9d9`}
+											bgColor={`#fafafa`}
+											borderRadius={`2px`}
+											onClick={() => handleFileUpload()}
+											onDrop={(e) => handleDrop(e)}
+											onDragOver={(e) => handleDragOver(e)}
+											onDragEnter={(e) => handleDragEnter(e)}
+											onDragLeave={(e) => handleDragLeave(e)}
+											cursor={`pointer`}
+											_hover={{
+												border: `1px dashed #000`
+											}}
+											minH={`xs`}
+										>
+											<Stack justifyContent={'center'} alignItems={'center'}>
+												<Icon as={AiOutlineCloudUpload} w={8} h={8} />
+												<Text>將照片拖動到此處，或選擇要上載的檔案。</Text>
+											</Stack>
+										</Center>
+									</Box>
+								)}
+
+								<FormControl id="File" isInvalid={errors.File && touched.File}>
+									<FormErrorMessage color="red">{errors.File}</FormErrorMessage>
+									<Box className="upload-btn-wrapper" h={0} overflow={`hidden`}>
+										<Button>Upload a file</Button>
+										<Input
+											variant={'clear'}
+											textAlign={`center`}
+											name="File"
+											type="file"
+											onChange={(event) => {
+												setFieldValue('File', event.target.files[0]);
+											}}
+											ref={uploadRef}
+										/>
+									</Box>
+								</FormControl>
+							</Box>
+
+							<Box>
+								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+									<Box mr={2} pt={1}>
+										<Checkbox
+											name="OptIn"
+											defaultChecked
+											onChange={handleChange}
+										/>
+									</Box>
+									<Text
+										fontSize="xs"
+										color={'gray.700'}
+										dangerouslySetInnerHTML={{
+											__html: formContent.label_newsletter
+										}}
+									/>
+								</Flex>
+							</Box>
+
+							<Box>
+								<Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+									{formContent.submit_text}
+								</Button>
+							</Box>
+						</Stack>
+					</Form>
+				</Stack>
+			</Box>
+		</Box>
+	);
+};
+
+const MyEnhancedForm = withFormik({
+	enableReinitialize: true,
+	mapPropsToValues: ({ signup }) => ({
+		Email: signup?.preFill?.Email ?? '',
+		FirstName: signup?.preFill?.FirstName ?? '',
+		LastName: signup?.preFill?.LastName ?? '',
+		MobileCountryCode: '852',
+		MobilePhone: signup?.preFill?.MobilePhone ?? '',
+		OptIn: true,
+		Birthdate: signup?.preFill?.Birthdate ?? '',
+		// for event
+		name: '',
+		contact: '',
+		message: '',
+		submissionURL: '',
+		File: ""
+	}),
+
+	validate: async (values, props) => {
+		const { formContent } = props;
+		return validation(values, formContent);
+	},
+	
+
+	handleSubmit: async (values, { setSubmitting, props }) => {
+		const { submitForm, theme, hiddenFormData, strapi } = props;
+		const isProd = process.env.NODE_ENV === 'production';
+		const fallbackValue = (d) => (d ? d : '');
+		const LeadSource = `Petition - ${capitalize(theme.interests)}`;
+
+		const { dummyEndpointURL, websignEndpointURL } =
+			strapi?.market?.data?.attributes;
+
+		const endpointURL = isProd
+			? websignEndpointURL !== '' && websignEndpointURL !== undefined
+				? websignEndpointURL
+				: theme.EndpointURL
+			: dummyEndpointURL !== '' && dummyEndpointURL !== undefined
+			? dummyEndpointURL
+			: process.env.dummyEndpoint;
+
+		const campaignId = isProd
+			? strapi?.campaignId !== '' && strapi.campaignId !== undefined
+				? strapi?.campaignId
+				: theme.CampaignId
+			: '7012u000000OxDYAA0';
+
+		const completionURL = clearURL(
+			window.location.href,
+			EXCLUDE_URL_PARAMETERS
+		);
+
+		const imageFormData = new FormData()
+		imageFormData.append('file', values.File)
+		imageFormData.append('upload_preset', 'dev_upload_preset')
+		imageFormData.append('resource_type', 'raw')
+
+		setSubmitting(true);
+
+		const submissionURL = await axios.post('https://api.cloudinary.com/v1_1/hellocc1002/upload', imageFormData).then(async (res) => {
+			const { statusText, data } = res
+			if (statusText === 'OK') {
+				return  data?.secure_url
+			}
+		})
+
+		const formData = {
+			...hiddenFormData,
+			Email: values?.Email,
+			FirstName: values?.Email,
+			LastName: values?.LastName,
+			MobileCountryCode: values?.MobileCountry,
+			MobilePhone: values?.MobilePhone,
+			OptIn: values?.OptIn,
+			Birthdate: values?.Birthdate,
+			CampaignData1__c: values?.name,
+			CampaignData2__c: values?.contact,
+			CampaignData3__c: values?.message,
+			CampaignData4__c: submissionURL,
+			UtmMedium: fallbackValue(hiddenFormData.utm_medium),
+			UtmSource: fallbackValue(hiddenFormData.utm_source),
+			UtmCampaign: fallbackValue(hiddenFormData.utm_campaign),
+			UtmContent: fallbackValue(hiddenFormData.utm_content),
+			UtmTerm: fallbackValue(hiddenFormData.utm_term),
+			CampaignId: campaignId,
+			LeadSource: LeadSource,
+			[`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
+			CompletionURL: completionURL
+		};
+
+		console.log('formData-',formData)
+		submitForm(formData, endpointURL);
+	},
+
+	displayName: 'SignupForm'
+})(EventForm);
+
+const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
+	return {
+		signup,
+		hiddenFormData: hiddenForm.data,
+		isLoading: signup.lastAction === signupActions.SIGN_UP,
+		formContent: form.content,
+		numberOfResponses: Math.max(
+			parseInt(form.signupNumbers.hk?.NumberOfResponses),
+			parseInt(form.signupNumbers.hk?.NumberOfLeads) +
+				parseInt(form.signupNumbers.hk?.NumberOfContacts)
+		),
+		numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
+		theme: theme.data,
+		suggestion: form.suggestion,
+		strapi: theme.strapi
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		submitForm: (data, endPoint) => {
+			dispatch({ type: signupActions.SIGN_UP, data, endPoint });
+		},
+		setWebStatus: (bol) => {
+			dispatch({ type: statusActions.SET_FORM_SUBMITTED, data: bol });
+		},
+		setSuggestion: (value) => {
+			dispatch({ type: formActions.SET_SUGGESTION, data: value });
+		},
+		initSuggestion: () => {
+			dispatch({ type: formActions.INIT_SUGGESTION });
+		}
+	};
+};
+
+connect(mapStateToProps, mapDispatchToProps)(EventForm);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyEnhancedForm);
