@@ -19,9 +19,13 @@ export function validation(values, formContent) {
         errors.message = formContent.empty_data_alert;
       }
 
-      if (!values.File) {
-        errors.File = "請上傳圖片"
-      }
+    if (!values.File) {
+      errors.File = "請上傳圖片"
+    }
+
+    if (!values.OptIn) {
+      errors.OptIn = "請先同意條款"
+    }
   
     // if (!values.LastName) {
     //   errors.LastName = formContent.empty_data_alert;

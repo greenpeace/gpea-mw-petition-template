@@ -229,7 +229,7 @@ const EventForm = (props) => {
 								<Stack direction={`row`}>
 									<Box w={'100%'}>
 										<FormControl
-											id={"message"}
+											id={'message'}
 											isInvalid={errors?.message && touched?.message}
 											pos="relative"
 										>
@@ -302,22 +302,27 @@ const EventForm = (props) => {
 							</Box>
 
 							<Box>
-								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-									<Box mr={2} pt={1}>
-										<Checkbox
-											name="OptIn"
-											defaultChecked
-											onChange={handleChange}
+								<FormControl
+									id={'message'}
+									isInvalid={errors?.OptIn}
+									pos="relative"
+								>
+									<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+										<Box mr={2} pt={1}>
+											<Checkbox name="OptIn" onChange={handleChange} />
+										</Box>
+										<Text
+											fontSize="xs"
+											color={'gray.700'}
+											dangerouslySetInnerHTML={{
+												__html: formContent.label_newsletter
+											}}
 										/>
-									</Box>
-									<Text
-										fontSize="xs"
-										color={'gray.700'}
-										dangerouslySetInnerHTML={{
-											__html: formContent.label_newsletter
-										}}
-									/>
-								</Flex>
+									</Flex>
+									<FormErrorMessage color="var(--error-900)">
+										{errors?.OptIn}
+									</FormErrorMessage>
+								</FormControl>
 							</Box>
 
 							<Box>
@@ -341,21 +346,20 @@ const MyEnhancedForm = withFormik({
 		LastName: signup?.preFill?.LastName ?? '',
 		MobileCountryCode: '852',
 		MobilePhone: signup?.preFill?.MobilePhone ?? '',
-		OptIn: true,
+		OptIn: false,
 		Birthdate: signup?.preFill?.Birthdate ?? '',
 		// for event
 		name: '',
 		contact: '',
 		message: '',
 		submissionURL: '',
-		File: ""
+		File: ''
 	}),
 
 	validate: async (values, props) => {
 		const { formContent } = props;
 		return validation(values, formContent);
 	},
-	
 
 	handleSubmit: async (values, { setSubmitting, props }) => {
 		const { submitForm, theme, hiddenFormData, strapi } = props;
@@ -385,19 +389,21 @@ const MyEnhancedForm = withFormik({
 			EXCLUDE_URL_PARAMETERS
 		);
 
-		const imageFormData = new FormData()
-		imageFormData.append('file', values.File)
-		imageFormData.append('upload_preset', 'dev_upload_preset')
-		imageFormData.append('resource_type', 'raw')
+		const imageFormData = new FormData();
+		imageFormData.append('file', values.File);
+		imageFormData.append('upload_preset', 'dev_upload_preset');
+		imageFormData.append('resource_type', 'raw');
 
 		setSubmitting(true);
 
-		const submissionURL = await axios.post('https://api.cloudinary.com/v1_1/hellocc1002/upload', imageFormData).then(async (res) => {
-			const { statusText, data } = res
-			if (statusText === 'OK') {
-				return  data?.secure_url
-			}
-		})
+		const submissionURL = await axios
+			.post('https://api.cloudinary.com/v1_1/hellocc1002/upload', imageFormData)
+			.then(async (res) => {
+				const { statusText, data } = res;
+				if (statusText === 'OK') {
+					return data?.secure_url;
+				}
+			});
 
 		const formData = {
 			...hiddenFormData,
@@ -423,7 +429,7 @@ const MyEnhancedForm = withFormik({
 			CompletionURL: completionURL
 		};
 
-		console.log('formData-',formData)
+		console.log('formData-', formData);
 		submitForm(formData, endpointURL);
 	},
 
