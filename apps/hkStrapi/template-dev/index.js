@@ -77,7 +77,7 @@ const Index = ({ submitted = false, strapi }) => {
 					} else {
 						return submitted ? (
 							<ThanksBanner
-								removeMask={strapi?.contentHero?.removeMask}
+								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.thankyouHero?.desktopImageURL
@@ -87,13 +87,13 @@ const Index = ({ submitted = false, strapi }) => {
 										media: '(min-width: 48em)',
 										srcset:
 											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
+											strapi?.thankyouHero?.desktopImageURL
 									},
 									{
 										media: '',
 										srcset:
 											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
+											strapi?.thankyouHero?.mobileImageURL
 									}
 								]}
 								content={{
