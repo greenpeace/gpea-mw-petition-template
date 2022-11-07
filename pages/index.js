@@ -190,18 +190,22 @@ function Index({
 		}
 	}, [themeData]);
 
-	const handleWindowOnLoad = () => {
-		if(window !== undefined) {
-			window?.__greenpeace__?.currentStep >= 3 && setWebStatus(true)
-		}
-	}
-
 	useEffect(() => {
-		window.addEventListener('load', handleWindowOnLoad);
-		return () => {
-			window.removeEventListener('load', handleWindowOnLoad);
-		  };
-	}, []);
+		window.addEventListener(
+			'message',
+			(event) => {
+				if (event.data === 'donate-complete') {
+					if (window !== undefined) {
+						console.log(
+							`donation module step: ${window.__greenpeace__.currentStep}.`
+						);
+						window?.__greenpeace__?.currentStep >= 3 && setWebStatus(true);
+					}
+				}
+			},
+			false
+		);
+	});
 
 	return <DynamicComponent strapi={strapi} themeData={themeData} />;
 }
