@@ -190,6 +190,19 @@ function Index({
 		}
 	}, [themeData]);
 
+	const handleWindowOnLoad = () => {
+		if(window !== undefined) {
+			window?.__greenpeace__?.currentStep >= 3 && setWebStatus(true)
+		}
+	}
+
+	useEffect(() => {
+		window.addEventListener('load', handleWindowOnLoad);
+		return () => {
+			window.removeEventListener('load', handleWindowOnLoad);
+		  };
+	}, []);
+
 	return <DynamicComponent strapi={strapi} themeData={themeData} />;
 }
 
