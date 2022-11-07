@@ -141,7 +141,7 @@ function Index({ submitted = false, strapi }) {
 			<PageContainer>
 				<OverflowWrapper>
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
-						<Box minWith={0} flex={1} mt={{ base: 10, sm: 60 }}>
+						<Box minWidth={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
 								<>
 									{submitted ? (
