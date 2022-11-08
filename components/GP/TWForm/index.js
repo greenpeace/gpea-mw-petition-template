@@ -411,6 +411,11 @@ const MyEnhancedForm = withFormik({
 				: theme.CampaignId
 			: '7012u000000OxDYAA0';
 
+		const completionURL = clearURL(
+			window.location.href,
+			EXCLUDE_URL_PARAMETERS
+		);
+
 		const formData = {
 			...hiddenFormData,
 			...values,
@@ -423,7 +428,6 @@ const MyEnhancedForm = withFormik({
 			CampaignId: campaignId,
 			LeadSource: LeadSource,
 			[`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
-			CompletionURL: window.location.href ? window.location.href : '',
 			CompletionURL: completionURL
 		};
 
