@@ -45,7 +45,7 @@ const Index = ({ submitted = false, strapi }) => {
 					if (pageType?.toLowerCase() === 'donation') {
 						return (
 							<HeroBanner
-								removeMask={false}
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -185,31 +185,24 @@ const Index = ({ submitted = false, strapi }) => {
 						</Box>
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
-								<Box ref={ref} position="sticky">
-									<div className="relative flex h-[140px] items-center justify-center overflow-hidden md:h-[210px]">
-										<iframe
-											src="https://player.vimeo.com/video/643277567"
-											width="100%"
-											height="100%"
-											frameborder="0"
-											allow="autoplay;"
-											allowfullscreen
-										/>
-									</div>
+								<Box position="sticky">
 									<Box ref={ref}>
+										<div className="relative flex h-[180px] items-center justify-center overflow-hidden md:h-[220px]">
+											<iframe
+												src="https://player.vimeo.com/video/643277567"
+												width="100%"
+												height="100%"
+												frameborder="0"
+												allow="autoplay;"
+												allowfullscreen
+											/>
+										</div>
 										<Form />
 									</Box>
 								</Box>
 							</FormContainer>
 						</Box>
 					</Flex>
-
-					<Heading textAlign="center" py="6" fontSize="2xl">
-						常見問題
-					</Heading>
-
-					<StrapiDonateFAQ locale="zh-Hant-HK" />
-
 					<ThoughList />
 				</PageContainer>
 			</Box>

@@ -1,0 +1,36 @@
+@import './swiper-pagination', './swiper-navigation';
+
+.swiper {
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	position: relative;
+}
+
+.swiper-slide {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.swiper-slide img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.swiper-container .swiper-slide,
+.swiper-container .swiper-pagination,
+.swiper-container [class^='swiper-button-'] {
+	transition: box-shadow 140ms linear, opacity 140ms linear, filter 140ms linear,
+		transform 140ms linear;
+}

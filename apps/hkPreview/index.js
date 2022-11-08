@@ -53,8 +53,9 @@ function Index({ submitted = false, strapi: strapiData }) {
 			const { preview } = router?.query;
 			if (preview) {
 				const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
+
 				const res = await fetch(
-					`${endpoint}/pages?filters[market][slug]=hk&filters[campaign]=${preview}&populate=*`
+					`${endpoint}/pages?filters[market][slug]=hk&filters[campaign]=${preview}&populate=deep`
 				).then((response) => response);
 				const themes = await res.json();
 				const theme = themes?.data[0] ?? {};
@@ -65,15 +66,41 @@ function Index({ submitted = false, strapi: strapiData }) {
 				});
 			}
 		}
-	}, [router, submitted]);
+	}, [router]);
 
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
 			<Box>
-				{(() => {
-					if (pageType?.toLowerCase() === 'donation') {
-						return (
+				{isLoaded && (
+					<>
+						{submitted ? (
+							<ThanksBanner
+								removeMask={strapi?.thankyouHero?.removeMask}
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.thankyouHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.thankyouHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.thankyouHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: strapi?.thankyouHero?.richContent,
+									description: strapi?.thankyouHero?.richContentParagraph
+								}}
+							/>
+						) : (
 							<HeroBanner
 								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
@@ -103,83 +130,18 @@ function Index({ submitted = false, strapi: strapiData }) {
 									description: strapi?.contentHero?.richContentParagraph
 								}}
 							/>
-						);
-					} else {
-						return submitted ? (
-							<ThanksBanner
-								removeMask={strapi?.contentHero?.removeMask}
-								defaultImage={
-									theme?.params?.hero_image_desktop ||
-									strapi?.thankyouHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: strapi?.thankyouHero?.richContent,
-									description: strapi?.thankyouHero?.richContentParagraph
-								}}
-							/>
-						) : (
-							<HeroBanner
-								removeMask={strapi?.contentHero?.removeMask}
-								defaultImage={
-									theme?.params?.hero_image_desktop ||
-									strapi?.thankyouHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: theme?.params?.headline_prefix
-										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
-										: strapi?.contentHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
-								}}
-							/>
-						);
-					}
-				})()}
+						)}
+					</>
+				)}
 			</Box>
 			<PageContainer>
 				<OverflowWrapper>
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
-						<Box flex={1} mt={{ base: 10, sm: 60 }}>
+						<Box minWidth={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{(() => {
-									if (pageType?.toLowerCase() === 'donation') {
-										return (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										);
-									} else {
-										return submitted ? (
+								{isLoaded && (
+									<>
+										{submitted ? (
 											<StrapiDynamicBlocks
 												blocks={'thankyouBlocks'}
 												strapi={strapi}
@@ -189,9 +151,9 @@ function Index({ submitted = false, strapi: strapiData }) {
 												blocks={'contentBlocks'}
 												strapi={strapi}
 											/>
-										);
-									}
-								})()}
+										)}
+									</>
+								)}
 								{isLoaded && (
 									<>
 										<Heading textAlign="center" py="6" fontSize="2xl">
@@ -202,12 +164,8 @@ function Index({ submitted = false, strapi: strapiData }) {
 								)}
 							</ContentContainer>
 						</Box>
-						{isLoaded && (
-							<Box
-								flex={1}
-								ref={FormRef}
-								{...{ d: isLoaded ? 'block' : 'none' }}
-							>
+						<Box minWidth={0} flex={1} ref={FormRef}>
+							{isLoaded && (
 								<FormContainer>
 									<Box ref={ref}>
 										{pageType?.toLowerCase() === 'donation' || submitted ? (
@@ -231,8 +189,8 @@ function Index({ submitted = false, strapi: strapiData }) {
 										)}
 									</Box>
 								</FormContainer>
-							</Box>
-						)}
+							)}
+						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>

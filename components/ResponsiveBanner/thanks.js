@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Heading, Box, Flex, Text, Image, Stack } from '@chakra-ui/react';
 import PageContainer from '@containers/pageContainer';
 import SocialButton from '@components/SocialButton/socialButton';
@@ -19,6 +20,8 @@ export default function Index({
 	objectPosition = 'center top',
 	minH = { base: 'lg', md: 'xl' }
 }) {
+	const signup = useSelector((state) => state?.signup);
+
 	return (
 		<>
 			<Box minH={minH} pos={'relative'} zIndex={2} paddingBottom={'4rem'}>
@@ -76,7 +79,7 @@ export default function Index({
 				</Box>
 
 				{defaultImage && (
-					<Box Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
+					<Box pos={'absolute'} top={0} right={0} left={0} bottom={0}>
 						<picture>
 							{imageSrcset?.map((item, index) => {
 								return (

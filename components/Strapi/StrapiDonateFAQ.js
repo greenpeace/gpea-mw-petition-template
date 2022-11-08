@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	Accordion,
 	AccordionItem,
@@ -11,12 +11,34 @@ import {
 
 import { paragraphProps } from '@common/styles/components/contentStyle';
 
-import data from './index.json';
+// Accepted locale
+// zh-Hant-HK
+// zh-Hant-TW
 
-const DonateFAQ = ({ locale = 'HKChinese' }) => {
+const StrapiDonateFAQ = ({ locale = 'zh-Hant-HK' }) => {
+	const [faq, setFaq] = useState([]);
+	const list = faq?.attributes?.questionAnswer;
+
+	useEffect(async () => {
+		await fetch(
+			`https://strapi.small-service.gpeastasia.org/api/faq?populate=*&locale=${locale}`
+		)
+			.then((response) => response.json())
+			.then((data) => {
+				setFaq(data.data);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	}, []);
+
+	if (!faq) {
+		return <div>Loading...</div>;
+	}
+
 	return (
 		<Accordion my="4" allowToggle={true}>
-			{data[locale].accordions.map((d, i) => {
+			{list?.map((d, i) => {
 				return (
 					<AccordionItem key={i}>
 						<AccordionButton
@@ -25,7 +47,7 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
 							<AccordionIcon mr="2" />
 							<Box py="6" p="4" flex="1" textAlign="left">
 								<Text as="p" fontSize="md">
-									{d.title}
+									{d.question}
 								</Text>
 							</Box>
 						</AccordionButton>
@@ -35,7 +57,7 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
 								{...paragraphProps}
 								textAlign={'initial'}
 								dangerouslySetInnerHTML={{
-									__html: d.desc
+									__html: d.answer
 								}}
 							></Text>
 						</AccordionPanel>
@@ -46,4 +68,4 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
 	);
 };
 
-export default DonateFAQ;
+export default StrapiDonateFAQ;
