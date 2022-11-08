@@ -154,7 +154,7 @@ function Index({ submitted = false, strapi }) {
 										)}
 									</>
 								)}
-								{isLoaded && pageType?.toLowerCase() === 'donation' && (
+								{isLoaded && (
 									<>
 										<Heading textAlign="center" py="6" fontSize="2xl">
 											常見問題
