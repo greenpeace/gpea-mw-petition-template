@@ -55,7 +55,7 @@
     { "display": "中午 1200-1400", "value": "1200-1400" },
     { "display": "下午 1400-1800", "value": "1400-1800" }
   ],
-  "campaign_type": ["守護北極", "減少海洋塑膠"],
+  "campaign_type": ["扭轉氣候危機", "守護北極", "減少海洋塑膠"],
   "payment_method": [
     { "display": "銀行轉帳 Bank Deposit", "value": "Bank Deposit" },
     {
