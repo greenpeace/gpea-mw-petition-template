@@ -10,7 +10,7 @@
 	"label_phone_optional": "手提號碼（選填）",
 	"label_year_of_birth": "出生年份",
 	"label_year_of_birth_optional": "出生年份（選填）",
-	"label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
+	"label_newsletter": "條款及細則 (Terms and conditions)<br/>我同意綠色和平「無塑海港」重用杯創意設計比賽的官方比賽守則，並明白一旦點擊「立即上載」按鈕，即表示確認報名資料，不可更改。我同意收取電子郵件，以確認我的作品提交紀錄。<br/>我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考私隱政策。",
 
 	"empty_data_alert": "請填寫資料",
 	"empty_select_data_alert": "請選擇",

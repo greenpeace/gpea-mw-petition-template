@@ -157,7 +157,7 @@ function Index({ submitted = false, strapi }) {
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
 								<Box ref={ref}>
-									<SignupForm />
+								<SignupForm />
 								</Box>
 							</FormContainer>
 						</Box>
