@@ -13,10 +13,8 @@ import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 
 import {
-  hkDevTagManagerArgs,
-  twDevTagManagerArgs,
-  hkTagManagerArgs,
-  twTagManagerArgs,
+  TagManagerArgs,
+  DevTagManagerArgs
 } from '@common/constants/tagManagerArgs';
 
 /* Determine the returned project index by env variable */
@@ -30,29 +28,22 @@ const envProjectMarket = process.env.projectMarket;
 const themeEndpointURL = process.env.themeEndpoint;
 const signupNumbersKRURL = process.env.signupNumbersKR;
 
-// const initTagManager = (marketName) => {
-//   if (process.env.NODE_ENV === 'production') {
-//     switch (marketName) {
-//       case 'KR':
-//         TagManager.initialize(hkTagManagerArgs);
-//         break;
-//       default:
-//         break;
-//     }
-//   }
-//   /* else {
-//     switch (marketName) {
-//       case 'HK':
-//         TagManager.initialize(hkDevTagManagerArgs);
-//         break;
-//       case 'TW':
-//         TagManager.initialize(twDevTagManagerArgs);
-//         break;
-//       default:
-//         break;
-//     }
-//   } */
-// };
+const initTagManager = (marketName) => {
+  if (process.env.NODE_ENV === 'production') {
+        TagManager.initialize(TagManagerArgs);
+  }
+   else { 
+        TagManager.initialize(DevTagManagerArgs); 
+  }
+};
+
+const sendPetitionTracking = (eventLabel) => {
+  window.dataLayer = window.dataLayer || [];
+
+  window.dataLayer.push({
+    event: eventLabel
+  });
+};
 
 function Index({
   setTheme,
@@ -161,8 +152,9 @@ function Index({
     const domain = document.location.host;
     const market = themeData?.Market?.toUpperCase();
     /* GTM is only applicable for production env */
-    //initTagManager(market);
+    initTagManager(market);
     setTheme(themeData);
+    sendPetitionTracking('petition_load');
 
     let FormObj = {};
     const selectForm = document.forms['mc-form'];

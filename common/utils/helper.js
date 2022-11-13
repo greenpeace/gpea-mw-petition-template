@@ -24,17 +24,8 @@ export const sendPetitionTracking = (eventLabel, eventValue) => {
   window.dataLayer = window.dataLayer || [];
 
   window.dataLayer.push({
-    event: 'gaEvent',
-    eventCategory: 'petitions',
-    eventAction: 'signup',
-    eventLabel: eventLabel,
-    eventValue: eventValue,
-  });
-
-  window.dataLayer.push({
-    event: 'fbqEvent',
-    contentName: eventLabel,
-    contentCategory: 'Petition Signup',
+    event: eventLabel,
+    petition_name: eventValue // NO PLASTIC
   });
 };
 

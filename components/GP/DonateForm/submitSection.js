@@ -25,16 +25,16 @@ const SubmitSection = (props) => {
 
   //
   const handleOpenLink = () => {
-    window.dataLayer = window.dataLayer || [];
+    // window.dataLayer = window.dataLayer || [];
 
-    window.dataLayer.push({
-      event: 'gaEvent',
-      eventCategory: 'donations',
-      eventAction: 'form_steps',
-      eventLabel: 'form_step:1_amount',
-    });
+    // window.dataLayer.push({
+    //   event: 'gaEvent',
+    //   eventCategory: 'donations',
+    //   eventAction: 'form_steps',
+    //   eventLabel: 'form_step:1_amount',
+    // });
 
-    window.open(`${targetDonateURL}&donate_amt=${donateType}:${amount}`);
+    // window.open(`${targetDonateURL}&donate_amt=${donateType}:${amount}`);
   };
 
   useEffect(() => {
@@ -131,18 +131,18 @@ const MyEnhancedForm = withFormik({
   handleSubmit: async (values, { props }) => {
     const { formContent, donateType } = props;
 
-    window.dataLayer = window.dataLayer || [];
+    // window.dataLayer = window.dataLayer || [];
 
-    window.dataLayer.push({
-      event: 'gaEvent',
-      eventCategory: 'donations',
-      eventAction: 'form_steps',
-      eventLabel: 'form_step:1_amount',
-    });
-    //
-    window.open(
-      `${formContent.donateURL}&donate_amt=${donateType}:${values.Donate}`,
-    );
+    // window.dataLayer.push({
+    //   event: 'gaEvent',
+    //   eventCategory: 'donations',
+    //   eventAction: 'form_steps',
+    //   eventLabel: 'form_step:1_amount',
+    // });
+    // //
+    // window.open(
+    //   `${formContent.donateURL}&donate_amt=${donateType}:${values.Donate}`,
+    // );
   },
 
   displayName: 'DonateForm',

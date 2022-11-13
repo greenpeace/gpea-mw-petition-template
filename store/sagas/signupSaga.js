@@ -40,7 +40,7 @@ export function* submitForm(actions) {
       // Tracking
       if (ProjectName || EventLabel) {
         //console.log('submitted:', `${EventLabel ? EventLabel : ProjectName}`);
-        helper.sendPetitionTracking(`${EventLabel ? EventLabel : ProjectName}`);
+        helper.sendPetitionTracking('petition_complete', `${EventLabel ? EventLabel : ProjectName}`);
       } else {
         console.log('Project undefined');
       }

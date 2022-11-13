@@ -52,9 +52,9 @@ const DonationModule = (props) => {
   //FIXME: Define constant module url
   let moduleUrl = '';
   if (process.env.envParam === 'production') {
-    moduleUrl = `https://gpseoulwebserver.co.kr/main.js`;
+    moduleUrl = `https://gpseoulwebserver.co.kr/dchain/nuke/main.js`;
   } else if (process.env.envParam === 'full') {
-    moduleUrl = `https://gpseoulwebserver.co.kr/main.js`; //`${window.location.href}/main.js`;
+    moduleUrl = `https://gpseoulwebserver.co.kr/dchain/nuke/main.js`; //`${window.location.href}/main.js`;
   } else {
     moduleUrl = `${window.location.href}/main.js`;
   }

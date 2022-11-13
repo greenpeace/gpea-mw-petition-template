@@ -25,6 +25,7 @@ console.log(`./.env.${process.env.NODE_ENV}`);
  */
 
 const buildFolder = path.join(__dirname, 'out');
+//const buildFolder = '\\\\wsl.localhost\\Ubuntu-22.04\\home\\kueck\\workspace\\gpea-mw-petition-template\\out';
 
 const ftpRemoteDir = process.env.BASEPATH;
 const ftpConfigName = process.env.FTP_CONFIG_NAME;
@@ -32,6 +33,7 @@ const ftpConfigName = process.env.FTP_CONFIG_NAME;
 console.log(`\`${ftpRemoteDir}:\`${ftpConfigName}\`}`);
 
 let indexHtmlFilePath = path.join(buildFolder, 'index.html');
+//let indexHtmlFilePath = buildFolder + '\\index.html';
 let fbuf = fs.readFileSync(indexHtmlFilePath);
 let content = fbuf.toString();
 
@@ -50,7 +52,7 @@ const upload_folder = function (settings, localDir) {
   var ftps = new FTPS(settings);
 
   console.info(
-    `Sync from \`${localDir}\` to \`${settings.protocol}://${settings.username}@${settings.host}:${settings.remoteDir}\``,
+    `Sync from \`${localDir}\` to \`${settings.protocol}://${settings.username}@${settings.host}:${settings.port}${settings.remoteDir}\``,
   );
 
   return ftps
@@ -153,18 +155,18 @@ let ftpSetting = {
   // protocol is added on beginning of host, ex : sftp://domain.com in this case
   port: 22, // Optional
   // port is added to the end of the host, ex: sftp://domain.com:22 in this case
-  escape: true, // optional, used for escaping shell characters (space, $, etc.), default: true
-  retries: 2, // Optional, defaults to 1 (1 = no retries, 0 = unlimited retries)
-  timeout: 10, // Optional, Time before failing a connection attempt. Defaults to 10
-  retryInterval: 5, // Optional, Time in seconds between attempts. Defaults to 5
-  retryMultiplier: 1, // Optional, Multiplier by which retryInterval is multiplied each time new attempt fails. Defaults to 1
-  requiresPassword: true, // Optional, defaults to true
-  autoConfirm: true, // Optional, is used to auto confirm ssl questions on sftp or fish protocols, defaults to false
-  cwd: '', // Optional, defaults to the directory from where the script is executed
-  additionalLftpCommands: '', // Additional commands to pass to lftp, splitted by ';'
-  requireSSHKey: false, //  Optional, defaults to false, This option for SFTP Protocol with ssh key authentication
-  sshKeyPath: '', // Required if requireSSHKey: true , defaults to empty string, This option for SFTP Protocol with ssh key authentication
-  sshKeyOptions: '', // ssh key options such as 'StrictHostKeyChecking=no'
+  // escape: true, // optional, used for escaping shell characters (space, $, etc.), default: true
+  // retries: 2, // Optional, defaults to 1 (1 = no retries, 0 = unlimited retries)
+  // timeout: 10, // Optional, Time before failing a connection attempt. Defaults to 10
+  // retryInterval: 5, // Optional, Time in seconds between attempts. Defaults to 5
+  // retryMultiplier: 1, // Optional, Multiplier by which retryInterval is multiplied each time new attempt fails. Defaults to 1
+  // requiresPassword: true, // Optional, defaults to true
+  // autoConfirm: true, // Optional, is used to auto confirm ssl questions on sftp or fish protocols, defaults to false
+  // cwd: '', // Optional, defaults to the directory from where the script is executed
+  // additionalLftpCommands: '', // Additional commands to pass to lftp, splitted by ';'
+  // requireSSHKey: false, //  Optional, defaults to false, This option for SFTP Protocol with ssh key authentication
+  // sshKeyPath: '', // Required if requireSSHKey: true , defaults to empty string, This option for SFTP Protocol with ssh key authentication
+  // sshKeyOptions: '', // ssh key options such as 'StrictHostKeyChecking=no'
 };
 ftpSetting['remoteDir'] = ftpRemoteDir;
 upload_folder(ftpSetting, buildFolder);

@@ -5,18 +5,17 @@ const SEO = () => {
   return (
     <Head>
       {/* campaign dataLayer */}
-      <Script
+      {/* <Script
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: 'oceans',
-            gBasket: 'sanctuaries',
+            event: 'petition_load'
           });
         `,
         }}
-      />
+      /> */}
       {/* title */}
       <title>
         일본 정부의 후쿠시마 방사성 오염수 해양 방류 결정의 즉각적 철회를
