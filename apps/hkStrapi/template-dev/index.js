@@ -148,14 +148,7 @@ const Index = ({ submitted = false, strapi }) => {
 					>
 						<Box minWidth={0} flex={1}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{/* <Box>
-									<img
-										className="h-auto max-w-full"
-										src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/10/855db730-sl_111019_24830_70-scaled.jpg"
-									/>
-								</Box> */}
-
-								<Box>
+								<>
 									{submitted ? (
 										<StrapiDynamicBlocks
 											blocks={'thankyouBlocks'}
@@ -167,20 +160,17 @@ const Index = ({ submitted = false, strapi }) => {
 											strapi={strapi}
 										/>
 									)}
-								</Box>
-								{/* <>
-									{submitted ? (
-										<StrapiDynamicBlocks
-											blocks={'thankyouBlocks'}
-											strapi={strapi}
-										/>
-									) : (
-										<StrapiDynamicBlocks
-											blocks={'contentBlocks'}
-											strapi={strapi}
-										/>
+								</>
+								<>
+									{pageType?.toLowerCase() === 'donation' && !submitted && (
+										<>
+											<Heading textAlign="center" py="6" fontSize="2xl">
+												常見問題
+											</Heading>
+											<DonateFAQ locale="HKChinese" />
+										</>
 									)}
-								</> */}
+								</>
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>

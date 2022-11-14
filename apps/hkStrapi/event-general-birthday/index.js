@@ -154,8 +154,7 @@ const Index = ({ submitted = false, strapi }) => {
 										src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/10/855db730-sl_111019_24830_70-scaled.jpg"
 									/>
 								</Box> */}
-
-								<Box>
+								<>
 									{submitted ? (
 										<StrapiDynamicBlocks
 											blocks={'thankyouBlocks'}
@@ -167,20 +166,7 @@ const Index = ({ submitted = false, strapi }) => {
 											strapi={strapi}
 										/>
 									)}
-								</Box>
-								{/* <>
-									{submitted ? (
-										<StrapiDynamicBlocks
-											blocks={'thankyouBlocks'}
-											strapi={strapi}
-										/>
-									) : (
-										<StrapiDynamicBlocks
-											blocks={'contentBlocks'}
-											strapi={strapi}
-										/>
-									)}
-								</> */}
+								</>
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Form, withFormik } from 'formik';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
 import { capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
@@ -54,13 +54,11 @@ const EventForm = (props) => {
 		theme,
 		setSuggestion,
 		initSuggestion,
-		suggestion,
-		isSubmitting
+		suggestion
 	} = props;
 	const themeInterests = theme.interests;
 	const uploadRef = useRef(null);
 	const [imagePreview, setImagePreview] = useState('');
-	const [errorMessage, setErrorMessage] = useState(null);
 
 	useEffect(() => {
 		initSuggestion();
@@ -130,20 +128,9 @@ const EventForm = (props) => {
 		}
 	};
 
-	if (signup.submitted) {
-		return (
-			<Stack p={4} gap={2}>
-				<Text as="h2" fontWeight="bold">感謝您的報名參與！</Text>
-				<Text as="p">
-					感謝您參與綠色和平舉辦的「無塑海港」重用杯創意設計比賽，您已成功報名參與比賽，重用杯設計檔、遞交網址、活動重要資訊等將經電郵傳送給您。
-				</Text>
-			</Stack>
-		);
-	}
-
 	return (
 		<Box pos={'relative'}>
-			{(isLoading || isSubmitting) && (
+			{isLoading && (
 				<Box
 					pos={'absolute'}
 					top={0}
@@ -290,8 +277,7 @@ const EventForm = (props) => {
 										>
 											<Stack justifyContent={'center'} alignItems={'center'}>
 												<Icon as={AiOutlineCloudUpload} w={8} h={8} />
-												<Text>上載作品</Text>
-												<Text>將照片拖動到此處，或瀏覽要上載的檔案</Text>
+												<Text>將照片拖動到此處，或選擇要上載的檔案。</Text>
 											</Stack>
 										</Center>
 									</Box>
@@ -307,25 +293,11 @@ const EventForm = (props) => {
 											name="File"
 											type="file"
 											onChange={(event) => {
-												setErrorMessage(null);
-												const expectedSizeInMB = 1;
-												const expectedSizeInBytes =
-													1024 * 1024 * expectedSizeInMB;
-												const file = event.target.files[0];
-												if (file?.size > expectedSizeInBytes) {
-													setErrorMessage('上傳檔案容量不可以超過20MB');
-													return;
-												}
-
 												setFieldValue('File', event.target.files[0]);
 											}}
 											ref={uploadRef}
-											accept="image/*, .pdf"
 										/>
 									</Box>
-									<Text color="red" fontSize={'sm'} py={2}>
-										{errorMessage}
-									</Text>
 								</FormControl>
 							</Box>
 
@@ -337,11 +309,7 @@ const EventForm = (props) => {
 								>
 									<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
 										<Box mr={2} pt={1}>
-											<Checkbox
-												name="OptIn"
-												defaultChecked
-												onChange={handleChange}
-											/>
+											<Checkbox name="OptIn" onChange={handleChange} />
 										</Box>
 										<Text
 											fontSize="xs"
@@ -358,11 +326,7 @@ const EventForm = (props) => {
 							</Box>
 
 							<Box>
-								<Button
-									{...OrangeCTA}
-									isLoading={isLoading || isSubmitting}
-									type={'submit'}
-								>
+								<Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
 									{formContent.submit_text}
 								</Button>
 							</Box>
@@ -382,7 +346,7 @@ const MyEnhancedForm = withFormik({
 		LastName: signup?.preFill?.LastName ?? '',
 		MobileCountryCode: '852',
 		MobilePhone: signup?.preFill?.MobilePhone ?? '',
-		OptIn: true,
+		OptIn: false,
 		Birthdate: signup?.preFill?.Birthdate ?? '',
 		// for event
 		name: '',
@@ -464,6 +428,8 @@ const MyEnhancedForm = withFormik({
 			[`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
 			CompletionURL: completionURL
 		};
+
+		console.log('formData-', formData);
 		submitForm(formData, endpointURL);
 	},
 

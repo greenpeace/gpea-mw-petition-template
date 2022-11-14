@@ -152,12 +152,22 @@ function Index({ submitted = false, strapi }) {
 										/>
 									)}
 								</>
+								<>
+									{pageType?.toLowerCase() === 'donation' && !submitted && (
+										<>
+											<Heading textAlign="center" py="6" fontSize="2xl">
+												常見問題
+											</Heading>
+											<DonateFAQ locale="HKChinese" />
+										</>
+									)}
+								</>
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
 								<Box ref={ref}>
-								<SignupForm />
+									<SignupForm />
 								</Box>
 							</FormContainer>
 						</Box>

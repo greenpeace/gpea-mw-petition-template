@@ -156,10 +156,14 @@ function Index({ submitted = false, strapi }) {
 								)}
 								{isLoaded && (
 									<>
-										<Heading textAlign="center" py="6" fontSize="2xl">
-											常見問題
-										</Heading>
-										<DonateFAQ locale="TWChinese" />
+										{pageType?.toLowerCase() === 'donation' && !submitted && (
+											<>
+												<Heading textAlign="center" py="6" fontSize="2xl">
+													常見問題
+												</Heading>
+												<DonateFAQ locale="TWChinese" />
+											</>
+										)}
 									</>
 								)}
 							</ContentContainer>
