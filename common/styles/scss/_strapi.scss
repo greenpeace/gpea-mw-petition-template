@@ -2,11 +2,12 @@
 	ol,
 	ul {
 		list-style: initial;
-		margin-bottom: 30px;
-		padding-left: 20px;
+		margin-left: 2em;
+		margin-top: 1em;
+		margin-bottom: 1em;
 		line-height: 1.5;
-		li {
-			margin-bottom: 12px;
+		li + li {
+			margin-top: 0.25em;
 		}
 	}
 }
