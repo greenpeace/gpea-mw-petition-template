@@ -179,6 +179,7 @@ function Index({ submitted = false, strapi }) {
 									<Box ref={ref}>
 										{pageType?.toLowerCase() === 'donation' || submitted ? (
 											<DonationModule
+												isUAT={true}
 												market={
 													strapi?.market?.data?.attributes?.market ===
 													'Hong Kong'
