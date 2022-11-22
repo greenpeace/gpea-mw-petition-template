@@ -22,7 +22,7 @@ const Form = () => {
 
 		const submitData = {
 			email: 'demo@mail.com',
-			firstName: '您的稱呼',
+			firstName: formData.name,
 			lastName: '',
 			campaignData1: formData.message,
 			campaignData2: '',
@@ -33,7 +33,7 @@ const Form = () => {
 
 		axios({
 			method: 'post',
-			url: 'https://strapi.small-service.gpeastasia.org/api/thoughts',
+			url: 'https://strapi.small-service.gpeastasia.org/api/responses',
 			headers: {
 				// Authorization: `Bearer ${token}`,
 			},
@@ -103,16 +103,16 @@ const Form = () => {
 				<form className="w-full" onSubmit={onSubmit}>
 					<div className="mb-4">
 						<span className="mr-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800 dark:bg-green-200 dark:text-green-900">
-							您的名字
+							輸入名字 及 訊息
 						</span>
-						{/* <input
-						className="mb-3 block w-full appearance-none rounded border bg-gray-100 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
-						id="grid-first-name"
-						type="text"
-						placeholder="預設"
-						name="name"
-						onChange={updateForm}
-					/> */}
+						<input
+							className="mb-3 mt-3 block w-full appearance-none rounded border bg-gray-100 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
+							type="text"
+							placeholder="您的名字"
+							id="name"
+							name="name"
+							onChange={updateForm}
+						/>
 					</div>
 					<div className="flex w-full flex-col items-center">
 						<div className="flex w-full flex-col">

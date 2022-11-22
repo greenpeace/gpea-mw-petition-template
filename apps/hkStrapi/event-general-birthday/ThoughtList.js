@@ -14,7 +14,7 @@ import { headingProps } from '@common/styles/components/contentStyle';
 
 import axios from 'axios';
 
-const API_ENDPOINT = `https://strapi.small-service.gpeastasia.org/api/thoughts`;
+const API_ENDPOINT = `https://strapi.small-service.gpeastasia.org/api/response`;
 
 const ThoughList = () => {
 	const PAGE_SIZE = 20;
@@ -56,7 +56,7 @@ const ThoughList = () => {
 	};
 
 	const handleLoadMore = () => {
-		const number = total - thoughts.length;
+		const number = total - thoughts?.length;
 
 		if (number > 0) {
 			return (

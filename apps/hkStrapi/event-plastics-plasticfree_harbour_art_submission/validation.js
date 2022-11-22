@@ -23,8 +23,8 @@ export function validation(values, formContent) {
       errors.File = "請上傳圖片"
     }
 
-    if (!values.OptIn) {
-      errors.OptIn = "請先同意條款"
+    if (!values.tnc) {
+      errors.tnc = "請先同意條款"
     }
   
     // if (!values.LastName) {

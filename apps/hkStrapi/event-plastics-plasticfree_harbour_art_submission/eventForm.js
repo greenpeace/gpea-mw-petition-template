@@ -49,6 +49,7 @@ const EventForm = (props) => {
 		isLoading,
 		setFieldValue,
 		setWebStatus,
+		status,
 		values,
 		formContent,
 		theme,
@@ -132,7 +133,9 @@ const EventForm = (props) => {
 	if (signup.submitted) {
 		return (
 			<Stack p={4} gap={2}>
-				<Text as="h2" fontWeight="bold">感謝您的報名參與！</Text>
+				<Text as="h2" fontWeight="bold">
+					感謝您的報名參與！
+				</Text>
 				<Text as="p">
 					感謝您參與綠色和平舉辦的「無塑海港」重用杯創意設計比賽，您已成功報名參與比賽，重用杯設計檔、遞交網址、活動重要資訊等將經電郵傳送給您。
 				</Text>
@@ -261,16 +264,7 @@ const EventForm = (props) => {
 							</Box>
 
 							<Box flex={1}>
-								{imagePreview ? (
-									<Box>
-										<Image src={imagePreview} alt="Image" />
-										<Center my={4}>
-											<Button onClick={() => handleReset()} px={8} py={4}>
-												刪除
-											</Button>
-										</Center>
-									</Box>
-								) : (
+								{!imagePreview && (
 									<Box>
 										<Center
 											border={`1px dashed #d9d9d9`}
@@ -317,6 +311,8 @@ const EventForm = (props) => {
 												}
 
 												setFieldValue('File', event.target.files[0]);
+
+												event.target.value = '' // Fix can't upload same file twice
 											}}
 											ref={uploadRef}
 											accept="image/*, .pdf"
@@ -331,13 +327,13 @@ const EventForm = (props) => {
 							<Box>
 								<FormControl
 									id={'message'}
-									isInvalid={touched?.OptIn && errors?.OptIn}
+									isInvalid={touched?.tnc && errors?.tnc}
 									pos="relative"
 								>
 									<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
 										<Box mr={2} pt={1}>
-										<Checkbox
-												name="OptIn"
+											<Checkbox
+												name="tnc"
 												defaultChecked
 												onChange={handleChange}
 											/>
@@ -350,17 +346,25 @@ const EventForm = (props) => {
 											}}
 										/>
 									</Flex>
-									<FormErrorMessage color="var(--error-900)">
-										{errors?.OptIn}
-									</FormErrorMessage>
 								</FormControl>
 							</Box>
 
 							<Box>
-								<Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+								<Button {...OrangeCTA} isLoading={isLoading} type={'submit'} disabled={!!errors?.tnc}>
 									{formContent.submit_text}
 								</Button>
 							</Box>
+
+							{imagePreview && (
+								<Box>
+									<Image src={imagePreview} alt="Image" />
+									<Center my={4}>
+										<Button onClick={() => handleReset()} px={8} py={4}>
+											刪除
+										</Button>
+									</Center>
+								</Box>
+							)}
 						</Stack>
 					</Form>
 				</Stack>
@@ -384,6 +388,7 @@ const MyEnhancedForm = withFormik({
 		contact: '',
 		message: '',
 		submissionURL: '',
+		tnc: true, // UI only
 		File: ''
 	}),
 
@@ -393,7 +398,7 @@ const MyEnhancedForm = withFormik({
 	},
 
 	handleSubmit: async (values, { setSubmitting, props }) => {
-		const { submitForm, theme, hiddenFormData, strapi } = props;
+		const { submitForm, setSubmitStep, theme, hiddenFormData, strapi } = props;
 		const isProd = process.env.NODE_ENV === 'production';
 		const fallbackValue = (d) => (d ? d : '');
 		const LeadSource = `Petition - ${capitalize(theme.interests)}`;
@@ -425,6 +430,8 @@ const MyEnhancedForm = withFormik({
 		imageFormData.append('upload_preset', 'dev_upload_preset');
 		imageFormData.append('resource_type', 'raw');
 
+		setSubmitStep("submitting")
+
 		const submissionURL = await axios
 			.post('https://api.cloudinary.com/v1_1/hellocc1002/upload', imageFormData)
 			.then(async (res) => {
@@ -441,7 +448,7 @@ const MyEnhancedForm = withFormik({
 			LastName: values?.LastName,
 			MobileCountryCode: values?.MobileCountry,
 			MobilePhone: values?.MobilePhone,
-			OptIn: values?.OptIn,
+			OptIn: true,
 			Birthdate: values?.Birthdate,
 			CampaignData1__c: values?.name,
 			CampaignData2__c: values?.contact,
@@ -458,23 +465,19 @@ const MyEnhancedForm = withFormik({
 			CompletionURL: completionURL
 		};
 		submitForm(formData, endpointURL);
+
+		setSubmitStep("done")
 	},
 
 	displayName: 'SignupForm'
 })(EventForm);
 
-const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
+const mapStateToProps = ({ signup, hiddenForm, form, theme }) => {
 	return {
 		signup,
 		hiddenFormData: hiddenForm.data,
-		isLoading: signup.lastAction === signupActions.SIGN_UP,
+		isLoading: signup.lastAction === signupActions.SIGN_UP || signup.step === "submitting",
 		formContent: form.content,
-		numberOfResponses: Math.max(
-			parseInt(form.signupNumbers.hk?.NumberOfResponses),
-			parseInt(form.signupNumbers.hk?.NumberOfLeads) +
-				parseInt(form.signupNumbers.hk?.NumberOfContacts)
-		),
-		numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
 		theme: theme.data,
 		suggestion: form.suggestion,
 		strapi: theme.strapi
@@ -485,6 +488,9 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		submitForm: (data, endPoint) => {
 			dispatch({ type: signupActions.SIGN_UP, data, endPoint });
+		},
+		setSubmitStep: (data) => {
+			dispatch({ type: signupActions.SET_STEP, data: data}) // Free text to switch form submit status
 		},
 		setWebStatus: (bol) => {
 			dispatch({ type: statusActions.SET_FORM_SUBMITTED, data: bol });
