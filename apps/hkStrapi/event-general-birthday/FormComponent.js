@@ -24,6 +24,7 @@ const Form = () => {
 			email: 'demo@mail.com',
 			firstName: formData.name,
 			lastName: '',
+			question: [1],
 			campaignData1: formData.message,
 			campaignData2: '',
 			campaignData3: '',
