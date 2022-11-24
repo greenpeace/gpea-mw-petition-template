@@ -175,13 +175,13 @@ const Index = ({ submitted = false, strapi }) => {
 									<Box ref={ref}>
 										<div className="relative flex h-[180px] items-center justify-center overflow-hidden md:h-[220px]">
 											<iframe
-												src="https://player.vimeo.com/video/643277567"
-												width="100%"
-												height="100%"
+												src="https://player.vimeo.com/video/773692586?h=9d9804e6a1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay=1&loop=1&muted=1"
+												width="1600"
+												height="1200"
 												frameborder="0"
-												allow="autoplay;"
-												allowfullscreen
-											/>
+												allow="autoplay; fullscreen; picture-in-picture"
+												title="Comp 1_01NOv2022"
+											></iframe>
 										</div>
 										<Form />
 									</Box>
