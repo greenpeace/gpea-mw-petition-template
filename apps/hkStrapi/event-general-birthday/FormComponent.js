@@ -56,7 +56,7 @@ const Form = () => {
 	};
 
 	return (
-		<div className="px-6">
+		<div className="px-4 md:px-6">
 			<div className="flex items-center justify-center ">
 				<div className="mx-auto w-full max-w-lg ">
 					<div className="my-6 mx-auto max-w-md">
@@ -66,11 +66,8 @@ const Form = () => {
 								aria-hidden="true"
 								role="presentation"
 							></span>
-							<span className="mx-2 block flex-none py-2.5 text-xs font-bold uppercase leading-none text-[#66cc00] md:ml-4 md:text-[16px]">
+							<span className="text-md mx-2 block flex-none py-2.5 font-bold uppercase leading-none text-[#66cc00] md:ml-4">
 								Let's Make a Wish!
-							</span>
-							<span className="mx-2 block flex-none rounded-lg bg-[#66cc00] px-2 py-2.5 text-xs font-bold uppercase leading-none text-white md:mr-4 md:text-[16px]">
-								<b>給地球許一個生日願望</b>
 							</span>
 							<span
 								className="block flex-grow border-t border-[#66cc00]"
@@ -78,32 +75,39 @@ const Form = () => {
 								role="presentation"
 							></span>
 						</h2>
-						<span className="text-md my-4 py-2 text-gray-700">
-							您的願望將有機會出現在「I Wish…」欄目， 甚至刊登於綠色和平年報！
+						<span className="text-md mx-2 block flex-none rounded-lg bg-[#66cc00] px-2 py-2.5 text-center font-bold uppercase leading-none text-white md:mr-4">
+							<b>給地球許一個生日願望</b>
 						</span>
+						<p className="text-md my-4 py-2 text-gray-700">
+							您的願望將有機會出現在「I Wish ...」欄目，
+							甚至刊登於綠色和平年報！
+						</p>
 					</div>
 				</div>
 			</div>
 			{formSubmitted && (
-				<div className="thanksMessage text-md pb-4 text-gray-700">
-					您的願望已經傳達，請相信它會成真
+				<div className="text-md pb-4 text-gray-700">
+					<p>您的願望已經傳達，請相信它會成真</p>
 					<br />
-					感謝您為保護地球一齊努力 <br />
-					瀏覽
-					<a
-						href="https://www.greenpeace.org/hongkong/stories-victories"
-						target="_blank"
-						className="text-[#66cc00] underline"
-					>
-						綠色和平「我們的成果」專頁
-					</a>
-					，了解更多因您成真的環保願望！
+					<p>
+						感謝您為保護地球一齊努力，
+						<br />
+						瀏覽
+						<a
+							href="https://www.greenpeace.org/hongkong/stories-victories"
+							target="_blank"
+							className="text-[#66cc00] underline"
+						>
+							綠色和平「我們的成果」專頁
+						</a>
+						，了解更多因您成真的環保願望！
+					</p>
 				</div>
 			)}
 			{!formSubmitted && (
 				<form className="w-full" onSubmit={onSubmit}>
 					<div className="mb-4">
-						<span className="mr-2 rounded bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800 dark:bg-green-200 dark:text-green-900">
+						<span className="rounded px-2.5 py-0.5 text-sm">
 							輸入名字 及 訊息
 						</span>
 						<input
@@ -126,7 +130,7 @@ const Form = () => {
 								onChange={updateForm}
 							/>
 							<button
-								className="my-8 rounded-md bg-gradient-to-r from-[#66cc00] to-green-400 py-3 text-lg font-semibold text-white hover:opacity-75"
+								className="my-8 rounded-md bg-gradient-to-r from-[#ff8100] to-orange-500 py-3 text-lg font-semibold text-white hover:opacity-75"
 								type="submit"
 								disabled={formSubmitted || loading}
 							>

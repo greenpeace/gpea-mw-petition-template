@@ -148,12 +148,17 @@ const Index = ({ submitted = false, strapi }) => {
 					>
 						<Box minWidth={0} flex={1}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{/* <Box>
-									<img
-										className="h-auto max-w-full"
-										src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/10/855db730-sl_111019_24830_70-scaled.jpg"
-									/>
-								</Box> */}
+								<Box>
+									<div className="aspect-w-4 aspect-h-3 my-6">
+										<iframe
+											src="https://player.vimeo.com/video/773692586?h=9d9804e6a1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay=1&loop=1&muted=1"
+											frameborder="0"
+											width="640"
+											height="360"
+											allow="autoplay"
+										></iframe>
+									</div>
+								</Box>
 								<>
 									{submitted ? (
 										<StrapiDynamicBlocks
@@ -173,16 +178,15 @@ const Index = ({ submitted = false, strapi }) => {
 							<FormContainer>
 								<Box position="sticky">
 									<Box ref={ref}>
-										<div className="relative flex h-[180px] items-center justify-center overflow-hidden md:h-[220px]">
+										{/* <div className="aspect-w-4 aspect-h-3">
 											<iframe
 												src="https://player.vimeo.com/video/773692586?h=9d9804e6a1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay=1&loop=1&muted=1"
-												width="1600"
-												height="1200"
 												frameborder="0"
-												allow="autoplay; fullscreen; picture-in-picture"
-												title="Comp 1_01NOv2022"
+												width="640"
+												height="360"
+												allow="autoplay"
 											></iframe>
-										</div>
+										</div> */}
 										<Form />
 									</Box>
 								</Box>
