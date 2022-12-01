@@ -148,7 +148,9 @@ const Index = ({ submitted = false, strapi }) => {
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
 								<Box>
 									<h2 className="mt-8 pb-6 text-center text-2xl font-bold">
-										{`${signup?.preFill?.FirstName}`}，邀請您許個生日願望...
+										{signup?.preFill?.FirstName &&
+											`${signup?.preFill?.FirstName}，`}
+										邀請您許個生日願望...
 									</h2>
 									<div className="aspect-w-4 aspect-h-3 my-6">
 										<iframe
