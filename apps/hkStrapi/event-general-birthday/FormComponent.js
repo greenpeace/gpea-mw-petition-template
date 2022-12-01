@@ -86,19 +86,19 @@ const Form = () => {
 				</div>
 			</div>
 			{formSubmitted && (
-				<div className="text-md pb-4 text-gray-700">
-					<p>您的願望已經傳達，請相信它會成真</p>
+				<div className="text-md pb-8 text-gray-700">
+					<p>
+						您的願望已經傳達，請相信它會成真！再次感謝您為保護地球一齊努力。
+					</p>
 					<br />
 					<p>
-						感謝您為保護地球一齊努力，
-						<br />
-						瀏覽
+						瀏覽綠色和平
 						<a
 							href="https://www.greenpeace.org/hongkong/stories-victories"
 							target="_blank"
 							className="text-[#66cc00] underline"
 						>
-							綠色和平「我們的成果」專頁
+							「我們的成果」專頁
 						</a>
 						，了解更多因您成真的環保願望！
 					</p>
