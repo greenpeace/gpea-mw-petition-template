@@ -154,7 +154,7 @@ const Index = ({ submitted = false, strapi }) => {
 									</h2>
 									<div className="aspect-w-4 aspect-h-3 my-6">
 										<iframe
-											src="https://player.vimeo.com/video/773692586?h=9d9804e6a1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay=1&loop=1&muted=1"
+											src="https://player.vimeo.com/video/778375504?h=ab72560059&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1"
 											frameborder="0"
 											width="640"
 											height="360"

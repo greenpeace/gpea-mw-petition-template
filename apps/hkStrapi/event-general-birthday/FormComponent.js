@@ -59,14 +59,14 @@ const Form = () => {
 		<div className="px-4 md:px-6">
 			<div className="flex items-center justify-center ">
 				<div className="mx-auto w-full max-w-lg ">
-					<div className="my-6 mx-auto max-w-md">
+					<div className="mx-auto pt-6 pb-4">
 						<h2 className="my-4 flex flex-row flex-nowrap items-center">
 							<span
 								className="block flex-grow border-t border-[#66cc00]"
 								aria-hidden="true"
 								role="presentation"
 							></span>
-							<span className="text-md mx-2 block flex-none py-2.5 font-bold uppercase leading-none text-[#66cc00] md:ml-4">
+							<span className="text-md mx-2 block flex-none py-2 font-bold uppercase leading-none text-[#66cc00] md:ml-4">
 								Let's Make a Wish!
 							</span>
 							<span
@@ -75,12 +75,11 @@ const Form = () => {
 								role="presentation"
 							></span>
 						</h2>
-						<span className="text-md mx-2 block flex-none rounded-lg bg-[#66cc00] px-2 py-2.5 text-center font-bold uppercase leading-none text-white md:mr-4">
+						<span className="text-md mx-auto block flex-none rounded bg-[#66cc00] px-4 py-2 text-center font-bold uppercase leading-none text-white">
 							<b>給地球許一個生日願望</b>
 						</span>
-						<p className="text-md my-4 py-2 text-gray-700">
-							您的願望將有機會出現在「I Wish ...」欄目，
-							甚至刊登於綠色和平年報！
+						<p className="text-md py-4 text-gray-700">
+							您的願望將有機會出現在「I Wish...」欄目， 甚至刊登於綠色和平年報！
 						</p>
 					</div>
 				</div>
@@ -107,13 +106,13 @@ const Form = () => {
 			{!formSubmitted && (
 				<form className="w-full" onSubmit={onSubmit}>
 					<div className="mb-4">
-						<span className="rounded px-2.5 py-0.5 text-sm">
+						{/* <span className="rounded px-2.5 py-0.5 text-sm">
 							輸入名字 及 訊息
-						</span>
+						</span> */}
 						<input
-							className="mb-3 mt-3 block w-full appearance-none rounded border bg-gray-100 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
+							className="block w-full appearance-none rounded border bg-gray-100 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
 							type="text"
-							placeholder="您的名字"
+							placeholder="我的名字"
 							id="name"
 							name="name"
 							onChange={updateForm}
@@ -124,7 +123,7 @@ const Form = () => {
 							<textarea
 								rows="3"
 								className="resize-none rounded-md bg-gray-100 p-4 text-gray-500 focus:outline-none"
-								placeholder={'e.g. 我希望地球變得……'}
+								placeholder={'我希望地球變得...'}
 								id="message"
 								name="message"
 								onChange={updateForm}
