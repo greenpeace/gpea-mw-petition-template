@@ -26,6 +26,10 @@ export default function Index({
 		<>
 			<Box minH={minH} pos={'relative'} zIndex={2} paddingBottom={'4rem'}>
 				<Box pos={'relative'} zIndex={4}>
+					<span className="custEmail is-hidden">{signup?.data?.Email}</span>
+					<span className="custMobile is-hidden">
+						{signup?.data?.MobilePhone}
+					</span>
 					<PageContainer>
 						<Box py={8} px={4} height="100%" maxW={{ base: '100%', md: '50%' }}>
 							<Flex
