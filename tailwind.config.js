@@ -23,9 +23,7 @@ module.exports = {
 					warning: '#F0AF23',
 					error: '#FF3333'
 				}
-			},
-			'light',
-			'cupcake'
+			}
 		]
 	}
 };
