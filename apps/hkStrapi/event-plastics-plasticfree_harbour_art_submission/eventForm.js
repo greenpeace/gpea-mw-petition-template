@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Form, withFormik } from 'formik';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
 import { capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
@@ -133,7 +133,7 @@ const EventForm = (props) => {
 	if (signup.submitted) {
 		return (
 			<Stack p={4} gap={2}>
-				<Text as="h2" fontWeight="bold">
+				<Text as="h2" fontWeight="bold" fontSize="2xl" mb="4">
 					感謝您的報名參與！
 				</Text>
 				<Text as="p">
@@ -188,7 +188,7 @@ const EventForm = (props) => {
 										<Field
 											errors={errors.name}
 											touched={touched.name}
-											label={'參賽者姓名（姓名亦會列印在參賽證書之上）'}
+											label={'參賽者姓名（您的姓名會列印在參賽證書之上）'}
 											name={'name'}
 											type={'text'}
 											handleChange={handleChange}
@@ -265,63 +265,96 @@ const EventForm = (props) => {
 
 							<Box flex={1}>
 								{!imagePreview && (
-									<Box>
-										<Center
-											border={`1px dashed #d9d9d9`}
-											bgColor={`#fafafa`}
-											borderRadius={`2px`}
-											onClick={() => handleFileUpload()}
-											onDrop={(e) => handleDrop(e)}
-											onDragOver={(e) => handleDragOver(e)}
-											onDragEnter={(e) => handleDragEnter(e)}
-											onDragLeave={(e) => handleDragLeave(e)}
-											cursor={`pointer`}
-											_hover={{
-												border: `1px dashed #000`
-											}}
-											minH={`xs`}
+									<>
+										<Box>
+											<Center
+												border={`1px dashed #d9d9d9`}
+												bgColor={`#fafafa`}
+												borderRadius={`2px`}
+												onClick={() => handleFileUpload()}
+												onDrop={(e) => handleDrop(e)}
+												onDragOver={(e) => handleDragOver(e)}
+												onDragEnter={(e) => handleDragEnter(e)}
+												onDragLeave={(e) => handleDragLeave(e)}
+												cursor={`pointer`}
+												_hover={{
+													border: `1px dashed #000`
+												}}
+												minH={`xs`}
+											>
+												<Stack justifyContent={'center'} alignItems={'center'}>
+													<Icon as={AiOutlineCloudUpload} w={8} h={8} />
+													<Text mb="2">上載作品</Text>
+													<Text fontSize="sm">
+														將照片拖動到此處，或瀏覽要上載的檔案
+													</Text>
+												</Stack>
+											</Center>
+										</Box>
+										<FormControl
+											id="File"
+											isInvalid={errors.File && touched.File}
 										>
-											<Stack justifyContent={'center'} alignItems={'center'}>
-												<Icon as={AiOutlineCloudUpload} w={8} h={8} />
-												<Text>上載作品</Text>
-												<Text>將照片拖動到此處，或瀏覽要上載的檔案</Text>
-											</Stack>
+											<FormErrorMessage color="red">
+												{errors.File}
+											</FormErrorMessage>
+											<Box
+												className="upload-btn-wrapper"
+												h={0}
+												overflow={`hidden`}
+											>
+												<Button>Upload a file</Button>
+												<Input
+													variant={'clear'}
+													textAlign={`center`}
+													name="File"
+													type="file"
+													onChange={(event) => {
+														setErrorMessage(null);
+														const expectedSizeInMB = 1;
+														const expectedSizeInBytes =
+															1024 * 1024 * expectedSizeInMB;
+														const file = event.target.files[0];
+														if (file?.size > expectedSizeInBytes) {
+															setErrorMessage('上傳檔案容量不可以超過20MB');
+															return;
+														}
+
+														setFieldValue('File', event.target.files[0]);
+
+														event.target.value = ''; // Fix can't upload same file twice
+													}}
+													ref={uploadRef}
+													accept="image/*, .pdf"
+												/>
+											</Box>
+											{errorMessage && (
+												<Text color="red" fontSize={'sm'} py={2}>
+													{errorMessage}
+												</Text>
+											)}
+										</FormControl>
+									</>
+								)}
+
+								{imagePreview && (
+									<Box>
+										<Box borderRadius="lg" overflow="hidden">
+											<Image src={imagePreview} alt="Image" />
+										</Box>
+										<Center mt={4}>
+											<Button
+												variant="outline"
+												onClick={() => handleReset()}
+												fontWeight="normal"
+												px={8}
+												py={4}
+											>
+												重新上載
+											</Button>
 										</Center>
 									</Box>
 								)}
-
-								<FormControl id="File" isInvalid={errors.File && touched.File}>
-									<FormErrorMessage color="red">{errors.File}</FormErrorMessage>
-									<Box className="upload-btn-wrapper" h={0} overflow={`hidden`}>
-										<Button>Upload a file</Button>
-										<Input
-											variant={'clear'}
-											textAlign={`center`}
-											name="File"
-											type="file"
-											onChange={(event) => {
-												setErrorMessage(null);
-												const expectedSizeInMB = 1;
-												const expectedSizeInBytes =
-													1024 * 1024 * expectedSizeInMB;
-												const file = event.target.files[0];
-												if (file?.size > expectedSizeInBytes) {
-													setErrorMessage('上傳檔案容量不可以超過20MB');
-													return;
-												}
-
-												setFieldValue('File', event.target.files[0]);
-
-												event.target.value = '' // Fix can't upload same file twice
-											}}
-											ref={uploadRef}
-											accept="image/*, .pdf"
-										/>
-									</Box>
-									<Text color="red" fontSize={'sm'} py={2}>
-										{errorMessage}
-									</Text>
-								</FormControl>
 							</Box>
 
 							<Box>
@@ -350,21 +383,15 @@ const EventForm = (props) => {
 							</Box>
 
 							<Box>
-								<Button {...OrangeCTA} isLoading={isLoading} type={'submit'} disabled={!!errors?.tnc}>
+								<Button
+									{...OrangeCTA}
+									isLoading={isLoading}
+									type={'submit'}
+									disabled={!!errors?.tnc}
+								>
 									{formContent.submit_text}
 								</Button>
 							</Box>
-
-							{imagePreview && (
-								<Box>
-									<Image src={imagePreview} alt="Image" />
-									<Center my={4}>
-										<Button onClick={() => handleReset()} px={8} py={4}>
-											刪除
-										</Button>
-									</Center>
-								</Box>
-							)}
 						</Stack>
 					</Form>
 				</Stack>
@@ -444,7 +471,7 @@ const MyEnhancedForm = withFormik({
 			Email: values?.Email,
 			FirstName: values?.Email,
 			LastName: values?.LastName,
-			MobileCountryCode: values?.MobileCountry,
+			MobileCountryCode: values?.MobileCountryCode,
 			MobilePhone: values?.MobilePhone,
 			OptIn: true,
 			Birthdate: values?.Birthdate,
@@ -464,7 +491,7 @@ const MyEnhancedForm = withFormik({
 		};
 		submitForm(formData, endpointURL);
 
-		setSubmitStep("done")
+		setSubmitStep('done');
 	},
 
 	displayName: 'SignupForm'
@@ -474,7 +501,9 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme }) => {
 	return {
 		signup,
 		hiddenFormData: hiddenForm.data,
-		isLoading: signup.lastAction === signupActions.SIGN_UP || signup.step === "submitting",
+		isLoading:
+			signup.lastAction === signupActions.SIGN_UP ||
+			signup.step === 'submitting',
 		formContent: form.content,
 		theme: theme.data,
 		suggestion: form.suggestion,
@@ -488,7 +517,7 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch({ type: signupActions.SIGN_UP, data, endPoint });
 		},
 		setSubmitStep: (data) => {
-			dispatch({ type: signupActions.SET_STEP, data: data}) // Free text to switch form submit status
+			dispatch({ type: signupActions.SET_STEP, data: data }); // Free text to switch form submit status
 		},
 		setWebStatus: (bol) => {
 			dispatch({ type: statusActions.SET_FORM_SUBMITTED, data: bol });
