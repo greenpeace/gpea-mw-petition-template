@@ -427,13 +427,11 @@ const MyEnhancedForm = withFormik({
 
 		const imageFormData = new FormData();
 		imageFormData.append('file', values.File);
-		imageFormData.append('upload_preset', 'dev_upload_preset');
+		imageFormData.append('upload_preset', 'wugp5bjn');
 		imageFormData.append('resource_type', 'raw');
 
-		setSubmitStep("submitting")
-
 		const submissionURL = await axios
-			.post('https://api.cloudinary.com/v1_1/hellocc1002/upload', imageFormData)
+			.post('https://api.cloudinary.com/v1_1/gpea/image/upload', imageFormData)
 			.then(async (res) => {
 				const { statusText, data } = res;
 				if (statusText === 'OK') {
