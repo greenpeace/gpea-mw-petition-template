@@ -130,9 +130,20 @@ const EventForm = (props) => {
 		}
 	};
 
+	if (!signup.preFill.Email) {
+		return (
+			<Stack p={4} gap={4}>
+				<Text as="h2" fontWeight="bold" fontSize="2xl" mb="4">
+					抱歉，我們未能確認您的參賽資格
+				</Text>
+				<Text as="p">請參考報名電郵上的遞交網址重新進入頁面</Text>
+			</Stack>
+		);
+	}
+
 	if (signup.submitted) {
 		return (
-			<Stack p={4} gap={2}>
+			<Stack p={4} gap={4}>
 				<Text as="h2" fontWeight="bold" fontSize="2xl" mb="4">
 					感謝您的報名參與！
 				</Text>
@@ -207,7 +218,7 @@ const EventForm = (props) => {
 									<Input
 										name="contact"
 										type="email"
-										placeholder={'聯絡方式（我們將聯絡閣下如你的作品得獎）'}
+										placeholder={'電郵地址（我們將聯絡閣下如你的作品得獎）'}
 										onChange={handleChange}
 										onBlur={(e) => {
 											handleBlur(e);
