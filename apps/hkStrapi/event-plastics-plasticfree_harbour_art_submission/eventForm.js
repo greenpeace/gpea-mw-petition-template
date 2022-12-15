@@ -14,6 +14,7 @@ import {
 	FormErrorMessage,
 	Button,
 	Box,
+	Link,
 	Flex,
 	Text,
 	Stack,
@@ -136,7 +137,17 @@ const EventForm = (props) => {
 				<Text as="h2" fontWeight="bold" fontSize="2xl" mb="4">
 					抱歉，我們未能確認您的參賽資格
 				</Text>
-				<Text as="p">請參考報名電郵上的遞交網址重新進入頁面</Text>
+				<Text as="p">
+					請使用報名成功電郵內的上載連結，以作上傳作品的確認手續。
+				</Text>
+				<Text as="p">
+					如有查詢，請電郵至
+					<Link href="mailto:event.hk@greenpeace.org" isExternal>
+						event.hk@greenpeace.org
+					</Link>
+					或於辦公時間星期一至五上午十時至下午六時（午膳時間除外）致電 2854-8318
+					或與會員服務部梁小姐聯絡。
+				</Text>
 			</Stack>
 		);
 	}
@@ -322,12 +333,12 @@ const EventForm = (props) => {
 													type="file"
 													onChange={(event) => {
 														setErrorMessage(null);
-														const expectedSizeInMB = 1;
+														const expectedSizeInMB = 10;
 														const expectedSizeInBytes =
 															1024 * 1024 * expectedSizeInMB;
 														const file = event.target.files[0];
 														if (file?.size > expectedSizeInBytes) {
-															setErrorMessage('上傳檔案容量不可以超過20MB');
+															setErrorMessage('上傳檔案容量不可以超過 10 MB');
 															return;
 														}
 
