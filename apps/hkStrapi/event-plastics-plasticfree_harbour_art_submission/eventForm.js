@@ -476,7 +476,7 @@ const MyEnhancedForm = withFormik({
 
 		const imageFormData = new FormData();
 		imageFormData.append('file', values.File);
-		imageFormData.append('upload_preset', 'wugp5bjn');
+		imageFormData.append('upload_preset', 'l2pxawph');
 		imageFormData.append('resource_type', 'raw');
 
 		const submissionURL = await axios
