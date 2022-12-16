@@ -14,6 +14,7 @@ import {
 	FormErrorMessage,
 	Button,
 	Box,
+	Link,
 	Flex,
 	Text,
 	Stack,
@@ -49,6 +50,7 @@ const EventForm = (props) => {
 		isLoading,
 		setFieldValue,
 		setWebStatus,
+		status,
 		values,
 		formContent,
 		theme,
@@ -59,6 +61,7 @@ const EventForm = (props) => {
 	const themeInterests = theme.interests;
 	const uploadRef = useRef(null);
 	const [imagePreview, setImagePreview] = useState('');
+	const [errorMessage, setErrorMessage] = useState(null);
 
 	useEffect(() => {
 		initSuggestion();
@@ -128,6 +131,40 @@ const EventForm = (props) => {
 		}
 	};
 
+	if (!signup.preFill.Email) {
+		return (
+			<Stack p={4} gap={4}>
+				<Text as="h2" fontWeight="bold" fontSize="2xl" mb="4">
+					抱歉，我們未能確認您的參賽資格
+				</Text>
+				<Text as="p">
+					請使用報名成功電郵內的上載連結，以作上傳作品的確認手續。
+				</Text>
+				<Text as="p">
+					如有查詢，請電郵至
+					<Link href="mailto:event.hk@greenpeace.org" isExternal>
+						event.hk@greenpeace.org
+					</Link>
+					或於辦公時間星期一至五上午十時至下午六時（午膳時間除外）致電 2854-8318
+					或與會員服務部梁小姐聯絡。
+				</Text>
+			</Stack>
+		);
+	}
+
+	if (signup.submitted) {
+		return (
+			<Stack p={4} gap={4}>
+				<Text as="h2" fontWeight="bold" fontSize="2xl" mb="4">
+					感謝您的報名參與！
+				</Text>
+				<Text as="p">
+					感謝您參與綠色和平舉辦的「無塑海港」重用杯創意設計比賽，您已成功報名參與比賽，重用杯設計檔、遞交網址、活動重要資訊等將經電郵傳送給您。
+				</Text>
+			</Stack>
+		);
+	}
+
 	return (
 		<Box pos={'relative'}>
 			{isLoading && (
@@ -173,7 +210,7 @@ const EventForm = (props) => {
 										<Field
 											errors={errors.name}
 											touched={touched.name}
-											label={'參賽者姓名（姓名亦會列印在參賽證書之上）'}
+											label={'參賽者姓名（您的姓名會列印在參賽證書之上）'}
 											name={'name'}
 											type={'text'}
 											handleChange={handleChange}
@@ -192,7 +229,7 @@ const EventForm = (props) => {
 									<Input
 										name="contact"
 										type="email"
-										placeholder={'聯絡方式（我們將聯絡閣下如你的作品得獎）'}
+										placeholder={'電郵地址（我們將聯絡閣下如你的作品得獎）'}
 										onChange={handleChange}
 										onBlur={(e) => {
 											handleBlur(e);
@@ -249,67 +286,112 @@ const EventForm = (props) => {
 							</Box>
 
 							<Box flex={1}>
-								{imagePreview ? (
+								{!imagePreview && (
+									<>
+										<Box>
+											<Center
+												border={`1px dashed #d9d9d9`}
+												bgColor={`#fafafa`}
+												borderRadius={`2px`}
+												onClick={() => handleFileUpload()}
+												onDrop={(e) => handleDrop(e)}
+												onDragOver={(e) => handleDragOver(e)}
+												onDragEnter={(e) => handleDragEnter(e)}
+												onDragLeave={(e) => handleDragLeave(e)}
+												cursor={`pointer`}
+												_hover={{
+													border: `1px dashed #000`
+												}}
+												minH={`xs`}
+											>
+												<Stack justifyContent={'center'} alignItems={'center'}>
+													<Icon as={AiOutlineCloudUpload} w={8} h={8} />
+													<Text mb="2">上載作品</Text>
+													<Text fontSize="sm">
+														將照片拖動到此處，或瀏覽要上載的檔案
+													</Text>
+												</Stack>
+											</Center>
+										</Box>
+										<FormControl
+											id="File"
+											isInvalid={errors.File && touched.File}
+										>
+											<FormErrorMessage color="red">
+												{errors.File}
+											</FormErrorMessage>
+											<Box
+												className="upload-btn-wrapper"
+												h={0}
+												overflow={`hidden`}
+											>
+												<Button>Upload a file</Button>
+												<Input
+													variant={'clear'}
+													textAlign={`center`}
+													name="File"
+													type="file"
+													onChange={(event) => {
+														setErrorMessage(null);
+														const expectedSizeInMB = 10;
+														const expectedSizeInBytes =
+															1024 * 1024 * expectedSizeInMB;
+														const file = event.target.files[0];
+														if (file?.size > expectedSizeInBytes) {
+															setErrorMessage('上傳檔案容量不可以超過 10 MB');
+															return;
+														}
+
+														setFieldValue('File', event.target.files[0]);
+
+														event.target.value = ''; // Fix can't upload same file twice
+													}}
+													ref={uploadRef}
+													accept="image/*, .pdf"
+												/>
+											</Box>
+											{errorMessage && (
+												<Text color="red" fontSize={'sm'} py={2}>
+													{errorMessage}
+												</Text>
+											)}
+										</FormControl>
+									</>
+								)}
+
+								{imagePreview && (
 									<Box>
-										<Image src={imagePreview} alt="Image" />
-										<Center my={4}>
-											<Button onClick={() => handleReset()} px={8} py={4}>
-												刪除
+										<Box borderRadius="lg" overflow="hidden">
+											<Image src={imagePreview} alt="Image" />
+										</Box>
+										<Center mt={4}>
+											<Button
+												variant="outline"
+												onClick={() => handleReset()}
+												fontWeight="normal"
+												px={8}
+												py={4}
+											>
+												重新上載
 											</Button>
 										</Center>
 									</Box>
-								) : (
-									<Box>
-										<Center
-											border={`1px dashed #d9d9d9`}
-											bgColor={`#fafafa`}
-											borderRadius={`2px`}
-											onClick={() => handleFileUpload()}
-											onDrop={(e) => handleDrop(e)}
-											onDragOver={(e) => handleDragOver(e)}
-											onDragEnter={(e) => handleDragEnter(e)}
-											onDragLeave={(e) => handleDragLeave(e)}
-											cursor={`pointer`}
-											_hover={{
-												border: `1px dashed #000`
-											}}
-											minH={`xs`}
-										>
-											<Stack justifyContent={'center'} alignItems={'center'}>
-												<Icon as={AiOutlineCloudUpload} w={8} h={8} />
-												<Text>將照片拖動到此處，或選擇要上載的檔案。</Text>
-											</Stack>
-										</Center>
-									</Box>
 								)}
-
-								<FormControl id="File" isInvalid={errors.File && touched.File}>
-									<FormErrorMessage color="red">{errors.File}</FormErrorMessage>
-									<Box className="upload-btn-wrapper" h={0} overflow={`hidden`}>
-										<Button>Upload a file</Button>
-										<Input
-											variant={'clear'}
-											textAlign={`center`}
-											name="File"
-											type="file"
-											onChange={(event) => {
-												setFieldValue('File', event.target.files[0]);
-											}}
-											ref={uploadRef}
-										/>
-									</Box>
-								</FormControl>
 							</Box>
 
 							<Box>
 								<FormControl
 									id={'message'}
-									isInvalid={errors?.OptIn}
+									isInvalid={touched?.tnc && errors?.tnc}
 									pos="relative"
 								>
 									<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
 										<Box mr={2} pt={1}>
-											<Checkbox name="OptIn" onChange={handleChange} />
+											<Checkbox
+												name="tnc"
+												defaultChecked
+												onChange={handleChange}
+											/>
 										</Box>
 										<Text
 											fontSize="xs"
@@ -319,14 +401,16 @@ const EventForm = (props) => {
 											}}
 										/>
 									</Flex>
-									<FormErrorMessage color="var(--error-900)">
-										{errors?.OptIn}
-									</FormErrorMessage>
 								</FormControl>
 							</Box>
 
 							<Box>
-								<Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+								<Button
+									{...OrangeCTA}
+									isLoading={isLoading}
+									type={'submit'}
+									disabled={!!errors?.tnc}
+								>
 									{formContent.submit_text}
 								</Button>
 							</Box>
@@ -346,13 +430,14 @@ const MyEnhancedForm = withFormik({
 		LastName: signup?.preFill?.LastName ?? '',
 		MobileCountryCode: '852',
 		MobilePhone: signup?.preFill?.MobilePhone ?? '',
-		OptIn: false,
+		OptIn: true,
 		Birthdate: signup?.preFill?.Birthdate ?? '',
 		// for event
 		name: '',
 		contact: '',
 		message: '',
 		submissionURL: '',
+		tnc: true, // UI only
 		File: ''
 	}),
 
@@ -362,7 +447,7 @@ const MyEnhancedForm = withFormik({
 	},
 
 	handleSubmit: async (values, { setSubmitting, props }) => {
-		const { submitForm, theme, hiddenFormData, strapi } = props;
+		const { submitForm, setSubmitStep, theme, hiddenFormData, strapi } = props;
 		const isProd = process.env.NODE_ENV === 'production';
 		const fallbackValue = (d) => (d ? d : '');
 		const LeadSource = `Petition - ${capitalize(theme.interests)}`;
@@ -391,13 +476,11 @@ const MyEnhancedForm = withFormik({
 
 		const imageFormData = new FormData();
 		imageFormData.append('file', values.File);
-		imageFormData.append('upload_preset', 'dev_upload_preset');
+		imageFormData.append('upload_preset', 'l2pxawph');
 		imageFormData.append('resource_type', 'raw');
 
-		setSubmitting(true);
-
 		const submissionURL = await axios
-			.post('https://api.cloudinary.com/v1_1/hellocc1002/upload', imageFormData)
+			.post('https://api.cloudinary.com/v1_1/gpea/image/upload', imageFormData)
 			.then(async (res) => {
 				const { statusText, data } = res;
 				if (statusText === 'OK') {
@@ -410,9 +493,9 @@ const MyEnhancedForm = withFormik({
 			Email: values?.Email,
 			FirstName: values?.Email,
 			LastName: values?.LastName,
-			MobileCountryCode: values?.MobileCountry,
+			MobileCountryCode: values?.MobileCountryCode,
 			MobilePhone: values?.MobilePhone,
-			OptIn: values?.OptIn,
+			OptIn: true,
 			Birthdate: values?.Birthdate,
 			CampaignData1__c: values?.name,
 			CampaignData2__c: values?.contact,
@@ -428,26 +511,22 @@ const MyEnhancedForm = withFormik({
 			[`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
 			CompletionURL: completionURL
 		};
-
-		console.log('formData-', formData);
 		submitForm(formData, endpointURL);
+
+		setSubmitStep('done');
 	},
 
 	displayName: 'SignupForm'
 })(EventForm);
 
-const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
+const mapStateToProps = ({ signup, hiddenForm, form, theme }) => {
 	return {
 		signup,
 		hiddenFormData: hiddenForm.data,
-		isLoading: signup.lastAction === signupActions.SIGN_UP,
+		isLoading:
+			signup.lastAction === signupActions.SIGN_UP ||
+			signup.step === 'submitting',
 		formContent: form.content,
-		numberOfResponses: Math.max(
-			parseInt(form.signupNumbers.hk?.NumberOfResponses),
-			parseInt(form.signupNumbers.hk?.NumberOfLeads) +
-				parseInt(form.signupNumbers.hk?.NumberOfContacts)
-		),
-		numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
 		theme: theme.data,
 		suggestion: form.suggestion,
 		strapi: theme.strapi
@@ -458,6 +537,9 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		submitForm: (data, endPoint) => {
 			dispatch({ type: signupActions.SIGN_UP, data, endPoint });
+		},
+		setSubmitStep: (data) => {
+			dispatch({ type: signupActions.SET_STEP, data: data }); // Free text to switch form submit status
 		},
 		setWebStatus: (bol) => {
 			dispatch({ type: statusActions.SET_FORM_SUBMITTED, data: bol });

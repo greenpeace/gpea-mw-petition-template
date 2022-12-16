@@ -3,7 +3,7 @@ import React from 'react';
 
 const WithSubnavigation = ({ href }) => {
 	const logoChinese =
-		'https://res.cloudinary.com/gpea/image/upload/v1664784284/logo/GP-logo-2019-TC-white-_web_-01_q6wtsq.png';
+		'https://www.greenpeace.org/static/planet4-hongkong-stateless/2020/05/aa123dcd-gp-logo-2019-tc-white-web-01.png';
 
 	return (
 		<Box

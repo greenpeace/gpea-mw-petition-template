@@ -12,6 +12,7 @@ import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
+import DonateFAQ from '@components/DonateFAQ';
 import ThoughList from './ThoughtList';
 import Form from './FormComponent';
 // Import Strapi content components
@@ -25,6 +26,7 @@ import formContent from './form';
 const Index = ({ submitted = false, strapi }) => {
 	const dispatch = useDispatch();
 	let theme = useSelector((state) => state?.theme);
+	const signup = useSelector((state) => state?.signup);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const [ref, inView] = useInView({
 		threshold: 0
@@ -136,24 +138,30 @@ const Index = ({ submitted = false, strapi }) => {
 				})()}
 			</Box>
 			<Box
-				className="contentOverlayWrap"
 				m={{ base: '-20px 0px', md: '-20px 20px 0 20px' }}
 				position="relative"
 				zIndex={10}
 			>
 				<PageContainer>
-					<Flex
-						flexDirection={{ base: 'column-reverse', md: 'row' }}
-						className="contentWrap"
-					>
+					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box minWidth={0} flex={1}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{/* <Box>
-									<img
-										className="h-auto max-w-full"
-										src="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/10/855db730-sl_111019_24830_70-scaled.jpg"
-									/>
-								</Box> */}
+								<Box>
+									<h2 className="mt-8 pb-6 text-center text-2xl font-bold">
+										{signup?.preFill?.FirstName &&
+											`${signup?.preFill?.FirstName}，`}
+										邀請您許個生日願望...
+									</h2>
+									<div className="aspect-w-4 aspect-h-3 my-6">
+										<iframe
+											src="https://player.vimeo.com/video/778375504?h=ab72560059&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1"
+											frameborder="0"
+											width="640"
+											height="360"
+											allow="autoplay"
+										></iframe>
+									</div>
+								</Box>
 								<>
 									{submitted ? (
 										<StrapiDynamicBlocks
@@ -173,16 +181,15 @@ const Index = ({ submitted = false, strapi }) => {
 							<FormContainer>
 								<Box position="sticky">
 									<Box ref={ref}>
-										<div className="relative flex h-[180px] items-center justify-center overflow-hidden md:h-[220px]">
+										{/* <div className="aspect-w-4 aspect-h-3">
 											<iframe
-												src="https://player.vimeo.com/video/643277567"
-												width="100%"
-												height="100%"
+												src="https://player.vimeo.com/video/773692586?h=9d9804e6a1&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&autoplay=1&loop=1&muted=1"
 												frameborder="0"
-												allow="autoplay;"
-												allowfullscreen
-											/>
-										</div>
+												width="640"
+												height="360"
+												allow="autoplay"
+											></iframe>
+										</div> */}
 										<Form />
 									</Box>
 								</Box>

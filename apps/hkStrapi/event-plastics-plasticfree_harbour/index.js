@@ -155,12 +155,7 @@ function Index({ submitted = false, strapi }) {
 								<>
 									{pageType?.toLowerCase() === 'donation' && !submitted && (
 										<>
-											<Heading
-												as="p"
-												textAlign="center"
-												py="6"
-												fontSize={{ base: 'xl', md: '2xl' }}
-											>
+											<Heading textAlign="center" py="6" fontSize="2xl">
 												常見問題
 											</Heading>
 											<DonateFAQ locale="HKChinese" />
@@ -184,7 +179,11 @@ function Index({ submitted = false, strapi }) {
 												theme?.params?.donation_module_campaign ??
 												strapi?.donationModuleCampaign
 											}
-											campaignId={theme?.params?.campaignId ?? ''}
+											campaignId={
+												theme?.params?.campaignId ??
+												strapi?.donationModuleCampaignId ??
+												''
+											}
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (
