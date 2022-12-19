@@ -6,7 +6,7 @@ import {
 	AccordionPanel,
 	AccordionIcon,
 	Box,
-	Text
+	Text,
 } from '@chakra-ui/react';
 
 import { paragraphProps } from '@common/styles/components/contentStyle';
@@ -24,8 +24,11 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
 						>
 							<AccordionIcon mr="2" />
 							<Box py="6" p="4" flex="1" textAlign="left">
-								<Text as="p" fontSize="md">
-									{d.title}
+								<Text as="p" fontSize="md"
+									dangerouslySetInnerHTML={{
+										__html: d.title
+									}}
+								>
 								</Text>
 							</Box>
 						</AccordionButton>
