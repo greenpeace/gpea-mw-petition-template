@@ -23,8 +23,9 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
 							_expanded={{ fontWeight: 'bold', bg: '', color: '' }}
 						>
 							<AccordionIcon mr="2" />
-							<Box py="6" p="4" flex="1" textAlign="left">
+							<Box py="6" p="4" flex="1" textAlign="left" >
 								<Text as="p" fontSize="md"
+									
 									dangerouslySetInnerHTML={{
 										__html: d.title
 									}}
@@ -37,6 +38,7 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
 								as="p"
 								{...paragraphProps}
 								textAlign={'initial'}
+								sx={{'a':{color: 'var(--brand)'}}}
 								dangerouslySetInnerHTML={{
 									__html: d.desc
 								}}
