@@ -29,45 +29,62 @@ export const SwiperCarousel = ({ data }) => {
 		autoplay: false,
 		pagination: {
 			clickable: true,
-			renderBullet: function (index, className) {
-				return '<span className="' + className + '"></span>';
-			}
+			// renderBullet: function (index, className) {
+			// 	return '<span className="' + className + '"></span>';
+			// }
 		}
 	};
 	return (
-		<Swiper
-			modules={[Autoplay, Mousewheel, Navigation, Pagination]}
-			{...defaultConfig}
-		>
-			<Box className="swiper-pagination" />
-			{data?.map((d, i) => (
-				<SwiperSlide key={i}>
-					<Box>
-						<Box
-							overflow={'hidden'}
-							w={'100%'}
-							h={{ base: '240px', md: '320px' }}
-							position="relative"
-						>
+		<Box>
+			<Box className="carousel-swiper-pagination" textAlign="center" mb={4} />
+			<Swiper
+				modules={[Autoplay, Mousewheel, Navigation, Pagination]}
+				{...defaultConfig}
+				pagination={{
+					el: '.carousel-swiper-pagination',
+					clickable: true
+				}}
+				navigation={{
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev'
+				}}
+			>
+
+				<Box className="swiper-button-prev">
+					<ChevronLeftIcon w={8} h={8} color="green.400" />
+				</Box>
+				<Box className="swiper-button-next">
+					<ChevronRightIcon w={8} h={8} color="green.400" />
+				</Box>
+				{data?.map((d, i) => (
+					<SwiperSlide key={i}>
+						<Box w={'90%'}>
 							<Box
-								bgPosition={'center'}
-								objectFit={'cover'}
-								bgImage={d?.image?.data?.attributes?.url}
+								overflow={'hidden'}
 								w={'100%'}
-								h={'100%'}
-								position={'absolute'}
-							/>
+								h={{ base: '240px', md: '320px' }}
+								position="relative"
+							>
+								<Box
+									bgPosition={'center'}
+									objectFit={'cover'}
+									bgImage={d?.image?.data?.attributes?.url}
+									w={'100%'}
+									h={'100%'}
+									position={'absolute'}
+								/>
+							</Box>
+							<Box pt={2}>
+								<Text textAlign="center">{d?.title}</Text>
+								<Text fontSize={14} py={4}>
+									{d?.description}
+								</Text>
+							</Box>
 						</Box>
-						<Box pt={2}>
-							<Text>{d?.title}</Text>
-							<Text fontSize={14} py={4}>
-								{d?.text}
-							</Text>
-						</Box>
-					</Box>
-				</SwiperSlide>
-			))}
-		</Swiper>
+					</SwiperSlide>
+				))}
+			</Swiper>
+		</Box>
 	);
 };
 
@@ -85,50 +102,54 @@ export const SingleCarousel = ({ data }) => {
 		}
 	};
 	return (
-		<Swiper
-			modules={[EffectFade, Pagination]}
-			{...defaultConfig}
-			pagination={{
-				el: '.custom-testimonial-swiper-pagination',
-				clickable: true
-			}}
-			navigation={{
-				nextEl: '.testimonial-swiper-button-next',
-				prevEl: '.testimonial-swiper-button-prev'
-			}}
-		>
-			<Box className="swiper-button-prev">
-				<ChevronLeftIcon w={8} h={8} color="green.400" />
-			</Box>
-			<Box className="swiper-button-next">
-				<ChevronRightIcon w={8} h={8} color="green.400" />
-			</Box>
-			{data?.map((d, i) => (
-				<SwiperSlide key={i}>
-					<Box>
-						<Box
-							overflow={'hidden'}
-							w={'100%'}
-							h={{ base: '300px', md: '400px' }}
-							position="relative"
-						>
+		<Box>
+			<Box className="carousel-swiper-pagination" textAlign="center" mb={4} />
+			<Swiper
+				modules={[EffectFade, Pagination, Navigation]}
+				{...defaultConfig}
+				pagination={{
+					el: '.carousel-swiper-pagination',
+					clickable: true
+				}}
+				navigation={{
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev'
+				}}
+			>
+				
+				<Box className="swiper-button-prev">
+					<ChevronLeftIcon w={8} h={8} color="green.400" />
+				</Box>
+				<Box className="swiper-button-next">
+					<ChevronRightIcon w={8} h={8} color="green.400" />
+				</Box>
+				{data?.map((d, i) => (
+					<SwiperSlide key={i}>
+						<Box w={'90%'}>
 							<Box
-								bgPosition={'center'}
-								objectFit={'cover'}
-								bgImage={d?.image?.data?.attributes?.url}
+								overflow={'hidden'}
 								w={'100%'}
-								h={'100%'}
-								position={'absolute'}
-							/>
+								h={{ base: '300px', md: '400px' }}
+								position="relative"
+							>
+								<Box
+									bgPosition={'center'}
+									objectFit={'cover'}
+									bgImage={d?.image?.data?.attributes?.url}
+									w={'100%'}
+									h={'100%'}
+									position={'absolute'}
+								/>
+							</Box>
+							<Box pt="4">
+								<Text textAlign="center">{d?.title}</Text>
+								<Text py={4}>{d?.description}</Text>
+							</Box>
 						</Box>
-						<Box pt="4">
-							<Text>{d?.title}</Text>
-							<Text py={4}>{d?.text}</Text>
-						</Box>
-					</Box>
-				</SwiperSlide>
-			))}
-		</Swiper>
+					</SwiperSlide>
+				))}
+			</Swiper>
+		</Box>
 	);
 };
 
