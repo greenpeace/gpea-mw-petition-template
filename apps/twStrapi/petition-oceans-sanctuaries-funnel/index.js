@@ -1,3 +1,13 @@
+/** 
+ * Dploy Setting:
+ *
+ * PROJECT=twStrapi/petition-oceans-sanctuaries-funnel
+ * MARKET=tw
+ * PROJECT_NAME=petition-oceans-sanctuaries-funnel
+ * BASEPATH=/htdocs/2022/test/petition-oceans-sanctuaries-funnel-uat
+ * ASSETPREFIX=https://change.greenpeace.org.tw/2022/test/petition-oceans-sanctuaries-funnel-uat/
+ * FTP_CONFIG_NAME=ftp_tw
+*/
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
