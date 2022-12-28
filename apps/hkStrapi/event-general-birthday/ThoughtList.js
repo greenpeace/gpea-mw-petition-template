@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
 	Box,
 	Heading,
+	Stack,
 	Text,
 	Center,
 	Spinner,
@@ -14,7 +15,7 @@ import { headingProps } from '@common/styles/components/contentStyle';
 
 import axios from 'axios';
 
-const API_ENDPOINT = `https://strapi.small-service.gpeastasia.org/api/thoughts`;
+const API_ENDPOINT = `https://strapi.small-service.gpeastasia.org/api/responses`;
 
 const ThoughList = () => {
 	const PAGE_SIZE = 20;
@@ -56,7 +57,7 @@ const ThoughList = () => {
 	};
 
 	const handleLoadMore = () => {
-		const number = total - thoughts.length;
+		const number = total - thoughts?.length;
 
 		if (number > 0) {
 			return (
@@ -79,12 +80,14 @@ const ThoughList = () => {
 
 	return (
 		<Box bgColor={'white'} pos={'relative'} borderRadius={'8px'} px="4" py="6">
-			<Box  mb="4">
-				<Heading as="h2" {...headingProps} color={'theme.climate'} mb="2">
-					I Wish…
+			<Stack mb="4" space="6">
+				<Heading as="h2" {...headingProps} color={'#66cc00'}>
+					I Wish ...
 				</Heading>
-				<Text>看看您與其他綠色和平會員的生日願望，盼我們堅持環保信念，終有一天成真！</Text>
-			</Box>
+				<Text>
+					看看您與其他綠色和平會員的生日願望，盼我們堅持環保信念，終有一天成真！
+				</Text>
+			</Stack>
 			<Box
 				maxH={{ base: '480px', md: '680px' }}
 				overflowY={'auto'}
@@ -101,20 +104,18 @@ const ThoughList = () => {
 					}
 				}}
 			>
-				<SimpleGrid columns={{ base: '1', md: '2' }} gap={4}>
+				<SimpleGrid columns={{ base: '1', lg: '2' }} gap={4}>
 					{thoughts?.map((thought, i) => (
 						<Box
 							key={i}
 							flex={1}
-							borderRadius="4px"
+							borderRadius="md"
 							borderWidth="1px"
 							borderLeft="4px"
-							borderLeftColor={'theme.climate'}
-							bgColor={'yellow.50'}
+							borderLeftColor={'#66cc00'}
+							bgColor={'#fefefe'}
 							p={4}
 							overflow="hidden"
-							mb="4"
-							fontFamily={'sans-serif'}
 						>
 							<Text
 								fontSize={'md'}

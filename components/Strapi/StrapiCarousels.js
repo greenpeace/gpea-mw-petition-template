@@ -29,45 +29,62 @@ export const SwiperCarousel = ({ data }) => {
 		autoplay: false,
 		pagination: {
 			clickable: true,
-			renderBullet: function (index, className) {
-				return '<span className="' + className + '"></span>';
-			}
+			// renderBullet: function (index, className) {
+			// 	return '<span className="' + className + '"></span>';
+			// }
 		}
 	};
 	return (
-		<Swiper
-			modules={[Autoplay, Mousewheel, Navigation, Pagination]}
-			{...defaultConfig}
-		>
-			<Box className="swiper-pagination" />
-			{data?.map((d, i) => (
-				<SwiperSlide key={i}>
-					<Box>
-						<Box
-							overflow={'hidden'}
-							w={'100%'}
-							h={{ base: '240px', md: '320px' }}
-							position="relative"
-						>
+		<Box>
+			<Box className="carousel-swiper-pagination" textAlign="center" mb={4} />
+			<Swiper
+				modules={[Autoplay, Mousewheel, Navigation, Pagination]}
+				{...defaultConfig}
+				pagination={{
+					el: '.carousel-swiper-pagination',
+					clickable: true
+				}}
+				navigation={{
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev'
+				}}
+			>
+
+				<Box className="swiper-button-prev">
+					<ChevronLeftIcon w={8} h={8} color="green.400" />
+				</Box>
+				<Box className="swiper-button-next">
+					<ChevronRightIcon w={8} h={8} color="green.400" />
+				</Box>
+				{data?.map((d, i) => (
+					<SwiperSlide key={i}>
+						<Box w={'90%'}>
 							<Box
-								bgPosition={'center'}
-								objectFit={'cover'}
-								bgImage={d?.image?.data?.attributes?.url}
+								overflow={'hidden'}
 								w={'100%'}
-								h={'100%'}
-								position={'absolute'}
-							/>
+								h={{ base: '240px', md: '320px' }}
+								position="relative"
+							>
+								<Box
+									bgPosition={'center'}
+									objectFit={'cover'}
+									bgImage={d?.image?.data?.attributes?.url}
+									w={'100%'}
+									h={'100%'}
+									position={'absolute'}
+								/>
+							</Box>
+							<Box pt={2}>
+								<Text textAlign="center">{d?.title}</Text>
+								<Text fontSize={14} py={4}>
+									{d?.description}
+								</Text>
+							</Box>
 						</Box>
-						<Box pt={2}>
-							<Text>{d?.title}</Text>
-							<Text fontSize={14} py={4}>
-								{d?.text}
-							</Text>
-						</Box>
-					</Box>
-				</SwiperSlide>
-			))}
-		</Swiper>
+					</SwiperSlide>
+				))}
+			</Swiper>
+		</Box>
 	);
 };
 
@@ -85,64 +102,54 @@ export const SingleCarousel = ({ data }) => {
 		}
 	};
 	return (
-		<Swiper
-			modules={[EffectFade, Pagination]}
-			{...defaultConfig}
-			pagination={{
-				el: '.custom-testimonial-swiper-pagination',
-				clickable: true
-			}}
-			navigation={{
-				nextEl: '.testimonial-swiper-button-next',
-				prevEl: '.testimonial-swiper-button-prev'
-			}}
-		>
-			<Box
-				className="swiper-button-prev"
-				bgColor="#FFF"
-				borderRadius="50%"
-				w="40px"
-				height="40px"
-				shadow="md"
+		<Box>
+			<Box className="carousel-swiper-pagination" textAlign="center" mb={4} />
+			<Swiper
+				modules={[EffectFade, Pagination, Navigation]}
+				{...defaultConfig}
+				pagination={{
+					el: '.carousel-swiper-pagination',
+					clickable: true
+				}}
+				navigation={{
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev'
+				}}
 			>
-				<ChevronLeftIcon w={8} h={8} color="green.400" />
-			</Box>
-			<Box
-				className="swiper-button-next"
-				bgColor="#FFF"
-				borderRadius="50%"
-				w="40px"
-				height="40px"
-				shadow="md"
-			>
-				<ChevronRightIcon w={8} h={8} color="green.400" />
-			</Box>
-			{data?.map((d, i) => (
-				<SwiperSlide key={i}>
-					<Box>
-						<Box
-							overflow={'hidden'}
-							w={'100%'}
-							h={{ base: '300px', md: '400px' }}
-							position="relative"
-						>
+				
+				<Box className="swiper-button-prev">
+					<ChevronLeftIcon w={8} h={8} color="green.400" />
+				</Box>
+				<Box className="swiper-button-next">
+					<ChevronRightIcon w={8} h={8} color="green.400" />
+				</Box>
+				{data?.map((d, i) => (
+					<SwiperSlide key={i}>
+						<Box w={'90%'}>
 							<Box
-								bgPosition={'center'}
-								objectFit={'cover'}
-								bgImage={d?.image?.data?.attributes?.url}
+								overflow={'hidden'}
 								w={'100%'}
-								h={'100%'}
-								position={'absolute'}
-							/>
+								h={{ base: '300px', md: '400px' }}
+								position="relative"
+							>
+								<Box
+									bgPosition={'center'}
+									objectFit={'cover'}
+									bgImage={d?.image?.data?.attributes?.url}
+									w={'100%'}
+									h={'100%'}
+									position={'absolute'}
+								/>
+							</Box>
+							<Box pt="4">
+								<Text textAlign="center">{d?.title}</Text>
+								<Text py={4}>{d?.description}</Text>
+							</Box>
 						</Box>
-						<Box pt="4">
-							<Text>{d?.title}</Text>
-							<Text py={4}>{d?.text}</Text>
-						</Box>
-					</Box>
-				</SwiperSlide>
-			))}
-		</Swiper>
+					</SwiperSlide>
+				))}
+			</Swiper>
+		</Box>
 	);
 };
 
@@ -169,24 +176,10 @@ export const CardCarousel = ({ data }) => {
 					prevEl: '.swiper-button-prev'
 				}}
 			>
-				<Box
-					className="swiper-button-prev"
-					bgColor="#FFF"
-					borderRadius="50%"
-					w="40px"
-					height="40px"
-					shadow="md"
-				>
+				<Box className="swiper-button-prev">
 					<ChevronLeftIcon w={8} h={8} color="green.400" />
 				</Box>
-				<Box
-					className="swiper-button-next"
-					bgColor="#FFF"
-					borderRadius="50%"
-					w="40px"
-					height="40px"
-					shadow="md"
-				>
+				<Box className="swiper-button-next">
 					<ChevronRightIcon w={8} h={8} color="green.400" />
 				</Box>
 
@@ -200,7 +193,12 @@ export const CardCarousel = ({ data }) => {
 							borderRadius="20px"
 							m={4}
 						>
-							<Stack direction="column" space="4" borderRadius="20px" overflow={'hidden'}>
+							<Stack
+								direction="column"
+								space="4"
+								borderRadius="20px"
+								overflow={'hidden'}
+							>
 								<img
 									class="w-full"
 									src={d?.image?.data?.attributes?.url}
@@ -247,24 +245,10 @@ export const TestimonialCarousel = ({ data }) => {
 					prevEl: '.testimonial-swiper-button-prev'
 				}}
 			>
-				<Box
-					className="testimonial-swiper-button-prev swiper-button-prev"
-					bgColor="#FFF"
-					borderRadius="50%"
-					w="40px"
-					height="40px"
-					shadow="md"
-				>
+				<Box className="testimonial-swiper-button-prev swiper-button-prev">
 					<ChevronLeftIcon w={8} h={8} color="green.400" />
 				</Box>
-				<Box
-					className="testimonial-swiper-button-next swiper-button-next"
-					bgColor="#FFF"
-					borderRadius="50%"
-					w="40px"
-					height="40px"
-					shadow="md"
-				>
+				<Box className="testimonial-swiper-button-next swiper-button-next">
 					<ChevronRightIcon w={8} h={8} color="green.400" />
 				</Box>
 
@@ -274,10 +258,11 @@ export const TestimonialCarousel = ({ data }) => {
 							bgColor="#FFF"
 							w={'100%'}
 							shadow="md"
-							pt={10}
-							pb={6}
+							py={8}
 							borderRadius="20px"
-							m={4}
+							mx={2}
+							mt={4}
+							mb={6}
 						>
 							<Stack
 								direction="column"
@@ -285,22 +270,22 @@ export const TestimonialCarousel = ({ data }) => {
 								space="4"
 								alignItems={'center'}
 							>
-								<div className="avatar mt-2">
+								<Box className="avatar mt-2">
 									<div className="w-24 rounded-full ring ring-[#66cc00] ring-offset-2 ring-offset-base-100">
 										<img src={d?.avatar?.data?.attributes?.url} alt={d?.name} />
 									</div>
-								</div>
+								</Box>
 								<Box
 									dangerouslySetInnerHTML={{ __html: d?.quote }}
 									p={4}
 									alignSelf="self-start"
 									textAlign="left"
 								/>
-								<Box pt={2}>
+								<Box p={4}>
 									<Text textAlign="center" fontWeight={'bold'}>
 										{d?.name}
 									</Text>
-									<Box
+									<Text
 										fontSize={'sm'}
 										dangerouslySetInnerHTML={{ __html: d?.description }}
 									/>

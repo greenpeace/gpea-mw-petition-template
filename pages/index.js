@@ -153,7 +153,14 @@ function Index({
 		const domain = document.location.host;
 		const market =
 			themeData?.Market?.toUpperCase() ||
-			(domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : '');
+			strapi?.market?.data?.attributes?.market === 'Hong Kong'
+				? 'HK'
+				: 'TW' ||
+				  (domain.indexOf('hk') > 0
+						? 'HK'
+						: domain.indexOf('tw') > 0
+						? 'TW'
+						: '');
 		/* GTM is only applicable for production env */
 		initTagManager(market);
 		setTheme(themeData);

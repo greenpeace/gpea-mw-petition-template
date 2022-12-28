@@ -158,7 +158,12 @@ function Index({ submitted = false, strapi }) {
 									<>
 										{pageType?.toLowerCase() === 'donation' && !submitted && (
 											<>
-												<Heading textAlign="center" py="6" fontSize="2xl">
+												<Heading
+													as="p"
+													textAlign="center"
+													py="6"
+													fontSize={{ base: 'xl', md: '2xl' }}
+												>
 													常見問題
 												</Heading>
 												<DonateFAQ locale="TWChinese" />
@@ -174,6 +179,7 @@ function Index({ submitted = false, strapi }) {
 									<Box ref={ref}>
 										{pageType?.toLowerCase() === 'donation' || submitted ? (
 											<DonationModule
+												isUAT={true}
 												market={
 													strapi?.market?.data?.attributes?.market ===
 													'Hong Kong'
@@ -185,7 +191,11 @@ function Index({ submitted = false, strapi }) {
 													theme?.params?.donation_module_campaign ??
 													strapi?.donationModuleCampaign
 												}
-												campaignId={theme?.params?.campaignId ?? ''}
+												campaignId={
+													theme?.params?.campaignId ??
+													strapi?.donationModuleCampaignId ??
+													''
+												}
 												env={strapi?.donationModuleEnv}
 											/>
 										) : (

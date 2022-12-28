@@ -1,3 +1,14 @@
+/** 
+ * Dploy Setting:
+ *
+ * PROJECT=hkStrapi/petition-oceans-elm
+ * MARKET=hk
+ * PROJECT_NAME=petition-oceans-elm
+ * BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/test/petition-oceans-elm-uat
+ * ASSETPREFIX=https://api.greenpeace.org.hk/2022/test/petition-oceans-elm-uat/
+ * FTP_CONFIG_NAME=api_hk_cloud
+*/
+
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -155,7 +166,12 @@ function Index({ submitted = false, strapi }) {
 								<>
 									{pageType?.toLowerCase() === 'donation' && !submitted && (
 										<>
-											<Heading textAlign="center" py="6" fontSize="2xl">
+											<Heading
+												as="p"
+												textAlign="center"
+												py="6"
+												fontSize={{ base: 'xl', md: '2xl' }}
+											>
 												常見問題
 											</Heading>
 											<DonateFAQ locale="HKChinese" />
@@ -179,7 +195,11 @@ function Index({ submitted = false, strapi }) {
 												theme?.params?.donation_module_campaign ??
 												strapi?.donationModuleCampaign
 											}
-											campaignId={theme?.params?.campaignId ?? ''}
+											campaignId={
+												theme?.params?.campaignId ??
+												strapi?.donationModuleCampaignId ??
+												''
+											}
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (

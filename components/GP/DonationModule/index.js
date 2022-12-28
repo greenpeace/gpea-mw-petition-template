@@ -46,55 +46,65 @@ import useScript from './useScript';
 */
 
 const DonationModule = (props) => {
-  const { market, language, campaign, campaignId, env, signup, preFill } =
-    props;
+	const {
+		market,
+		language,
+		campaign,
+		campaignId,
+		env,
+		signup,
+		preFill,
+		isUAT = false
+	} = props;
 
-  // Define constant module url
-  const moduleUrl = 'https://api.greenpeace.org.hk/app/donation-module/main.js';
-  // Import module
-  const status = useScript(moduleUrl);
+	// Define constant module url
+	const moduleUrl = isUAT
+		? 'https://api.greenpeace.org.hk/app/donation-module-uat/main.js'
+		: 'https://api.greenpeace.org.hk/app/donation-module/main.js';
+	// Import module
+	const status = useScript(moduleUrl);
 
-  return (
-    <Box pos="relative">
-      {/* Script loading */}
-      <Fade in={status != 'ready'}>
-        <Flex
-          zIndex="99"
-          pos="absolute"
-          top="0"
-          right="0"
-          width="100%"
-          height="100%"
-          direction="column"
-          align="center"
-          justifyContent="center"
-          bg="white"
-        >
-          <Spinner size="xl" color="#66cc00" />
-        </Flex>
-      </Fade>
-      {/* React DOM render here */}
-      <div
-        data-gpea-module="gpea-donation-module"
-        data-gpea-market={market?.toUpperCase()} //手動填寫← TW 或 HK
-        data-gpea-language={language} //手動填寫← zh_TW 或 zh_HK 或 en_HK
-        data-gpea-campaign={campaign} //手動填寫，schema原始資料沒有這個設定
-        data-gpea-campaign-id={campaignId || ''} //手動填寫，依 Donation campaign 手動填寫
-        data-gpea-env={env} //手動填寫← test 或 full 或 production
-        data-gpea-formdata={JSON.stringify({
-          ...preFill,
-          ...signup,
-        })} //非必填，繼承自 petition daisy chain
-      ></div>
-    </Box>
-  );
+	return (
+		<Box pos="relative">
+			{/* Script loading */}
+			<Fade in={status != 'ready'}>
+				<Flex
+					zIndex="99"
+					pos="absolute"
+					top="0"
+					right="0"
+					width="100%"
+					height="100%"
+					direction="column"
+					align="center"
+					justifyContent="center"
+					bg="white"
+				>
+					<Spinner size="xl" color="#66cc00" />
+				</Flex>
+			</Fade>
+			{/* React DOM render here */}
+			<div
+				data-gpea-module="gpea-donation-module"
+				data-gpea-market={market?.toUpperCase()} //手動填寫← TW 或 HK
+				data-gpea-language={language} //手動填寫← zh_TW 或 zh_HK 或 en_HK
+				data-gpea-campaign={campaign} //手動填寫，schema原始資料沒有這個設定
+				data-gpea-campaign-id={campaignId || ''} //手動填寫，依 Donation campaign 手動填寫
+				data-gpea-env={env} //手動填寫← test 或 full 或 production
+				data-gpea-formdata={JSON.stringify({
+					...preFill,
+					...signup
+				})} //非必填，繼承自 petition daisy chain
+			></div>
+		</Box>
+	);
 };
 
 const mapStateToProps = ({ signup }) => {
-  return {
-    signup: signup?.data,
-    preFill: signup?.preFill,
-  };
+	return {
+		signup: signup?.data,
+		preFill: signup?.preFill
+	};
 };
 
 export default connect(mapStateToProps)(DonationModule);
