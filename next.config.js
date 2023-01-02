@@ -7,7 +7,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const isFull = process.env.NODE_ENV === 'development';
 console.info('=======================> next.config');
 console.info('process.env.NODE_ENV',process.env.NODE_ENV);
-console.info('assetPrefix',path.join(process.env.ASSETPREFIX, process.env.CAMPAIGN, process.env.ENV_PARAM));
+console.info('assetPrefix', `${process.env.ASSETPREFIX}/` + path.join(process.env.CAMPAIGN, process.env.ENV_PARAM));
 console.info('=======================> next.config');
 
 const nextConfig = {
@@ -23,7 +23,7 @@ const nextConfig = {
     dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.greenhk.greenpeace.org/websign-dummy`,
   },
   // FIXME: Use the CDN in production and localhost for development.
-  assetPrefix: (isProd || isFull) ? path.join(process.env.ASSETPREFIX, process.env.CAMPAIGN, process.env.ENV_PARAM) : '',
+  assetPrefix: (isProd || isFull) ? `${process.env.ASSETPREFIX}/` + path.join(process.env.CAMPAIGN, process.env.ENV_PARAM) : '',
   trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },

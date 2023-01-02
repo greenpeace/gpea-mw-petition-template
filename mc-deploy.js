@@ -123,7 +123,7 @@ const upload_folder = async function (sftpSetting, localDir, remoteDir) {
   //var ftps = new FTPS(settings);
 
   console.info(
-    `5. Sync from \`${localDir}\` to \`${sftpSetting.protocol}://${sftpSetting.username}@${sftpSetting.host}:${sftpSetting.port}${remoteDir}\``,
+    `5. Sync from \`${localDir}\` to \`${sftpSetting.username}@${sftpSetting.host}:${sftpSetting.port}${remoteDir}\``,
   );
 
   let sftp = new Client();
