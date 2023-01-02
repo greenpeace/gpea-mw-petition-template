@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build:full": "cross-env NODE_ENV=development next build",
+    "build:production": "cross-env NODE_ENV=production next build",
+    "export:full": "cross-env NODE_ENV=development next export",
+    "export:production": "cross-env NODE_ENV=production next export",
     "start": "next start",
     "format": "prettier --write .",
-    "deploy:full": "npm run build && NODE_ENV=development node mc-deploy.js",
-    "deploy:production": "npm run build && NODE_ENV=production node mc-deploy.js",
+    "deploy:full": "cross-env NODE_ENV=development node mc-deploy.js",
+    "deploy:production": "cross-env NODE_ENV=production node mc-deploy.js",
     "prepare": "husky install"
   },
   "husky": {
@@ -25,6 +28,7 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "axios": "^0.21.1",
+    "cross-env": "^7.0.3",
     "crypto-js": "^4.1.1",
     "dotenv": "^10.0.0",
     "embla-carousel-react": "^6.2.0",
@@ -56,6 +60,7 @@
     "redux-saga": "^1.1.3",
     "responsive-loader": "^2.3.0",
     "sass": "^1.38.1",
+    "ssh2-sftp-client": "^9.0.4",
     "swiper": "^8.0.7",
     "webp-loader": "^0.6.0"
   },

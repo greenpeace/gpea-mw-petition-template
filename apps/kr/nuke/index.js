@@ -38,7 +38,12 @@ function Index() {
   });
   const mobileForm = useRef(null); 
   const thankForm = useRef(null); 
-
+  const [gclid, setGclid] = React.useState(null);
+  const changeGclid = React.useCallback(
+    (gclid) => {
+      setGclid(gclid);
+    }
+  )
   //console.log('step isMobile',step, isMobile)
 
   useEffect(() => {
@@ -54,6 +59,7 @@ function Index() {
 
   return (
     <>
+      <input type="hidden" id="gclid_field" name="gclid_field" onChange={(e)=>{changeGclid(e.target.value);}} />
       <SEO />
       <Box ref={thankForm}>
         {(() => { 
@@ -110,6 +116,7 @@ function Index() {
                             market={'kr'}
                             language={'ko_KR'}
                             campaign={process.env.campaign}
+                            gclid={gclid}
                             env={process.env.envParam}
                           />
                         ) : (
@@ -142,6 +149,7 @@ function Index() {
                           //   theme?.params?.donation_module_campaign ?? 'nuke'
                           // }
                           // campaignId={''}
+                          gclid={gclid}
                           env={process.env.envParam}
                         />
                       ) : (

@@ -1,8 +1,13 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
+const path = require('path');
 
 const isProd = process.env.NODE_ENV === 'production';
+const isFull = process.env.NODE_ENV === 'development';
+console.info('=======================> next.config');
+console.info('process.env.NODE_ENV',process.env.NODE_ENV);
+console.info('=======================> next.config');
 
 const nextConfig = {
   env: {
@@ -17,7 +22,7 @@ const nextConfig = {
     dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.greenhk.greenpeace.org/websign-dummy`,
   },
   // FIXME: Use the CDN in production and localhost for development.
-  assetPrefix: isProd ? process.env.ASSETPREFIX : '',
+  assetPrefix: (isProd || isFull) ? path.join(process.env.ASSETPREFIX, process.env.CAMPAIGN, process.env.ENV_PARAM) : '',
   trailingSlash: true,
   exportPathMap: async () => ({
     '/': { page: '/' },

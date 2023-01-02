@@ -45,16 +45,16 @@ import useScript from './useScript';
 
 */
 
+const path = require('path');
+
 const DonationModule = (props) => {
-  const { market, language, campaign, campaignId, env, signup, preFill } =
+  const { market, language, campaign, campaignId, env, signup, preFill, gclid } =
     props;
 
   //FIXME: Define constant module url
   let moduleUrl = '';
-  if (process.env.envParam === 'production') {
-    moduleUrl = `https://gpseoulwebserver.co.kr/dchain/nuke/main.js`;
-  } else if (process.env.envParam === 'full') {
-    moduleUrl = `https://gpseoulwebserver.co.kr/dchain/nuke/main.js`; //`${window.location.href}/main.js`;
+  if (process.env.envParam === 'production' || process.env.envParam === 'full') {
+    moduleUrl = path.join(process.env.ASSETPREFIX, process.env.CAMPAIGN, '/main.js');`https://gpseoulwebserver.co.kr/dchain/nuke/production/main.js`;
   } else {
     moduleUrl = `${window.location.href}/main.js`;
   }
@@ -84,15 +84,16 @@ const DonationModule = (props) => {
       {/* React DOM render here */}
       <div
         data-gpea-module="gpea-donation-module"
-        data-gpea-market={market?.toUpperCase()} //手動填寫← TW 或 HK
-        data-gpea-language={language} //手動填寫← zh_TW 或 zh_HK 或 en_HK
-        data-gpea-campaign={campaign} //手動填寫，schema原始資料沒有這個設定
-        data-gpea-campaign-id={campaignId || ''} //手動填寫，依 Donation campaign 手動填寫
-        data-gpea-env={env} //手動填寫← test 或 full 或 production
+        data-gpea-market={market?.toUpperCase()} //KR
+        data-gpea-language={language} //KR
+        data-gpea-campaign={campaign} //KR
+        data-gpea-campaign-id={campaignId || ''} //Donation campaign
+        data-gpea-env={env} //full or production
+        data-gpea-gclid={gclid} //full or production
         data-gpea-formdata={JSON.stringify({
           ...preFill,
           ...signup,
-        })} //非必填，繼承自 petition daisy chain
+        })} //petition daisy chain
       ></div>
     </Box>
   );

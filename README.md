@@ -39,10 +39,10 @@ src/
 
 ## To deploy the page onto the ftp server
 
-1. Run `npm run build` to check if the react app can be built normally. (Optional if you have done it before)
-2. Run `npm run build-export` in order to build the app and export the static files.
+1. Run `yarn build:full or yarn build:production` to check if the react app can be built normally. (Optional if you have done it before)
+2. Run `ayrn export:full or yarn export:production` in order to build the app and export the static files.
 3. Now you should be able to find the output static files in the `out` folder.
-4. (Optional but preferred deploy option) Assuming you have configured the prerequisite of the ftp credientials. You can run `npm run deploy` to deploy the output to the destinated ftp server programmatically.
+4. (Optional but preferred deploy option) Assuming you have configured the prerequisite of the ftp credientials. You can run `yarn deploy:full or yarn deploy:production` to deploy the output to the destinated ftp server programmatically.
 
 ## Pretty-quick
 

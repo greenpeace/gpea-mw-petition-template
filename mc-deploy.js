@@ -1,10 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
-const FTPS = require('ftps');
+//const FTPS = require('ftps');
+const Client = require('ssh2-sftp-client');
 
+console.log(`===========================> mc-deploy`);
+console.info(`./.env.${process.env.NODE_ENV}`);
+console.log(`===========================> mc-deploy`);
 require('dotenv').config({ path: `./.env.${process.env.NODE_ENV}` });
-console.log(`./.env.${process.env.NODE_ENV}`);
+
 
 /**
  * This file is a temporary script to replace gpea-npm-en-uploader
@@ -25,55 +29,13 @@ console.log(`./.env.${process.env.NODE_ENV}`);
  */
 
 const buildFolder = path.join(__dirname, 'out');
-//const buildFolder = '\\\\wsl.localhost\\Ubuntu-22.04\\home\\kueck\\workspace\\gpea-mw-petition-template\\out';
 
-const ftpRemoteDir = process.env.BASEPATH;
-const ftpConfigName = process.env.FTP_CONFIG_NAME;
-
-console.log(`\`${ftpRemoteDir}:\`${ftpConfigName}\`}`);
+const ftpRemoteDir = path.join(process.env.BASEPATH, process.env.CAMPAIGN, process.env.ENV_PARAM);
 
 let indexHtmlFilePath = path.join(buildFolder, 'index.html');
-//let indexHtmlFilePath = buildFolder + '\\index.html';
 let fbuf = fs.readFileSync(indexHtmlFilePath);
 let content = fbuf.toString();
 
-// copied from https://github.com/greenpeace/gpea-npm-en-uploader/blob/master/upload_folder.js
-/**
- * Use lftp to sync local dir to remote
- *
- * @param  {object} settings
- * @param  {string} localDir Local folder to update
- * @param  {string} remoteDir The remote path to upload. If it's not exist, it will be created.
- */
-
-const upload_folder = function (settings, localDir) {
-  // @see https://github.com/Atinux/node-ftps for arguments
-
-  var ftps = new FTPS(settings);
-
-  console.info(
-    `Sync from \`${localDir}\` to \`${settings.protocol}://${settings.username}@${settings.host}:${settings.port}${settings.remoteDir}\``,
-  );
-
-  return ftps
-    .mirror({
-      localDir: localDir,
-      remoteDir: settings.remoteDir,
-      upload: true,
-    })
-    .cd(settings.remoteDir)
-    .ls()
-    .exec(function (err, res) {
-      // err will be null (to respect async convention)
-      // res is an hash with { error: stderr || null, data: stdout }
-      if (err || res.error) {
-        return console.log('Error on adding file:', err || res.error);
-      } else {
-        console.info('Successfully uploaded.');
-        console.info(res.data);
-      }
-    });
-};
 
 const formTmpl = `
     <form method="post" action="" id="mc-form" style="display: none">
@@ -92,7 +54,7 @@ if (matches) {
 
   if (tokens.length === 2) {
     content = tokens[0] + formTmpl + tokens[1];
-    console.log('Content form patched');
+    console.info('1. Content form patched');
   } else {
     throw new Error('Found multi MC form parts');
   }
@@ -132,7 +94,7 @@ const headersTmpl = `
 
 // append header template and content
 content = headersTmpl + '\n' + content;
-console.log('MC header patched');
+console.info('2. MC header patched');
 
 // patch version numbers
 content = content.replace(/v=\d+/g, 'v=' + new Date().getTime());
@@ -140,34 +102,57 @@ console.log('version number patched');
 
 // output to the file
 fs.writeFileSync(path.join(__dirname, 'out', 'index.mc.html'), content);
-console.log('content patched');
+console.info('3. Content patched');
 
 // upload the folder to FTP
 // let raw = fs.readFileSync(path.join(os.homedir(), 'workspace/.npm-uploader-secret'));
 // let secrets = JSON.parse(raw);
 //let ftpSetting = secrets[ftpConfigName];
 
-let ftpSetting = {
+let sftpSetting = {
   host: '34.64.112.215', // required
   username: 'engagement', // Optional. Use empty username for anonymous access.
   password: 'enwebserver2022', // Required if username is not empty, except when requiresPassword: false
-  protocol: 'sftp', // Optional, values : 'ftp', 'sftp', 'ftps', ... default: 'ftp'
-  // protocol is added on beginning of host, ex : sftp://domain.com in this case
   port: 22, // Optional
-  // port is added to the end of the host, ex: sftp://domain.com:22 in this case
-  // escape: true, // optional, used for escaping shell characters (space, $, etc.), default: true
-  // retries: 2, // Optional, defaults to 1 (1 = no retries, 0 = unlimited retries)
-  // timeout: 10, // Optional, Time before failing a connection attempt. Defaults to 10
-  // retryInterval: 5, // Optional, Time in seconds between attempts. Defaults to 5
-  // retryMultiplier: 1, // Optional, Multiplier by which retryInterval is multiplied each time new attempt fails. Defaults to 1
-  // requiresPassword: true, // Optional, defaults to true
-  // autoConfirm: true, // Optional, is used to auto confirm ssl questions on sftp or fish protocols, defaults to false
-  // cwd: '', // Optional, defaults to the directory from where the script is executed
-  // additionalLftpCommands: '', // Additional commands to pass to lftp, splitted by ';'
-  // requireSSHKey: false, //  Optional, defaults to false, This option for SFTP Protocol with ssh key authentication
-  // sshKeyPath: '', // Required if requireSSHKey: true , defaults to empty string, This option for SFTP Protocol with ssh key authentication
-  // sshKeyOptions: '', // ssh key options such as 'StrictHostKeyChecking=no'
 };
-ftpSetting['remoteDir'] = ftpRemoteDir;
-upload_folder(ftpSetting, buildFolder);
-console.log('content uploaded');
+
+// copied from https://github.com/greenpeace/gpea-npm-en-uploader/blob/master/upload_folder.js
+/**
+ * Use lftp to sync local dir to remote
+ *
+ * @param  {object} settings
+ * @param  {string} localDir Local folder to update
+ * @param  {string} remoteDir The remote path to upload. If it's not exist, it will be created.
+ */
+
+const upload_folder = async function (sftpSetting, localDir, remoteDir) {
+  // @see https://github.com/Atinux/node-ftps for arguments
+
+  //var ftps = new FTPS(settings);
+
+  console.info(
+    `4. Sync from \`${localDir}\` to \`${sftpSetting.protocol}://${sftpSetting.username}@${sftpSetting.host}:${sftpSetting.port}${remoteDir}\``,
+  );
+
+  let sftp = new Client();
+    
+  const src = localDir;
+  const dst = remoteDir;
+
+  try {
+    await sftp.connect(sftpSetting);
+    sftp.on('upload', info => {
+      console.info(`5. Listener: Uploaded ${info.source}`);
+    });
+    let rslt = await sftp.uploadDir(src, dst);
+    return rslt;
+  } catch (err) {
+    console.error(err);
+  } finally {
+    sftp.end();
+  }
+};
+
+
+upload_folder(sftpSetting, buildFolder, ftpRemoteDir);
+console.info('6. content uploaded');
