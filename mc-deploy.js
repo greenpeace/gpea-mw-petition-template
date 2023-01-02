@@ -4,11 +4,10 @@ const os = require('os');
 //const FTPS = require('ftps');
 const Client = require('ssh2-sftp-client');
 
+require('dotenv').config({ path: `./.env.${process.env.NODE_ENV}` });
 console.log(`===========================> mc-deploy`);
 console.info(`./.env.${process.env.NODE_ENV}`);
 console.log(`===========================> mc-deploy`);
-require('dotenv').config({ path: `./.env.${process.env.NODE_ENV}` });
-
 
 /**
  * This file is a temporary script to replace gpea-npm-en-uploader
@@ -98,11 +97,11 @@ console.info('2. MC header patched');
 
 // patch version numbers
 content = content.replace(/v=\d+/g, 'v=' + new Date().getTime());
-console.log('version number patched');
+console.info('3. version number patched');
 
 // output to the file
 fs.writeFileSync(path.join(__dirname, 'out', 'index.mc.html'), content);
-console.info('3. Content patched');
+console.info('4. Content patched');
 
 // upload the folder to FTP
 // let raw = fs.readFileSync(path.join(os.homedir(), 'workspace/.npm-uploader-secret'));
@@ -131,7 +130,7 @@ const upload_folder = async function (sftpSetting, localDir, remoteDir) {
   //var ftps = new FTPS(settings);
 
   console.info(
-    `4. Sync from \`${localDir}\` to \`${sftpSetting.protocol}://${sftpSetting.username}@${sftpSetting.host}:${sftpSetting.port}${remoteDir}\``,
+    `5. Sync from \`${localDir}\` to \`${sftpSetting.protocol}://${sftpSetting.username}@${sftpSetting.host}:${sftpSetting.port}${remoteDir}\``,
   );
 
   let sftp = new Client();
@@ -142,7 +141,7 @@ const upload_folder = async function (sftpSetting, localDir, remoteDir) {
   try {
     await sftp.connect(sftpSetting);
     sftp.on('upload', info => {
-      console.info(`5. Listener: Uploaded ${info.source}`);
+      console.info(`- Uploaded ${info.source}`);
     });
     let rslt = await sftp.uploadDir(src, dst);
     return rslt;
