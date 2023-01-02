@@ -1,6 +1,4 @@
 // next.config.js
-require('dotenv').config({ path: `./.env.${process.env.NODE_ENV}` });
-
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
 const path = require('path');

@@ -1,10 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
-//const FTPS = require('ftps');
 const Client = require('ssh2-sftp-client');
 
-require('dotenv').config({ path: `./.env.${process.env.NODE_ENV}` });
 console.log(`===========================> mc-deploy`);
 console.info(`./.env.${process.env.NODE_ENV}`);
 console.log(`===========================> mc-deploy`);
@@ -102,12 +100,7 @@ console.info('3. version number patched');
 // output to the file
 fs.writeFileSync(path.join(__dirname, 'out', 'index.mc.html'), content);
 console.info('4. Content patched');
-
-// upload the folder to FTP
-// let raw = fs.readFileSync(path.join(os.homedir(), 'workspace/.npm-uploader-secret'));
-// let secrets = JSON.parse(raw);
-//let ftpSetting = secrets[ftpConfigName];
-
+ 
 let sftpSetting = {
   host: '34.64.112.215', // required
   username: 'engagement', // Optional. Use empty username for anonymous access.
