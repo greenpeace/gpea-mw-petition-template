@@ -89,7 +89,6 @@ const DonationModule = (props) => {
         data-gpea-campaign={campaign} //KR
         data-gpea-campaign-id={campaignId || ''} //Donation campaign
         data-gpea-env={env} //full or production
-        data-gpea-gclid={gclid} //full or production
         data-gpea-formdata={JSON.stringify({
           ...preFill,
           ...signup,

@@ -8,7 +8,7 @@ class NextDocument extends Document {
 
   render() {
     return (
-      <Html lang="zh">
+      <Html lang="ko">
         <Head>
           <link
             rel="shortcut icon"

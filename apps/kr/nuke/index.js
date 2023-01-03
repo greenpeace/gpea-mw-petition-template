@@ -47,6 +47,10 @@ function Index() {
   //console.log('step isMobile',step, isMobile)
 
   useEffect(() => {
+    if(window.addGclid && !gclid){window.addGclid();}
+  }, []);
+
+  useEffect(() => {
     dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
   }, [dispatch]);
 
@@ -116,7 +120,6 @@ function Index() {
                             market={'kr'}
                             language={'ko_KR'}
                             campaign={process.env.campaign}
-                            gclid={gclid}
                             env={process.env.envParam}
                           />
                         ) : (
@@ -149,7 +152,6 @@ function Index() {
                           //   theme?.params?.donation_module_campaign ?? 'nuke'
                           // }
                           // campaignId={''}
-                          gclid={gclid}
                           env={process.env.envParam}
                         />
                       ) : (
