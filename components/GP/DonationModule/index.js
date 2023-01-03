@@ -51,14 +51,14 @@ const DonationModule = (props) => {
   const { market, language, campaign, campaignId, env, signup, preFill, gclid } =
     props;
 
-  //FIXME: Define constant module url
+  //FIXME: Define constant module url => overrides [next.config.json] !!!!!!!!!!!!!!!!!!!!!!!!!!!
   let moduleUrl = '';
   if (process.env.envParam === 'production' || process.env.envParam === 'full') {
-    moduleUrl = `${process.env.ASSETPREFIX}/` + path.join(process.env.CAMPAIGN, '/main.js');//`https://gpseoulwebserver.co.kr/dchain/nuke/production/main.js`;
+    moduleUrl = `${process.env.assetPrefix}/` + path.join(process.env.campaign, process.env.envParam, 'main.js');//`https://gpseoulwebserver.co.kr/dchain/nuke/production/main.js`;
   } else {
     moduleUrl = `${window.location.href}/main.js`;
   }
-
+  
   // Import module
   const status = useScript(moduleUrl);
 

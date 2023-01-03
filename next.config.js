@@ -11,6 +11,7 @@ console.info('assetPrefix', `${process.env.ASSETPREFIX}/` + path.join(process.en
 console.info('=======================> next.config');
 
 const nextConfig = {
+  // FIXME: 여기서 환경 변수 재정의 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   env: {
     project: process.env.PROJECT,
     campaign: process.env.CAMPAIGN,
@@ -21,6 +22,7 @@ const nextConfig = {
     signupNumbersKR: process.env.SIGN_UP_NUMBERS_KR,
     donateModule: process.env.DONATE_MODULE,
     dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.greenhk.greenpeace.org/websign-dummy`,
+    assetPrefix: process.env.ASSETPREFIX,
   },
   // FIXME: Use the CDN in production and localhost for development.
   assetPrefix: (isProd || isFull) ? `${process.env.ASSETPREFIX}/` + path.join(process.env.CAMPAIGN, process.env.ENV_PARAM) : '',
