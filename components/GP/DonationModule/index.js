@@ -54,7 +54,7 @@ const DonationModule = (props) => {
   //FIXME: Define constant module url
   let moduleUrl = '';
   if (process.env.envParam === 'production' || process.env.envParam === 'full') {
-    moduleUrl = path.join(process.env.ASSETPREFIX, process.env.CAMPAIGN, '/main.js');`https://gpseoulwebserver.co.kr/dchain/nuke/production/main.js`;
+    moduleUrl = `${process.env.ASSETPREFIX}/` + path.join(process.env.CAMPAIGN, '/main.js');//`https://gpseoulwebserver.co.kr/dchain/nuke/production/main.js`;
   } else {
     moduleUrl = `${window.location.href}/main.js`;
   }
