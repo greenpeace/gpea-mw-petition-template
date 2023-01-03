@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=local next dev",
+    "lint": "next lint --fix",
+    "lint:nofix": "next lint",
     "clean": "rm -rf .next out",
     "build:full": "cross-env NODE_ENV=development env-cmd -f .env.development next build",
     "build:production": "cross-env NODE_ENV=production env-cmd -f .env.production next build",
