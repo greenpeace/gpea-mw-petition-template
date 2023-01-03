@@ -1,3 +1,14 @@
+/**
+ * Deploy Setting:
+# HK UAT Site
+PROJECT=hkStrapi/donation-arctic
+MARKET=hk
+PROJECT_NAME=donation-arctic
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-arctic
+ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-arctic
+FTP_CONFIG_NAME=api_hk_cloud
+*/
+
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';

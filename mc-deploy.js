@@ -141,7 +141,6 @@ fs.writeFileSync(path.join(__dirname, 'out', 'index.mc.html'), content);
 console.log('content patched');
 
 // upload the folder to FTP
-/*
 let raw = fs.readFileSync(path.join(os.homedir(), '.npm-en-uploader-secret'));
 let secrets = JSON.parse(raw);
 
@@ -149,4 +148,3 @@ let ftpSetting = secrets[ftpConfigName];
 ftpSetting['remoteDir'] = ftpRemoteDir;
 upload_folder(ftpSetting, buildFolder);
 console.log('content uploaded');
-*/
