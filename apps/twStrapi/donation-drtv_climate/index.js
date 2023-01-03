@@ -1,3 +1,13 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=twStrapi/donation-drtv_climate
+MARKET=tw
+PROJECT_NAME=donation-drtv_climate
+BASEPATH=/htdocs/2022/donation/donation-drtv_climate
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-drtv_climate
+FTP_CONFIG_NAME=ftp_tw 
+*/
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
