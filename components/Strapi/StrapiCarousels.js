@@ -200,7 +200,7 @@ export const CardCarousel = ({ data }) => {
 								overflow={'hidden'}
 							>
 								<img
-									class="w-full"
+									className="w-full"
 									src={d?.image?.data?.attributes?.url}
 									alt={d?.title}
 									loading="lazy"
