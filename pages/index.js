@@ -153,9 +153,9 @@ function Index({
 		const domain = document.location.host;
 		const market =
 			themeData?.Market?.toUpperCase() ||
-			strapi?.market?.data?.attributes?.market === 'Hong Kong'
+			(strapi?.market?.data?.attributes?.market === 'Hong Kong'
 				? 'HK'
-				: 'TW' ||
+				: 'TW') ||
 				  (domain.indexOf('hk') > 0
 						? 'HK'
 						: domain.indexOf('tw') > 0
@@ -164,7 +164,7 @@ function Index({
 		/* GTM is only applicable for production env */
 		initTagManager(market);
 		setTheme(themeData);
-
+		
 		let FormObj = {};
 		const selectForm = document.forms['mc-form'];
 		const documentFormsArray = Array.from(selectForm);
