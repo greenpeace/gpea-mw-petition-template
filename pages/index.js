@@ -253,9 +253,11 @@ export async function getStaticProps(context) {
 	const app = envProjectName ?? '';
 
 	const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
-
+	
+	// for the populate levels, see https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/populating-fields.html#component-dynamic-zones
+	// populate=%2A means only one level deep (populate=deep means populate all the levels, generally it's the whole DB)
 	const res = await fetch(
-		`${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate=deep`
+		`${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate=%2A`
 	).then((response) => response);
 	const themes = await res.json();
 	const theme =
