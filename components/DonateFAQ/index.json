@@ -35,7 +35,7 @@
     ]
   },
   "HKEnglish": {
-    "headline": "常見問題",
+    "headline": "Frequently Asked Questions (FAQ)",
     "accordions": [
       {
         "expanded": true,
@@ -44,28 +44,23 @@
       },
       {
         "expanded": false,
-        "title": "捐款可享扣稅優惠嗎？",
-        "desc": "綠色和平是「認可慈善捐款」機構，只要捐款港幣100元或以上，即可憑收據在香港申請扣稅。"
+        "title": "Why is a monthly donation so important?",
+        "desc": "For every penny you donate, no matter the amount or form of donation, it represents your support and confidence in Greenpeace environmental protection projects, and can help us achieve more for the environment around the world. To protect our independence, Greenpeace never accepts funding from any government, business or political group, and only accepts direct donations from citizens like you and independent foundations. Therefore, regular donations are important to us. They can provide us with stable donation income, continue to support the development of our environmental protection projects, and enable Greenpeace to implement long-term plans and work to promote environmental protection. We persist so there is hope. The stable and continuous support from you is the key to success in the environmental campaigns."
       },
       {
         "expanded": false,
-        "title": "為何每月捐款如此重要？",
-        "desc": "您捐助的一分一毫，不論金額或形式，都代表對綠色和平環保項目的支持及信心，能協助我們在世界各地為環境成就更多。\n\n為了維持公正和中立，綠色和平從不接受任何政府、企業或政治團體的資助，只接受市民和獨立基金的直接捐款。因此，會員的定期定額捐款對我們尤其重要，能夠為我們提供穩定的捐款收入，持續支援我們的環保項目發展，讓綠色和平推動環保的計畫與工作得以長遠實行。\n\n因為堅持，才有希望。會員穩定持續的支持，就是連場環境硬仗的致勝關鍵。"
+        "title": "When will I receive a donation receipt?",
+        "desc": "Greenpeace will prepare annual receipts for monthly donation donors at the end of the financial year on March 31 annually, and send to the mailing address or email address from April to May. For a single donation, after the donation is successfully posted, the donor will receive a single electronic donation receipt via email immediately; if the donor fails to provide an email address, we will issue a printed donation receipt to you within 6 weeks after the donation. If you have other questions about receipts, please call our hotline at (852) 2854 8318, or email to donor.services.hk@greenpeace.org."
       },
       {
         "expanded": false,
-        "title": "我什麼時候會收到捐款收據？",
-        "desc": "綠色和平會於每年3月31日財政年度完結時，為每月捐款會員準備年度收據，並於4月至5月發送至通訊地址或電郵地址。如屬單次捐款，捐款成功過帳後，捐款者將即時透過電郵收到單次捐款電子收據；如捐款者未能提供電郵地址，我們會在捐款後6星期內發出印刷版捐款收據至您的通訊地址。\n\n若您有其他有關收據的問題，可致電會員熱線(852) 2854 8318，或電郵至donor.services.hk@greenpeace.org。"
+        "title": "On what date will donations be transferred for monthly donation?",
+        "desc": "The bank's automatic transfer will be conducted on the 13th or 28th of the month for the first time; in the future, it will be conducted on the 13th of each month. If the transfer is unsuccessful, it will try again at the end of the month. \n\n*Due to the internal system update of the organization from August 2020 to February 2021, for monthly donation donors registered by credit card during this period, the transaction date of each month will be fixed on the same day according to the registered donation date. If there is no fixed donation day in the current month (for example, there is no 30th day in February), the system will transfer on the last day of the month (ie February 28th or 29th). If there is a bank or internal system update that affects the posting arrangement in the future, the real-time update of the webpage shall prevail. For enquiries, please contact our hotline at (852) 2854 8318 or email to donor.services.hk@greenpeace.org."
       },
       {
         "expanded": false,
-        "title": "成為每月捐款會員後，捐款會在什麼日子進行轉帳？",
-        "desc": "綠色和平會於每年3月31日財政年度完結時，為每月捐款會員準備年度收據，並於4月至5月發送至通訊地址或電郵地址。\n\n銀行自動轉帳首次過數為該月約13日或28日；往後固定約於每月13日過數，若未能成功過數，會在月底再次嘗試。\n\n<small>* 因機構於2020年8月至2021年2月進行內部系統更新，在該段時間登記的信用卡每月捐款會員，其每月過數日將按照登記捐款日，固定於每月相同日子進行。如當月沒有該固定捐款日子（例如2月沒有30日），系統將會於當月的最後一天進行過數（即2月28或29日）。\n日後若有銀行或內部系統更新影響過帳安排，應以網頁即時更新為準。如有查詢，歡迎聯絡綠色和平會員服務熱線(852) 2854 8318，或電郵至donor.services.hk@greenpeace.org。</small>"
-      },
-      {
-        "expanded": false,
-        "title": "我能更改捐款方式、金額、信用卡資料或會員通訊資料嗎？",
-        "desc": "任何捐款相關的更改，您都可以透過會員服務熱線(852) 2854 8318，或電郵至donor.services.hk@greenpeace.org，與我們的會員服務部聯繫，我們將為您處理相關的資料變更。"
+        "title": "Can I change the donation method, amount, credit card details or communication details?",
+        "desc": "For any donation-related changes, you can contact our membership services department through our hotline (852) 2854 8318 or email to donor.services.hk@greenpeace.org, and we will handle the relevant information changes for you."
       }
     ]
   },

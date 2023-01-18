@@ -1,3 +1,11 @@
+/** 
+PROJECT=hkStrapi/donation-general-eng
+MARKET=hk
+PROJECT_NAME=donation-general-eng
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2023/donation-general-eng
+ASSETPREFIX=https://api.greenpeace.org.hk/2023/donation-general-eng/
+FTP_CONFIG_NAME=api_hk_cloud
+*/
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -129,7 +137,7 @@ function Index({ submitted = false, strapi }) {
 												py="6"
 												fontSize={{ base: 'xl', md: '2xl' }}
 											>
-												常見問題
+												Frequently Asked Questions (FAQ)
 											</Heading>
 											<DonateFAQ locale="HKEnglish" />
 										</>
