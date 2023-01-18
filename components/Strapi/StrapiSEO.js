@@ -23,6 +23,8 @@ const StrapiSEO = ({strapi}) => {
       <meta name="description" content={strapi?.seo?.metaDescription} />
       <meta property="og:description" content={strapi?.seo?.metaDescription} />
       <meta property="og:image" content={strapi?.seo?.metaImageURL} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={strapi?.seo?.canonicalURL} />
       <meta name="keywords" content={strapi?.seo?.keywords} />
     </Head>
   );
