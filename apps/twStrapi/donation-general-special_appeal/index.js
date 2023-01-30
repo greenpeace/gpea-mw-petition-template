@@ -1,11 +1,11 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=twStrapi/donation-oceans-drtv_plastics
+PROJECT=twStrapi/donation-general-special_appeal
 MARKET=tw
-PROJECT_NAME=donation-oceans-drtv_plastics
-BASEPATH=/htdocs/2023/donation/donation-oceans-drtv_plastics
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-oceans-drtv_plastics
+PROJECT_NAME=donation-general-special_appeal
+BASEPATH=/htdocs/2022/donation/donation-general-special_appeal
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-general-special_appeal
 FTP_CONFIG_NAME=ftp_tw 
 */
 import React, { useEffect, useRef } from 'react';
@@ -162,7 +162,11 @@ function Index({ submitted = false, strapi }) {
 												theme?.params?.donation_module_campaign ??
 												strapi?.donationModuleCampaign
 											}
-											campaignId={theme?.params?.campaignId ?? ''}
+											campaignId={
+												theme?.params?.campaignId ??
+												strapi?.donationModuleCampaignId ??
+												''
+											}
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (

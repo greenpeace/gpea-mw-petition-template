@@ -1,12 +1,10 @@
-/**
- * Deploy setting
-# Project Apps Directory: /apps/{PROJECT}
-PROJECT=twStrapi/donation-oceans-drtv_plastics
-MARKET=tw
-PROJECT_NAME=donation-oceans-drtv_plastics
-BASEPATH=/htdocs/2023/donation/donation-oceans-drtv_plastics
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-oceans-drtv_plastics
-FTP_CONFIG_NAME=ftp_tw 
+/** 
+PROJECT=hkStrapi/donation-general-eng
+MARKET=hk
+PROJECT_NAME=donation-general-eng
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2023/donation-general-eng
+ASSETPREFIX=https://api.greenpeace.org.hk/2023/donation-general-eng/
+FTP_CONFIG_NAME=api_hk_cloud
 */
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,7 +22,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/TWForm';
+import SignupForm from '@components/GP/HKForm';
 import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
@@ -139,9 +137,9 @@ function Index({ submitted = false, strapi }) {
 												py="6"
 												fontSize={{ base: 'xl', md: '2xl' }}
 											>
-												常見問題
+												Frequently Asked Questions (FAQ)
 											</Heading>
-											<DonateFAQ locale="TWChinese" />
+											<DonateFAQ locale="HKEnglish" />
 										</>
 									)}
 								</>
@@ -162,7 +160,11 @@ function Index({ submitted = false, strapi }) {
 												theme?.params?.donation_module_campaign ??
 												strapi?.donationModuleCampaign
 											}
-											campaignId={theme?.params?.campaignId ?? ''}
+											campaignId={
+												theme?.params?.campaignId ??
+												strapi?.donationModuleCampaignId ??
+												''
+											}
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (
@@ -174,7 +176,7 @@ function Index({ submitted = false, strapi }) {
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
-			<PetitionFooter locale={'TWChinese'} />
+			<PetitionFooter locale={'HKEnglish'} />
 			<StrapiFixedButton target={FormRef} targetInView={inView} />
 		</>
 	);

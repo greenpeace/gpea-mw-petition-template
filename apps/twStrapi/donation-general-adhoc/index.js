@@ -1,8 +1,16 @@
-import React, { useEffect, useState, useRef } from 'react';
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=twStrapi/donation-general-adhoc
+MARKET=tw
+PROJECT_NAME=donation-general-adhoc
+BASEPATH=/htdocs/2022/donation/donation-general-adhoc
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-general-adhoc
+FTP_CONFIG_NAME=ftp_tw 
+*/
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
 import * as formActions from 'store/actions/action-types/form-actions';
-import * as themeActions from 'store/actions/action-types/theme-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
 import { Box, Flex, Heading } from '@chakra-ui/react';
@@ -27,8 +35,6 @@ import formContent from './form';
 // Import static
 
 function Index({ submitted = false, strapi }) {
-	strapi = useSelector((state) => state?.theme?.strapi);
-	const router = useRouter();
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
@@ -36,102 +42,74 @@ function Index({ submitted = false, strapi }) {
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
-	const [isLoaded, setIsLoaded] = useState(false);
 	const FormRef = useRef(null);
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
-		if (pageType !== undefined) {
-			setIsLoaded(true);
-		}
-	}, [dispatch, pageType]);
-
-	useEffect(async () => {
-		if (router?.isReady) {
-			const { preview } = router?.query;
-			if (preview) {
-				const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
-
-				const res = await fetch(
-					`${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=deep`
-				).then((response) => response);
-				const themes = await res.json();
-				const theme = themes?.data[0] ?? {};
-
-				dispatch({
-					type: themeActions.SET_STRAPI_DATA,
-					data: theme?.attributes
-				});
-			}
-		}
-	}, [router]);
+	}, [dispatch]);
 
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
 			<Box>
-				{isLoaded && (
-					<>
-						{submitted ? (
-							<ThanksBanner
-								removeMask={strapi?.thankyouHero?.removeMask}
-								defaultImage={
+				{submitted ? (
+					<ThanksBanner
+						removeMask={strapi?.thankyouHero?.removeMask}
+						defaultImage={
+							theme?.params?.hero_image_desktop ||
+							strapi?.thankyouHero?.desktopImageURL
+						}
+						imageSrcset={[
+							{
+								media: '(min-width: 48em)',
+								srcset:
 									theme?.params?.hero_image_desktop ||
 									strapi?.thankyouHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.thankyouHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.thankyouHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: strapi?.thankyouHero?.richContent,
-									description: strapi?.thankyouHero?.richContentParagraph
-								}}
-							/>
-						) : (
-							<HeroBanner
-								removeMask={strapi?.contentHero?.removeMask}
-								defaultImage={
+							},
+							{
+								media: '',
+								srcset:
+									theme?.params?.hero_image_mobile ||
+									strapi?.thankyouHero?.mobileImageURL
+							}
+						]}
+						content={{
+							title: strapi?.thankyouHero?.richContent,
+							description: strapi?.thankyouHero?.richContentParagraph
+						}}
+					/>
+				) : (
+					<HeroBanner
+						removeMask={strapi?.contentHero?.removeMask}
+						defaultImage={
+							theme?.params?.hero_image_desktop ||
+							strapi?.contentHero?.desktopImageURL
+						}
+						imageSrcset={[
+							{
+								media: '(min-width: 48em)',
+								srcset:
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: theme?.params?.headline_prefix
-										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
-										: strapi?.contentHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
-								}}
-							/>
-						)}
-					</>
+							},
+							{
+								media: '',
+								srcset:
+									theme?.params?.hero_image_mobile ||
+									strapi?.contentHero?.mobileImageURL
+							}
+						]}
+						content={{
+							title: theme?.params?.headline_prefix
+								? theme?.params?.headline_prefix +
+								  '<br/>' +
+								  strapi?.contentHero?.richContent
+								: strapi?.contentHero?.richContent,
+							description: strapi?.contentHero?.richContentParagraph
+						}}
+					/>
 				)}
 			</Box>
 			<PageContainer>
@@ -139,71 +117,59 @@ function Index({ submitted = false, strapi }) {
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box minWidth={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{isLoaded && (
-									<>
-										{submitted ? (
-											<StrapiDynamicBlocks
-												blocks={'thankyouBlocks'}
-												strapi={strapi}
-											/>
-										) : (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										)}
-									</>
-								)}
-								{isLoaded && (
-									<>
-										{pageType?.toLowerCase() === 'donation' && !submitted && (
-											<>
-												<Heading
-													as="p"
-													textAlign="center"
-													py="6"
-													fontSize={{ base: 'xl', md: '2xl' }}
-												>
-													常見問題
-												</Heading>
-												<DonateFAQ locale="TWChinese" />
-											</>
-										)}
-									</>
-								)}
+								<>
+									{submitted ? (
+										<StrapiDynamicBlocks
+											blocks={'thankyouBlocks'}
+											strapi={strapi}
+										/>
+									) : (
+										<StrapiDynamicBlocks
+											blocks={'contentBlocks'}
+											strapi={strapi}
+										/>
+									)}
+								</>
+								<>
+									{pageType?.toLowerCase() === 'donation' && !submitted && (
+										<>
+											<Heading
+												as="p"
+												textAlign="center"
+												py="6"
+												fontSize={{ base: 'xl', md: '2xl' }}
+											>
+												常見問題
+											</Heading>
+											<DonateFAQ locale="TWChinese" />
+										</>
+									)}
+								</>
 							</ContentContainer>
 						</Box>
-						<Box minWidth={0} flex={1} ref={FormRef}>
-							{isLoaded && (
-								<FormContainer>
-									<Box ref={ref}>
-										{pageType?.toLowerCase() === 'donation' || submitted ? (
-											<DonationModule
-												isUAT={true}
-												market={
-													strapi?.market?.data?.attributes?.market ===
-													'Hong Kong'
-														? 'HK'
-														: 'TW'
-												}
-												language={strapi?.donationModuleLanguage}
-												campaign={
-													theme?.params?.donation_module_campaign ??
-													strapi?.donationModuleCampaign
-												}
-												campaignId={
-													theme?.params?.campaignId ??
-													strapi?.donationModuleCampaignId ??
-													''
-												}
-												env={strapi?.donationModuleEnv}
-											/>
-										) : (
-											<SignupForm />
-										)}
-									</Box>
-								</FormContainer>
-							)}
+						<Box flex={1} ref={FormRef}>
+							<FormContainer>
+								<Box ref={ref}>
+									{pageType?.toLowerCase() === 'donation' || submitted ? (
+										<DonationModule
+											market={
+												strapi?.market?.data?.attributes?.market === 'Hong Kong'
+													? 'HK'
+													: 'TW'
+											}
+											language={strapi?.donationModuleLanguage}
+											campaign={
+												theme?.params?.donation_module_campaign ??
+												strapi?.donationModuleCampaign
+											}
+											campaignId={theme?.params?.campaignId ?? ''}
+											env={strapi?.donationModuleEnv}
+										/>
+									) : (
+										<SignupForm />
+									)}
+								</Box>
+							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>

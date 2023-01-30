@@ -1,12 +1,12 @@
 {
-	"form_header": "報名極地講座 遊歷南極並了解企鵝求生之道",
+	"form_header": "",
 	"form_description": "",
 	"signed_number": "已聯署人數",
 	"label_name": "稱謂",
 	"label_first_name": "名字",
 	"label_last_name": "姓氏",
 	"label_email": "電郵地址",
-	"label_phone": "手提號碼（接收活動SMS提示）",
+	"label_phone": "手提號碼",
 	"label_phone_optional": "手提號碼（選填）",
 	"label_year_of_birth": "出生年份",
 	"label_year_of_birth_optional": "出生年份（選填）",
@@ -20,7 +20,7 @@
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 
-	"submit_text": "立即報名",
+	"submit_text": "立即聯署",
 	"mobile_fixed_cta": "立即捐款",
 
 	"mobile_country_code": [

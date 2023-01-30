@@ -6,6 +6,7 @@ import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { stringify } from 'qs';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
@@ -45,16 +46,16 @@ const initTagManager = (marketName) => {
 		}
 	}
 	/* else {
-    switch (marketName) {
-      case 'HK':
-        TagManager.initialize(hkDevTagManagerArgs);
-        break;
-      case 'TW':
-        TagManager.initialize(twDevTagManagerArgs);
-        break;
-      default:
-        break;
-    }
+	switch (marketName) {
+	  case 'HK':
+		TagManager.initialize(hkDevTagManagerArgs);
+		break;
+	  case 'TW':
+		TagManager.initialize(twDevTagManagerArgs);
+		break;
+	  default:
+		break;
+	}
   } */
 };
 
@@ -153,14 +154,14 @@ function Index({
 		const domain = document.location.host;
 		const market =
 			themeData?.Market?.toUpperCase() ||
-			strapi?.market?.data?.attributes?.market === 'Hong Kong'
+			(strapi?.market?.data?.attributes?.market === 'Hong Kong'
 				? 'HK'
-				: 'TW' ||
-				  (domain.indexOf('hk') > 0
-						? 'HK'
-						: domain.indexOf('tw') > 0
-						? 'TW'
-						: '');
+				: 'TW') ||
+			(domain.indexOf('hk') > 0
+				? 'HK'
+				: domain.indexOf('tw') > 0
+					? 'TW'
+					: '');
 		/* GTM is only applicable for production env */
 		initTagManager(market);
 		setTheme(themeData);
@@ -254,9 +255,36 @@ export async function getStaticProps(context) {
 
 	const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
 
-	const res = await fetch(
-		`${endpoint}/pages?filters[market][slug]=${envProjectMarket}&filters[campaign]=${app}&populate=deep`
-	).then((response) => response);
+	// for the populate levels, see https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/populating-fields.html#component-dynamic-zones
+	// populate=%2A means only one level deep (populate=deep means populate all the levels, generally it's the whole DB)
+
+	const query = stringify({
+		filters: {
+			market: { slug: envProjectMarket },
+			campaign: app
+		},
+		populate: {
+			'contentBlocks': {
+				populate: [
+					'CardSlider.image',
+					'TestimonialSlider.avatar',
+					'CarouselSlider.image',
+				]
+			},
+			'contentHero': { populate: '*' },
+			'issue': { populate: { filters: { name: { $neq: 'pages' } } } },
+			'market': { populate: { filters: { name: { $neq: 'pages' } } } },
+			'page_type': { populate: { filters: { name: { $neq: 'pages' } } } },
+			'seo': { populate: '*' },
+			'thankyouBlocks': { populate: '*' },
+			'thankyouHero': { populate: '*' }
+		}
+	}, {
+		encodeValuesOnly: true, // prettify URL
+	});
+
+	const res = await fetch(`${endpoint}/pages?${query}`)
+		.then((response) => response);
 	const themes = await res.json();
 	const theme =
 		themes?.data[0] !== undefined ? themes?.data[0]?.attributes : null;
