@@ -15,7 +15,7 @@ import PetitionFooter from '@containers/petitionFooter';
 // Import custom components
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
-import DonationModule from '@components/GP/DonationModuleCol';
+import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/TWForm';
 import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components

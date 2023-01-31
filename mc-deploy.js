@@ -4,7 +4,7 @@ const os = require('os');
 const FTPS = require('ftps');
 
 require('dotenv').config({ path: `./.env.${process.env.NODE_ENV}` });
-console.log(`./.env.${process.env.NODE_ENV}`);
+console.log(`NODE_ENV: ./.env.${process.env.NODE_ENV}`);
 
 /**
  * This file is a temporary script to replace gpea-npm-en-uploader
@@ -143,6 +143,7 @@ console.log('content patched');
 // upload the folder to FTP
 let raw = fs.readFileSync(path.join(os.homedir(), '.npm-en-uploader-secret'));
 let secrets = JSON.parse(raw);
+
 let ftpSetting = secrets[ftpConfigName];
 ftpSetting['remoteDir'] = ftpRemoteDir;
 upload_folder(ftpSetting, buildFolder);

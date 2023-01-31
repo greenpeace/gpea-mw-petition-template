@@ -1,3 +1,11 @@
+/** 
+PROJECT=hkStrapi/donation-general-eng
+MARKET=hk
+PROJECT_NAME=donation-general-eng
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2023/donation-general-eng
+ASSETPREFIX=https://api.greenpeace.org.hk/2023/donation-general-eng/
+FTP_CONFIG_NAME=api_hk_cloud
+*/
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -44,96 +52,63 @@ function Index({ submitted = false, strapi }) {
 		<>
 			<StrapiSEO strapi={strapi} />
 			<Box>
-				{(() => {
-					if (pageType?.toLowerCase() === 'donation') {
-						return (
-							<HeroBanner
-								defaultImage={
-									theme?.params?.hero_image_desktop ||
-									strapi?.contentHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: theme?.params?.headline_prefix
-										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
-										: strapi?.contentHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
-								}}
-							/>
-						);
-					} else {
-						return submitted ? (
-							<ThanksBanner
-								defaultImage={
+				{submitted ? (
+					<ThanksBanner
+						removeMask={strapi?.thankyouHero?.removeMask}
+						defaultImage={
+							theme?.params?.hero_image_desktop ||
+							strapi?.thankyouHero?.desktopImageURL
+						}
+						imageSrcset={[
+							{
+								media: '(min-width: 48em)',
+								srcset:
 									theme?.params?.hero_image_desktop ||
 									strapi?.thankyouHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: strapi?.thankyouHero?.richContent,
-									description: strapi?.thankyouHero?.richContentParagraph
-								}}
-							/>
-						) : (
-							<HeroBanner
-								defaultImage={
+							},
+							{
+								media: '',
+								srcset:
+									theme?.params?.hero_image_mobile ||
+									strapi?.thankyouHero?.mobileImageURL
+							}
+						]}
+						content={{
+							title: strapi?.thankyouHero?.richContent,
+							description: strapi?.thankyouHero?.richContentParagraph
+						}}
+					/>
+				) : (
+					<HeroBanner
+						removeMask={strapi?.contentHero?.removeMask}
+						defaultImage={
+							theme?.params?.hero_image_desktop ||
+							strapi?.contentHero?.desktopImageURL
+						}
+						imageSrcset={[
+							{
+								media: '(min-width: 48em)',
+								srcset:
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: theme?.params?.headline_prefix
-										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
-										: strapi?.contentHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
-								}}
-							/>
-						);
-					}
-				})()}
+							},
+							{
+								media: '',
+								srcset:
+									theme?.params?.hero_image_mobile ||
+									strapi?.contentHero?.mobileImageURL
+							}
+						]}
+						content={{
+							title: theme?.params?.headline_prefix
+								? theme?.params?.headline_prefix +
+								  '<br/>' +
+								  strapi?.contentHero?.richContent
+								: strapi?.contentHero?.richContent,
+							description: strapi?.contentHero?.richContentParagraph
+						}}
+					/>
+				)}
 			</Box>
 			<PageContainer>
 				<OverflowWrapper>
@@ -162,9 +137,9 @@ function Index({ submitted = false, strapi }) {
 												py="6"
 												fontSize={{ base: 'xl', md: '2xl' }}
 											>
-												常見問題
+												Frequently Asked Questions (FAQ)
 											</Heading>
-											<DonateFAQ locale="HKChinese" />
+											<DonateFAQ locale="HKEnglish" />
 										</>
 									)}
 								</>
@@ -201,7 +176,7 @@ function Index({ submitted = false, strapi }) {
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
-			<PetitionFooter locale={'HKChinese'} />
+			<PetitionFooter locale={'HKEnglish'} />
 			<StrapiFixedButton target={FormRef} targetInView={inView} />
 		</>
 	);

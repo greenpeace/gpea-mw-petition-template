@@ -1,7 +1,7 @@
 {
-	"form_header": "立即參加「無塑海港」重用杯設計比賽",
-	"form_description": "以創意設計與香港大眾分享你的「減塑」故事。",
-	"signed_number": "已報名人數",
+	"form_header": "",
+	"form_description": "",
+	"signed_number": "已聯署人數",
 	"label_name": "稱謂",
 	"label_first_name": "名字",
 	"label_last_name": "姓氏",
@@ -20,7 +20,7 @@
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 
-	"submit_text": "立即報名",
+	"submit_text": "立即聯署",
 	"mobile_fixed_cta": "立即捐款",
 
 	"mobile_country_code": [
