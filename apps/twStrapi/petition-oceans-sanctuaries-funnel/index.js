@@ -32,6 +32,7 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0
 	});
 	const FormRef = useRef(null);
+	const { FirstName } = signup.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -97,7 +98,10 @@ function Index({ submitted = false, strapi }) {
 									}
 								]}
 								content={{
-									title: strapi?.thankyouHero?.richContent,
+									//title: strapi?.thankyouHero?.richContent,
+									title: `${
+										FirstName ? FirstName : '綠色和平支持者'
+									}，${strapi?.thankyouHero?.richContent}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
