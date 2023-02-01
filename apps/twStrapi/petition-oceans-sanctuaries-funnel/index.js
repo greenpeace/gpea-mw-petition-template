@@ -37,12 +37,14 @@ function Index({ submitted = false, strapi }) {
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
 	const FormRef = useRef(null);
-	const { FirstName } = signup.data;
+	const { FirstName } = signup?.data;
+	const { utm_source } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -172,6 +174,7 @@ function Index({ submitted = false, strapi }) {
 							<FormContainer>
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
+										utm_source !== 'dd' && (
 										<DonationModule
 											market={
 												strapi?.market?.data?.attributes?.market === 'Hong Kong'
@@ -189,7 +192,7 @@ function Index({ submitted = false, strapi }) {
 												''
 											}
 											env={strapi?.donationModuleEnv}
-										/>
+										/>)
 									) : (
 										<SignupForm />
 									)}
