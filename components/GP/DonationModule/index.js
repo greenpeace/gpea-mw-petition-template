@@ -62,7 +62,7 @@ const DonationModule = (props) => {
 		? 'https://api.greenpeace.org.hk/app/donation-module-uat/main.js'
 		: 'https://api.greenpeace.org.hk/app/donation-module/main.js';
 	// Import module
-	const status = useScript('https://change.greenpeace.org.tw/2023/test/test-donation-module/main.js');
+	const status = useScript(moduleUrl);
 
 	return (
 		<Box pos="relative">
