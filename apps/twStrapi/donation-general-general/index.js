@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -33,12 +33,23 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0
 	});
 	const FormRef = useRef(null);
+	const [donorName, setDonorName] = useState();
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
+	
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+			setDonorName(data.firstName);
+			console.log(donorName)
+			console.log( '=================', data.firstName );
+		}
+	});
 
 	return (
 		<>
@@ -66,7 +77,10 @@ function Index({ submitted = false, strapi }) {
 							}
 						]}
 						content={{
-							title: strapi?.thankyouHero?.richContent,
+							// title: strapi?.thankyouHero?.richContent,
+							title: `${
+								donorName ? donorName : '綠色和平支持者'
+							}，${strapi?.thankyouHero?.richContent}`,
 							description: strapi?.thankyouHero?.richContentParagraph
 						}}
 					/>
@@ -153,7 +167,7 @@ function Index({ submitted = false, strapi }) {
 												strapi?.donationModuleCampaign
 											}
 											campaignId={theme?.params?.campaignId ?? ''}
-											env={strapi?.donationModuleEnv}
+											env={'test'}
 										/>
 									) : (
 										<SignupForm />
