@@ -62,7 +62,8 @@ const DonationModule = (props) => {
 		? 'https://api.greenpeace.org.hk/app/donation-module-uat/main.js'
 		: 'https://api.greenpeace.org.hk/app/donation-module/main.js';
 	// Import module
-	const status = useScript(moduleUrl);
+	const timestamp = process.env.timeStamp;
+	const status = useScript(moduleUrl + '?v=' + timestamp);
 
 	return (
 		<Box pos="relative">
