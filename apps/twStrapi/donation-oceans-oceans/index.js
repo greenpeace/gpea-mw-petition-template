@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -40,6 +40,26 @@ function Index({ submitted = false, strapi }) {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
 
+	// const { FirstName } = signup;
+  
+  // get utm_source
+  const hiddenForm = useSelector((state) => state?.hiddenForm);
+  const { utm_source } = hiddenForm?.data;
+
+  // pass signer / donor name to TY Banner
+  const [TYName, setTYName] = useState();
+	
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+			setTYName(data.firstName);
+		}
+	});
+	useEffect(() => {
+		setTYName(signup?.data?.FirstName);
+	}, [signup]);
+
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
@@ -66,7 +86,10 @@ function Index({ submitted = false, strapi }) {
 							}
 						]}
 						content={{
-							title: strapi?.thankyouHero?.richContent,
+							// title: strapi?.thankyouHero?.richContent,
+							title: `${
+								TYName ? TYName : '綠色和平支持者'
+							}，${strapi?.thankyouHero?.richContent}`,
 							description: strapi?.thankyouHero?.richContentParagraph
 						}}
 					/>
@@ -141,6 +164,7 @@ function Index({ submitted = false, strapi }) {
 							<FormContainer>
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
+										utm_source !== 'dd' && (
 										<DonationModule
 											market={
 												strapi?.market?.data?.attributes?.market === 'Hong Kong'
@@ -154,7 +178,7 @@ function Index({ submitted = false, strapi }) {
 											}
 											campaignId={theme?.params?.campaignId ?? ''}
 											env={strapi?.donationModuleEnv}
-										/>
+										/>)
 									) : (
 										<SignupForm />
 									)}

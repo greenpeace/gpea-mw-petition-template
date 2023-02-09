@@ -33,16 +33,31 @@ import heroBannerImageMobile from './images/banner_mobile.jpg';
 
 function Index({ setFormContent }) {
   const router = useRouter();
-  const [utmSource, setUtmSource] = useState('');
-  useEffect(() => {
-    setUtmSource(router.query?.utm_source);
-  }, [router]);
 
   const signup = useSelector((state) => state?.signup);
   const { step } = signup;
   const submitted = useSelector((state) => state?.status?.submitted);
   const theme = useSelector((state) => state?.theme);
-  const { FirstName } = signup;
+
+  // const { FirstName } = signup;
+  
+  // get utm_source
+  const hiddenForm = useSelector((state) => state?.hiddenForm);
+  const { utm_source } = hiddenForm?.data;
+
+  // pass signer / donor name to TY Banner
+  const [TYName, setTYName] = useState();
+	
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+			setTYName(data.firstName);
+		}
+	});
+	useEffect(() => {
+		setTYName(signup?.data?.FirstName);
+	}, [signup]);
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -66,7 +81,7 @@ function Index({ setFormContent }) {
             defaultImage={heroBannerImage}
             content={{
               title: `${
-                FirstName ? FirstName : '綠色和平支持者'
+                TYName ? TYName : '綠色和平支持者'
               }，謝謝您參與這次的連署`,
               description: ['能更進一步支持我們的氣候行動嗎？'],
             }}
@@ -119,7 +134,7 @@ function Index({ setFormContent }) {
               <FormContainer>
                 <Box ref={ref}>
                   {submitted ? (
-                    utmSource != 'dd' ? (
+                    utm_source !== 'dd' ? (
                       <DonationModule
                         market={'TW'}
                         language={'zh_TW'}
