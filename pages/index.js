@@ -151,19 +151,7 @@ function Index({
 
 	/* Pre-fill signup data */
 	useEffect(() => {
-		const domain = document.location.host;
-		const market =
-			themeData?.Market?.toUpperCase() ||
-			(strapi?.market?.data?.attributes?.market === 'Hong Kong'
-				? 'HK'
-				: 'TW') ||
-			(domain.indexOf('hk') > 0
-				? 'HK'
-				: domain.indexOf('tw') > 0
-					? 'TW'
-					: '');
-		/* GTM is only applicable for production env */
-		initTagManager(market);
+		
 		setTheme(themeData);
 
 		let FormObj = {};
@@ -213,6 +201,20 @@ function Index({
 			},
 			false
 		);
+		const domain = document.location.host;
+		const market =
+			themeData?.Market?.toUpperCase() ||
+			(strapi?.market?.data?.attributes?.market === 'Hong Kong'
+				? 'HK'
+				: 'TW') ||
+			(domain.indexOf('hk') > 0
+				? 'HK'
+				: domain.indexOf('tw') > 0
+					? 'TW'
+					: '');
+		/* GTM is only applicable for production env */
+
+		setTimeout(function(){initTagManager(market);}, 2000);
 	});
 
 	return <DynamicComponent strapi={strapi} themeData={themeData} />;

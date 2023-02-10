@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Box, Fade, Flex, Spinner } from '@chakra-ui/react';
 
@@ -63,8 +63,12 @@ const DonationModule = (props) => {
 		: 'https://api.greenpeace.org.hk/app/donation-module/main.js';
 	// Import module
 	const timestamp = process.env.timeStamp;
-	const status = useScript(moduleUrl + '?v=' + timestamp);
-
+	const [url, setUrl] = useState('');
+	const status = useScript(url)
+	
+	useEffect(()=>{
+		setTimeout(()=>{setUrl(moduleUrl + '?v=' + timestamp);},500);
+	},[]);
 	return (
 		<Box pos="relative">
 			{/* Script loading */}
