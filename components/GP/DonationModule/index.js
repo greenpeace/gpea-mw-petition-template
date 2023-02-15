@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Box, Fade, Flex, Spinner } from '@chakra-ui/react';
+import Script from 'next/script';
 
 import useScript from './useScript';
+
 
 /*
 
@@ -63,14 +65,19 @@ const DonationModule = (props) => {
 		: 'https://api.greenpeace.org.hk/app/donation-module/main.js';
 	// Import module
 	const timestamp = process.env.timeStamp;
-	const [url, setUrl] = useState('');
-	const status = useScript(url)
+	// const status = useScript('https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js' + '?v=' + timestamp)
+	const [status, setStatus] = useState('');
 	
-	useEffect(()=>{
-		setTimeout(()=>{setUrl(moduleUrl + '?v=' + timestamp);},500);
-	},[]);
 	return (
 		<Box pos="relative">
+			<Script 
+				src={`https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js?v=${timestamp}`} s
+				trategy='lazyOnload' 
+				onLoad={() => {
+					console.log('donation module lazy on load')
+					setStatus('ready')
+				}}
+			></Script>
 			{/* Script loading */}
 			<Fade in={status != 'ready'}>
 				<Flex
@@ -80,6 +87,7 @@ const DonationModule = (props) => {
 					right="0"
 					width="100%"
 					height="100%"
+					minH="480px"
 					direction="column"
 					align="center"
 					justifyContent="center"

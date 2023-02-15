@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Wrapper from '@containers/wrapper';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
+import Script from 'next/script';
 import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
@@ -34,7 +35,8 @@ const signupNumbersTWURL = process.env.signupNumbersTW;
 const schemaEndpoint = `${themeEndpointURL}?q={"Market":${envProjectMarket}`;
 
 const initTagManager = (marketName) => {
-	if (process.env.NODE_ENV === 'production') {
+	
+	/* if (process.env.NODE_ENV === 'production') {
 		switch (marketName) {
 			case 'HK':
 				TagManager.initialize(hkTagManagerArgs);
@@ -45,7 +47,7 @@ const initTagManager = (marketName) => {
 				break;
 		}
 	}
-	/* else {
+	else {
 	switch (marketName) {
 	  case 'HK':
 		TagManager.initialize(hkDevTagManagerArgs);
@@ -214,10 +216,26 @@ function Index({
 					: '');
 		/* GTM is only applicable for production env */
 
-		setTimeout(function(){initTagManager(market);}, 2000);
+		initTagManager(market)
 	});
 
-	return <DynamicComponent strapi={strapi} themeData={themeData} />;
+	return (
+		<>
+			<Script strategy="lazyOnload">
+            {`console.log("================ GTM ================");`}
+			</Script>
+			<Script strategy="lazyOnload">
+				{`(function(w,d,s,l,i){w[l]=w[l]||[];
+						w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js', });
+						var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+						j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'&gtm_auth=&gtm_preview=&gtm_cookies_win=x';
+						f.parentNode.insertBefore(j,f);
+					})(window,document,'script','dataLayer','GTM-WRM6WK6');`}
+			</Script>
+			<DynamicComponent strapi={strapi} themeData={themeData} />
+		</>
+		
+	);
 }
 
 Index.getLayout = (page) => <Wrapper>{page}</Wrapper>;
