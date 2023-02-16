@@ -1,3 +1,13 @@
+/** 
+ * Dploy Setting:
+ *
+ * PROJECT=twStrapi/petition-climate-netzeroevent
+ * MARKET=tw
+ * PROJECT_NAME=petition-climate-netzeroevent
+ * BASEPATH=/htdocs/2023/petition/petition-climate-netzeroevent
+ * ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-climate-netzeroevent/
+ * FTP_CONFIG_NAME=ftp_tw
+*/
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -27,7 +37,6 @@ import formContent from './form';
 // Import static
 
 function Index({ submitted = false, strapi }) {
-	strapi = useSelector((state) => state?.theme?.strapi);
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
@@ -199,7 +208,6 @@ function Index({ submitted = false, strapi }) {
 										{pageType?.toLowerCase() === 'donation' || submitted ? (
 											utm_source !== 'dd' && (
 												<DonationModule
-													isUAT={true}
 													market={
 														strapi?.market?.data?.attributes?.market ===
 															'Hong Kong'
