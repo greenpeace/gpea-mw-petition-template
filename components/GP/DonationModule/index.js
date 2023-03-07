@@ -64,7 +64,7 @@ const DonationModule = (props) => {
 	// Import module
 	const timestamp = process.env.timeStamp;
 	const status = useScript(moduleUrl + '?v=' + timestamp);
-
+	console.log('this donation module url suffix was changed at: ' , new Date(Number(timestamp)))
 	return (
 		<Box pos="relative">
 			{/* Script loading */}
