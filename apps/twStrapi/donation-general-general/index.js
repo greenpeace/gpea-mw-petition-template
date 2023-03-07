@@ -5,8 +5,8 @@
 PROJECT=twStrapi/donation-general-general
 MARKET=tw
 PROJECT_NAME=donation-general-general
-BASEPATH=/htdocs/2022/donation/donation-general-general
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-general
+BASEPATH=/htdocs/2023/donation/donation-general-general
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-general/
 FTP_CONFIG_NAME=ftp_tw 
 */
 import React, { useEffect, useRef, useState } from 'react';
