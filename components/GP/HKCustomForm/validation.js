@@ -41,5 +41,9 @@ export function validation(values, formContent) {
     }
   }
 
+  if (!values.CampaignData2__c) {
+    errors.Options_Concern = formContent.empty_select_data_alert;
+  }
+
   return errors;
 }

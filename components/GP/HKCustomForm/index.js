@@ -324,17 +324,24 @@ const MyForm = (props) => {
 									fontSize={"sm"}
 									marginBottom={'.5em'}
 								>
-									{ formContent.label_concern }
+									{formContent.label_concern}
+								</Text>
+								<Text
+									fontSize={"sm"}
+									marginBottom={'.5em'}
+									px={2}
+									color="var(--error-900)"
+								>
+									{errors.Options_Concern}
 								</Text>
 								{
-									formContent.options_concern && 
-										formContent.options_concern.map((d) => (
-												<Checkbox name="CampaignData2__c" value={d.value} size={"sm"} w={'100%'} onChange={handleChange}>
-													{d.label}
-												</Checkbox>
-										))
+									formContent.options_concern &&
+									formContent.options_concern.map((d) => (
+										<Checkbox name="CampaignData2__c" value={d.value} size={"sm"} w={'100%'} onChange={handleChange}>
+											{d.label}
+										</Checkbox>
+									))
 								}
-								
 							</Box>
 
 							<Box>
