@@ -1,9 +1,9 @@
 /** 
  * Dploy Setting:
  *
- * PROJECT=hkStrapi/petition-oceans-elm
+ * PROJECT=hkStrapi/petition-oceans-elm-generator
  * MARKET=hk
- * PROJECT_NAME=petition-oceans-elm
+ * PROJECT_NAME=petition-oceans-elm-generator
  * BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/test/petition-oceans-elm-uat
  * ASSETPREFIX=https://api.greenpeace.org.hk/2022/test/petition-oceans-elm-uat/
  * FTP_CONFIG_NAME=api_hk_cloud
@@ -79,8 +79,8 @@ function Index({ submitted = false, strapi }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
+										'<br/>' +
+										strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}
@@ -135,8 +135,8 @@ function Index({ submitted = false, strapi }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
+										'<br/>' +
+										strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}
