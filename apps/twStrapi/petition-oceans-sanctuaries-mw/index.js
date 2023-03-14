@@ -1,14 +1,14 @@
 /** 
  * Dploy Setting:
  *
- * PROJECT=twStrapi/petition-oceans-sanctuaries-funnel
+ * PROJECT=twStrapi/petition-oceans-sanctuaries-mw
  * MARKET=tw
- * PROJECT_NAME=petition-oceans-sanctuaries-funnel
- * BASEPATH=/htdocs/2022/test/petition-oceans-sanctuaries-funnel-uat
- * ASSETPREFIX=https://change.greenpeace.org.tw/2022/test/petition-oceans-sanctuaries-funnel-uat/
+ * PROJECT_NAME=petition-oceans-sanctuaries-mw
+ * BASEPATH=/htdocs/2023/petition/petition-oceans-sanctuaries-mw
+ * ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-oceans-sanctuaries-mw/
  * FTP_CONFIG_NAME=ftp_tw
 */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -51,6 +51,25 @@ function Index({ submitted = false, strapi }) {
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
+
+	// const { FirstName } = signup;
+  
+  // get utm_source
+
+  // pass signer / donor name to TY Banner
+  const [TYName, setTYName] = useState();
+	
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+			setTYName(data.firstName);
+		}
+	});
+	useEffect(() => {
+		setTYName(signup?.data?.FirstName);
+	}, [signup]);
+
 
 	return (
 		<>
@@ -112,7 +131,7 @@ function Index({ submitted = false, strapi }) {
 								content={{
 									//title: strapi?.thankyouHero?.richContent,
 									title: `${
-										FirstName ? FirstName : '綠色和平支持者'
+										TYName ? TYName : '綠色和平支持者'
 									}，${strapi?.thankyouHero?.richContent}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
