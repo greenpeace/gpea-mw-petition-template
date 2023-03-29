@@ -299,14 +299,14 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-  mapPropsToValues: () => ({
-    Email: '',
-    FirstName: '',
-    LastName: '',
+  mapPropsToValues: ({ signup }) => ({
+    Email: signup?.preFill?.Email ?? '',
+    FirstName: signup?.preFill?.FirstName ?? '',
+    LastName: signup?.preFill?.LastName ?? '',
     MobileCountryCode: '852',
-    MobilePhone: '',
+    MobilePhone: signup?.preFill?.MobilePhone ?? '',
     OptIn: true,
-    Birthdate: '',
+    Birthdate: signup?.preFill?.Birthdate ?? ''
   }),
 
   validate: async (values, props) => {
@@ -357,7 +357,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     numberOfResponses: Math.max(
       parseInt(form.signupNumbers.hk?.NumberOfResponses),
       parseInt(form.signupNumbers.hk?.NumberOfLeads) +
-        parseInt(form.signupNumbers.hk?.NumberOfContacts),
+      parseInt(form.signupNumbers.hk?.NumberOfContacts),
     ),
     numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
     theme: theme.data,
