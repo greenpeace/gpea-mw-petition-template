@@ -1,0 +1,30 @@
+{
+  "A": {
+    "value": "背心膠袋",
+    "image": "results/earthday-result-a.png",
+    "title": "你內心最需要被清理嘅垃圾係 背心膠袋",
+    "content": "#抗壓力較低 #難接受批評<br>你係咪成日都覺得好大壓力，而且聽到人地對你嘅批評，會嘗試為自己辯護？其實你可以好似環保袋咁...",
+    "color": "#ACCCCB"
+  },
+  "B": {
+    "value": "發泡膠飯盒",
+    "image": "results/earthday-result-b.png",
+    "title": "你內心最需要被清理嘅垃圾係 發泡膠飯盒",
+    "content": "#固執 #Hi-byefriend<br>你係咪經常對自己嘅睇法有一定嘅堅持，而且同人建立長久深厚嘅感情覺得有啲困難？其實你可以好似玻璃飯盒咁...",
+    "color": "#ACCCCB"
+  },
+  "C": {
+    "value": "穿窿嘅Fast Fashion",
+    "image": "results/earthday-result-c.png",
+    "title": "你內心最需要被清理嘅垃圾係 穿窿嘅Fast Fashion",
+    "content": "#容易放棄 #要求不高<br>你係咪遇到困難嘅時候就好想放棄，而且覺得有啲事完成咗就OK，唔洗做得太好？其實你可以好似針線包咁...",
+    "color": "#ACCCCB"
+  },
+  "D": {
+    "value": "即棄珍珠奶茶杯",
+    "image": "results/earthday-result-d.png",
+    "title": "你內心最需要被清理嘅垃圾係 即棄珍珠奶茶杯",
+    "content": "#內心脆弱 #表面開心果<br>你係咪有唔開心嘅時候都會收埋得自己知，獨處嘅時候就會有負面情緒湧上嚟？其實你可以好似重用杯咁...",
+    "color": "#E2CCCC"
+  }
+}
