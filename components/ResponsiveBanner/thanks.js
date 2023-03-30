@@ -30,6 +30,7 @@ export default function Index({
     spans.forEach((span)=>{
       if(span.style.color !== '' && customColor === 'white') setCustomColor(span.style.color);
     });
+		console.log(removeMask)
   }, [content])
 	return (
 		<>
