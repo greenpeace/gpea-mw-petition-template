@@ -63,43 +63,29 @@ function Index({
       return;
     }
 
-    const calAnswer = await Object.values(answer)
-      .map((item) => item[1])
-      .reduce((b, c) => {
-        return b + c;
-      });
-    console.log('calAnswer: ' + calAnswer);
-    // const getMostLargerValue = calAnswer.filter(
-    //   (d) => d.totalPoints === calAnswer[0].totalPoints, // get largest points only
-    // );
-    if (
-      (calAnswer >= 0 && calAnswer <= 20) ||
-      (calAnswer >= 100 && calAnswer <= 120) ||
-      (calAnswer >= 200 && calAnswer <= 220)
-    ) {
-      setResult('A');
+    const sumTotalPointArray = await Object.values(answer)
+      .map((answer_item) => answer_item[1]) // get the point part
+      .reduce((sum, current_point) => sum + current_point)
+      .toString()
+      .split('');
+
+    // 將加總出的答案，由個位數開始取出，按照 ABCD 順序放入新陣列，並找出新陣列中，最大的數值，作為測驗結果
+    const answerType = ['A', 'B', 'C', 'D'];
+    let answerStringLength = sumTotalPointArray.length;
+    let answerCountResults = [0, 0, 0, 0];
+    for (let i = 0; i < answerStringLength && i < 4; i++) {
+      let index = answerStringLength - i - 1;
+      answerCountResults[i] = sumTotalPointArray[index];
     }
-    if (
-      (calAnswer >= 300 && calAnswer <= 320) ||
-      (calAnswer >= 400 && calAnswer <= 420) ||
-      (calAnswer >= 500 && calAnswer <= 520)
-    ) {
-      setResult('B');
-    }
-    if (
-      (calAnswer >= 30 && calAnswer <= 50) ||
-      (calAnswer >= 130 && calAnswer <= 150) ||
-      (calAnswer >= 230 && calAnswer <= 250)
-    ) {
-      setResult('C');
-    }
-    if (
-      (calAnswer >= 330 && calAnswer <= 350) ||
-      (calAnswer >= 430 && calAnswer <= 450) ||
-      (calAnswer >= 530 && calAnswer <= 550)
-    ) {
-      setResult('D');
-    }
+    console.log('answerCountResults: ' + answerCountResults);
+
+    const maxAnswerCount = Math.max(...answerCountResults);
+    const maxAnswerCountIndex = answerCountResults.indexOf(
+      maxAnswerCount.toString(),
+    );
+
+    setResult(answerType[maxAnswerCountIndex]);
+
   }, [answer]);
 
   useEffect(() => {
