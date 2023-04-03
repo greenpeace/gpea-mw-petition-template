@@ -18,7 +18,7 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-import leafImage from './images/earthday-leaf.jpg';
+import leafImage from './images/earthday-landing-bg.png';
 
 const Description = ({ setSurveyPage }) => {
   return (

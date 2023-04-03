@@ -49,7 +49,7 @@
       { "value": "A", "point": 1, "label": "自己默默地食晒佢" },
       { "value": "B", "point": 10, "label": "嬲，下次唔買" }
     ],
-    "image": "questions/earthday-q-3.jpg",
+    "image": "questions/earthday-q-1.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -67,7 +67,7 @@
       { "value": "C", "point": 100, "label": "扮冇嘢，下年再算" },
       { "value": "D", "point": 1000, "label": "補鑊，請食飯送大禮" }
     ],
-    "image": "questions/earthday-q-4.jpg",
+    "image": "questions/earthday-q-2.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -85,7 +85,7 @@
       { "value": "A", "point": 1, "label": "清痰，扮喉嚨唔舒服" },
       { "value": "D", "point": 1000, "label": "專登唱得再難聽啲" }
     ],
-    "image": "questions/earthday-q-5.jpg",
+    "image": "questions/earthday-q-1.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -103,7 +103,7 @@
       { "value": "B", "point": 10, "label": "刪咗佢再出過" },
       { "value": "C", "point": 100, "label": "是但啦，睇得明咪得" }
     ],
-    "image": "questions/earthday-q-6.jpg",
+    "image": "questions/earthday-q-2.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -121,7 +121,7 @@
       { "value": "B", "point": 10, "label": "唔去嚕，出糧先算" },
       { "value": "D", "point": 1000, "label": "照去，唔好掃興" }
     ],
-    "image": "questions/earthday-q-7.jpg",
+    "image": "questions/earthday-q-1.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -139,7 +139,7 @@
       { "value": "A", "point": 1, "label": "即刻裸辭" },
       { "value": "D", "point": 1000, "label": "扮冇嘢，繼續努力工作" }
     ],
-    "image": "questions/earthday-q-8.jpg",
+    "image": "questions/earthday-q-2.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -157,7 +157,7 @@
       { "value": "A", "point": 1, "label": "立即入會健身室" },
       { "value": "C", "point": 100, "label": "好似真係有難度，算啦" }
     ],
-    "image": "questions/earthday-q-9.jpg",
+    "image": "questions/earthday-q-1.jpg",
     "maximum": 1,
     "type": "single"
   },
@@ -175,7 +175,7 @@
       { "value": "B", "point": 10, "label": "出聲叫佢排返後面" },
       { "value": "D", "point": 1000, "label": "由佢啦，冇所謂" }
     ],
-    "image": "questions/earthday-q-10.jpg",
+    "image": "questions/earthday-q-2.jpg",
     "maximum": 1,
     "type": "single"
   }
