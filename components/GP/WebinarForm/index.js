@@ -274,6 +274,21 @@ const MyForm = (props) => {
                 </FormControl>
               </Box>
 
+              {formContent.label_newsletter && (
+                <Box>
+                  <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+                    <Text
+                      fontSize="xs"
+                      color={'gray.700'}
+                      dangerouslySetInnerHTML={{
+                        __html: formContent.label_newsletter
+                      }}
+                    />
+                  </Flex>
+                </Box>
+
+              )}
+
               <Box>
                 <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
                   {formContent.submit_text}

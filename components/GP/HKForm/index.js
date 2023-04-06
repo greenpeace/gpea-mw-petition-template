@@ -166,6 +166,7 @@ const MyForm = (props) => {
 								as="h2"
 								{...headingProps}
 								mb="0"
+								color={`theme.${themeInterests}`}
 								dangerouslySetInnerHTML={{ __html: formContent.form_header }}
 							/>
 						</Box>
@@ -361,10 +362,9 @@ const MyEnhancedForm = withFormik({
 		const { submitForm, theme, hiddenFormData, strapi } = props;
 		const isProd = process.env.NODE_ENV === 'production';
 		const fallbackValue = (d) => (d ? d : '');
-		const LeadSource = `Petition - ${
-			capitalize(strapi?.issue?.data?.attributes?.slug) ??
+		const LeadSource = `Petition - ${capitalize(strapi?.issue?.data?.attributes?.slug) ??
 			capitalize(theme.interests)
-		}`;
+			}`;
 
 		const { dummyEndpointURL, websignEndpointURL } =
 			strapi?.market?.data?.attributes;
@@ -374,8 +374,8 @@ const MyEnhancedForm = withFormik({
 				? websignEndpointURL
 				: theme.EndpointURL
 			: dummyEndpointURL !== '' && dummyEndpointURL !== undefined
-			? dummyEndpointURL
-			: process.env.dummyEndpoint;
+				? dummyEndpointURL
+				: process.env.dummyEndpoint;
 
 		const campaignId = isProd
 			? strapi?.campaignId !== '' && strapi.campaignId !== undefined
@@ -398,10 +398,9 @@ const MyEnhancedForm = withFormik({
 			UtmTerm: fallbackValue(hiddenFormData.utm_term),
 			CampaignId: campaignId,
 			LeadSource: LeadSource,
-			[`Petition_Interested_In_${
-				capitalize(strapi?.issue?.data?.attributes?.slug) ??
+			[`Petition_Interested_In_${capitalize(strapi?.issue?.data?.attributes?.slug) ??
 				capitalize(theme.interests)
-			}__c`]: true,
+				}__c`]: true,
 			CompletionURL: completionURL
 		};
 
@@ -421,7 +420,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
 		numberOfResponses: Math.max(
 			parseInt(form.signupNumbers.hk?.NumberOfResponses),
 			parseInt(form.signupNumbers.hk?.NumberOfLeads) +
-				parseInt(form.signupNumbers.hk?.NumberOfContacts)
+			parseInt(form.signupNumbers.hk?.NumberOfContacts)
 		),
 		numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
 		theme: theme.data,
