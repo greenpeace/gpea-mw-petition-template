@@ -50,7 +50,7 @@ const Description = ({ setSurveyPage }) => {
             <LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
               <Box bgColor={'rgba(255,255,255,0.8)'} borderRadius={'8px'} p={4}>
                 <Text as="p" color={'black'} {...paragraphProps} mb={0}>
-                  今年世界地球日，我地要繼續保護地球之餘，一齊學吓愛錫自己多啲，同地球一齊減廢，做一個更好嘅你，"A Better World, A Better You.”！用2分鐘極速搵出你內心最需要被清理嘅垃圾，Story Tag埋你身邊嘅Friend/愛人一齊玩 🤪
+                  邀請你用2分鐘時間，極速搵出你內心最需要被清理嘅垃圾，同地球一齊減廢，做個更好嘅自己！
                 </Text>
               </Box>
             </LazyShow>
