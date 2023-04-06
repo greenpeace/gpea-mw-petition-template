@@ -1,281 +1,225 @@
 import React, { useEffect, useState, useRef } from 'react';
-import dynamic from 'next/dynamic';
-import { connect } from 'react-redux';
-import {
-  Box,
-  Container,
-  Stack,
-  Text,
-  Heading,
-  Image,
-  useMediaQuery,
-  Grid,
-  GridItem,
-  Flex,
-} from '@chakra-ui/react';
-import PetitionFooter from '@containers/petitionFooter';
-import FormContainer from '@containers/formContainer';
-import PageContainer from '@containers/pageContainer';
-import ContentContainer from '@containers/contentContainer';
-import formContent from './form';
-import RESULT from './data/result.json';
-import useImage from './useImage';
+import { connect, useSelector, useDispatch } from 'react-redux';
+import { useInView } from 'react-intersection-observer';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
-import {
-  headingProps,
-  paragraphProps,
-} from '@common/styles/components/contentStyle';
+// Import library
+import { Box, Image, Stack, Grid, GridItem } from '@chakra-ui/react';
+// Import custom containers
+import PageContainer from '@containers/pageContainer';
+import ContentContainer from '@containers/contentContainer';
+import FormContainer from '@containers/formContainer';
+import PetitionFooter from '@containers/petitionFooter';
+// Import custom components
+import HeroContent from './components/ResponsiveBanner/heroContent';
+import ThanksContent from './components/ResponsiveBanner/thanksContent';
+import DonationModule from '@components/GP/DonationModule';
+import SignupForm from '@components/GP/WebinarForm';
 
-const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
-const SignupForm = dynamic(() => import('@components/GP/TWForm'));
+import formContent from './form';
+import RESULT from './data/result.json';
 
-const ThankyouContent = dynamic(() => import('./resultContent/resultContent'));
-//const OceanResult = dynamic(() => import('./resultContent/oceanResult'));
+import QuizResult from './resultContent/quizResult';
+import ThankyouResult from './resultContent/thankyouResult';
 
 function Index({
-  status,
-  theme,
-  setFormContent,
-  answer,
-  hiddenForm,
-  setAnswerToSubmitForm,
+    status,
+    setFormContent,
+    answer,
+    hiddenForm,
+    setAnswerToSubmitForm,
 }) {
-  const { submitted } = status;
-  const [isLargerThan768] = useMediaQuery('(min-width: 48em)'); // follow Chakra UI default md break point
-  const [result, setResult] = useState([]);
-  const [dynamicImageHeight, setDynamicImage] = useState(null);
-  const [bgElementHeight, setBgElementHeight] = useState(null);
-  const { loading, error, image } = useImage(RESULT[result]?.image); // animal
-  const topSection = useRef(null);
-  const dynamicContent = RESULT[result]?.content;
+    const signup = useSelector((state) => state?.signup);
+    const { step } = signup;
+    const submitted = useSelector((state) => state?.signup?.submitted);
+    const theme = useSelector((state) => state?.theme);
 
-  useEffect(() => {
-    setFormContent(formContent);
-  }, []); // init Form
-
-  useEffect(() => {
-    setFormContent(formContent);
-  }, [submitted]); // switch Form by result
-
-  useEffect(async () => {
-    if (!answer) {
-      return;
-    }
-
-    const sumTotalPointArray = await Object.values(answer)
-      .map((answer_item) => answer_item[1]) // get the point part
-      .reduce((sum, current_point) => sum + current_point)
-      .toString()
-      .split('');
-
-    // 將加總出的答案，由個位數開始取出，按照 ABCD 順序放入新陣列，並找出新陣列中，最大的數值，作為測驗結果
-    const answerType = ['A', 'B', 'C', 'D'];
-    let answerStringLength = sumTotalPointArray.length;
-    let answerCountResults = [0, 0, 0, 0];
-    for (let i = 0; i < answerStringLength && i < 4; i++) {
-      let index = answerStringLength - i - 1;
-      answerCountResults[i] = sumTotalPointArray[index];
-    }
-    console.log('answerCountResults: ' + answerCountResults);
-
-    const maxAnswerCount = Math.max(...answerCountResults);
-    const maxAnswerCountIndex = answerCountResults.indexOf(
-      maxAnswerCount.toString(),
+    let utmSource = new URLSearchParams(document.location.search).get(
+        'utm_source',
     );
 
-    setResult(answerType[maxAnswerCountIndex]);
+    const [result, setResult] = useState([]);
+    // const { loading, error, image } = useImage(RESULT[result?.answer]?.image); // roles
 
-  }, [answer]);
-
-  useEffect(() => {
-    if (result) {
-      console.log(
-        'topSection.current.clientHeight: ' + topSection.current.clientHeight,
-      );
-      setBgElementHeight(topSection.current.clientHeight);
-    }
-  }, [
-    topSection.current?.clientHeight,
-    dynamicContent,
-    dynamicImageHeight,
-    submitted,
-  ]);
-
-  useEffect(() => {
-    setAnswerToSubmitForm({
-      ...hiddenForm,
-      CampaignData1__c: result,
-      CampaignData2__c: RESULT[result]?.value,
+    const [ref, inView] = useInView({
+        threshold: 0,
     });
-  }, [result]);
+    const mobileForm = useRef(null);
+    const topSection = useRef(null);
 
-  const RenderForm = () => (submitted ? <DonateForm /> : <SignupForm />);
+    useEffect(() => {
+        setFormContent(formContent);
+    }, []); // init Form
 
-  return (
-    <>
-      <Box pos={'relative'}>
-        <PageContainer>
-          <Grid
-            templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
-            gap={0}
-            zIndex={2}
-            flexDirection={'column-reverse'}
-          >
-            <GridItem w="100%">
-              <Box
-                px={4}
-                zIndex={4}
-                pos={'relative'}
-                ref={topSection}
-                minH={{ base: 'auto', md: '550px' }}
-              >
-                <Stack py={4}>
-                  <Box pt={6}>
-                    {submitted ? (
-                      <Heading
-                        {...headingProps}
-                        color={'black'}
-                        fontSize={{ base: '2xl', md: '3xl' }}
-                        dangerouslySetInnerHTML={{
-                          __html: '完整測驗結果將立即發送至你的電子信箱',
+    useEffect(async () => {
+        if (!answer) {
+            return;
+        }
+        const sumTotalPointArray = await Object.values(answer)
+            .map((answer_item) => answer_item[1]) // get the point part
+            .reduce((sum, current_point) => sum + current_point)
+            .toString()
+            .split('');
+
+        // 將加總出的答案，由個位數開始取出，按照 ABCD 順序放入新陣列，並找出新陣列中，最大的數值，作為測驗結果
+        const answerType = ['A', 'B', 'C', 'D'];
+        let answerStringLength = sumTotalPointArray.length;
+        let answerCountResults = [0, 0, 0, 0];
+        for (let i = 0; i < answerStringLength && i < 4; i++) {
+            let index = answerStringLength - i - 1;
+            answerCountResults[i] = sumTotalPointArray[index];
+        }
+        console.log('answerCountResults: ' + answerCountResults);
+
+        const maxAnswerCount = Math.max(...answerCountResults);
+        const maxAnswerCountIndex = answerCountResults.indexOf(
+            maxAnswerCount.toString(),
+        );
+
+        setResult({
+            answer: answerType[maxAnswerCountIndex],
+        });
+    }, [answer]);
+
+    useEffect(() => {
+        setAnswerToSubmitForm({
+            ...hiddenForm,
+            CampaignData1__c: result?.answer,
+            CampaignData2__c: RESULT[result?.answer]?.value,
+        });
+    }, [result?.answer]);
+
+    useEffect(() => {
+        if (submitted) {
+            console.log('submitted');
+            // Send fbq Subscription event
+            window.dataLayer = window.dataLayer || [];
+
+            window.dataLayer.push({
+                event: 'fbqEvent',
+                contentName: 'ship-quiz',
+                contentCategory: 'Subscribe',
+            });
+        }
+    }, [submitted]);
+
+    return (
+        <>
+            <Box pos={'relative'}>
+                <PageContainer>
+                    {/* Hero Content */}
+                    <Grid
+                        templateColumns={{
+                            base: 'repeat(1, 1fr)',
+                            md: 'repeat(2, 1fr)',
                         }}
-                      />
-                    ) : (
-                      <Heading
-                        {...headingProps}
-                        color={'black'}
-                        fontSize={{ base: '2xl', md: '3xl' }}
-                        dangerouslySetInnerHTML={{
-                          __html: '完整測驗結果圖已經發送到你電郵，Post上Story Tag埋你身邊嘅朋友/愛人一齊玩啦！',
-                        }}
-                      />
-                    )}
-                  </Box>
-                  <Flex justifyContent={{ base: 'center', md: 'flex-start' }}>
-                    <Box position="relative">
-                      <Image
-                        src={image}
-                        onLoad={(e) => setDynamicImage(e.target.clientHeight)}
-                        pos={'relative'}
-                        w="90%"
-                        p={4}
-                        //maxW={{ base: '280px', md: '380px' }}
+                        gap={0}
                         zIndex={2}
-                      />
-                    </Box>
-                  </Flex>
-                  <Box>
-                    <Heading
-                      {...headingProps}
-                      color={'black'}
-                      fontSize={{ base: 'xl', md: '2xl' }}
-                      dangerouslySetInnerHTML={{
-                        __html: RESULT[result]?.title,
-                      }}
-                    />
-                  </Box>
-                  <Box>
-                    <Text
-                      as="p"
-                      color={'black'}
-                      {...paragraphProps}
-                      dangerouslySetInnerHTML={{
-                        __html: RESULT[result]?.content,
-                      }}
-                    />
-                  </Box>
-                </Stack>
-              </Box>
-              <Box flex={1} position="relative" zIndex={3}>
-                <Box py={2} d={{ base: 'block', md: 'none' }}>
-                  <Container>
-                    <Box
-                      maxW="100%"
-                      mx="auto"
-                      bgColor="white"
-                      borderRadius={8}
-                      boxShadow="lg"
-                      overflow="hidden"
-                      d={{ base: 'block', md: 'none' }}
+                        flexDirection={'column-reverse'}
                     >
-                      <RenderForm />
+                        <GridItem w="100%">
+                            <Box
+                                py={4}
+                                zIndex={4}
+                                pos={'relative'}
+                                ref={topSection}
+                                minH={{ base: 'auto', md: '550px' }}
+                            >
+                                <Stack>
+                                    {/* Hero Content */}
+                                    {submitted ? (
+                                        <ThanksContent
+                                            content={{
+                                                title: '完整測驗結果圖已經發送到你嘅電子郵箱，即刻Post上Story Tag埋朋友一齊玩啦！',
+                                                description: []
+                                            }}
+                                            quizResult={RESULT[result?.answer]}
+                                            removeMask={true}
+                                        />
+                                    ) : (
+                                        <HeroContent
+                                            content={{
+                                                title:
+                                                    `${theme?.params?.headline_prefix
+                                                        ? theme?.params?.headline_prefix + '<br/>'
+                                                        : ''
+                                                    }` + '立即登記獲得完整測驗結果圖！',
+                                            }}
+                                            quizResult={RESULT[result?.answer]}
+                                            removeMask={true}
+                                        />
+                                    )}
+                                </Stack>
+                            </Box>
+                        </GridItem>
+                        <GridItem w="100%">
+                            <Box py={4}>
+                                {submitted ? (
+                                    <FormContainer>
+                                        <Box>
+                                            <DonationModule
+                                                market={'HK'}
+                                                language={'zh_HK'}
+                                                campaign={
+                                                    theme?.params?.donation_module_campaign ?? 'plastics_earthday_2023quiz'
+                                                }
+                                                env={'production'}
+                                            />
+                                        </Box>
+                                    </FormContainer>
+                                ) : (
+                                    <FormContainer>
+                                        <Box ref={ref}>
+                                            <SignupForm />
+                                        </Box>
+                                    </FormContainer>
+                                )}
+                            </Box>
+                        </GridItem>
+                    </Grid>
+                    {/* Supporting Content */}
+                    <Box maxW={{ base: '100%', md: '50%' }}>
+                        <ContentContainer>
+                            {submitted ? (
+                                <ThankyouResult />
+                            ) : (
+                                <QuizResult quizResult={RESULT[result?.answer]} />
+                            )}
+                        </ContentContainer>
                     </Box>
-                  </Container>
-                </Box>
-
-                {submitted && (
-                  <ContentContainer theme={theme} py={4}>
-                    <Box>
-                      <ThankyouContent />
-                    </Box>
-                  </ContentContainer>
-                )}
-              </Box>
-            </GridItem>
-            <GridItem w="100%" d={{ base: 'none', md: 'block' }}>
-              {submitted && (
-                <Box h={`${bgElementHeight - bgElementHeight / 2}px`} />
-              )}
-              <Box
-                zIndex={9}
-                position={{ md: 'sticky' }}
-                top={{ base: 'auto', md: 2 }}
-                right={{ base: 0 }}
-                pt={3}
-              >
-                <FormContainer>
-                  <Box>
-                    <RenderForm />
-                  </Box>
-                </FormContainer>
-              </Box>
-            </GridItem>
-          </Grid>
-        </PageContainer>
-
-        {bgElementHeight && (
-          <Box
-            top={0}
-            w={'100%'}
-            h={bgElementHeight}
-            position="absolute"
-            bgColor={'#fffaf0'}
-            zIndex={1}
-          />
-        )}
-      </Box>
-      <PetitionFooter locale={'HKChinese'} />
-    </>
-  );
+                </PageContainer>
+            </Box>
+            <PetitionFooter locale={'HKChinese'} />
+        </>
+    );
 }
 
 const mapStateToProps = ({ status, theme, signup, survey, hiddenForm }) => {
-  return {
-    status,
-    answer: survey.data,
-    theme: theme.data,
-    signup: signup.data,
-    hiddenForm: hiddenForm.data,
-  };
+    return {
+        status,
+        answer: survey.data,
+        theme: theme.data,
+        signup: signup.data,
+        hiddenForm: hiddenForm.data,
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    setFormContent: (data) => {
-      dispatch({ type: formActions.SET_FORM, data });
-    },
-    setAnswerToSubmitForm: (data) => {
-      dispatch({ type: hiddenFormActions.SET_HIDDEN_FORM, data });
-    },
-  };
+    return {
+        setFormContent: (data) => {
+            dispatch({ type: formActions.SET_FORM, data });
+        },
+        setAnswerToSubmitForm: (data) => {
+            dispatch({ type: hiddenFormActions.SET_HIDDEN_FORM, data });
+        },
+    };
 };
 
 function propsAreEqual(prevState, nextState) {
-  return prevState.status.submitted === nextState.status.submitted;
+    return prevState.status.submitted === nextState.status.submitted;
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+    mapStateToProps,
+    mapDispatchToProps,
 )(React.memo(Index, propsAreEqual));
