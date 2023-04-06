@@ -24,15 +24,6 @@ const Quiz = ({ quiz, current }) => {
       <Container maxW={{ base: 'xl', xl: '2xl' }} pos={'relative'} zIndex={10}>
         <Center py={4}>
           <Stack w="100%" direction="column" spacing={4}>
-            {/* <Box borderRadius={'8px'} p={4}>
-                <Heading
-                  fontSize={{ base: 'xl', md: '2xl' }}
-                  color={'#025177'}
-                  textAlign={{ base: 'center' }}
-                >
-                  找出隱藏在你潛意識中的極地動物！
-                </Heading>
-              </Box> */}
             <Box borderRadius={'8px'} px={4} pt={4}>
               <Heading
                 fontSize={{ base: 'md', md: '2xl' }}
@@ -68,17 +59,6 @@ const Quiz = ({ quiz, current }) => {
         </Center>
       </Container>
       <Box bgColor={'#EEEEEE'} w="100%" h="100%" top={0} position="absolute" />
-      {/* <Image
-        src={BackgroundVisual}
-        w="100%"
-        h="100%"
-        top={0}
-        objectFit={'cover'}
-        objectPosition={'center top'}
-        position="absolute"
-        blur={'0.5'}
-      /> */}
-      {/* <DynamicBackground currentQuiz={currentQuiz} /> */}
     </>
   );
 };
