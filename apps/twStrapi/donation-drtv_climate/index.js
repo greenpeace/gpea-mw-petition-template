@@ -5,7 +5,7 @@ PROJECT=twStrapi/donation-drtv_climate
 MARKET=tw
 PROJECT_NAME=donation-drtv_climate
 BASEPATH=/htdocs/2022/donation/donation-drtv_climate
-ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-drtv_climate
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-drtv_climate/
 FTP_CONFIG_NAME=ftp_tw 
 */
 import React, { useEffect, useRef, useState } from 'react';
@@ -192,6 +192,7 @@ function Index({ submitted = false, strapi }) {
 												''
 											}
 											env={strapi?.donationModuleEnv}
+											customUrl="https://change.greenpeace.org.tw/app/donation-module/main.js"
 										/>)
 									) : (
 										<SignupForm />

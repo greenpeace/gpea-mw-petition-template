@@ -54,6 +54,7 @@ const DonationModule = (props) => {
 		env,
 		signup,
 		preFill,
+		customUrl,
 		isUAT = false
 	} = props;
 
@@ -63,7 +64,7 @@ const DonationModule = (props) => {
 		: 'https://api.greenpeace.org.hk/app/donation-module/main.js';
 	// Import module
 	const timestamp = process.env.timeStamp;
-	const status = useScript(moduleUrl + '?v=' + timestamp);
+	const status = useScript((customUrl ? customUrl : moduleUrl) + '?v=' + timestamp);
 	console.log('this donation module url suffix was changed at: ' , new Date(Number(timestamp)))
 	return (
 		<Box pos="relative">

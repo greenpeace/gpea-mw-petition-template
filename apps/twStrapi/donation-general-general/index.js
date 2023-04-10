@@ -189,6 +189,7 @@ function Index({ submitted = false, strapi }) {
 											}
 											campaignId={theme?.params?.campaignId ?? ''}
 											env={strapi?.donationModuleEnv}
+											customUrl="https://change.greenpeace.org.tw/app/donation-module/main.js"
 										/>)
 									) : (
 										<SignupForm />
