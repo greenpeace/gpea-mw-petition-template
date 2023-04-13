@@ -30,7 +30,7 @@ export default function Index({
 							<Stack spacing="4">
 								{content?.title && (
 									<Heading
-										as="h1"
+										as="div"
 										fontSize={{
 											base: 'var(--text-xl)',
 											md: 'var(--text-2xl)'
