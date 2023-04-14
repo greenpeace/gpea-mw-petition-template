@@ -185,7 +185,7 @@ function Index({ submitted = false, strapi }) {
 												strapi?.donationModuleCampaign
 											}
 											campaignId={theme?.params?.campaignId ?? ''}
-											env={'test'}
+											env={strapi?.donationModuleEnv}
 										/>)
 									) : (
 										<SignupForm />
