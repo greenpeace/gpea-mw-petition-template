@@ -5,7 +5,7 @@ PROJECT=twStrapi/donation-arctic-drtv_polar
 MARKET=tw
 PROJECT_NAME=donation-arctic-drtv_polar
 BASEPATH=/htdocs/2022/donation/donation-arctic-drtv_polar
-ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-arctic-drtv_polar
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-arctic-drtv_polar/
 FTP_CONFIG_NAME=ftp_tw 
 */
 import React, { useEffect, useRef, useState } from 'react';
