@@ -5,7 +5,7 @@ PROJECT=twStrapi/donation-general-adhoc
 MARKET=tw
 PROJECT_NAME=donation-general-adhoc
 BASEPATH=/htdocs/2022/donation/donation-general-adhoc
-ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-general-adhoc
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-general-adhoc/
 FTP_CONFIG_NAME=ftp_tw 
 */
 import React, { useEffect, useRef, useState } from 'react';
