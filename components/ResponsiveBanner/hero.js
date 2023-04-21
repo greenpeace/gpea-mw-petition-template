@@ -13,7 +13,7 @@ export default function Index({
 }) {
 	const [customColor, setCustomColor] = useState('white');
   useEffect(() => {
-    console.log(content)
+    // console.log(content)
     const html = document.createElement('html');
     html.innerHTML = content.title;
     const spans = html.querySelectorAll('span');
