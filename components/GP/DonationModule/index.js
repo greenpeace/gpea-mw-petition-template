@@ -59,12 +59,16 @@ const DonationModule = (props) => {
 	} = props;
 
 	// Define constant module url
-	const moduleUrl = isUAT
-		? 'https://api.greenpeace.org.hk/app/donation-module-uat/main.js'
-		: 'https://api.greenpeace.org.hk/app/donation-module/main.js';
+	// const moduleUrl = isUAT
+	// 	? 'https://api.greenpeace.org.hk/app/donation-module-uat/main.js'
+	// 	: 'https://api.greenpeace.org.hk/app/donation-module/main.js';
+	const moduleUrl = market?.toUpperCase() === 'TW' 
+		? `https://change.greenpeace.org.tw/app/donation-module${(isUAT ? "-uat" : "")}/main.js`
+		: `https://api.greenpeace.org.hk/app/donation-module${(isUAT ? "-uat" : "")}/main.js`
 	// Import module
 	const timestamp = process.env.timeStamp;
 	const status = useScript((customUrl ? customUrl : moduleUrl) + '?v=' + timestamp);
+	if(customUrl) console.log('using custom donation module url.')
 	console.log('this donation module url suffix was changed at: ' , new Date(Number(timestamp)))
 	return (
 		<Box pos="relative">
