@@ -1,13 +1,3 @@
-/**
- * Deploy setting
-# Project Apps Directory: /apps/{PROJECT}
-PROJECT=twStrapi/donation-oceans-drtv_plastics
-MARKET=tw
-PROJECT_NAME=donation-oceans-drtv_plastics
-BASEPATH=/htdocs/2023/donation/donation-oceans-drtv_plastics
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-oceans-drtv_plastics/
-FTP_CONFIG_NAME=ftp_tw 
-*/
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -24,7 +14,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/TWForm';
+import SignupForm from '@components/GP/HKForm';
 import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
@@ -162,7 +152,7 @@ function Index({ submitted = false, strapi }) {
 											>
 												常見問題
 											</Heading>
-											<DonateFAQ locale="TWChinese" />
+											<DonateFAQ locale="HKChinese" />
 										</>
 									)}
 								</>
@@ -184,8 +174,13 @@ function Index({ submitted = false, strapi }) {
 												theme?.params?.donation_module_campaign ??
 												strapi?.donationModuleCampaign
 											}
-											campaignId={theme?.params?.campaignId ?? ''}
-											env={strapi?.donationModuleEnv}
+											campaignId={
+												theme?.params?.campaignId ??
+												strapi?.donationModuleCampaignId ??
+												''
+											}
+											env={'test'}
+											// env={strapi?.donationModuleEnv}
 										/>)
 									) : (
 										<SignupForm />
@@ -196,7 +191,7 @@ function Index({ submitted = false, strapi }) {
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
-			<PetitionFooter locale={'TWChinese'} />
+			<PetitionFooter locale={'HKChinese'} />
 			<StrapiFixedButton target={FormRef} targetInView={inView} />
 		</>
 	);

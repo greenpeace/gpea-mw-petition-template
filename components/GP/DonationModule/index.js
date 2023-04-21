@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Box, Fade, Flex, Spinner } from '@chakra-ui/react';
+import Script from 'next/script';
 
 import useScript from './useScript';
+
 
 /*
 
@@ -54,28 +56,44 @@ const DonationModule = (props) => {
 		env,
 		signup,
 		preFill,
+		customUrl,
 		isUAT = false
 	} = props;
 
 	// Define constant module url
-	const moduleUrl = isUAT
-		? 'https://api.greenpeace.org.hk/app/donation-module-uat/main.js'
-		: 'https://api.greenpeace.org.hk/app/donation-module/main.js';
+	// const moduleUrl = isUAT
+	// 	? 'https://api.greenpeace.org.hk/app/donation-module-uat/main.js'
+	// 	: 'https://api.greenpeace.org.hk/app/donation-module/main.js';
+	const moduleUrl = market?.toUpperCase() === 'TW' 
+		? `https://change.greenpeace.org.tw/app/donation-module${(isUAT ? "-uat" : "")}/main.js`
+		: `https://api.greenpeace.org.hk/app/donation-module${(isUAT ? "-uat" : "")}/main.js`
 	// Import module
 	const timestamp = process.env.timeStamp;
-	const status = useScript(moduleUrl + '?v=' + timestamp);
+	if(customUrl) console.log('using custom donation module url.')
 	console.log('this donation module url suffix was changed at: ' , new Date(Number(timestamp)))
+	// const status = useScript('https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js' + '?v=' + timestamp)
+	const [status, setStatus] = useState('');
+	
 	return (
 		<Box pos="relative">
+			<Script 
+				src={(customUrl ? customUrl : moduleUrl) + '?v=' + timestamp} s
+				trategy='lazyOnload' 
+				onLoad={() => {
+					console.log('donation module lazy on load')
+					setStatus('ready')
+				}}
+			></Script>
 			{/* Script loading */}
-			<Fade in={status != 'ready'}>
+			<Fade in={status != 'ready'} pos="relative">
 				<Flex
 					zIndex="99"
-					pos="absolute"
+					pos={"absolute"}
 					top="0"
 					right="0"
 					width="100%"
 					height="100%"
+					minH="600px"
 					direction="column"
 					align="center"
 					justifyContent="center"

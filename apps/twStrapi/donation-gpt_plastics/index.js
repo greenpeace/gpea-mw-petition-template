@@ -1,19 +1,19 @@
-/** 
- * Dploy Setting:
- *
- * PROJECT=twStrapi/petition-oceans-sanctuaries-funnel
- * MARKET=tw
- * PROJECT_NAME=petition-oceans-sanctuaries-funnel
- * BASEPATH=/htdocs/2022/test/petition-oceans-sanctuaries-funnel-uat
- * ASSETPREFIX=https://change.greenpeace.org.tw/2022/test/petition-oceans-sanctuaries-funnel-uat/
- * FTP_CONFIG_NAME=ftp_tw
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=twStrapi/donation-gpt_plastics
+MARKET=tw
+PROJECT_NAME=donation-gpt_plastics
+BASEPATH=/htdocs/2023/donation/donation-gpt_plastics
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-gpt_plastics/
+FTP_CONFIG_NAME=ftp_tw 
 */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
@@ -25,6 +25,7 @@ import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/TWForm';
+import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
@@ -37,14 +38,11 @@ function Index({ submitted = false, strapi }) {
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
-	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
 	const FormRef = useRef(null);
-	const { FirstName } = signup?.data;
-	const { utm_source } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -52,103 +50,88 @@ function Index({ submitted = false, strapi }) {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
 
+	// get utm_source
+  const hiddenForm = useSelector((state) => state?.hiddenForm);
+  const { utm_source } = hiddenForm?.data;
+
+  // pass signer / donor name to TY Banner
+  const [TYName, setTYName] = useState();
+	
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+			setTYName(data.firstName);
+		}
+	});
+	useEffect(() => {
+		setTYName(signup?.data?.FirstName);
+	}, [signup]);
+
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
 			<Box>
-				{(() => {
-					if (pageType?.toLowerCase() === 'donation') {
-						return (
-							<HeroBanner
-								defaultImage={
-									theme?.params?.hero_image_desktop ||
-									strapi?.contentHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: theme?.params?.headline_prefix
-										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
-										: strapi?.contentHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
-								}}
-							/>
-						);
-					} else {
-						return submitted ? (
-							<ThanksBanner
-								defaultImage={
+				{submitted ? (
+					<ThanksBanner
+						removeMask={strapi?.thankyouHero?.removeMask}
+						defaultImage={
+							theme?.params?.hero_image_desktop ||
+							strapi?.thankyouHero?.desktopImageURL
+						}
+						imageSrcset={[
+							{
+								media: '(min-width: 48em)',
+								srcset:
 									theme?.params?.hero_image_desktop ||
 									strapi?.thankyouHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									//title: strapi?.thankyouHero?.richContent,
-									title: `${
-										FirstName ? FirstName : '綠色和平支持者'
-									}，${strapi?.thankyouHero?.richContent}`,
-									description: strapi?.thankyouHero?.richContentParagraph
-								}}
-							/>
-						) : (
-							<HeroBanner
-								defaultImage={
+							},
+							{
+								media: '',
+								srcset:
+									theme?.params?.hero_image_mobile ||
+									strapi?.thankyouHero?.mobileImageURL
+							}
+						]}
+						content={{
+							// title: strapi?.thankyouHero?.richContent,
+							title: `${
+								TYName ? TYName : '綠色和平支持者'
+							}，${strapi?.thankyouHero?.richContent}`,
+							description: strapi?.thankyouHero?.richContentParagraph
+						}}
+					/>
+				) : (
+					<HeroBanner
+						removeMask={strapi?.contentHero?.removeMask}
+						defaultImage={
+							theme?.params?.hero_image_desktop ||
+							strapi?.contentHero?.desktopImageURL
+						}
+						imageSrcset={[
+							{
+								media: '(min-width: 48em)',
+								srcset:
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: theme?.params?.headline_prefix
-										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
-										: strapi?.contentHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
-								}}
-							/>
-						);
-					}
-				})()}
+							},
+							{
+								media: '',
+								srcset:
+									theme?.params?.hero_image_mobile ||
+									strapi?.contentHero?.mobileImageURL
+							}
+						]}
+						content={{
+							title: theme?.params?.headline_prefix
+								? theme?.params?.headline_prefix +
+								  '<br/>' +
+								  strapi?.contentHero?.richContent
+								: strapi?.contentHero?.richContent,
+							description: strapi?.contentHero?.richContentParagraph
+						}}
+					/>
+				)}
 			</Box>
 			<PageContainer>
 				<OverflowWrapper>
@@ -166,6 +149,21 @@ function Index({ submitted = false, strapi }) {
 											blocks={'contentBlocks'}
 											strapi={strapi}
 										/>
+									)}
+								</>
+								<>
+									{pageType?.toLowerCase() === 'donation' && !submitted && (
+										<>
+											<Heading
+												as="p"
+												textAlign="center"
+												py="6"
+												fontSize={{ base: 'xl', md: '2xl' }}
+											>
+												常見問題
+											</Heading>
+											<DonateFAQ locale="TWChinese" />
+										</>
 									)}
 								</>
 							</ContentContainer>
@@ -186,11 +184,7 @@ function Index({ submitted = false, strapi }) {
 												theme?.params?.donation_module_campaign ??
 												strapi?.donationModuleCampaign
 											}
-											campaignId={
-												theme?.params?.campaignId ??
-												strapi?.donationModuleCampaignId ??
-												''
-											}
+											campaignId={theme?.params?.campaignId ?? ''}
 											env={strapi?.donationModuleEnv}
 										/>)
 									) : (
