@@ -18,7 +18,14 @@ export function* submitForm(actions) {
         }, new FormData()),
       }),
     );
-
+    // ga4 event
+    helper.pushDataLayer({
+      'event': 'custom_event',
+      'event_name' : 'add_contact_info',
+      'event_category': 'petitions',
+      'event_action': 'click_submit',
+      'fields' : Object.keys(actions.data)
+    })
     //const responseBody = yield call(() => response.json());
 
     if (response.statusText === 'OK') {
@@ -31,7 +38,7 @@ export function* submitForm(actions) {
       //     type: signupActions.SIGN_UP_FAILED,
       //   });
       // }
-
+      
       yield put({
         type: signupActions.SIGN_UP_SUCCESS,
       });
@@ -41,6 +48,14 @@ export function* submitForm(actions) {
       if (ProjectName || EventLabel) {
         console.log('submitted:', `${EventLabel ? EventLabel : ProjectName}`);
         helper.sendPetitionTracking(`${EventLabel ? EventLabel : ProjectName}`);
+        // ga4 event
+        helper.pushDataLayer({
+          'event': 'custom_event',
+          'event_name' : 'petition_signup',
+          'event_category': 'petitions',
+          'event_action': 'signup',
+          'event_label': actions.data?.CampaignId
+        })
       } else {
         console.log('Project undefined');
       }

@@ -225,6 +225,7 @@ function Index({ submitted = false, strapi }) {
 														''
 													}
 													env={strapi?.donationModuleEnv}
+													customUrl={'https://change.greenpeace.org.tw/2023/test/donation-module-ga4/main.js'}
 												/>
 											)
 										) : (

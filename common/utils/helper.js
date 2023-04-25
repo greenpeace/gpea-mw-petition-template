@@ -38,6 +38,12 @@ export const sendPetitionTracking = (eventLabel, eventValue) => {
   });
 };
 
+export const pushDataLayer = (props) => {
+  window.dataLayer = window.dataLayer || [];
+
+  window.dataLayer.push(props);
+}
+
 export const getUrlParams = () => {
   const { searchParams } = new URL(window.location.href);
   let p = {};
