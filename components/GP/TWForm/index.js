@@ -75,6 +75,7 @@ const MyForm = (props) => {
 	}, []);
 
 	useEffect(() => {
+		console.log("numberOfResponses: "+numberOfResponses,numberOfTarget)
 		const currentNumber = numberOfResponses;
 		const currentNumberOfTarget = numberOfTarget ? numberOfTarget : 10000;
 		const number =
@@ -88,6 +89,7 @@ const MyForm = (props) => {
 		return () => {
 			clearTimeout(timerId);
 		};
+		
 	}, [numberOfResponses]);
 
 	//setting additional fileds for formik
@@ -142,7 +144,7 @@ const MyForm = (props) => {
 									h={`14px`}
 									w={progressNumber}
 									borderRadius={4}
-									bgColor={`theme.${themeInterests}`}
+									bgColor={(formContent.signed_progress_color ? formContent.signed_progress_color :`theme.${themeInterests}`)}
 								/>
 							)}
 						</Box>
