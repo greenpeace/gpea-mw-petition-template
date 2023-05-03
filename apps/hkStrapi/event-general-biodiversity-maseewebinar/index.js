@@ -1,3 +1,14 @@
+
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/event-general-biodiversity-maseewebinar
+MARKET=hk
+PROJECT_NAME=event-general-biodiversity-maseewebinar
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/event-general-biodiversity-maseewebinar
+ASSETPREFIX=https://api.greenpeace.org.hk/page/event-general-biodiversity-maseewebinar/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
