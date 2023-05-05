@@ -87,6 +87,7 @@ function Index({
 
 	/* Set dynamic theme parameters */
 	useEffect(() => {
+		console.log('1st')
 		if (router.isReady) {
 			/* Cater these query parameters */
 			const {
@@ -126,6 +127,7 @@ function Index({
 
 	/** Fetch signup data on load */
 	useEffect(() => {
+		console.log('2nd')
 		async function fetchSignupData() {
 			const fetchURLs = {
 				hk: signupNumbersHKURL,
@@ -146,6 +148,7 @@ function Index({
 
 	/* Set parameters to hiddenForm data */
 	useEffect(() => {
+		console.log('3rd')
 		let params = {};
 
 		window.location.search
@@ -166,7 +169,7 @@ function Index({
 
 	/* Pre-fill signup data */
 	useEffect(() => {
-		
+		console.log('4th')
 		setTheme(themeData);
 
 		let FormObj = {};
@@ -201,7 +204,9 @@ function Index({
 		}
 	}, [themeData]);
 
+	const [prepared, setPrepared] = useState(false);
 	useEffect(() => {
+		console.log('5th')
 		window.addEventListener(
 			'message',
 			(event) => {
@@ -231,14 +236,15 @@ function Index({
 		/* GTM is only applicable for production env */
 
 		initTagManager(market)
-	});
-
+		setPrepared(true);
+	},[]);
+	
 	return (
 		<>
-			<Script strategy="lazyOnload">
+			{/* <Script strategy="lazyOnload">
             {`console.log("================ GTM ================");`}
-			</Script>
-			{gtmId != '' && (
+			</Script> */}
+			{(gtmId != '' && prepared) && (
 				<Script strategy="lazyOnload">
 					{`(function(w,d,s,l,i){w[l]=w[l]||[];
 							w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js', });
@@ -248,7 +254,7 @@ function Index({
 						})(window,document,'script','dataLayer',"${gtmId}");`}
 				</Script>
 			)}
-			<DynamicComponent strapi={strapi} themeData={themeData} />
+			{prepared && <DynamicComponent strapi={strapi} themeData={themeData} />}
 		</>
 		
 	);

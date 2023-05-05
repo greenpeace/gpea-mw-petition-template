@@ -15,13 +15,21 @@ class NextDocument extends Document {
             type="image/png"
             href="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/01aca3df-favicon-96x96-1.png"
           />
+          <link
+            rel="preload"
+            href={"https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js?v="+process.env.timeStamp}
+            as="script"
+          />
           {/* Load google fonts */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap"
+            media="print"
+            onload="this.onload=null;this.removeAttribute('media');"
           />
+         
         </Head>
         <body>
           <Main />

@@ -71,24 +71,25 @@ const DonationModule = (props) => {
 	const timestamp = process.env.timeStamp;
 	if(customUrl) console.log('using custom donation module url.')
 	console.log('this donation module url suffix was changed at: ' , new Date(Number(timestamp)))
-	// const status = useScript('https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js' + '?v=' + timestamp)
-	const [status, setStatus] = useState('');
-	
+	const status = useScript('https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js' + '?v=' + timestamp)
+	// const [status, setStatus] = useState('');
+	console.log('rendered',props)
 	return (
 		<Box pos="relative">
-			<Script 
-				src={(customUrl ? customUrl : moduleUrl) + '?v=' + timestamp} s
-				trategy='lazyOnload' 
+			
+			{/* <Script 
+				src={'https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js' + '?v=' + timestamp} s
+				trategy='beforeInteractive' 
 				onLoad={() => {
 					console.log('donation module lazy on load')
 					setStatus('ready')
 				}}
-			></Script>
+			></Script> */}
 			{/* Script loading */}
 			<Fade in={status != 'ready'} pos="relative">
 				<Flex
 					zIndex="99"
-					pos={"absolute"}
+					pos={status != 'ready' ? "relative" : "absolute"}
 					top="0"
 					right="0"
 					width="100%"
@@ -115,6 +116,8 @@ const DonationModule = (props) => {
 					...signup
 				})} //非必填，繼承自 petition daisy chain
 			></div>
+			
+			
 		</Box>
 	);
 };
