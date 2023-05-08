@@ -24,7 +24,7 @@ export function* submitForm(actions) {
       'event_name' : 'add_contact_info',
       'event_category': 'petitions',
       'event_action': 'click_submit',
-      'fields' : Object.keys(actions.data)
+      'fields' : actions.data
     })
     //const responseBody = yield call(() => response.json());
 
