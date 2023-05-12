@@ -2,11 +2,11 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=twStrapi/donation-general-general
+PROJECT=twStrapi/donation-general-tax_exempt_donation
 MARKET=tw
-PROJECT_NAME=donation-general-general
-BASEPATH=/htdocs/2023/donation/donation-general-general
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-general/
+PROJECT_NAME=donation-general-tax_exempt_donation
+BASEPATH=/htdocs/2023/donation/donation-general-tax_exempt_donation
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-tax_exempt_donation/
 FTP_CONFIG_NAME=ftp_tw 
 */
 import React, { useEffect, useRef, useState } from 'react';

@@ -1,3 +1,13 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/petition-climate-labour
+MARKET=hk
+PROJECT_NAME=petition-climate-labour
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-climate-labour
+ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-climate-labour/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -68,6 +78,20 @@ function Index({ submitted = false, strapi: strapiData }) {
 		}
 	}, [router]);
 
+	// pass signer / donor name to TY Banner
+  const [TYName, setTYName] = useState();
+	
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+			setTYName(data.firstName);
+		}
+	});
+	useEffect(() => {
+		setTYName(signup?.data?.FirstName);
+	}, [signup]);
+
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
@@ -96,7 +120,9 @@ function Index({ submitted = false, strapi: strapiData }) {
 									}
 								]}
 								content={{
-									title: strapi?.thankyouHero?.richContent,
+									title: `${
+										TYName ? TYName : '綠色和平支持者'
+									}，${strapi?.thankyouHero?.richContent}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
@@ -179,7 +205,6 @@ function Index({ submitted = false, strapi: strapiData }) {
 									<Box ref={ref}>
 										{pageType?.toLowerCase() === 'donation' || submitted ? (
 											<DonationModule
-												isUAT={true}
 												market={
 													strapi?.market?.data?.attributes?.market ===
 													'Hong Kong'
