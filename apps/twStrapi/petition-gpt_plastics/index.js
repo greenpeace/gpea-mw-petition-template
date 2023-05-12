@@ -1,21 +1,18 @@
-/**
- * Deploy setting
-# Project Apps Directory: /apps/{PROJECT}
-PROJECT=hkStrapi/petition-climate-labour
-MARKET=hk
-PROJECT_NAME=petition-climate-labour
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-climate-labour
-ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-climate-labour/
-FTP_CONFIG_NAME=api_hk_cloud 
+/** 
+ * Dploy Setting:
+PROJECT=twStrapi/petition-gpt_plastics
+MARKET=tw
+PROJECT_NAME=petition-gpt_plastics
+BASEPATH=/htdocs/2023/petition/petition-gpt_plastics
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-gpt_plastics/
+FTP_CONFIG_NAME=ftp_tw
 */
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
 import * as formActions from 'store/actions/action-types/form-actions';
-import * as themeActions from 'store/actions/action-types/theme-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
-import { Box, Flex, Heading } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
@@ -26,8 +23,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/HKForm';
-import DonateFAQ from '@components/DonateFAQ';
+import SignupForm from '@components/GP/TWForm';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
@@ -36,49 +32,30 @@ import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 import formContent from './form';
 // Import static
 
-function Index({ submitted = false, strapi: strapiData }) {
-	const strapi = strapiData ?? useSelector((state) => state?.theme?.strapi);
-	const router = useRouter();
+function Index({ submitted = false, strapi }) {
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
-	const [isLoaded, setIsLoaded] = useState(false);
 	const FormRef = useRef(null);
+	const { FirstName } = signup?.data;
+	const { utm_source } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
-		if (pageType !== undefined) {
-			setIsLoaded(true);
-		}
-	}, [dispatch, pageType]);
+	}, [dispatch]);
 
-	useEffect(async () => {
-		if (router?.isReady) {
-			const { preview } = router?.query;
-			if (preview) {
-				const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
+	// const { FirstName } = signup;
+  
+  // get utm_source
 
-				const res = await fetch(
-					`${endpoint}/pages?filters[market][slug]=hk&filters[campaign]=${preview}&populate=deep`
-				).then((response) => response);
-				const themes = await res.json();
-				const theme = themes?.data[0] ?? {};
-
-				dispatch({
-					type: themeActions.SET_STRAPI_DATA,
-					data: theme?.attributes
-				});
-			}
-		}
-	}, [router]);
-
-	// pass signer / donor name to TY Banner
+  // pass signer / donor name to TY Banner
   const [TYName, setTYName] = useState();
 	
 	useEffect(() => {
@@ -92,43 +69,15 @@ function Index({ submitted = false, strapi: strapiData }) {
 		setTYName(signup?.data?.FirstName);
 	}, [signup]);
 
+
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
 			<Box>
-				{isLoaded && (
-					<>
-						{submitted ? (
-							<ThanksBanner
-								removeMask={strapi?.thankyouHero?.removeMask}
-								defaultImage={
-									theme?.params?.hero_image_desktop ||
-									strapi?.thankyouHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.thankyouHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.thankyouHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: `${
-										TYName ? TYName : '綠色和平支持者'
-									}，${strapi?.thankyouHero?.richContent}`,
-									description: strapi?.thankyouHero?.richContentParagraph
-								}}
-							/>
-						) : (
+				{(() => {
+					if (pageType?.toLowerCase() === 'donation') {
+						return (
 							<HeroBanner
-								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -156,84 +105,122 @@ function Index({ submitted = false, strapi: strapiData }) {
 									description: strapi?.contentHero?.richContentParagraph
 								}}
 							/>
-						)}
-					</>
-				)}
+						);
+					} else {
+						return submitted ? (
+							<ThanksBanner
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.thankyouHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									//title: strapi?.thankyouHero?.richContent,
+									title: `${
+										TYName ? TYName : '綠色和平支持者'
+									}，${strapi?.thankyouHero?.richContent}`,
+									description: strapi?.thankyouHero?.richContentParagraph
+								}}
+							/>
+						) : (
+							<HeroBanner
+								defaultImage={
+									theme?.params?.hero_image_desktop ||
+									strapi?.contentHero?.desktopImageURL
+								}
+								imageSrcset={[
+									{
+										media: '(min-width: 48em)',
+										srcset:
+											theme?.params?.hero_image_desktop ||
+											strapi?.contentHero?.desktopImageURL
+									},
+									{
+										media: '',
+										srcset:
+											theme?.params?.hero_image_mobile ||
+											strapi?.contentHero?.mobileImageURL
+									}
+								]}
+								content={{
+									title: theme?.params?.headline_prefix
+										? theme?.params?.headline_prefix +
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
+										: strapi?.contentHero?.richContent,
+									description: strapi?.contentHero?.richContentParagraph
+								}}
+							/>
+						);
+					}
+				})()}
 			</Box>
 			<PageContainer>
 				<OverflowWrapper>
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box minWidth={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								{isLoaded && (
-									<>
-										{submitted ? (
-											<StrapiDynamicBlocks
-												blocks={'thankyouBlocks'}
-												strapi={strapi}
-											/>
-										) : (
-											<StrapiDynamicBlocks
-												blocks={'contentBlocks'}
-												strapi={strapi}
-											/>
-										)}
-									</>
-								)}
-								{isLoaded && (
-									<>
-										{pageType?.toLowerCase() === 'donation' && !submitted && (
-											<>
-												<Heading
-													as="p"
-													textAlign="center"
-													py="6"
-													fontSize={{ base: 'xl', md: '2xl' }}
-												>
-													常見問題
-												</Heading>
-												<DonateFAQ locale="HKChinese" />
-											</>
-										)}
-									</>
-								)}
+								<>
+									{submitted ? (
+										<StrapiDynamicBlocks
+											blocks={'thankyouBlocks'}
+											strapi={strapi}
+										/>
+									) : (
+										<StrapiDynamicBlocks
+											blocks={'contentBlocks'}
+											strapi={strapi}
+										/>
+									)}
+								</>
 							</ContentContainer>
 						</Box>
-						<Box minWidth={0} flex={1} ref={FormRef}>
-							{isLoaded && (
-								<FormContainer>
-									<Box ref={ref}>
-										{pageType?.toLowerCase() === 'donation' || submitted ? (
-											<DonationModule
-												market={
-													strapi?.market?.data?.attributes?.market ===
-													'Hong Kong'
-														? 'HK'
-														: 'TW'
-												}
-												language={strapi?.donationModuleLanguage}
-												campaign={
-													theme?.params?.donation_module_campaign ??
-													strapi?.donationModuleCampaign
-												}
-												campaignId={
-													theme?.params?.campaignId ??
-													strapi?.donationModuleCampaignId ??
-													''
-												}
-												env={strapi?.donationModuleEnv}
-											/>
-										) : (
-											<SignupForm />
-										)}
-									</Box>
-								</FormContainer>
-							)}
+						<Box flex={1} ref={FormRef}>
+							<FormContainer>
+								<Box ref={ref}>
+									{pageType?.toLowerCase() === 'donation' || submitted ? (
+										utm_source !== 'dd' && (
+										<DonationModule
+											market={
+												strapi?.market?.data?.attributes?.market === 'Hong Kong'
+													? 'HK'
+													: 'TW'
+											}
+											language={strapi?.donationModuleLanguage}
+											campaign={
+												theme?.params?.donation_module_campaign ??
+												strapi?.donationModuleCampaign
+											}
+											campaignId={
+												theme?.params?.campaignId ??
+												strapi?.donationModuleCampaignId ??
+												''
+											}
+											env={strapi?.donationModuleEnv}
+										/>)
+									) : (
+										<SignupForm />
+									)}
+								</Box>
+							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
-			<PetitionFooter locale={'HKChinese'} />
+			<PetitionFooter locale={'TWChinese'} />
 			<StrapiFixedButton target={FormRef} targetInView={inView} />
 		</>
 	);

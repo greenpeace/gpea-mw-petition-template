@@ -1,11 +1,12 @@
+
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=hkStrapi/petition-climate-labour
+PROJECT=hkStrapi/event-general-biodiversity-maseewebinar
 MARKET=hk
-PROJECT_NAME=petition-climate-labour
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-climate-labour
-ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-climate-labour/
+PROJECT_NAME=event-general-biodiversity-maseewebinar
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/event-general-biodiversity-maseewebinar
+ASSETPREFIX=https://api.greenpeace.org.hk/page/event-general-biodiversity-maseewebinar/
 FTP_CONFIG_NAME=api_hk_cloud 
 */
 import React, { useEffect, useState, useRef } from 'react';
@@ -26,7 +27,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/HKForm';
+import SignupForm from '@components/GP/WebinarForm';
 import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
@@ -48,6 +49,10 @@ function Index({ submitted = false, strapi: strapiData }) {
 	});
 	const [isLoaded, setIsLoaded] = useState(false);
 	const FormRef = useRef(null);
+
+	// get utm_source
+  const hiddenForm = useSelector((state) => state?.hiddenForm);
+  const { AsiaPayResult } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -78,20 +83,6 @@ function Index({ submitted = false, strapi: strapiData }) {
 		}
 	}, [router]);
 
-	// pass signer / donor name to TY Banner
-  const [TYName, setTYName] = useState();
-	
-	useEffect(() => {
-		// get donation module firstname
-		window.__greenpeace__ = window.__greenpeace__ || {};
-		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
-			setTYName(data.firstName);
-		}
-	});
-	useEffect(() => {
-		setTYName(signup?.data?.FirstName);
-	}, [signup]);
-
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
@@ -120,9 +111,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 									}
 								]}
 								content={{
-									title: `${
-										TYName ? TYName : '綠色和平支持者'
-									}，${strapi?.thankyouHero?.richContent}`,
+									title: strapi?.thankyouHero?.richContent,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
@@ -150,8 +139,8 @@ function Index({ submitted = false, strapi: strapiData }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
+										'<br/>' +
+										strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}
@@ -203,11 +192,11 @@ function Index({ submitted = false, strapi: strapiData }) {
 							{isLoaded && (
 								<FormContainer>
 									<Box ref={ref}>
-										{pageType?.toLowerCase() === 'donation' || submitted ? (
+										{pageType?.toLowerCase() === 'donation' || submitted || AsiaPayResult ? (
 											<DonationModule
 												market={
 													strapi?.market?.data?.attributes?.market ===
-													'Hong Kong'
+														'Hong Kong'
 														? 'HK'
 														: 'TW'
 												}
@@ -221,6 +210,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 													strapi?.donationModuleCampaignId ??
 													''
 												}
+												isUAT={false}
 												env={strapi?.donationModuleEnv}
 											/>
 										) : (
