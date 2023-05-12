@@ -3,6 +3,7 @@ import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 
 import * as helper from '@common/utils/helper';
+import objFilter from '@common/utils/objFilter';
 
 export function* submitForm(actions) {
   const state = yield select();
@@ -24,7 +25,7 @@ export function* submitForm(actions) {
       'event_name' : 'add_contact_info',
       'event_category': 'petitions',
       'event_action': 'click_submit',
-      'fields' : actions.data
+      'fields' : objFilter(actions.data, ['Email', 'FirstName', 'LastName','MobilePhone'])
     })
     //const responseBody = yield call(() => response.json());
 
