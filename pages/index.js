@@ -3,7 +3,7 @@ import Wrapper from '@containers/wrapper';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
 import Script from 'next/script';
-import TagManager from 'react-gtm-module';
+// import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -87,7 +87,6 @@ function Index({
 
 	/* Set dynamic theme parameters */
 	useEffect(() => {
-		console.log('1st')
 		if (router.isReady) {
 			/* Cater these query parameters */
 			const {
@@ -127,7 +126,6 @@ function Index({
 
 	/** Fetch signup data on load */
 	useEffect(() => {
-		console.log('2nd')
 		async function fetchSignupData() {
 			const fetchURLs = {
 				hk: signupNumbersHKURL,
@@ -148,7 +146,6 @@ function Index({
 
 	/* Set parameters to hiddenForm data */
 	useEffect(() => {
-		console.log('3rd')
 		let params = {};
 
 		window.location.search
@@ -169,7 +166,6 @@ function Index({
 
 	/* Pre-fill signup data */
 	useEffect(() => {
-		console.log('4th')
 		setTheme(themeData);
 
 		let FormObj = {};
@@ -206,7 +202,6 @@ function Index({
 
 	const [prepared, setPrepared] = useState(false);
 	useEffect(() => {
-		console.log('5th')
 		window.addEventListener(
 			'message',
 			(event) => {
@@ -245,7 +240,7 @@ function Index({
             {`console.log("================ GTM ================");`}
 			</Script> */}
 			{(gtmId != '' && prepared) && (
-				<Script strategy="lazyOnload">
+				<Script strategy="beforeInteractive">
 					{`(function(w,d,s,l,i){w[l]=w[l]||[];
 							w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js', });
 							var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';

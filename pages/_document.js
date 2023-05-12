@@ -1,12 +1,16 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
+
 class NextDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
   }
-
+  
   render() {
+    const moduleUrl = process.env.projectMarket?.toUpperCase() === 'TW' 
+		? `https://change.greenpeace.org.tw/app/donation-module/main.js`
+		: `https://api.greenpeace.org.hk/app/donation-module/main.js`;
     return (
       <Html lang="zh">
         <Head>
@@ -17,7 +21,7 @@ class NextDocument extends Document {
           />
           <link
             rel="preload"
-            href={"https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js?v="+process.env.timeStamp}
+            href={moduleUrl + "?v=" + process.env.timeStamp}
             as="script"
           />
           {/* Load google fonts */}
