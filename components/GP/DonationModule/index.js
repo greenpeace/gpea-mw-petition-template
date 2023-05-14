@@ -61,7 +61,9 @@ const DonationModule = (props) => {
 	} = props;
 
 	// Define constant module url
-
+	// *******************
+	// If there are any changes, should update the module URL in "_document.js" accordingly for preload script.
+	// *******************
 	const moduleUrl = market?.toUpperCase() === 'TW' 
 		? `https://change.greenpeace.org.tw/app/donation-module${(isUAT ? "-uat" : "")}/main.js`
 		: `https://api.greenpeace.org.hk/app/donation-module${(isUAT ? "-uat" : "")}/main.js`

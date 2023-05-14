@@ -11,6 +11,7 @@ class NextDocument extends Document {
     const moduleUrl = process.env.projectMarket?.toUpperCase() === 'TW' 
 		? `https://change.greenpeace.org.tw/app/donation-module/main.js`
 		: `https://api.greenpeace.org.hk/app/donation-module/main.js`;
+    // preload the production version only.
     return (
       <Html lang="zh">
         <Head>
@@ -26,7 +27,7 @@ class NextDocument extends Document {
           />
           {/* Load google fonts */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap"
