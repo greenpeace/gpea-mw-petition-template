@@ -3,7 +3,7 @@ import Wrapper from '@containers/wrapper';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
 import Script from 'next/script';
-import TagManager from 'react-gtm-module';
+// import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -166,7 +166,6 @@ function Index({
 
 	/* Pre-fill signup data */
 	useEffect(() => {
-		
 		setTheme(themeData);
 
 		let FormObj = {};
@@ -201,6 +200,7 @@ function Index({
 		}
 	}, [themeData]);
 
+	const [prepared, setPrepared] = useState(false);
 	useEffect(() => {
 		window.addEventListener(
 			'message',
@@ -231,15 +231,16 @@ function Index({
 		/* GTM is only applicable for production env */
 
 		initTagManager(market)
-	});
-
+		setPrepared(true);
+	},[]);
+	
 	return (
 		<>
-			<Script strategy="lazyOnload">
+			{/* <Script strategy="lazyOnload">
             {`console.log("================ GTM ================");`}
-			</Script>
-			{gtmId != '' && (
-				<Script strategy="lazyOnload">
+			</Script> */}
+			{(gtmId != '' && prepared) && (
+				<Script strategy="beforeInteractive">
 					{`(function(w,d,s,l,i){w[l]=w[l]||[];
 							w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js', });
 							var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
@@ -248,7 +249,7 @@ function Index({
 						})(window,document,'script','dataLayer',"${gtmId}");`}
 				</Script>
 			)}
-			<DynamicComponent strapi={strapi} themeData={themeData} />
+			{prepared && <DynamicComponent strapi={strapi} themeData={themeData} />}
 		</>
 		
 	);
