@@ -10,7 +10,7 @@ class NextDocument extends Document {
   render() {
     const moduleUrl = process.env.projectMarket?.toUpperCase() === 'TW' 
 		? `https://change.greenpeace.org.tw/app/donation-module/main.js`
-		: `https://api.greenpeace.org.hk/app/donation-module/main.js`;
+		: `https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js`;
     // preload the production version only.
     return (
       <Html lang="zh">
@@ -22,7 +22,7 @@ class NextDocument extends Document {
           />
           <link
             rel="preload"
-            href={moduleUrl + "?v=" + process.env.timeStamp}
+            href={moduleUrl + "?ts=" + process.env.timeStamp}
             as="script"
           />
           {/* Load google fonts */}

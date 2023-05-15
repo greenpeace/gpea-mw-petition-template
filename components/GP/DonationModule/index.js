@@ -66,19 +66,19 @@ const DonationModule = (props) => {
 	// *******************
 	const moduleUrl = market?.toUpperCase() === 'TW' 
 		? `https://change.greenpeace.org.tw/app/donation-module${(isUAT ? "-uat" : "")}/main.js`
-		: `https://api.greenpeace.org.hk/app/donation-module${(isUAT ? "-uat" : "")}/main.js`
+		: `https://api.greenpeace.org.hk/app/donation-module${(isUAT ? "-uat" : "-hkmp")}/main.js`
 	// Import module
 	const timestamp = process.env.timeStamp;
 	if(customUrl) console.log('using custom donation module url.')
 	console.log('this donation module url suffix was changed at: ' , new Date(Number(timestamp)))
-	const status = useScript( (customUrl ? customUrl : moduleUrl) + '?v=' + timestamp)
+	const status = useScript( (customUrl ? customUrl : moduleUrl) + '?ts=' + timestamp)
 	// const [status, setStatus] = useState('');
 	console.log('rendered',props)
 	return (
 		<Box pos="relative">
 			
 			{/* <Script 
-				src={'https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js' + '?v=' + timestamp} s
+				src={'https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js' + '?ts=' + timestamp} s
 				trategy='beforeInteractive' 
 				onLoad={() => {
 					console.log('donation module lazy on load')

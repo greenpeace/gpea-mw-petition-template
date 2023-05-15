@@ -34,6 +34,10 @@ function Index({ submitted = false, strapi }) {
 	});
 	const FormRef = useRef(null);
 
+	// get utm_source
+  const hiddenForm = useSelector((state) => state?.hiddenForm);
+  const { AsiaPayResult } = hiddenForm?.data;
+
 	submitted = useSelector((state) => state?.status?.submitted);
 
 	useEffect(() => {
@@ -140,7 +144,7 @@ function Index({ submitted = false, strapi }) {
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
 								<Box ref={ref}>
-									{pageType?.toLowerCase() === 'donation' || submitted ? (
+									{pageType?.toLowerCase() === 'donation' || submitted || AsiaPayResult ? (
 										<DonationModule
 											market={
 												strapi?.market?.data?.attributes?.market === 'Hong Kong'
