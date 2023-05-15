@@ -1,3 +1,14 @@
+
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/event-general-biodiversity-maseewebinar
+MARKET=hk
+PROJECT_NAME=event-general-biodiversity-maseewebinar
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/event-general-biodiversity-maseewebinar
+ASSETPREFIX=https://api.greenpeace.org.hk/page/event-general-biodiversity-maseewebinar/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -38,6 +49,10 @@ function Index({ submitted = false, strapi: strapiData }) {
 	});
 	const [isLoaded, setIsLoaded] = useState(false);
 	const FormRef = useRef(null);
+
+	// get utm_source
+  const hiddenForm = useSelector((state) => state?.hiddenForm);
+  const { AsiaPayResult } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -177,7 +192,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 							{isLoaded && (
 								<FormContainer>
 									<Box ref={ref}>
-										{pageType?.toLowerCase() === 'donation' || submitted ? (
+										{pageType?.toLowerCase() === 'donation' || submitted || AsiaPayResult ? (
 											<DonationModule
 												market={
 													strapi?.market?.data?.attributes?.market ===
@@ -195,6 +210,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 													strapi?.donationModuleCampaignId ??
 													''
 												}
+												isUAT={false}
 												env={strapi?.donationModuleEnv}
 											/>
 										) : (

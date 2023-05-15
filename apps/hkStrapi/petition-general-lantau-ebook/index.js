@@ -1,3 +1,12 @@
+/**
+Deploy Setting:
+PROJECT=hkStrapi/petition-general-lantau-ebook
+MARKET=hk
+PROJECT_NAME=petition-general-lantau-ebook
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-general-lantau-ebook
+ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-general-lantau-ebook/
+FTP_CONFIG_NAME=api_hk_cloud
+*/
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -179,7 +188,6 @@ function Index({ submitted = false, strapi: strapiData }) {
 									<Box ref={ref}>
 										{pageType?.toLowerCase() === 'donation' || submitted ? (
 											<DonationModule
-												isUAT={true}
 												market={
 													strapi?.market?.data?.attributes?.market ===
 														'Hong Kong'

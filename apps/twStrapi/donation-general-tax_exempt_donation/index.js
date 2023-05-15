@@ -1,11 +1,12 @@
+
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=twStrapi/donation-general-adhoc
+PROJECT=twStrapi/donation-general-tax_exempt_donation
 MARKET=tw
-PROJECT_NAME=donation-general-adhoc
-BASEPATH=/htdocs/2022/donation/donation-general-adhoc
-ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-general-adhoc/
+PROJECT_NAME=donation-general-tax_exempt_donation
+BASEPATH=/htdocs/2023/donation/donation-general-tax_exempt_donation
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-tax_exempt_donation/
 FTP_CONFIG_NAME=ftp_tw 
 */
 import React, { useEffect, useRef, useState } from 'react';
@@ -49,8 +50,10 @@ function Index({ submitted = false, strapi }) {
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
-
-	// get utm_source
+	
+	// const { FirstName } = signup;
+  
+  // get utm_source
   const hiddenForm = useSelector((state) => state?.hiddenForm);
   const { utm_source } = hiddenForm?.data;
 
@@ -94,7 +97,7 @@ function Index({ submitted = false, strapi }) {
 							}
 						]}
 						content={{
-							//title: strapi?.thankyouHero?.richContent,
+							// title: strapi?.thankyouHero?.richContent,
 							title: `${
 								TYName ? TYName : '綠色和平支持者'
 							}，${strapi?.thankyouHero?.richContent}`,

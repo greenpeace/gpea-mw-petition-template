@@ -1,12 +1,12 @@
-/**
- * Deploy setting
-# Project Apps Directory: /apps/{PROJECT}
-PROJECT=hkStrapi/petition-climate-labour
-MARKET=hk
-PROJECT_NAME=petition-climate-labour
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-climate-labour
-ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-climate-labour/
-FTP_CONFIG_NAME=api_hk_cloud 
+/** 
+ * Dploy Setting:
+ *
+PROJECT=twStrapi/petition-ga4-migration-demo
+MARKET=tw
+PROJECT_NAME=petition-climate-netzeroevent
+BASEPATH=/htdocs/2023/test/petition-ga4-migration-demo
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/2023/test/petition-ga4-migration-demo/
+FTP_CONFIG_NAME=ftp_tw
 */
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,7 +26,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/HKForm';
+import SignupForm from '@components/GP/TWForm';
 import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
@@ -36,18 +36,33 @@ import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 import formContent from './form';
 // Import static
 
-function Index({ submitted = false, strapi: strapiData }) {
-	const strapi = strapiData ?? useSelector((state) => state?.theme?.strapi);
+function Index({ submitted = false, strapi }) {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
 	const [isLoaded, setIsLoaded] = useState(false);
 	const FormRef = useRef(null);
+
+	const [donorName, setDonorName] = useState();
+	
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+			setDonorName(data.firstName);
+		}
+	});
+	useEffect(() => {
+		setDonorName(signup?.data?.FirstName);
+	}, [signup]);
+
+	const { utm_source } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -65,7 +80,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 				const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
 
 				const res = await fetch(
-					`${endpoint}/pages?filters[market][slug]=hk&filters[campaign]=${preview}&populate=deep`
+					`${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=deep`
 				).then((response) => response);
 				const themes = await res.json();
 				const theme = themes?.data[0] ?? {};
@@ -77,20 +92,6 @@ function Index({ submitted = false, strapi: strapiData }) {
 			}
 		}
 	}, [router]);
-
-	// pass signer / donor name to TY Banner
-  const [TYName, setTYName] = useState();
-	
-	useEffect(() => {
-		// get donation module firstname
-		window.__greenpeace__ = window.__greenpeace__ || {};
-		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
-			setTYName(data.firstName);
-		}
-	});
-	useEffect(() => {
-		setTYName(signup?.data?.FirstName);
-	}, [signup]);
 
 	return (
 		<>
@@ -120,8 +121,9 @@ function Index({ submitted = false, strapi: strapiData }) {
 									}
 								]}
 								content={{
+									// title: strapi?.thankyouHero?.richContent,
 									title: `${
-										TYName ? TYName : '綠色和平支持者'
+										donorName ? donorName : '綠色和平支持者'
 									}，${strapi?.thankyouHero?.richContent}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
@@ -150,8 +152,8 @@ function Index({ submitted = false, strapi: strapiData }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
+										'<br/>' +
+										strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}
@@ -192,7 +194,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 												>
 													常見問題
 												</Heading>
-												<DonateFAQ locale="HKChinese" />
+												<DonateFAQ locale="TWChinese" />
 											</>
 										)}
 									</>
@@ -204,25 +206,28 @@ function Index({ submitted = false, strapi: strapiData }) {
 								<FormContainer>
 									<Box ref={ref}>
 										{pageType?.toLowerCase() === 'donation' || submitted ? (
-											<DonationModule
-												market={
-													strapi?.market?.data?.attributes?.market ===
-													'Hong Kong'
-														? 'HK'
-														: 'TW'
-												}
-												language={strapi?.donationModuleLanguage}
-												campaign={
-													theme?.params?.donation_module_campaign ??
-													strapi?.donationModuleCampaign
-												}
-												campaignId={
-													theme?.params?.campaignId ??
-													strapi?.donationModuleCampaignId ??
-													''
-												}
-												env={strapi?.donationModuleEnv}
-											/>
+											utm_source !== 'dd' && (
+												<DonationModule
+													market={
+														strapi?.market?.data?.attributes?.market ===
+															'Hong Kong'
+															? 'HK'
+															: 'TW'
+													}
+													language={strapi?.donationModuleLanguage}
+													campaign={
+														theme?.params?.donation_module_campaign ??
+														strapi?.donationModuleCampaign
+													}
+													campaignId={
+														theme?.params?.campaignId ??
+														strapi?.donationModuleCampaignId ??
+														''
+													}
+													env={'test'}
+													customUrl={'https://change.greenpeace.org.tw/2023/test/donation-module-ga4/main.js'}
+												/>
+											)
 										) : (
 											<SignupForm />
 										)}
@@ -233,7 +238,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
-			<PetitionFooter locale={'HKChinese'} />
+			<PetitionFooter locale={'TWChinese'} />
 			<StrapiFixedButton target={FormRef} targetInView={inView} />
 		</>
 	);
