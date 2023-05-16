@@ -1,12 +1,12 @@
 /** 
  * Dploy Setting:
  *
- * PROJECT=twStrapi/petition-general-greenlifehandbook
- * MARKET=tw
- * PROJECT_NAME=petition-general-greenlifehandbook
- * BASEPATH=/htdocs/2022/petition/petition-general-greenlifehandbook
- * ASSETPREFIX=https://change.greenpeace.org.tw/2022/petition/petition-general-greenlifehandbook/
- * FTP_CONFIG_NAME=ftp_tw
+ROJECT=twStrapi/petition-general-greenlifehandbook
+MARKET=tw
+PROJECT_NAME=petition-general-greenlifehandbook
+BASEPATH=/htdocs/2022/petition/petition-general-greenlifehandbook
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/petition/petition-general-greenlifehandbook/
+FTP_CONFIG_NAME=ftp_tw
 */
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

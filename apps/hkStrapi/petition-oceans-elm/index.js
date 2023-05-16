@@ -1,15 +1,15 @@
-/** 
- * Dploy Setting:
- *
- * PROJECT=hkStrapi/petition-oceans-elm
- * MARKET=hk
- * PROJECT_NAME=petition-oceans-elm
- * BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/test/petition-oceans-elm
- * ASSETPREFIX=https://api.greenpeace.org.hk/2022/test/petition-oceans-elm/
- * FTP_CONFIG_NAME=api_hk_cloud
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/petition-oceans-elm
+MARKET=hk
+PROJECT_NAME=petition-oceans-elm
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-oceans-elm
+ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-oceans-elm/
+FTP_CONFIG_NAME=api_hk_cloud 
 */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -49,6 +49,20 @@ function Index({ submitted = false, strapi }) {
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
+
+	// pass signer / donor name to TY Banner
+  const [TYName, setTYName] = useState();
+	
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+			setTYName(data.firstName);
+		}
+	});
+	useEffect(() => {
+		setTYName(signup?.data?.FirstName);
+	}, [signup]);
 
 	return (
 		<>
@@ -108,7 +122,10 @@ function Index({ submitted = false, strapi }) {
 									}
 								]}
 								content={{
-									title: strapi?.thankyouHero?.richContent,
+									// title: strapi?.thankyouHero?.richContent,
+									title: `${
+										TYName ? TYName : '綠色和平支持者'
+									}，${strapi?.thankyouHero?.richContent}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>

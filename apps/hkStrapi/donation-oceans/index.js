@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/donation-oceans
+MARKET=hk
+PROJECT_NAME=donation-oceans
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-oceans
+ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-oceans/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
+
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';

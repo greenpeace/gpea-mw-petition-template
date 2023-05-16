@@ -1,12 +1,12 @@
 /** 
  * Dploy Setting:
  *
- * PROJECT=twStrapi/petition-oceans-sanctuaries-mw
- * MARKET=tw
- * PROJECT_NAME=petition-oceans-sanctuaries-mw
- * BASEPATH=/htdocs/2023/petition/petition-oceans-sanctuaries-mw
- * ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-oceans-sanctuaries-mw/
- * FTP_CONFIG_NAME=ftp_tw
+PROJECT=twStrapi/petition-oceans-sanctuaries-mw
+MARKET=tw
+PROJECT_NAME=petition-oceans-sanctuaries-mw
+BASEPATH=/htdocs/2023/petition/petition-oceans-sanctuaries-mw
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-oceans-sanctuaries-mw/
+FTP_CONFIG_NAME=ftp_tw
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -210,6 +210,7 @@ function Index({ submitted = false, strapi }) {
 												strapi?.donationModuleCampaignId ??
 												''
 											}
+											isUAT={true}
 											env={strapi?.donationModuleEnv}
 										/>)
 									) : (

@@ -10,7 +10,7 @@ class NextDocument extends Document {
   render() {
     const moduleUrl = process.env.projectMarket?.toUpperCase() === 'TW' 
 		? `https://change.greenpeace.org.tw/app/donation-module/main.js`
-		: `https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js`;
+		: `https://api.greenpeace.org.hk/app/donation-module/main.js`;
     // preload the production version only.
     return (
       <Html lang="zh">

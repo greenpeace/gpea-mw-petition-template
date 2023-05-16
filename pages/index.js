@@ -239,7 +239,7 @@ function Index({
 			{/* <Script strategy="lazyOnload">
             {`console.log("================ GTM ================");`}
 			</Script> */}
-			{(gtmId != '' && prepared) && (
+			{(gtmId != '') && (
 				<Script strategy="beforeInteractive">
 					{`(function(w,d,s,l,i){w[l]=w[l]||[];
 							w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js', });
