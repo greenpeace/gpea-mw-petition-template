@@ -1,12 +1,12 @@
 /** 
  * Dploy Setting:
  *
- * PROJECT=twStrapi/petition-climate-netzeroevent
- * MARKET=tw
- * PROJECT_NAME=petition-climate-netzeroevent
- * BASEPATH=/htdocs/2023/petition/petition-climate-netzeroevent
- * ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-climate-netzeroevent/
- * FTP_CONFIG_NAME=ftp_tw
+PROJECT=twStrapi/petition-climate-netzeroevent
+MARKET=tw
+PROJECT_NAME=petition-climate-netzeroevent
+BASEPATH=/htdocs/2023/petition/petition-climate-netzeroevent
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-climate-netzeroevent/
+FTP_CONFIG_NAME=ftp_tw
 */
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

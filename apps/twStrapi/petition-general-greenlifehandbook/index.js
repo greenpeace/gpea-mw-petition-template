@@ -227,7 +227,7 @@ function Index({ submitted = false, strapi }) {
 													strapi?.donationModuleCampaignId ??
 													''
 												}
-												env={(process.env.NODE_ENV === 'development' ? 'test' : strapi?.donationModuleEnv)}
+												env={strapi?.donationModuleEnv}
 											/>)
 										) : (
 											<SignupForm />
