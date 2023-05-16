@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/donation-general-monthly-only
+MARKET=hk
+PROJECT_NAME=donation-general-monthly-only
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-general-monthly-only
+ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-general-monthly-only/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
+
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -179,8 +190,8 @@ function Index({ submitted = false, strapi }) {
 												strapi?.donationModuleCampaignId ??
 												''
 											}
-											env={'test'}
-											// env={strapi?.donationModuleEnv}
+											// env={'test'}
+											env={strapi?.donationModuleEnv}
 										/>)
 									) : (
 										<SignupForm />

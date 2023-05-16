@@ -27,7 +27,7 @@ export const HKChinese = {
   ],
   rightContent: [
     '此頁面採用了 SSL 保安接層加密技術，可確保敏感資料（例如信用卡資料和個人資料）在您的瀏覽器和我們伺服器之間傳送時獲得保密處理。',
-    '您的個人資料將絕對保密，僅用做捐款、會員服務及通訊等用途，請按此。詳閱隱私保護政策。',
+    '您的個人資料將絕對保密，僅用做捐款、會員服務及通訊等用途，請<a href="https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/" target="_blank">按此</a>。詳閱隱私保護政策。',
     '捐款港幣$100以上可申請扣稅。',
     '獲豁免繳稅慈善機構編號︰91/5418',
   ],
@@ -61,7 +61,7 @@ export const HKEnglish = {
   ],
   rightContent: [
     'This is a secure webpage. Your personal details are protected at all times.',
-    'Your personal information will be treated as strictly confidential and only used for communication purpose. Read our privacy statement.',
+    'Your personal information will be treated as strictly confidential and only used for communication purpose. <a href="https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/" target="_blank">Read our privacy statement</a>.',
     'Donations over HK$100 are tax-deductible.',
     'Tax-Exempt Charity Ref No. : 91/5418',
   ],
@@ -98,7 +98,7 @@ export const TWChinese = {
   ],
   rightContent: [
     '此頁面採用了 SSL 保安接層加密技術，可確保敏感資料（例如信用卡資料和個人資料）在您的瀏覽器和我們伺服器之間傳送時獲得保密處理。',
-    '您的個人資料將絕對保密，僅用做捐款、會員服務及通訊等用途，請按此詳閱隱私保護政策。',
+    '您的個人資料將絕對保密，僅用做捐款、會員服務及通訊等用途，請<a href="https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/" target="_blank">按此</a>詳閱隱私保護政策。',
     '若欲更新您的個人資料，或取消訂閱綠色和平環保資訊，請不吝聯繫<a href="mailto:inquiry.tw@greenpeace.org">inquiry.tw@greenpeace.org</a>，專員將竭誠為您處理。',
     '財團法人綠色和平基金會<br/>統一編號：26324671<br/>募款字號：111.09.28<br/>衛部救字第1111362940號</br>環署綜字第1000044076號',
   ],
