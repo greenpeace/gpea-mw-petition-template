@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hk/earthdaywebinar
+MARKET=hk
+PROJECT_NAME=earthdaywebinar
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/earthdaywebinar
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/earthdaywebinar/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
+
 import React, { useEffect, useState, useRef } from 'react';
 import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';

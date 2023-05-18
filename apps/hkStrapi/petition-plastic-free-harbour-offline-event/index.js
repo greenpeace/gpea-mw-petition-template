@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/petition-plastic-free-harbour-offline-event
+MARKET=hk
+PROJECT_NAME=petition-plastic-free-harbour-offline-event
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-plastic-free-harbour-offline-event
+ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-plastic-free-harbour-offline-event/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
+
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';

@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hk/arctic
+MARKET=hk
+PROJECT_NAME=arctic
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/arctic
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/arctic/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
+
 import React, { useEffect, useRef } from 'react';
 import HeroBanner from '@components/Banner/hero';
 import ThanksBanner from '@components/Banner/thanks';

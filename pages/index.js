@@ -3,6 +3,7 @@ import Wrapper from '@containers/wrapper';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
 import Script from 'next/script';
+
 // import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
@@ -23,6 +24,11 @@ import {
 
 /* Determine the returned project index by env variable */
 const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
+/*
+Switch SEO modules based on whether the path name contains "Strapi". 
+Move it here to ensure that meta info is generated in index_mc.html.
+*/
+const DynamicSeoComp = dynamic(() => import(process.env.project.indexOf('Strapi') >= 0 ? '@components/Strapi/StrapiSEO' : `apps/${process.env.project}/SEO`));
 
 /* Get env variables */
 const envProjectName = process.env.projectName;
@@ -236,6 +242,7 @@ function Index({
 	
 	return (
 		<>
+			<DynamicSeoComp strapi={strapi} />
 			{/* <Script strategy="lazyOnload">
             {`console.log("================ GTM ================");`}
 			</Script> */}
@@ -249,6 +256,7 @@ function Index({
 						})(window,document,'script','dataLayer',"${gtmId}");`}
 				</Script>
 			)}
+			
 			{prepared && <DynamicComponent strapi={strapi} themeData={themeData} />}
 		</>
 		

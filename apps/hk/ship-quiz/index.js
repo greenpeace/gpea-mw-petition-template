@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hk/ship-quiz
+MARKET=hk
+PROJECT_NAME=ship-quiz
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/ship-quiz
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/ship-quiz/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
+
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';

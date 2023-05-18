@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hk/polarbearday
+MARKET=hk
+PROJECT_NAME=polarbearday
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/polarbearday
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/polarbearday/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
+
 import React, { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';

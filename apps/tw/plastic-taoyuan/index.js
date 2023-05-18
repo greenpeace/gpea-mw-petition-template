@@ -1,3 +1,14 @@
+/** 
+ * Dploy Setting:
+ *
+PROJECT=tw/plastic-taoyuan
+MARKET=tw
+PROJECT_NAME=plastic-taoyuan
+BASEPATH=/htdocs/2022/petition/plastic-taoyuan
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/petition/plastic-taoyuan/
+FTP_CONFIG_NAME=ftp_tw
+*/
+
 import React, { useEffect, useRef } from 'react';
 import HeroBanner from '@components/Banner/hero';
 import ThanksBanner from '@components/Banner/thanks';

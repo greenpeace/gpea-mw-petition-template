@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hk/petition-plastics-earthday-2023quiz
+MARKET=hk
+PROJECT_NAME=petition-plastics-earthday-2023quiz
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-plastics-earthday-2023quiz
+ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-plastics-earthday-2023quiz/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
+
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';

@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/petition-plastics-dpt-policy
+MARKET=hk
+PROJECT_NAME=petition-plastics-dpt-policy
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-plastics-dpt-policy
+ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-plastics-dpt-policy/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
+
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';

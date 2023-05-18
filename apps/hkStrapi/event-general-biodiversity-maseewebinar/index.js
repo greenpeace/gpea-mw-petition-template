@@ -1,4 +1,3 @@
-
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
@@ -9,6 +8,7 @@ BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/event-general-biodiversity-masee
 ASSETPREFIX=https://api.greenpeace.org.hk/page/event-general-biodiversity-maseewebinar/
 FTP_CONFIG_NAME=api_hk_cloud 
 */
+
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -212,6 +212,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 												}
 												isUAT={false}
 												env={strapi?.donationModuleEnv}
+												customUrl={'https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js'}
 											/>
 										) : (
 											<SignupForm />

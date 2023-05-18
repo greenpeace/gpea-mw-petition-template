@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hk/virtual-tour-around-asia
+MARKET=hk
+PROJECT_NAME=virtual-tour-around-asia
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/virtual-tour-around-asia
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/virtual-tour-around-asia/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
+
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
