@@ -12,7 +12,7 @@ What this script do:
 
 How to use this script:
 1. You need to deploy the target page to generate the index.mc.html file.
-	 This can be done using a command like `npm run deploy --page=tw/oneoff tw`.
+	 This can be done using a command like `npm run deploy`.
 2. Update the `pageName` variable in this script to match the target CloudPage name.
 	 You can find existing CloudPage names on this Google Sheet: https://bit.ly/3Ioo0ZI.
 3. Run this script using the command `node puppeteer.js`.
@@ -75,14 +75,14 @@ async function waitMilliSeconds(ms) {
 		let element, elements
 
 		// Edit the CloudPageName here!!
-		const targetMarket = 'HK' // "TW", "HK", "Korea"
-		const targetPageName = 'zh-hk.2022.oceans.marinelife_ebook.registration.event.na'
+		const targetMarket = 'TW' // "TW", "HK", "Korea"
+		const targetPageName = 'Donation - drtv_climate'
 		// const targetPageName = 'tw-prod-1click_oneoff-landing'
 		// Stop Editing
 
 		// Perform the login process to generate new session data
 		const browser = await puppeteer.launch({
-			executablePath: '/usr/bin/chromium-browser',
+			// executablePath: '/usr/bin/chromium-browser',// uncomment and set path if need.
 			headless: false,
 			args: []
 		});
@@ -214,7 +214,7 @@ async function waitMilliSeconds(ms) {
 		await waitMilliSeconds(1 * 1000);
 
 		// Add the new content
-		const fileContent = fs.readFileSync('build/index.mc.html', 'utf8');
+		const fileContent = fs.readFileSync('out/index.mc.html', 'utf8');
 		await page.keyboard.sendCharacter(fileContent + '  ');
 
 		// do save
