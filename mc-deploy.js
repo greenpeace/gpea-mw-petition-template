@@ -108,7 +108,7 @@ const headersTmpl = `
 
     VAR @FirstName, @LastName, @Email, @MobilePhone, @Birthdate
 
-    SET @Contact__c = _subscriberkey */
+    SET @Contact__c = _subscriberkey
     SET @Rows = LookupRows("ENT.Contact_Salesforce_1","Id", @Contact__c)
     SET @RowCount = rowcount(@Rows)
     SET @Row = row(@Rows, 1)
@@ -145,10 +145,10 @@ console.log('ready deploy file: '+`${process.env.MARKET}/${process.env.PROJECT_N
 console.log('content patched');
 
 // upload the folder to FTP
-let raw = fs.readFileSync(path.join(os.homedir(), '.npm-en-uploader-secret'));
-let secrets = JSON.parse(raw);
+// let raw = fs.readFileSync(path.join(os.homedir(), '.npm-en-uploader-secret'));
+// let secrets = JSON.parse(raw);
 
-let ftpSetting = secrets[ftpConfigName];
-ftpSetting['remoteDir'] = ftpRemoteDir;
-upload_folder(ftpSetting, buildFolder);
-console.log('content uploaded');
+// let ftpSetting = secrets[ftpConfigName];
+// ftpSetting['remoteDir'] = ftpRemoteDir;
+// upload_folder(ftpSetting, buildFolder);
+// console.log('content uploaded');

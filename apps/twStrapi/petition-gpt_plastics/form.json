@@ -1,6 +1,6 @@
 {
   "form_header": "連署支持！<br>2024年底前通過《全球塑膠公約》",
-  "form_description": "您的連署將成為終結塑膠污染的一份力量！",
+  "form_description": "您的連署將成為終結塑膠污染的一份力量！<iframe style='overflow: hidden;' src='https://counter.greenpeace.org/count?id=globalplasticstreaty' width='1' height='1' frameborder='0' scrolling='no'></iframe>",
   "signed_number": "已連署人數",
   "label_first_name": "名字",
   "label_last_name": "姓氏",

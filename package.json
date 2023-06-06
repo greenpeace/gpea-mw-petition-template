@@ -7,7 +7,7 @@
 		"build": "next build && next export",
 		"start": "next start",
 		"format": "prettier --write .",
-		"deploy": "npm run build && NODE_ENV=production node mc-deploy.js",
+		"deploy": "npm run build && set NODE_ENV=production && node mc-deploy.js",
 		"prepare": "husky install"
 	},
 	"husky": {
