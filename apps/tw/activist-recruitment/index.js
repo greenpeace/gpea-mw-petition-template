@@ -1,3 +1,14 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=tw/activist-recruitment
+MARKET=tw
+PROJECT_NAME=activist-recruitment
+BASEPATH=/htdocs/2022/zh-TW.2022.activist-recruitment.signup
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/zh-TW.2022.activist-recruitment.signup/
+FTP_CONFIG_NAME=ftp_tw 
+*/
+
 import React, { useEffect, useRef } from 'react';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';

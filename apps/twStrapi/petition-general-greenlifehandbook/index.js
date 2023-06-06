@@ -1,7 +1,7 @@
 /** 
  * Dploy Setting:
  *
-ROJECT=twStrapi/petition-general-greenlifehandbook
+PROJECT=twStrapi/petition-general-greenlifehandbook
 MARKET=tw
 PROJECT_NAME=petition-general-greenlifehandbook
 BASEPATH=/htdocs/2022/petition/petition-general-greenlifehandbook

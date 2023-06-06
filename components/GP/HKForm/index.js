@@ -324,6 +324,7 @@ const MyForm = (props) => {
 							</Box>
 
 							<Box>
+							{formContent.label_newsletter && (
 								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
 									<Box mr={2} pt={1}>
 										<Checkbox
@@ -341,6 +342,7 @@ const MyForm = (props) => {
 										}}
 									/>
 								</Flex>
+							)}
 							</Box>
 
 							<Box>
@@ -348,6 +350,18 @@ const MyForm = (props) => {
 									{formContent.submit_text}
 								</Button>
 							</Box>
+							{formContent.form_remind && (
+								<Box>
+									<Text
+										fontSize="xs"
+										color={'gray.700'}
+										lineHeight="1.7"
+										dangerouslySetInnerHTML={{
+											__html: formContent.form_remind,
+										}}
+									/>
+								</Box>
+							)}
 						</Stack>
 					</Form>
 				</Stack>

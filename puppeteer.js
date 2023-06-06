@@ -75,16 +75,16 @@ async function waitMilliSeconds(ms) {
 		let element, elements
 
 		// Edit the CloudPageName here!!
-		const targetMarket = 'TW' // "TW", "HK", "Korea"
-		const targetPageName = 'Donation - drtv_climate'
+		const targetMarket = 'HK' // "TW", "HK", "Korea"
+		const targetPageName = 'event-oceans-seaourhome-exhibition'
 		// const targetPageName = 'tw-prod-1click_oneoff-landing'
 		// Stop Editing
 
 		// Perform the login process to generate new session data
 		const browser = await puppeteer.launch({
-			// executablePath: '/usr/bin/chromium-browser',// uncomment and set path if need.
+			executablePath: '/usr/bin/google-chrome',// uncomment and set path if need.
 			headless: false,
-			args: []
+			args: ['--no-sandbox']
 		});
 		const context = await browser.defaultBrowserContext()
 		let page = await context.newPage();

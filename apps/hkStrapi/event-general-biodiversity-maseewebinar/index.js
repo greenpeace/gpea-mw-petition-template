@@ -212,7 +212,6 @@ function Index({ submitted = false, strapi: strapiData }) {
 												}
 												isUAT={false}
 												env={strapi?.donationModuleEnv}
-												customUrl={'https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js'}
 											/>
 										) : (
 											<SignupForm />

@@ -139,9 +139,9 @@ console.log('version number patched');
 // output to the file
 fs.writeFileSync(path.join(__dirname, 'out', 'index.mc.html'), content);
 // generate another file in a separate folder to make mass deployment more convenient.
-/*fs.writeFileSync(path.join(__dirname, `readyMC/${process.env.MARKET}`, `${process.env.PROJECT_NAME}.html`), content);
+fs.writeFileSync(path.join(__dirname, `readyMC/${process.env.MARKET}`, `${process.env.PROJECT_NAME}.html`), content);
 console.log('ready deploy file: '+`${process.env.MARKET}/${process.env.PROJECT_NAME}`)
-*/
+
 console.log('content patched');
 
 // upload the folder to FTP

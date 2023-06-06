@@ -38,7 +38,7 @@ const signupNumbersHKURL = process.env.signupNumbersHK;
 const signupNumbersTWURL = process.env.signupNumbersTW;
 
 // Pending
-const schemaEndpoint = `${themeEndpointURL}?q={"Market":${envProjectMarket}`;
+const schemaEndpoint = `${themeEndpointURL}?q={"Market":"${envProjectMarket}"}`;
 
 
 /*const initTagManager = (marketName) => {
@@ -284,7 +284,7 @@ const mapDispatchToProps = (dispatch) => {
 
 export async function getStaticProps(context) {
 	const singleResult = await axios
-		.get(themeEndpointURL)
+		.get(schemaEndpoint)
 		.then((response) => {
 			return response.data.records.find(
 				(d) => d.ProjectName === envProjectName && d.Market === envProjectMarket
