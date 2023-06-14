@@ -29,7 +29,7 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -39,10 +39,17 @@ function Index({ submitted = false, strapi }) {
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
+	const FormRef = useRef(null);
 	const [ref, inView] = useInView({
+		threshold: 0,
+		initialInView: true,
+		skip: !Boolean(FormRef?.current?.offsetHeight)
+	});
+	
+	const [FormBtnref, btnInView] = useInView({
 		threshold: 0
 	});
-	const FormRef = useRef(null);
+	
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -169,8 +176,8 @@ function Index({ submitted = false, strapi }) {
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
-							<FormContainer>
-								<Box ref={ref}>
+							<FormContainer >
+								<Box ref={ ref }>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
 										utm_source !== 'dd' && (
 										<DonationModule
@@ -191,13 +198,14 @@ function Index({ submitted = false, strapi }) {
 										<SignupForm />
 									)}
 								</Box>
+								<div ref={ FormBtnref }></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
 		</>
 	);
 }
