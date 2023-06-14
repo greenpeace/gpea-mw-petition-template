@@ -54,8 +54,8 @@
       },
       {
         "expanded": false,
-        "title": "On what date will donations be transferred for monthly donation?",
-        "desc": "The bank's automatic transfer will be conducted on the 13th or 28th of the month for the first time and on the 13th of each month thereafter. If the transfer is unsuccessful, it will be attempted again at the end of the month. *Due to the internal system update of the organization from August 2020 to February 2021, for monthly donation donors registered by credit card during this period, the transaction date of each month will be fixed on the same day according to the registered donation date. If there is no fixed donation day in the current month (for example, there is no 30th day in February), the system will transfer on the last day of the month (ie, February 28th or 29th). If a bank or internal system update affects the posting arrangement in the future, the real-time update of the webpage shall prevail. For enquiries, please contact our hotline at (852) 2854 8318 or email donor.services.hk@greenpeace.org. "
+        "title": "When will my donation be processed?",
+        "desc": "Donations made by credit card are processed instantly. A recurring monthly payment is set up and made around the 1st of every month.<br>For monthly donations made by direct debit, the first transactions are processed around the 1st or 28th of the first month. A recurring monthly payment is set up for following months and made around the 1st of every month. "
       },
       {
         "expanded": false,

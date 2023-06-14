@@ -75,8 +75,8 @@ async function waitMilliSeconds(ms) {
 		let element, elements
 
 		// Edit the CloudPageName here!!
-		const targetMarket = 'HK' // "TW", "HK", "Korea"
-		const targetPageName = 'event-oceans-seaourhome-exhibition'
+		const targetMarket = 'TW' // "TW", "HK", "Korea"
+		const targetPageName = 'donation-oceans-oceans'
 		// const targetPageName = 'tw-prod-1click_oneoff-landing'
 		// Stop Editing
 

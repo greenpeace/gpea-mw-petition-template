@@ -7,6 +7,8 @@ PROJECT_NAME=donation-oceans-oceans
 BASEPATH=/htdocs/2022/donation/donation-oceans-oceans
 ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-oceans-oceans/
 FTP_CONFIG_NAME=ftp_tw 
+******** MC Cloud Page Name ********
+donation-oceans-oceans
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -96,10 +98,10 @@ function Index({ submitted = false, strapi }) {
 							}
 						]}
 						content={{
-							// title: strapi?.thankyouHero?.richContent,
-							title: `${
-								TYName ? TYName : '綠色和平支持者'
-							}，${strapi?.thankyouHero?.richContent}`,
+							title: strapi?.thankyouHero?.richContent,
+							// title: `${
+							// 	TYName ? TYName : '綠色和平支持者'
+							// }，${strapi?.thankyouHero?.richContent}`,
 							description: strapi?.thankyouHero?.richContentParagraph
 						}}
 					/>
