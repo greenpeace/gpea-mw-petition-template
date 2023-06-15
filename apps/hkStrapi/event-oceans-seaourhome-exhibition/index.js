@@ -7,6 +7,8 @@ PROJECT_NAME=event-oceans-seaourhome-exhibition
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/event-oceans-seaourhome-exhibition
 ASSETPREFIX=https://api.greenpeace.org.hk/page/event-oceans-seaourhome-exhibition/
 FTP_CONFIG_NAME=api_hk_cloud 
+******** MC Cloud Page Name ********
+event-oceans-seaourhome-exhibition
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -24,7 +26,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/HKForm';
+import SignupForm from '@components/GP/WebinarForm';
 import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';

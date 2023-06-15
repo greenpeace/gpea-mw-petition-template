@@ -333,7 +333,6 @@ export async function getStaticProps(context) {
 	const themes = await res.json();
 	const theme =
 		themes?.data[0] !== undefined ? themes?.data[0]?.attributes : null;
-
 	return {
 		props: {
 			themeData: singleResult || {},

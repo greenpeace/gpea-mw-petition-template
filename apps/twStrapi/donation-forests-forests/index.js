@@ -7,6 +7,8 @@ PROJECT_NAME=donation-forests-forests
 BASEPATH=/htdocs/2023/donation/donation-forests-forests
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-forests-forests/
 FTP_CONFIG_NAME=ftp_tw 
+******** MC Cloud Page Name ********
+donation-forests-forests
 */
 
 import React, { useEffect, useRef } from 'react';
@@ -30,7 +32,7 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -41,6 +43,10 @@ function Index({ submitted = false, strapi }) {
 	const signup = useSelector((state) => state?.signup);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const [ref, inView] = useInView({
+		threshold: 0
+	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
 		threshold: 0
 	});
 	const FormRef = useRef(null);
@@ -170,13 +176,14 @@ function Index({ submitted = false, strapi }) {
 										<SignupForm />
 									)}
 								</Box>
+								<div ref={ FormBtnref }></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
 		</>
 	);
 }

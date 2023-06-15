@@ -7,6 +7,8 @@ PROJECT_NAME=donation-menu
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-menu
 ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-menu/
 FTP_CONFIG_NAME=api_hk_cloud 
+******** MC Cloud Page Name ********
+donation-menu
 */
 
 import React, { useEffect, useRef } from 'react';

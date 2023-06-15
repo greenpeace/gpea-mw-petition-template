@@ -7,6 +7,8 @@ PROJECT_NAME=donation-climate
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-climate
 ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-climate/
 FTP_CONFIG_NAME=api_hk_cloud 
+******** MC Cloud Page Name ********
+donation-climate
 */
 
 import React, { useEffect, useRef } from 'react';

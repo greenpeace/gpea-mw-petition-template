@@ -76,7 +76,7 @@ async function waitMilliSeconds(ms) {
 
 		// Edit the CloudPageName here!!
 		const targetMarket = 'TW' // "TW", "HK", "Korea"
-		const targetPageName = 'donation-oceans-oceans'
+		const targetPageName = 'donation-plastics-plastic_animal'
 		// const targetPageName = 'tw-prod-1click_oneoff-landing'
 		// Stop Editing
 
@@ -241,7 +241,7 @@ async function waitMilliSeconds(ms) {
 		});
 		frame.click('#publish') // confirm publish
 
-		console.log('Waiting for publishing successfully')
+		console.log(`Waiting for ${targetPageName} publishing successfully`)
 		await frame.waitForFunction(() => {
 			return document.body.innerText.includes('was published successfully.');
 		});

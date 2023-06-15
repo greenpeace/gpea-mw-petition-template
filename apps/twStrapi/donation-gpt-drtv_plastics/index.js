@@ -7,6 +7,8 @@ PROJECT_NAME=donation-gpt-drtv_plastics
 BASEPATH=/htdocs/2023/donation/donation-gpt-drtv_plastics
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-gpt-drtv_plastics/
 FTP_CONFIG_NAME=ftp_tw 
+******** MC Cloud Page Name ********
+donation-gpt-drtv_plastics
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -39,16 +41,15 @@ function Index({ submitted = false, strapi }) {
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
-	const FormRef = useRef(null);
 	const [ref, inView] = useInView({
-		threshold: 0,
-		initialInView: true,
-		skip: !Boolean(FormRef?.current?.offsetHeight)
+		threshold: 0
 	});
-	
+	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
 		threshold: 0
 	});
+
+	const FormRef = useRef(null);
 	
 
 	submitted = useSelector((state) => state?.status?.submitted);

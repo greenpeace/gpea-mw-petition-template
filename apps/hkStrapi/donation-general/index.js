@@ -7,6 +7,8 @@ PROJECT_NAME=donation-general
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-general
 ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-general/
 FTP_CONFIG_NAME=api_hk_cloud 
+******** MC Cloud Page Name ********
+donation-general
 */
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -171,8 +173,8 @@ function Index({ submitted = false, strapi }) {
 												strapi?.donationModuleCampaignId ??
 												''
 											}
+											isUAT={false}
 											env={strapi?.donationModuleEnv}
-											customUrl={'https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js'}
 										/>
 									) : (
 										<SignupForm />

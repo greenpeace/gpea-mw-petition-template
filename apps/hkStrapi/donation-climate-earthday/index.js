@@ -5,6 +5,8 @@ PROJECT_NAME=donation-climate-earthday
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/2023/donation-climate-earthday
 ASSETPREFIX=https://api.greenpeace.org.hk/2023/donation-climate-earthday/
 FTP_CONFIG_NAME=api_hk_cloud
+******** MC Cloud Page Name ********
+donation-climate-earthday
 */
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

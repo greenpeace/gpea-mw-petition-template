@@ -5,6 +5,8 @@ PROJECT_NAME=donation-biodiversity-eco
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/2023/donation-biodiversity-eco
 ASSETPREFIX=https://api.greenpeace.org.hk/2023/donation-biodiversity-eco/
 FTP_CONFIG_NAME=api_hk_cloud
+******** MC Cloud Page Name ********
+donation-biodiversity-eco
 */
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
