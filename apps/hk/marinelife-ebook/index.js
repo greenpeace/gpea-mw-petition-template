@@ -7,6 +7,8 @@ PROJECT_NAME=marinelife-ebook
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/marinelife-ebook
 ASSETPREFIX=https://api.greenpeace.org.hk/2022/marinelife-ebook/
 FTP_CONFIG_NAME=api_hk_cloud 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-hk.2022.oceans.marinelife_ebook.registration.event.na
 */
 
 import React, { useEffect, useRef } from 'react';
@@ -44,7 +46,12 @@ function Index({ status, theme, setFormContent, signup }) {
   const [ref, inView] = useInView({
     threshold: 0,
   });
-  const mobileForm = useRef(null);
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
+	const mobileForm = useRef(null);
 
   useEffect(() => {
     setFormContent(formContent);
@@ -119,13 +126,14 @@ function Index({ status, theme, setFormContent, signup }) {
                     <SignupForm />
                   )}
                 </Box>
+                <div ref={ FormBtnref }></div>
               </FormContainer>
             </Box>
           </Flex>
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
-      <ScrollToTargetButton target={mobileForm} targetInView={inView} />
+      <ScrollToTargetButton target={mobileForm} targetInView={ submitted ? btnInView : inView} />
     </>
   );
 }

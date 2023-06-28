@@ -7,8 +7,8 @@ PROJECT_NAME=donation-general-special_appeal
 BASEPATH=/htdocs/2022/donation/donation-general-special_appeal
 ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-general-special_appeal
 FTP_CONFIG_NAME=ftp_tw 
-******** MC Cloud Page Name ********
-donation-general-special_appeal
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=donation-general-special_appeal
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

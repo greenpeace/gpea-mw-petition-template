@@ -7,8 +7,8 @@ PROJECT_NAME=donation-general-sponsor
 BASEPATH=/htdocs/2023/donation/donation-general-sponsor
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-sponsor/
 FTP_CONFIG_NAME=ftp_tw 
-******** MC Cloud Page Name ********
-donation-general-sponsor
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=donation-general-sponsor
 */
 
 import React, { useEffect, useRef, useState } from 'react';

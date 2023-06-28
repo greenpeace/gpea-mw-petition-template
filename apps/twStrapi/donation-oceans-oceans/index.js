@@ -7,8 +7,8 @@ PROJECT_NAME=donation-oceans-oceans
 BASEPATH=/htdocs/2022/donation/donation-oceans-oceans
 ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-oceans-oceans/
 FTP_CONFIG_NAME=ftp_tw 
-******** MC Cloud Page Name ********
-donation-oceans-oceans
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=donation-oceans-oceans
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

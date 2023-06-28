@@ -8,8 +8,8 @@ PROJECT_NAME=donation-arctic-arctic
 BASEPATH=/htdocs/2023/donation/donation-arctic-arctic
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-arctic-arctic/
 FTP_CONFIG_NAME=ftp_tw 
-******** MC Cloud Page Name ********
-donation-arctic-arctic
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=donation-arctic-arctic
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

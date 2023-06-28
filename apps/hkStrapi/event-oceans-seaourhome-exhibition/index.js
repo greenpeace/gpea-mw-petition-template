@@ -7,8 +7,8 @@ PROJECT_NAME=event-oceans-seaourhome-exhibition
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/event-oceans-seaourhome-exhibition
 ASSETPREFIX=https://api.greenpeace.org.hk/page/event-oceans-seaourhome-exhibition/
 FTP_CONFIG_NAME=api_hk_cloud 
-******** MC Cloud Page Name ********
-event-oceans-seaourhome-exhibition
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=event-oceans-seaourhome-exhibition
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -31,7 +31,7 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -44,6 +44,11 @@ function Index({ submitted = false, strapi }) {
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
 	const FormRef = useRef(null);
 
 	// get utm_source
@@ -197,13 +202,14 @@ function Index({ submitted = false, strapi }) {
 										<SignupForm />
 									)}
 								</Box>
+								<div ref={ FormBtnref }></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			<StrapiFixedButton target={FormRef} targetInView={ (pageType?.toLowerCase() === 'donation' || submitted) ? btnInView : inView} />
 		</>
 	);
 }

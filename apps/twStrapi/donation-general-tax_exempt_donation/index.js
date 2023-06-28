@@ -8,8 +8,8 @@ PROJECT_NAME=donation-general-tax_exempt_donation
 BASEPATH=/htdocs/2023/donation/donation-general-tax_exempt_donation
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-tax_exempt_donation/
 FTP_CONFIG_NAME=ftp_tw 
-******** MC Cloud Page Name ********
-donation-general-tax_exempt_donation
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=donation-general-tax_exempt_donation
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

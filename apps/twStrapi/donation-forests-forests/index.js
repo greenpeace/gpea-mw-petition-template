@@ -7,8 +7,8 @@ PROJECT_NAME=donation-forests-forests
 BASEPATH=/htdocs/2023/donation/donation-forests-forests
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-forests-forests/
 FTP_CONFIG_NAME=ftp_tw 
-******** MC Cloud Page Name ********
-donation-forests-forests
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=donation-forests-forests
 */
 
 import React, { useEffect, useRef } from 'react';

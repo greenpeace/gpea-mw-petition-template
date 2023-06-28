@@ -7,6 +7,8 @@ PROJECT_NAME=ship-quiz
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/ship-quiz
 ASSETPREFIX=https://api.greenpeace.org.hk/2022/ship-quiz/
 FTP_CONFIG_NAME=api_hk_cloud 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-hk.2022.oceans.ship_quiz.registration.event.na
 */
 
 import React from 'react';

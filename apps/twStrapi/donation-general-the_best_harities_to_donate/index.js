@@ -7,8 +7,8 @@ PROJECT_NAME=donation-general-the_best_harities_to_donate
 BASEPATH=/htdocs/2023/donation/donation-general-the_best_harities_to_donate
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-the_best_harities_to_donate/
 FTP_CONFIG_NAME=ftp_tw 
-******** MC Cloud Page Name ********
-donation-general-the_best_harities_to_donate
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=donation-general-the_best_harities_to_donate
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

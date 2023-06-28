@@ -45,7 +45,7 @@ function Content({ children }) {
   }, []);
 
   return (
-    <Stack spacing="4" py={'40px'} w={{ md: 'md', xl: 'xl' }}>
+    <Stack pos={'relative'} spacing="4" py={'40px'} w={{ md: 'md', xl: 'xl' }} zIndex={"1"}>
       <Box ref={ref}>
         <Heading
           as="h1"

@@ -7,8 +7,8 @@ PROJECT_NAME=donation-plastics-plasticfree_harbour_public
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-plastics-plasticfree_harbour_public
 ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-plastics-plasticfree_harbour_public/
 FTP_CONFIG_NAME=api_hk_cloud 
-******** MC Cloud Page Name ********
-donation-plastics-plasticfree_harbour_public
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=donation-plastics-plasticfree_harbour_public
 */
 
 import React, { useEffect, useRef } from 'react';
@@ -32,7 +32,7 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -45,6 +45,11 @@ function Index({ submitted = false, strapi }) {
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
 	const FormRef = useRef(null);
 
 	submitted = useSelector((state) => state?.status?.submitted);
@@ -176,13 +181,14 @@ function Index({ submitted = false, strapi }) {
 										<SignupForm />
 									)}
 								</Box>
+								<div ref={ FormBtnref }></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
 		</>
 	);
 }

@@ -1,3 +1,16 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/event-oceans-antarctic-webinar
+MARKET=hk
+PROJECT_NAME=event-oceans-antarctic-webinar
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/event-oceans-antarctic-webinar
+ASSETPREFIX=https://api.greenpeace.org.hk/page/event-oceans-antarctic-webinar/
+FTP_CONFIG_NAME=api_hk_cloud 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-hk.2022.oceans.webinar_antarctic.registration.event.na
+*/
+
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -21,7 +34,7 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -36,6 +49,11 @@ function Index({ submitted = false, strapi: strapiData }) {
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
 	const [isLoaded, setIsLoaded] = useState(false);
 	const FormRef = useRef(null);
 
@@ -201,14 +219,15 @@ function Index({ submitted = false, strapi: strapiData }) {
 											<SignupForm />
 										)}
 									</Box>
-								</FormContainer>
+								<div ref={ FormBtnref }></div>
+							</FormContainer>
 							)}
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			<StrapiFixedButton target={FormRef} targetInView={ (pageType?.toLowerCase() === 'donation' || submitted) ? btnInView : inView} />
 		</>
 	);
 }

@@ -27,6 +27,8 @@ TODO:
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const os = require('os');
+// read production env file
+require('dotenv').config({ path: `./.env.production` });
 
 const SESSION_FILE_PATH = 'gpokta.json';
 const OKTA_URL = 'https://login.greenpeace.org/app/UserHome'
@@ -75,8 +77,9 @@ async function waitMilliSeconds(ms) {
 		let element, elements
 
 		// Edit the CloudPageName here!!
-		const targetMarket = 'TW' // "TW", "HK", "Korea"
-		const targetPageName = 'donation-plastics-plastic_animal'
+		const projectName = process.env.PROJECT_NAME//'event-oceans-antarctic-webinar'
+		const targetMarket = process.env.MARKET.toUpperCase() // "TW", "HK", "Korea"
+		const targetPageName = process.env.CLOUD_PAGE_NAME//'zh-hk.2022.oceans.webinar_antarctic.registration.event.na'
 		// const targetPageName = 'tw-prod-1click_oneoff-landing'
 		// Stop Editing
 
@@ -214,7 +217,8 @@ async function waitMilliSeconds(ms) {
 		await waitMilliSeconds(1 * 1000);
 
 		// Add the new content
-		const fileContent = fs.readFileSync('out/index.mc.html', 'utf8');
+		// const fileContent = fs.readFileSync('out/index.mc.html', 'utf8');
+		const fileContent = fs.readFileSync(`readyMC/${targetMarket.toLowerCase()}/${projectName}.html`, 'utf8');
 		await page.keyboard.sendCharacter(fileContent + '  ');
 
 		// do save
@@ -241,7 +245,7 @@ async function waitMilliSeconds(ms) {
 		});
 		frame.click('#publish') // confirm publish
 
-		console.log(`Waiting for ${targetPageName} publishing successfully`)
+		console.log(`Waiting for ${targetMarket} ${targetPageName} publishing successfully`)
 		await frame.waitForFunction(() => {
 			return document.body.innerText.includes('was published successfully.');
 		});

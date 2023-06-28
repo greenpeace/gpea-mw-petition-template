@@ -7,6 +7,8 @@ PROJECT_NAME=arctic
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/arctic
 ASSETPREFIX=https://api.greenpeace.org.hk/2022/arctic/
 FTP_CONFIG_NAME=api_hk_cloud 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-hk.2022.arctic.savethearctic.mindwise_version.signup
 */
 
 import React, { useEffect, useRef } from 'react';
@@ -43,6 +45,11 @@ function Index({ status, theme, setFormContent, signup }) {
 	const { ref, inView } = useInView({
 		threshold: 0
 	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
 	const mobileForm = useRef(null);
 	const myRef = useRef(null);
 	const executeScroll = () => scrollToRef(myRef);
@@ -97,13 +104,14 @@ function Index({ status, theme, setFormContent, signup }) {
 										<SignupForm />
 									)}
 								</Box>
+								<div ref={ FormBtnref }></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<ScrollToTargetButton target={mobileForm} targetInView={inView} />
+			<ScrollToTargetButton target={mobileForm} targetInView={ (submitted) ? btnInView : inView} />
 		</>
 	);
 }
