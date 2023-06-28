@@ -9,7 +9,7 @@ BASEPATH=/htdocs/2023/donation/donation-general-general
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-general/
 FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=onation-general-general
+CLOUD_PAGE_NAME=donation-general-general
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
