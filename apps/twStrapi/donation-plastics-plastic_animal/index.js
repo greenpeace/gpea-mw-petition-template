@@ -44,6 +44,10 @@ function Index({ submitted = false, strapi }) {
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
 	const FormRef = useRef(null);
 
 	submitted = useSelector((state) => state?.status?.submitted);
