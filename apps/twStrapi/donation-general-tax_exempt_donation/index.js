@@ -1,4 +1,3 @@
-
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
