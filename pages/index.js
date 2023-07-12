@@ -335,7 +335,15 @@ export async function getStaticProps(context) {
 		themes?.data[0] !== undefined ? themes?.data[0]?.attributes : null;
 	return {
 		props: {
-			themeData: singleResult || {},
+			themeData: singleResult || {
+				CampaignId: theme?.campaignId,
+				EndpointURL: theme?.market?.data?.attributes?.websignEndpointURL,
+				EventLabel: envProjectName,
+				Market: envProjectMarket,
+				ProjectName: envProjectName,
+				Status: 'Open',
+				interests: theme?.issue?.data?.attributes?.name.toLowerCase()
+			},
 			strapi: theme
 		}
 	};
