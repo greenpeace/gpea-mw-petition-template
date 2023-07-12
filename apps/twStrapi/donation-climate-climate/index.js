@@ -191,6 +191,7 @@ function Index({ submitted = false, strapi }) {
 												strapi?.donationModuleCampaign
 											}
 											campaignId={theme?.params?.campaignId ?? ''}
+											isUAT={true}
 											env={strapi?.donationModuleEnv}
 										/>)
 									) : (
