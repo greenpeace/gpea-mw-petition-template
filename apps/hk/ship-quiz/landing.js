@@ -18,7 +18,7 @@ const Landing = ({ setSurveyPage }) => {
       mt={{ base: '-55px' }}
       pos={'relative'}
     >
-      <Center w={'100%'}>
+      <Center w={'100%'} pos={'relative'} zIndex={"2"} minH={'100vh'}>
         <Stack direction="column">
           {/* Desktop Button */}
           <Box
@@ -86,7 +86,7 @@ const Landing = ({ setSurveyPage }) => {
         objectFit={'cover'}
         bgImage={{ base: mobileBG, md: bgImage }}
         bgPosition={'center'}
-        zIndex={'-1'}
+        // zIndex={'-1'}
       ></Box>
     </Box>
   );

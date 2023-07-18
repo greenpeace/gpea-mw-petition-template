@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Button, Center } from '@chakra-ui/react';
 import { connect } from 'react-redux';
-
 import { useMediaQuery } from '@chakra-ui/react';
 
 const FixedCTA = ({ onClick, status, form }) => {
@@ -17,28 +16,10 @@ const FixedCTA = ({ onClick, status, form }) => {
     <Center
       zIndex={99}
       d={{ base: 'block', lg: 'none' }}
-      // pos={'fixed'}
-      // left="0"
-      // bottom="0"
-      // bottom="env(safe-area-inset-bottom)"
-      borderTopRightRadius="4px"
-      borderTopLeftRadius="4px"
-      borderBottomLeftRadius="0"
-      borderBottomRightRadius="0"
-      bg="white"
-      width="100%"
-      p="4"
-      paddingBottom={'calc(1rem + env(safe-area-inset-bottom))'}
+      {...styleProps}
     >
       <Button
-        fontSize="xl"
-        px={2}
-        py={8}
-        width="100%"
-        color="white"
-        borderRadius="4px"
-        bg="orange.500"
-        _hover={{ bg: 'orange.300' }}
+        {...buttonStyleProps}
         onClick={onClick}
       >
         {buttonText}
@@ -46,6 +27,33 @@ const FixedCTA = ({ onClick, status, form }) => {
     </Center>
   );
 };
+
+const styleProps = {
+	borderTopRightRadius: '0',
+	borderTopLeftRadius: '0',
+	borderBottomLeftRadius: '0',
+	borderBottomRightRadius: '0',
+	bg: 'white',
+	width: '100%',
+	p: '4',
+	padding: '0',
+	paddingBottom: `0`,
+	d: { md: 'none' }
+};
+
+const buttonStyleProps = {
+	width: '100%',
+	borderRadius: '4px 4px 0 0 ',
+	fontSize: '20px',
+	fontWeight: '400',
+	minHeight: '48px',
+	py: '12px',
+	px: '4px',
+	color: 'white',
+	bg: 'orange.500',
+	_hover: { bg: 'orange.300' }
+};
+
 
 const mapStateToProps = ({ status, form }) => {
   return { status, form: form.content };

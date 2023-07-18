@@ -1,8 +1,8 @@
 {
-	"form_header": "連署支持！5月31日立法會期結束前三讀通過《海洋保育法》",
-	"form_description": "若立法院改組後，一切程序將重頭來過，海洋保育的工作將因此再次延宕！",
+	"form_header": "我想持續追蹤《海洋保育法》立法進度",
+	"form_description": "填寫資料，不定期接收綠色和平海洋專案的最新進展。",
 	"form_remind": "",
-	"signed_number": "已連署人數",
+	"signed_number": "訂閱人數",
 
 	"label_yes": "是",
 	"label_no": "否",
@@ -24,7 +24,7 @@
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 
-	"submit_text": "加入連署",
+	"submit_text": "立即訂閱",
 	"thanks_title": "",
 	"thanks_ask": "",
 	"thanks_content": "",

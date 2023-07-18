@@ -69,7 +69,7 @@ const DonationModule = (props) => {
 		: `https://api.greenpeace.org.hk/app/donation-module${(isUAT ? "-uat" : "-hkmp")}/main.js`
 	// Import module
 	const timestamp = process.env.timeStamp;
-	if(customUrl) console.log('using custom donation module url.')
+	if(customUrl) console.log('using custom donation module url: '+customUrl)
 	console.log('this donation module url suffix was changed at: ' , new Date(Number(timestamp)))
 	const status = useScript( (customUrl ? customUrl : moduleUrl) + '?ts=' + timestamp)
 	// const [status, setStatus] = useState('');

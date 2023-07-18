@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import { Field } from '@components/Field/fields';
 import { numberFormat, capitalize, clearURL } from '@common/utils';
 import { validation } from './validation';
@@ -52,11 +53,14 @@ const MyForm = (props) => {
 		initSuggestion,
 		suggestion,
 		numberOfResponses,
-		numberOfTarget
+		numberOfTarget,
+		customEndpoint,
+		customOfTarget
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
 	const [progressNumber, setProgressNumber] = useState(0);
 	const themeInterests = theme.interests;
+	const [customNumbers, setCustomNumbers] = useState(null);
 
 	const [formViewed, setFormViewed] = useState(false);
 	useEffect(() => {
@@ -74,6 +78,7 @@ const MyForm = (props) => {
 		}
 	}, [formViewed])
 	useEffect(() => {
+		
 		let optionYear = [];
 		function fetchOptionYear() {
 			const minYear = 18;
@@ -87,12 +92,29 @@ const MyForm = (props) => {
 		}
 		fetchOptionYear(optionYear);
 		initSuggestion();
-	}, []);
 
+		
+
+	}, []);
+	
+	// get numberOfResponses from custom endpoint
 	useEffect(() => {
-		console.log("numberOfResponses: "+numberOfResponses,numberOfTarget)
-		const currentNumber = numberOfResponses;
-		const currentNumberOfTarget = numberOfTarget ? numberOfTarget : 10000;
+		
+		if(customEndpoint){
+			axios
+			.get(customEndpoint)
+			.then((response) => {
+				setCustomNumbers(Number(response.data.unique_count));
+			})
+			.catch((error) => console.log(error));
+		}
+	}, [])
+	
+	useEffect(() => {
+		console.log("numberOfResponses: ", numberOfResponses, customNumbers, numberOfTarget)
+		
+		const currentNumber = customNumbers ? customNumbers: numberOfResponses;
+		const currentNumberOfTarget = numberOfTarget ? numberOfTarget : (customOfTarget ? customOfTarget : 10000);
 		const number =
 			Math.round((currentNumber / currentNumberOfTarget) * 10000) / 100;
 		if (isNaN(number)) {
@@ -105,7 +127,7 @@ const MyForm = (props) => {
 			clearTimeout(timerId);
 		};
 		
-	}, [numberOfResponses]);
+	}, [numberOfResponses, customNumbers]);
 
 	//setting additional fileds for formik
 	useEffect(() => {
@@ -145,7 +167,7 @@ const MyForm = (props) => {
 	return (
 		<Box py="8" px="4">
 			<Stack spacing="4">
-				{formContent.signed_number && numberOfResponses && numberOfTarget && (
+				{formContent.signed_number && (numberOfResponses || customNumbers) && (numberOfTarget || customOfTarget) && (
 					<Box>
 						<Box
 							borderRadius={'20px'}
@@ -153,7 +175,7 @@ const MyForm = (props) => {
 							h={`14px`}
 							overflow={`hidden`}
 						>
-							{numberOfResponses && (
+							{(numberOfResponses || customNumbers) && (
 								<Box
 									style={{ transition: `width 2s` }}
 									h={`14px`}
@@ -167,9 +189,9 @@ const MyForm = (props) => {
 							<Text color={`theme.${themeInterests}`} fontSize={'sm'} mt={2}>
 								{formContent.signed_number}:{' '}
 								<Text as="span" fontSize={'2xl'} fontWeight="bold">
-									{numberFormat(numberOfResponses)}
+									{numberFormat(customNumbers ? customNumbers : numberOfResponses)}
 								</Text>{' '}
-								/ {numberFormat(numberOfTarget)}
+								/ {numberFormat(customOfTarget ? customOfTarget : numberOfTarget)}
 							</Text>
 						</Box>
 					</Box>

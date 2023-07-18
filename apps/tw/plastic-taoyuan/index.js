@@ -1,3 +1,16 @@
+/** 
+ * Dploy Setting:
+ *
+PROJECT=tw/plastic-taoyuan
+MARKET=tw
+PROJECT_NAME=plastic-taoyuan
+BASEPATH=/htdocs/2022/petition/plastic-taoyuan
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/petition/plastic-taoyuan/
+FTP_CONFIG_NAME=ftp_tw
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-tw.2022.plastics.plastics-taoyuan.signup
+*/
+
 import React, { useEffect, useRef } from 'react';
 import HeroBanner from '@components/Banner/hero';
 import ThanksBanner from '@components/Banner/thanks';
@@ -32,7 +45,12 @@ function Index({ status, theme, setFormContent, signup }) {
     /* Optional options */
     threshold: 0,
   });
-  const myRef = useRef(null);
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
+	const myRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
 
   useEffect(() => {
@@ -77,13 +95,14 @@ function Index({ status, theme, setFormContent, signup }) {
                 <Box ref={ref}>
                   {submitted ? <DonateForm /> : <SignupForm />}
                 </Box>
+                <div ref={ FormBtnref }></div>
               </FormContainer>
             </Box>
           </Flex>
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'TWChinese'} />
-      {!inView && (
+      {((!submitted && !inView) || (submitted && !btnInView)) && (
         <FixedCTA onClick={executeScroll}>{formContent.submit_text}</FixedCTA>
       )}
     </>

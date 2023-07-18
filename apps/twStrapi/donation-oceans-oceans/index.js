@@ -7,6 +7,8 @@ PROJECT_NAME=donation-oceans-oceans
 BASEPATH=/htdocs/2022/donation/donation-oceans-oceans
 ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-oceans-oceans/
 FTP_CONFIG_NAME=ftp_tw 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=donation-oceans-oceans
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -29,7 +31,7 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -42,6 +44,11 @@ function Index({ submitted = false, strapi }) {
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
 	const FormRef = useRef(null);
 
 	submitted = useSelector((state) => state?.status?.submitted);
@@ -96,10 +103,10 @@ function Index({ submitted = false, strapi }) {
 							}
 						]}
 						content={{
-							// title: strapi?.thankyouHero?.richContent,
-							title: `${
-								TYName ? TYName : '綠色和平支持者'
-							}，${strapi?.thankyouHero?.richContent}`,
+							title: strapi?.thankyouHero?.richContent,
+							// title: `${
+							// 	TYName ? TYName : '綠色和平支持者'
+							// }，${strapi?.thankyouHero?.richContent}`,
 							description: strapi?.thankyouHero?.richContentParagraph
 						}}
 					/>
@@ -186,21 +193,22 @@ function Index({ submitted = false, strapi }) {
 												theme?.params?.donation_module_campaign ??
 												strapi?.donationModuleCampaign
 											}
+											isUAT={true}
 											campaignId={theme?.params?.campaignId ?? ''}
 											env={strapi?.donationModuleEnv}
-											customUrl="https://change.greenpeace.org.tw/app/donation-module/main.js"
 										/>)
 									) : (
 										<SignupForm />
 									)}
 								</Box>
+								<div ref={ FormBtnref }></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
 		</>
 	);
 }

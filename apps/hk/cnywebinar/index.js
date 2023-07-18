@@ -1,3 +1,16 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hk/cnywebinar
+MARKET=hk
+PROJECT_NAME=cnywebinar
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/cnywebinar
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/cnywebinar/
+FTP_CONFIG_NAME=api_hk_cloud 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-hk.2022.general.webinar_cny.registration.event.na
+*/
+
 import React, { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
@@ -36,7 +49,12 @@ function Index({ status, theme, setFormContent, signup }) {
   const { ref, inView } = useInView({
     threshold: 0,
   });
-  const myRef = useRef(null);
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
+	const myRef = useRef(null);
   const speaker1Ref = useRef(null);
   const speaker2Ref = useRef(null);
   const speaker3Ref = useRef(null);
@@ -119,13 +137,14 @@ function Index({ status, theme, setFormContent, signup }) {
                 <Box ref={ref}>
                   {submitted ? <DonateForm /> : <SignupForm />}
                 </Box>
+                <div ref={ FormBtnref }></div>
               </FormContainer>
             </Box>
           </Flex>
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
-      {!inView && (
+      {((!submitted && !inView) || (submitted && !btnInView)) && (
         <FixedCTA onClick={executeScroll}>
           {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}
         </FixedCTA>

@@ -7,6 +7,8 @@ PROJECT_NAME=donation-gpt-drtv_plastics
 BASEPATH=/htdocs/2023/donation/donation-gpt-drtv_plastics
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-gpt-drtv_plastics/
 FTP_CONFIG_NAME=ftp_tw 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=donation-gpt-drtv_plastics
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -29,7 +31,7 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -42,7 +44,13 @@ function Index({ submitted = false, strapi }) {
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
 	const FormRef = useRef(null);
+	
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -169,8 +177,8 @@ function Index({ submitted = false, strapi }) {
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
-							<FormContainer>
-								<Box ref={ref}>
+							<FormContainer >
+								<Box ref={ ref }>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
 										utm_source !== 'dd' && (
 										<DonationModule
@@ -191,13 +199,14 @@ function Index({ submitted = false, strapi }) {
 										<SignupForm />
 									)}
 								</Box>
+								<div ref={ FormBtnref }></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
 		</>
 	);
 }

@@ -38,7 +38,9 @@ const DonateFAQ = ({ locale = 'HKChinese' }) => {
 								as="p"
 								{...paragraphProps}
 								textAlign={'initial'}
-								sx={{'a':{color: 'var(--brand)'}}}
+								sx={{
+									'.highlight':{color: 'var(--brand)'},
+								}}
 								dangerouslySetInnerHTML={{
 									__html: d.desc
 								}}
