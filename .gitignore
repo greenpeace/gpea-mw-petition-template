@@ -38,4 +38,5 @@ yarn-error.log*
 .vercel
 
 mc-deploy.js
-package.json
+# package.json
+gpokta.json
