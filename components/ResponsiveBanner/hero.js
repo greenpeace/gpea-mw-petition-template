@@ -9,7 +9,8 @@ export default function Index({
 	children,
 	defaultImage,
 	objectPosition = 'center top',
-	minH = { base: 'lg', md: 'xl' }
+	minH = { base: 'lg', md: 'xl' },
+	avatarUrl,
 }) {
 	const [customColor, setCustomColor] = useState('white');
   useEffect(() => {
