@@ -135,7 +135,7 @@
   "additional": {
     "fieldName": "CampaignData2__c",
     "type": "text",
-    "note": "格式：XX區OO里"
+    "note": "例：中正區黎明里"
   },
   "mobile_country_code": [
     {
