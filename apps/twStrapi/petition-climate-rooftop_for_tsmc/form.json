@@ -1,6 +1,6 @@
 {
-  "form_header": "您的連署不只是一個簽名",
-  "form_description": "而是化解氣候危機的重要力量！綠色和平將集結公民的聲音，撼動當權者必須回應民意，立即落實淨零碳排政策。",
+  "form_header": "台積電，請收下我的屋頂！",
+  "form_description": "我願意響應連署，說服社區里民將閒置屋頂提供台積電建置太陽光電設備，並由綠色和平代表本里／社區與台積電直接溝通，促成民間與企業互助合作，加速臺灣的再生能源轉型！",
   "form_remind": "",
   "signed_number": "已連署人數",
   "label_yes": "是",
@@ -14,7 +14,8 @@
   "label_year_of_birth": "出生年份",
   "label_year_of_birth_optional": "出生年份（選填）",
   "label_counties": "居住縣市",
-  "label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/' target='_blank'>隱私保護政策</a>。",
+  "label_newsletter": "",
+  "label_additional": "鄉/鎮/市/區與里",
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
   "invalid_email_alert": "請填上有效電子郵件",
@@ -130,6 +131,11 @@
         "value": "不提供"
       }
     ]
+  },
+  "additional": {
+    "fieldName": "CampaignData2__c",
+    "type": "text",
+    "note": "格式：XX區OO里"
   },
   "mobile_country_code": [
     {
