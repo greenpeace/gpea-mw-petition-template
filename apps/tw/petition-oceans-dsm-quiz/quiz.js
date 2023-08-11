@@ -37,7 +37,7 @@ const Quiz = ({ quiz, current }) => {
 							<Heading
 								fontSize={{ base: 'md', md: '2xl' }}
 								textAlign={'center'}
-								color={'black'}
+								color={'white'}
 								lineHeight="1.7"
 							>
 								{currentQuiz?.question.label}

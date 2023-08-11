@@ -29,7 +29,7 @@ const Description = ({ setSurveyPage }) => {
 						<Box borderRadius={'8px'} p={4}>
 							<Heading
 								fontSize={{ base: 'xl', md: '2xl' }}
-								color={'black'}
+								color={'white'}
 								textAlign={{ base: 'center' }}
 							>
 								微塑膠污染已遍佈海、陸、空

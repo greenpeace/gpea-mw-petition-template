@@ -208,7 +208,7 @@ function Index({
 												<Box pt={6}>
 													<Heading
 														{...headingProps}
-														color={'black'}
+														color={'white'}
 														fontSize={{ base: '2xl', md: '3xl' }}
 														dangerouslySetInnerHTML={
 															RESULT[result] && {
@@ -233,7 +233,7 @@ function Index({
 												<Box>
 													<Heading
 														{...headingProps}
-														color={'black'}
+														color={'white'}
 														fontSize={{ base: 'xl', md: '2xl' }}
 														dangerouslySetInnerHTML={{
 															__html: RESULT[result]?.subtitle
@@ -243,7 +243,7 @@ function Index({
 												<Box>
 													<Text
 														as="p"
-														color={'black'}
+														color={'white'}
 														{...paragraphProps}
 														mb={0}
 														dangerouslySetInnerHTML={{
@@ -264,7 +264,7 @@ function Index({
 												<Box>
 													<Text
 														as="p"
-														color={'black'}
+														color={'white'}
 														{...paragraphProps}
 														dangerouslySetInnerHTML={{
 															__html: RESULT[result]?.content[1]
