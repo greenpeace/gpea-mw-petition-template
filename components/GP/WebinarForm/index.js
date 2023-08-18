@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
@@ -52,12 +52,14 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
+    setSignupBtnRef,
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure(true);
   const themeInterests = theme.interests;
-
+  
+  const btnRef = useRef(null);
   const [formViewed, setFormViewed] = useState(false);
 	useEffect(() => {
 		if(!formViewed){
@@ -73,7 +75,11 @@ const MyForm = (props) => {
 			setFormViewed(true);
 		}
 	}, [formViewed]);
-
+  
+  useEffect(() => {
+		setSignupBtnRef(btnRef);
+	}, [btnRef]);
+  
   useEffect(() => {
     let optionYear = [];
     function fetchOptionYear() {
@@ -306,7 +312,7 @@ const MyForm = (props) => {
               )}
 
               <Box>
-                <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+                <Button {...OrangeCTA} isLoading={isLoading} type={'submit'} ref={ btnRef }>
                   {formContent.submit_text}
                 </Button>
               </Box>

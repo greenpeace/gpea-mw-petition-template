@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -56,28 +56,36 @@ const MyForm = (props) => {
 		numberOfTarget,
 		customEndpoint,
 		customOfTarget,
-		customMapFields//an array for copy values to preset CampaignData fileds. ex: [{"from":"BirthDate", "to":"CampaignData3__c"}]
+		customMapFields,//an array for copy values to preset CampaignData fileds. ex: [{"from":"BirthDate", "to":"CampaignData3__c"}]
+		setSignupBtnRef
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
 	const [progressNumber, setProgressNumber] = useState(0);
 	const themeInterests = theme.interests;
 	const [customNumbers, setCustomNumbers] = useState(null);
 
+	const btnRef = useRef(null);
 	const [formViewed, setFormViewed] = useState(false);
+
 	useEffect(() => {
-		if (!formViewed) {
+		if(!formViewed){
 			// ga4 event
 			window.dataLayer = window.dataLayer || [];
 
 			window.dataLayer.push({
 				'event': 'custom_event',
-				'event_name': 'view_form',
+				'event_name' : 'view_form',
 				'event_category': 'petitions',
 				'event_action': 'load'
 			});
 			setFormViewed(true);
 		}
-	}, [formViewed])
+	}, [formViewed]);
+
+	useEffect(() => {
+		setSignupBtnRef(btnRef);
+	}, [btnRef]);
+
 	useEffect(() => {
 
 		let optionYear = [];
@@ -430,7 +438,7 @@ const MyForm = (props) => {
 						)}
 
 						<Box>
-							<Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+							<Button {...OrangeCTA} isLoading={isLoading} type={'submit'} ref={ btnRef }>
 								{formContent.submit_text}
 							</Button>
 						</Box>

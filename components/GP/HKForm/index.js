@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
@@ -52,13 +52,16 @@ const MyForm = (props) => {
 		suggestion,
 		numberOfResponses,
 		numberOfTarget,
-		setValues
+		setValues, 
+		setSignupBtnRef
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
 	const [progressNumber, setProgressNumber] = useState(0);
 	const themeInterests = theme.interests;
 
+	const btnRef = useRef(null);
 	const [formViewed, setFormViewed] = useState(false);
+
 	useEffect(() => {
 		if(!formViewed){
 			// ga4 event
@@ -75,6 +78,10 @@ const MyForm = (props) => {
 	}, [formViewed]);
 
 	useEffect(() => {
+		setSignupBtnRef(btnRef);
+	}, [btnRef]);
+
+	useEffect(() => {
 		let optionYear = [];
 		function fetchOptionYear() {
 			const minYear = 18;
@@ -88,6 +95,7 @@ const MyForm = (props) => {
 		}
 		fetchOptionYear(optionYear);
 		initSuggestion();
+		
 	}, []);
 
 	useEffect(() => {
@@ -346,7 +354,7 @@ const MyForm = (props) => {
 							</Box>
 
 							<Box>
-								<Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+								<Button {...OrangeCTA} isLoading={isLoading} type={'submit'} ref={ btnRef }>
 									{formContent.submit_text}
 								</Button>
 							</Box>
