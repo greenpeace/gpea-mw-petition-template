@@ -7,7 +7,7 @@ BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-arctic
 ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-arctic/
 FTP_CONFIG_NAME=api_hk_cloud
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=CLOUD_PAGE_NAME=donation-arctic
+CLOUD_PAGE_NAME=donation-arctic
 */
 
 import React, { useEffect, useRef } from 'react';
@@ -46,7 +46,8 @@ function Index({ submitted = false, strapi }) {
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
 	});
 
 	const FormRef = useRef(null);

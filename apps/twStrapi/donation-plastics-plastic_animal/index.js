@@ -46,8 +46,9 @@ function Index({ submitted = false, strapi }) {
 	});
 
 	// mobile sticky btn show ref
-	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
+const [FormBtnref, btnInView] = useInView({
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
 	});
 
 	const FormRef = useRef(null);
