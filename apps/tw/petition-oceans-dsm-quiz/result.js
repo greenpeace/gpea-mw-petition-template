@@ -32,6 +32,7 @@ import {
 	paragraphProps
 } from '@common/styles/components/contentStyle';
 import { OrangeCTA } from '@common/styles/components/formStyle';
+import bg from './images/background.jpg';
 
 const SignContent = dynamic(() => import('./content/signContent'));
 const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
@@ -59,7 +60,7 @@ function Index({
 	const photo = useImage(RESULT[result]?.photo);
 	const topSection = useRef(null);
 	// const dynamicContent = RESULT[result]?.content;
-	const [supportType, setSupportType] = useState('');
+	const [supportType, setSupportType] = useState('support');
 
 	const handleOpenLink = (targetDonateURL) => {
 		//
@@ -107,13 +108,13 @@ function Index({
 		//   (d) => d.totalPoints === calAnswer[0].totalPoints, // get largest points only
 		// );
 		if (calAnswer >= 6 && calAnswer <= 8) {
-			setResult('A');
+			setResult('幽靈章魚');
 		}
 		if (calAnswer >= 4 && calAnswer <= 5) {
-			setResult('B');
+			setResult('抹香鯨');
 		}
 		if (calAnswer >= 0 && calAnswer <= 3) {
-			setResult('C');
+			setResult('鮪魚');
 		}
 	}, [answer]);
 
@@ -134,9 +135,9 @@ function Index({
 	useEffect(() => {
 		setAnswerToSubmitForm({
 			...hiddenForm,
-			CampaignData1__c: result,
-			CampaignData2__c: `${score}, ${RESULT[result]?.value}`,
-			CampaignData3__c:
+			campaignData1__c: result,
+			campaignData2__c: `${score}, ${RESULT[result]?.value}`,
+			campaignData3__c:
 				supportType === 'support' ? '我願意' : '以其他方式支持減塑'
 		});
 	}, [result, supportType]);
@@ -179,7 +180,14 @@ function Index({
 
 	return (
 		<>
-			<Box pos={'relative'} bgColor={'#002137'} pb={12}>
+			<Box
+				pos={'relative'}
+				bgImage={`url(${bg})`}
+				bgPosition="center"
+				bgRepeat="no-repeat"
+				bgSize="cover"
+				pb={12}
+			>
 				<PageContainer>
 					<Grid
 						templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
@@ -202,8 +210,6 @@ function Index({
 								>
 									<Stack py={4}>
 										{supportType ? (
-											<SignContent type={supportType} />
-										) : (
 											<>
 												<Box pt={6}>
 													<Heading
@@ -251,7 +257,7 @@ function Index({
 														}}
 													/>
 												</Box>
-												<Box position="relative">
+												{/* <Box position="relative">
 													<Image
 														src={photo?.image}
 														pos={'relative'}
@@ -260,7 +266,7 @@ function Index({
 														//maxW={{ base: '280px', md: '380px' }}
 														zIndex={2}
 													/>
-												</Box>
+												</Box> */}
 												<Box>
 													<Text
 														as="p"
@@ -272,6 +278,8 @@ function Index({
 													/>
 												</Box>
 											</>
+										) : (
+											<SignContent type={supportType} />
 										)}
 									</Stack>
 								</Box>
