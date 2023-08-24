@@ -35,7 +35,8 @@ import { OrangeCTA } from '@common/styles/components/formStyle';
 import bg from './images/background.jpg';
 
 const SignContent = dynamic(() => import('./content/signContent'));
-const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+// const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+import DonationModule from '@components/GP/DonationModule';
 const SignupForm = dynamic(() => import('@components/GP/TWForm'));
 const ResultContent = dynamic(() => import('./content/resultContent'));
 
@@ -51,7 +52,7 @@ function Index({
 	setAnswerToSubmitForm
 }) {
 	const { submitted } = status;
-	const [isLargerThan768] = useMediaQuery('(min-width: 48em)'); // follow Chakra UI default md break point
+	// const [isLargerThan768] = useMediaQuery('(min-width: 48em)'); // follow Chakra UI default md break point
 	const [result, setResult] = useState([]);
 	const [score, setScore] = useState(0);
 	const [dynamicImageHeight, setDynamicImage] = useState(null);
@@ -89,6 +90,7 @@ function Index({
 		} else {
 			setFormContent(formContent);
 		}
+		console.log('submitted', submitted, 'supportType', supportType);
 	}, [submitted, supportType]); // switch Form by result
 
 	useEffect(async () => {
@@ -142,41 +144,52 @@ function Index({
 		});
 	}, [result, supportType]);
 
-	const RenderForm = () => (
-		<>
-			{supportType ? (
-				submitted ? (
-					<DonateForm />
+	const RenderForm = () => {
+		console.log('=====> RenderForm');
+		return (
+			<>
+				{supportType ? (
+					submitted ? (
+						<DonationModule
+							market={'TW'}
+							language={'zh_TW'}
+							campaign={
+								theme?.params?.donation_module_campaign ?? theme?.interests
+							}
+							campaignId={theme?.params?.campaignId ?? theme?.CampaignId ?? ''}
+							env={'production'}
+						/>
+					) : (
+						<SignupForm />
+					)
 				) : (
-					<SignupForm />
-				)
-			) : (
-				<Box py="8" px="4">
-					<Stack spacing="4">
-						<ResultContent result={result} />
-						<SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4} pt={10}>
-							<Button
-								{...OrangeCTA}
-								onClick={() => {
-									setSupportType('support');
-								}}
-							>
-								我願意
-							</Button>
-							<Button
-								{...OrangeCTA}
-								onClick={() => {
-									handleOpenLink(formContent.donateURL);
-								}}
-							>
-								以其他方式支持減塑
-							</Button>
-						</SimpleGrid>
-					</Stack>
-				</Box>
-			)}
-		</>
-	);
+					<Box py="8" px="4">
+						<Stack spacing="4">
+							<ResultContent result={result} />
+							<SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4} pt={10}>
+								<Button
+									{...OrangeCTA}
+									onClick={() => {
+										setSupportType('support');
+									}}
+								>
+									我願意
+								</Button>
+								<Button
+									{...OrangeCTA}
+									onClick={() => {
+										handleOpenLink(formContent.donateURL);
+									}}
+								>
+									以其他方式支持減塑
+								</Button>
+							</SimpleGrid>
+						</Stack>
+					</Box>
+				)}
+			</>
+		);
+	};
 
 	return (
 		<>
@@ -257,7 +270,7 @@ function Index({
 														}}
 													/>
 												</Box>
-												{/* <Box position="relative">
+												<Box position="relative">
 													<Image
 														src={photo?.image}
 														pos={'relative'}
@@ -266,7 +279,7 @@ function Index({
 														//maxW={{ base: '280px', md: '380px' }}
 														zIndex={2}
 													/>
-												</Box> */}
+												</Box>
 												<Box>
 													<Text
 														as="p"
@@ -284,7 +297,7 @@ function Index({
 									</Stack>
 								</Box>
 							)}
-							<Box flex={1} position="relative" zIndex={3}>
+							{/* <Box flex={1} position="relative" zIndex={3}>
 								<Box py={2} d={{ base: 'block', md: 'none' }}>
 									<Container>
 										<Box
@@ -300,9 +313,9 @@ function Index({
 										</Box>
 									</Container>
 								</Box>
-							</Box>
+							</Box> */}
 						</GridItem>
-						<GridItem w="100%" d={{ base: 'none', md: 'block' }}>
+						<GridItem>
 							<Box
 								zIndex={9}
 								position={{ md: 'sticky' }}
