@@ -14,7 +14,8 @@ import {
 	headingProps,
 	paragraphProps
 } from '@common/styles/components/contentStyle';
-import contentImage from '../images/thanks.jpg';
+import contentImage1 from '../images/thanks-1.png';
+import contentImage2 from '../images/thanks-2.jpg';
 
 const Content = ({ theme, signup, type }) => {
 	const themeInterests = theme.interests;
@@ -36,80 +37,68 @@ const Content = ({ theme, signup, type }) => {
 				color={`theme.${themeInterests}`}
 				fontSize={{ base: '2xl', md: '3xl' }}
 			>
-				<span>
-					{`${FirstName ? FirstName : '綠色和平支持者'}，${
-						type === 'support'
-							? '感謝您支援減塑！'
-							: '感謝您訂閱綠色和平電子報！'
-					}`}
-				</span>
+				<span>您已成功連署支持阻止深海採礦！</span>
+				<Text as="p" {...paragraphProps} color="white">
+					也歡迎您邀請更多志同道合的夥伴一起加入
+				</Text>
 			</Heading>
 
-			<Box {...paragraphProps}>
-				<Image src={contentImage} py={4} maxW={{ base: '100%' }} mx="auto" />
-			</Box>
-
 			<Heading {...headingProps} color={`theme.${themeInterests}`}>
-				每一次消費
-				<br />
-				都是在為您和孩子的未來做選擇
+				感謝您關注全球海洋的未來
 			</Heading>
 
 			<Text as="p" {...paragraphProps}>
-				塑膠污染問題，攸關全球 78 億人口。
+				每一個偉大的成就，背後都有無數人前仆後繼的努力。
 				<br />
+				現在，恭喜您成為全球海洋守護者之一，
 				<br />
-				每年估計有 <HighlightText>1,270 萬公噸</HighlightText>
-				的塑膠流入海洋，代表每分每秒都有塑膠破壞我們的環境，
-				<br />
-				而您的支持，將成為守護環境最有力的幫助。
+				我們都是守護脆弱海洋的重要力量！
 			</Text>
 
-			<Text as="p" {...paragraphProps}>
-				2016 年，綠色和平曾與眾多支持者成功將塑膠柔珠禁用時程提前至 2018 年。
-				<br />
-				時至今日，我們也募集了
-				<HighlightText>超過 200,000 位支持者一起響應減塑</HighlightText>
-				，而我們也看見企業和政府進一步嘗試減塑：
-			</Text>
 			<Box {...paragraphProps}>
-				<UnorderedList>
-					<ListItem>
-						<strong>2020 年</strong>
-						<UnorderedList listStyleType={'circle'}>
-							<ListItem>
-								統一超商於臺南 3 間門市試辦為期三個月的容器租借服務
-							</ListItem>
-							<ListItem>
-								全家便利商店台北 101
-								門市開始販售循環容器盛裝的鮮食便當，逐步嘗試重複使用包裝
-							</ListItem>
-						</UnorderedList>
-					</ListItem>
-					<ListItem>
-						<strong>2021 年至今</strong>
-						<UnorderedList listStyleType={'circle'}>
-							<ListItem>
-								綠色和平發起「絕塑好店計畫」，選定臺中草悟道商圈作為循環杯示範商圈，並在
-								3 個月內於商圈內
-								<HighlightText>減少了超過 1600 個一次性飲料杯</HighlightText>
-							</ListItem>
-							<ListItem>
-								實地走訪臺灣保育類動物棲地，調查臺灣黑熊、臺灣水鹿、歐亞水獺等六種野生動物受微塑膠污染情形，並向大眾及社會揭露臺灣塑膠污染現況。
-							</ListItem>
-							<ListItem>
-								推動環保署新訂一次性飲料杯限用政策，規範大規模業者須提供循環杯，並提高自備杯價差
-							</ListItem>
-						</UnorderedList>
-					</ListItem>
-				</UnorderedList>
+				<Image src={contentImage1} py={4} maxW={{ base: '100%' }} mx="auto" />
 			</Box>
 
 			<Heading {...headingProps} color={`theme.${themeInterests}`}>
-				為環境行善是一種選擇
+				在這裡
 				<br />
-				改變，就趁現在！
+				也想邀您支持綠色和平的環境守護工作
 			</Heading>
+
+			<Text as="p" {...paragraphProps}>
+				海洋正面臨前所未有的衝擊，氣候變遷、塑膠污染、破壞性捕撈和深海採礦，種種破壞都會對海洋帶來致命傷害，對獨特海洋生態造成嚴重威脅。而過去近
+				20
+				年，我們串連全球辦公室，以紮實的科學研究揭露海洋破壞真相，並提出劃設全球
+				30% 海洋保護區的可行方案，
+				<HighlightText>
+					終於在 2023 年初成功讓聯合國通過《全球海洋公約》，為 2030 年保護至少
+					30% 海洋奠定關鍵基礎！
+				</HighlightText>
+				<br />
+				<br />
+				距離 2030 年僅剩 7 年，未來全球每年必須建立 1,100 萬平方公里（相當於 304
+				個臺灣面積）的海洋保護區，才能趕上海洋復甦進度。
+				<br />
+				<br />
+				<HighlightText>
+					您的支持對我們來說至關重要。
+					<br />
+					綠色和平為維持政治中立與財務獨立性，
+					<br />
+					不接受政府與企業贊助，僅接受一般民眾捐款。
+				</HighlightText>
+				<br />
+				<br />
+				無論捐款金額大小，您的貢獻都是保護地球的一份力量。
+				<br />
+				再次感謝您對綠色和平的支持，
+				<br />
+				期待著與您攜手，共同為保護海洋的未來而努力！
+			</Text>
+
+			<Box {...paragraphProps}>
+				<Image src={contentImage2} py={4} maxW={{ base: '100%' }} mx="auto" />
+			</Box>
 		</Box>
 	);
 };

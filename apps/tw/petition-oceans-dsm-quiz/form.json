@@ -24,12 +24,12 @@
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 
-	"submit_text": "支援減塑 獲得環保紙模型",
+	"submit_text": "立即連署",
 	"thanks_title": "",
 	"thanks_ask": "",
 	"thanks_content": "",
 	"share_button": "分享出去",
-	"donate_button": "立即連署",
+	"donate_button": "我要捐助",
 	"donateURL": "https://supporter.ea.greenpeace.org/tw/s/donate/alt-layout?campaign=plastic-animal",
 	"shareMessage": "",
 	"fbURL": "",
@@ -42,9 +42,9 @@
 		{ "label": "否", "value": false }
 	],
 
-	"donate_header": "是的！我想要投資地球",
-	"donate_description": [""],
-	"default_message": "資助 1 次環境研究調查經費，透過環境及產業相關研究調查，向政府及企業倡議塑膠污染的急迫性，並提出相應解決方案。",
+	"donate_header": "是的！我想要守護大海",
+	"donate_description": ["時間所剩不多，您的加入將加速守護海洋的進度！"],
+	"default_message": "支持綠色和平船艦持績監察企業最新動向，及時阻止破壞海洋的行為。",
 	"donate_suggestion_header": "您的每月小額捐款是我們最大的後盾！",
 	"donate_suggestion_message": "誠心邀請您加入每月捐款會員的行列，因為對於非營利團體而言，定期定額捐款具有莫大的意義：它能提供組織穩定的收入，持續地支援我們的專案研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
 	"currency": "新臺幣",
@@ -64,19 +64,19 @@
 		{
 			"label": "2000",
 			"value": 2000,
-			"description": "資助 2 個樣本採集和檢測費用，幫助綠色和平進行實地環境採樣與進一步分析，能夠更順利完成研究調查報告。",
+			"description": "支持綠色和平持續搜集第一手海洋真相，透過傳播媒體送到您與全球的眼前！",
 			"currency": "新臺幣"
 		},
 		{
 			"label": "3000",
 			"value": 3000,
-			"description": "資資助 1 次公民連署行動費用，幫助綠色和平加速推動減塑時程，使更多民眾得以向政府及企業發聲、要求減塑。",
+			"description": "支持綠色和平船艦調查所需裝備，監察破壞海洋的行為，需時前赴應對突發環境災難！",
 			"currency": "新臺幣"
 		},
 		{
 			"label": "5000",
 			"value": 5000,
-			"description": "資助 1 次減塑研討會或公民論壇，向專家、學者交流更多可行之減塑替代方案，促進產、官、學之間的交流。",
+			"description": "支持綠色和平團隊聯同科學家，到各個海域進行實地考察與研究工作，並展開國際倡議行動！",
 			"currency": "新臺幣"
 		},
 		{
@@ -89,19 +89,19 @@
 		{
 			"label": "300",
 			"value": 300,
-			"description": "資助綠色和平推廣減塑講座 1 次，提高公眾對塑膠污染的意識和關注。",
+			"description": "擴大守護海洋的聲量，讓更多民眾了解海洋的重要性。",
 			"currency": "新臺幣"
 		},
 		{
 			"label": "600",
 			"value": 600,
-			"description": "資助 1 次環境研究調查經費，透過環境及產業相關研究調查，向政府及企業倡議塑膠污染的急迫性，並提出相應解決方案。",
+			"description": "支持綠色和平船艦持績監察企業最新動向，及時阻止破壞海洋的行為。",
 			"currency": "新臺幣"
 		},
 		{
 			"label": "800",
 			"value": 800,
-			"description": "資助 1 項塑膠專案研究報告發布，要求政府及企業全面淘汰一次性塑膠，落實重複使用模式，帶領臺灣重返全球減塑前段班。",
+			"description": "持綠色和平以科學研究、直接行動及政策倡議，幫助落實《全球海洋公約》執行，推進守護 30% 海洋保護區目標！",
 			"currency": "新臺幣"
 		},
 		{

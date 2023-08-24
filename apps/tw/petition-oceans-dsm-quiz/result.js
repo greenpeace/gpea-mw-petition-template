@@ -135,9 +135,9 @@ function Index({
 	useEffect(() => {
 		setAnswerToSubmitForm({
 			...hiddenForm,
-			campaignData1__c: result,
-			campaignData2__c: `${score}, ${RESULT[result]?.value}`,
-			campaignData3__c:
+			CampaignData1__c: result,
+			CampaignData2__c: `${score}, ${RESULT[result]?.value}`,
+			CampaignData3__c:
 				supportType === 'support' ? '我願意' : '以其他方式支持減塑'
 		});
 	}, [result, supportType]);
