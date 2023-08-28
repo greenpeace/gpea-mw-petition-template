@@ -1,3 +1,15 @@
+/**
+Deploy Setting:
+PROJECT=hkStrapi/petition-climate-emergency
+MARKET=hk
+PROJECT_NAME=petition-climate-emergency
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/petition-climate-emergency
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/petition-climate-emergency/
+FTP_CONFIG_NAME=api_hk_cloud
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-hk.2022.climate.climate_emergency.general.signup.na
+*/
+
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -18,7 +30,7 @@ import SignupForm from '@components/GP/HKForm';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -31,6 +43,11 @@ function Index({ submitted = false, strapi }) {
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
 	const FormRef = useRef(null);
 
 	submitted = useSelector((state) => state?.status?.submitted);
@@ -195,13 +212,14 @@ function Index({ submitted = false, strapi }) {
 										<SignupForm />
 									)}
 								</Box>
+								<div ref={ FormBtnref }></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			<StrapiFixedButton target={FormRef} targetInView={ (pageType?.toLowerCase() === 'donation' || submitted) ? btnInView : inView} />
 		</>
 	);
 }

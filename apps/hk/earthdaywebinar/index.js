@@ -1,3 +1,15 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hk/earthdaywebinar
+MARKET=hk
+PROJECT_NAME=earthdaywebinar
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/earthdaywebinar
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/earthdaywebinar/
+FTP_CONFIG_NAME=api_hk_cloud 
+CLOUD_PAGE_NAME=zh-hk.2022.climate.webinar_earthday_story.registration.event.na
+*/
+
 import React, { useEffect, useState, useRef } from 'react';
 import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';
@@ -16,9 +28,13 @@ const maxWSize = 1200;
 import heroBannerImage from './images/202204-earthday-KV-sns-website-banner_2.jpg';
 import speaker1 from './images/Asset-2-shion.png';
 
-function Index({ setFormContent }) {
+function Index({ setFormContent, status }) {
   const [isLargerThanLG] = useMediaQuery('(min-width: 62em)'); // default md: '62em'
   const { ref, inView } = useInView({ threshold: 0 });
+  // mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
   const mobileForm = useRef(null);
   const executeScroll = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -42,7 +58,10 @@ function Index({ setFormContent }) {
     } else {
       setShowCTAButton(false);
     }
-  }, [inView, isLargerThanLG]);
+    if(status?.submitted){
+      setShowCTAButton(!btnInView);
+    }
+  }, [inView, btnInView, isLargerThanLG]);
 
   return (
     <>
@@ -52,7 +71,7 @@ function Index({ setFormContent }) {
           <HeroSection />
         </Container>
         <Box
-          zIndex="-1"
+          // zIndex="-1"
           height="100%"
           width="100%"
           pos={'absolute'}
@@ -73,6 +92,7 @@ function Index({ setFormContent }) {
       <Box ref={mobileForm}>
         <Box d={{ base: 'block', lg: 'none' }} mt={-4} ref={ref}>
           <Form />
+          <div ref={ FormBtnref }></div>
         </Box>
       </Box>
       {/** Mobile form End */}

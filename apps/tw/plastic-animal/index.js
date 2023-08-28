@@ -1,3 +1,14 @@
+/** 
+ * Dploy Setting:
+ *
+PROJECT=tw/plastic-animal
+MARKET=tw
+PROJECT_NAME=plastic-animal
+BASEPATH=/htdocs/2022/petition/zh-TW.2022.plastics.plastic-animal.signup
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/petition/zh-TW.2022.plastics.plastic-animal.signup/
+FTP_CONFIG_NAME=ftp_tw
+*/
+
 import React, {useEffect, useState} from 'react';
 import dynamic from 'next/dynamic';
 import { connect, useSelector } from 'react-redux';

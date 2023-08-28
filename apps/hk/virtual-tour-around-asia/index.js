@@ -1,3 +1,16 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hk/virtual-tour-around-asia
+MARKET=hk
+PROJECT_NAME=virtual-tour-around-asia
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/virtual-tour-around-asia
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/virtual-tour-around-asia/
+FTP_CONFIG_NAME=api_hk_cloud 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-hk.2022.general.virtual_tour_around_asia.registration.event.na
+*/
+
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -33,7 +46,12 @@ function Index({ status, theme, setFormContent, signup }) {
   const { ref, inView } = useInView({
     threshold: 0,
   });
-  const mobileForm = useRef(null);
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
+	const mobileForm = useRef(null);
 
   useEffect(() => {
     setFormContent(formContent);
@@ -121,13 +139,14 @@ function Index({ status, theme, setFormContent, signup }) {
                     <SignupForm />
                   )}
                 </Box>
+                <div ref={ FormBtnref }></div>
               </FormContainer>
             </Box>
           </Flex>
         </OverflowWrapper>
       </PageContainer>
       <PetitionFooter locale={'HKChinese'} />
-      <ScrollToTargetButton target={mobileForm} targetInView={inView} />
+      <ScrollToTargetButton target={mobileForm} targetInView={ (submitted) ? btnInView : inView} />
     </>
   );
 }
