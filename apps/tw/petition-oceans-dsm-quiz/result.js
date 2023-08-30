@@ -77,6 +77,19 @@ function Index({
 		window.open(`${targetDonateURL}`);
 	};
 
+	const scrollToSign = () => {
+		const sign = document.getElementById('sign');
+		if (sign) {
+			const signPosition = sign.getBoundingClientRect().top + window.scrollY;
+			const scrollTo = signPosition;
+
+			window.scrollTo({
+				top: scrollTo,
+				behavior: 'smooth'
+			});
+		}
+	};
+
 	useEffect(() => {
 		setFormContent(formContent);
 		if (Number(hiddenForm?.ad_landing_page) === 1) setSupportType('support');
@@ -252,10 +265,21 @@ function Index({
 												<Box>
 													<Heading
 														{...headingProps}
+														display="inline"
 														color={'white'}
 														fontSize={{ base: 'xl', md: '2xl' }}
 														dangerouslySetInnerHTML={{
 															__html: RESULT[result]?.subtitle
+														}}
+													/>
+													<Text
+														as="p"
+														display="inline"
+														color={'white'}
+														{...paragraphProps}
+														mb={0}
+														dangerouslySetInnerHTML={{
+															__html: RESULT[result]?.content[0]
 														}}
 													/>
 												</Box>
@@ -266,30 +290,45 @@ function Index({
 														{...paragraphProps}
 														mb={0}
 														dangerouslySetInnerHTML={{
-															__html: RESULT[result]?.content[0]
+															__html: RESULT[result]?.content[1]
 														}}
 													/>
-												</Box>
-												<Box position="relative">
-													<Image
-														src={photo?.image}
-														pos={'relative'}
-														w="100%"
-														py={4}
-														//maxW={{ base: '280px', md: '380px' }}
-														zIndex={2}
-													/>
-												</Box>
-												<Box>
+													<Button
+														{...OrangeCTA}
+														onClick={() => {
+															scrollToSign();
+														}}
+														display={{ base: 'block', md: 'none' }}
+														mt="24px"
+													>
+														連署阻止深海採礦
+													</Button>
 													<Text
 														as="p"
 														color={'white'}
 														{...paragraphProps}
 														dangerouslySetInnerHTML={{
-															__html: RESULT[result]?.content[1]
+															__html: RESULT[result]?.content[2]
+														}}
+														mt="24px"
+													/>
+													<Text
+														as="p"
+														color={'white'}
+														{...paragraphProps}
+														dangerouslySetInnerHTML={{
+															__html: RESULT[result]?.content[3]
 														}}
 													/>
 												</Box>
+												<Box
+													as="iframe"
+													src="https://www.youtube.com/embed/tHOsgO_5QX0?si=138UxQN0Wd3WERp6"
+													width="100%"
+													sx={{
+														aspectRatio: '16/9'
+													}}
+												/>
 											</>
 										) : (
 											<SignContent type={supportType} />
@@ -317,6 +356,7 @@ function Index({
 						</GridItem>
 						<GridItem>
 							<Box
+								id="sign"
 								zIndex={9}
 								position={{ md: 'sticky' }}
 								top={{ base: 'auto', md: 2 }}

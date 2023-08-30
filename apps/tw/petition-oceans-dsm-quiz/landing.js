@@ -32,7 +32,7 @@ const Landing = ({ setSurveyPage }) => {
 				zIndex={'2'}
 			>
 				<Stack
-					mt={{ base: 24, lg: 0 }}
+					mt={{ base: 6, lg: 0 }}
 					ml={{ base: 4, lg: '2.5%' }}
 					mr={4}
 					mb={{ lg: '4.5%' }}
@@ -72,8 +72,8 @@ const Landing = ({ setSurveyPage }) => {
 					<Box my={4} maxWidth={{ base: 'auto', sm: 'auto' }}>
 						<LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
 							<Button
-								mt={'.5em'}
-								rounded={{ lg: 12 }}
+								mt={{ base: '.5em', lg: '.5em' }}
+								rounded={{ base: '4px', lg: '4px' }}
 								variant={'quizSquare'}
 								fontSize={{ base: 'xl', sm: '2xl', '2xl': '3xl' }}
 								px={{ base: 10, sm: 16, '2xl': 20 }}

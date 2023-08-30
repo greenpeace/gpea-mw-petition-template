@@ -126,7 +126,7 @@
 			{ "value": "D", "point": 0, "label": "塑膠污染" }
 		],
 		"image": "questions/q6.png",
-		"imageAns": "questions/q6-a.jpg",
+		"imageAns": "questions/q6-a.png",
 		"maximum": 1,
 		"type": "single",
 		"correct": "B"
@@ -148,7 +148,7 @@
 			{ "value": "D", "point": 1, "label": "以上皆是" }
 		],
 		"image": "questions/q7.png",
-		"imageAns": "questions/q7-a.jpg",
+		"imageAns": "questions/q7-a.png",
 		"maximum": 1,
 		"type": "single",
 		"correct": "D"
