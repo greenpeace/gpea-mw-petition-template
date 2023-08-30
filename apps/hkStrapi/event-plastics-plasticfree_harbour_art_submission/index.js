@@ -41,11 +41,13 @@ function Index({ submitted = false, strapi }) {
 	const signup = useSelector((state) => state?.signup);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const [ref, inView] = useInView({
-		threshold: 0
+		threshold: 0,
+		rootMargin: '-24px 0px 80px 0px'
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
 	});
 
 	const FormRef = useRef(null);

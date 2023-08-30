@@ -11,7 +11,7 @@ FTP_CONFIG_NAME=api_hk_cloud
 CLOUD_PAGE_NAME=event-plastics-plasticfree_harbour
 */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -32,6 +32,8 @@ import SignupForm from '@components/GP/HKForm';
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
+// Import helpers
+import { useSignupBtnRootMargin } from '@common/utils'; 
 // Import Contents
 import formContent from './form';
 // Import static
@@ -40,16 +42,22 @@ function Index({ submitted = false, strapi }) {
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
-	const pageType = strapi?.page_type?.data?.attributes?.name;
+	const pageType = strapi?.page_type?.data?.attributes?.name;	
+
+	const FormRef = useRef(null);
+
+	const [signupBtnRef, setSignupBtnRef] = useState(null);
+	const signupBtnRootMargin = useSignupBtnRootMargin(FormRef, signupBtnRef);
+
 	const [ref, inView] = useInView({
-		threshold: 0
+		threshold: 0,
+		rootMargin: signupBtnRootMargin,
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
 	});
-
-	const FormRef = useRef(null);
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -205,7 +213,7 @@ function Index({ submitted = false, strapi }) {
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (
-										<SignupForm />
+										<SignupForm setSignupBtnRef={ setSignupBtnRef } />
 									)}
 								</Box>
 								<div ref={ FormBtnref }></div>

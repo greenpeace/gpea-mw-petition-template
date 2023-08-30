@@ -83,7 +83,7 @@ const MyForm = (props) => {
 	}, [formViewed]);
 
 	useEffect(() => {
-		setSignupBtnRef(btnRef);
+		if(setSignupBtnRef) setSignupBtnRef(btnRef);
 	}, [btnRef]);
 
 	useEffect(() => {

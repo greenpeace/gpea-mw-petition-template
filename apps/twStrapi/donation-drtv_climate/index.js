@@ -193,13 +193,13 @@ const [FormBtnref, btnInView] = useInView({
 												theme?.params?.donation_module_campaign ??
 												strapi?.donationModuleCampaign
 											}
+											isUAT={true}
 											campaignId={
 												theme?.params?.campaignId ??
 												strapi?.donationModuleCampaignId ??
 												''
 											}
 											env={strapi?.donationModuleEnv}
-											customUrl="https://change.greenpeace.org.tw/app/donation-module/main.js"
 										/>)
 									) : (
 										<SignupForm />

@@ -192,6 +192,7 @@ const [FormBtnref, btnInView] = useInView({
 												theme?.params?.donation_module_campaign ??
 												strapi?.donationModuleCampaign
 											}
+											isUAT={true}
 											campaignId={theme?.params?.campaignId ?? ''}
 											env={strapi?.donationModuleEnv}
 										/>)

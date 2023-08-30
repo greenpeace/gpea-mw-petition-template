@@ -73,7 +73,8 @@ const DonationModule = (props) => {
 	console.log('this donation module url suffix was changed at: ' , new Date(Number(timestamp)))
 	const status = useScript( (customUrl ? customUrl : moduleUrl) + '?ts=' + timestamp)
 	// const [status, setStatus] = useState('');
-	console.log('rendered',props)
+	console.log('rendered',props);
+	
 	return (
 		<Box pos="relative">
 			

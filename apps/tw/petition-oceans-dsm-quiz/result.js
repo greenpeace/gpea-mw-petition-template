@@ -32,9 +32,11 @@ import {
 	paragraphProps
 } from '@common/styles/components/contentStyle';
 import { OrangeCTA } from '@common/styles/components/formStyle';
+import bg from './images/background.jpg';
 
 const SignContent = dynamic(() => import('./content/signContent'));
-const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+// const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+import DonationModule from '@components/GP/DonationModule';
 const SignupForm = dynamic(() => import('@components/GP/TWForm'));
 const ResultContent = dynamic(() => import('./content/resultContent'));
 
@@ -50,7 +52,7 @@ function Index({
 	setAnswerToSubmitForm
 }) {
 	const { submitted } = status;
-	const [isLargerThan768] = useMediaQuery('(min-width: 48em)'); // follow Chakra UI default md break point
+	// const [isLargerThan768] = useMediaQuery('(min-width: 48em)'); // follow Chakra UI default md break point
 	const [result, setResult] = useState([]);
 	const [score, setScore] = useState(0);
 	const [dynamicImageHeight, setDynamicImage] = useState(null);
@@ -59,7 +61,7 @@ function Index({
 	const photo = useImage(RESULT[result]?.photo);
 	const topSection = useRef(null);
 	// const dynamicContent = RESULT[result]?.content;
-	const [supportType, setSupportType] = useState('');
+	const [supportType, setSupportType] = useState('support');
 
 	const handleOpenLink = (targetDonateURL) => {
 		//
@@ -88,6 +90,7 @@ function Index({
 		} else {
 			setFormContent(formContent);
 		}
+		console.log('submitted', submitted, 'supportType', supportType);
 	}, [submitted, supportType]); // switch Form by result
 
 	useEffect(async () => {
@@ -107,13 +110,13 @@ function Index({
 		//   (d) => d.totalPoints === calAnswer[0].totalPoints, // get largest points only
 		// );
 		if (calAnswer >= 6 && calAnswer <= 8) {
-			setResult('A');
+			setResult('幽靈章魚');
 		}
 		if (calAnswer >= 4 && calAnswer <= 5) {
-			setResult('B');
+			setResult('抹香鯨');
 		}
 		if (calAnswer >= 0 && calAnswer <= 3) {
-			setResult('C');
+			setResult('鮪魚');
 		}
 	}, [answer]);
 
@@ -141,45 +144,63 @@ function Index({
 		});
 	}, [result, supportType]);
 
-	const RenderForm = () => (
-		<>
-			{supportType ? (
-				submitted ? (
-					<DonateForm />
+	const RenderForm = () => {
+		console.log('=====> RenderForm');
+		return (
+			<>
+				{supportType ? (
+					submitted ? (
+						<DonationModule
+							market={'TW'}
+							language={'zh_TW'}
+							campaign={
+								theme?.params?.donation_module_campaign ?? theme?.interests
+							}
+							campaignId={theme?.params?.campaignId ?? theme?.CampaignId ?? ''}
+							env={'production'}
+						/>
+					) : (
+						<SignupForm />
+					)
 				) : (
-					<SignupForm />
-				)
-			) : (
-				<Box py="8" px="4">
-					<Stack spacing="4">
-						<ResultContent result={result} />
-						<SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4} pt={10}>
-							<Button
-								{...OrangeCTA}
-								onClick={() => {
-									setSupportType('support');
-								}}
-							>
-								我願意
-							</Button>
-							<Button
-								{...OrangeCTA}
-								onClick={() => {
-									handleOpenLink(formContent.donateURL);
-								}}
-							>
-								以其他方式支持減塑
-							</Button>
-						</SimpleGrid>
-					</Stack>
-				</Box>
-			)}
-		</>
-	);
+					<Box py="8" px="4">
+						<Stack spacing="4">
+							<ResultContent result={result} />
+							<SimpleGrid columns={{ base: 1, lg: 2 }} spacing={4} pt={10}>
+								<Button
+									{...OrangeCTA}
+									onClick={() => {
+										setSupportType('support');
+									}}
+								>
+									我願意
+								</Button>
+								<Button
+									{...OrangeCTA}
+									onClick={() => {
+										handleOpenLink(formContent.donateURL);
+									}}
+								>
+									以其他方式支持減塑
+								</Button>
+							</SimpleGrid>
+						</Stack>
+					</Box>
+				)}
+			</>
+		);
+	};
 
 	return (
 		<>
-			<Box pos={'relative'} bgColor={'#002137'} pb={12}>
+			<Box
+				pos={'relative'}
+				bgImage={`url(${bg})`}
+				bgPosition="center"
+				bgRepeat="no-repeat"
+				bgSize="cover"
+				pb={12}
+			>
 				<PageContainer>
 					<Grid
 						templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
@@ -202,8 +223,6 @@ function Index({
 								>
 									<Stack py={4}>
 										{supportType ? (
-											<SignContent type={supportType} />
-										) : (
 											<>
 												<Box pt={6}>
 													<Heading
@@ -272,11 +291,13 @@ function Index({
 													/>
 												</Box>
 											</>
+										) : (
+											<SignContent type={supportType} />
 										)}
 									</Stack>
 								</Box>
 							)}
-							<Box flex={1} position="relative" zIndex={3}>
+							{/* <Box flex={1} position="relative" zIndex={3}>
 								<Box py={2} d={{ base: 'block', md: 'none' }}>
 									<Container>
 										<Box
@@ -292,9 +313,9 @@ function Index({
 										</Box>
 									</Container>
 								</Box>
-							</Box>
+							</Box> */}
 						</GridItem>
-						<GridItem w="100%" d={{ base: 'none', md: 'block' }}>
+						<GridItem>
 							<Box
 								zIndex={9}
 								position={{ md: 'sticky' }}

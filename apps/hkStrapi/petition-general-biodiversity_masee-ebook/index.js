@@ -33,7 +33,9 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
+// Import helpers
+import { useSignupBtnRootMargin } from '@common/utils'; 
 // Import Contents
 import formContent from './form';
 // Import static
@@ -45,11 +47,22 @@ function Index({ submitted = false, strapi: strapiData }) {
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
-	const [ref, inView] = useInView({
-		threshold: 0
-	});
+
 	const [isLoaded, setIsLoaded] = useState(false);
 	const FormRef = useRef(null);
+	
+	const [signupBtnRef, setSignupBtnRef] = useState(null);
+	const signupBtnRootMargin = useSignupBtnRootMargin(FormRef, signupBtnRef);
+
+	const [ref, inView] = useInView({
+		threshold: 0,
+		rootMargin: signupBtnRootMargin,
+	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
+	});
 
 	// get utm_source
 	const hiddenForm = useSelector((state) => state?.hiddenForm);
@@ -232,14 +245,12 @@ function Index({ submitted = false, strapi: strapiData }) {
 												}
 												isUAT={false}
 												env={strapi?.donationModuleEnv}
-												customUrl={
-													'https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js'
-												}
 											/>
 										) : (
-											<SignupForm />
+											<SignupForm setSignupBtnRef={ setSignupBtnRef } />
 										)}
 									</Box>
+									<div ref={ FormBtnref }></div>
 								</FormContainer>
 							)}
 						</Box>
@@ -247,7 +258,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			<StrapiFixedButton target={FormRef} targetInView={ (pageType?.toLowerCase() === 'donation' || submitted) ? btnInView : inView} />
 		</>
 	);
 }
