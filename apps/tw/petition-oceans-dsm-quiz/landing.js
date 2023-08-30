@@ -41,10 +41,10 @@ const Landing = ({ setSurveyPage }) => {
 						p={{ base: 0 }}
 						w={{ base: 'auto', md: 'auto' }}
 						minWidth={'280px'}
-						maxWidth={{ base: '70%', lg: '480px', '2xl': '520px' }}
+						maxWidth={{ base: '100%', lg: '700px', '2xl': '820px' }}
 					>
 						<LazyShow initial={{ opacity: 0, x: 0, y: 0 }} duration={0.25}>
-							<Image src={TitleKeyVisual} alt="難逃一塑" />
+							<Image src={TitleKeyVisual} alt="你對大海的認識有多深？" />
 						</LazyShow>
 					</Box>
 					<Box {...paragraphProps}>
@@ -55,19 +55,18 @@ const Landing = ({ setSurveyPage }) => {
 							mb={'.3em'}
 							lineHeight={1.3}
 						>
-							測你多了解臺灣自然棲地！
+							海水覆蓋約 70% 地表，然而我們對火星和月球
 							<br />
-							野生保育類動物有話要說！
+							表面的了解程度都遠高於對深海的了解！
 						</Heading>
 						<Text
 							color={'white'}
 							fontSize={{ lg: 'xl', '2xl': '2xl' }}
 							lineHeight={1.5}
+							maxWidth="805px"
 						>
-							綠色和平自 2021
-							年展開「臺灣保育類野生動物微塑膠污染調查」，我們發現......
-							<br />
-							完成測驗，您也能為臺灣保育類動物及其棲地發聲，並有機會獲得手作環保動物紙模型！
+							深海是地球上最大、但最不為人所知的區域，而科學家們將這片神秘領域稱為
+							「內太空」，邀請你與綠色和平透過測驗一同航行、探索、與研究......
 						</Text>
 					</Box>
 					<Box my={4} maxWidth={{ base: 'auto', sm: 'auto' }}>
@@ -81,7 +80,7 @@ const Landing = ({ setSurveyPage }) => {
 								py={{ base: 4, sm: 8, '2xl': 12 }}
 								onClick={() => setSurveyPage('quiz')}
 							>
-								我來聽牠們的心聲
+								立即潛入未知的「內太空」
 							</Button>
 						</LazyShow>
 					</Box>

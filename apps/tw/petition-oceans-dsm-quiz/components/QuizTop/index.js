@@ -1,17 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Box, Flex, Text } from '@chakra-ui/react';
-import { ChevronLeftIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
 
-const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
+const QuizTop = ({
+	setSurveyPage,
+	quiz,
+	current,
+	setCurrentQuiz,
+	checked,
+	setChecked,
+	clickActive,
+	setClickActive
+}) => {
 	const currentQuiz = quiz[current];
 
 	const handleBackButton = () => {
 		if (current === 0) {
 			setSurveyPage('landing');
 		} else {
+			console.log(checked);
+			setChecked(0);
+			setClickActive(true);
 			setCurrentQuiz((current -= 1));
+		}
+	};
+	const handleNextButton = () => {
+		if (!clickActive) {
+			if (current + 1 >= quiz.length) {
+				setSurveyPage('result');
+			} else {
+				setChecked(0);
+				setClickActive(true);
+				setCurrentQuiz((current += 1));
+			}
 		}
 	};
 
@@ -25,7 +48,7 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
 		>
 			<Box cursor={'pointer'} onClick={() => handleBackButton()}>
 				<Flex alignContent={'center'}>
-					<ChevronLeftIcon w={6} h={6} pt="1" pr="1" />
+					<ChevronLeftIcon w={6} h={6} pt="1" pr="1" color="white" />
 					<Text
 						as="span"
 						fontWeight="bold"
@@ -34,29 +57,6 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
 					>
 						上一頁
 					</Text>
-				</Flex>
-			</Box>
-			<Box flex={1} mx={{ base: 6, sm: 12 }}>
-				<Flex
-					direction="row"
-					w={'100%'}
-					maxW="320px"
-					mx="auto"
-					justifyContent={'space-between'}
-					pt="2px"
-				>
-					{quiz.map((d, i) => (
-						<Box
-							key={i}
-							border="2px solid #025177"
-							bgColor={
-								currentQuiz.id === (i + 1).toString() ? '#025177' : '#FFF'
-							}
-							borderRadius={'50%'}
-							w={'8px'}
-							h={'8px'}
-						/>
-					))}
 				</Flex>
 			</Box>
 			<Box>
@@ -68,6 +68,19 @@ const QuizTop = ({ setSurveyPage, quiz, current, setCurrentQuiz }) => {
 				>
 					{current + 1} / {quiz.length}
 				</Text>
+			</Box>
+			<Box cursor={'pointer'} onClick={() => handleNextButton()}>
+				<Flex alignContent={'center'}>
+					<Text
+						as="span"
+						fontWeight="bold"
+						fontSize={{ base: 'md' }}
+						color="white"
+					>
+						下一頁
+					</Text>
+					<ChevronRightIcon w={6} h={6} pt="1" pr="1" color="white" />
+				</Flex>
 			</Box>
 		</Flex>
 	);

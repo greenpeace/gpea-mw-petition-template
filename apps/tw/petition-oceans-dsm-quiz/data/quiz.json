@@ -15,7 +15,8 @@
 			{ "value": "C", "point": 0, "label": "500公尺" },
 			{ "value": "D", "point": 0, "label": "100公尺" }
 		],
-		"image": "questions/q-first.jpg",
+		"image": "questions/q1.jpg",
+		"imageAns": "questions/q1-a.png",
 		"maximum": 1,
 		"type": "single",
 		"correct": "A"
@@ -36,7 +37,8 @@
 			{ "value": "C", "point": 0, "label": "8,848 公尺 " },
 			{ "value": "D", "point": 1, "label": "10,935 公尺 " }
 		],
-		"image": "questions/q-first.jpg",
+		"image": "questions/q2.png",
+		"imageAns": "questions/q2-a.png",
 		"maximum": 1,
 		"type": "single",
 		"correct": "D"
@@ -57,7 +59,8 @@
 			{ "value": "C", "point": 0, "label": "光照微弱" },
 			{ "value": "D", "point": 1, "label": "以上皆是" }
 		],
-		"image": "questions/q-first.jpg",
+		"image": "questions/q3.png",
+		"imageAns": "questions/q3-a.png",
 		"maximum": 1,
 		"type": "single",
 		"correct": "D"
@@ -73,12 +76,13 @@
 			"label": ""
 		},
 		"options": [
-			{ "value": "A", "point": 0, "label": "哥布林鯊" },
-			{ "value": "B", "point": 0, "label": "大王具足蟲" },
-			{ "value": "C", "point": 1, "label": "幽靈章魚" },
-			{ "value": "D", "point": 0, "label": "大王酸漿魷" }
+			{ "value": "A", "point": 0, "label": "哥布林鯊 Goblin Shark" },
+			{ "value": "B", "point": 0, "label": "大王具足蟲 Giant Isopod" },
+			{ "value": "C", "point": 1, "label": "幽靈章魚 Ghost Octopus" },
+			{ "value": "D", "point": 0, "label": "大王酸漿魷 Colossal Squid" }
 		],
-		"image": "questions/q-first.jpg",
+		"image": "questions/q4.png",
+		"imageAns": "questions/q4-a.png",
 		"maximum": 1,
 		"type": "single",
 		"correct": "C"
@@ -94,12 +98,13 @@
 			"label": ""
 		},
 		"options": [
-			{ "value": "A", "point": 0, "label": "黑碳" },
-			{ "value": "B", "point": 0, "label": "綠碳" },
-			{ "value": "C", "point": 1, "label": "藍碳" },
-			{ "value": "D", "point": 0, "label": "黃碳" }
+			{ "value": "A", "point": 0, "label": "黑碳 Black Carbon" },
+			{ "value": "B", "point": 0, "label": "綠碳 Green Carbon " },
+			{ "value": "C", "point": 1, "label": "藍碳 Blue Carbon" },
+			{ "value": "D", "point": 0, "label": "黃碳 Soil Carbon" }
 		],
-		"image": "questions/q-first.jpg",
+		"image": "questions/q5.png",
+		"imageAns": "questions/q5-a.png",
 		"maximum": 1,
 		"type": "single",
 		"correct": "C"
@@ -120,7 +125,8 @@
 			{ "value": "C", "point": 0, "label": "海洋酸化" },
 			{ "value": "D", "point": 0, "label": "塑膠污染" }
 		],
-		"image": "questions/q-first.jpg",
+		"image": "questions/q6.png",
+		"imageAns": "questions/q6-a.jpg",
 		"maximum": 1,
 		"type": "single",
 		"correct": "B"
@@ -141,7 +147,8 @@
 			{ "value": "C", "point": 0, "label": "噪音與污染危及生態" },
 			{ "value": "D", "point": 1, "label": "以上皆是" }
 		],
-		"image": "questions/q-second.jpg",
+		"image": "questions/q7.png",
+		"imageAns": "questions/q7-a.jpg",
 		"maximum": 1,
 		"type": "single",
 		"correct": "D"
@@ -157,12 +164,13 @@
 			"label": ""
 		},
 		"options": [
-			{ "value": "A", "point": 0, "label": "抹香鯨" },
-			{ "value": "B", "point": 0, "label": "鮪魚" },
-			{ "value": "C", "point": 0, "label": "幽靈章魚" },
+			{ "value": "A", "point": 0, "label": "抹香鯨 Sperm Whale" },
+			{ "value": "B", "point": 0, "label": "鮪魚 Tuna" },
+			{ "value": "C", "point": 0, "label": "幽靈章魚 Ghost Octopus" },
 			{ "value": "D", "point": 1, "label": "以上皆是" }
 		],
-		"image": "questions/q-second.jpg",
+		"image": "questions/q8.jpg",
+		"imageAns": "questions/q8-a.png",
 		"maximum": 1,
 		"type": "single",
 		"correct": "D"

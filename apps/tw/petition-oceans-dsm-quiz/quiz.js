@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {
 	Stack,
@@ -14,10 +14,17 @@ import Answer from './components/Answer';
 import Question from './components/Question';
 import LazyShow from './components/LazyShow';
 import * as surveyActions from 'store/actions/action-types/survey-actions';
+import bg from './images/background.jpg';
 
 const Quiz = ({ quiz, current }) => {
 	const currentQuiz = quiz[current];
 	const { loading, error, image } = useImage(currentQuiz?.image);
+	const { imageAns } = useImage(currentQuiz?.imageAns);
+
+	// check if the answer is correct
+	const [ansChecked, setAnsChecked] = useState(0);
+	// prevent click repeatedly after answering
+	const [clickActive, setClickActive] = useState(true);
 
 	return (
 		<>
@@ -54,20 +61,46 @@ const Quiz = ({ quiz, current }) => {
 									border={'4px solid #FFF'}
 									minH={{ base: 'auto', md: '240px' }}
 								>
-									<Image src={image} loading="lazy" />
+									{clickActive ? (
+										<Image src={image} loading="lazy" />
+									) : (
+										<Image src={imageAns} loading="lazy" />
+									)}
 								</Box>
 							</LazyShow>
 						</Box>
 						<Box>
-							<Answer py={4} quiz={quiz} />
+							<Answer
+								py={4}
+								quiz={quiz}
+								checked={ansChecked}
+								setChecked={setAnsChecked}
+								clickActive={clickActive}
+								setClickActive={setClickActive}
+							/>
 						</Box>
 						<Box>
-							<Question quiz={quiz} />
+							<Question
+								quiz={quiz}
+								checked={ansChecked}
+								setChecked={setAnsChecked}
+								clickActive={clickActive}
+								setClickActive={setClickActive}
+							/>
 						</Box>
 					</Stack>
 				</Center>
 			</Container>
-			<Box bgColor={'#002137'} w="100%" h="100%" top={0} position="absolute" />
+			<Box
+				bgImage={`url(${bg})`}
+				bgPosition="center"
+				bgRepeat="no-repeat"
+				bgSize="cover"
+				w="100%"
+				h="100%"
+				top={0}
+				position="absolute"
+			/>
 			{/* <Image
         src={BackgroundVisual}
         w="100%"

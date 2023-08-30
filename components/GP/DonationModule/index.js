@@ -5,7 +5,6 @@ import { Box, Fade, Flex, Spinner } from '@chakra-ui/react';
 
 import useScript from './useScript';
 
-
 /*
 
 ### Attributes for `<div gpea-donation-module>` tag
@@ -64,20 +63,29 @@ const DonationModule = (props) => {
 	// *******************
 	// If there are any changes, should update the module URL in "_document.js" accordingly for preload script.
 	// *******************
-	const moduleUrl = market?.toUpperCase() === 'TW' 
-		? `https://change.greenpeace.org.tw/app/donation-module${(isUAT ? "-uat" : "")}/main.js`
-		: `https://api.greenpeace.org.hk/app/donation-module${(isUAT ? "-uat" : "-hkmp")}/main.js`
+	const moduleUrl =
+		market?.toUpperCase() === 'TW'
+			? `https://change.greenpeace.org.tw/app/donation-module${
+					isUAT ? '-uat' : ''
+			  }/main.js`
+			: `https://api.greenpeace.org.hk/app/donation-module${
+					isUAT ? '-uat' : '-hkmp'
+			  }/main.js`;
 	// Import module
 	const timestamp = process.env.timeStamp;
-	if(customUrl) console.log('using custom donation module url: '+customUrl)
-	console.log('this donation module url suffix was changed at: ' , new Date(Number(timestamp)))
-	const status = useScript( (customUrl ? customUrl : moduleUrl) + '?ts=' + timestamp)
+	if (customUrl) console.log('using custom donation module url: ' + customUrl);
+	console.log(
+		'this donation module url suffix was changed at: ',
+		new Date(Number(timestamp))
+	);
+	const status = useScript(
+		(customUrl ? customUrl : moduleUrl) + '?ts=' + timestamp
+	);
 	// const [status, setStatus] = useState('');
 	console.log('rendered',props);
 	
 	return (
 		<Box pos="relative">
-			
 			{/* <Script 
 				src={'https://change.greenpeace.org.tw/2023/test/donation-module-lazy/main.js' + '?ts=' + timestamp} s
 				trategy='beforeInteractive' 
@@ -90,7 +98,7 @@ const DonationModule = (props) => {
 			<Fade in={status != 'ready'} pos="relative">
 				<Flex
 					zIndex="99"
-					pos={status != 'ready' ? "relative" : "absolute"}
+					pos={status != 'ready' ? 'relative' : 'absolute'}
 					top="0"
 					right="0"
 					width="100%"
@@ -117,8 +125,6 @@ const DonationModule = (props) => {
 					...signup
 				})} //非必填，繼承自 petition daisy chain
 			></div>
-			
-			
 		</Box>
 	);
 };
