@@ -32,7 +32,7 @@ import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import helpers
-import { useSignupBtnRootMargin } from '@common/utils'; 
+import { useSignupBtnRootMargin } from '@common/utils';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -50,7 +50,7 @@ function Index({ submitted = false, strapi }) {
 
 	const [ref, inView] = useInView({
 		threshold: 0,
-		rootMargin: signupBtnRootMargin,
+		rootMargin: signupBtnRootMargin
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
@@ -71,6 +71,7 @@ function Index({ submitted = false, strapi }) {
 					if (pageType?.toLowerCase() === 'donation') {
 						return (
 							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -102,6 +103,7 @@ function Index({ submitted = false, strapi }) {
 					} else {
 						return submitted ? (
 							<ThanksBanner
+								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.thankyouHero?.desktopImageURL
@@ -127,6 +129,7 @@ function Index({ submitted = false, strapi }) {
 							/>
 						) : (
 							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -216,17 +219,24 @@ function Index({ submitted = false, strapi }) {
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (
-										<SignupForm setSignupBtnRef={ setSignupBtnRef } />
+										<SignupForm setSignupBtnRef={setSignupBtnRef} />
 									)}
 								</Box>
-								<div ref={ FormBtnref }></div>
+								<div ref={FormBtnref}></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={ (pageType?.toLowerCase() === 'donation' || submitted) ? btnInView : inView} />
+			<StrapiFixedButton
+				target={FormRef}
+				targetInView={
+					pageType?.toLowerCase() === 'donation' || submitted
+						? btnInView
+						: inView
+				}
+			/>
 		</>
 	);
 }

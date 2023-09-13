@@ -46,7 +46,7 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0
 	});
 	// mobile sticky btn show ref
-const [FormBtnref, btnInView] = useInView({
+	const [FormBtnref, btnInView] = useInView({
 		threshold: 0,
 		rootMargin: '-70px 0px 120px 0px'
 	});
@@ -67,6 +67,7 @@ const [FormBtnref, btnInView] = useInView({
 					if (pageType?.toLowerCase() === 'donation') {
 						return (
 							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -98,6 +99,7 @@ const [FormBtnref, btnInView] = useInView({
 					} else {
 						return submitted ? (
 							<ThanksBanner
+								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.thankyouHero?.desktopImageURL
@@ -123,6 +125,7 @@ const [FormBtnref, btnInView] = useInView({
 							/>
 						) : (
 							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -215,14 +218,14 @@ const [FormBtnref, btnInView] = useInView({
 										<SignupForm />
 									)}
 								</Box>
-								<div ref={ FormBtnref }></div>
+								<div ref={FormBtnref}></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
+			<StrapiFixedButton target={FormRef} targetInView={btnInView} />
 		</>
 	);
 }

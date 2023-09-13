@@ -32,7 +32,7 @@ import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import helpers
-import { useSignupBtnRootMargin } from '@common/utils'; 
+import { useSignupBtnRootMargin } from '@common/utils';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -43,15 +43,15 @@ function Index({ submitted = false, strapi }) {
 	const signup = useSelector((state) => state?.signup);
 	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
-	
+
 	const FormRef = useRef(null);
-	
+
 	const [signupBtnRef, setSignupBtnRef] = useState(null);
 	const signupBtnRootMargin = useSignupBtnRootMargin(FormRef, signupBtnRef);
 
 	const [ref, inView] = useInView({
 		threshold: 0,
-		rootMargin: signupBtnRootMargin,
+		rootMargin: signupBtnRootMargin
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
@@ -64,24 +64,23 @@ function Index({ submitted = false, strapi }) {
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
-  
-  // get utm_source
+
+	// get utm_source
 	const { utm_source } = hiddenForm?.data;
 
-  // pass signer / donor name to TY Banner
-  const [TYName, setTYName] = useState();
-	
+	// pass signer / donor name to TY Banner
+	const [TYName, setTYName] = useState();
+
 	useEffect(() => {
 		// get donation module firstname
 		window.__greenpeace__ = window.__greenpeace__ || {};
-		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
 			setTYName(data.firstName);
-		}
+		};
 	});
 	useEffect(() => {
 		setTYName(signup?.data?.FirstName);
 	}, [signup]);
-
 
 	return (
 		<>
@@ -91,6 +90,7 @@ function Index({ submitted = false, strapi }) {
 					if (pageType?.toLowerCase() === 'donation') {
 						return (
 							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -122,6 +122,7 @@ function Index({ submitted = false, strapi }) {
 					} else {
 						return submitted ? (
 							<ThanksBanner
+								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.thankyouHero?.desktopImageURL
@@ -142,14 +143,15 @@ function Index({ submitted = false, strapi }) {
 								]}
 								content={{
 									//title: strapi?.thankyouHero?.richContent,
-									title: `${
-										TYName ? TYName : '綠色和平支持者'
-									}，${strapi?.thankyouHero?.richContent}`,
+									title: `${TYName ? TYName : '綠色和平支持者'}，${
+										strapi?.thankyouHero?.richContent
+									}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
 						) : (
 							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -206,38 +208,46 @@ function Index({ submitted = false, strapi }) {
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
 										utm_source !== 'dd' && (
-										<DonationModule
-											market={
-												strapi?.market?.data?.attributes?.market === 'Hong Kong'
-													? 'HK'
-													: 'TW'
-											}
-											language={strapi?.donationModuleLanguage}
-											campaign={
-												theme?.params?.donation_module_campaign ??
-												strapi?.donationModuleCampaign
-											}
-											campaignId={
-												theme?.params?.campaignId ??
-												strapi?.donationModuleCampaignId ??
-												''
-											}
-											isUAT={true}
-											env={strapi?.donationModuleEnv}
-										/>)
+											<DonationModule
+												market={
+													strapi?.market?.data?.attributes?.market ===
+													'Hong Kong'
+														? 'HK'
+														: 'TW'
+												}
+												language={strapi?.donationModuleLanguage}
+												campaign={
+													theme?.params?.donation_module_campaign ??
+													strapi?.donationModuleCampaign
+												}
+												campaignId={
+													theme?.params?.campaignId ??
+													strapi?.donationModuleCampaignId ??
+													''
+												}
+												isUAT={true}
+												env={strapi?.donationModuleEnv}
+											/>
+										)
 									) : (
-										<SignupForm setSignupBtnRef={ setSignupBtnRef } />
+										<SignupForm setSignupBtnRef={setSignupBtnRef} />
 									)}
 								</Box>
-								<div ref={ FormBtnref }></div>
+								<div ref={FormBtnref}></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={ (pageType?.toLowerCase() === 'donation' || submitted) ? btnInView : inView} />
-			
+			<StrapiFixedButton
+				target={FormRef}
+				targetInView={
+					pageType?.toLowerCase() === 'donation' || submitted
+						? btnInView
+						: inView
+				}
+			/>
 		</>
 	);
 }
