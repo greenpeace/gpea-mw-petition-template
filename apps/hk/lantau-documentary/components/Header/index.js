@@ -5,7 +5,9 @@ import { useRouter } from 'next/router';
 import useScrollPosition from './useScrollPosition';
 import logoChinese from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png';
 
-const Header = () => {
+const Header = ({
+	nowPage
+}) => {
 	const data = useContext(AppContext);
 	const router = useRouter();
 	const OFFSET = 10;
@@ -18,13 +20,18 @@ const Header = () => {
 		// let url = new URL(window.location);
 		// console.log('params-',url)
 		// history.pushState({}, null, `${url.origin}/?p=${page}&s=${refName}`)
-		router.push(
-			`/?p=${page}&s=${refName}`,
-			`${window.location.href.split('?')[0]}/?p=${page}&s=${refName}`,
-			{
-				shallow: true
-			}
-		);
+		if(nowPage === 'streaming'){
+			window.open(`${window.location.href.split('?')[0]}/?p=${page}&s=${refName}`, "_blank");
+		}else{
+			router.push(
+				`/?p=${page}&s=${refName}`,
+				`${window.location.href.split('?')[0]}/?p=${page}&s=${refName}`,
+				{
+					shallow: true
+				}
+			);
+		}
+		
 	};
 
 	const {
@@ -83,6 +90,7 @@ const Header = () => {
 							maxW="220px"
 							alt={'Greenpeace 綠色和平'}
 							onClick={() => {
+								if(nowPage === 'streaming') return;
 								router.push(
 									`/?p=main`,
 									`${window.location.href.split('?')[0]}/?p=main`,
@@ -104,20 +112,36 @@ const Header = () => {
 									{d.label}
 								</div>
 							))}
-							<Button
-								color="white"
-								bgColor={'orange.500'}
-								_hover={{ bg: 'orange.300' }}
-								onClick={() =>
-									router.push(
-										`/?p=donation`,
-										`${window.location.href.split('?')[0]}/?p=donation`,
-										{ shallow: true }
-									)
-								}
-							>
-								捐款收看
-							</Button>
+							{
+								nowPage === 'streaming' ? (
+									<Button
+										color="white"
+										bgColor={'orange.500'}
+										_hover={{ bg: 'orange.300' }}
+										onClick={() =>
+											window.open(`https://cloud.greenhk.greenpeace.org/donation-oceans-elm`, "_blank")
+										}
+									>
+										捐款支持
+									</Button>
+								) : (
+									<Button
+										color="white"
+										bgColor={'orange.500'}
+										_hover={{ bg: 'orange.300' }}
+										onClick={() =>
+											router.push(
+												`/?p=petition`,
+												`${window.location.href.split('?')[0]}/?p=petition`,
+												{ shallow: true }
+											)
+										}
+									>
+										立即觀看
+									</Button>
+								)
+							}
+							
 						</div>
 					</div>
 				</div>

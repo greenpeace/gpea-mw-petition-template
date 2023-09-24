@@ -127,7 +127,7 @@ function MainPage() {
 									參與聯署
 								</h2>
 								<p className="pb-[30px]  text-[16px] leading-[24px]">
-									你的聯署將有助推動政府撤回「明日大嶼」填海計劃，守護本地珍貴海洋生態，善用現存土地資源。
+									你的聯署將有助推動政府撤回「明日大嶼」填海計劃，守護本地珍貴海洋生態。
 								</p>
 								<Link
 									isExternal
@@ -135,13 +135,9 @@ function MainPage() {
 									_hover={{ underline: 'none' }}
 								>
 									<Button
-										size="lg"
-										color="orange.500"
-										fontWeight={500}
-										border="2px"
-										bgColor={'rgba(255,255,255,0.95)'}
-										borderColor={'orange.500'}
-										_hover={{ color: 'orange.300' }}
+										color="white"
+										bgColor={'orange.500'}
+										_hover={{ bg: 'orange.300' }}
 									>
 										立即聯署
 									</Button>
@@ -151,7 +147,7 @@ function MainPage() {
 					</div>
 				</Box>
 			</Box>
-			{p !== 'donation' && <StickyButton />}
+			{p !== 'petition' && <StickyButton />}
 		</>
 	);
 }
@@ -186,8 +182,8 @@ const StickyButton = () => {
 			<FixedCTA
 				onClick={() =>
 					router.push(
-						`/?p=donation`,
-						`${window.location.href.split('?')[0]}/?p=donation`,
+						`/?p=petition`,
+						`${window.location.href.split('?')[0]}/?p=petition`,
 						{
 							shallow: true
 						}

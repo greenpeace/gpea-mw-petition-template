@@ -251,7 +251,7 @@ const Information = ({ language }) => {
 						/>
 						{language === 'zh_HK' ? (
 							<Link
-								href="https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=elm_mw&ref=documentary_streaming_page_info"
+								href="https://cloud.greenhk.greenpeace.org/donation-oceans-elm/?utm_campaign=elm&utm_source=lantau-webpage&utm_medium=lantau-webpage&utm_content=202309-petition-oceans-lantau-documentary-streaming-donation"
 								isExternal
 							>
 								<Button
@@ -265,7 +265,7 @@ const Information = ({ language }) => {
 							</Link>
 						) : (
 							<Link
-								href="https://supporter.ea.greenpeace.org/hk/s/donate?language=en_HK&ref=documentary_streaming_page_info"
+								href="https://cloud.greenhk.greenpeace.org/donation-oceans-elm/?utm_campaign=elm&utm_source=lantau-webpage&utm_medium=lantau-webpage&utm_content=202309-petition-oceans-lantau-documentary-streaming-donation"
 								isExternal
 							>
 								<Button

@@ -20,11 +20,10 @@ function Support() {
 							支持紀錄大嶼生態工作
 						</h2>
 						<p className="text-[16px]">
-							大嶼山蘊含珍貴生物多樣性，綠色和平一直進行各種守護大嶼項目工作，其中一項重要工作是紀錄大嶼，將自然美態呈現於大眾眼前，動員大家以行動支持守護我們的山海。
+							大嶼山擁有豐富生物多樣性，綠色和平一直以各種實際行動堅守大嶼，其中一項重要工作是紀錄大嶼，將自然美態呈現於大眾眼前，動員大家以行動支持守護我們的山海。
 						</p>
 						<p className="text-[16px]">
-							單次 $100
-							捐款觀看紀錄片，為守護大嶼工作提供資源與力量，合力推動政府優先發展棕地，守護香港自然環境！
+							除了觀看紀錄片和認識大嶼生態，亦邀請您捐款支持守護大嶼工作，提供資源與力量，合力推動政府優先發展棕地，守護香港自然環境！
 						</p>
 						<Button
 							mt="4"
@@ -32,16 +31,11 @@ function Support() {
 							bgColor={'orange.500'}
 							_hover={{ bg: 'orange.300' }}
 							onClick={() => {
-								router.push(
-									`/?p=donation`,
-									`${window.location.href.split('?')[0]}/?p=donation`,
-									{
-										shallow: true
-									}
-								);
+								const newWindow = window.open('https://cloud.greenhk.greenpeace.org/donation-oceans-elm', '_blank', 'noopener,noreferrer')
+								if (newWindow) newWindow.opener = null
 							}}
 						>
-							立即支持
+							捐款支持
 						</Button>
 					</div>
 				</div>
