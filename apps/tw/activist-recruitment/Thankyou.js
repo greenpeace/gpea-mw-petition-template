@@ -22,15 +22,13 @@ const Thankyou = ({ theme, signup }) => {
   return (
     <>
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
-        下一場行動者說明會資訊
+        行動者招募資訊
       </Heading>
 
       <Text as="p" {...paragraphProps}>
-        預計舉辦時間：5/7(六) 10:00-12:00
+        我們將在每年不定期招募行動者，並舉辦基礎行動培訓（Basic Action Training），通過培訓者即可加入行動者團隊。
         <br />
-        報名截止時間：4/22（如超過此時間報名，將納入下半年之行動者說明會）
-        <br />
-        說明會後將有基礎行動培訓，日期為：6/10-12
+        在舉辦基礎行動培訓前將以電子郵件方式邀請您參加行動者團隊說明會。
       </Text>
 
       <Heading {...headingProps} color={`theme.${themeInterests}`}>
@@ -43,15 +41,12 @@ const Thankyou = ({ theme, signup }) => {
         綠色和平自創立以來，堅守和平、非暴力原則，以創意的直接行動，阻止破壞環境的行為、讓更多公眾關注特定環境議題，進一步帶來改變。
       </Text>
       <Text as="p" {...paragraphProps}>
-        我們的行動者團隊目前分為攀爬隊、水隊，在較難抵達的場域執行任務，表達環境訴求。
+        我們的行動者抱著與綠色和平共同理念投身倡議行動，亦依照行動任務需求出動專項隊伍合力完成。
         <br />
-        加入行動者行列後，將不定期舉辦訓練，並有機會參與各項淨山、倡議等行動。
+        加入行動者行列後，將不定期舉辦訓練，並有機會參與淨山、淨河、各項倡議等行動。
       </Text>
       <Text as="p" {...paragraphProps}>
         再次感謝你為環境做出行動！
-        <br />
-        我們將在每年不定期招募行動者，並於舉辦基礎行動培訓（Basic Action
-        Training）前，以信件方式邀請您參加行動者說明會。
       </Text>
     </>
   );
