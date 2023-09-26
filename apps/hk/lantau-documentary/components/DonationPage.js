@@ -113,9 +113,14 @@ function Index({ status, setFormContent, theme, resetSubmitted, signup }) {
 								submitted ? (
 									<div className="rounded-xl bg-white py-0 md:py-10">
 										<Box px={{base: 0, md: 10}}>
-											<Text as="p" {...paragraphProps}>
-												親愛的{ FirstName }，
-												<br />感謝您登記觀看我們的《山海大嶼》紀錄片，共同守護大嶼山的珍貴生態和自然美景。您現在可以免費觀看我們耗時大半年製作的《山海大嶼》紀錄片，進一步了解大嶼山的生態價值及其珍稀生物！
+											<Heading
+												{...headingProps}
+												as={'h3'}
+												color={`theme.${themeInterests}`}
+											>
+												{ FirstName }，<br />感謝您登記觀看《山海大嶼》紀錄片
+											</Heading>
+											<Text as="p" {...paragraphProps}>感謝您登記觀看我們的《山海大嶼》紀錄片，共同守護大嶼山的珍貴生態和自然美景。您現在可以免費觀看我們耗時大半年製作的《山海大嶼》紀錄片，進一步了解大嶼山的生態價值及其珍稀生物！
 											</Text>
 											<Heading
 												{...headingProps}
@@ -197,10 +202,9 @@ function Index({ status, setFormContent, theme, resetSubmitted, signup }) {
 									<DonationModule
 										market={'HK'}
 										language={'zh_HK'}
-										campaign={'elm'}
+										campaign={'elm_infopage'}
 										campaignId={theme.CampaignId}
 										env={'production'}
-										customUrl={ 'https://change.greenpeace.org.tw/2023/test/test-donation-module-rerender/main.js' }
 									/>
 								):(
 									<SignupForm setSignupBtnRef={ setSignupBtnRef } />

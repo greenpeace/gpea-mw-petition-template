@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Script from 'next/script';
+import OgImage from './images/seo-cover.jpg';
 
 const SEO = () => {
 	return (
@@ -35,7 +36,7 @@ const SEO = () => {
 			/>
 			<meta
 				property="og:image"
-				content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/05/52f34193-20220512_docu_fb_preview.jpg"
+				content={OgImage}
 			/>
 		</Head>
 	);

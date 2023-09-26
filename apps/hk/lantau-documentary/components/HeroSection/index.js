@@ -18,7 +18,7 @@ import MobileHeroFront from '../../images/mobile/hero_front.png';
 import DesktopHero from '../../images/hero_v2.jpg';
 import DesktopHeroFront from '../../images/hero_front_v2.png';
 
-import subBanner from '../../images/2022_lantau_docu_poster_b.jpg';
+import subBanner from '../../images/202309_Lantau_documentary_relaunch_poster.jpg';
 import moviePoster from '../../images/GP_lantau_poster4.jpg';
 import appLogo from '../../images/app_logo.png';
 
@@ -187,7 +187,7 @@ function HeroSection({
 									_hover={{ bg: 'orange.300', color: '#FFF' }}
 									onClick={() =>
 										router.push(
-											`/?p=donation`,
+											`/?p=petition`,
 											`${window.location.href.split('?')[0]}/?p=petition`,
 											{ shallow: true }
 										)
