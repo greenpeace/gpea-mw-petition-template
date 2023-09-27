@@ -31,7 +31,7 @@ function Support() {
 							bgColor={'orange.500'}
 							_hover={{ bg: 'orange.300' }}
 							onClick={() => {
-								const newWindow = window.open('https://cloud.greenhk.greenpeace.org/donation-oceans-elm', '_blank', 'noopener,noreferrer')
+								const newWindow = window.open('https://cloud.greenhk.greenpeace.org/donation-oceans-elm?ref=lantau-documentary-petition-infopage-btn', '_blank', 'noopener,noreferrer')
 								if (newWindow) newWindow.opener = null
 							}}
 						>
