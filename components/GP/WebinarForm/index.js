@@ -58,6 +58,22 @@ const MyForm = (props) => {
   const { isOpen, onOpen, onClose } = useDisclosure(true);
   const themeInterests = theme.interests;
 
+  const [formViewed, setFormViewed] = useState(false);
+	useEffect(() => {
+		if(!formViewed){
+			// ga4 event
+			window.dataLayer = window.dataLayer || [];
+
+			window.dataLayer.push({
+				'event': 'custom_event',
+				'event_name' : 'view_form',
+				'event_category': 'petitions',
+				'event_action': 'load'
+			});
+			setFormViewed(true);
+		}
+	}, [formViewed]);
+
   useEffect(() => {
     let optionYear = [];
     function fetchOptionYear() {
@@ -274,6 +290,21 @@ const MyForm = (props) => {
                 </FormControl>
               </Box>
 
+              {formContent.label_newsletter && (
+                <Box>
+                  <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+                    <Text
+                      fontSize="xs"
+                      color={'gray.700'}
+                      dangerouslySetInnerHTML={{
+                        __html: formContent.label_newsletter
+                      }}
+                    />
+                  </Flex>
+                </Box>
+
+              )}
+
               <Box>
                 <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
                   {formContent.submit_text}
@@ -299,14 +330,14 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-  mapPropsToValues: () => ({
-    Email: '',
-    FirstName: '',
-    LastName: '',
+  mapPropsToValues: ({ signup }) => ({
+    Email: signup?.preFill?.Email ?? '',
+    FirstName: signup?.preFill?.FirstName ?? '',
+    LastName: signup?.preFill?.LastName ?? '',
     MobileCountryCode: '852',
-    MobilePhone: '',
+    MobilePhone: signup?.preFill?.MobilePhone ?? '',
     OptIn: true,
-    Birthdate: '',
+    Birthdate: signup?.preFill?.Birthdate ?? ''
   }),
 
   validate: async (values, props) => {
@@ -357,7 +388,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     numberOfResponses: Math.max(
       parseInt(form.signupNumbers.hk?.NumberOfResponses),
       parseInt(form.signupNumbers.hk?.NumberOfLeads) +
-        parseInt(form.signupNumbers.hk?.NumberOfContacts),
+      parseInt(form.signupNumbers.hk?.NumberOfContacts),
     ),
     numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
     theme: theme.data,

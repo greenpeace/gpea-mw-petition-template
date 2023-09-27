@@ -14,6 +14,7 @@ const nextConfig = {
     signupNumbersHK: process.env.SIGN_UP_NUMBERS_HK,
     signupNumbersTW: process.env.SIGN_UP_NUMBERS_TW,
     donateModule: process.env.DONATE_MODULE,
+    timeStamp: String(Date.now()),
     dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.green${process.env.MARKET}.greenpeace.org/websign-dummy`,
   },
   // Use the CDN in production and localhost for development.

@@ -11,6 +11,7 @@
 # next.js
 /.next/
 /out/
+/readyMC/
 
 # production
 /build
@@ -37,3 +38,5 @@ yarn-error.log*
 .vercel
 
 mc-deploy.js
+# package.json
+gpokta.json

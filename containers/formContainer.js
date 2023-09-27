@@ -11,6 +11,7 @@ const FormContainer = ({ children }) => {
         borderRadius="var(--radius-xl)"
         boxShadow="lg"
         overflow="hidden"
+        transform="translateZ(0)"
       >
         {children}
       </Box>

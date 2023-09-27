@@ -1,0 +1,43 @@
+{
+	"form_header": "立即生成堅守大嶼意見書，表達您對明日大嶼的疑慮！",
+	"form_description": "完成登記後，生成的意見書將於 15 分鐘內以電子郵件傳送給您，敬請留意，收到意見書後請轉寄至政府提供的電郵地址。",
+	"signed_number": "已聯署人數",
+	"label_name": "稱謂",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電郵地址",
+	"label_phone": "手提號碼",
+	"label_phone_optional": "手提號碼（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_opinion": "請輸入您的個人意見，令每一封意見書有更獨特的聲音。",
+	"label_concern": "請選擇您想包含在意見書的問題（建議選擇最多兩個範疇）：", 
+	"label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。綠色和平並不會將您的個人資料包含在由系統生成的意見書中。",
+	"options_concern": [
+		{"label": "生態及環境相關", "value": "生態及環境相關"},
+		{"label": "氣候風險相關", "value": "氣候風險相關"},
+		{"label": "財務及經濟相關", "value": "財務及經濟相關"},
+		{"label": "工程相關", "value": "工程相關"},
+		{"label": "規劃相關", "value": "規劃相關"}
+	],
+
+	"empty_data_alert": "請填寫資料",
+	"empty_select_data_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電郵地址",
+	"invalid_format_alert": "請輸入有效格式",
+	"minimum_8_characters": "請輸入8位數字",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "立即生成意見書",
+	"mobile_fixed_cta": "立即捐款",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}

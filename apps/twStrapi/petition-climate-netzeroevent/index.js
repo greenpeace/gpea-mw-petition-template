@@ -1,3 +1,15 @@
+/** 
+ * Dploy Setting:
+ *
+PROJECT=twStrapi/petition-climate-netzeroevent
+MARKET=tw
+PROJECT_NAME=petition-climate-netzeroevent
+BASEPATH=/htdocs/2023/petition/petition-climate-netzeroevent
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-climate-netzeroevent/
+FTP_CONFIG_NAME=ftp_tw
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-tw.2023.climates.netzeroevent.general.signup.na
+*/
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -21,23 +33,43 @@ import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
-import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
+import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import Contents
 import formContent from './form';
 // Import static
 
 function Index({ submitted = false, strapi }) {
-	strapi = useSelector((state) => state?.theme?.strapi);
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const [ref, inView] = useInView({
 		threshold: 0
 	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0
+	});
+
 	const [isLoaded, setIsLoaded] = useState(false);
 	const FormRef = useRef(null);
+
+	const [donorName, setDonorName] = useState();
+	
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+			setDonorName(data.firstName);
+		}
+	});
+	useEffect(() => {
+		setDonorName(signup?.data?.FirstName);
+	}, [signup]);
+
+	const { utm_source } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -96,7 +128,10 @@ function Index({ submitted = false, strapi }) {
 									}
 								]}
 								content={{
-									title: strapi?.thankyouHero?.richContent,
+									// title: strapi?.thankyouHero?.richContent,
+									title: `${
+										donorName ? donorName : '綠色和平支持者'
+									}，${strapi?.thankyouHero?.richContent}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
@@ -124,8 +159,8 @@ function Index({ submitted = false, strapi }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
+										'<br/>' +
+										strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}
@@ -178,30 +213,32 @@ function Index({ submitted = false, strapi }) {
 								<FormContainer>
 									<Box ref={ref}>
 										{pageType?.toLowerCase() === 'donation' || submitted ? (
-											<DonationModule
-												isUAT={true}
-												market={
-													strapi?.market?.data?.attributes?.market ===
-													'Hong Kong'
-														? 'HK'
-														: 'TW'
-												}
-												language={strapi?.donationModuleLanguage}
-												campaign={
-													theme?.params?.donation_module_campaign ??
-													strapi?.donationModuleCampaign
-												}
-												campaignId={
-													theme?.params?.campaignId ??
-													strapi?.donationModuleCampaignId ??
-													''
-												}
-												env={strapi?.donationModuleEnv}
-											/>
+											utm_source !== 'dd' && (
+												<DonationModule
+													market={
+														strapi?.market?.data?.attributes?.market ===
+															'Hong Kong'
+															? 'HK'
+															: 'TW'
+													}
+													language={strapi?.donationModuleLanguage}
+													campaign={
+														theme?.params?.donation_module_campaign ??
+														strapi?.donationModuleCampaign
+													}
+													campaignId={
+														theme?.params?.campaignId ??
+														strapi?.donationModuleCampaignId ??
+														''
+													}
+													env={strapi?.donationModuleEnv}
+												/>
+											)
 										) : (
 											<SignupForm />
 										)}
 									</Box>
+									<div ref={ FormBtnref }></div>
 								</FormContainer>
 							)}
 						</Box>
@@ -209,7 +246,7 @@ function Index({ submitted = false, strapi }) {
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			<StrapiFixedButton target={FormRef} targetInView={ (pageType?.toLowerCase() === 'donation' || submitted) ? btnInView : inView} />
 		</>
 	);
 }

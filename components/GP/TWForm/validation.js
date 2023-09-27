@@ -1,6 +1,11 @@
 export function validation(values, formContent) {
   const errors = {};
-
+  Object.keys(values).forEach(function(key){
+    if(typeof values[key] === 'undefined' || values[key] === '') {
+      errors[key] = formContent.empty_data_alert;
+    }
+  });
+  console.log(errors)
   if (!values.Email) {
     errors.Email = formContent.empty_data_alert;
   } else if (
@@ -56,3 +61,5 @@ export function validation(values, formContent) {
 
   return errors;
 }
+
+

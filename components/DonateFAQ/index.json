@@ -5,7 +5,7 @@
       {
         "expanded": true,
         "title": "何謂支持「年度小額增額計畫」？<svg viewBox='0 0 24 24' style='display: inline-block; width: 1em;'><path fill='none' d='M0 0h24v24H0z'/><path d='M15 2a4 4 0 0 1 3.464 6.001L23 8v2h-2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10H1V8l4.536.001A4 4 0 0 1 12 3.355 3.983 3.983 0 0 1 15 2zm-4 8H5v9h6v-9zm8 0h-6v9h6v-9zM9 4a2 2 0 0 0-.15 3.995L9 8h2V6a2 2 0 0 0-1.697-1.977l-.154-.018L9 4zm6 0a2 2 0 0 0-1.995 1.85L13 6v2h2a2 2 0 0 0 1.995-1.85L17 6a2 2 0 0 0-2-2z'/></svg>",
-        "desc": "「年度小額增加捐款計劃」是綠色和平邀請捐款者協助提供更穩定支持的捐款方式。<br><br> 綠色和平於全球及香港致力推行重要的環保倡議項目，持續減緩氣候變化，透過實地調查、獨立研究與政策倡議，達至環保成果與實際看得見的社會改變。同一時間，越趨嚴峻的氣候危機、全球通膨與物價飛騰卻也連年增加我們面對的考驗，惟控制地球升溫於攝氏 1.5 度內的艱鉅任務，卻一日也不能中斷。<br><br> 謝謝您有意成為我們的每月捐款會員！我們謹在此邀請您在力所能及的範圍，加入「年度小額增加捐款計劃」，成為綠色和平更穩固的後盾，於每年 1 月 1 日自動授權每月捐款金額小幅度增加港幣 6 元，這份心意將助綠色和平多添穩定支持，未來迎接更多的時代挑戰。<br><br> 欲瞭解計劃詳情，請閱讀「<a href='https://www.greenpeace.org/hongkong/%e5%b9%b4%e5%ba%a6%e5%b0%8f%e9%a1%8d%e5%a2%9e%e5%8a%a0%e8%a8%88%e7%95%ab/?ref=donation_page_faq' target='_blank'>年度小額增加捐款計劃</a>」。"
+        "desc": "「年度小額增加捐款計劃」是綠色和平邀請捐款者協助提供更穩定支持的捐款方式。<br><br> 綠色和平於全球及香港致力推行重要的環保倡議項目，持續減緩氣候變化，透過實地調查、獨立研究與政策倡議，達至環保成果與實際看得見的社會改變。同一時間，越趨嚴峻的氣候危機、全球通膨與物價飛騰卻也連年增加我們面對的考驗，惟控制地球升溫於攝氏 1.5 度內的艱鉅任務，卻一日也不能中斷。<br><br> 謝謝您有意成為我們的每月捐款會員！我們謹在此邀請您在力所能及的範圍，加入「年度小額增加捐款計劃」，成為綠色和平更穩固的後盾，於每年 1 月 1 日自動授權每月捐款金額小幅度增加港幣 6 元，這份心意將助綠色和平多添穩定支持，未來迎接更多的時代挑戰。<br><br> 欲瞭解計劃詳情，請閱讀「<a href='https://www.greenpeace.org/hongkong/%e5%b9%b4%e5%ba%a6%e5%b0%8f%e9%a1%8d%e5%a2%9e%e5%8a%a0%e8%a8%88%e7%95%ab/?ref=donation_page_faq' class='highlight' target='_blank'>年度小額增加捐款計劃</a>」。"
       },
       {
         "expanded": false,
@@ -25,7 +25,7 @@
       {
         "expanded": false,
         "title": "成為每月捐款會員後，捐款會在什麼日子進行轉帳？",
-        "desc": "綠色和平會於每年3月31日財政年度完結時，為每月捐款會員準備年度收據，並於4月至5月發送至通訊地址或電郵地址。\n\n銀行自動轉帳首次過數為該月約13日或28日；往後固定約於每月13日過數，若未能成功過數，會在月底再次嘗試。\n\n<small>* 因機構於2020年8月至2021年2月進行內部系統更新，在該段時間登記的信用卡每月捐款會員，其每月過數日將按照登記捐款日，固定於每月相同日子進行。如當月沒有該固定捐款日子（例如2月沒有30日），系統將會於當月的最後一天進行過數（即2月28或29日）。\n日後若有銀行或內部系統更新影響過帳安排，應以網頁即時更新為準。如有查詢，歡迎聯絡綠色和平會員服務熱線(852) 2854 8318，或電郵至donor.services.hk@greenpeace.org。</small>"
+        "desc": "綠色和平會於每年3月31日財政年度完結時，為每月捐款會員準備年度收據，並於4月至5月發送至通訊地址或電郵地址。\n\n銀行自動轉帳首次過數為該月約1日或28日；往後固定約於每月1日過數。日後若有銀行或內部系統更新影響過帳安排，應以網頁即時更新為準。如有查詢，歡迎聯絡綠色和平會員服務熱線(852) 2854 8318，或電郵至donor.services.hk@greenpeace.org。</small>"
       },
       {
         "expanded": false,
@@ -40,27 +40,27 @@
       {
         "expanded": true,
         "title": "What is the Annual Upgrade Program? <svg viewBox='0 0 24 24' style='display: inline-block; width: 1em;'><path fill='none' d='M0 0h24v24H0z'/><path d='M15 2a4 4 0 0 1 3.464 6.001L23 8v2h-2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10H1V8l4.536.001A4 4 0 0 1 12 3.355 3.983 3.983 0 0 1 15 2zm-4 8H5v9h6v-9zm8 0h-6v9h6v-9zM9 4a2 2 0 0 0-.15 3.995L9 8h2V6a2 2 0 0 0-1.697-1.977l-.154-.018L9 4zm6 0a2 2 0 0 0-1.995 1.85L13 6v2h2a2 2 0 0 0 1.995-1.85L17 6a2 2 0 0 0-2-2z'/></svg>",
-        "desc": "As a wonderful donor to Greenpeace, you know that we strives in Hong Kong and around the globe to advocate environmental protection. We deploy independent investigation, research and lobbying actions to bring about change and to save our climate. Regardless of the challenges we face, such as the escalating climate crisis, global inflation and rising cost of living, our mission to limit global warming to 1.5°C simply cannot be put on hold. <br><br> Thank you for becoming our monthly supporter! We would like to invite you to join the Annual Upgrade Program, and commit to a small increase of HKD 6 in your monthly donation annually, meaning that the increase will be automatically authorised on 1st of January each year. By doing so, you will provide us with stronger support to tackle the challenges of our times. <br><br> For more details, please refer to the「<a href='https://www.greenpeace.org/hongkong/%e5%b9%b4%e5%ba%a6%e5%b0%8f%e9%a1%8d%e5%a2%9e%e5%8a%a0%e8%a8%88%e7%95%ab/?ref=donation_page_faq' target='_blank'>Annual Upgrade Program page.</a>」。"
+        "desc": "As a wonderful donor to Greenpeace, you know that we strive in Hong Kong and around the globe to advocate environmental protection. We deploy independent investigation, research and lobbying actions to bring about change and save our climate. Regardless of the challenges we face, such as the escalating climate crisis, global inflation and rising cost of living, our mission to limit global warming to 1.5°C simply cannot be put on hold.\n\n Thank you for becoming our monthly supporter! We would like to invite you to join the Annual Upgrade Program, and commit to a small annual increase of HKD 6 in your monthly donation, meaning that the increase will be automatically authorised on 1st of January each year. By doing so, you will provide us with stronger support to tackle the challenges of our times."
       },
       {
         "expanded": false,
         "title": "Why is a monthly donation so important?",
-        "desc": "For every penny you donate, no matter the amount or form of donation, it represents your support and confidence in Greenpeace environmental protection projects, and can help us achieve more for the environment around the world. To protect our independence, Greenpeace never accepts funding from any government, business or political group, and only accepts direct donations from citizens like you and independent foundations. Therefore, regular donations are important to us. They can provide us with stable donation income, continue to support the development of our environmental protection projects, and enable Greenpeace to implement long-term plans and work to promote environmental protection. We persist so there is hope. The stable and continuous support from you is the key to success in the environmental campaigns."
+        "desc": "Every penny you donate, no matter the amount or form of donation, represents your support and confidence in Greenpeace’s environmental protection projects, and can help us achieve more for the environment worldwide. To safeguard our independence, Greenpeace never accepts funding from government, business, or political groups, and only accepts direct donations from citizens like you and independent foundations. Therefore, regular donations are important to us. A stable income supports the long-term development of our environmental protection projects. We persist, so there is hope. Your stable and continuous support is the key to success in our environmental campaigns."
       },
       {
         "expanded": false,
         "title": "When will I receive a donation receipt?",
-        "desc": "Greenpeace will prepare annual receipts for monthly donation donors at the end of the financial year on March 31 annually, and send to the mailing address or email address from April to May. For a single donation, after the donation is successfully posted, the donor will receive a single electronic donation receipt via email immediately; if the donor fails to provide an email address, we will issue a printed donation receipt to you within 6 weeks after the donation. If you have other questions about receipts, please call our hotline at (852) 2854 8318, or email to donor.services.hk@greenpeace.org."
+        "desc": "Greenpeace will prepare annual receipts for monthly donors at the end of the financial year on March 31, and send them to the mailing address or email address from April to May. For single donations, after the donation is successfully posted, the donor will receive a single electronic donation receipt via email immediately; if the donor fails to provide an email address, we will issue a printed donation receipt to you within six weeks after the donation. If you have other questions about receipts, please call our hotline at (852) 2854 8318, or email donor.services.hk@greenpeace.org."
       },
       {
         "expanded": false,
-        "title": "On what date will donations be transferred for monthly donation?",
-        "desc": "The bank's automatic transfer will be conducted on the 13th or 28th of the month for the first time; in the future, it will be conducted on the 13th of each month. If the transfer is unsuccessful, it will try again at the end of the month. \n\n*Due to the internal system update of the organization from August 2020 to February 2021, for monthly donation donors registered by credit card during this period, the transaction date of each month will be fixed on the same day according to the registered donation date. If there is no fixed donation day in the current month (for example, there is no 30th day in February), the system will transfer on the last day of the month (ie February 28th or 29th). If there is a bank or internal system update that affects the posting arrangement in the future, the real-time update of the webpage shall prevail. For enquiries, please contact our hotline at (852) 2854 8318 or email to donor.services.hk@greenpeace.org."
+        "title": "When will my donation be processed?",
+        "desc": "Donations made by credit card are processed instantly. A recurring monthly payment is set up and made around the 1st of every month.<br>For monthly donations made by direct debit, the first transactions are processed around the 1st or 28th of the first month. A recurring monthly payment is set up for following months and made around the 1st of every month. "
       },
       {
         "expanded": false,
         "title": "Can I change the donation method, amount, credit card details or communication details?",
-        "desc": "For any donation-related changes, you can contact our membership services department through our hotline (852) 2854 8318 or email to donor.services.hk@greenpeace.org, and we will handle the relevant information changes for you."
+        "desc": "For any donation-related changes, you can contact our membership services department through our hotline (852) 2854 8318 or email donor.services.hk@greenpeace.org, and we will handle the relevant information changes for you."
       }
     ]
   },
@@ -70,7 +70,7 @@
       {
         "expanded": true,
         "title": "何謂支持「年度小額增額計畫」？<svg viewBox='0 0 24 24' style='display: inline-block; width: 1em;'><path fill='none' d='M0 0h24v24H0z'/><path d='M15 2a4 4 0 0 1 3.464 6.001L23 8v2h-2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10H1V8l4.536.001A4 4 0 0 1 12 3.355 3.983 3.983 0 0 1 15 2zm-4 8H5v9h6v-9zm8 0h-6v9h6v-9zM9 4a2 2 0 0 0-.15 3.995L9 8h2V6a2 2 0 0 0-1.697-1.977l-.154-.018L9 4zm6 0a2 2 0 0 0-1.995 1.85L13 6v2h2a2 2 0 0 0 1.995-1.85L17 6a2 2 0 0 0-2-2z'/></svg>",
-        "desc": "「年度小額增額計畫」是綠色和平邀請捐款人協助提供更穩定、永續支持的捐款提案。<br><br>綠色和平於全球與臺灣在地持續為減緩氣候衝擊為目標，投注在實地調查、研究與政策倡議的環境專案。日漸急迫的氣候危機、全球通膨與物價飛漲卻也連年加劇對我們的考驗，惟控制地球升溫攝氏 1.5 度的艱鉅任務，卻一日也不能被中斷。<br><br>謝謝您已成為我們的月捐支持者！這個計畫將邀請您成為綠色和平更穩定的奧援，即日開始加入「年度小額增額計畫」，於每一新的年度( 1 月 1 日)您的每月捐款金額將自動小額調幅增加新臺幣 30 元，這份支持的心意，是綠色和平在未來很重要的穩定力。<br><br>欲瞭解更詳細的內容請閱讀「<a href='https://www.greenpeace.org/taiwan/%e5%b9%b4%e5%ba%a6%e5%b0%8f%e9%a1%8d%e5%a2%9e%e5%8a%a0%e8%a8%88%e7%95%ab/?ref=donation_page_faq' target='_blank'>年度小額增額計畫</a>」。"
+        "desc": "「年度小額增額計畫」是綠色和平邀請捐款人協助提供更穩定、永續支持的捐款提案。<br><br>綠色和平於全球與臺灣在地持續為減緩氣候衝擊為目標，投注在實地調查、研究與政策倡議的環境專案。日漸急迫的氣候危機、全球通膨與物價飛漲卻也連年加劇對我們的考驗，惟控制地球升溫攝氏 1.5 度的艱鉅任務，卻一日也不能被中斷。<br><br>謝謝您已成為我們的月捐支持者！這個計畫將邀請您成為綠色和平更穩定的奧援，即日開始加入「年度小額增額計畫」，於每一新的年度( 1 月 1 日)您的每月捐款金額將自動小額調幅增加新臺幣 30 元，這份支持的心意，是綠色和平在未來很重要的穩定力。<br><br>欲瞭解更詳細的內容請閱讀「<a href='https://www.greenpeace.org/taiwan/%e5%b9%b4%e5%ba%a6%e5%b0%8f%e9%a1%8d%e5%a2%9e%e5%8a%a0%e8%a8%88%e7%95%ab/?ref=donation_page_faq' class='highlight' target='_blank'>年度小額增額計畫</a>」。"
       },
       {
         "expanded": false,
@@ -85,17 +85,17 @@
       {
         "expanded": false,
         "title": "何時會收到捐款收據呢？",
-        "desc": "為了讓捐款者享受更便利、更有效率的服務，也為改善您收據保存、寄發遺失等問題，綠色和平將對每月定期定額捐款人與一次性捐款人，於每年報稅月前寄發上一年度「全年捐款總額證明」，收據可作為抵扣稅額使用，亦明列個人全年度捐款紀錄。\n\n自2022年起，綠色和平除了提供紙本收據，也逐步將收據轉為電子化，以Email寄送至捐款人的電子信箱，減少資源與環境成本。若您需要紙本收據，或是想要全面轉為電子化，歡迎來信至donor.services.tw@greenpeace.org或致電會員專線(02)2361-2025，將有專員為您註明。"
+        "desc": "為了讓捐款者享受更便利、更有效率的服務，也為改善您收據保存、寄發遺失等問題，綠色和平將對每月定期定額捐款人與一次性捐款人，於每年報稅月前寄發上一年度「全年捐款總額證明」，收據可作為抵扣稅額使用，亦明列個人全年度捐款紀錄。\n\n自2022年起，綠色和平除了提供紙本收據，也逐步將收據轉為電子化，以Email寄送至捐款人的電子信箱，減少資源與環境成本。若您需要紙本收據，或是想要全面轉為電子化，歡迎來信至<a href='mailto:donor.services.tw@greenpeace.org'>donor.services.tw@greenpeace.org</a>或致電會員專線<a href='tel:+886-2-23612025'>(02)2361-2025</a>，將有專員為您註明。"
       },
       {
         "expanded": false,
         "title": "我想了解使用信用卡的捐款方式",
-        "desc": "信用卡捐款是綠色和平主要的捐款方式，它能提供安全、快速且準確的捐款環境，可以在短時間內得知每位熱心捐款人的交易狀態，也節省了大量的行政作業成本。\n\n<b>綠色和平線上捐款</b>\n\n為提供捐款者更方便、更安心的線上捐款環境，綠色和平採用高科技SSL加密技術的線上刷卡機制，可接受國內外各大銀行所發行之VISA及MASTER信用卡。\n\n提醒您：信用卡捐款會即時進行。每月捐款會員的往後捐款，約於每月15日*請款；若未能成功請款，有可能是系統或信用卡等出現問題，因此系統將自動重新嘗試，如有需要，會員服務部將會與您聯繫確認。\n\n<small>* 因組織於2020年8月至2021年2月進行內部系統更新，在這段時間登記的每月捐款會員，往後的捐款將按照登記捐款日，固定於每月相同日期請款。（如當月沒有該固定日期，系統將會於該月的最後一天請款，例如：若固定請款日期為每月31日，於2月將會於該月的最後一天進行請款。）\n日後若有銀行或內部系統更新影響請款安排，應以網頁即時更新為準。\n如有查詢，歡迎致電會員服務專線(02) 2361-2025，或來信至 donor.services.tw@greenpeace.org。</small>"
+        "desc": "信用卡捐款是綠色和平主要的捐款方式，它能提供安全、快速且準確的捐款環境，可以在短時間內得知每位熱心捐款人的交易狀態，也節省了大量的行政作業成本。\n\n<b>綠色和平線上捐款</b>\n\n為提供捐款者更方便、更安心的線上捐款環境，綠色和平採用高科技SSL加密技術的線上刷卡機制，可接受國內外各大銀行所發行之 VISA、JCB 及 MASTER 等信用卡。\n\n提醒您：信用卡捐款會即時進行。每月捐款會員的往後捐款，將於每月 2 日請款；若未能成功請款，有可能是系統或信用卡等出現問題，因此系統將自動重新嘗試，如有需要，會員服務部將會與您聯繫確認。每月捐款將在該信用卡效期到期後與獲發新卡後仍繼續有效，直至捐款人另行通知。\n\n<small>* 如有查詢，歡迎致電會員服務專線<a href='tel:+886-2-23612025'>(02)2361-2025</a>，或來信至 <a href='mailto:donor.services.tw@greenpeace.org'>donor.services.tw@greenpeace.org</a>。</small>"
       },
       {
         "expanded": false,
         "title": "我能更改捐款金額、信用卡資料或會員通訊資料嗎？",
-        "desc": "任何捐款相關異動，您都可以透過會員專線(02)2361-2025，來信至donor.services.tw@greenpeace.org，或傳真至(02)2361-2033，我們有專人為您核對捐款相關基本資料，為您處理資料變更。"
+        "desc": "任何捐款相關異動，您都可以透過會員專線<a href='tel:+886-2-23612025'>(02)2361-2025</a>，來信至<a href='mailto:donor.services.tw@greenpeace.org'>donor.services.tw@greenpeace.org</a>，或傳真至<a href='tel:+886-2-23612033'>(02)2361-2033</a>，我們有專人為您核對捐款相關基本資料，為您處理資料變更。"
       }
     ]
   }

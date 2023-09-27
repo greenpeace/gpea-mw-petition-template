@@ -1,3 +1,14 @@
+/** 
+ * Dploy Setting:
+ *
+PROJECT=tw/climate-2022earthday
+MARKET=tw
+PROJECT_NAME=climate-2022earthday
+BASEPATH=/htdocs/2022/petition/zh-TW.2022.climate.climate-2022earthday.signup
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/petition/zh-TW.2022.climate.climate-2022earthday.signup/
+FTP_CONFIG_NAME=ftp_tw
+*/
+
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { connect } from 'react-redux';

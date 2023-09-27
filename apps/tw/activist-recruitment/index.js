@@ -1,3 +1,16 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=tw/activist-recruitment
+MARKET=tw
+PROJECT_NAME=activist-recruitment
+BASEPATH=/htdocs/2022/zh-TW.2022.activist-recruitment.signup
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/zh-TW.2022.activist-recruitment.signup/
+FTP_CONFIG_NAME=ftp_tw 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-TW.2022.activist-recruitment.signup
+*/
+
 import React, { useEffect, useRef } from 'react';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
@@ -47,9 +60,8 @@ function Index({ status, theme, setFormContent, signup }) {
       {submitted ? (
         <ThanksBanner
           content={{
-            title: `${
-              FirstName ? FirstName : '綠色和平支持者'
-            }感謝您跨出<br/>成為環境行動者的第一步！`,
+            title: `${FirstName ? FirstName : '綠色和平支持者'
+              }，<br/>感謝您跨出<br/>成為環境行動者的第一步！`,
             description: [
               '我們已收到您的報名資訊，將於舉辦行動者說明會前以信件方式聯繫您。',
             ],

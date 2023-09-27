@@ -3,7 +3,6 @@
   "form_description": "我願意支持綠色和平，<b>改變寬鬆的碳費政策，推動企業的綠能轉型</b>，以全面的減碳行動根治氣候問題，改寫地球未來。",
   "form_remind": "",
   "signed_number": "已連署人數",
-
   "label_yes": "是",
   "label_no": "否",
   "label_name": "稱謂",
@@ -16,15 +15,12 @@
   "label_year_of_birth_optional": "出生年份（選填）",
   "label_counties": "居住縣市",
   "label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/' target='_blank'>隱私保護政策</a>。",
-
   "empty_data_alert": "請填寫資料",
   "empty_select_data_alert": "請選擇",
-
   "invalid_email_alert": "請填上有效電子郵件",
   "invalid_format_alert": "請輸入有效格式",
   "minimum_8_characters": "請輸入8位數字",
   "suggestion_message": "您是否想輸入",
-
   "submit_text": "加入連署",
   "thanks_title": "",
   "thanks_ask": "",
@@ -36,44 +32,130 @@
   "fbURL": "",
   "mainURL": "",
   "whatsappURL": "",
-
-  "counties": [
-    { "label": "臺北市", "value": "臺北市" },
-    { "label": "新北市", "value": "新北市" },
-    { "label": "基隆市", "value": "基隆市" },
-    { "label": "桃園市", "value": "桃園市" },
-    { "label": "新竹縣", "value": "新竹縣" },
-    { "label": "新竹市", "value": "新竹市" },
-    { "label": "苗栗縣", "value": "苗栗縣" },
-    { "label": "臺中市", "value": "臺中市" },
-    { "label": "彰化縣", "value": "彰化縣" },
-    { "label": "南投縣", "value": "南投縣" },
-    { "label": "雲林縣", "value": "雲林縣" },
-    { "label": "嘉義縣", "value": "嘉義縣" },
-    { "label": "嘉義市", "value": "嘉義市" },
-    { "label": "臺南市", "value": "臺南市" },
-    { "label": "高雄市", "value": "高雄市" },
-    { "label": "屏東縣", "value": "屏東縣" },
-    { "label": "宜蘭縣", "value": "宜蘭縣" },
-    { "label": "花蓮縣", "value": "花蓮縣" },
-    { "label": "臺東縣", "value": "臺東縣" },
-    { "label": "澎湖縣", "value": "澎湖縣" },
-    { "label": "金門縣", "value": "金門縣" },
-    { "label": "連江縣", "value": "連江縣" },
-    { "label": "海外", "value": "海外" },
-    { "label": "不提供", "value": "不提供" }
-  ],
+  "counties": {
+    "options": [
+      {
+        "label": "臺北市",
+        "value": "臺北市"
+      },
+      {
+        "label": "新北市",
+        "value": "新北市"
+      },
+      {
+        "label": "基隆市",
+        "value": "基隆市"
+      },
+      {
+        "label": "桃園市",
+        "value": "桃園市"
+      },
+      {
+        "label": "新竹縣",
+        "value": "新竹縣"
+      },
+      {
+        "label": "新竹市",
+        "value": "新竹市"
+      },
+      {
+        "label": "苗栗縣",
+        "value": "苗栗縣"
+      },
+      {
+        "label": "臺中市",
+        "value": "臺中市"
+      },
+      {
+        "label": "彰化縣",
+        "value": "彰化縣"
+      },
+      {
+        "label": "南投縣",
+        "value": "南投縣"
+      },
+      {
+        "label": "雲林縣",
+        "value": "雲林縣"
+      },
+      {
+        "label": "嘉義縣",
+        "value": "嘉義縣"
+      },
+      {
+        "label": "嘉義市",
+        "value": "嘉義市"
+      },
+      {
+        "label": "臺南市",
+        "value": "臺南市"
+      },
+      {
+        "label": "高雄市",
+        "value": "高雄市"
+      },
+      {
+        "label": "屏東縣",
+        "value": "屏東縣"
+      },
+      {
+        "label": "宜蘭縣",
+        "value": "宜蘭縣"
+      },
+      {
+        "label": "花蓮縣",
+        "value": "花蓮縣"
+      },
+      {
+        "label": "臺東縣",
+        "value": "臺東縣"
+      },
+      {
+        "label": "澎湖縣",
+        "value": "澎湖縣"
+      },
+      {
+        "label": "金門縣",
+        "value": "金門縣"
+      },
+      {
+        "label": "連江縣",
+        "value": "連江縣"
+      },
+      {
+        "label": "海外",
+        "value": "海外"
+      },
+      {
+        "label": "不提供",
+        "value": "不提供"
+      }
+    ]
+  },
   "mobile_country_code": [
-    { "label": "+852", "value": 852 },
-    { "label": "+853", "value": 853 }
+    {
+      "label": "+852",
+      "value": 852
+    },
+    {
+      "label": "+853",
+      "value": 853
+    }
   ],
   "new_letter": [
-    { "label": "是", "value": true },
-    { "label": "否", "value": false }
+    {
+      "label": "是",
+      "value": true
+    },
+    {
+      "label": "否",
+      "value": false
+    }
   ],
-
   "donate_header": "是的！我想要改變氣候危機",
-  "donate_description": [""],
+  "donate_description": [
+    ""
+  ],
   "default_message": "與政府與企業合作，提升再生能源於臺灣總電力的占比，讓臺灣逐步邁入淨零排放。",
   "donate_suggestion_header": "您的每月小額捐款是我們最大的後盾！",
   "donate_suggestion_message": "誠心邀請您加入每月捐款會員的行列，因為對於非營利團體而言，定期定額捐款具有莫大的意義：它能提供組織穩定的收入，持續地支援我們的專案研究、檢測、遊說等相關工作，讓綠色和平改善環境的計畫與工作得以長遠實行。",
@@ -87,8 +169,14 @@
   "default_oneoff": 3000,
   "min_amount_oneoff": 300,
   "donate_type": [
-    { "label": "每月捐款", "value": "monthly" },
-    { "label": "單次捐款", "value": "single" }
+    {
+      "label": "每月捐款",
+      "value": "monthly"
+    },
+    {
+      "label": "單次捐款",
+      "value": "single"
+    }
   ],
   "amount_onetime": [
     {

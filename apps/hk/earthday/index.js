@@ -1,3 +1,16 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hk/earthday
+MARKET=hk
+PROJECT_NAME=earthday
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/earthday
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/earthday/
+FTP_CONFIG_NAME=api_hk_cloud 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-hk.2022.climate.earthday_commitment.general.signup.na
+*/
+
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import Marquee from 'react-fast-marquee';
 import {
@@ -57,6 +70,7 @@ function Index({ setFormContent, setForm, status, setScreen }) {
     threshold: 0,
   });
   const [ref2, inView2] = useInView();
+
   const modalRef = useRef(null);
   const screen = status.scrollToTarget;
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -65,6 +79,7 @@ function Index({ setFormContent, setForm, status, setScreen }) {
   };
 
   useEffect(() => {
+    
     if (isLargerThanLG) {
       setTimeout(() => {
         setShowCTAButton(false);
@@ -76,7 +91,18 @@ function Index({ setFormContent, setForm, status, setScreen }) {
     } else {
       setShowCTAButton(false);
     }
+
+    if(status?.submitted){
+      if(!inView && !isLargerThanLG){
+        setShowCTAButton(true);
+      }else{
+        setShowCTAButton(false);
+      }
+    }
+    
+
   }, [inView, inView2, isLargerThanLG]);
+
 
   useEffect(() => {
     setFormContent(formContent);
@@ -115,6 +141,7 @@ function Index({ setFormContent, setForm, status, setScreen }) {
               )}
               {screen === 'STEP2' && <Form />}
               <Box ref={ref}></Box>
+              
             </Box>
             {/** */}
           </MainSection>
@@ -166,6 +193,7 @@ function Index({ setFormContent, setForm, status, setScreen }) {
               <Box py="6">
                 {screen === 'STEP1' && <ConnectedStep />}
                 {screen === 'STEP2' && <Form />}
+                
               </Box>
             </ModalBody>
           </ModalContent>
@@ -175,7 +203,7 @@ function Index({ setFormContent, setForm, status, setScreen }) {
         direction="bottom"
         in={showCTAButton}
         style={{ zIndex: 10 }}
-        d={showCTAButton ? 'block' : 'none'}
+        // d={showCTAButton ? 'block' : 'none'}
       >
         <FixedCTA onClick={() => executeScroll(mobileForm)}>
           {formContent.mobile_cta ? formContent.mobile_cta : '立即捐款'}

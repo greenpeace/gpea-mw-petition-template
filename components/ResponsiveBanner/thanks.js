@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Heading, Box, Flex, Text, Image, Stack } from '@chakra-ui/react';
 import PageContainer from '@containers/pageContainer';
@@ -21,7 +21,17 @@ export default function Index({
 	minH = { base: 'lg', md: 'xl' }
 }) {
 	const signup = useSelector((state) => state?.signup);
-
+	const [customColor, setCustomColor] = useState('white');
+  useEffect(() => {
+    console.log(content)
+    const html = document.createElement('html');
+    html.innerHTML = content.title;
+    const spans = html.querySelectorAll('span');
+    spans.forEach((span)=>{
+      if(span.style.color !== '' && customColor === 'white') setCustomColor(span.style.color);
+    });
+		console.log(removeMask)
+  }, [content])
 	return (
 		<>
 			<Box minH={minH} pos={'relative'} zIndex={2} paddingBottom={'4rem'}>
@@ -42,12 +52,12 @@ export default function Index({
 								<Stack spacing={4}>
 									{content?.title && (
 										<Heading
-											as="h1"
+											as="div"
 											fontSize={{
 												base: 'var(--text-xl)',
 												md: 'var(--text-2xl)'
 											}}
-											color="white"
+											color={customColor}
 											textShadow="0 0 1px rgba(0,0,0, .2)"
 										>
 											<span
