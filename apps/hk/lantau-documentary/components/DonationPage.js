@@ -10,6 +10,7 @@ import PlayButton from '../images/donate/play_button.png';
 
 import regFlow from '../images/graphics-reg-flow.jpg';
 import thankPhoto from '../images/Thankyoupage_film_v2_cap screen.00_17_23_07.Still074.jpg'
+import thankPhoto2 from '../images/SJ3-elm_flag-006b2b281a98912761e08a367f0266af.jpg'
 
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/WebinarForm';
@@ -113,21 +114,19 @@ function Index({ status, setFormContent, theme, resetSubmitted, signup }) {
 								submitted ? (
 									<div className="rounded-xl bg-white py-0 md:py-10">
 										<Box px={{base: 0, md: 10}}>
-											<Heading
-												{...headingProps}
-												as={'h3'}
-												color={`theme.${themeInterests}`}
+											<Text as="p" 
+												{...paragraphProps}
+												fontWeight={'bold'}
 											>
-												{ FirstName }，<br />感謝您登記觀看《山海大嶼》紀錄片
-											</Heading>
-											<Text as="p" {...paragraphProps}>感謝您登記觀看我們的《山海大嶼》紀錄片，共同守護大嶼山的珍貴生態和自然美景。您現在可以免費觀看我們耗時大半年製作的《山海大嶼》紀錄片，進一步了解大嶼山的生態價值及其珍稀生物！
+												{ FirstName }，<br/>
+												感謝您登記觀看我們的《山海大嶼》紀錄片，共同守護大嶼山的珍貴生態和自然美景。您現在可以免費觀看我們耗時大半年製作的《山海大嶼》紀錄片，進一步了解大嶼山的生態價值及其珍稀生物！
 											</Text>
 											<Heading
 												{...headingProps}
 												as={'h3'}
-												color={`theme.${themeInterests}`}
+												color={`brand.500`}
 											>
-												我們已經向您發送了影片的連結和觀看密碼，感謝您參與我們的活動。
+												我們已經向您發送了影片的連結和觀看密碼，感謝您的登記。
 											</Heading>
 											<Text
 												{...paragraphProps}
@@ -144,12 +143,12 @@ function Index({ status, setFormContent, theme, resetSubmitted, signup }) {
 											<Heading
 												{...headingProps}
 												as={'h3'}
-												color={`theme.${themeInterests}`}
+												color={`brand.500`}
 											>
 												在您等待的時候，您願意考慮進一步支持綠色和平嗎？
 											</Heading>
 											<Text as="p" {...paragraphProps}>
-												您的支持不僅代表經濟上的援助，更是一種力量，推動我們共同的目標：保護香港的自然資源和生態環境。 每天只要捐款HK$3，即可：
+												<strong>您的支持不僅代表經濟上的援助，更是一種力量，推動我們共同的目標：保護香港的自然資源和生態環境。 每天只要捐款HK$3，即可：</strong>
 												<UnorderedList my={4}>
 													<ListItem>
 													生態保護行動：透過連結公眾發聲，阻截破壞郊野生態的行徑和發展計劃，令珍貴的物種和生境得以有喘息空間。
@@ -161,11 +160,24 @@ function Index({ status, setFormContent, theme, resetSubmitted, signup }) {
 														影響政策決定：以紮實、專業的研究，向政府提出更多「明日大嶼」填海以外的可行覓地建議和替代方案。
 													</ListItem>
 												</UnorderedList>
-												您的捐款是我們維持獨立和公正的保證。 我們所有的資源都來自於熱心人士，而不是政府或企業捐款。 我們承諾，每一分捐款都將謹慎使用，並致力於資訊透明化。
+												<strong>您的捐款是我們維持獨立和公正的保證。 我們所有的資源都來自於熱心人士，而不是政府或企業捐款。 我們承諾，每一分捐款都將謹慎使用，並致力於資訊透明化。</strong>
 											</Text>
 											<Box {...paragraphProps}>
 												<Image src={thankPhoto} />
 											</Box>
+											<Box {...paragraphProps}>
+												<Image src={thankPhoto2} />
+											</Box>
+											<Heading
+												{...headingProps}
+												as={'h3'}
+												color={`brand.500`}
+											>
+												堅持發聲 行動帶來改變
+											</Heading>
+											<Text as="p" {...paragraphProps} fontWeight={'bold'}>
+											現以每月$100 捐款支持堅守大嶼工作，即可獲得一面「堅守大嶼」旗幟。
+											</Text>
 										</Box>
 									</div>
 									

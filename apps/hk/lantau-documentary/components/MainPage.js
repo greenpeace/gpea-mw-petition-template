@@ -18,7 +18,7 @@ import Information from './Information';
 import FixedCTA from '../components/FixedCTA';
 import Support from './Support';
 
-import subBanner from '../images/202309_Lantau_documentary_relaunch_poster.jpg';
+import subBanner from '../images/202309_Lantau_documentary_relaunch_poster-03.jpg';
 import moviePoster from '../images/GP_lantau_poster4.jpg';
 import dolphinBackground from '../images/docu_dolphin.jpg';
 

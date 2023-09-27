@@ -18,7 +18,7 @@ import MobileHeroFront from '../../images/mobile/hero_front.png';
 import DesktopHero from '../../images/hero_v2.jpg';
 import DesktopHeroFront from '../../images/hero_front_v2.png';
 
-import subBanner from '../../images/202309_Lantau_documentary_relaunch_poster.jpg';
+import subBanner from '../../images/202309_Lantau_documentary_relaunch_poster-03.jpg';
 import moviePoster from '../../images/GP_lantau_poster4.jpg';
 import appLogo from '../../images/app_logo.png';
 
@@ -246,10 +246,10 @@ function HeroSection({
 							歷時大半年製作的生態盛會
 						</p>
 
-						<div className="grid grid-cols-3 font-medium leading-loose md:max-w-[360px]">
-							<span>片長：25分鐘</span>
-							<span>編導：馮漢城</span>
-							<span>旁白：陳志雲</span>
+						<div className="font-medium leading-loose md:max-w-[460px]">
+							<span className="inline-block mr-2">片長：25分鐘</span> 
+							<span className="inline-block mr-2">編導：馮漢城</span> 
+							<span className="inline-block mr-2">聲音導航：陳志雲</span>
 						</div>
 
 						<div className="flex flex-col gap-4 py-4">
