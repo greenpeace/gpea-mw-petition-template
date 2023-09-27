@@ -1,6 +1,7 @@
 {
 	"form_header": "立即登記，免費觀看<br>《山海大嶼》紀錄片",
-	"form_description": "完成登記後，觀賞連結及密碼將於 15 分鐘內以電子郵件傳送給你，敬請留意。",
+	"form_description": "完成登記後，觀賞連結及密碼將於幾分鐘內以電子郵件傳送給你，敬請留意。",
+	"form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
 	"signed_number": "已聯署人數",
 	"label_name": "稱謂",
 	"label_first_name": "名字",
@@ -12,7 +13,7 @@
 	"label_year_of_birth_optional": "出生年份（選填）",
 	"label_opinion": "請輸入您的個人意見，令每一封意見書有獨特聲音。",
 	"label_concern": "請選擇您想包含在意見書的問題（建議選擇最多兩個方向）：",
-	"label_newsletter": "* 登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' style='text-decoration:underline;' target='_blank'>個人資料政策</a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
+	"label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
 	"options_concern": [
 		{ "label": "生態相關問題", "value": "生態相關問題" },
 		{ "label": "氣候相關問題", "value": "氣候相關問題" },
