@@ -60,9 +60,8 @@ function Index({ status, theme, setFormContent, signup }) {
       {submitted ? (
         <ThanksBanner
           content={{
-            title: `${
-              FirstName ? FirstName : '綠色和平支持者'
-            }感謝您跨出<br/>成為環境行動者的第一步！`,
+            title: `${FirstName ? FirstName : '綠色和平支持者'
+              }，<br/>感謝您跨出<br/>成為環境行動者的第一步！`,
             description: [
               '我們已收到您的報名資訊，將於舉辦行動者說明會前以信件方式聯繫您。',
             ],
