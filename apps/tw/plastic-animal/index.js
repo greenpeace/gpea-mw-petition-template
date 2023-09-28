@@ -7,6 +7,8 @@ PROJECT_NAME=plastic-animal
 BASEPATH=/htdocs/2022/petition/zh-TW.2022.plastics.plastic-animal.signup
 ASSETPREFIX=https://change.greenpeace.org.tw/2022/petition/zh-TW.2022.plastics.plastic-animal.signup/
 FTP_CONFIG_NAME=ftp_tw
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-tw.2022.plastics.plastics-animal.signup
 */
 
 import React, {useEffect, useState} from 'react';
