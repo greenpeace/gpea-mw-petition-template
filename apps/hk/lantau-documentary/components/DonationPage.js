@@ -165,9 +165,7 @@ function Index({ status, setFormContent, theme, resetSubmitted, signup }) {
 											<Box {...paragraphProps}>
 												<Image src={thankPhoto} />
 											</Box>
-											<Box {...paragraphProps}>
-												<Image src={thankPhoto2} />
-											</Box>
+											
 											<Heading
 												{...headingProps}
 												as={'h3'}
@@ -178,6 +176,9 @@ function Index({ status, setFormContent, theme, resetSubmitted, signup }) {
 											<Text as="p" {...paragraphProps} fontWeight={'bold'}>
 											現以每月$100 捐款支持堅守大嶼工作，即可獲得一面「堅守大嶼」旗幟。
 											</Text>
+											<Box {...paragraphProps}>
+												<Image src={thankPhoto2} />
+											</Box>
 										</Box>
 									</div>
 									

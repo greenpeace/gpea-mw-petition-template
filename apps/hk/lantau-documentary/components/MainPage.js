@@ -189,7 +189,7 @@ const StickyButton = () => {
 						}
 					)
 				}
-				text={'捐款收看'}
+				text={'立即觀看'}
 			/>
 		</Slide>
 	);
