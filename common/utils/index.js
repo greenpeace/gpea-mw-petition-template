@@ -75,3 +75,31 @@ export const useIntersection = (element, rootMargin) => {
 
 	return isVisible;
 };
+
+
+export const useSignupBtnRootMargin = (containerRef, btnRef) => {
+
+	const [signupBtn, setSignupBtn] = useState({});
+
+	useEffect(() => {
+		function handleResize(){
+			if(!containerRef?.current || !btnRef?.current ) return;
+			setSignupBtn({
+				marginBottom: containerRef?.current.offsetHeight - btnRef?.current.offsetTop,
+				marginTop : containerRef?.current.offsetHeight - (btnRef?.current.offsetTop + btnRef?.current.offsetHeight),
+				height: btnRef?.current.offsetHeight,
+			});
+			// console.log({
+			// 	marginTop: containerRef?.current.offsetHeight - btnRef?.current.offsetTop,
+			// 	marginBottom : containerRef?.current.offsetHeight - (btnRef?.current.offsetTop + btnRef?.current.offsetHeight),
+			// 	height: btnRef?.current.offsetHeight,
+			// })
+		}
+		
+		
+		window.addEventListener("resize", handleResize);
+		handleResize();
+		return () => window.removeEventListener("resize", handleResize);
+	}, [btnRef, containerRef]);
+	return signupBtn?.marginBottom ? `${signupBtn.marginTop * -1}px 0px ${signupBtn.marginBottom}px 0px` : '0px';
+}

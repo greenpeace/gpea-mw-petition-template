@@ -28,7 +28,13 @@ const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
 Switch SEO modules based on whether the path name contains "Strapi". 
 Move it here to ensure that meta info is generated in index_mc.html.
 */
-const DynamicSeoComp = dynamic(() => import(process.env.project.indexOf('Strapi') >= 0 ? '@components/Strapi/StrapiSEO' : `apps/${process.env.project}/SEO`));
+const DynamicSeoComp = dynamic(() =>
+	import(
+		process.env.project.indexOf('Strapi') >= 0
+			? '@components/Strapi/StrapiSEO'
+			: `apps/${process.env.project}/SEO`
+	)
+);
 
 /* Get env variables */
 const envProjectName = process.env.projectName;
@@ -39,7 +45,6 @@ const signupNumbersTWURL = process.env.signupNumbersTW;
 
 // Pending
 const schemaEndpoint = `${themeEndpointURL}?q={"Market":"${envProjectMarket}"}`;
-
 
 /*const initTagManager = (marketName) => {
 	if (process.env.NODE_ENV === 'production') {
@@ -89,7 +94,7 @@ function Index({
 			default:
 				break;
 		}
-	}
+	};
 
 	/* Set dynamic theme parameters */
 	useEffect(() => {
@@ -228,25 +233,21 @@ function Index({
 			(strapi?.market?.data?.attributes?.market === 'Hong Kong'
 				? 'HK'
 				: 'TW') ||
-			(domain.indexOf('hk') > 0
-				? 'HK'
-				: domain.indexOf('tw') > 0
-					? 'TW'
-					: '');
-		
+			(domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : '');
+
 		/* GTM is only applicable for production env */
 
-		initTagManager(market)
+		initTagManager(market);
 		setPrepared(true);
-	},[]);
-	
+	}, []);
+
 	return (
 		<>
 			<DynamicSeoComp strapi={strapi} />
 			{/* <Script strategy="lazyOnload">
             {`console.log("================ GTM ================");`}
 			</Script> */}
-			{(gtmId != '') && (
+			{gtmId != '' && (
 				<Script strategy="beforeInteractive">
 					{`(function(w,d,s,l,i){w[l]=w[l]||[];
 							w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js', });
@@ -256,10 +257,9 @@ function Index({
 						})(window,document,'script','dataLayer',"${gtmId}");`}
 				</Script>
 			)}
-			
+
 			{prepared && <DynamicComponent strapi={strapi} themeData={themeData} />}
 		</>
-		
 	);
 }
 
@@ -303,33 +303,37 @@ export async function getStaticProps(context) {
 	// for the populate levels, see https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/populating-fields.html#component-dynamic-zones
 	// populate=%2A means only one level deep (populate=deep means populate all the levels, generally it's the whole DB)
 
-	const query = stringify({
-		filters: {
-			market: { slug: envProjectMarket },
-			campaign: app
-		},
-		populate: {
-			'contentBlocks': {
-				populate: [
-					'CardSlider.image',
-					'TestimonialSlider.avatar',
-					'CarouselSlider.image',
-				]
+	const query = stringify(
+		{
+			filters: {
+				market: { slug: envProjectMarket },
+				campaign: app
 			},
-			'contentHero': { populate: '*' },
-			'issue': { populate: { filters: { name: { $neq: 'pages' } } } },
-			'market': { populate: { filters: { name: { $neq: 'pages' } } } },
-			'page_type': { populate: { filters: { name: { $neq: 'pages' } } } },
-			'seo': { populate: '*' },
-			'thankyouBlocks': { populate: '*' },
-			'thankyouHero': { populate: '*' }
+			populate: {
+				contentBlocks: {
+					populate: [
+						'CardSlider.image',
+						'TestimonialSlider.avatar',
+						'CarouselSlider.image'
+					]
+				},
+				contentHero: { populate: '*' },
+				issue: { populate: { filters: { name: { $neq: 'pages' } } } },
+				market: { populate: { filters: { name: { $neq: 'pages' } } } },
+				page_type: { populate: { filters: { name: { $neq: 'pages' } } } },
+				seo: { populate: '*' },
+				thankyouBlocks: { populate: '*' },
+				thankyouHero: { populate: '*' }
+			}
+		},
+		{
+			encodeValuesOnly: true // prettify URL
 		}
-	}, {
-		encodeValuesOnly: true, // prettify URL
-	});
+	);
 
-	const res = await fetch(`${endpoint}/pages?${query}`)
-		.then((response) => response);
+	const res = await fetch(`${endpoint}/pages?${query}`).then(
+		(response) => response
+	);
 	const themes = await res.json();
 	const theme =
 		themes?.data[0] !== undefined ? themes?.data[0]?.attributes : null;

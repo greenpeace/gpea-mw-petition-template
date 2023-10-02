@@ -24,6 +24,15 @@ const signupReducer = (state = initState, action) => {
         lastAction: action.type,
       };
 
+          
+    case signupActions.RESET_SUBMITTED:
+      console.log('signupActions.RESET_SUBMITTED')
+      return {
+        ...state,
+        submitted: false,
+        lastAction: action.type,
+      };
+
     case signupActions.SIGN_UP_FAILED:
       return {
         ...state,

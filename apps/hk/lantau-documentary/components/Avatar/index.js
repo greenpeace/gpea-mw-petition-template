@@ -12,7 +12,7 @@ const TEAMS = [
 	{ image: Team02, name: '黃遂心', role: '攝影師', width: 120, height: 120 },
 	{ image: Team03, name: '葉尚庭', role: '攝影師', width: 120, height: 120 },
 	{ image: Team04, name: '郭子祈', role: '攝影助手', width: 120, height: 120 },
-	{ image: Team05, name: '陳志雲', role: '旁白', width: 120, height: 120 },
+	{ image: Team05, name: '陳志雲', role: '聲音導航', width: 120, height: 120 },
 	{
 		image: Team06,
 		name: '李嘉慧',

@@ -33,6 +33,8 @@ import DonateFAQ from '@components/DonateFAQ';
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
+// Import helpers
+import { useSignupBtnRootMargin } from '@common/utils'; 
 // Import Contents
 import formContent from './form';
 // Import static
@@ -44,16 +46,22 @@ function Index({ submitted = false, strapi: strapiData }) {
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
-	const [ref, inView] = useInView({
-		threshold: 0
-	});
-	// mobile sticky btn show ref
-	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
-	});
 
 	const [isLoaded, setIsLoaded] = useState(false);
 	const FormRef = useRef(null);
+
+	const [signupBtnRef, setSignupBtnRef] = useState(null);
+	const signupBtnRootMargin = useSignupBtnRootMargin(FormRef, signupBtnRef);
+
+	const [ref, inView] = useInView({
+		threshold: 0,
+		rootMargin: signupBtnRootMargin,
+	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
+	});
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -214,7 +222,7 @@ function Index({ submitted = false, strapi: strapiData }) {
 												env={strapi?.donationModuleEnv}
 											/>
 										) : (
-											<SignupForm />
+											<SignupForm setSignupBtnRef={ setSignupBtnRef } />
 										)}
 									</Box>
 									<div ref={ FormBtnref }></div>

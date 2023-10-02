@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
@@ -52,27 +52,34 @@ const MyForm = (props) => {
 		suggestion,
 		numberOfResponses,
 		numberOfTarget,
-		setValues
+		setValues,
+		setSignupBtnRef
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
 	const [progressNumber, setProgressNumber] = useState(0);
 	const themeInterests = theme.interests;
 
+	const btnRef = useRef(null);
 	const [formViewed, setFormViewed] = useState(false);
+
 	useEffect(() => {
-		if(!formViewed){
+		if (!formViewed) {
 			// ga4 event
 			window.dataLayer = window.dataLayer || [];
 
 			window.dataLayer.push({
-				'event': 'custom_event',
-				'event_name' : 'view_form',
-				'event_category': 'petitions',
-				'event_action': 'load'
+				event: 'custom_event',
+				event_name: 'view_form',
+				event_category: 'petitions',
+				event_action: 'load'
 			});
 			setFormViewed(true);
 		}
 	}, [formViewed]);
+
+	useEffect(() => {
+		setSignupBtnRef(btnRef);
+	}, [btnRef]);
 
 	useEffect(() => {
 		let optionYear = [];
@@ -324,29 +331,34 @@ const MyForm = (props) => {
 							</Box>
 
 							<Box>
-							{formContent.label_newsletter && (
-								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-									<Box mr={2} pt={1}>
-										<Checkbox
-											name="OptIn"
-											defaultChecked
-											// colorScheme={`${theme.ProjectName}`}
-											onChange={handleChange}
+								{formContent.label_newsletter && (
+									<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+										<Box mr={2} pt={1}>
+											<Checkbox
+												name="OptIn"
+												defaultChecked
+												// colorScheme={`${theme.ProjectName}`}
+												onChange={handleChange}
+											/>
+										</Box>
+										<Text
+											fontSize="xs"
+											color={'gray.700'}
+											dangerouslySetInnerHTML={{
+												__html: formContent.label_newsletter
+											}}
 										/>
-									</Box>
-									<Text
-										fontSize="xs"
-										color={'gray.700'}
-										dangerouslySetInnerHTML={{
-											__html: formContent.label_newsletter
-										}}
-									/>
-								</Flex>
-							)}
+									</Flex>
+								)}
 							</Box>
 
 							<Box>
-								<Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+								<Button
+									{...OrangeCTA}
+									isLoading={isLoading}
+									type={'submit'}
+									ref={btnRef}
+								>
 									{formContent.submit_text}
 								</Button>
 							</Box>
@@ -357,7 +369,7 @@ const MyForm = (props) => {
 										color={'gray.700'}
 										lineHeight="1.7"
 										dangerouslySetInnerHTML={{
-											__html: formContent.form_remind,
+											__html: formContent.form_remind
 										}}
 									/>
 								</Box>
@@ -392,9 +404,10 @@ const MyEnhancedForm = withFormik({
 		const { submitForm, theme, hiddenFormData, strapi } = props;
 		const isProd = process.env.NODE_ENV === 'production';
 		const fallbackValue = (d) => (d ? d : '');
-		const LeadSource = `Petition - ${capitalize(strapi?.issue?.data?.attributes?.slug) ??
+		const LeadSource = `Petition - ${
+			capitalize(strapi?.issue?.data?.attributes?.slug) ??
 			capitalize(theme.interests)
-			}`;
+		}`;
 
 		const { dummyEndpointURL, websignEndpointURL } =
 			strapi?.market?.data?.attributes;
@@ -404,8 +417,8 @@ const MyEnhancedForm = withFormik({
 				? websignEndpointURL
 				: theme.EndpointURL
 			: dummyEndpointURL !== '' && dummyEndpointURL !== undefined
-				? dummyEndpointURL
-				: process.env.dummyEndpoint;
+			? dummyEndpointURL
+			: process.env.dummyEndpoint;
 
 		const campaignId = isProd
 			? strapi?.campaignId !== '' && strapi.campaignId !== undefined
@@ -428,9 +441,10 @@ const MyEnhancedForm = withFormik({
 			UtmTerm: fallbackValue(hiddenFormData.utm_term),
 			CampaignId: campaignId,
 			LeadSource: LeadSource,
-			[`Petition_Interested_In_${capitalize(strapi?.issue?.data?.attributes?.slug) ??
+			[`Petition_Interested_In_${
+				capitalize(strapi?.issue?.data?.attributes?.slug) ??
 				capitalize(theme.interests)
-				}__c`]: true,
+			}__c`]: true,
 			CompletionURL: completionURL
 		};
 
@@ -450,7 +464,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
 		numberOfResponses: Math.max(
 			parseInt(form.signupNumbers.hk?.NumberOfResponses),
 			parseInt(form.signupNumbers.hk?.NumberOfLeads) +
-			parseInt(form.signupNumbers.hk?.NumberOfContacts)
+				parseInt(form.signupNumbers.hk?.NumberOfContacts)
 		),
 		numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
 		theme: theme.data,

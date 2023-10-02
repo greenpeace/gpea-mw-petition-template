@@ -1,5 +1,5 @@
 {
-	"form_header": "下載《香港の怪生物》電子圖鑑 認識香港豐富的生物多樣性",
+	"form_header": "請即下載<br>《香港の怪生物》<br>本地生態觀賞圖鑑電子書",
 	"form_description": "完成登記後，電子書連結將於 15 分鐘內以電子郵件傳送給你，敬請留意。",
 	"signed_number": "已聯署人數",
 	"label_name": "稱謂",
@@ -20,7 +20,7 @@
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 
-	"submit_text": "立即報名",
+	"submit_text": "立即登記",
 	"mobile_fixed_cta": "立即捐款",
 
 	"mobile_country_code": [
