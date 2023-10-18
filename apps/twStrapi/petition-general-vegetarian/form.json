@@ -1,0 +1,33 @@
+{
+	"form_header": "開啟友善環境的每一天！<br>免費索取《蔬活廚房蔬食食譜》",
+	"form_description": "請留下您的正確聯絡資訊，我們會將電子書寄送到您的電子信箱。",
+	"signed_number": "已索取人數",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電子郵件",
+	"label_phone": "行動電話",
+	"label_phone_optional": "行動電話（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>隱私保護政策</u></a>。",
+
+	"empty_data_alert": "請填寫資料",
+	"empty_select_data_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電子郵件",
+	"invalid_format_alert": "請輸入有效格式",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "立即免費索取",
+	"donate_button": "下一步",
+	"donateURL": "https://cloud.greentw.greenpeace.org/donation-climate-climate?utm_campaign=general&utm_source=greenpeace.org&utm_medium=email&utm_content=tw-lead_conversion-automd-netzeroevent-20230109",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}
