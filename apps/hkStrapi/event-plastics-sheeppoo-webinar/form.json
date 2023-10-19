@@ -1,0 +1,34 @@
+{
+	"form_header": "立即報名免費線上分享會，一起跟着大便妹學環保！",
+	"form_description": "",
+	"signed_number": "已聯署人數",
+	"label_name": "稱謂",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電郵地址",
+	"label_phone": "手提號碼（接收活動SMS提示）",
+	"label_phone_optional": "手提號碼（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_newsletter": "* 登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照個人資料政策與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
+
+	"empty_data_alert": "請填寫資料",
+	"empty_select_data_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電郵地址",
+	"invalid_format_alert": "請輸入有效格式",
+	"minimum_8_characters": "請輸入8位數字",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "立即報名",
+	"mobile_fixed_cta": "立即捐款",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}

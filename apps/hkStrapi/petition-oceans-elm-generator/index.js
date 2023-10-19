@@ -1,4 +1,4 @@
-/** 
+/**
  * Dploy Setting:
  *
  * PROJECT=hkStrapi/petition-oceans-elm-generator
@@ -7,7 +7,7 @@
  * BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/test/petition-oceans-elm-uat
  * ASSETPREFIX=https://api.greenpeace.org.hk/2022/test/petition-oceans-elm-uat/
  * FTP_CONFIG_NAME=api_hk_cloud
-*/
+ */
 
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -58,6 +58,7 @@ function Index({ submitted = false, strapi }) {
 					if (pageType?.toLowerCase() === 'donation') {
 						return (
 							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -79,8 +80,8 @@ function Index({ submitted = false, strapi }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										'<br/>' +
-										strapi?.contentHero?.richContent
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}
@@ -89,6 +90,7 @@ function Index({ submitted = false, strapi }) {
 					} else {
 						return submitted ? (
 							<ThanksBanner
+								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.thankyouHero?.desktopImageURL
@@ -98,13 +100,13 @@ function Index({ submitted = false, strapi }) {
 										media: '(min-width: 48em)',
 										srcset:
 											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
+											strapi?.thankyouHero?.desktopImageURL
 									},
 									{
 										media: '',
 										srcset:
 											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
+											strapi?.thankyouHero?.mobileImageURL
 									}
 								]}
 								content={{
@@ -114,6 +116,7 @@ function Index({ submitted = false, strapi }) {
 							/>
 						) : (
 							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -135,8 +138,8 @@ function Index({ submitted = false, strapi }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										'<br/>' +
-										strapi?.contentHero?.richContent
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}

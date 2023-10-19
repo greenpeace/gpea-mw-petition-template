@@ -18,7 +18,7 @@ import MobileHeroFront from '../../images/mobile/hero_front.png';
 import DesktopHero from '../../images/hero_v2.jpg';
 import DesktopHeroFront from '../../images/hero_front_v2.png';
 
-import subBanner from '../../images/2022_lantau_docu_poster_b.jpg';
+import subBanner from '../../images/202309_Lantau_documentary_relaunch_poster-03.jpg';
 import moviePoster from '../../images/GP_lantau_poster4.jpg';
 import appLogo from '../../images/app_logo.png';
 
@@ -170,8 +170,8 @@ function HeroSection({
 								className="mb-6 text-xl leading-relaxed md:mb-10  md:text-2xl"
 								style={{ textShadow: '0 0 4px rgba(0,0,0,0.45)' }}
 							>
-								<span className="mb-2 md:block">立即單次捐款100元</span>
-								<span className="md:inline-block">收看紀錄片</span>
+								<span className="mb-2 md:block">免費登記觀看</span>
+								<span className="md:inline-block">認識本地生態</span>
 								<span className="block md:inline-block md:pl-2">
 									支持堅守大嶼工作
 								</span>
@@ -187,13 +187,13 @@ function HeroSection({
 									_hover={{ bg: 'orange.300', color: '#FFF' }}
 									onClick={() =>
 										router.push(
-											`/?p=donation`,
-											`${window.location.href.split('?')[0]}/?p=donation`,
+											`/?p=petition`,
+											`${window.location.href.split('?')[0]}/?p=petition`,
 											{ shallow: true }
 										)
 									}
 								>
-									捐款收看
+									立即觀看
 								</Button>
 							</div>
 							<div className="flex-1">
@@ -243,21 +243,21 @@ function HeroSection({
 						<h1 className="mb-2 text-[28px] font-bold">大嶼山生態紀錄片</h1>
 
 						<p className="text-[18px] font-medium">
-							綠色和平與本地生態團隊耗時大半年製作
+							歷時大半年製作的生態盛會
 						</p>
 
-						<div className="grid grid-cols-3 font-medium leading-loose md:max-w-[360px]">
-							<span>片長：25分鐘</span>
-							<span>編導：馮漢城</span>
-							<span>配音：陳志雲</span>
+						<div className="font-medium leading-loose md:max-w-[460px]">
+							<span className="inline-block mr-2">片長：25分鐘</span> 
+							<span className="inline-block mr-2">編導：馮漢城</span> 
+							<span className="inline-block mr-2">聲音導航：陳志雲</span>
 						</div>
 
 						<div className="flex flex-col gap-4 py-4">
 							<p className="text-[16px] leading-relaxed">
-								山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
+								《山海大嶼》是由綠色和平歷時大半年製作，與本地得獎攝製班底合作出品的大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。
 							</p>
 							<p className="text-[16px] leading-relaxed">
-								全片包含航拍、水底拍攝、夜視拍攝等，務求將大嶼山生態最真實一面搬到螢幕上。我們亦邀請到本地資深傳媒人陳志雲先生為本片配音，全方位帶領大眾了解大嶼山富生物多樣性、值得香港人驕傲的一面。
+								全片包含航拍、水底拍攝、夜視拍攝等，務求將大嶼山生態最真實一面呈現螢幕上。我們亦邀請到本地資深傳媒人陳志雲先生為本片聲音導航，全方位帶領您了解大嶼山豐富的生物多樣性、值得香港人驕傲的一面。
 							</p>
 						</div>
 
@@ -291,7 +291,7 @@ function HeroSection({
 					/>
 					<AspectRatio w="100%" ratio={16 / 9}>
 						<iframe
-							src="https://www.youtube.com/embed/n1Tk6VHVfK0"
+							src="https://www.youtube.com/embed/KeMRrYCfKFI"
 							allowFullScreen
 						/>
 					</AspectRatio>

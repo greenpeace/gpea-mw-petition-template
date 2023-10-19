@@ -1,3 +1,16 @@
+
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=tw/drtv
+MARKET=tw
+PROJECT_NAME=drtv
+BASEPATH=/htdocs/2022/donation/drtv-bankin-followup
+ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/drtv-bankin-followup/
+FTP_CONFIG_NAME=ftp_tw 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=drtv-bankin-followup
+*/
 import React, { useEffect, useRef } from 'react';
 import HeroBanner from '@components/Banner/hero';
 import ThanksBanner from '@components/Banner/thanks';

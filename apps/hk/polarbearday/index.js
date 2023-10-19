@@ -11,7 +11,7 @@ FTP_CONFIG_NAME=api_hk_cloud
 CLOUD_PAGE_NAME=zh-hk.2022.arctic.polarbearday_webinar.event.na
 */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
@@ -20,6 +20,9 @@ import PetitionFooter from '@containers/petitionFooter';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Avatar, AvatarGroup, Box, Flex, Text } from '@chakra-ui/react';
+// Import helpers
+import { useSignupBtnRootMargin } from '@common/utils'; 
+
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -43,17 +46,23 @@ function Index({ status, theme, setFormContent, signup }) {
   const { FirstName } = signup;
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
-	// mobile sticky btn show ref
-	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
-	});
 
 	const myRef = useRef(null);
   const speaker1Ref = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
+
+  const [signupBtnRef, setSignupBtnRef] = useState(null);
+	const signupBtnRootMargin = useSignupBtnRootMargin(myRef, signupBtnRef);
+
+	const [ref, inView] = useInView({
+		threshold: 0,
+		rootMargin: signupBtnRootMargin,
+	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0,
+		rootMargin: '-24px 0px 80px 0px'
+	});
 
   useEffect(() => {
     setFormContent(formContent);
@@ -130,7 +139,7 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
+                  {submitted ? <DonateForm /> : <SignupForm setSignupBtnRef={ setSignupBtnRef } />}
                 </Box>
                 <div ref={ FormBtnref }></div>
               </FormContainer>

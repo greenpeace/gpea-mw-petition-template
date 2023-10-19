@@ -11,7 +11,7 @@ FTP_CONFIG_NAME=api_hk_cloud
 CLOUD_PAGE_NAME=zh-hk.2022.general.virtual_tour_around_asia.registration.event.na
 */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -29,6 +29,8 @@ import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/WebinarForm';
+// Import helpers
+import { useSignupBtnRootMargin } from '@common/utils'; 
 // Import Contents
 import formContent from './form';
 import SEO from './SEO';
@@ -43,19 +45,24 @@ function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
   const { FirstName } = signup;
 
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
-	// mobile sticky btn show ref
-	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
-	});
-
 	const mobileForm = useRef(null);
 
   useEffect(() => {
     setFormContent(formContent);
   }, []);
+
+  const [signupBtnRef, setSignupBtnRef] = useState(null);
+	const signupBtnRootMargin = useSignupBtnRootMargin(mobileForm, signupBtnRef);
+
+	const [ref, inView] = useInView({
+		threshold: 0,
+		rootMargin: signupBtnRootMargin,
+	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
+	});
 
   useEffect(() => {
     if (submitted) {
@@ -75,7 +82,7 @@ function Index({ status, theme, setFormContent, signup }) {
       <SEO />
       {submitted ? (
         <ThanksBanner
-          bgImage={heroBannerImage}
+          defaultImage={heroBannerImage}
           content={{
             title: `${
               FirstName ? FirstName : '綠色和平支持者'
@@ -98,7 +105,7 @@ function Index({ status, theme, setFormContent, signup }) {
         />
       ) : (
         <HeroBanner
-          bgImage={heroBannerImage}
+          defaultImage={heroBannerImage}
           content={{
             title: '請即報名：<br/>眼睛去旅行<br/>港台日韓四地連線',
 
@@ -136,7 +143,7 @@ function Index({ status, theme, setFormContent, signup }) {
                       env={'production'}
                     />
                   ) : (
-                    <SignupForm />
+                    <SignupForm setSignupBtnRef={ setSignupBtnRef } />
                   )}
                 </Box>
                 <div ref={ FormBtnref }></div>
