@@ -142,9 +142,9 @@ function Index({ submitted = false, strapi }) {
 								]}
 								content={{
 									title: strapi?.thankyouHero?.richContent,
-									// title: `${
-									// 	TYName ? TYName : '綠色和平支持者'
-									// }，${strapi?.thankyouHero?.richContent}`,
+									title: `${TYName ? TYName : '綠色和平支持者'}，${
+										strapi?.thankyouHero?.richContent
+									}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
