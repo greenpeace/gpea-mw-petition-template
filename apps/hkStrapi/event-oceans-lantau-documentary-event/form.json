@@ -1,0 +1,56 @@
+{
+	"form_header": "立即生成堅守大嶼意見書，表達您對明日大嶼的疑慮！",
+	"form_description": "完成登記後，生成的意見書將於 15 分鐘內以電子郵件傳送給您，敬請留意，收到意見書後請轉寄至政府提供的電郵地址。",
+	"signed_number": "已聯署人數",
+	"label_name": "稱謂",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電郵地址",
+	"label_phone": "手提號碼",
+	"label_phone_optional": "手提號碼（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_opinion": "請輸入您的個人意見，令每一封意見書有更獨特的聲音。",
+	"label_time": "選擇你參與的放映會場次：", 
+	"label_plus": "你會攜帶的同行：",
+	"label_plus_kids": "小童（16歲或以下）：",
+	"label_plus_friends": "成人（只限會員的朋友）：",
+	"label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。綠色和平並不會將您的個人資料包含在由系統生成的意見書中。",
+	"options_time": [
+		{"label": "12:00-12:30", "value": "A_time"},
+		{"label": "13:00-13:30", "value": "B_time"},
+		{"label": "14:00-15:30 (with sharing)", "value": "C_time"},
+		{"label": "16:00-17:30 (with sharing)", "value": "D_time"}
+	],
+	"options_kids": [
+		{"label": "0", "value": "0"},
+		{"label": "1", "value": "1"},
+		{"label": "2", "value": "2"}
+	],
+	"options_friends": [
+		{"label": "0", "value": "0"},
+		{"label": "1", "value": "1"},
+		{"label": "2", "value": "2"}
+	],
+
+	"empty_data_alert": "請填寫資料",
+	"empty_select_data_alert": "請選擇",
+	"empty_checkbox_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電郵地址",
+	"invalid_format_alert": "請輸入有效格式",
+	"minimum_8_characters": "請輸入8位數字",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "立即生成意見書",
+	"mobile_fixed_cta": "立即捐款",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}
