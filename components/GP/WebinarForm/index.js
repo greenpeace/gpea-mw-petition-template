@@ -306,6 +306,7 @@ const MyForm = (props) => {
 									formContent={formContent}
 									handleChange={handleChange}
 									handleBlur={handleBlur}
+                  setFieldValue={setFieldValue}
 								/>
 							)}
 
@@ -365,6 +366,7 @@ const MyEnhancedForm = withFormik({
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
+    console.log(values)
     const { submitForm, theme, hiddenFormData } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');

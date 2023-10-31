@@ -25,10 +25,13 @@ const CustomFields = ({
 	formContent,
 	handleChange,
 	handleBlur,
-	handleSubmit
+	handleSubmit,
+	setFieldValue
 }) => {
-	const [plusKids, setPlusKids] = useState('');
-	const [plusFriends, setPlusFriends] = useState('');
+
+	const [campaignData2, setCampaignData2] = useState("");
+	const [campaignData3, setCampaignData3] = useState("");
+
 	return (
 		<>
 			<Box w={'100%'}>
@@ -62,17 +65,24 @@ const CustomFields = ({
 				<Text fontSize={'sm'} px={2} color="var(--error-900)">
 					{errors.Options_Kids}
 				</Text>
-				<RadioGroup>
+				<Input type="text" name="CampaignData2__c" onChange={handleChange} hidden />
+				<Input type="text" name="CampaignData3__c" onChange={handleChange} hidden />
+				<RadioGroup
+					onChange={(e) => {
+						setFieldValue("CampaignData2__c", `同行人士（16歲或以下）：${e}`)
+					}}
+				>
 					{formContent.options_kids &&
 						formContent.options_kids.map((d, index) => (
 							<Radio
-								name="CampaignData2__c"
+								name="CampaignData4__c"
 								key={index}
 								value={d.value}
 								size={'sm'}
 								w={'auto'}
 								mr={'10px'}
 								onChange={handleChange}
+
 							>
 								{d.label}
 							</Radio>
@@ -84,12 +94,16 @@ const CustomFields = ({
 					{errors.Options_Friends}
 				</Text>
 
-				<RadioGroup>
+				<RadioGroup
+					onChange={(e) => {
+						setFieldValue("CampaignData3__c", `同行人士（16歲以上）：${e}`)
+					}}
+				>
 					{formContent.options_friends &&
 						formContent.options_friends.map((d, index) => (
 							<Radio
 								key={index}
-								name="CampaignData3__c"
+								name="CampaignData5__c"
 								value={d.value}
 								size={'sm'}
 								w={'auto'}
@@ -100,6 +114,8 @@ const CustomFields = ({
 							</Radio>
 						))}
 				</RadioGroup>
+
+
 			</Box>
 		</>
 	);

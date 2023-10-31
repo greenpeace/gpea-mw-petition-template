@@ -15,12 +15,12 @@
 	"label_plus": "請選擇同行人數：",
 	"label_plus_kids": "同行人士（16歲或以下）：",
 	"label_plus_friends": "同行人士（16歲以上）：*只限月捐會員",
-	"label_newsletter": "*登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
+	"label_newsletter": "* 登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
 	"options_time": [
-		{"label": "12:00-12:30", "value": "time_slot1"},
-		{"label": "13:00-13:30", "value": "time_slot2"},
-		{"label": "14:00-15:30 *設映後分享會", "value": "time_slot3"},
-		{"label": "16:00-17:30 *設映後分享會", "value": "time_slot4"}
+		{"label": "12:00-12:30", "value": "場次 time_slot1: 12:00 - 12:30"},
+		{"label": "13:00-13:30", "value": "場次 time_slot2: 13:00 - 13:30"},
+		{"label": "14:00-15:30 *設映後分享會", "value": "場次 time_slot3: 14:00 - 15:30"},
+		{"label": "16:00-17:30 *設映後分享會", "value": "場次 time_slot4: 16:00 - 17:30"}
 	],
 	"options_kids": [
 		{"label": "0", "value": "0"},
