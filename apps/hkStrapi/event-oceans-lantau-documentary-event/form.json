@@ -1,6 +1,6 @@
 {
-	"form_header": "立即生成堅守大嶼意見書，表達您對明日大嶼的疑慮！",
-	"form_description": "完成登記後，生成的意見書將於 15 分鐘內以電子郵件傳送給您，敬請留意，收到意見書後請轉寄至政府提供的電郵地址。",
+	"form_header": "立即報名，預留《山海大嶼》放映會座位",
+	"form_description": "完成登記後，確認電郵將於 15 分鐘內以電子郵件傳送給你，敬請留意。",
 	"signed_number": "已聯署人數",
 	"label_name": "稱謂",
 	"label_first_name": "名字",
@@ -11,16 +11,16 @@
 	"label_year_of_birth": "出生年份",
 	"label_year_of_birth_optional": "出生年份（選填）",
 	"label_opinion": "請輸入您的個人意見，令每一封意見書有更獨特的聲音。",
-	"label_time": "選擇你參與的放映會場次：", 
-	"label_plus": "你會攜帶的同行：",
-	"label_plus_kids": "小童（16歲或以下）：",
-	"label_plus_friends": "成人（只限會員的朋友）：",
-	"label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。綠色和平並不會將您的個人資料包含在由系統生成的意見書中。",
+	"label_time": "請選擇你想參與的放映場次：", 
+	"label_plus": "請選擇同行人數：",
+	"label_plus_kids": "同行人士（16歲或以下）：",
+	"label_plus_friends": "同行人士（16歲以上）：*只限月捐會員",
+	"label_newsletter": "*登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
 	"options_time": [
-		{"label": "12:00-12:30", "value": "A_time"},
-		{"label": "13:00-13:30", "value": "B_time"},
-		{"label": "14:00-15:30 (with sharing)", "value": "C_time"},
-		{"label": "16:00-17:30 (with sharing)", "value": "D_time"}
+		{"label": "12:00-12:30", "value": "time_slot1"},
+		{"label": "13:00-13:30", "value": "time_slot2"},
+		{"label": "14:00-15:30 *設映後分享會", "value": "time_slot3"},
+		{"label": "16:00-17:30 *設映後分享會", "value": "time_slot4"}
 	],
 	"options_kids": [
 		{"label": "0", "value": "0"},
@@ -42,7 +42,7 @@
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 
-	"submit_text": "立即生成意見書",
+	"submit_text": "立即報名",
 	"mobile_fixed_cta": "立即捐款",
 
 	"mobile_country_code": [

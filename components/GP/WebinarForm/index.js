@@ -53,6 +53,8 @@ const MyForm = (props) => {
     numberOfResponses,
     numberOfTarget,
     setSignupBtnRef,
+    CustomFields,
+		CustomRules
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -296,6 +298,17 @@ const MyForm = (props) => {
                 </FormControl>
               </Box>
 
+              {CustomFields && (
+								<CustomFields 
+									errors={errors} 
+									touched={touched} 
+									values={values}
+									formContent={formContent}
+									handleChange={handleChange}
+									handleBlur={handleBlur}
+								/>
+							)}
+
               {formContent.label_newsletter && (
                 <Box>
                   <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
@@ -347,9 +360,8 @@ const MyEnhancedForm = withFormik({
   }),
 
   validate: async (values, props) => {
-    const { formContent } = props;
-
-    return validation(values, formContent);
+    const { formContent, CustomRules } = props;
+		return validation(values, formContent, CustomRules);
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {

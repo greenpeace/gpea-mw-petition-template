@@ -408,9 +408,7 @@ const MyEnhancedForm = withFormik({
 	}),
 
 	validate: async (values, props) => {
-		console.log(props)
 		const { formContent, CustomRules } = props;
-
 		return validation(values, formContent, CustomRules);
 	},
 

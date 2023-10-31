@@ -40,7 +40,7 @@ export function validation(values, formContent, customRules) {
       }
     }
   }
-  console.log("customRules",customRules(values, formContent))
+
   if (customRules) {
     errors = {
       ...errors,

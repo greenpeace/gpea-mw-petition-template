@@ -1,5 +1,5 @@
-export function validation(values, formContent) {
-  const errors = {};
+export function validation(values, formContent, customRules) {
+  let errors = {};
 
   if (!values.Email) {
     errors.Email = formContent.empty_data_alert;
@@ -34,6 +34,13 @@ export function validation(values, formContent) {
       if (!regex.test(values.MobilePhone)) {
         errors.MobilePhone = formContent.invalid_format_alert;
       }
+    }
+  }
+
+  if (customRules) {
+    errors = {
+      ...errors,
+      ...customRules(values, formContent)
     }
   }
 

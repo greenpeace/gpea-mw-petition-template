@@ -5,8 +5,10 @@ PROJECT=hkStrapi/event-oceans-lantau-documentary-event
 MARKET=hk
 PROJECT_NAME=event-oceans-lantau-documentary-event
 BASEPATH=/web/api.greenpeace.org.hk/htdocs/2023/page/event-oceans-lantau-documentary-event
-SSETPREFIX=https://api.greenpeace.org.hk/2023/page/event-oceans-lantau-documentary-event/
+ASSETPREFIX=https://api.greenpeace.org.hk/2023/page/event-oceans-lantau-documentary-event/
 FTP_CONFIG_NAME=api_hk_cloud
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=event-oceans-lantau_documentary_event
  */
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -25,7 +27,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/HKForm';
+import SignupForm from '@components/GP/WebinarForm';
 import CustomFields from './CustomFields';
 import CustomRules from './CustomRules';
 // Import Strapi content components
