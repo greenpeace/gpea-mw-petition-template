@@ -16,6 +16,7 @@
 	"label_counties": "居住縣市",
 	"label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/' target='_blank'>隱私保護政策</a>。",
 	"empty_data_alert": "請填寫資料",
+	"empty_phone_alert": "請填手機號碼，確保接收專案相關通知",
 	"empty_select_data_alert": "請選擇",
 	"invalid_email_alert": "請填上有效電子郵件",
 	"invalid_format_alert": "請輸入有效格式",

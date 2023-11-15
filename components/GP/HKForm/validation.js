@@ -20,7 +20,7 @@ export function validation(values, formContent, customRules) {
   }
 
   if (!values.MobilePhone) {
-    errors.MobilePhone = formContent.empty_data_alert;
+    errors.MobilePhone = formContent?.empty_phone_alert || formContent.empty_data_alert;
   }
 
   if (!values.Birthdate) {
@@ -31,12 +31,12 @@ export function validation(values, formContent, customRules) {
     if (values.MobileCountryCode === '852') {
       const regex = /^[2-9]{1}[0-9]{7}$/i;
       if (!regex.test(values.MobilePhone)) {
-        errors.MobilePhone = formContent.invalid_format_alert;
+        errors.MobilePhone = formContent?.empty_phone_alert || formContent.invalid_format_alert;
       }
     } else if (values.MobileCountryCode === '853') {
       const regex = /^[6]{1}[0-9]{7}$/i;
       if (!regex.test(values.MobilePhone)) {
-        errors.MobilePhone = formContent.invalid_format_alert;
+        errors.MobilePhone = formContent?.empty_phone_alert || formContent.invalid_format_alert;
       }
     }
   }
