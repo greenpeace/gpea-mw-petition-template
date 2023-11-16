@@ -1,0 +1,36 @@
+{
+	"form_header": "即刻報名《Before You Eat》紀錄片放映",
+	"form_description": "讓綠色和平專案主任與專家帶您深入了解漁工人權問題以及臺灣遠洋漁業的現況！",
+	"form_remind": "限量 90 位（歡迎會員攜帶乙位親友參加）",
+	"signed_number": "全球已連署人數",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電子郵件",
+	"label_phone": "行動電話",
+	"label_phone_optional": "行動電話（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_newsletter": "",
+
+	"empty_data_alert": "請填寫資料",
+	"empty_phone_alert": "請填手機號碼，確保接收專案相關通知",
+	"empty_select_data_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電子郵件",
+	"invalid_format_alert": "請輸入有效格式",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "立刻報名",
+	"mobile_fixed_cta": "立即捐助",
+	"donate_button": "下一步",
+	"donateURL": "",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}
