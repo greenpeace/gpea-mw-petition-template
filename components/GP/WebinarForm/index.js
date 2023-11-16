@@ -377,7 +377,8 @@ const MyEnhancedForm = withFormik({
       window?.location.href,
       EXCLUDE_URL_PARAMETERS,
     );
-
+    
+    
     const formData = {
       ...hiddenFormData,
       ...values,
@@ -391,6 +392,8 @@ const MyEnhancedForm = withFormik({
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: completionURL,
     };
+
+    if (values.MobilePhone.indexOf("0") == 0) formData.MobilePhone = values.MobilePhone.replace(/^0+/, '')
 
     setSubmitting(true);
     submitForm(formData, endPoint);

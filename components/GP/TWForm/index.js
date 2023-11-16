@@ -538,9 +538,10 @@ const MyEnhancedForm = withFormik({
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
-
+		
 		if (values.Counties) formData.CampaignData1__c = values.Counties;
 		if (values.Namelist) formData.CampaignData2__c = values.Namelist;
+		if (values.MobilePhone.indexOf("0") == 0) formData.MobilePhone = values.MobilePhone.replace(/^0+/, '')
 		if (customMapFields) {
 			customMapFields.forEach((val) => {
 				formData[val.to] = values[val.from];

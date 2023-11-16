@@ -460,6 +460,8 @@ const MyEnhancedForm = withFormik({
 			CompletionURL: completionURL
 		};
 
+		if (values.MobilePhone.indexOf("0") == 0) formData.MobilePhone = values.MobilePhone.replace(/^0+/, '')
+
 		setSubmitting(true);
 		submitForm(formData, endpointURL);
 	},
