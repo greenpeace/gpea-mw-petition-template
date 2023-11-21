@@ -226,12 +226,17 @@ function Index({ submitted = false, strapi }) {
 													strapi?.donationModuleCampaignId ??
 													''
 												}
-												isUAT={true}
+												isUAT={false}
 												env={strapi?.donationModuleEnv}
 											/>
 										)
 									) : (
-										<SignupForm setSignupBtnRef={setSignupBtnRef} />
+										<SignupForm
+											customEndpoint={
+												'https://counter.greenpeace.org/signups?id=globalplasticstreaty'
+											}
+											setSignupBtnRef={setSignupBtnRef}
+										/>
 									)}
 								</Box>
 								<div ref={FormBtnref}></div>
