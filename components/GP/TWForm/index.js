@@ -57,7 +57,8 @@ const MyForm = (props) => {
 		customEndpoint,
 		customOfTarget,
 		customMapFields, //an array for copy values to preset CampaignData fileds. ex: [{"from":"BirthDate", "to":"CampaignData3__c"}]
-		setSignupBtnRef
+		setSignupBtnRef,
+		hasMKT=true,
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
 	const [progressNumber, setProgressNumber] = useState(0);
@@ -408,10 +409,10 @@ const MyForm = (props) => {
 								</Box>
 							</HStack>
 						)}
-						{formContent.label_newsletter && (
+						{(formContent.label_newsletter && hasMKT) && (
 							<Box>
 								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-									<Box flex={1} mr={2} pt={1}>
+									<Box flex={0} mr={2} pt={1}>
 										<Checkbox
 											id="OptIn"
 											name="OptIn"
@@ -426,6 +427,27 @@ const MyForm = (props) => {
 											__html: formContent.label_newsletter
 										}}
 									></Text>
+								</Flex>
+							</Box>
+						)}
+
+						{(formContent.label_newsletter && !hasMKT) && (
+							<Box>
+								<Checkbox
+									id="OptIn"
+									name="OptIn"
+									onChange={handleChange}
+									defaultChecked
+									display={"none"}
+								/>
+								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+									<Text
+										fontSize="xs"
+										color={'gray.700'}
+										dangerouslySetInnerHTML={{
+											__html: formContent.label_newsletter
+										}}
+									/>
 								</Flex>
 							</Box>
 						)}
@@ -467,6 +489,21 @@ const MyForm = (props) => {
 								{formContent.submit_text}
 							</Button>
 						</Box>
+						
+						{formContent.form_remind && (
+							<Box>
+								<Text
+									fontSize="xs"
+									color={'gray.700'}
+									lineHeight="1.7"
+									dangerouslySetInnerHTML={{
+										__html: formContent.form_remind,
+									}}
+								/>
+							</Box>
+						)}
+
+
 					</Stack>
 				</Form>
 			</Stack>
@@ -538,9 +575,10 @@ const MyEnhancedForm = withFormik({
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
-
+		
 		if (values.Counties) formData.CampaignData1__c = values.Counties;
 		if (values.Namelist) formData.CampaignData2__c = values.Namelist;
+		if (values.MobilePhone.indexOf("0") == 0) formData.MobilePhone = values.MobilePhone.replace(/^0+/, '')
 		if (customMapFields) {
 			customMapFields.forEach((val) => {
 				formData[val.to] = values[val.from];

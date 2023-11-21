@@ -25,7 +25,7 @@ export function validation(values, formContent) {
   }
 
   if (!values.MobilePhone) {
-    errors.MobilePhone = formContent.empty_data_alert;
+    errors.MobilePhone = formContent?.empty_phone_alert || formContent.empty_data_alert;
   }
 
   if (!values.Birthdate) {
@@ -55,7 +55,7 @@ export function validation(values, formContent) {
     if (phoneReg6 || phoneReg7 || phoneReg8) {
       return errors;
     } else {
-      errors.MobilePhone = formContent.invalid_format_alert;
+      errors.MobilePhone = formContent?.empty_phone_alert || formContent.invalid_format_alert;
     }
   }
 

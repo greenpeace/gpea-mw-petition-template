@@ -1,13 +1,13 @@
 /** 
-Dploy Setting:
-PROJECT=twStrapi/petition-mitigate-climatechange
+ * Dploy Setting:
+PROJECT=twStrapi/offline-screening-bye
 MARKET=tw
-PROJECT_NAME=petition-mitigate-climatechange
-BASEPATH=/htdocs/2023/petition/petition-mitigate-climatechange
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-mitigate-climatechange/
+PROJECT_NAME=offline-screening-bye
+BASEPATH=/htdocs/2023/event/offline-screening-bye
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/event/offline-screening-bye/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=zh-tw.2022.climate.mitigate-climatechange.signup
+CLOUD_PAGE_NAME=zh-tw.2023.offline-screening-bye
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -44,7 +44,6 @@ function Index({ submitted = false, strapi }) {
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 
 	const FormRef = useRef(null);
-
 	const [signupBtnRef, setSignupBtnRef] = useState(null);
 	const signupBtnRootMargin = useSignupBtnRootMargin(FormRef, signupBtnRef);
 
@@ -151,35 +150,63 @@ function Index({ submitted = false, strapi }) {
 								}}
 							/>
 						) : (
-							<HeroBanner
-								removeMask={strapi?.contentHero?.removeMask}
+							<ThanksBanner
+								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
-									strapi?.contentHero?.desktopImageURL
+									strapi?.thankyouHero?.desktopImageURL
 								}
 								imageSrcset={[
 									{
 										media: '(min-width: 48em)',
 										srcset:
 											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
+											strapi?.thankyouHero?.desktopImageURL
 									},
 									{
 										media: '',
 										srcset:
 											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
+											strapi?.thankyouHero?.mobileImageURL
 									}
 								]}
 								content={{
-									title: theme?.params?.headline_prefix
-										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
-										: strapi?.contentHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
+									//title: strapi?.thankyouHero?.richContent,
+									title: `${TYName ? TYName : '綠色和平支持者'}，${
+										strapi?.thankyouHero?.richContent
+									}`,
+									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
+							// <HeroBanner
+							// 	removeMask={strapi?.contentHero?.removeMask}
+							// 	defaultImage={
+							// 		theme?.params?.hero_image_desktop ||
+							// 		strapi?.contentHero?.desktopImageURL
+							// 	}
+							// 	imageSrcset={[
+							// 		{
+							// 			media: '(min-width: 48em)',
+							// 			srcset:
+							// 				theme?.params?.hero_image_desktop ||
+							// 				strapi?.contentHero?.desktopImageURL
+							// 		},
+							// 		{
+							// 			media: '',
+							// 			srcset:
+							// 				theme?.params?.hero_image_mobile ||
+							// 				strapi?.contentHero?.mobileImageURL
+							// 		}
+							// 	]}
+							// 	content={{
+							// 		title: theme?.params?.headline_prefix
+							// 			? theme?.params?.headline_prefix +
+							// 			  '<br/>' +
+							// 			  strapi?.contentHero?.richContent
+							// 			: strapi?.contentHero?.richContent,
+							// 		description: strapi?.contentHero?.richContentParagraph
+							// 	}}
+							// />
 						);
 					}
 				})()}
@@ -197,9 +224,13 @@ function Index({ submitted = false, strapi }) {
 										/>
 									) : (
 										<StrapiDynamicBlocks
-											blocks={'contentBlocks'}
+											blocks={'thankyouBlocks'}
 											strapi={strapi}
 										/>
+										// <StrapiDynamicBlocks
+										// 	blocks={'contentBlocks'}
+										// 	strapi={strapi}
+										// />
 									)}
 								</>
 							</ContentContainer>
@@ -232,6 +263,13 @@ function Index({ submitted = false, strapi }) {
 										)
 									) : (
 										<SignupForm setSignupBtnRef={setSignupBtnRef} />
+									)}
+									{submitted && pageType?.toLowerCase() === 'petition' && (
+										<div
+											dangerouslySetInnerHTML={{
+												__html: `<iframe style="overflow: hidden;" src="https://counter.greenpeace.org/count?id=deepseamining" width="1" height="1" frameborder="0" scrolling="no"></iframe>`
+											}}
+										></div>
 									)}
 								</Box>
 								<div ref={FormBtnref}></div>

@@ -53,6 +53,8 @@ const MyForm = (props) => {
     numberOfResponses,
     numberOfTarget,
     setSignupBtnRef,
+    CustomFields,
+		CustomRules
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
@@ -296,6 +298,18 @@ const MyForm = (props) => {
                 </FormControl>
               </Box>
 
+              {CustomFields && (
+								<CustomFields 
+									errors={errors} 
+									touched={touched} 
+									values={values}
+									formContent={formContent}
+									handleChange={handleChange}
+									handleBlur={handleBlur}
+                  setFieldValue={setFieldValue}
+								/>
+							)}
+
               {formContent.label_newsletter && (
                 <Box>
                   <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
@@ -347,12 +361,12 @@ const MyEnhancedForm = withFormik({
   }),
 
   validate: async (values, props) => {
-    const { formContent } = props;
-
-    return validation(values, formContent);
+    const { formContent, CustomRules } = props;
+		return validation(values, formContent, CustomRules);
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
+    console.log(values)
     const { submitForm, theme, hiddenFormData } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
@@ -363,7 +377,8 @@ const MyEnhancedForm = withFormik({
       window?.location.href,
       EXCLUDE_URL_PARAMETERS,
     );
-
+    
+    
     const formData = {
       ...hiddenFormData,
       ...values,
@@ -377,6 +392,8 @@ const MyEnhancedForm = withFormik({
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: completionURL,
     };
+
+    if (values.MobilePhone.indexOf("0") == 0) formData.MobilePhone = values.MobilePhone.replace(/^0+/, '')
 
     setSubmitting(true);
     submitForm(formData, endPoint);

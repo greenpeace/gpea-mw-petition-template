@@ -194,7 +194,7 @@ function Index({ submitted = false, strapi }) {
 													theme?.params?.donation_module_campaign ??
 													strapi?.donationModuleCampaign
 												}
-												isUAT={true}
+												isUAT={false}
 												campaignId={
 													theme?.params?.campaignId ??
 													strapi?.donationModuleCampaignId ??

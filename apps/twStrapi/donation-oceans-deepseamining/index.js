@@ -1,14 +1,14 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=twStrapi/donation-general-adhoc
+PROJECT=twStrapi/donation-oceans-deepseamining
 MARKET=tw
-PROJECT_NAME=donation-general-adhoc
-BASEPATH=/htdocs/2022/donation/donation-general-adhoc
-ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-general-adhoc/
+PROJECT_NAME=donation-oceans-deepseamining
+BASEPATH=/htdocs/2023/donation/donation-oceans-deepseamining
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-oceans-deepseamining/
 FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=donation-general-adhoc
+CLOUD_PAGE_NAME=donation-oceans-deepseamining
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -49,6 +49,7 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0,
 		rootMargin: '-70px 0px 120px 0px'
 	});
+
 	const FormRef = useRef(null);
 
 	submitted = useSelector((state) => state?.status?.submitted);
@@ -56,6 +57,8 @@ function Index({ submitted = false, strapi }) {
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
+
+	// const { FirstName } = signup;
 
 	// get utm_source
 	const hiddenForm = useSelector((state) => state?.hiddenForm);
@@ -101,10 +104,10 @@ function Index({ submitted = false, strapi }) {
 							}
 						]}
 						content={{
-							//title: strapi?.thankyouHero?.richContent,
-							title: `${TYName ? TYName : '綠色和平支持者'}，${
-								strapi?.thankyouHero?.richContent
-							}`,
+							title: strapi?.thankyouHero?.richContent,
+							// title: `${
+							// 	TYName ? TYName : '綠色和平支持者'
+							// }，${strapi?.thankyouHero?.richContent}`,
 							description: strapi?.thankyouHero?.richContentParagraph
 						}}
 					/>

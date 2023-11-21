@@ -225,7 +225,7 @@ function Index({ submitted = false, strapi }) {
 													strapi?.donationModuleCampaignId ??
 													''
 												}
-												isUAT={true}
+												isUAT={false}
 												env={strapi?.donationModuleEnv}
 											/>
 										)
@@ -234,7 +234,7 @@ function Index({ submitted = false, strapi }) {
 											customEndpoint={
 												'https://counter.greenpeace.org/signups?id=deepseamining'
 											}
-											customOfTarget={1000000}
+											// customOfTarget={1000000}
 											setSignupBtnRef={setSignupBtnRef}
 										/>
 									)}
