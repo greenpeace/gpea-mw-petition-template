@@ -47,7 +47,8 @@ function Index({ submitted = false, strapi }) {
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
 	});
 	const FormRef = useRef(null);
 
@@ -169,6 +170,7 @@ function Index({ submitted = false, strapi }) {
 												theme?.params?.donation_module_campaign ??
 												strapi?.donationModuleCampaign
 											}
+											isUAT={false}
 											campaignId={theme?.params?.campaignId ?? ''}
 											env={strapi?.donationModuleEnv}
 										/>
@@ -176,14 +178,14 @@ function Index({ submitted = false, strapi }) {
 										<SignupForm />
 									)}
 								</Box>
-								<div ref={ FormBtnref }></div>
+								<div ref={FormBtnref}></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
+			<StrapiFixedButton target={FormRef} targetInView={btnInView} />
 		</>
 	);
 }

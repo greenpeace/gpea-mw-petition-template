@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Center } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 
-const FixedCTA = ({ onClick, text = '立即捐款' }) => {
+const FixedCTA = ({ onClick, text = '立即觀看' }) => {
 	return (
 		<Center
 			zIndex={99}

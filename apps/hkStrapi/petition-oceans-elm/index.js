@@ -32,6 +32,8 @@ import SignupForm from '@components/GP/HKForm';
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
+// Import helpers
+import { useSignupBtnRootMargin } from '@common/utils';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -41,19 +43,25 @@ function Index({ submitted = false, strapi }) {
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
-	const [ref, inView] = useInView({
-		threshold: 0
-	});
-	// mobile sticky btn show ref
-	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
-	});
 
 	const FormRef = useRef(null);
 
+	const [signupBtnRef, setSignupBtnRef] = useState(null);
+	const signupBtnRootMargin = useSignupBtnRootMargin(FormRef, signupBtnRef);
+
+	const [ref, inView] = useInView({
+		threshold: 0,
+		rootMargin: signupBtnRootMargin
+	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
+	});
+
 	// get utm_source
-  const hiddenForm = useSelector((state) => state?.hiddenForm);
-  const { AsiaPayResult } = hiddenForm?.data;
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { AsiaPayResult } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -62,14 +70,14 @@ function Index({ submitted = false, strapi }) {
 	}, [dispatch]);
 
 	// pass signer / donor name to TY Banner
-  const [TYName, setTYName] = useState();
-	
+	const [TYName, setTYName] = useState();
+
 	useEffect(() => {
 		// get donation module firstname
 		window.__greenpeace__ = window.__greenpeace__ || {};
-		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
 			setTYName(data.firstName);
-		}
+		};
 	});
 	useEffect(() => {
 		setTYName(signup?.data?.FirstName);
@@ -83,6 +91,7 @@ function Index({ submitted = false, strapi }) {
 					if (pageType?.toLowerCase() === 'donation') {
 						return (
 							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -114,6 +123,7 @@ function Index({ submitted = false, strapi }) {
 					} else {
 						return submitted ? (
 							<ThanksBanner
+								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.thankyouHero?.desktopImageURL
@@ -123,25 +133,26 @@ function Index({ submitted = false, strapi }) {
 										media: '(min-width: 48em)',
 										srcset:
 											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
+											strapi?.thankyouHero?.desktopImageURL
 									},
 									{
 										media: '',
 										srcset:
 											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
+											strapi?.thankyouHero?.mobileImageURL
 									}
 								]}
 								content={{
 									// title: strapi?.thankyouHero?.richContent,
-									title: `${
-										TYName ? TYName : '綠色和平支持者'
-									}，${strapi?.thankyouHero?.richContent}`,
+									title: `${TYName ? TYName : '綠色和平支持者'}，${
+										strapi?.thankyouHero?.richContent
+									}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
 						) : (
 							<HeroBanner
+								removeMask={strapi?.contentHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
@@ -211,7 +222,9 @@ function Index({ submitted = false, strapi }) {
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
 								<Box ref={ref}>
-									{pageType?.toLowerCase() === 'donation' || submitted || AsiaPayResult ? (
+									{pageType?.toLowerCase() === 'donation' ||
+									submitted ||
+									AsiaPayResult ? (
 										<DonationModule
 											market={
 												strapi?.market?.data?.attributes?.market === 'Hong Kong'
@@ -231,17 +244,24 @@ function Index({ submitted = false, strapi }) {
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (
-										<SignupForm />
+										<SignupForm setSignupBtnRef={setSignupBtnRef} />
 									)}
 								</Box>
-								<div ref={ FormBtnref }></div>
+								<div ref={FormBtnref}></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={ (pageType?.toLowerCase() === 'donation' || submitted) ? btnInView : inView} />
+			<StrapiFixedButton
+				target={FormRef}
+				targetInView={
+					pageType?.toLowerCase() === 'donation' || submitted
+						? btnInView
+						: inView
+				}
+			/>
 		</>
 	);
 }

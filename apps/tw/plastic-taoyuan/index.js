@@ -11,7 +11,7 @@ FTP_CONFIG_NAME=ftp_tw
 CLOUD_PAGE_NAME=zh-tw.2022.plastics.plastics-taoyuan.signup
 */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import HeroBanner from '@components/Banner/hero';
 import ThanksBanner from '@components/Banner/thanks';
 import PageContainer from '@containers/pageContainer';
@@ -29,6 +29,8 @@ import { Box, Flex, Icon } from '@chakra-ui/react';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaTwitter } from 'react-icons/fa';
 import FixedCTA from '@components/GP/FixedCTA';
 import SEO from './SEO';
+// Import helpers
+import { useSignupBtnRootMargin } from '@common/utils'; 
 import formContent from './form';
 import * as formActions from 'store/actions/action-types/form-actions';
 
@@ -41,17 +43,24 @@ function Index({ status, theme, setFormContent, signup }) {
 
   const scrollToRef = (ref) =>
     ref.current?.scrollIntoView({ behavior: 'smooth' });
-  const { ref, inView } = useInView({
-    /* Optional options */
-    threshold: 0,
-  });
-	// mobile sticky btn show ref
-	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
-	});
 
-	const myRef = useRef(null);
+  const myRef = useRef(null);
   const executeScroll = () => scrollToRef(myRef);
+
+  const [signupBtnRef, setSignupBtnRef] = useState(null);
+  const signupBtnRootMargin = useSignupBtnRootMargin(myRef, signupBtnRef);
+
+  const [ref, inView] = useInView({
+    threshold: 0,
+    rootMargin: signupBtnRootMargin,
+  });
+  // mobile sticky btn show ref
+  const [FormBtnref, btnInView] = useInView({
+    threshold: 0,
+    rootMargin: '-24px 0px 80px 0px'
+  });
+
+	
 
   useEffect(() => {
     setFormContent(formContent);
@@ -93,7 +102,7 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm />}
+                  {submitted ? <DonateForm /> : <SignupForm setSignupBtnRef={ setSignupBtnRef } />}
                 </Box>
                 <div ref={ FormBtnref }></div>
               </FormContainer>

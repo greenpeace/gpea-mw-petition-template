@@ -67,20 +67,20 @@ function Index({ submitted = false, strapi }) {
 			}
 		}
 	}, [router]);
-  
-  // get utm_source
-  const hiddenForm = useSelector((state) => state?.hiddenForm);
-  const { utm_source } = hiddenForm?.data;
 
-  // pass signer / donor name to TY Banner
-  const [TYName, setTYName] = useState();
-	
+	// get utm_source
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
+
+	// pass signer / donor name to TY Banner
+	const [TYName, setTYName] = useState();
+
 	useEffect(() => {
 		// get donation module firstname
 		window.__greenpeace__ = window.__greenpeace__ || {};
-		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
 			setTYName(data.firstName);
-		}
+		};
 	});
 	useEffect(() => {
 		setTYName(signup?.data?.FirstName);
@@ -115,9 +115,9 @@ function Index({ submitted = false, strapi }) {
 								]}
 								content={{
 									// title: strapi?.thankyouHero?.richContent,
-									title: `${
-										TYName ? TYName : '綠色和平支持者'
-									}，${strapi?.thankyouHero?.richContent}`,
+									title: `${TYName ? TYName : '綠色和平支持者'}，${
+										strapi?.thankyouHero?.richContent
+									}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
@@ -200,26 +200,27 @@ function Index({ submitted = false, strapi }) {
 									<Box ref={ref}>
 										{pageType?.toLowerCase() === 'donation' || submitted ? (
 											utm_source !== 'dd' && (
-											<DonationModule
-												isUAT={true}
-												market={
-													strapi?.market?.data?.attributes?.market ===
-													'Hong Kong'
-														? 'HK'
-														: 'TW'
-												}
-												language={strapi?.donationModuleLanguage}
-												campaign={
-													theme?.params?.donation_module_campaign ??
-													strapi?.donationModuleCampaign
-												}
-												campaignId={
-													theme?.params?.campaignId ??
-													strapi?.donationModuleCampaignId ??
-													''
-												}
-												env={strapi?.donationModuleEnv}
-											/>)
+												<DonationModule
+													isUAT={false}
+													market={
+														strapi?.market?.data?.attributes?.market ===
+														'Hong Kong'
+															? 'HK'
+															: 'TW'
+													}
+													language={strapi?.donationModuleLanguage}
+													campaign={
+														theme?.params?.donation_module_campaign ??
+														strapi?.donationModuleCampaign
+													}
+													campaignId={
+														theme?.params?.campaignId ??
+														strapi?.donationModuleCampaignId ??
+														''
+													}
+													env={strapi?.donationModuleEnv}
+												/>
+											)
 										) : (
 											<SignupForm />
 										)}

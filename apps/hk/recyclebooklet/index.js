@@ -11,7 +11,7 @@ FTP_CONFIG_NAME=api_hk_cloud
 CLOUD_PAGE_NAME=zh-hk.2022.plastics.recycle_booklet.registration.event.na
 */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import OverflowWrapper from '@containers/overflowWrapper';
 import ContentContainer from '@containers/contentContainer';
@@ -21,6 +21,8 @@ import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
+// Import helpers
+import { useSignupBtnRootMargin } from '@common/utils'; 
 
 import formContent from './form';
 import SEO from './SEO';
@@ -43,15 +45,20 @@ function Index({ status, theme, setFormContent, signup }) {
   const { submitted } = status;
   const { FirstName } = signup;
 
-  const [ref, inView] = useInView({
-    threshold: 0,
-  });
+	const mobileForm = useRef(null);
+
+  const [signupBtnRef, setSignupBtnRef] = useState(null);
+	const signupBtnRootMargin = useSignupBtnRootMargin(mobileForm, signupBtnRef);
+
+	const [ref, inView] = useInView({
+		threshold: 0,
+		rootMargin: signupBtnRootMargin,
+	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
 	});
-
-	const mobileForm = useRef(null);
 
   useEffect(() => {
     setFormContent(formContent);
@@ -124,7 +131,7 @@ function Index({ status, theme, setFormContent, signup }) {
                       env={'production'}
                     />
                   ) : (
-                    <SignupForm />
+                    <SignupForm setSignupBtnRef={ setSignupBtnRef } />
                   )}
                 </Box>
                 <div ref={ FormBtnref }></div>

@@ -11,7 +11,7 @@ FTP_CONFIG_NAME=api_hk_cloud
 CLOUD_PAGE_NAME=zh-hk.2022.arctic.savethearctic.mindwise_version.signup
 */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import HeroBanner from '@components/Banner/hero';
 import ThanksBanner from '@components/Banner/thanks';
 import PageContainer from '@containers/pageContainer';
@@ -26,6 +26,8 @@ import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
+// Import helpers
+import { useSignupBtnRootMargin } from '@common/utils'; 
 
 import Content from './Content';
 import Thankyou from './Thankyou';
@@ -42,17 +44,23 @@ function Index({ status, theme, setFormContent, signup }) {
 
 	const scrollToRef = (ref) =>
 		ref.current?.scrollIntoView({ behavior: 'smooth' });
-	const { ref, inView } = useInView({
-		threshold: 0
-	});
-	// mobile sticky btn show ref
-	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
-	});
 
 	const mobileForm = useRef(null);
 	const myRef = useRef(null);
 	const executeScroll = () => scrollToRef(myRef);
+
+	const [signupBtnRef, setSignupBtnRef] = useState(null);
+	const signupBtnRootMargin = useSignupBtnRootMargin(mobileForm, signupBtnRef);
+
+	const [ref, inView] = useInView({
+		threshold: 0,
+		rootMargin: signupBtnRootMargin,
+	});
+	// mobile sticky btn show ref
+	const [FormBtnref, btnInView] = useInView({
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
+	});
 
 	useEffect(() => {
 		setFormContent(formContent);
@@ -101,7 +109,7 @@ function Index({ status, theme, setFormContent, signup }) {
 											env={'production'}
 										/>
 									) : (
-										<SignupForm />
+										<SignupForm setSignupBtnRef={ setSignupBtnRef } />
 									)}
 								</Box>
 								<div ref={ FormBtnref }></div>

@@ -1,0 +1,43 @@
+{
+	"form_header": "臺灣漁業的名聲，需要您連署維護！",
+	"form_description": "您的連署將成為阻止非法漁業與人權迫害的一份力量，攜手守護海洋生態與打造永續漁業！",
+	"form_remind": "",
+	"signed_number": "已連署人數",
+
+	"label_yes": "是",
+	"label_no": "否",
+	"label_name": "稱謂",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電子郵件",
+	"label_phone": "行動電話",
+	"label_phone_optional": "手提號碼（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考隱私保護政策。",
+
+	"empty_data_alert": "請填寫資料",
+	"empty_phone_alert": "請填手機號碼，確保接收專案相關通知",
+	"empty_select_data_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電子郵件",
+	"invalid_format_alert": "請輸入有效格式",
+	"minimum_8_characters": "請輸入8位數字",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "立即連署",
+	"thanks_title": "",
+	"thanks_ask": "",
+	"thanks_content": "",
+	"share_button": "分享出去",
+	"donate_button": "立即捐助",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}

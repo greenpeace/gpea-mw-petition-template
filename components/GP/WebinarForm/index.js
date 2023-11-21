@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Form, withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
@@ -52,12 +52,16 @@ const MyForm = (props) => {
     suggestion,
     numberOfResponses,
     numberOfTarget,
+    setSignupBtnRef,
+    CustomFields,
+		CustomRules
   } = props;
   const [birthDateYear, setBirthDateYear] = useState([]);
   const [progressNumber, setProgressNumber] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure(true);
   const themeInterests = theme.interests;
-
+  
+  const btnRef = useRef(null);
   const [formViewed, setFormViewed] = useState(false);
 	useEffect(() => {
 		if(!formViewed){
@@ -73,7 +77,11 @@ const MyForm = (props) => {
 			setFormViewed(true);
 		}
 	}, [formViewed]);
-
+  
+  useEffect(() => {
+		setSignupBtnRef(btnRef);
+	}, [btnRef]);
+  
   useEffect(() => {
     let optionYear = [];
     function fetchOptionYear() {
@@ -290,6 +298,18 @@ const MyForm = (props) => {
                 </FormControl>
               </Box>
 
+              {CustomFields && (
+								<CustomFields 
+									errors={errors} 
+									touched={touched} 
+									values={values}
+									formContent={formContent}
+									handleChange={handleChange}
+									handleBlur={handleBlur}
+                  setFieldValue={setFieldValue}
+								/>
+							)}
+
               {formContent.label_newsletter && (
                 <Box>
                   <Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
@@ -306,7 +326,7 @@ const MyForm = (props) => {
               )}
 
               <Box>
-                <Button {...OrangeCTA} isLoading={isLoading} type={'submit'}>
+                <Button {...OrangeCTA} isLoading={isLoading} type={'submit'} ref={ btnRef }>
                   {formContent.submit_text}
                 </Button>
               </Box>
@@ -341,12 +361,12 @@ const MyEnhancedForm = withFormik({
   }),
 
   validate: async (values, props) => {
-    const { formContent } = props;
-
-    return validation(values, formContent);
+    const { formContent, CustomRules } = props;
+		return validation(values, formContent, CustomRules);
   },
 
   handleSubmit: async (values, { setSubmitting, props }) => {
+    console.log(values)
     const { submitForm, theme, hiddenFormData } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
@@ -357,7 +377,8 @@ const MyEnhancedForm = withFormik({
       window?.location.href,
       EXCLUDE_URL_PARAMETERS,
     );
-
+    
+    
     const formData = {
       ...hiddenFormData,
       ...values,
@@ -371,6 +392,8 @@ const MyEnhancedForm = withFormik({
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: completionURL,
     };
+
+    if (values.MobilePhone.indexOf("0") == 0) formData.MobilePhone = values.MobilePhone.replace(/^0+/, '')
 
     setSubmitting(true);
     submitForm(formData, endPoint);

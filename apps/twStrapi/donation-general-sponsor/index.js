@@ -47,7 +47,8 @@ function Index({ submitted = false, strapi }) {
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
-		threshold: 0
+		threshold: 0,
+		rootMargin: '-70px 0px 120px 0px'
 	});
 
 	const FormRef = useRef(null);
@@ -59,18 +60,18 @@ function Index({ submitted = false, strapi }) {
 	}, [dispatch]);
 
 	// get utm_source
-  const hiddenForm = useSelector((state) => state?.hiddenForm);
-  const { utm_source } = hiddenForm?.data;
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
 
-  // pass signer / donor name to TY Banner
-  const [TYName, setTYName] = useState();
-	
+	// pass signer / donor name to TY Banner
+	const [TYName, setTYName] = useState();
+
 	useEffect(() => {
 		// get donation module firstname
 		window.__greenpeace__ = window.__greenpeace__ || {};
-		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
+		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
 			setTYName(data.firstName);
-		}
+		};
 	});
 	useEffect(() => {
 		setTYName(signup?.data?.FirstName);
@@ -103,9 +104,9 @@ function Index({ submitted = false, strapi }) {
 						]}
 						content={{
 							// title: strapi?.thankyouHero?.richContent,
-							title: `${
-								TYName ? TYName : '綠色和平支持者'
-							}，${strapi?.thankyouHero?.richContent}`,
+							title: `${TYName ? TYName : '綠色和平支持者'}，${
+								strapi?.thankyouHero?.richContent
+							}`,
 							description: strapi?.thankyouHero?.richContentParagraph
 						}}
 					/>
@@ -181,32 +182,35 @@ function Index({ submitted = false, strapi }) {
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
 										utm_source !== 'dd' && (
-										<DonationModule
-											market={
-												strapi?.market?.data?.attributes?.market === 'Hong Kong'
-													? 'HK'
-													: 'TW'
-											}
-											language={strapi?.donationModuleLanguage}
-											campaign={
-												theme?.params?.donation_module_campaign ??
-												strapi?.donationModuleCampaign
-											}
-											campaignId={theme?.params?.campaignId ?? ''}
-											env={strapi?.donationModuleEnv}
-										/>)
+											<DonationModule
+												market={
+													strapi?.market?.data?.attributes?.market ===
+													'Hong Kong'
+														? 'HK'
+														: 'TW'
+												}
+												language={strapi?.donationModuleLanguage}
+												campaign={
+													theme?.params?.donation_module_campaign ??
+													strapi?.donationModuleCampaign
+												}
+												isUAT={false}
+												campaignId={theme?.params?.campaignId ?? ''}
+												env={strapi?.donationModuleEnv}
+											/>
+										)
 									) : (
 										<SignupForm />
 									)}
 								</Box>
-								<div ref={ FormBtnref }></div>
+								<div ref={FormBtnref}></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
+			<StrapiFixedButton target={FormRef} targetInView={btnInView} />
 		</>
 	);
 }
