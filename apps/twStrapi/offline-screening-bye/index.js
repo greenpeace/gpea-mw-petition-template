@@ -150,35 +150,63 @@ function Index({ submitted = false, strapi }) {
 								}}
 							/>
 						) : (
-							<HeroBanner
-								removeMask={strapi?.contentHero?.removeMask}
+							<ThanksBanner
+								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
-									strapi?.contentHero?.desktopImageURL
+									strapi?.thankyouHero?.desktopImageURL
 								}
 								imageSrcset={[
 									{
 										media: '(min-width: 48em)',
 										srcset:
 											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
+											strapi?.thankyouHero?.desktopImageURL
 									},
 									{
 										media: '',
 										srcset:
 											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
+											strapi?.thankyouHero?.mobileImageURL
 									}
 								]}
 								content={{
-									title: theme?.params?.headline_prefix
-										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
-										: strapi?.contentHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
+									//title: strapi?.thankyouHero?.richContent,
+									title: `${TYName ? TYName : '綠色和平支持者'}，${
+										strapi?.thankyouHero?.richContent
+									}`,
+									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
+							// <HeroBanner
+							// 	removeMask={strapi?.contentHero?.removeMask}
+							// 	defaultImage={
+							// 		theme?.params?.hero_image_desktop ||
+							// 		strapi?.contentHero?.desktopImageURL
+							// 	}
+							// 	imageSrcset={[
+							// 		{
+							// 			media: '(min-width: 48em)',
+							// 			srcset:
+							// 				theme?.params?.hero_image_desktop ||
+							// 				strapi?.contentHero?.desktopImageURL
+							// 		},
+							// 		{
+							// 			media: '',
+							// 			srcset:
+							// 				theme?.params?.hero_image_mobile ||
+							// 				strapi?.contentHero?.mobileImageURL
+							// 		}
+							// 	]}
+							// 	content={{
+							// 		title: theme?.params?.headline_prefix
+							// 			? theme?.params?.headline_prefix +
+							// 			  '<br/>' +
+							// 			  strapi?.contentHero?.richContent
+							// 			: strapi?.contentHero?.richContent,
+							// 		description: strapi?.contentHero?.richContentParagraph
+							// 	}}
+							// />
 						);
 					}
 				})()}
@@ -196,9 +224,13 @@ function Index({ submitted = false, strapi }) {
 										/>
 									) : (
 										<StrapiDynamicBlocks
-											blocks={'contentBlocks'}
+											blocks={'thankyouBlocks'}
 											strapi={strapi}
 										/>
+										// <StrapiDynamicBlocks
+										// 	blocks={'contentBlocks'}
+										// 	strapi={strapi}
+										// />
 									)}
 								</>
 							</ContentContainer>
@@ -230,10 +262,7 @@ function Index({ submitted = false, strapi }) {
 											/>
 										)
 									) : (
-										<SignupForm
-											
-											setSignupBtnRef={setSignupBtnRef}
-										/>
+										<SignupForm setSignupBtnRef={setSignupBtnRef} />
 									)}
 									{submitted && pageType?.toLowerCase() === 'petition' && (
 										<div
