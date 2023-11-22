@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Script from 'next/script';
-import { createInstance, HackleProvider } from '@hackler/react-sdk';
 
 const StrapiSEO = ({ strapi }) => {
 	return (
@@ -18,31 +17,6 @@ const StrapiSEO = ({ strapi }) => {
         `
 				}}
 			/>
-
-			<Script strategy="afterInteractive">
-				{(function () {
-					const hackleClient = createInstance(
-						'yWTbqKSdoOA6ECdlxFLkEBPj9Nl9SbES'
-					);
-					hackleClient.onReady(function () {
-						console.log('hackleClient: ', hackleClient);
-						// const remoteConfig = hackleClient.remoteConfig();
-						// //const parameterValue = remoteConfig.get(parameterKey, defaultValue)
-						// const ctaText_get = remoteConfig.get('cta_text', 'defaultValue');
-						// const ctaText = document.getElementById('cta_text');
-						// ctaText.textContent = ctaText_get;
-						// const bgImg_get = remoteConfig.get('bg_img', 'defaultValue');
-						// const bgImg = document.getElementById('bg_img');
-						// bgImg.setAttribute('src', bgImg_get);
-						// const bgImgABtest_get = remoteConfig.get(
-						// 	'bgImg_abtest',
-						// 	'defaultValue'
-						// );
-						// const bgImgABtest = document.getElementById('bgImg_ABtest');
-						// bgImgABtest.style.backgroundImage = "url('bgImgABtest_get')";
-					});
-				})()}
-			</Script>
 			{/* title */}
 			<title>{strapi?.seo?.metaTitle}</title>
 			<meta property="og:title" content={strapi?.seo?.metaTitle} />

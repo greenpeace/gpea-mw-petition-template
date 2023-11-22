@@ -35,6 +35,9 @@ import {
 	paragraphProps
 } from '@common/styles/components/contentStyle';
 
+// Hackle: 追蹤事件
+import { useTrack } from '@hackler/react-sdk';
+
 const MyForm = (props) => {
 	const {
 		signup,
@@ -58,7 +61,8 @@ const MyForm = (props) => {
 		customOfTarget,
 		customMapFields, //an array for copy values to preset CampaignData fileds. ex: [{"from":"BirthDate", "to":"CampaignData3__c"}]
 		setSignupBtnRef,
-		hasMKT=true,
+		hasMKT = true,
+		ctaText
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
 	const [progressNumber, setProgressNumber] = useState(0);
@@ -84,7 +88,7 @@ const MyForm = (props) => {
 	}, [formViewed]);
 
 	useEffect(() => {
-		if(setSignupBtnRef) setSignupBtnRef(btnRef);
+		if (setSignupBtnRef) setSignupBtnRef(btnRef);
 	}, [btnRef]);
 
 	useEffect(() => {
@@ -177,6 +181,14 @@ const MyForm = (props) => {
 				}
 			});
 		}
+	};
+
+	// Hackle: 追蹤事件函式
+	const track = useTrack();
+	const event = { key: 'ND_click_test_event' };
+	const NDHackleClick = () => {
+		track(event);
+		alert('Hackle event is tracked!');
 	};
 
 	return (
@@ -409,7 +421,7 @@ const MyForm = (props) => {
 								</Box>
 							</HStack>
 						)}
-						{(formContent.label_newsletter && hasMKT) && (
+						{formContent.label_newsletter && hasMKT && (
 							<Box>
 								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
 									<Box flex={0} mr={2} pt={1}>
@@ -431,14 +443,14 @@ const MyForm = (props) => {
 							</Box>
 						)}
 
-						{(formContent.label_newsletter && !hasMKT) && (
+						{formContent.label_newsletter && !hasMKT && (
 							<Box>
 								<Checkbox
 									id="OptIn"
 									name="OptIn"
 									onChange={handleChange}
 									defaultChecked
-									display={"none"}
+									display={'none'}
 								/>
 								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
 									<Text
@@ -485,11 +497,12 @@ const MyForm = (props) => {
 								isLoading={isLoading}
 								type={'submit'}
 								ref={btnRef}
+								onClick={NDHackleClick}
 							>
-								{formContent.submit_text}
+								{ctaText}
 							</Button>
 						</Box>
-						
+
 						{formContent.form_remind && (
 							<Box>
 								<Text
@@ -497,13 +510,11 @@ const MyForm = (props) => {
 									color={'gray.700'}
 									lineHeight="1.7"
 									dangerouslySetInnerHTML={{
-										__html: formContent.form_remind,
+										__html: formContent.form_remind
 									}}
 								/>
 							</Box>
 						)}
-
-
 					</Stack>
 				</Form>
 			</Stack>
@@ -575,10 +586,11 @@ const MyEnhancedForm = withFormik({
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
-		
+
 		if (values.Counties) formData.CampaignData1__c = values.Counties;
 		if (values.Namelist) formData.CampaignData2__c = values.Namelist;
-		if (values.MobilePhone.indexOf("0") == 0) formData.MobilePhone = values.MobilePhone.replace(/^0+/, '')
+		if (values.MobilePhone.indexOf('0') == 0)
+			formData.MobilePhone = values.MobilePhone.replace(/^0+/, '');
 		if (customMapFields) {
 			customMapFields.forEach((val) => {
 				formData[val.to] = values[val.from];

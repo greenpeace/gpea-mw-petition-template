@@ -22,6 +22,9 @@ import {
 	twTagManagerArgs
 } from '@common/constants/tagManagerArgs';
 
+// Hackle: 分配Group A/B
+import { useVariationDetail } from '@hackler/react-sdk';
+
 /* Determine the returned project index by env variable */
 const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
 /*
@@ -71,14 +74,14 @@ const schemaEndpoint = `${themeEndpointURL}?q={"Market":"${envProjectMarket}"}`;
 		}
   } 
 };*/
-
 function Index({
 	setTheme,
 	themeData,
 	strapi,
 	setSignupNumbers,
 	setWebStatus,
-	setSignFormData
+	setSignFormData,
+	hackleClient // Hackle: 拿props
 }) {
 	const router = useRouter();
 	const dispatch = useDispatch();
@@ -241,6 +244,49 @@ function Index({
 		setPrepared(true);
 	}, []);
 
+	const [ctaText, setCtaText] = useState(''); // Hackle: Parameter Key
+	const userTest = {
+		// Hackle: 單純用來測試A/B的參數有沒有分配到不同使用者
+		userA: {
+			id: 'A',
+			userId: 'A',
+			deviceId: 'A'
+		},
+		userB: {
+			id: 'B',
+			userId: 'B',
+			deviceId: 'B'
+		},
+		userC: {
+			id: 'C',
+			userId: 'C',
+			deviceId: 'C'
+		},
+		userD: {
+			id: 'D',
+			userId: 'D',
+			deviceId: 'D'
+		},
+		userE: {
+			id: 'E',
+			userId: 'E',
+			deviceId: 'E'
+		},
+		userF: {
+			id: 'F',
+			userId: 'F',
+			deviceId: 'F'
+		}
+	};
+	const user = hackleClient.setUser(userTest.userA); // Hackle: 可以設定使用者資料，也有預設的函式可以使用（https://docs-en.hackle.io/docs/react-user-info）
+	const decision = useVariationDetail(12); // Hackle: 設定Experiment Key（該A/B test的代碼）
+
+	// Hackle: 不用useEffect包的話會有render loop
+	useEffect(() => {
+		const ctaTextVal = decision.get('cta_text', 'defaultValue'); // Hackle: 設定Experiment Key（該A/B test的代碼），當hackle後台代入失敗時，後面的自訂參數（ex: 'defaultValue'）會替代上去
+		setCtaText(ctaTextVal); // Hackle: 將parameter value代入state
+	}, []);
+
 	return (
 		<>
 			<DynamicSeoComp strapi={strapi} />
@@ -258,7 +304,13 @@ function Index({
 				</Script>
 			)}
 
-			{prepared && <DynamicComponent strapi={strapi} themeData={themeData} />}
+			{prepared && (
+				<DynamicComponent
+					strapi={strapi}
+					themeData={themeData}
+					ctaText={ctaText}
+				/>
+			)}
 		</>
 	);
 }
