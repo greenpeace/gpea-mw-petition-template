@@ -26,6 +26,8 @@ import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/TWForm';
+// import new layout components
+import MainHeading from '@components/ResponsiveBanner/main-heading';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
@@ -36,7 +38,7 @@ import { useSignupBtnRootMargin } from '@common/utils';
 import formContent from './form';
 // Import static
 
-function Index({ submitted = false, strapi }) {
+function Index({ submitted = false, strapi, hackle }) {
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
@@ -77,6 +79,9 @@ function Index({ submitted = false, strapi }) {
 		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
 			setTYName(data.firstName);
 		};
+		// setting hackle demo: change cta btn text by group A/B
+		const ctaText = hackle.get('cta_text', 'default');
+		formContent.submit_text = ctaText;
 	});
 	useEffect(() => {
 		setTYName(signup?.data?.FirstName);
@@ -85,7 +90,131 @@ function Index({ submitted = false, strapi }) {
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
-			<Box>
+			{hackle.variation === 'B' ? (
+				<Box className='layout-1col'>
+					{submitted ? (
+						<MainHeading
+							defaultImage={
+								theme?.params?.hero_image_desktop ||
+								strapi?.thankyouHero?.desktopImageURL
+							}
+							imageSrcset={[
+								{
+									media: '(min-width: 48em)',
+									srcset:
+										theme?.params?.hero_image_desktop ||
+										strapi?.thankyouHero?.desktopImageURL
+								},
+								{
+									media: '',
+									srcset:
+										theme?.params?.hero_image_mobile ||
+										strapi?.thankyouHero?.mobileImageURL
+								}
+							]}
+							content={{
+								//title: strapi?.thankyouHero?.richContent,
+								title: `${TYName ? TYName : '綠色和平支持者'}，${
+									strapi?.thankyouHero?.richContent
+								}`,
+								description: strapi?.thankyouHero?.richContentParagraph
+							}}
+						/>
+					) : (
+						<MainHeading
+							defaultImage={
+								theme?.params?.hero_image_desktop ||
+								strapi?.contentHero?.desktopImageURL
+							}
+							imageSrcset={[
+								{
+									media: '(min-width: 48em)',
+									srcset:
+										theme?.params?.hero_image_desktop ||
+										strapi?.contentHero?.desktopImageURL
+								},
+								{
+									media: '',
+									srcset:
+										theme?.params?.hero_image_mobile ||
+										strapi?.contentHero?.mobileImageURL
+								}
+							]}
+							content={{
+								title: theme?.params?.headline_prefix
+									? theme?.params?.headline_prefix +
+										'<br/>' +
+										strapi?.contentHero?.richContent
+									: strapi?.contentHero?.richContent,
+								description: strapi?.contentHero?.richContentParagraph
+							}}
+						/>
+					)}
+					
+					<ContentContainer issue={strapi?.issue?.data?.attributes?.slug} layout={'1col'}>
+						{submitted ? (
+							<StrapiDynamicBlocks
+								className={'layout-1col'}
+								blocks={'thankyouBlocks'}
+								strapi={strapi}
+							/>
+						) : (
+							<StrapiDynamicBlocks
+								className={'layout-1col'}
+								blocks={'contentBlocks'}
+								strapi={strapi}
+							/>
+						)}
+
+						<Box flex={1} ref={FormRef} py={'4rem'}>
+							<FormContainer>
+								<Box ref={ref}>
+									{pageType?.toLowerCase() === 'donation' || submitted ? (
+										utm_source !== 'dd' && (
+											<DonationModule
+												market={
+													strapi?.market?.data?.attributes?.market ===
+													'Hong Kong'
+														? 'HK'
+														: 'TW'
+												}
+												language={strapi?.donationModuleLanguage}
+												campaign={
+													theme?.params?.donation_module_campaign ??
+													strapi?.donationModuleCampaign
+												}
+												campaignId={
+													theme?.params?.campaignId ??
+													strapi?.donationModuleCampaignId ??
+													''
+												}
+												customUrl={'https://change.greenpeace.org.tw/2023/test/test-donation-module-hackle/main.js'}
+												isUAT={false}
+												env={'test'}
+											/>
+										)
+									) : (
+										<SignupForm
+											setSignupBtnRef={setSignupBtnRef}
+										/>
+									)}
+									{submitted && pageType?.toLowerCase() === 'petition' && (
+										<div
+											dangerouslySetInnerHTML={{
+												__html: `<iframe style="overflow: hidden;" src="https://counter.greenpeace.org/count?id=deepseamining" width="1" height="1" frameborder="0" scrolling="no"></iframe>`
+											}}
+										></div>
+									)}
+								</Box>
+								<div ref={FormBtnref}></div>
+							</FormContainer>
+						</Box>
+						
+					</ContentContainer>
+				</Box>
+			) : (
+				<>
+					<Box>
 				{(() => {
 					if (pageType?.toLowerCase() === 'donation') {
 						return (
@@ -225,8 +354,9 @@ function Index({ submitted = false, strapi }) {
 													strapi?.donationModuleCampaignId ??
 													''
 												}
+												customUrl={'https://change.greenpeace.org.tw/2023/test/test-donation-module-hackle/main.js'}
 												isUAT={false}
-												env={strapi?.donationModuleEnv}
+												env={'test'}
 											/>
 										)
 									) : (
@@ -253,6 +383,9 @@ function Index({ submitted = false, strapi }) {
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
+				</>
+			)}
+			
 			<StrapiFixedButton
 				target={FormRef}
 				targetInView={

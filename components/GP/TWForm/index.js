@@ -35,9 +35,6 @@ import {
 	paragraphProps
 } from '@common/styles/components/contentStyle';
 
-// Hackle: 追蹤事件
-import { useTrack } from '@hackler/react-sdk';
-
 const MyForm = (props) => {
 	const {
 		signup,
@@ -83,6 +80,16 @@ const MyForm = (props) => {
 				event_category: 'petitions',
 				event_action: 'load'
 			});
+			if(window.__greenpeace__.sendHackleTrack){
+				// Hackle: 送給 hackle 跟 ga4 一樣的 event 資料
+				window.__greenpeace__.sendHackleTrack({
+						event: 'custom_event',
+						event_name: 'view_form',
+						event_category: 'petitions',
+						event_action: 'load',
+						
+				})
+			}
 			setFormViewed(true);
 		}
 	}, [formViewed]);
@@ -182,15 +189,6 @@ const MyForm = (props) => {
 			});
 		}
 	};
-
-	// Hackle: 追蹤事件函式
-	const track = useTrack();
-	const event = { key: 'ND_click_test_event' };
-	const NDHackleClick = () => {
-		track(event);
-		alert('Hackle event is tracked!');
-	};
-
 	return (
 		<Box py="8" px="4">
 			<Stack spacing="4">
@@ -497,9 +495,8 @@ const MyForm = (props) => {
 								isLoading={isLoading}
 								type={'submit'}
 								ref={btnRef}
-								onClick={NDHackleClick}
 							>
-								{ctaText}
+								{formContent.submit_text}
 							</Button>
 						</Box>
 
