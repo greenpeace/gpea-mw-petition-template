@@ -190,7 +190,7 @@ function Index({ submitted = false, strapi, hackle }) {
 												}
 												customUrl={'https://change.greenpeace.org.tw/2023/test/test-donation-module-hackle/main.js'}
 												isUAT={false}
-												env={'test'}
+												env={strapi?.donationModuleEnv}
 											/>
 										)
 									) : (
