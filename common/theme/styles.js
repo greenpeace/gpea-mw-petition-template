@@ -57,6 +57,14 @@ const styles = {
 			fontSize: { base: '16px' },
 			whiteSpace: 'pre-line',
 			textAlign: 'justify'
+		},
+		'.layout-1col .strapi-content': {
+			p: {
+				fontSize: { base: '20px' }
+			},
+			li: {
+				fontSize: { base: '20px' }
+			}
 		}
 	}
 };
