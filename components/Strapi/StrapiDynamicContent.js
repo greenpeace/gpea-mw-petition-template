@@ -30,22 +30,22 @@ const StrapiDynamicBlocks = ({
 		?.filter((content) => {
 			// filter the content of group a/b
 			let pass = true;
-			const groupA =
-				'<div class="raw-html-embed"><p hidden=""> group a </p></div>';
-			const groupB =
-				'<div class="raw-html-embed"><p hidden=""> group b </p></div>';
+			const groupA = content?.richContent?.includes('<div class="raw-html-embed"><p hidden=""> group a </p></div>');
+				// '<div class="raw-html-embed"><p hidden=""> group a </p></div>';
+			const groupB = content?.richContent?.includes('<div class="raw-html-embed"><p hidden=""> group b </p></div>');
+				// '<div class="raw-html-embed"><p hidden=""> group b </p></div>';
 			if (
-				!content?.richContent?.includes(groupA) &&
-				!content?.richContent?.includes(groupB)
+				!groupA &&
+				!groupB
 			) {
 				pass = true;
 			} else if (
-				content?.richContent?.includes(groupA) &&
+				groupA &&
 				hackle.variation === 'A'
 			) {
 				pass = true;
 			} else if (
-				content?.richContent?.includes(groupB) &&
+				groupB &&
 				hackle.variation === 'B'
 			) {
 				pass = true;

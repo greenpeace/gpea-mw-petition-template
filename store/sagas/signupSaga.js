@@ -35,8 +35,10 @@ export function* submitForm(actions) {
           'event_name' : 'add_contact_info',
           'event_category': 'petitions',
           'event_action': 'click_submit',
-          'fields' : objFilter(actions.data, ['Email', 'FirstName', 'LastName','MobilePhone'])
-          
+          'fields' : objFilter(actions.data, ['Email', 'FirstName', 'LastName','MobilePhone']),
+          currency: state.theme.data.Market.toUpperCase() === 'TW' ? 'TWD' : 'HKD',
+          market: state.theme.data.Market.toUpperCase(),
+          CompletionURL: actions.data.CompletionURL
       })
     }
     //const responseBody = yield call(() => response.json());
@@ -76,8 +78,10 @@ export function* submitForm(actions) {
               'event_name' : 'petition_signup',
               'event_category': 'petitions',
               'event_action': 'signup',
-              'event_label': actions.data?.CampaignId
-            
+              'event_label': actions.data?.CampaignId,
+              currency: state.theme.data.Market.toUpperCase() === 'TW' ? 'TWD' : 'HKD',
+              market: state.theme.data.Market.toUpperCase(),
+              CompletionURL: actions.data.CompletionURL
           })
         }
       } else {

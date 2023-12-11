@@ -91,8 +91,8 @@ function Index({ submitted = false, strapi, hackle }) {
 	const hackleCHRich = (target) => {
 		const parser = new DOMParser();
 		const CHRichHtml = parser.parseFromString(target, 'text/html');
-		CHRichHtml.querySelector('h1').setAttribute('hidden', '');
-		CHRichHtml.querySelector('.raw-html-embed h1').removeAttribute('hidden');
+		if(CHRichHtml.querySelector('h1') )CHRichHtml.querySelector('h1').setAttribute('hidden', '');
+		if(CHRichHtml.querySelector('.raw-html-embed h1')) CHRichHtml.querySelector('.raw-html-embed h1').removeAttribute('hidden');
 		return new XMLSerializer().serializeToString(CHRichHtml);
 	};
 
@@ -375,7 +375,7 @@ function Index({ submitted = false, strapi, hackle }) {
 															'https://change.greenpeace.org.tw/2023/test/test-donation-module-hackle/main.js'
 														}
 														isUAT={false}
-														env={'test'}
+														env={strapi?.donationModuleEnv}
 													/>
 												)
 											) : (

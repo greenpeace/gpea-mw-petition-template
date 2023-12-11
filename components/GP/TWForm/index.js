@@ -87,7 +87,12 @@ const MyForm = (props) => {
 						event_name: 'view_form',
 						event_category: 'petitions',
 						event_action: 'load',
-						
+						currency: theme?.Market.toUpperCase() === 'TW' ? 'TWD' : 'HKD',
+						market: theme?.Market.toUpperCase(),
+						CompletionURL: clearURL(
+							window.location.href,
+							EXCLUDE_URL_PARAMETERS
+						)
 				})
 			}
 			setFormViewed(true);
