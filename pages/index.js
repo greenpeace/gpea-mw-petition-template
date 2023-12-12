@@ -282,11 +282,17 @@ function Index({
 		}
 	};
 	// hackleClient.setUser(userTest.userA); // Hackle: 可以設定使用者資料，也有預設的函式可以使用（https://docs-en.hackle.io/docs/react-user-info）
-	const decision = useVariationDetail(12); // Hackle: 設定Experiment Key（該A/B test的代碼）
+	const decision = useVariationDetail(20); // Hackle: 設定Experiment Key（該A/B test的代碼）
 
 	// Hackle: 不用useEffect包的話會有render loop
 	const track = useTrack();
 	useEffect(() => {
+		console.log("Hackle Experiment Status: " + decision?.reason )
+		if( process.env.NODE_ENV === 'production' && decision?.reason !== 'TRAFFIC_ALLOCATED' ){
+			// do not init hackle sending function if this experiment is not running
+			return;
+		}
+		
 		// const ctaTextVal = decision.get('cta_text', 'defaultValue'); // Hackle: 設定Experiment Key（該A/B test的代碼），當hackle後台代入失敗時，後面的自訂參數（ex: 'defaultValue'）會替代上去
 		//
 		window.__greenpeace__ = window.__greenpeace__ || {};
