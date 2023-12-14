@@ -282,7 +282,7 @@ function Index({
 		}
 	};
 	// hackleClient.setUser(userTest.userA); // Hackle: 可以設定使用者資料，也有預設的函式可以使用（https://docs-en.hackle.io/docs/react-user-info）
-	const decision = useVariationDetail(20); // Hackle: 設定Experiment Key（該A/B test的代碼）
+	const decision = useVariationDetail(21); // Hackle: 設定Experiment Key（該A/B test的代碼）
 
 	// Hackle: 不用useEffect包的話會有render loop
 	const track = useTrack();
@@ -302,7 +302,7 @@ function Index({
 		window.__greenpeace__.sendHackleTrack = (params) => {
 			track({
 				
-				key: 'ga4_custom_event', // Hackle: 設定對應的 event key
+				key: 'HK_ga4_custom_event', // Hackle: 設定對應的 event key
 				properties: {
 					...params,
 					hackle_user_id: hackleClient.getUser().id,
