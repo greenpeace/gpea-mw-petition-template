@@ -216,7 +216,7 @@ function Index({ status, setFormContent, theme, resetSubmitted, signup }) {
 										market={'HK'}
 										language={'zh_HK'}
 										campaign={'elm_infopage'}
-										campaignId={theme.CampaignId}
+										campaignId={'7012u000000OtKJAA0'}
 										env={'production'}
 									/>
 								):(
