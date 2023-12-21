@@ -37,6 +37,8 @@
 
 	"invalid_email_alert": "請填上有效電郵地址",
 	"invalid_format_alert": "請輸入有效格式",
+	"invalid_phone_alert_852": "手提號碼應為8位數字,首位數字應為 4 - 9",
+	"invalid_phone_alert_853": "手提號碼應為8位數字,首位數字應為 6",
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 
