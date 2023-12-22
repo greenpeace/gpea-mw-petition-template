@@ -25,8 +25,6 @@ import {
 	twTagManagerArgs
 } from '@common/constants/tagManagerArgs';
 
-// Hackle: 分配Group A/B, 追蹤事件
-import { useVariationDetail, useTrack } from '@hackler/react-sdk';
 
 /* Determine the returned project index by env variable */
 const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
@@ -83,8 +81,7 @@ function Index({
 	strapi,
 	setSignupNumbers,
 	setWebStatus,
-	setSignFormData,
-	hackleClient // Hackle: 拿props
+	setSignFormData
 }) {
 	const router = useRouter();
 	const dispatch = useDispatch();
@@ -247,77 +244,6 @@ function Index({
 		setPrepared(true);
 	}, []);
 
-
-	const userTest = {
-		// Hackle: 單純用來測試A/B的參數有沒有分配到不同使用者
-		userA: {
-			id: 'A',
-			userId: 'A',
-			deviceId: 'A'
-		},
-		userB: {
-			id: 'B',
-			userId: 'B',
-			deviceId: 'B'
-		},
-		userC: {
-			id: 'C',
-			userId: 'C',
-			deviceId: 'C'
-		},
-		userD: {
-			id: 'D',
-			userId: 'D',
-			deviceId: 'D'
-		},
-		userE: {
-			id: 'E',
-			userId: 'E',
-			deviceId: 'E'
-		},
-		userF: {
-			id: 'F',
-			userId: 'F',
-			deviceId: 'F'
-		}
-	};
-	// hackleClient.setUser(userTest.userA); // Hackle: 可以設定使用者資料，也有預設的函式可以使用（https://docs-en.hackle.io/docs/react-user-info）
-	const decision = useVariationDetail(21); // Hackle: 設定Experiment Key（該A/B test的代碼）
-
-	// Hackle: 不用useEffect包的話會有render loop
-	const track = useTrack();
-	useEffect(() => {
-		console.log("Hackle Experiment Status: " + decision?.reason )
-		if( process.env.NODE_ENV === 'production' && decision?.reason !== 'TRAFFIC_ALLOCATED' ){
-			// do not init hackle sending function if this experiment is not running
-			return;
-		}
-		
-		// const ctaTextVal = decision.get('cta_text', 'defaultValue'); // Hackle: 設定Experiment Key（該A/B test的代碼），當hackle後台代入失敗時，後面的自訂參數（ex: 'defaultValue'）會替代上去
-		//
-		window.__greenpeace__ = window.__greenpeace__ || {};
-		// parse qs parmas
-    const qsParams = helper.getUrlParams();
-		// Hackle: 將 track 函式放到全域中使用
-		window.__greenpeace__.sendHackleTrack = (params) => {
-			track({
-				
-				key: 'HK_ga4_custom_event', // Hackle: 設定對應的 event key
-				properties: {
-					...params,
-					hackle_user_id: hackleClient.getUser().id,
-					utm_campaign: qsParams?.utm_campaign,
-          utm_content: qsParams?.utm_content,
-          utm_medium: qsParams?.utm_medium,
-          utm_source: qsParams?.utm_source,
-          utm_term: qsParams?.utm_term
-				}
-			});
-		};
-		console.log("hackle variant ======>", decision.variation, hackleClient.getUser())
-
-	}, []);
-
 	return (
 		<>
 			<DynamicSeoComp strapi={strapi} />
@@ -339,7 +265,6 @@ function Index({
 				<DynamicComponent
 					strapi={strapi}
 					themeData={themeData}
-					hackle={decision}// Haackle: 將 hackle 取得的設定傳至頁面 component
 				/>
 			)}
 		</>

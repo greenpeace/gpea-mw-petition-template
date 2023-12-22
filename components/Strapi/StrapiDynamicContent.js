@@ -20,7 +20,7 @@ const StrapiDynamicBlocks = ({
 	blocks = 'contentBlocks',
 	strapi,
 	className,
-	hackle
+	variation
 }) => {
 	if (!strapi) {
 		return null;
@@ -41,12 +41,12 @@ const StrapiDynamicBlocks = ({
 				pass = true;
 			} else if (
 				groupA &&
-				hackle.variation === 'A'
+				variation === 'A'
 			) {
 				pass = true;
 			} else if (
 				groupB &&
-				hackle.variation === 'B'
+				variation === 'B'
 			) {
 				pass = true;
 			} else {

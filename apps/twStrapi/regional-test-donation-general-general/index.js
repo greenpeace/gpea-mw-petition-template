@@ -38,7 +38,7 @@ import { useSignupBtnRootMargin } from '@common/utils';
 import formContent from './form';
 // Import static
 
-function Index({ submitted = false, strapi, hackle }) {
+function Index({ submitted = false, strapi }) {
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
@@ -72,6 +72,7 @@ function Index({ submitted = false, strapi, hackle }) {
 
 	// pass signer / donor name to TY Banner
 	const [TYName, setTYName] = useState();
+	const [variation, setVariation] = useState();
 
 	useEffect(() => {
 		// get donation module firstname
@@ -79,16 +80,17 @@ function Index({ submitted = false, strapi, hackle }) {
 		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
 			setTYName(data.firstName);
 		};
-		// setting hackle demo: change cta btn text by group A/B
-		const ctaText = hackle.get('cta_text', 'default');
-		formContent.submit_text = ctaText;
+
+		if(window.__greenpeace__.testSet) {
+			setVariation(window.__greenpeace__.testSet)
+		}
 	});
 	useEffect(() => {
 		setTYName(signup?.data?.FirstName);
 	}, [signup]);
 
-	// hackle group b title with this function, like: hackleCHRich(strapi?.contentHero?.richContent)
-	const hackleCHRich = (target) => {
+	// group b title with this function, like: ABCHRich(strapi?.contentHero?.richContent)
+	const ABCHRich = (target) => {
 		const parser = new DOMParser();
 		const CHRichHtml = parser.parseFromString(target, 'text/html');
 		if(CHRichHtml.querySelector('h1') )CHRichHtml.querySelector('h1').setAttribute('hidden', '');
@@ -99,7 +101,7 @@ function Index({ submitted = false, strapi, hackle }) {
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
-			{hackle.variation === 'B' ? (
+			{variation === 'B' ? (
 				<Box className="layout-1col">
 					{submitted ? (
 						<MainHeading
@@ -153,8 +155,8 @@ function Index({ submitted = false, strapi, hackle }) {
 								title: theme?.params?.headline_prefix
 									? theme?.params?.headline_prefix +
 									  '<br/>' +
-									  hackleCHRich(strapi?.contentHero?.richContent)
-									: hackleCHRich(strapi?.contentHero?.richContent),
+									  ABCHRich(strapi?.contentHero?.richContent)
+									: ABCHRich(strapi?.contentHero?.richContent),
 								description: strapi?.contentHero?.richContentParagraph
 							}}
 						/>
@@ -169,14 +171,14 @@ function Index({ submitted = false, strapi, hackle }) {
 								className={'layout-1col'}
 								blocks={'thankyouBlocks'}
 								strapi={strapi}
-								hackle={hackle}
+								variation={variation}
 							/>
 						) : (
 							<StrapiDynamicBlocks
 								className={'layout-1col'}
 								blocks={'contentBlocks'}
 								strapi={strapi}
-								hackle={hackle}
+								variation={variation}
 							/>
 						)}
 
@@ -201,9 +203,6 @@ function Index({ submitted = false, strapi, hackle }) {
 													theme?.params?.campaignId ??
 													strapi?.donationModuleCampaignId ??
 													''
-												}
-												customUrl={
-													'https://change.greenpeace.org.tw/2023/test/test-donation-module-hackle/main.js'
 												}
 												isUAT={false}
 												env={strapi?.donationModuleEnv}
@@ -337,13 +336,13 @@ function Index({ submitted = false, strapi, hackle }) {
 												<StrapiDynamicBlocks
 													blocks={'thankyouBlocks'}
 													strapi={strapi}
-													hackle={hackle}
+													variation={variation}
 												/>
 											) : (
 												<StrapiDynamicBlocks
 													blocks={'contentBlocks'}
 													strapi={strapi}
-													hackle={hackle}
+													variation={variation}
 												/>
 											)}
 										</>
@@ -370,9 +369,6 @@ function Index({ submitted = false, strapi, hackle }) {
 															theme?.params?.campaignId ??
 															strapi?.donationModuleCampaignId ??
 															''
-														}
-														customUrl={
-															'https://change.greenpeace.org.tw/2023/test/test-donation-module-hackle/main.js'
 														}
 														isUAT={false}
 														env={strapi?.donationModuleEnv}
