@@ -28,19 +28,6 @@ export function* submitForm(actions) {
       'event_action': 'click_submit',
       'fields' : objFilter(actions.data, ['Email', 'FirstName', 'LastName','MobilePhone'])
     })
-    if(window.__greenpeace__.sendHackleTrack){
-      // Hackle: 送給 hackle 跟 ga4 一樣的 event 資料
-      window.__greenpeace__.sendHackleTrack({
-          'event': 'custom_event',
-          'event_name' : 'add_contact_info',
-          'event_category': 'petitions',
-          'event_action': 'click_submit',
-          'fields' : objFilter(actions.data, ['Email', 'FirstName', 'LastName','MobilePhone']),
-          currency: state.theme.data.Market.toUpperCase() === 'TW' ? 'TWD' : 'HKD',
-          market: state.theme.data.Market.toUpperCase(),
-          CompletionURL: actions.data.CompletionURL
-      })
-    }
     //const responseBody = yield call(() => response.json());
 
     if (response.statusText === 'OK') {
@@ -71,19 +58,6 @@ export function* submitForm(actions) {
           'event_action': 'signup',
           'event_label': actions.data?.CampaignId
         })
-        if(window.__greenpeace__.sendHackleTrack){
-          // Hackle: 送給 hackle 跟 ga4 一樣的 event 資料
-          window.__greenpeace__.sendHackleTrack({
-              'event': 'custom_event',
-              'event_name' : 'petition_signup',
-              'event_category': 'petitions',
-              'event_action': 'signup',
-              'event_label': actions.data?.CampaignId,
-              currency: state.theme.data.Market.toUpperCase() === 'TW' ? 'TWD' : 'HKD',
-              market: state.theme.data.Market.toUpperCase(),
-              CompletionURL: actions.data.CompletionURL
-          })
-        }
       } else {
         console.log('Project undefined');
       }

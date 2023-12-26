@@ -20,7 +20,6 @@ const MyApp = ({ Component, pageProps }) => {
 	);
 	return (
 		<ChakraProvider theme={theme}>
-			{/* Hackle: 傳props */}
 			{getLayout(<Component {...pageProps} />)}
 		</ChakraProvider>
 	);

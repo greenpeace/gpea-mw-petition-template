@@ -1,16 +1,16 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=hkStrapi/donation-general-test-hackle
+PROJECT=hkStrapi/donation-general-test-convert
 MARKET=hk
-PROJECT_NAME=donation-general-test-hackle
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/2023/test/donation-general-test-hackle
-ASSETPREFIX=https://api.greenpeace.org.hk/2023/test/donation-general-test-hackle/
+PROJECT_NAME=donation-general-test-convert
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2023/test/donation-general-test-convert
+ASSETPREFIX=https://api.greenpeace.org.hk/2023/test/donation-general-test-convert/
 FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=donation-general-test-hackle
+CLOUD_PAGE_NAME=donation-general-test-convert
 */
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -32,6 +32,8 @@ import DonateFAQ from '@components/DonateFAQ';
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
+// import helpers
+import { h1Group } from '@common/utils/helper';
 // Import Contents
 import formContent from './form';
 // Import static
@@ -61,6 +63,16 @@ function Index({ submitted = false, strapi }) {
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
+
+	// set convert experiment ab test default group
+	const [variation, setVariation] = useState('B');
+
+	useEffect(() => {
+		// set convert experiment ab test group
+		if(window?.__greenpeace__?.testSet) {
+			setVariation(window.__greenpeace__.testSet)
+		}
+	});
 
 	return (
 		<>
@@ -117,8 +129,8 @@ function Index({ submitted = false, strapi }) {
 							title: theme?.params?.headline_prefix
 								? theme?.params?.headline_prefix +
 								  '<br/>' +
-								  strapi?.contentHero?.richContent
-								: strapi?.contentHero?.richContent,
+								  h1Group(strapi?.contentHero?.richContent, variation)
+								: h1Group(strapi?.contentHero?.richContent, variation),
 							description: strapi?.contentHero?.richContentParagraph
 						}}
 					/>
@@ -134,11 +146,13 @@ function Index({ submitted = false, strapi }) {
 										<StrapiDynamicBlocks
 											blocks={'thankyouBlocks'}
 											strapi={strapi}
+											variation={variation}
 										/>
 									) : (
 										<StrapiDynamicBlocks
 											blocks={'contentBlocks'}
 											strapi={strapi}
+											variation={variation}
 										/>
 									)}
 								</>

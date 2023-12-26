@@ -30,9 +30,11 @@ const StrapiDynamicBlocks = ({
 		?.filter((content) => {
 			// filter the content of group a/b
 			let pass = true;
-			const groupA = content?.richContent?.includes('<div class="raw-html-embed"><p hidden=""> group a </p></div>');
+			const parser = new DOMParser();
+			const contentHTML = parser.parseFromString(content?.richContent, 'text/html');
+			const groupA = contentHTML.querySelector('.raw-html-embed *[hidden]') ? contentHTML.querySelector('.raw-html-embed *[hidden]').textContent.toLocaleLowerCase().includes('group a') : false;
 				// '<div class="raw-html-embed"><p hidden=""> group a </p></div>';
-			const groupB = content?.richContent?.includes('<div class="raw-html-embed"><p hidden=""> group b </p></div>');
+			const groupB = contentHTML.querySelector('.raw-html-embed *[hidden]') ? contentHTML.querySelector('.raw-html-embed *[hidden]').textContent.toLocaleLowerCase().includes('group b') : false;
 				// '<div class="raw-html-embed"><p hidden=""> group b </p></div>';
 			if (
 				!groupA &&

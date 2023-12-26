@@ -80,21 +80,6 @@ const MyForm = (props) => {
 				event_category: 'petitions',
 				event_action: 'load'
 			});
-			if(window.__greenpeace__.sendHackleTrack){
-				// Hackle: 送給 hackle 跟 ga4 一樣的 event 資料
-				window.__greenpeace__.sendHackleTrack({
-						event: 'custom_event',
-						event_name: 'view_form',
-						event_category: 'petitions',
-						event_action: 'load',
-						currency: theme?.Market.toUpperCase() === 'TW' ? 'TWD' : 'HKD',
-						market: theme?.Market.toUpperCase(),
-						CompletionURL: clearURL(
-							window.location.href,
-							EXCLUDE_URL_PARAMETERS
-						)
-				})
-			}
 			setFormViewed(true);
 		}
 	}, [formViewed]);
