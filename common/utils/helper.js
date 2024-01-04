@@ -59,13 +59,13 @@ export const h1Group = (richContent, group) =>{
   const CHRichHtml = parser.parseFromString(richContent, 'text/html');
   let h1DOM = CHRichHtml.querySelector('h1:not(.raw-html-embed h1)');
   const regex = /group\s([a-zA-Z])/g;
-  console.log('===========',h1DOM)
+  // console.log('===========',h1DOM)
   let h1Groups = {
     "A": h1DOM
   };
   CHRichHtml.querySelectorAll('.raw-html-embed h1').forEach((el, key)=>{
     const match = regex.exec(el.textContent);
-    console.log('===========',el.textContent,match)
+    // console.log('===========',el.textContent,match)
     if(match !== null) {
       h1Groups[match[1].toUpperCase()] = el;
       el.removeAttribute('hidden');
@@ -76,6 +76,6 @@ export const h1Group = (richContent, group) =>{
   if(group && h1Groups[group]){
     h1DOM = h1Groups[group]
   }
-  console.log('===========',h1Groups,h1DOM)
+  // console.log('===========',h1Groups,h1DOM)
   return new XMLSerializer().serializeToString(h1DOM);
 }

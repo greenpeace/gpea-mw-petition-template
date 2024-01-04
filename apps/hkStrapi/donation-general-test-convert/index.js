@@ -9,6 +9,7 @@ ASSETPREFIX=https://api.greenpeace.org.hk/2023/test/donation-general-test-conver
 FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=donation-general-test-convert
+CONV_EXP=//cdn-4.convertexperiments.com/js/10046099-10046519.js
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -65,7 +66,7 @@ function Index({ submitted = false, strapi }) {
 	}, [dispatch]);
 
 	// set convert experiment ab test default group
-	const [variation, setVariation] = useState('B');
+	const [variation, setVariation] = useState('A');
 
 	useEffect(() => {
 		// set convert experiment ab test group
@@ -108,6 +109,7 @@ function Index({ submitted = false, strapi }) {
 					<HeroBanner
 						removeMask={strapi?.contentHero?.removeMask}
 						defaultImage={
+							(variation === 'B') ? "https://www.greenpeace.org/static/planet4-hongkong-stateless/2023/11/910a39f5-gptw-hero.png" :
 							theme?.params?.hero_image_desktop ||
 							strapi?.contentHero?.desktopImageURL
 						}
@@ -115,12 +117,14 @@ function Index({ submitted = false, strapi }) {
 							{
 								media: '(min-width: 48em)',
 								srcset:
+									(variation === 'B') ? "https://www.greenpeace.org/static/planet4-hongkong-stateless/2023/11/910a39f5-gptw-hero.png" :
 									theme?.params?.hero_image_desktop ||
 									strapi?.contentHero?.desktopImageURL
 							},
 							{
 								media: '',
 								srcset:
+									(variation === 'B') ? "https://www.greenpeace.org/static/planet4-hongkong-stateless/2023/11/724ecae1-gptw-mobile.jpg" :
 									theme?.params?.hero_image_mobile ||
 									strapi?.contentHero?.mobileImageURL
 							}
@@ -192,9 +196,6 @@ function Index({ submitted = false, strapi }) {
 												theme?.params?.campaignId ??
 												strapi?.donationModuleCampaignId ??
 												''
-											}
-											customUrl={
-												'https://change.greenpeace.org.tw/2023/test/test-donation-module-hackle/main.js'
 											}
 											isUAT={false}
 											env={strapi?.donationModuleEnv}
