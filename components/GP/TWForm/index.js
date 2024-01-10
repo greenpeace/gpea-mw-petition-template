@@ -146,6 +146,7 @@ const MyForm = (props) => {
 	useEffect(() => {
 		if (Object.keys(formContent).length > 0) {
 			if (formContent.counties) setFieldValue('Counties', '');
+			if (formContent.careers) setFieldValue('Careers', '');
 			if (formContent.namelist)
 				setFieldValue('Namelist', formContent.namelist[0].value);
 			if (formContent.additional)
@@ -386,6 +387,39 @@ const MyForm = (props) => {
 								</FormControl>
 							</Box>
 						)}
+						{/* optional select: careers */}
+						{formContent.careers && (
+							<Box>
+								<FormControl
+									id={
+										formContent.careers.fieldName
+											? formContent.careers.fieldName
+											: 'Careers'
+									}
+									isInvalid={errors.Careers && touched.Careers}
+								>
+									<Select
+										onChange={handleChange}
+										fontSize={'16px'}
+										placeholder={formContent.label_careers}
+										size={'lg'}
+									>
+										{formContent.careers.options.map((d, index) => (
+											<option
+												key={index}
+												value={`${d.value}`}
+												disabled={d.disabled ? true : null}
+											>
+												{d.value}
+											</option>
+										))}
+									</Select>
+									<FormErrorMessage px={2} color="var(--error-900)">
+										{errors.Careers}
+									</FormErrorMessage>
+								</FormControl>
+							</Box>
+						)}
 						{/* optional field */}
 						{formContent.additional && (
 							<HStack align="flex-end">
@@ -575,6 +609,7 @@ const MyEnhancedForm = withFormik({
 		};
 
 		if (values.Counties) formData.CampaignData1__c = values.Counties;
+		if (values.Careers) formData.CampaignData1__c = values.Careers;
 		if (values.Namelist) formData.CampaignData2__c = values.Namelist;
 		if (values.MobilePhone.indexOf('0') == 0)
 			formData.MobilePhone = values.MobilePhone.replace(/^0+/, '');

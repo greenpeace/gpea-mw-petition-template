@@ -37,6 +37,10 @@ export function validation(values, formContent) {
 		errors.Counties = formContent.empty_data_alert;
 	}
 
+	if (!values.Careers && typeof formContent.careers != 'undefined') {
+		errors.Careers = formContent.empty_data_alert;
+	}
+
 	if (!values.Address && typeof formContent.address != 'undefined') {
 		errors.Address = formContent.empty_data_alert;
 	}
