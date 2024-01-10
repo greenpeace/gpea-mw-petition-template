@@ -8,6 +8,7 @@ ASSETPREFIX=https://change.greenpeace.org.tw/2023/test/regional-test-donation-ge
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=regional-test-donation-general-general
+CONV_EXP=//cdn-4.convertexperiments.com/js/10046099-10046440.js
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -72,7 +73,7 @@ function Index({ submitted = false, strapi }) {
 
 	// pass signer / donor name to TY Banner
 	const [TYName, setTYName] = useState();
-	const [variation, setVariation] = useState();
+	const [variation, setVariation] = useState('A');
 
 	useEffect(() => {
 		// get donation module firstname
@@ -376,19 +377,8 @@ function Index({ submitted = false, strapi }) {
 												)
 											) : (
 												<SignupForm
-													customEndpoint={
-														'https://counter.greenpeace.org/signups?id=deepseamining'
-													}
-													// customOfTarget={1000000}
 													setSignupBtnRef={setSignupBtnRef}
 												/>
-											)}
-											{submitted && pageType?.toLowerCase() === 'petition' && (
-												<div
-													dangerouslySetInnerHTML={{
-														__html: `<iframe style="overflow: hidden;" src="https://counter.greenpeace.org/count?id=deepseamining" width="1" height="1" frameborder="0" scrolling="no"></iframe>`
-													}}
-												></div>
 											)}
 										</Box>
 										<div ref={FormBtnref}></div>
@@ -397,10 +387,10 @@ function Index({ submitted = false, strapi }) {
 							</Flex>
 						</OverflowWrapper>
 					</PageContainer>
-					<PetitionFooter locale={'TWChinese'} />
+					
 				</>
 			)}
-
+			<PetitionFooter locale={'TWChinese'} />
 			<StrapiFixedButton
 				target={FormRef}
 				targetInView={
