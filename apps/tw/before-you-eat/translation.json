@@ -1,0 +1,35 @@
+{
+	"zh_TW": {
+		"description": "輸入觀看密碼",
+		"input_placeholder": "輸入觀看密碼",
+		"button_content": "▶ 立即觀看",
+		"input_error": "密碼不正確！請重新輸入",
+		"title": "《Before You Eat》遠洋漁業紀錄片",
+		"info": "片長：47分鐘",
+		"info02": "導演：",
+		"info03": "聲音導航：陳志雲",
+		"p": "《Before You Eat》是由印尼移工工會「Serikat Buruh Migran Indonesia, SBMI」發行、Greenpeace 綠色和平協力推廣的遠洋漁業紀錄片。",
+		"p2": "紀錄片由遠洋漁工視角出發，記錄海鮮由產地到餐桌最重要的一段歷程——海上捕撈。鏡頭追隨一群海上工作者，直擊遠洋漁業作業的真實情況，部分畫面甚至是由漁工冒著生命危險親自錄下，才得以完整呈現在世人眼前。",
+		"subTitle": "支持綠色和平　解決遠洋漁業的根本問題",
+		"p3": "紀錄片中所揭露的跨國騙局、仲介詭計、逼人為奴的合約、上對下的血腥暴力，漁工面臨的種種困境僅是苦果，長年的過度捕撈造成漁業資源枯竭，才是一樁樁悲劇的成因。",
+		"p4": "為解決過度捕撈、改善漁工人權，綠色和平以紮實研究揭發遠洋漁業真相，推動政府加強海洋保育措施、漁撈作業與監管，期盼在還來的及的時刻，阻止環境與人權相殘的惡性循環，為下一代留下一片生生不息的海洋。",
+		"p5": "有您的捐助支持，綠色和平便能有更多資源加強倡議與研究工作，請立即向海洋與漁工伸出援手，捐助支持，一起守護海洋、扭轉漁工的命運！",
+		"donate": "月捐支持"
+	},
+	"en_HK": {
+		"description": "Please enter the password to watch the documentary",
+		"input_placeholder": "Please key password",
+		"button_content": "Watch now",
+		"input_error": "Password incorrect, please re-enter",
+		"title": "Lantau - The Hidden Treasure of Hong Kong",
+		"info": "Ecology documentary：25 mins | &shy;",
+		"info02": "Director：Fung Hon Shing | &shy;",
+		"info03": "Narrator：Stephen Chan Chi Wan | &shy;",
+		"p": "Lantau's biodiverse habitats are home to us and many species. Greenpeace teamed up with a group of local wildlife photographers and filmmakers to produce this documentary, showcasing the beauty of nature and ecology of Lantau Island in Hong Kong.",
+		"p2": "The documentary sheds light on the daily lives of the Chinese White Dolphin, Eurasian Eagle Owl and other precious species. Pollution and infrastructural development however are threatening the biodiversity and sustainability of the island, the documentary is calling for people's attention to protect local biodiversity and the ecosystem services that people depend on.",
+		"subTitle": "We're taking action. Support Us.",
+		"p3": "​​In Hong Kong, Greenpeace has been based on scientific research to advocate to prioritize the development of brownfield sites, as a way to avoid the ecological crisis of the &#34;Lantau Tomorrow&#34; reclamation project and at the same time satisfy the housing needs of the locals.",
+		"p4": "With your generous donation, Greenpeace will have more resources to research and document environmental problems. Please help us to continue protecting our nature and Lantau.",
+		"donate": "Donate now"
+	}
+}
