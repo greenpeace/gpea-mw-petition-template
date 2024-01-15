@@ -2,8 +2,8 @@
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
 PROJECT=tw/before-you-eat
-MARKET=hk
-PROJECT_NAME=lantau-documentary
+MARKET=tw
+PROJECT_NAME=petition-oceans-beforeyoueat
 BASEPATH=/htdocs/2024/before-you-eat
 ASSETPREFIX=https://change.greenpeace.org.tw/2024/before-you-eat/
 FTP_CONFIG_NAME=ftp_tw

@@ -20,24 +20,21 @@ const SEO = () => {
 			/>
 			{/* title */}
 			<title>
-				《山海大嶼》香港珍貴生態紀錄片 - Greenpeace 綠色和平 | 香港
+				觀賞《開動之前 Before You Eat》 遠洋漁業人權紀錄片｜Greenpeace 綠色和平
 			</title>
 			<meta
 				property="og:title"
-				content="《山海大嶼》香港珍貴生態紀錄片 -  Greenpeace 綠色和平 | 香港"
+				content="觀賞《開動之前 Before You Eat》 遠洋漁業人權紀錄片｜Greenpeace 綠色和平"
 			/>
 			<meta
 				name="description"
-				content="紀錄片由綠色和平與本地獲獎生態攝製隊耗時大半年製作，由資深傳媒人陳志雲聲音導航，以大嶼山為舞台，帶領觀眾縱覽各個生境。有您的支持，綠色和平將堅持守護大嶼，讓世代得以見證這片水光山色與生態瑰寶的故事。"
+				content="從遠洋漁工的視角出發，《開動之前》記錄海鮮由產地到餐桌最重要的一段歷程：海上捕撈。鏡頭追隨一群海上工作者，直擊遠洋漁業作業的真實情況，部分畫面甚至是由漁工冒著生命危險親自錄下，才得以完整呈現在世人眼前。"
 			/>
 			<meta
 				property="og:description"
-				content="紀錄片由綠色和平與本地獲獎生態攝製隊耗時大半年製作，由資深傳媒人陳志雲聲音導航，以大嶼山為舞台，帶領觀眾縱覽各個生境。有您的支持，綠色和平將堅持守護大嶼，讓世代得以見證這片水光山色與生態瑰寶的故事。"
+				content="從遠洋漁工的視角出發，《開動之前》記錄海鮮由產地到餐桌最重要的一段歷程：海上捕撈。鏡頭追隨一群海上工作者，直擊遠洋漁業作業的真實情況，部分畫面甚至是由漁工冒著生命危險親自錄下，才得以完整呈現在世人眼前。"
 			/>
-			<meta
-				property="og:image"
-				content={OgImage}
-			/>
+			<meta property="og:image" content={OgImage} />
 		</Head>
 	);
 };

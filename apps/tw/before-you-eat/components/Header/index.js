@@ -61,7 +61,7 @@ const WithSubnavigation = ({ href }) => {
 							_hover={{ bg: 'orange.300' }}
 							onClick={() =>
 								window.open(
-									`https://cloud.greenhk.greenpeace.org/donation-oceans-elm?ref=lantau-documentary-petition-streaming-btn`,
+									`https://cloud.greentw.greenpeace.org/donation-cwf-seafood-handbook`,
 									'_blank'
 								)
 							}
