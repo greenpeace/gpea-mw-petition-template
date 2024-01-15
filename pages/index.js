@@ -15,12 +15,16 @@ import * as statusActions from 'store/actions/action-types/status-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as hiddenFormActions from 'store/actions/action-types/hidden-form-actions';
 
+// import helpers
+import * as helper from '@common/utils/helper';
+
 import {
 	hkDevTagManagerArgs,
 	twDevTagManagerArgs,
 	hkTagManagerArgs,
 	twTagManagerArgs
 } from '@common/constants/tagManagerArgs';
+
 
 /* Determine the returned project index by env variable */
 const DynamicComponent = dynamic(() => import(`apps/${process.env.project}`));
@@ -71,7 +75,6 @@ const schemaEndpoint = `${themeEndpointURL}?q={"Market":"${envProjectMarket}"}`;
 		}
   } 
 };*/
-
 function Index({
 	setTheme,
 	themeData,
@@ -258,7 +261,12 @@ function Index({
 				</Script>
 			)}
 
-			{prepared && <DynamicComponent strapi={strapi} themeData={themeData} />}
+			{prepared && (
+				<DynamicComponent
+					strapi={strapi}
+					themeData={themeData}
+				/>
+			)}
 		</>
 	);
 }

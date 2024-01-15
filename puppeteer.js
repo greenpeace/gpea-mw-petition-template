@@ -85,7 +85,7 @@ async function waitMilliSeconds(ms) {
 
 		// Perform the login process to generate new session data
 		const browser = await puppeteer.launch({
-			executablePath: '/usr/bin/google-chrome',// uncomment and set path if need.
+			// executablePath: '/usr/bin/google-chrome',// uncomment and set path if need.
 			headless: false,
 			args: ['--no-sandbox']
 		});

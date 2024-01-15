@@ -13,13 +13,16 @@ Router.events.on('routeChangeError', nProgress.done);
 Router.events.on('routeChangeComplete', nProgress.done);
 
 const MyApp = ({ Component, pageProps }) => {
-  const getLayout = Component.getLayout || ((page) => page);
-  console.log('this page was built at: ' , new Date(Number(process.env.timeStamp)))
-  return (
-    <ChakraProvider theme={theme}>
-      {getLayout(<Component {...pageProps} />)}
-    </ChakraProvider>
-  );
+	const getLayout = Component.getLayout || ((page) => page);
+	console.log(
+		'this page was built at: ',
+		new Date(Number(process.env.timeStamp))
+	);
+	return (
+		<ChakraProvider theme={theme}>
+			{getLayout(<Component {...pageProps} />)}
+		</ChakraProvider>
+	);
 };
 
 export default wrapper.withRedux(MyApp);

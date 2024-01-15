@@ -179,7 +179,6 @@ const MyForm = (props) => {
 			});
 		}
 	};
-
 	return (
 		<Box py="8" px="4">
 			<Stack spacing="4">
