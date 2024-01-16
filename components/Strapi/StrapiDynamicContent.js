@@ -21,6 +21,7 @@ const StrapiDynamicBlocks = ({
 	strapi,
 	className,
 	variation = 'A',
+	donationSummary
 }) => {
 	if (!strapi) {
 		return null;
@@ -31,29 +32,53 @@ const StrapiDynamicBlocks = ({
 			// filter the content of group a/b
 			let pass = true;
 			const parser = new DOMParser();
-			const contentHTML = parser.parseFromString(content?.richContent, 'text/html');
-			const groupA = contentHTML.querySelector('.raw-html-embed *[hidden]') ? contentHTML.querySelector('.raw-html-embed *[hidden]').textContent.toLocaleLowerCase().includes('group a') : false;
-				// '<div class="raw-html-embed"><p hidden=""> group a </p></div>';
-			const groupB = contentHTML.querySelector('.raw-html-embed *[hidden]') ? contentHTML.querySelector('.raw-html-embed *[hidden]').textContent.toLocaleLowerCase().includes('group b') : false;
-				// '<div class="raw-html-embed"><p hidden=""> group b </p></div>';
-			if (
-				!groupA &&
-				!groupB
-			) {
+			const contentHTML = parser.parseFromString(
+				content?.richContent,
+				'text/html'
+			);
+			const groupA = contentHTML.querySelector('.raw-html-embed *[hidden]')
+				? contentHTML
+						.querySelector('.raw-html-embed *[hidden]')
+						.textContent.toLocaleLowerCase()
+						.includes('group a')
+				: false;
+			// '<div class="raw-html-embed"><p hidden=""> group a </p></div>';
+			const groupB = contentHTML.querySelector('.raw-html-embed *[hidden]')
+				? contentHTML
+						.querySelector('.raw-html-embed *[hidden]')
+						.textContent.toLocaleLowerCase()
+						.includes('group b')
+				: false;
+			// '<div class="raw-html-embed"><p hidden=""> group b </p></div>';
+			const diffAmount = contentHTML.querySelector(
+				'.raw-html-embed *[data-diff-amount]'
+			);
+			// '<div class="raw-html-embed"><p data-diff-amount=""></p></div>';
+
+			// a/b test
+			if (!groupA && !groupB) {
 				pass = true;
-			} else if (
-				groupA &&
-				variation === 'A'
-			) {
+			} else if (groupA && variation === 'A') {
 				pass = true;
-			} else if (
-				groupB &&
-				variation === 'B'
-			) {
+			} else if (groupB && variation === 'B') {
 				pass = true;
 			} else {
 				pass = false;
 			}
+
+			// diff-amount
+			if (diffAmount) {
+				const { type, amount } = donationSummary || {};
+				if (
+					(type == 'Recurring' && amount >= 800) ||
+					(type == 'Oneoff' && amount >= 3000)
+				) {
+					pass = true;
+				} else {
+					pass = false;
+				}
+			}
+
 			return pass;
 		})
 		?.map((content, i) => {

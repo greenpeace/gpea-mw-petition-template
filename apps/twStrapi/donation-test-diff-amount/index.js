@@ -1,11 +1,11 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=twStrapi/donation-general-general
+PROJECT=twStrapi/donation-test-diff-amount
 MARKET=tw
-PROJECT_NAME=donation-general-general
-BASEPATH=/htdocs/2023/donation/donation-general-general
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-general/
+PROJECT_NAME=donation-cwf-seafood-handbook
+BASEPATH=/htdocs/2024/test/donation-test-diff-amount
+ASSETPREFIX=https://change.greenpeace.org.tw/2024/test/donation-test-diff-amount/
 FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=donation-general-general
@@ -79,7 +79,7 @@ function Index({ submitted = false, strapi }) {
 			setDonationSummary({
 				type: data.donationType,
 				amount: data.amountValue
-			})
+			});
 		};
 	});
 	useEffect(() => {
@@ -161,6 +161,7 @@ function Index({ submitted = false, strapi }) {
 										<StrapiDynamicBlocks
 											blocks={'thankyouBlocks'}
 											strapi={strapi}
+											donationSummary={donationSummary}
 										/>
 									) : (
 										<StrapiDynamicBlocks
@@ -205,7 +206,9 @@ function Index({ submitted = false, strapi }) {
 												}
 												isUAT={false}
 												campaignId={theme?.params?.campaignId ?? ''}
-												customUrl={'https://change.greenpeace.org.tw/2024/test/donation-module-pass-amount/main.js'}
+												customUrl={
+													'https://change.greenpeace.org.tw/2024/test/donation-module-pass-amount/main.js'
+												}
 												env={strapi?.donationModuleEnv}
 											/>
 										)
