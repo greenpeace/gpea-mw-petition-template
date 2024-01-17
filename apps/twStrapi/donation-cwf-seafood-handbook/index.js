@@ -1,14 +1,14 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=twStrapi/donation-test-diff-amount
+PROJECT=twStrapi/donation-cwf-seafood-handbook
 MARKET=tw
 PROJECT_NAME=donation-cwf-seafood-handbook
-BASEPATH=/htdocs/2024/test/donation-test-diff-amount
-ASSETPREFIX=https://change.greenpeace.org.tw/2024/test/donation-test-diff-amount/
+BASEPATH=/htdocs/2024/donation/donation-cwf-seafood-handbook
+ASSETPREFIX=https://change.greenpeace.org.tw/2024/donation/donation-cwf-seafood-handbook/
 FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=donation-general-general
+CLOUD_PAGE_NAME=donation-cwf-seafood-handbook
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -206,9 +206,6 @@ function Index({ submitted = false, strapi }) {
 												}
 												isUAT={false}
 												campaignId={theme?.params?.campaignId ?? ''}
-												customUrl={
-													'https://change.greenpeace.org.tw/2024/test/donation-module-pass-amount/main.js'
-												}
 												env={strapi?.donationModuleEnv}
 											/>
 										)
