@@ -55,7 +55,7 @@ function Index({ status, theme, setFormContent, signup }) {
 
   return (
     <>
-      <SEO />
+      {/* <SEO theme={theme} /> */}
 
       {submitted ? (
         <ThanksBanner

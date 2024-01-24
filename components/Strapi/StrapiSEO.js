@@ -26,6 +26,11 @@ const StrapiSEO = ({ strapi }) => {
 			<meta property="og:type" content="website" />
 			<meta property="og:url" content={strapi?.seo?.canonicalURL} />
 			<meta name="keywords" content={strapi?.seo?.keywords} />
+			{
+				(strapi?.seo?.canonicalURL) && (
+					<link rel="canonical" href={strapi?.seo?.canonicalURL} />
+				)
+			}
 		</Head>
 	);
 };

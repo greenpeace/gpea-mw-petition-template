@@ -7,7 +7,8 @@ BASEPATH=/htdocs/2023/test/regional-test-donation-general-general
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/test/regional-test-donation-general-general/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=regional-test-donation-general-general
+CLOUD_PAGE_NAME=donation-general-general
+CONV_EXP=//cdn-4.convertexperiments.com/js/10046099-10046440.js
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

@@ -246,7 +246,7 @@ function Index({
 
 	return (
 		<>
-			<DynamicSeoComp strapi={strapi} />
+			<DynamicSeoComp strapi={strapi} theme={themeData} />
 			{/* <Script strategy="lazyOnload">
             {`console.log("================ GTM ================");`}
 			</Script> */}
