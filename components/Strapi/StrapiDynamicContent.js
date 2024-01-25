@@ -20,7 +20,7 @@ const StrapiDynamicBlocks = ({
 	blocks = 'contentBlocks',
 	strapi,
 	className,
-	variation
+	variation = 'A',
 }) => {
 	if (!strapi) {
 		return null;

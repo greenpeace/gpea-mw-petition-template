@@ -73,6 +73,8 @@ function Index({ submitted = false, strapi }) {
 
 	// pass signer / donor name to TY Banner
 	const [TYName, setTYName] = useState();
+
+	// get convert experiment variation
 	const [variation, setVariation] = useState('A');
 
 	useEffect(() => {
@@ -211,13 +213,6 @@ function Index({ submitted = false, strapi }) {
 										)
 									) : (
 										<SignupForm setSignupBtnRef={setSignupBtnRef} />
-									)}
-									{submitted && pageType?.toLowerCase() === 'petition' && (
-										<div
-											dangerouslySetInnerHTML={{
-												__html: `<iframe style="overflow: hidden;" src="https://counter.greenpeace.org/count?id=deepseamining" width="1" height="1" frameborder="0" scrolling="no"></iframe>`
-											}}
-										></div>
 									)}
 								</Box>
 								<div ref={FormBtnref}></div>
