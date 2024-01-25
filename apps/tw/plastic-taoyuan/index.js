@@ -68,7 +68,6 @@ function Index({ status, theme, setFormContent, signup }) {
 
   return (
     <>
-      <SEO />
       {submitted ? (
         <ThanksBanner
           bgImage={heroBannerImage}

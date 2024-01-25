@@ -382,10 +382,10 @@ function Index({ submitted = false, strapi }) {
 							</Flex>
 						</OverflowWrapper>
 					</PageContainer>
-					<PetitionFooter locale={'TWChinese'} />
+					
 				</>
 			)}
-
+			<PetitionFooter locale={'TWChinese'} />
 			<StrapiFixedButton
 				target={FormRef}
 				targetInView={

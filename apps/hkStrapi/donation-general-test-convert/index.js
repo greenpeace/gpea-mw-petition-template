@@ -8,7 +8,7 @@ BASEPATH=/web/api.greenpeace.org.hk/htdocs/2023/test/donation-general-test-conve
 ASSETPREFIX=https://api.greenpeace.org.hk/2023/test/donation-general-test-convert/
 FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=donation-general-test-convert
+CLOUD_PAGE_NAME=donation-general
 CONV_EXP=//cdn-4.convertexperiments.com/js/10046099-10046519.js
 */
 import React, { useEffect, useRef, useState } from 'react';

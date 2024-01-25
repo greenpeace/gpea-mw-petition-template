@@ -85,14 +85,15 @@ async function waitMilliSeconds(ms) {
 
 		// Perform the login process to generate new session data
 		const browser = await puppeteer.launch({
-			// executablePath: '/usr/bin/google-chrome',// uncomment and set path if need.
+			executablePath: '/usr/bin/google-chrome',// uncomment and set path if need.
 			headless: false,
-			args: ['--no-sandbox']
+			args: ['--no-sandbox',`--window-size=1280,720`]
 		});
 		const context = await browser.defaultBrowserContext()
 		let page = await context.newPage();
 
 		// Login to Marketing Cloud via OKTA
+		console.log('wait for login...' + OKTA_URL)
 		await executeOktaLogin(page);
 		await page.goto(OKTA_URL);
 		element = await page.waitForXPath("//*[contains(text(), 'Salesforce Marketing Cloud EA')]");
