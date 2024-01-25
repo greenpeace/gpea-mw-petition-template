@@ -19,36 +19,35 @@ import SEO from './SEO';
 import QUIZ from './data/quiz.json';
 
 const Index = ({ survey }) => {
-  const currentPage = survey?.page;
-  const Page = dynamic(() => import(`./${currentPage}`));
+	const currentPage = survey?.page;
+	const Page = dynamic(() => import(`./${currentPage}`));
 
-  return (
-    <>
-      <SEO />
-      <Page quiz={QUIZ} />
-    </>
-  );
+	return (
+		<>
+			<Page quiz={QUIZ} />
+		</>
+	);
 };
 
 const mapStateToProps = ({ status, survey }) => {
-  return { status, survey };
+	return { status, survey };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    setSurveyPage: (data) => {
-      dispatch({ type: surveyActions.SET_SURVEY_PAGE, data });
-    },
-  };
+	return {
+		setSurveyPage: (data) => {
+			dispatch({ type: surveyActions.SET_SURVEY_PAGE, data });
+		}
+	};
 };
 
 //Prevent refresh child component
 
 function propsAreEqual(prevSurvey, nextSurvey) {
-  return prevSurvey.survey.page === nextSurvey.survey.page;
+	return prevSurvey.survey.page === nextSurvey.survey.page;
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+	mapStateToProps,
+	mapDispatchToProps
 )(React.memo(Index, propsAreEqual));

@@ -40,7 +40,6 @@ function Index() {
 
 	return (
 		<>
-			<SEO />
 			<AppProvider>
 				<SwitchHeader />
 				<SwitchPage />
@@ -75,5 +74,3 @@ const SwitchPage = () => {
 };
 
 export default Index;
-
-
