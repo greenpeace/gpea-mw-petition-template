@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Script from 'next/script';
 
-const SEO = (theme) => {
+const SEO = ({ theme }) => {
 	return (
 		<Head>
 			{/* campaign dataLayer */}

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-const SEO = (theme) => {
+const SEO = ({ theme }) => {
 	return (
 		<Head>
 			{/* campaign dataLayer */}

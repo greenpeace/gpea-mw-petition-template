@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import OgImage from './images/seo-cover.jpg';
 
-const SEO = (theme) => {
+const SEO = ({ theme }) => {
 	return (
 		<Head>
 			{/* campaign dataLayer */}

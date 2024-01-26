@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import shareImage from './images/earthday-share.jpg';
 
-const SEO = (theme) => {
+const SEO = ({ theme }) => {
 	return (
 		<Head>
 			{/* campaign dataLayer */}
