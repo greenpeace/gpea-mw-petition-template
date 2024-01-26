@@ -7,7 +7,11 @@ import DonationModule from '@components/GP/DonationModule';
 
 const Index = ({ status }) => {
 	const RenderForm = () =>
-		status?.submitted ? <DonateForm /> : <SignupForm />;
+		status?.submitted ? (
+			<DonateForm />
+		) : (
+			<SignupForm setSignupBtnRef={function () {}} />
+		);
 	return (
 		<Box
 			mx="auto"
