@@ -66,12 +66,15 @@ function Index({ submitted = false, strapi }) {
 	}, [dispatch]);
 
 	// set convert experiment ab test default group
-	const [variation, setVariation] = useState('A');
-
+	const [variation, setVariation] = useState('');
+	window.__greenpeace__ = window.__greenpeace__ || {};
+	window.__greenpeace__.setVariation = function(variation){
+		setVariation(variation)
+	}
 	useEffect(() => {
 		// set convert experiment ab test group
 		if(window?.__greenpeace__?.testSet) {
-			setVariation(window.__greenpeace__.testSet)
+			if(variation !== window.__greenpeace__.testSet) setVariation(window.__greenpeace__.testSet);
 		}
 	});
 

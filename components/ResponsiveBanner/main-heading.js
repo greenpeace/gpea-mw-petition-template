@@ -23,14 +23,18 @@ export default function Index({
 			<Box minH={minH} pos={'relative'} zIndex={2}>
 				<Box pos={'relative'} zIndex={3}>
 					<PageContainer>
-						<Box py={8} px={4} textAlign={'center'}>
-							<Stack spacing="4">
+						<Box py={6} px={2} textAlign={'center'}>
+							<Stack spacing="4" minH={'220px'} alignItems={'center'} justifyContent={'center'}>
 								{content?.title && (
 									<Heading
 										as="div"
 										fontSize={{
-											base: 'var(--text-xl)',
-											md: 'var(--text-2xl)'
+											base: '1.7rem',
+											md: 'var(--text-xl)'
+										}}
+										lineHeight={{
+											base: '1.3',
+											md: '3.4rem'
 										}}
 										color={customColor}
 										textShadow="0 0 1px rgba(0,0,0, .2)"

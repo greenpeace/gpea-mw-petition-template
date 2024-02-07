@@ -1,14 +1,14 @@
 /** 
  * Dploy Setting:
-PROJECT=twStrapi/regional-test-donation-general-general
-MARKET=tw
-PROJECT_NAME=regional-test-donation-general-general
-BASEPATH=/htdocs/2023/test/regional-test-donation-general-general
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/test/regional-test-donation-general-general/
-FTP_CONFIG_NAME=ftp_tw
+PROJECT=hkStrapi/regional-test-single-column
+MARKET=hk
+PROJECT_NAME=donation-general
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2023/test/regional-test-single-column
+ASSETPREFIX=https://api.greenpeace.org.hk/2023/test/regional-test-single-column/
+FTP_CONFIG_NAME=api_hk_cloud
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=donation-general-general
-CONV_EXP=//cdn-4.convertexperiments.com/js/10046099-10046440.js
+CLOUD_PAGE_NAME=donation-general
+CONV_EXP=//cdn-4.convertexperiments.com/js/10046099-10046519.js
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,7 +26,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/TWForm';
+import SignupForm from '@components/GP/HKForm';
 // import new layout components
 import MainHeading from '@components/ResponsiveBanner/main-heading';
 // Import Strapi content components
@@ -74,8 +74,12 @@ function Index({ submitted = false, strapi }) {
 	// pass signer / donor name to TY Banner
 	const [TYName, setTYName] = useState();
 
-	// get convert experiment variation
-	const [variation, setVariation] = useState('A');
+	// set convert experiment ab test default group
+	const [variation, setVariation] = useState('');
+	window.__greenpeace__ = window.__greenpeace__ || {};
+	window.__greenpeace__.setVariation = function(variation){
+		setVariation(variation)
+	}
 
 	useEffect(() => {
 		// get donation module firstname
@@ -84,8 +88,9 @@ function Index({ submitted = false, strapi }) {
 			setTYName(data.firstName);
 		};
 
-		if(window.__greenpeace__.testSet) {
-			setVariation(window.__greenpeace__.testSet)
+		// set convert experiment ab test group
+		if(window?.__greenpeace__?.testSet) {
+			if(variation !== window.__greenpeace__.testSet) setVariation(window.__greenpeace__.testSet);
 		}
 	});
 	useEffect(() => {
@@ -97,7 +102,11 @@ function Index({ submitted = false, strapi }) {
 		const parser = new DOMParser();
 		const CHRichHtml = parser.parseFromString(target, 'text/html');
 		if(CHRichHtml.querySelector('h1') )CHRichHtml.querySelector('h1').setAttribute('hidden', '');
-		if(CHRichHtml.querySelector('.raw-html-embed h1')) CHRichHtml.querySelector('.raw-html-embed h1').removeAttribute('hidden');
+		if(CHRichHtml.querySelector('.raw-html-embed h1')){
+			CHRichHtml.querySelector('.raw-html-embed h1').removeAttribute('hidden');
+		}else if(CHRichHtml.querySelectorAll('.raw-html-embed h1').length <= 0){
+			CHRichHtml.querySelector('h1').removeAttribute('hidden')
+		}
 		return new XMLSerializer().serializeToString(CHRichHtml);
 	};
 
@@ -105,7 +114,9 @@ function Index({ submitted = false, strapi }) {
 		<>
 			<StrapiSEO strapi={strapi} />
 			{variation === 'B' ? (
+				
 				<Box className="layout-1col">
+					<PageContainer maxW='1000px'>
 					{submitted ? (
 						<MainHeading
 							defaultImage={
@@ -164,7 +175,8 @@ function Index({ submitted = false, strapi }) {
 							}}
 						/>
 					)}
-
+					</PageContainer>
+					
 					<ContentContainer
 						issue={strapi?.issue?.data?.attributes?.slug}
 						layout={'1col'}
@@ -385,7 +397,7 @@ function Index({ submitted = false, strapi }) {
 					
 				</>
 			)}
-			<PetitionFooter locale={'TWChinese'} />
+			<PetitionFooter locale={'HKChinese'} />
 			<StrapiFixedButton
 				target={FormRef}
 				targetInView={
