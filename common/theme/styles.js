@@ -42,8 +42,18 @@ const styles = {
 		'.layout-1col .strapi-content h2': {
 			lineHeight: 1.2,
 			mb: 6,
-			fontSize: { base: '3xl', md: '3xl' },
+			fontSize: { base: '1.4rem', md: '1.4rem' },
 			fontWeight: 'bold'
+		},
+		'.layout-1col .strapi-content img': {
+			base: {
+				marginRight: 'auto',
+				marginLeft: 'auto',
+				maxWidth: '100%'
+			},
+			md: {
+				maxWidth: '60%'
+			}
 		},
 		'.strapi-content h3': {
 			lineHeight: 1.2,
@@ -60,10 +70,10 @@ const styles = {
 		},
 		'.layout-1col .strapi-content': {
 			p: {
-				fontSize: { base: '20px' }
+				// fontSize: { base: '20px' }
 			},
 			li: {
-				fontSize: { base: '20px' }
+				// fontSize: { base: '20px' }
 			}
 		}
 	}
