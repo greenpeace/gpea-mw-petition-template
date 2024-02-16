@@ -39,6 +39,22 @@ const styles = {
 			fontSize: { base: 'xl', md: '2xl' },
 			fontWeight: 'bold'
 		},
+		'.layout-1col .strapi-content h2': {
+			lineHeight: 1.2,
+			mb: 6,
+			fontSize: { base: '1.4rem', md: '1.4rem' },
+			fontWeight: 'bold'
+		},
+		'.layout-1col .strapi-content img': {
+			base: {
+				marginRight: 'auto',
+				marginLeft: 'auto',
+				maxWidth: '100%'
+			},
+			md: {
+				maxWidth: '60%'
+			}
+		},
 		'.strapi-content h3': {
 			lineHeight: 1.2,
 			mb: 6,
@@ -51,6 +67,14 @@ const styles = {
 			fontSize: { base: '16px' },
 			whiteSpace: 'pre-line',
 			textAlign: 'justify'
+		},
+		'.layout-1col .strapi-content': {
+			p: {
+				// fontSize: { base: '20px' }
+			},
+			li: {
+				// fontSize: { base: '20px' }
+			}
 		}
 	}
 };

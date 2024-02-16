@@ -1,6 +1,6 @@
 {
-	"form_header": "致 2024 總統候選人們：",
-	"form_description": "人與萬物共生共融的環境，是我對臺灣最深的期待，而期待能否實現，仰賴一位能夠加速臺灣邁向 2050 淨零排放的氣候領袖，我相信，我的選票可以催生這樣的候選人。投票日已越來越近了，是時候將選舉焦點拉回務實的政策討論，請候選人們提出更積極的再生能源及減碳目標，因為我的選票，只屬於氣候領袖。",
+	"form_header": "立即連署 扭轉氣候變遷",
+	"form_description": "數十年來，各國政府對氣候變遷的怠慢、失能，與財團們長期犧牲環境、生態獲利，已經迫使氣候問題上升至幾近失控的程度！請加入連署，支持綠色和平對全球政府提出的「淨零排放」政策倡議，讓我們集結公民的力量，推動政府為氣候當責、企業為污染負責！",
 	"form_remind": "",
 	"signed_number": "已連署人數",
 	"label_yes": "是",
@@ -14,6 +14,7 @@
 	"label_year_of_birth": "出生年份",
 	"label_year_of_birth_optional": "出生年份（選填）",
 	"label_counties": "居住縣市",
+	"label_careers": "您的職業",
 	"label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/' target='_blank'>隱私保護政策</a>。",
 	"empty_data_alert": "請填寫資料",
 	"empty_phone_alert": "請填手機號碼，確保接收專案相關通知",
@@ -129,6 +130,34 @@
 			{
 				"label": "不提供",
 				"value": "不提供"
+			}
+		]
+	},
+	"careers": {
+		"options": [
+			{
+				"label": "一般大眾",
+				"value": "一般大眾"
+			},
+			{
+				"label": "記者/媒體從業人員",
+				"value": "記者/媒體從業人員"
+			},
+			{
+				"label": "NGO 工作者",
+				"value": "NGO 工作者"
+			},
+			{
+				"label": "政府公務人員",
+				"value": "政府公務人員"
+			},
+			{
+				"label": "教職人員",
+				"value": "教職人員"
+			},
+			{
+				"label": "其他",
+				"value": "其他"
 			}
 		]
 	},

@@ -223,14 +223,14 @@ function Index({ submitted = false, strapi }) {
 											strapi={strapi}
 										/>
 									) : (
-										<StrapiDynamicBlocks
-											blocks={'thankyouBlocks'}
-											strapi={strapi}
-										/>
 										// <StrapiDynamicBlocks
-										// 	blocks={'contentBlocks'}
+										// 	blocks={'thankyouBlocks'}
 										// 	strapi={strapi}
 										// />
+										<StrapiDynamicBlocks
+											blocks={'contentBlocks'}
+											strapi={strapi}
+										/>
 									)}
 								</>
 							</ContentContainer>
@@ -263,13 +263,6 @@ function Index({ submitted = false, strapi }) {
 										)
 									) : (
 										<SignupForm setSignupBtnRef={setSignupBtnRef} />
-									)}
-									{submitted && pageType?.toLowerCase() === 'petition' && (
-										<div
-											dangerouslySetInnerHTML={{
-												__html: `<iframe style="overflow: hidden;" src="https://counter.greenpeace.org/count?id=deepseamining" width="1" height="1" frameborder="0" scrolling="no"></iframe>`
-											}}
-										></div>
 									)}
 								</Box>
 								<div ref={FormBtnref}></div>

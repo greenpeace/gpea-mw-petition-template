@@ -11,26 +11,24 @@
 	"label_year_of_birth": "出生年份",
 	"label_year_of_birth_optional": "出生年份（選填）",
 	"label_opinion": "請輸入您的個人意見，令每一封意見書有更獨特的聲音。",
-	"label_time": "請選擇你想參與的放映場次：", 
+	"label_time": "請選擇你想參與的放映場次：（設映後分享會場次已滿額）",
 	"label_plus": "請選擇同行人數：",
 	"label_plus_kids": "同行人士（16歲或以下）：*適用於所有報名人士",
 	"label_plus_friends": "同行人士（16歲以上）：*月捐會員限定",
 	"label_newsletter": "* 登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
 	"options_time": [
-		{"label": "12:00-12:30", "value": "場次 time_slot1: 12:00 - 12:30"},
-		{"label": "13:00-13:30", "value": "場次 time_slot2: 13:00 - 13:30"},
-		{"label": "14:00-15:30 *設映後分享會", "value": "場次 time_slot3: 14:00 - 15:30 *設映後分享會"},
-		{"label": "16:00-17:30 *設映後分享會", "value": "場次 time_slot4: 16:00 - 17:30 *設映後分享會"}
+		{ "label": "12:00-12:30", "value": "場次 time_slot1: 12:00 - 12:30" },
+		{ "label": "13:00-13:30", "value": "場次 time_slot2: 13:00 - 13:30" }
 	],
 	"options_kids": [
-		{"label": "0", "value": "0"},
-		{"label": "1", "value": "1"},
-		{"label": "2", "value": "2"}
+		{ "label": "0", "value": "0" },
+		{ "label": "1", "value": "1" },
+		{ "label": "2", "value": "2" }
 	],
 	"options_friends": [
-		{"label": "0", "value": "0"},
-		{"label": "1", "value": "1"},
-		{"label": "2", "value": "2"}
+		{ "label": "0", "value": "0" },
+		{ "label": "1", "value": "1" },
+		{ "label": "2", "value": "2" }
 	],
 
 	"empty_data_alert": "請填寫資料",
@@ -39,6 +37,8 @@
 
 	"invalid_email_alert": "請填上有效電郵地址",
 	"invalid_format_alert": "請輸入有效格式",
+	"invalid_phone_alert_852": "手提號碼應為8位數字,首位數字應為 4 - 9",
+	"invalid_phone_alert_853": "手提號碼應為8位數字,首位數字應為 6",
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 

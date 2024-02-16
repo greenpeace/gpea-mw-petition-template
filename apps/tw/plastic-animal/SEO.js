@@ -2,7 +2,9 @@ import Head from 'next/head';
 import Script from 'next/script';
 import shareImage from './images/share.jpg';
 
-const SEO = () => {
+const SEO = ({
+  theme
+}) => {
   return (
     <Head>
       {/* campaign dataLayer */}
@@ -33,6 +35,7 @@ const SEO = () => {
         content="測你多了解臺灣自然棲地，野生保育類動物有話要說！"
       />
       <meta property="og:image" content={shareImage} />
+      <link rel="canonical" href={theme?.PageURL} />
     </Head>
   );
 };

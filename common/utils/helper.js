@@ -52,3 +52,30 @@ export const getUrlParams = () => {
   }
   return p;
 };
+
+
+export const h1Group = (richContent, group) =>{
+  const parser = new DOMParser();
+  const CHRichHtml = parser.parseFromString(richContent, 'text/html');
+  let h1DOM = CHRichHtml.querySelector('h1:not(.raw-html-embed h1)');
+  const regex = /group\s([a-zA-Z])/g;
+  // console.log('===========',h1DOM)
+  let h1Groups = {
+    "A": h1DOM
+  };
+  CHRichHtml.querySelectorAll('.raw-html-embed h1').forEach((el, key)=>{
+    const match = regex.exec(el.textContent);
+    // console.log('===========',el.textContent,match)
+    if(match !== null) {
+      h1Groups[match[1].toUpperCase()] = el;
+      el.removeAttribute('hidden');
+    }
+  })
+  // if(CHRichHtml.querySelector('h1') )CHRichHtml.querySelector('h1').setAttribute('hidden', '');
+  // if(CHRichHtml.querySelector('.raw-html-embed h1')) CHRichHtml.querySelector('.raw-html-embed h1').removeAttribute('hidden');
+  if(group && h1Groups[group]){
+    h1DOM = h1Groups[group]
+  }
+  // console.log('===========',h1Groups,h1DOM)
+  return new XMLSerializer().serializeToString(h1DOM);
+}

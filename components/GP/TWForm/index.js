@@ -58,7 +58,7 @@ const MyForm = (props) => {
 		customOfTarget,
 		customMapFields, //an array for copy values to preset CampaignData fileds. ex: [{"from":"BirthDate", "to":"CampaignData3__c"}]
 		setSignupBtnRef,
-		hasMKT=true,
+		hasMKT = true
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
 	const [progressNumber, setProgressNumber] = useState(0);
@@ -84,7 +84,7 @@ const MyForm = (props) => {
 	}, [formViewed]);
 
 	useEffect(() => {
-		if(setSignupBtnRef) setSignupBtnRef(btnRef);
+		if (setSignupBtnRef) setSignupBtnRef(btnRef);
 	}, [btnRef]);
 
 	useEffect(() => {
@@ -146,6 +146,7 @@ const MyForm = (props) => {
 	useEffect(() => {
 		if (Object.keys(formContent).length > 0) {
 			if (formContent.counties) setFieldValue('Counties', '');
+			if (formContent.careers) setFieldValue('Careers', '');
 			if (formContent.namelist)
 				setFieldValue('Namelist', formContent.namelist[0].value);
 			if (formContent.additional)
@@ -178,7 +179,6 @@ const MyForm = (props) => {
 			});
 		}
 	};
-
 	return (
 		<Box py="8" px="4">
 			<Stack spacing="4">
@@ -324,7 +324,7 @@ const MyForm = (props) => {
 								/>
 								<Box pt="1" pl="2">
 									<Text color="gray.700" fontSize="sm" as="span">
-										電話格式範例：0912345678 或 02-23612351
+										電話格式範例：0912345678 或 886912345678
 									</Text>
 								</Box>
 							</Box>
@@ -386,6 +386,39 @@ const MyForm = (props) => {
 								</FormControl>
 							</Box>
 						)}
+						{/* optional select: careers */}
+						{formContent.careers && (
+							<Box>
+								<FormControl
+									id={
+										formContent.careers.fieldName
+											? formContent.careers.fieldName
+											: 'Careers'
+									}
+									isInvalid={errors.Careers && touched.Careers}
+								>
+									<Select
+										onChange={handleChange}
+										fontSize={'16px'}
+										placeholder={formContent.label_careers}
+										size={'lg'}
+									>
+										{formContent.careers.options.map((d, index) => (
+											<option
+												key={index}
+												value={`${d.value}`}
+												disabled={d.disabled ? true : null}
+											>
+												{d.value}
+											</option>
+										))}
+									</Select>
+									<FormErrorMessage px={2} color="var(--error-900)">
+										{errors.Careers}
+									</FormErrorMessage>
+								</FormControl>
+							</Box>
+						)}
 						{/* optional field */}
 						{formContent.additional && (
 							<HStack align="flex-end">
@@ -409,7 +442,7 @@ const MyForm = (props) => {
 								</Box>
 							</HStack>
 						)}
-						{(formContent.label_newsletter && hasMKT) && (
+						{formContent.label_newsletter && hasMKT && (
 							<Box>
 								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
 									<Box flex={0} mr={2} pt={1}>
@@ -431,14 +464,14 @@ const MyForm = (props) => {
 							</Box>
 						)}
 
-						{(formContent.label_newsletter && !hasMKT) && (
+						{formContent.label_newsletter && !hasMKT && (
 							<Box>
 								<Checkbox
 									id="OptIn"
 									name="OptIn"
 									onChange={handleChange}
 									defaultChecked
-									display={"none"}
+									display={'none'}
 								/>
 								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
 									<Text
@@ -489,7 +522,7 @@ const MyForm = (props) => {
 								{formContent.submit_text}
 							</Button>
 						</Box>
-						
+
 						{formContent.form_remind && (
 							<Box>
 								<Text
@@ -497,13 +530,11 @@ const MyForm = (props) => {
 									color={'gray.700'}
 									lineHeight="1.7"
 									dangerouslySetInnerHTML={{
-										__html: formContent.form_remind,
+										__html: formContent.form_remind
 									}}
 								/>
 							</Box>
 						)}
-
-
 					</Stack>
 				</Form>
 			</Stack>
@@ -575,10 +606,12 @@ const MyEnhancedForm = withFormik({
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
-		
+
 		if (values.Counties) formData.CampaignData1__c = values.Counties;
+		if (values.Careers) formData.CampaignData1__c = values.Careers;
 		if (values.Namelist) formData.CampaignData2__c = values.Namelist;
-		if (values.MobilePhone.indexOf("0") == 0) formData.MobilePhone = values.MobilePhone.replace(/^0+/, '')
+		if (values.MobilePhone.indexOf('0') == 0)
+			formData.MobilePhone = values.MobilePhone.replace(/^0+/, '');
 		if (customMapFields) {
 			customMapFields.forEach((val) => {
 				formData[val.to] = values[val.from];

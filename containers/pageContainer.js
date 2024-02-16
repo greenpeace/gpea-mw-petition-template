@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 
-const PageContainer = ({ children }) => {
+const PageContainer = ({ children, maxW="1200px" }) => {
   return (
-    <Box height="100%" maxW="1200px" mx="auto">
+    <Box height="100%" maxW={maxW} mx="auto">
       {children}
     </Box>
   );

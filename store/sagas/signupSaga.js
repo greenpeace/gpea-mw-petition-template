@@ -19,6 +19,7 @@ export function* submitForm(actions) {
         }, new FormData()),
       }),
     );
+    
     // ga4 event
     helper.pushDataLayer({
       'event': 'custom_event',

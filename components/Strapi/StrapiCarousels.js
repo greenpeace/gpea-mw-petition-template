@@ -28,7 +28,7 @@ export const SwiperCarousel = ({ data }) => {
 		loop: true,
 		autoplay: false,
 		pagination: {
-			clickable: true,
+			clickable: true
 			// renderBullet: function (index, className) {
 			// 	return '<span className="' + className + '"></span>';
 			// }
@@ -49,7 +49,6 @@ export const SwiperCarousel = ({ data }) => {
 					prevEl: '.swiper-button-prev'
 				}}
 			>
-
 				<Box className="swiper-button-prev">
 					<ChevronLeftIcon w={8} h={8} color="green.400" />
 				</Box>
@@ -116,7 +115,6 @@ export const SingleCarousel = ({ data }) => {
 					prevEl: '.swiper-button-prev'
 				}}
 			>
-				
 				<Box className="swiper-button-prev">
 					<ChevronLeftIcon w={8} h={8} color="green.400" />
 				</Box>
@@ -219,10 +217,13 @@ export const CardCarousel = ({ data }) => {
 };
 
 export const TestimonialCarousel = ({ data }) => {
+	const moreThanOneSlider = data.length > 1;
+	console.log('moreThanOneSlider: ', moreThanOneSlider);
+
 	const defaultConfig = {
 		centeredSlides: true,
 		slidesPerView: 'auto',
-		loop: true,
+		loop: moreThanOneSlider,
 		autoplay: false
 	};
 
@@ -245,15 +246,30 @@ export const TestimonialCarousel = ({ data }) => {
 					prevEl: '.testimonial-swiper-button-prev'
 				}}
 			>
-				<Box className="testimonial-swiper-button-prev swiper-button-prev">
-					<ChevronLeftIcon w={8} h={8} color="green.400" />
-				</Box>
-				<Box className="testimonial-swiper-button-next swiper-button-next">
-					<ChevronRightIcon w={8} h={8} color="green.400" />
-				</Box>
+				{moreThanOneSlider ? (
+					<Box
+						className="testimonial-swiper-button-prev swiper-button-prev"
+						_after={{ display: 'none' }}
+					>
+						<ChevronLeftIcon w={8} h={8} color="green.400" />
+					</Box>
+				) : null}
+				{moreThanOneSlider ? (
+					<Box
+						className="testimonial-swiper-button-next swiper-button-next"
+						_after={{ display: 'none' }}
+					>
+						<ChevronRightIcon w={8} h={8} color="green.400" />
+					</Box>
+				) : null}
 
 				{data?.map((d, i) => (
-					<SwiperSlide key={i} style={{ maxWidth: '90%' }}>
+					<SwiperSlide
+						key={i}
+						style={
+							moreThanOneSlider ? { maxWidth: '90%' } : { maxWidth: '100%' }
+						}
+					>
 						<Box
 							bgColor="#FFF"
 							w={'100%'}
