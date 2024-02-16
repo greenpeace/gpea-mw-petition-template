@@ -30,7 +30,7 @@ const Index = ({ survey, hiddenForm, setSurveyPage, setHiddenForm }) => {
   
   return (
     <>
-      <SEO />
+      {/* <SEO /> */}
       <Page quiz={QUIZ} />
     </>
   );

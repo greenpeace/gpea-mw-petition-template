@@ -24,7 +24,7 @@ const Index = ({ survey }) => {
 
   return (
     <>
-      <SEO />
+      {/* <SEO /> */}
       <Page quiz={QUIZ} />
     </>
   );

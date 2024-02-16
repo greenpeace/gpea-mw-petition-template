@@ -12,12 +12,14 @@
 	"label_year_of_birth": "出生年份",
 	"label_year_of_birth_optional": "出生年份（選填）",
 	"label_newsletter": "",
-	
+
 	"empty_data_alert": "請填寫資料",
 	"empty_select_data_alert": "請選擇",
 
 	"invalid_email_alert": "請填上有效電郵地址",
 	"invalid_format_alert": "請輸入有效格式",
+	"invalid_phone_alert_852": "手提號碼應為8位數字,首位數字應為 4 - 9",
+	"invalid_phone_alert_853": "手提號碼應為8位數字,首位數字應為 6",
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 

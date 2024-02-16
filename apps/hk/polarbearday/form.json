@@ -1,118 +1,120 @@
 {
-  "form_header": "報名極地講座 認識北極熊生存危機與極地實況",
-  "form_description": "同時透過確認電郵，參與「北極熊理想生存環境」繪畫比賽，有機會獲得由北極寄出的明信片！",
-  "form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
-  "signed_number": "已聯署人數",
+	"form_header": "報名極地講座 認識北極熊生存危機與極地實況",
+	"form_description": "同時透過確認電郵，參與「北極熊理想生存環境」繪畫比賽，有機會獲得由北極寄出的明信片！",
+	"form_remind": "<sup>*</sup>登記是次活動即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>個人資料政策</u></a>與我聯絡，包括提供環保工作資訊及捐款呼籲等。",
+	"signed_number": "已聯署人數",
 
-  "label_yes": "是",
-  "label_no": "否",
-  "label_name": "稱謂",
-  "label_first_name": "名字",
-  "label_last_name": "姓氏",
-  "label_email": "電郵地址",
-  "label_phone": "手提號碼（接收活動SMS提示）",
-  "label_phone_optional": "手提號碼（選填）",
-  "label_year_of_birth": "出生年份",
-  "label_year_of_birth_optional": "出生年份（選填）",
-  "label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
+	"label_yes": "是",
+	"label_no": "否",
+	"label_name": "稱謂",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電郵地址",
+	"label_phone": "手提號碼（接收活動SMS提示）",
+	"label_phone_optional": "手提號碼（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
 
-  "empty_data_alert": "請填寫資料",
-  "empty_select_data_alert": "請選擇",
+	"empty_data_alert": "請填寫資料",
+	"empty_select_data_alert": "請選擇",
 
-  "invalid_email_alert": "請填上有效電郵地址",
-  "invalid_format_alert": "請輸入有效格式",
-  "minimum_8_characters": "請輸入8位數字",
-  "suggestion_message": "您是否想輸入",
+	"invalid_email_alert": "請填上有效電郵地址",
+	"invalid_format_alert": "請輸入有效格式",
+	"invalid_phone_alert_852": "手提號碼應為8位數字,首位數字應為 4 - 9",
+	"invalid_phone_alert_853": "手提號碼應為8位數字,首位數字應為 6",
+	"minimum_8_characters": "請輸入8位數字",
+	"suggestion_message": "您是否想輸入",
 
-  "submit_text": "立即登記",
-  "thanks_title": "",
-  "thanks_ask": "",
-  "thanks_content": "",
-  "share_button": "分享出去",
-  "donate_button": "下一步",
-  "donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=arctic_mw",
-  "shareMessage": "",
-  "fbURL": "",
-  "mainURL": "",
-  "whatsappURL": "",
+	"submit_text": "立即登記",
+	"thanks_title": "",
+	"thanks_ask": "",
+	"thanks_content": "",
+	"share_button": "分享出去",
+	"donate_button": "下一步",
+	"donateURL": "https://supporter.ea.greenpeace.org/hk/s/donate/alt-layout-new?language=zh_HK&campaign=arctic_mw",
+	"shareMessage": "",
+	"fbURL": "",
+	"mainURL": "",
+	"whatsappURL": "",
 
-  "mobile_country_code": [
-    { "label": "+852", "value": 852 },
-    { "label": "+853", "value": 853 }
-  ],
-  "new_letter": [
-    { "label": "是", "value": true },
-    { "label": "否", "value": false }
-  ],
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	],
 
-  "donate_header": "我願意守護北極！",
-  "donate_description": ["我要捐款保護北極，令北極回復奇妙不凡的生態。"],
-  "default_message": "您的捐助，支持綠色和平以公正獨立的身份，持續推動守護北極的工作！",
-  "donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
-  "donate_suggestion_message": "感謝您對綠色和平的支持！每月捐款可令環保項目得到更持久的成效，為地球嬴取更大的環保成果。",
-  "currency": "HKD",
-  "default_amount": 100,
-  "default_monthly": 100,
-  "min_amount_monthly": 50,
-  "default_oneoff": 500,
-  "min_amount_oneoff": 100,
-  "allow_monthly": "true",
-  "allow_oneoff": "true",
-  "default_donation_type": "monthly",
-  "donate_type": [
-    { "label": "每月捐款", "value": "monthly" },
-    { "label": "單次捐款", "value": "single" }
-  ],
-  "amount_onetime": [
-    {
-      "label": "500",
-      "value": 500,
-      "description": "持續搜集第一手北極環境真相，透過傳播媒體送到您與全球的眼前。",
-      "currency": "HKD"
-    },
-    {
-      "label": "700",
-      "value": 700,
-      "description": "協助團隊聯同科學家，到北極進行實地考察與氣候研究工作。",
-      "currency": "HKD"
-    },
-    {
-      "label": "900",
-      "value": 900,
-      "description": "協助團隊準備極地專用裝備，前赴北極應對突發環境災難，進行長期實地研究工作。",
-      "currency": "HKD"
-    },
-    {
-      "label": "其他金額",
-      "value": "other",
-      "description": ""
-    }
-  ],
-  "amount_monthly": [
-    {
-      "label": "100",
-      "value": 100,
-      "description": "支持發起全球聯署行動，擴大促請各國將升溫控制至1.5°C、停止破壞北極的聲音力量！",
-      "currency": "HKD"
-    },
-    {
-      "label": "200",
-      "value": 200,
-      "description": "支持綠色和平船艦及項目團隊，持績監察企業與政府最新動向，及時阻止破壞北極的行為。",
-      "currency": "HKD"
-    },
-    {
-      "label": "300",
-      "value": 300,
-      "description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意以升溫控制至1.5°C為目標、停止開發北極資源。",
-      "currency": "HKD"
-    },
-    {
-      "label": "其他金額",
-      "value": "other",
-      "description": ""
-    }
-  ],
-  "min_amount_alert": "為維持最低行政支出，最低捐款金額為：",
-  "thanks_message": "您的捐款，將幫助綠色和平為環境問題找到出路，並在全球各地落實環保工作。謝謝！"
+	"donate_header": "我願意守護北極！",
+	"donate_description": ["我要捐款保護北極，令北極回復奇妙不凡的生態。"],
+	"default_message": "您的捐助，支持綠色和平以公正獨立的身份，持續推動守護北極的工作！",
+	"donate_suggestion_header": "在推動環境工作愈見困難的此刻，您每月的捐助尤其重要！",
+	"donate_suggestion_message": "感謝您對綠色和平的支持！每月捐款可令環保項目得到更持久的成效，為地球嬴取更大的環保成果。",
+	"currency": "HKD",
+	"default_amount": 100,
+	"default_monthly": 100,
+	"min_amount_monthly": 50,
+	"default_oneoff": 500,
+	"min_amount_oneoff": 100,
+	"allow_monthly": "true",
+	"allow_oneoff": "true",
+	"default_donation_type": "monthly",
+	"donate_type": [
+		{ "label": "每月捐款", "value": "monthly" },
+		{ "label": "單次捐款", "value": "single" }
+	],
+	"amount_onetime": [
+		{
+			"label": "500",
+			"value": 500,
+			"description": "持續搜集第一手北極環境真相，透過傳播媒體送到您與全球的眼前。",
+			"currency": "HKD"
+		},
+		{
+			"label": "700",
+			"value": 700,
+			"description": "協助團隊聯同科學家，到北極進行實地考察與氣候研究工作。",
+			"currency": "HKD"
+		},
+		{
+			"label": "900",
+			"value": 900,
+			"description": "協助團隊準備極地專用裝備，前赴北極應對突發環境災難，進行長期實地研究工作。",
+			"currency": "HKD"
+		},
+		{
+			"label": "其他金額",
+			"value": "other",
+			"description": ""
+		}
+	],
+	"amount_monthly": [
+		{
+			"label": "100",
+			"value": 100,
+			"description": "支持發起全球聯署行動，擴大促請各國將升溫控制至1.5°C、停止破壞北極的聲音力量！",
+			"currency": "HKD"
+		},
+		{
+			"label": "200",
+			"value": 200,
+			"description": "支持綠色和平船艦及項目團隊，持績監察企業與政府最新動向，及時阻止破壞北極的行為。",
+			"currency": "HKD"
+		},
+		{
+			"label": "300",
+			"value": 300,
+			"description": "支持綠色和平以科學研究、直接行動及政策倡議，推動各國領袖同意以升溫控制至1.5°C為目標、停止開發北極資源。",
+			"currency": "HKD"
+		},
+		{
+			"label": "其他金額",
+			"value": "other",
+			"description": ""
+		}
+	],
+	"min_amount_alert": "為維持最低行政支出，最低捐款金額為：",
+	"thanks_message": "您的捐款，將幫助綠色和平為環境問題找到出路，並在全球各地落實環保工作。謝謝！"
 }

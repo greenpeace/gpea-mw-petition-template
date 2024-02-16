@@ -22,7 +22,7 @@ import { connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 // Import helpers
-import { useSignupBtnRootMargin } from '@common/utils'; 
+import { useSignupBtnRootMargin } from '@common/utils';
 
 import formContent from './form';
 import SEO from './SEO';
@@ -42,17 +42,17 @@ const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const SignupForm = dynamic(() => import('@components/GP/WebinarForm'));
 
 function Index({ status, theme, setFormContent, signup }) {
-  const { submitted } = status;
-  const { FirstName } = signup;
+	const { submitted } = status;
+	const { FirstName } = signup;
 
 	const mobileForm = useRef(null);
 
-  const [signupBtnRef, setSignupBtnRef] = useState(null);
+	const [signupBtnRef, setSignupBtnRef] = useState(null);
 	const signupBtnRootMargin = useSignupBtnRootMargin(mobileForm, signupBtnRef);
 
 	const [ref, inView] = useInView({
 		threshold: 0,
-		rootMargin: signupBtnRootMargin,
+		rootMargin: signupBtnRootMargin
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
@@ -60,102 +60,102 @@ function Index({ status, theme, setFormContent, signup }) {
 		rootMargin: '-70px 0px 120px 0px'
 	});
 
-  useEffect(() => {
-    setFormContent(formContent);
-  }, []);
+	useEffect(() => {
+		setFormContent(formContent);
+	}, []);
 
-  return (
-    <>
-      <SEO />
-      {submitted ? (
-        <ThanksBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: `${FirstName ? FirstName : '綠色和平支持者'
-              }，感謝您下載<br/>綠色生活指南`,
-            description: [
-              '',
-            ],
-          }}
-          removeMask={true}
-          imageSrcset={[
-            {
-              media: '(min-width: 48em)',
-              srcset: heroBannerImage,
-            },
-            {
-              media: '',
-              srcset: heroBannerImageMobile,
-            },
-          ]}
-        />
-      ) : (
-        <HeroBanner
-          bgImage={heroBannerImage}
-          content={{
-            title: '請即下載<br/>裸買重用回收全攻略（增訂版）',
-
-          }}
-          removeMask={true}
-          imageSrcset={[
-            {
-              media: '(min-width: 48em)',
-              srcset: heroBannerImage,
-            },
-            {
-              media: '',
-              srcset: heroBannerImageMobile,
-            },
-          ]}
-        />
-      )}
-      <PageContainer>
-        <OverflowWrapper>
-          <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
-            <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer theme={theme}>
-                {submitted ? <Thankyou /> : <Content />}
-              </ContentContainer>
-            </Box>
-            <Box flex={1} ref={mobileForm}>
-              <FormContainer>
-                <Box ref={ref}>
-                  {submitted ? (
-                    <DonationModule
-                      market={theme.Market}
-                      language={'zh_HK'}
-                      campaign={
-                        theme?.params?.donation_module_campaign ??
-                        'plastics'}
-                      // campaignId={''}
-                      env={'production'}
-                    />
-                  ) : (
-                    <SignupForm setSignupBtnRef={ setSignupBtnRef } />
-                  )}
-                </Box>
-                <div ref={ FormBtnref }></div>
-              </FormContainer>
-            </Box>
-          </Flex>
-        </OverflowWrapper>
-      </PageContainer>
-      <PetitionFooter locale={'HKChinese'} />
-      <ScrollToTargetButton target={mobileForm} targetInView={ (submitted) ? btnInView : inView} />
-    </>
-  );
+	return (
+		<>
+			{submitted ? (
+				<ThanksBanner
+					bgImage={heroBannerImage}
+					content={{
+						title: `${
+							FirstName ? FirstName : '綠色和平支持者'
+						}，感謝您下載<br/>綠色生活指南`,
+						description: ['']
+					}}
+					removeMask={true}
+					imageSrcset={[
+						{
+							media: '(min-width: 48em)',
+							srcset: heroBannerImage
+						},
+						{
+							media: '',
+							srcset: heroBannerImageMobile
+						}
+					]}
+				/>
+			) : (
+				<HeroBanner
+					bgImage={heroBannerImage}
+					content={{
+						title: '請即下載<br/>裸買重用回收全攻略（增訂版）'
+					}}
+					removeMask={true}
+					imageSrcset={[
+						{
+							media: '(min-width: 48em)',
+							srcset: heroBannerImage
+						},
+						{
+							media: '',
+							srcset: heroBannerImageMobile
+						}
+					]}
+				/>
+			)}
+			<PageContainer>
+				<OverflowWrapper>
+					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
+						<Box flex={1} mt={{ base: 10, sm: 60 }}>
+							<ContentContainer theme={theme}>
+								{submitted ? <Thankyou /> : <Content />}
+							</ContentContainer>
+						</Box>
+						<Box flex={1} ref={mobileForm}>
+							<FormContainer>
+								<Box ref={ref}>
+									{submitted ? (
+										<DonationModule
+											market={theme.Market}
+											language={'zh_HK'}
+											campaign={
+												theme?.params?.donation_module_campaign ?? 'plastics'
+											}
+											// campaignId={''}
+											env={'production'}
+										/>
+									) : (
+										<SignupForm setSignupBtnRef={setSignupBtnRef} />
+									)}
+								</Box>
+								<div ref={FormBtnref}></div>
+							</FormContainer>
+						</Box>
+					</Flex>
+				</OverflowWrapper>
+			</PageContainer>
+			<PetitionFooter locale={'HKChinese'} />
+			<ScrollToTargetButton
+				target={mobileForm}
+				targetInView={submitted ? btnInView : inView}
+			/>
+		</>
+	);
 }
 
 const mapStateToProps = ({ status, theme, signup }) => {
-  return { status, theme: theme.data, signup: signup.data };
+	return { status, theme: theme.data, signup: signup.data };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    setFormContent: (data) => {
-      dispatch({ type: formActions.SET_FORM, data });
-    },
-  };
+	return {
+		setFormContent: (data) => {
+			dispatch({ type: formActions.SET_FORM, data });
+		}
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index);

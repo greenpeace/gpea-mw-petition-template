@@ -2,7 +2,9 @@ import Head from 'next/head';
 import Script from 'next/script';
 import OgImage from './images/share.png';
 
-const SEO = () => {
+const SEO = ({
+  theme
+}) => {
   return (
     <Head>
       <Script
@@ -34,6 +36,7 @@ const SEO = () => {
         content="桃園，是臺灣首個訂定「循環容器辦法」的城市。綠色和平邀請您一同連署，呼籲桃園市政府在實施辦法中制定減量目標、循環容器使用目標！"
       />
       <meta property="og:image" content={OgImage} />
+      <link rel="canonical" href={theme?.PageURL} />
     </Head>
   );
 };

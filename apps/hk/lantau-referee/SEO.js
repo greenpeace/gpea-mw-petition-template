@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Script from 'next/script';
 
-const SEO = () => {
+const SEO = ({ theme }) => {
 	return (
 		<Head>
 			{/* campaign dataLayer */}
@@ -38,6 +38,7 @@ const SEO = () => {
 				property="og:image"
 				content="https://www.greenpeace.org/static/planet4-hongkong-stateless/2022/05/ee047a92-documentary-hero-preview.jpg"
 			/>
+			<link rel="canonical" href={theme?.PageURL} />
 		</Head>
 	);
 };

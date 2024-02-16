@@ -113,8 +113,8 @@ function Index({ submitted = false, strapi }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
+										'<br/>' +
+										strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}
@@ -144,9 +144,8 @@ function Index({ submitted = false, strapi }) {
 								]}
 								content={{
 									//title: strapi?.thankyouHero?.richContent,
-									title: `${TYName ? TYName : '綠色和平支持者'}，${
-										strapi?.thankyouHero?.richContent
-									}`,
+									title: `${TYName ? TYName : '綠色和平支持者'}，${strapi?.thankyouHero?.richContent
+										}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
@@ -174,8 +173,8 @@ function Index({ submitted = false, strapi }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
+										'<br/>' +
+										strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}
@@ -212,7 +211,7 @@ function Index({ submitted = false, strapi }) {
 											<DonationModule
 												market={
 													strapi?.market?.data?.attributes?.market ===
-													'Hong Kong'
+														'Hong Kong'
 														? 'HK'
 														: 'TW'
 												}

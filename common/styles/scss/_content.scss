@@ -14,3 +14,25 @@
 .social-share {
 	color: var(--thematic-color) !important;
 }
+
+.layout-1col {
+
+	.strapi-content{
+		max-width: 1000px;
+		margin-left: auto;
+		margin-right: auto;
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: black !important;
+			span {
+				color: black !important;
+			}
+		}
+	}
+	
+	
+}

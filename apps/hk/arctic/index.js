@@ -27,7 +27,7 @@ import { connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 // Import helpers
-import { useSignupBtnRootMargin } from '@common/utils'; 
+import { useSignupBtnRootMargin } from '@common/utils';
 
 import Content from './Content';
 import Thankyou from './Thankyou';
@@ -54,7 +54,7 @@ function Index({ status, theme, setFormContent, signup }) {
 
 	const [ref, inView] = useInView({
 		threshold: 0,
-		rootMargin: signupBtnRootMargin,
+		rootMargin: signupBtnRootMargin
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
@@ -68,7 +68,6 @@ function Index({ status, theme, setFormContent, signup }) {
 
 	return (
 		<>
-			<SEO />
 			{submitted ? (
 				<ThanksBanner
 					bgImage={heroBannerImage}
@@ -109,17 +108,20 @@ function Index({ status, theme, setFormContent, signup }) {
 											env={'production'}
 										/>
 									) : (
-										<SignupForm setSignupBtnRef={ setSignupBtnRef } />
+										<SignupForm setSignupBtnRef={setSignupBtnRef} />
 									)}
 								</Box>
-								<div ref={ FormBtnref }></div>
+								<div ref={FormBtnref}></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<ScrollToTargetButton target={mobileForm} targetInView={ (submitted) ? btnInView : inView} />
+			<ScrollToTargetButton
+				target={mobileForm}
+				targetInView={submitted ? btnInView : inView}
+			/>
 		</>
 	);
 }

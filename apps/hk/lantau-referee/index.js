@@ -109,7 +109,6 @@ function Index({ setFormContent, setFormData }) {
 
 	return (
 		<>
-			<SEO />
 			<AppProvider>
 				<Hero />
 				<div ref={ref}>

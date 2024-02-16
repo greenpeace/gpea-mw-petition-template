@@ -2,7 +2,9 @@ import Head from 'next/head';
 import Script from 'next/script';
 import OgImage from './images/meta_activist_recruitment.jpg';
 
-const SEO = () => {
+const SEO = ({
+  theme
+}) => {
   return (
     <Head>
       <Script
@@ -34,6 +36,7 @@ const SEO = () => {
         content="立即報名報名參加基礎行動培訓，跨出成為行動者的第一步！"
       />
       <meta property="og:image" content={OgImage} />
+      <link rel="canonical" href={theme?.PageURL} />
     </Head>
   );
 };

@@ -30,7 +30,7 @@ import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/WebinarForm';
 // Import helpers
-import { useSignupBtnRootMargin } from '@common/utils'; 
+import { useSignupBtnRootMargin } from '@common/utils';
 // Import Contents
 import formContent from './form';
 import SEO from './SEO';
@@ -42,21 +42,21 @@ import heroBannerImage from './images/2022-general-post-launch-webinar-desktop-b
 import heroBannerImageMobile from './images/2022-general-post-launch-webinar-mobile-banner.jpg';
 
 function Index({ status, theme, setFormContent, signup }) {
-  const { submitted } = status;
-  const { FirstName } = signup;
+	const { submitted } = status;
+	const { FirstName } = signup;
 
 	const mobileForm = useRef(null);
 
-  useEffect(() => {
-    setFormContent(formContent);
-  }, []);
+	useEffect(() => {
+		setFormContent(formContent);
+	}, []);
 
-  const [signupBtnRef, setSignupBtnRef] = useState(null);
+	const [signupBtnRef, setSignupBtnRef] = useState(null);
 	const signupBtnRootMargin = useSignupBtnRootMargin(mobileForm, signupBtnRef);
 
 	const [ref, inView] = useInView({
 		threshold: 0,
-		rootMargin: signupBtnRootMargin,
+		rootMargin: signupBtnRootMargin
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
@@ -64,110 +64,111 @@ function Index({ status, theme, setFormContent, signup }) {
 		rootMargin: '-70px 0px 120px 0px'
 	});
 
-  useEffect(() => {
-    if (submitted) {
-      //
-      window.dataLayer = window.dataLayer || [];
+	useEffect(() => {
+		if (submitted) {
+			//
+			window.dataLayer = window.dataLayer || [];
 
-      window.dataLayer.push({
-        event: 'fbqEvent',
-        contentName: 'annual-report-webinar',
-        contentCategory: 'Subscribe',
-      });
-    }
-  }, [submitted]);
+			window.dataLayer.push({
+				event: 'fbqEvent',
+				contentName: 'annual-report-webinar',
+				contentCategory: 'Subscribe'
+			});
+		}
+	}, [submitted]);
 
-  return (
-    <>
-      <SEO />
-      {submitted ? (
-        <ThanksBanner
-          defaultImage={heroBannerImage}
-          content={{
-            title: `${
-              FirstName ? FirstName : '綠色和平支持者'
-            }，感謝您報名分享會！`,
-            description: [
-              '確認電郵將於 12 小時內向您發送，內含講座連結和密碼，敬請留意。',
-            ],
-          }}
-          removeMask={false}
-          imageSrcset={[
-            {
-              media: '(min-width: 48em)',
-              srcset: heroBannerImage,
-            },
-            {
-              media: '',
-              srcset: heroBannerImageMobile,
-            },
-          ]}
-        />
-      ) : (
-        <HeroBanner
-          defaultImage={heroBannerImage}
-          content={{
-            title: '請即報名：<br/>眼睛去旅行<br/>港台日韓四地連線',
-
-          }}
-          removeMask={false}
-          imageSrcset={[
-            {
-              media: '(min-width: 48em)',
-              srcset: heroBannerImage,
-            },
-            {
-              media: '',
-              srcset: heroBannerImageMobile,
-            },
-          ]}
-        />
-      )}
-      <PageContainer>
-        <OverflowWrapper>
-          <Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
-            <Box flex={1} mt={{ base: 10, sm: 60 }}>
-              <ContentContainer>
-                {submitted ? <Thankyou /> : <Content />}
-              </ContentContainer>
-            </Box>
-            <Box flex={1} ref={mobileForm}>
-              <FormContainer>
-                <Box ref={ref}>
-                  {submitted ? (
-                    <DonationModule
-                      market={'HK'}
-                      language={'zh_HK'}
-                      campaign={'general'}
-                      // campaignId={''}
-                      env={'production'}
-                    />
-                  ) : (
-                    <SignupForm setSignupBtnRef={ setSignupBtnRef } />
-                  )}
-                </Box>
-                <div ref={ FormBtnref }></div>
-              </FormContainer>
-            </Box>
-          </Flex>
-        </OverflowWrapper>
-      </PageContainer>
-      <PetitionFooter locale={'HKChinese'} />
-      <ScrollToTargetButton target={mobileForm} targetInView={ (submitted) ? btnInView : inView} />
-    </>
-  );
+	return (
+		<>
+			{submitted ? (
+				<ThanksBanner
+					defaultImage={heroBannerImage}
+					content={{
+						title: `${
+							FirstName ? FirstName : '綠色和平支持者'
+						}，感謝您報名分享會！`,
+						description: [
+							'確認電郵將於 12 小時內向您發送，內含講座連結和密碼，敬請留意。'
+						]
+					}}
+					removeMask={false}
+					imageSrcset={[
+						{
+							media: '(min-width: 48em)',
+							srcset: heroBannerImage
+						},
+						{
+							media: '',
+							srcset: heroBannerImageMobile
+						}
+					]}
+				/>
+			) : (
+				<HeroBanner
+					defaultImage={heroBannerImage}
+					content={{
+						title: '請即報名：<br/>眼睛去旅行<br/>港台日韓四地連線'
+					}}
+					removeMask={false}
+					imageSrcset={[
+						{
+							media: '(min-width: 48em)',
+							srcset: heroBannerImage
+						},
+						{
+							media: '',
+							srcset: heroBannerImageMobile
+						}
+					]}
+				/>
+			)}
+			<PageContainer>
+				<OverflowWrapper>
+					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
+						<Box flex={1} mt={{ base: 10, sm: 60 }}>
+							<ContentContainer>
+								{submitted ? <Thankyou /> : <Content />}
+							</ContentContainer>
+						</Box>
+						<Box flex={1} ref={mobileForm}>
+							<FormContainer>
+								<Box ref={ref}>
+									{submitted ? (
+										<DonationModule
+											market={'HK'}
+											language={'zh_HK'}
+											campaign={'general'}
+											// campaignId={''}
+											env={'production'}
+										/>
+									) : (
+										<SignupForm setSignupBtnRef={setSignupBtnRef} />
+									)}
+								</Box>
+								<div ref={FormBtnref}></div>
+							</FormContainer>
+						</Box>
+					</Flex>
+				</OverflowWrapper>
+			</PageContainer>
+			<PetitionFooter locale={'HKChinese'} />
+			<ScrollToTargetButton
+				target={mobileForm}
+				targetInView={submitted ? btnInView : inView}
+			/>
+		</>
+	);
 }
 
 const mapStateToProps = ({ status, theme, signup }) => {
-  return { status, theme: theme.data, signup: signup.data };
+	return { status, theme: theme.data, signup: signup.data };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    setFormContent: (data) => {
-      dispatch({ type: formActions.SET_FORM, data });
-    },
-  };
+	return {
+		setFormContent: (data) => {
+			dispatch({ type: formActions.SET_FORM, data });
+		}
+	};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index);

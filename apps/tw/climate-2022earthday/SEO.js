@@ -2,7 +2,9 @@ import Head from 'next/head';
 import Script from 'next/script';
 import shareImage from './images/earthday-share.jpg';
 
-const SEO = () => {
+const SEO = ({
+  theme
+}) => {
   return (
     <Head>
       {/* campaign dataLayer */}
@@ -36,6 +38,7 @@ const SEO = () => {
         content="2022世界地球日主題是投資我們的星球，理財節目主持人暨綠色和平氣候大使謝哲青與你分享投資最重要的事不只ESG、CSR。快用人格測驗測出你是哪一型投資人，找到適合你的愛地球投資組合！"
       />
       <meta property="og:image" content={shareImage} />
+      <link rel="canonical" href={theme?.PageURL} />
     </Head>
   );
 };
