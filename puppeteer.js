@@ -85,7 +85,7 @@ async function waitMilliSeconds(ms) {
 
 		// Perform the login process to generate new session data
 		const browser = await puppeteer.launch({
-			executablePath: '/usr/bin/google-chrome',// uncomment and set path if need.
+			// executablePath: '/usr/bin/google-chrome',// uncomment and set path if need.
 			headless: false,
 			args: ['--no-sandbox',`--window-size=1280,720`]
 		});
@@ -185,7 +185,7 @@ async function waitMilliSeconds(ms) {
 		console.log('Waiting the editor panel load')
 		await waitMilliSeconds(10 * 1000);
 		await frame.waitForSelector('iframe[src*="https://content-builder"]');
-		let editorIframEl = await frame.$('div.cp-editor-container iframe.undefined');
+		let editorIframEl = await frame.$('div.cp-editor-container iframe[title="ContentBuilder Editor"]');
 		let editorFrame = await editorIframEl.contentFrame();
 
 		await editorFrame.waitForSelector('.gearpicker-handle-icon-outline');
