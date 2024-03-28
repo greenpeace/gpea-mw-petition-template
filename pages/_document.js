@@ -32,7 +32,7 @@ class NextDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap"
             media="print"
-            onload="this.onload=null;this.removeAttribute('media');"
+            onLoad="this.onload=null;this.removeAttribute('media');"
           />
           {/* <!-- begin Convert Experiences code--> */}
           {(process.env?.convExp) && (

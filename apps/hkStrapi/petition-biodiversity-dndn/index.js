@@ -1,20 +1,24 @@
-/** 
- * Dploy Setting:
-PROJECT=twStrapi/petition-oceans-deepseamining
-MARKET=tw
-PROJECT_NAME=petition-oceans-deepseamining
-BASEPATH=/htdocs/2023/petition/petition-oceans-deepseamining
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-oceans-deepseamining/
-FTP_CONFIG_NAME=ftp_tw
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/petition-biodiversity-dndn
+MARKET=hk
+PROJECT_NAME=petition-biodiversity-dndn
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-biodiversity-dndn
+ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-biodiversity-dndn/
+FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=zh-tw.2023.oceans.deepseamining.signup
+CLOUD_PAGE_NAME=zh-hk.2024.general.biodiversity_dndn.signup.na
 */
-import React, { useEffect, useRef, useState } from 'react';
+
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import * as formActions from 'store/actions/action-types/form-actions';
+import * as themeActions from 'store/actions/action-types/theme-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
@@ -25,31 +29,35 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/TWForm';
+import SignupForm from '@components/GP/HKForm';
+import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import helpers
-import { useSignupBtnRootMargin } from '@common/utils';
+import { useSignupBtnRootMargin } from '@common/utils'; 
 // Import Contents
 import formContent from './form';
 // Import static
 
-function Index({ submitted = false, strapi }) {
+function Index({ submitted = false, strapi: strapiData }) {
+	const strapi = strapiData ?? useSelector((state) => state?.theme?.strapi);
+	const router = useRouter();
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
-	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 
+	const [isLoaded, setIsLoaded] = useState(false);
 	const FormRef = useRef(null);
+	
 	const [signupBtnRef, setSignupBtnRef] = useState(null);
 	const signupBtnRootMargin = useSignupBtnRootMargin(FormRef, signupBtnRef);
 
 	const [ref, inView] = useInView({
 		threshold: 0,
-		rootMargin: signupBtnRootMargin
+		rootMargin: signupBtnRootMargin,
 	});
 	// mobile sticky btn show ref
 	const [FormBtnref, btnInView] = useInView({
@@ -57,16 +65,9 @@ function Index({ submitted = false, strapi }) {
 		rootMargin: '-70px 0px 120px 0px'
 	});
 
-	submitted = useSelector((state) => state?.status?.submitted);
-
-	useEffect(() => {
-		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
-	}, [dispatch]);
-
-	// const { FirstName } = signup;
-
 	// get utm_source
-	const { utm_source } = hiddenForm?.data;
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source, AsiaPayResult } = hiddenForm?.data;
 
 	// pass signer / donor name to TY Banner
 	const [TYName, setTYName] = useState();
@@ -82,45 +83,42 @@ function Index({ submitted = false, strapi }) {
 		setTYName(signup?.data?.FirstName);
 	}, [signup]);
 
+	submitted = useSelector((state) => state?.status?.submitted);
+
+	useEffect(() => {
+		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
+		if (pageType !== undefined) {
+			setIsLoaded(true);
+		}
+	}, [dispatch, pageType]);
+
+	useEffect(async () => {
+		if (router?.isReady) {
+			const { preview } = router?.query;
+			if (preview) {
+				const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
+
+				const res = await fetch(
+					`${endpoint}/pages?filters[market][slug]=hk&filters[campaign]=${preview}&populate=deep`
+				).then((response) => response);
+				const themes = await res.json();
+				const theme = themes?.data[0] ?? {};
+
+				dispatch({
+					type: themeActions.SET_STRAPI_DATA,
+					data: theme?.attributes
+				});
+			}
+		}
+	}, [router]);
+
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
 			<Box>
-				{(() => {
-					if (pageType?.toLowerCase() === 'donation') {
-						return (
-							<HeroBanner
-								removeMask={strapi?.contentHero?.removeMask}
-								defaultImage={
-									theme?.params?.hero_image_desktop ||
-									strapi?.contentHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: theme?.params?.headline_prefix
-										? theme?.params?.headline_prefix +
-										  '<br/>' +
-										  strapi?.contentHero?.richContent
-										: strapi?.contentHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
-								}}
-							/>
-						);
-					} else {
-						return submitted ? (
+				{isLoaded && (
+					<>
+						{submitted ? (
 							<ThanksBanner
 								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
@@ -142,10 +140,10 @@ function Index({ submitted = false, strapi }) {
 									}
 								]}
 								content={{
-									//title: strapi?.thankyouHero?.richContent,
-									title: `${TYName ? TYName : '綠色和平支持者'}，${
-										strapi?.thankyouHero?.richContent
-									}`,
+									title: strapi?.thankyouHero?.richContent,
+									// title: `${TYName ? TYName : '綠色和平支持者'}，${
+									// 	strapi?.thankyouHero?.richContent
+									// }`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
@@ -179,35 +177,56 @@ function Index({ submitted = false, strapi }) {
 									description: strapi?.contentHero?.richContentParagraph
 								}}
 							/>
-						);
-					}
-				})()}
+						)}
+					</>
+				)}
 			</Box>
 			<PageContainer>
 				<OverflowWrapper>
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box minWidth={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
-								<>
-									{submitted ? (
-										<StrapiDynamicBlocks
-											blocks={'thankyouBlocks'}
-											strapi={strapi}
-										/>
-									) : (
-										<StrapiDynamicBlocks
-											blocks={'contentBlocks'}
-											strapi={strapi}
-										/>
-									)}
-								</>
+								{isLoaded && (
+									<>
+										{submitted ? (
+											<StrapiDynamicBlocks
+												blocks={'thankyouBlocks'}
+												strapi={strapi}
+											/>
+										) : (
+											<StrapiDynamicBlocks
+												blocks={'contentBlocks'}
+												strapi={strapi}
+											/>
+										)}
+									</>
+								)}
+								{isLoaded && (
+									<>
+										{pageType?.toLowerCase() === 'donation' && !submitted && (
+											<>
+												<Heading
+													as="p"
+													textAlign="center"
+													py="6"
+													fontSize={{ base: 'xl', md: '2xl' }}
+												>
+													常見問題
+												</Heading>
+												<DonateFAQ locale="HKChinese" />
+											</>
+										)}
+									</>
+								)}
 							</ContentContainer>
 						</Box>
-						<Box flex={1} ref={FormRef}>
-							<FormContainer>
-								<Box ref={ref}>
-									{pageType?.toLowerCase() === 'donation' || submitted ? (
-										utm_source !== 'dd' && (
+						<Box minWidth={0} flex={1} ref={FormRef}>
+							{isLoaded && (
+								<FormContainer>
+									<Box ref={ref}>
+										{pageType?.toLowerCase() === 'donation' ||
+										submitted ||
+										AsiaPayResult ? (
 											<DonationModule
 												market={
 													strapi?.market?.data?.attributes?.market ===
@@ -228,39 +247,19 @@ function Index({ submitted = false, strapi }) {
 												isUAT={false}
 												env={strapi?.donationModuleEnv}
 											/>
-										)
-									) : (
-										<SignupForm
-											customEndpoint={
-												'https://counter.greenpeace.org/signups?id=deepseamining'
-											}
-											// customOfTarget={3000000}
-											setSignupBtnRef={setSignupBtnRef}
-										/>
-									)}
-									{submitted && pageType?.toLowerCase() === 'petition' && (
-										<div
-											dangerouslySetInnerHTML={{
-												__html: `<iframe style="overflow: hidden;" src="https://counter.greenpeace.org/count?id=deepseamining" width="1" height="1" frameborder="0" scrolling="no"></iframe>`
-											}}
-										></div>
-									)}
-								</Box>
-								<div ref={FormBtnref}></div>
-							</FormContainer>
+										) : (
+											<SignupForm setSignupBtnRef={ setSignupBtnRef } />
+										)}
+									</Box>
+									<div ref={ FormBtnref }></div>
+								</FormContainer>
+							)}
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
-			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton
-				target={FormRef}
-				targetInView={
-					pageType?.toLowerCase() === 'donation' || submitted
-						? btnInView
-						: inView
-				}
-			/>
+			<PetitionFooter locale={'HKChinese'} />
+			<StrapiFixedButton target={FormRef} targetInView={ (pageType?.toLowerCase() === 'donation' || submitted) ? btnInView : inView} />
 		</>
 	);
 }
