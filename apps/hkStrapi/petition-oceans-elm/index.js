@@ -9,6 +9,7 @@ ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-oceans-elm/
 FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-hk.2022.general.elm.mindwise_version.signup
+CONV_EXP=//cdn-4.convertexperiments.com/js/10046099-10046519.js
 */
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -242,6 +243,7 @@ function Index({ submitted = false, strapi }) {
 												''
 											}
 											env={strapi?.donationModuleEnv}
+											customUrl={`https://api.greenpeace.org.hk/app/donation-module-uat/main.js`}
 										/>
 									) : (
 										<SignupForm setSignupBtnRef={setSignupBtnRef} />
