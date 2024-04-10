@@ -41,9 +41,14 @@ export function validation(values, formContent) {
     }
   }
 
-  if (!values.CampaignData2__c) {
-    errors.Options_Concern = formContent.empty_select_data_alert;
+  if (formContent.label_concern){
+    let concernFieldName = formContent?.name_concern || 'CampaignData2__c';
+    if (!values[concernFieldName]) {
+      errors.Options_Concern = formContent.empty_select_data_alert;
+    }
   }
+  
+  
 
   return errors;
 }
