@@ -82,10 +82,11 @@ async function waitMilliSeconds(ms) {
 		const targetPageName = process.env.CLOUD_PAGE_NAME//'zh-hk.2022.oceans.webinar_antarctic.registration.event.na'
 		// const targetPageName = 'tw-prod-1click_oneoff-landing'
 		// Stop Editing
+		console.log(`starting publish: ${targetMarket} ${targetPageName}`)
 
 		// Perform the login process to generate new session data
 		const browser = await puppeteer.launch({
-			// executablePath: '/usr/bin/google-chrome',// uncomment and set path if need.
+			executablePath: '/usr/bin/google-chrome',// uncomment and set path if need.
 			headless: false,
 			args: ['--no-sandbox',`--window-size=1280,720`]
 		});

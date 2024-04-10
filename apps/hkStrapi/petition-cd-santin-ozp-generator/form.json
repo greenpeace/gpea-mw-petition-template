@@ -28,7 +28,7 @@
 	"submit_text": "立即助你生成意見書",
 	"mobile_fixed_cta": "立即捐款",
 
-	"field_split": "CampaignData3__c,CampaignData4__c,CampaignData5__c",
+	"field_split": "CampaignData3__c,CampaignData4__c",
 	"name_opinion": "CampaignData3__c",
 
 	"mobile_country_code": [
