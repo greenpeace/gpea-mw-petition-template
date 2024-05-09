@@ -48,6 +48,17 @@ export function validation(values, formContent) {
     }
   }
   
+  if (formContent.max_opinion_alert && formContent?.name_opinion) {
+    let opinionFieldName = formContent?.name_opinion;
+    let opinionMaxLength = Number(formContent?.max_opinion_length) || 500;
+    if(values[opinionFieldName]){
+      console.log(values[opinionFieldName].length, opinionMaxLength, values[opinionFieldName].length > opinionMaxLength)
+      if (values[opinionFieldName].length > opinionMaxLength) {
+        errors.Opinion = formContent.max_opinion_alert;
+      }
+    }
+    
+  }
   
 
   return errors;

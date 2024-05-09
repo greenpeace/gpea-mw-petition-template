@@ -606,6 +606,9 @@ const MyEnhancedForm = withFormik({
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
+		if(capitalize(theme.interests) === 'General' || capitalize(strapi?.issue?.data?.attributes?.slug) === 'General') {
+			formData.Petition_Interested_In_Health__c = true;
+		}
 
 		if (values.Counties) formData.CampaignData1__c = values.Counties;
 		if (values.Careers) formData.CampaignData1__c = values.Careers;

@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 const StrapiFixedButton = ({ target, targetInView, status }) => {
 	const { submitted } = status;
 	const strapi = useSelector((state) => state?.theme?.strapi);
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	// get utm_source
+	const { utm_source } = hiddenForm?.data;
 	const buttonText = submitted ? strapi?.fixedThankyouCta : strapi?.fixedCta;
 
 	const handleScroll = (target) => {
@@ -16,13 +19,15 @@ const StrapiFixedButton = ({ target, targetInView, status }) => {
 	};
 
 	return (
-		<Slide direction="bottom" in={!targetInView} style={{ zIndex: 10 }}>
-			<Center {...styleProps}>
-				<Button {...buttonStyleProps} onClick={() => handleScroll(target)}>
-					{buttonText}
-				</Button>
-			</Center>
-		</Slide>
+		(!(utm_source == 'dd' && submitted)) && (
+			<Slide direction="bottom" in={!targetInView} style={{ zIndex: 10 }}>
+				<Center {...styleProps}>
+					<Button {...buttonStyleProps} onClick={() => handleScroll(target)}>
+						{buttonText}
+					</Button>
+				</Center>
+			</Slide>
+		)
 	);
 };
 

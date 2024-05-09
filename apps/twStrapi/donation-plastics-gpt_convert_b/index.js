@@ -1,17 +1,16 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=hkStrapi/donation-plastics
-MARKET=hk
-PROJECT_NAME=donation-plastics
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-plastics
-ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-plastics/
-FTP_CONFIG_NAME=api_hk_cloud 
+PROJECT=twStrapi/donation-plastics-gpt_convert_b
+MARKET=tw
+PROJECT_NAME=donation-plastics-gpt_convert_b
+BASEPATH=/htdocs/2023/donation/donation-plastics-gpt_convert_b
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-plastics-gpt_convert_b/
+FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=donation-plastics
+CLOUD_PAGE_NAME=donation-plastics-gpt_convert_b
 */
-
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -27,7 +26,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/HKForm';
+import SignupForm from '@components/GP/TWForm';
 import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
@@ -59,6 +58,24 @@ function Index({ submitted = false, strapi }) {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
 
+	// get utm_source
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
+
+	// pass signer / donor name to TY Banner
+	const [TYName, setTYName] = useState();
+
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
+			setTYName(data.firstName);
+		};
+	});
+	useEffect(() => {
+		setTYName(signup?.data?.FirstName);
+	}, [signup]);
+
 	return (
 		<>
 			<StrapiSEO strapi={strapi} />
@@ -85,7 +102,10 @@ function Index({ submitted = false, strapi }) {
 							}
 						]}
 						content={{
-							title: strapi?.thankyouHero?.richContent,
+							// title: strapi?.thankyouHero?.richContent,
+							title: `${TYName ? TYName : '綠色和平支持者'}，${
+								strapi?.thankyouHero?.richContent
+							}`,
 							description: strapi?.thankyouHero?.richContentParagraph
 						}}
 					/>
@@ -150,7 +170,7 @@ function Index({ submitted = false, strapi }) {
 											>
 												常見問題
 											</Heading>
-											<DonateFAQ locale="HKChinese" />
+											<DonateFAQ locale="TWChinese" />
 										</>
 									)}
 								</>
@@ -160,37 +180,40 @@ function Index({ submitted = false, strapi }) {
 							<FormContainer>
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
-										<DonationModule
-											market={
-												strapi?.market?.data?.attributes?.market === 'Hong Kong'
-													? 'HK'
-													: 'TW'
-											}
-											language={strapi?.donationModuleLanguage}
-											campaign={
-												theme?.params?.donation_module_campaign ??
-												strapi?.donationModuleCampaign
-											}
-											campaignId={
-												theme?.params?.campaignId ??
-												strapi?.donationModuleCampaignId ??
-												''
-											}
-											isUAT={true}
-											env={strapi?.donationModuleEnv}
-										/>
+										utm_source !== 'dd' && (
+											<DonationModule
+												market={
+													strapi?.market?.data?.attributes?.market ===
+													'Hong Kong'
+														? 'HK'
+														: 'TW'
+												}
+												language={strapi?.donationModuleLanguage}
+												campaign={
+													theme?.params?.donation_module_campaign ??
+													strapi?.donationModuleCampaign
+												}
+												isUAT={false}
+												campaignId={
+													theme?.params?.campaignId ??
+													strapi?.donationModuleCampaignId ??
+													''
+												}
+												env={strapi?.donationModuleEnv}
+											/>
+										)
 									) : (
 										<SignupForm />
 									)}
 								</Box>
-								<div ref={ FormBtnref }></div>
+								<div ref={FormBtnref}></div>
 							</FormContainer>
 						</Box>
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
-			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
+			<PetitionFooter locale={'TWChinese'} />
+			<StrapiFixedButton target={FormRef} targetInView={btnInView} />
 		</>
 	);
 }

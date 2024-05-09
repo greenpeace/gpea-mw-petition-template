@@ -331,7 +331,7 @@ const MyForm = (props) => {
 									type={'text'}
 									handleChange={handleChange}
 									handleBlur={handleBlur}
-									value={values.Opinion}
+									// value={values.Opinion}
 								/>
 							</Box>
 							
@@ -405,7 +405,8 @@ const MyEnhancedForm = withFormik({
 		MobileCountryCode: '852',
 		MobilePhone: signup?.preFill?.MobilePhone ?? '',
 		OptIn: true,
-		Birthdate: signup?.preFill?.Birthdate ?? ''
+		Birthdate: signup?.preFill?.Birthdate ?? '',
+		Opinion: ''
 	}),
 
 	validate: async (values, props) => {
@@ -481,6 +482,10 @@ const MyEnhancedForm = withFormik({
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
+
+		if(capitalize(theme.interests) === 'General' || capitalize(strapi?.issue?.data?.attributes?.slug) === 'General') {
+			formData.Petition_Interested_In_Health__c = true;
+		}
 
 		setSubmitting(true);
 		submitForm(formData, endpointURL);

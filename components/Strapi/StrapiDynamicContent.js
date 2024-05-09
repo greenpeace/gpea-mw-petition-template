@@ -53,6 +53,9 @@ const StrapiDynamicBlocks = ({
 			const diffAmount = contentHTML.querySelector(
 				'.raw-html-embed *[data-diff-amount]'
 			);
+			const diffType = contentHTML.querySelector(
+				'.raw-html-embed *[data-diff-type]'
+			);
 			// '<div class="raw-html-embed"><p data-diff-amount=""></p></div>';
 
 			// a/b test
@@ -67,16 +70,31 @@ const StrapiDynamicBlocks = ({
 			}
 
 			// diff-amount
+			
 			if (diffAmount) {
+				console.log(diffAmount.getAttribute("data-diff-amount"), diffAmount.getAttribute("data-diff-type"))
 				const { type, amount } = donationSummary || {};
-				if (
-					(type == 'Recurring' && amount >= 800) ||
-					(type == 'Oneoff' && amount >= 3000)
-				) {
-					pass = true;
-				} else {
-					pass = false;
+				console.log(amount >= Number(diffAmount.getAttribute("data-diff-amount")), type == diffAmount.getAttribute("data-diff-type"))
+				if(!diffType) {
+					if (
+						(type == 'Recurring' && amount >= 800) ||
+						(type == 'Oneoff' && amount >= 3000)
+					) {
+						pass = true;
+					} else {
+						pass = false;
+					}
+				}else {
+					if(diffAmount.getAttribute("data-diff-amount") && 
+						amount >= Number(diffAmount.getAttribute("data-diff-amount")) &&
+						type == diffAmount.getAttribute("data-diff-type")
+					) {
+						pass = true;
+					}else {
+						pass = false;
+					}
 				}
+				
 			}
 
 			return pass;

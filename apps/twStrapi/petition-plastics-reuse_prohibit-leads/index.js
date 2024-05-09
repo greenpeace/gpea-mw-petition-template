@@ -1,17 +1,14 @@
-/**
- * Deploy setting
-# Project Apps Directory: /apps/{PROJECT}
-PROJECT=hkStrapi/petition-oceans-elm
-MARKET=hk
-PROJECT_NAME=petition-oceans-elm
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-oceans-elm
-ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-oceans-elm/
-FTP_CONFIG_NAME=api_hk_cloud 
+/** 
+ * Dploy Setting:
+PROJECT=twStrapi/petition-plastics-reuse_prohibit-leads
+MARKET=tw
+PROJECT_NAME=petition-plastics-reuse_prohibit-leads
+BASEPATH=/htdocs/2023/petition/petition-plastics-reuse_prohibit-leads
+ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-plastics-reuse_prohibit-leads/
+FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=zh-hk.2022.general.elm.mindwise_version.signup
-CONV_EXP=//cdn-4.convertexperiments.com/js/10046099-10046519.js
+CLOUD_PAGE_NAME=zh-tw.2024.plastics.reuse_prohibit-leads.signup
 */
-
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -28,7 +25,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/HKForm';
+import SignupForm from '@components/GP/TWForm';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
@@ -43,10 +40,10 @@ function Index({ submitted = false, strapi }) {
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 
 	const FormRef = useRef(null);
-
 	const [signupBtnRef, setSignupBtnRef] = useState(null);
 	const signupBtnRootMargin = useSignupBtnRootMargin(FormRef, signupBtnRef);
 
@@ -60,15 +57,16 @@ function Index({ submitted = false, strapi }) {
 		rootMargin: '-70px 0px 120px 0px'
 	});
 
-	// get utm_source
-	const hiddenForm = useSelector((state) => state?.hiddenForm);
-	const { AsiaPayResult } = hiddenForm?.data;
-
 	submitted = useSelector((state) => state?.status?.submitted);
 
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
+
+	// const { FirstName } = signup;
+
+	// get utm_source
+	const { utm_source } = hiddenForm?.data;
 
 	// pass signer / donor name to TY Banner
 	const [TYName, setTYName] = useState();
@@ -144,10 +142,10 @@ function Index({ submitted = false, strapi }) {
 									}
 								]}
 								content={{
-									title: strapi?.thankyouHero?.richContent,
-									// title: `${TYName ? TYName : '綠色和平支持者'}，${
-									// 	strapi?.thankyouHero?.richContent
-									// }`,
+									//title: strapi?.thankyouHero?.richContent,
+									title: `${TYName ? TYName : '綠色和平支持者'}，${
+										strapi?.thankyouHero?.richContent
+									}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
@@ -203,51 +201,40 @@ function Index({ submitted = false, strapi }) {
 										/>
 									)}
 								</>
-								<>
-									{pageType?.toLowerCase() === 'donation' && !submitted && (
-										<>
-											<Heading
-												as="p"
-												textAlign="center"
-												py="6"
-												fontSize={{ base: 'xl', md: '2xl' }}
-											>
-												常見問題
-											</Heading>
-											<DonateFAQ locale="HKChinese" />
-										</>
-									)}
-								</>
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
 								<Box ref={ref}>
-									{pageType?.toLowerCase() === 'donation' ||
-									submitted ||
-									AsiaPayResult ? (
-										<DonationModule
-											market={
-												strapi?.market?.data?.attributes?.market === 'Hong Kong'
-													? 'HK'
-													: 'TW'
-											}
-											language={strapi?.donationModuleLanguage}
-											campaign={
-												theme?.params?.donation_module_campaign ??
-												strapi?.donationModuleCampaign
-											}
-											campaignId={
-												theme?.params?.campaignId ??
-												strapi?.donationModuleCampaignId ??
-												''
-											}
-											isUAT={true}
-											env={strapi?.donationModuleEnv}
-										/>
+									{pageType?.toLowerCase() === 'donation' || submitted ? (
+										utm_source !== 'dd' && (
+											<DonationModule
+												market={
+													strapi?.market?.data?.attributes?.market ===
+													'Hong Kong'
+														? 'HK'
+														: 'TW'
+												}
+												language={strapi?.donationModuleLanguage}
+												campaign={
+													theme?.params?.donation_module_campaign ??
+													strapi?.donationModuleCampaign
+												}
+												campaignId={
+													theme?.params?.campaignId ??
+													strapi?.donationModuleCampaignId ??
+													''
+												}
+												isUAT={false}
+												env={strapi?.donationModuleEnv}
+											/>
+										)
 									) : (
-										<SignupForm setSignupBtnRef={setSignupBtnRef} />
+										<SignupForm
+											setSignupBtnRef={setSignupBtnRef}
+										/>
 									)}
+									
 								</Box>
 								<div ref={FormBtnref}></div>
 							</FormContainer>
@@ -255,7 +242,7 @@ function Index({ submitted = false, strapi }) {
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
-			<PetitionFooter locale={'HKChinese'} />
+			<PetitionFooter locale={'TWChinese'} />
 			<StrapiFixedButton
 				target={FormRef}
 				targetInView={

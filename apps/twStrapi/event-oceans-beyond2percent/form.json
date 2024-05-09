@@ -1,6 +1,6 @@
 {
-	"form_header": "開啟友善環境的每一天！<br>免費索取《蔬活廚房蔬食食譜》",
-	"form_description": "請留下您的正確聯絡資訊，我們會將電子書寄送到您的電子信箱。",
+	"form_header": "我想索取《2%之外的蔚藍》入場票券",
+	"form_description": "完成線上索票，可於展覽現場兌換紀念小物<br>（數量有限，送完為止）",
 	"signed_number": "",
 	"label_first_name": "名字",
 	"label_last_name": "姓氏",
@@ -19,7 +19,7 @@
 	"invalid_format_alert": "請輸入有效格式",
 	"suggestion_message": "您是否想輸入",
 
-	"submit_text": "立即免費索取",
+	"submit_text": "免費索票",
 	"donate_button": "下一步",
 	"donateURL": "https://cloud.greentw.greenpeace.org/donation-climate-climate?utm_campaign=general&utm_source=greenpeace.org&utm_medium=email&utm_content=tw-lead_conversion-automd-netzeroevent-20230109",
 

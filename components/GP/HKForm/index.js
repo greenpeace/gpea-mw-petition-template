@@ -80,7 +80,7 @@ const MyForm = (props) => {
 	}, [formViewed]);
 
 	useEffect(() => {
-		setSignupBtnRef(btnRef);
+		if (setSignupBtnRef) setSignupBtnRef(btnRef);
 	}, [btnRef]);
 
 	useEffect(() => {
@@ -459,6 +459,9 @@ const MyEnhancedForm = withFormik({
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
+		if(capitalize(theme.interests) === 'General' || capitalize(strapi?.issue?.data?.attributes?.slug) === 'General') {
+			formData.Petition_Interested_In_Health__c = true;
+		}
 
 		if (values.MobilePhone.indexOf("0") == 0) formData.MobilePhone = values.MobilePhone.replace(/^0+/, '')
 
