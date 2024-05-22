@@ -21,7 +21,8 @@ const StrapiDynamicBlocks = ({
 	strapi,
 	className,
 	variation = 'A',
-	donationSummary
+	donationSummary,
+	utm_source
 }) => {
 	if (!strapi) {
 		return null;
@@ -55,6 +56,9 @@ const StrapiDynamicBlocks = ({
 			);
 			const diffType = contentHTML.querySelector(
 				'.raw-html-embed *[data-diff-type]'
+			);
+			const diffUtm = contentHTML.querySelector(
+				'.raw-html-embed *[data-diff-utm_source]'
 			);
 			// '<div class="raw-html-embed"><p data-diff-amount=""></p></div>';
 
@@ -95,6 +99,13 @@ const StrapiDynamicBlocks = ({
 					}
 				}
 				
+			}
+			if(diffUtm){
+				if(utm_source == 'dd') {
+					pass = false;
+				}else {
+					pass = true;
+				}
 			}
 
 			return pass;

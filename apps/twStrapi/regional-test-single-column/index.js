@@ -187,6 +187,7 @@ function Index({ submitted = false, strapi }) {
 								blocks={'thankyouBlocks'}
 								strapi={strapi}
 								variation={variation}
+								utm_source={utm_source}
 							/>
 						) : (
 							<StrapiDynamicBlocks
@@ -194,6 +195,7 @@ function Index({ submitted = false, strapi }) {
 								blocks={'contentBlocks'}
 								strapi={strapi}
 								variation={variation}
+								utm_source={utm_source}
 							/>
 						)}
 

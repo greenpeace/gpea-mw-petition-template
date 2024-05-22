@@ -1,6 +1,6 @@
 {
-	"form_header": "邀請一眾教師登記訂閱綠色和平環境教育資訊，可領取環保教材乙份以及收取環保教學相關資訊",
-	"form_description": "立即登記！以生動有趣的方式教育下一代環境保護的重要性",
+	"form_header": "邀請一眾教師加入綠色和平環境教育資源網絡，收取環保教學資訊兼領取環保教材乙份",
+	"form_description": "<b>立即登記！</b>以生動有趣的方式教育下一代環境保護的重要性 ",
 	"signed_number": "已聯署人數",
 	"label_name": "稱謂",
 	"label_first_name": "名字",
@@ -15,7 +15,7 @@
 	"label_school": "任教學校名稱",
 	"label_school_type": "學校所屬類型",
 	"options_school_type": [{"label": "幼稚園", "value": "幼稚園"}, {"label": "小學", "value": "小學"}, {"label": "中學", "value": "中學"}, {"label": "大專或以上", "value": "大專或以上"}],
-	"addition_description": "登記後，你將在下一個頁面的連結 選取教材類別，其後將會有專人跟進及聯絡。如有其他合作，亦歡迎進一步查詢。",
+	"addition_description": "登記後，請於下一個頁面的連結選取教材類別，其後將有專人跟進及聯絡。",
 	"custom_default_values": {"CampaignData2__c": "", "CampaignData3__c": ""},
 
 	"empty_data_alert": "請填寫資料",

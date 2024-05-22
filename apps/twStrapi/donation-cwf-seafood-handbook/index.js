@@ -162,11 +162,13 @@ function Index({ submitted = false, strapi }) {
 											blocks={'thankyouBlocks'}
 											strapi={strapi}
 											donationSummary={donationSummary}
+											utm_source={utm_source}
 										/>
 									) : (
 										<StrapiDynamicBlocks
 											blocks={'contentBlocks'}
 											strapi={strapi}
+											utm_source={utm_source}
 										/>
 									)}
 								</>
