@@ -1,0 +1,143 @@
+{
+	"form_header": "報名成為綠色和平志工，為地球發聲！",
+	"form_description": "完成下列報名表單，我們將會寄出進一步資料，包含新進志工說明會資料以及志工聯絡資訊。",
+	"signed_number": "",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電子郵件",
+	"label_phone": "行動電話",
+	"label_phone_optional": "行動電話（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_counties": "居住縣市",
+	"label_gender": "性別",
+	
+
+	"empty_data_alert": "請填寫資料",
+	"empty_phone_alert": "請填手機號碼，確保接收專案相關通知",
+	"empty_select_data_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電子郵件",
+	"invalid_format_alert": "請輸入有效格式",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "報名成為綠色和平志工",
+	"donate_button": "下一步",
+	"donateURL": "https://cloud.greentw.greenpeace.org/donation-climate-climate?utm_campaign=general&utm_source=greenpeace.org&utm_medium=email&utm_content=tw-lead_conversion-automd-netzeroevent-20230109",
+
+	"custom_default_values": {"CampaignData2__c": "", "CampaignData3__c": ""},
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	],
+	"options_gender": [
+		{"label": "男性", "value": "男性"}, 
+		{"label": "女性", "value": "女性"}, 
+		{"label": "其他", "value": "其他"}
+	],
+	"options_counties": {
+		"options": [
+			{
+				"label": "臺北市",
+				"value": "臺北市"
+			},
+			{
+				"label": "新北市",
+				"value": "新北市"
+			},
+			{
+				"label": "基隆市",
+				"value": "基隆市"
+			},
+			{
+				"label": "桃園市",
+				"value": "桃園市"
+			},
+			{
+				"label": "新竹縣",
+				"value": "新竹縣"
+			},
+			{
+				"label": "新竹市",
+				"value": "新竹市"
+			},
+			{
+				"label": "苗栗縣",
+				"value": "苗栗縣"
+			},
+			{
+				"label": "臺中市",
+				"value": "臺中市"
+			},
+			{
+				"label": "彰化縣",
+				"value": "彰化縣"
+			},
+			{
+				"label": "南投縣",
+				"value": "南投縣"
+			},
+			{
+				"label": "雲林縣",
+				"value": "雲林縣"
+			},
+			{
+				"label": "嘉義縣",
+				"value": "嘉義縣"
+			},
+			{
+				"label": "嘉義市",
+				"value": "嘉義市"
+			},
+			{
+				"label": "臺南市",
+				"value": "臺南市"
+			},
+			{
+				"label": "高雄市",
+				"value": "高雄市"
+			},
+			{
+				"label": "屏東縣",
+				"value": "屏東縣"
+			},
+			{
+				"label": "宜蘭縣",
+				"value": "宜蘭縣"
+			},
+			{
+				"label": "花蓮縣",
+				"value": "花蓮縣"
+			},
+			{
+				"label": "臺東縣",
+				"value": "臺東縣"
+			},
+			{
+				"label": "澎湖縣",
+				"value": "澎湖縣"
+			},
+			{
+				"label": "金門縣",
+				"value": "金門縣"
+			},
+			{
+				"label": "連江縣",
+				"value": "連江縣"
+			},
+			{
+				"label": "海外",
+				"value": "海外"
+			},
+			{
+				"label": "不提供",
+				"value": "不提供"
+			}
+		]
+	}
+}

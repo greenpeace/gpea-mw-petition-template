@@ -58,6 +58,8 @@ const MyForm = (props) => {
 		customOfTarget,
 		customMapFields, //an array for copy values to preset CampaignData fileds. ex: [{"from":"BirthDate", "to":"CampaignData3__c"}]
 		setSignupBtnRef,
+		CustomFields,
+		CustomRules,
 		hasMKT = true
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
@@ -329,7 +331,7 @@ const MyForm = (props) => {
 								</Box>
 							</Box>
 						</HStack>
-
+						
 						<Box>
 							<FormControl
 								id="Birthdate"
@@ -353,6 +355,19 @@ const MyForm = (props) => {
 								</FormErrorMessage>
 							</FormControl>
 						</Box>
+
+						{CustomFields && (
+							<CustomFields 
+								errors={errors} 
+								touched={touched} 
+								values={values}
+								formContent={formContent}
+								handleChange={handleChange}
+								handleBlur={handleBlur}
+							/>
+						)}					
+
+
 						{/* optional select: county */}
 						{formContent.counties && (
 							<Box>
@@ -543,19 +558,20 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-	mapPropsToValues: () => ({
+	mapPropsToValues: ({formContent}) => ({
 		Email: '',
 		FirstName: '',
 		LastName: '',
 		MobilePhone: '',
 		OptIn: true,
-		Birthdate: ''
+		Birthdate: '',
+		...formContent?.custom_default_values
 	}),
 
 	validate: async (values, props) => {
-		const { formContent } = props;
-		return validation(values, formContent);
-	},
+    const { formContent, CustomRules } = props;
+		return validation(values, formContent, CustomRules);
+  },
 
 	handleSubmit: async (values, { setSubmitting, props }) => {
 		const { submitForm, theme, hiddenFormData, strapi, customMapFields } =

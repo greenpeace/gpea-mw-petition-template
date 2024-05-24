@@ -397,14 +397,15 @@ const MyForm = (props) => {
 
 const MyEnhancedForm = withFormik({
 	enableReinitialize: true,
-	mapPropsToValues: ({ signup }) => ({
+	mapPropsToValues: ({ signup, formContent }) => ({
 		Email: signup?.preFill?.Email ?? '',
 		FirstName: signup?.preFill?.FirstName ?? '',
 		LastName: signup?.preFill?.LastName ?? '',
 		MobileCountryCode: '852',
 		MobilePhone: signup?.preFill?.MobilePhone ?? '',
 		OptIn: true,
-		Birthdate: signup?.preFill?.Birthdate ?? ''
+		Birthdate: signup?.preFill?.Birthdate ?? '',
+		...formContent?.custom_default_values
 	}),
 
 	validate: async (values, props) => {

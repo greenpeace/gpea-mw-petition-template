@@ -1,11 +1,6 @@
-export function validation(values, formContent) {
-	const errors = {};
-	Object.keys(values).forEach(function (key) {
-		if (typeof values[key] === 'undefined' || values[key] === '') {
-			errors[key] = formContent.empty_data_alert;
-		}
-	});
-	console.log(errors);
+export function validation(values, formContent, customRules) {
+	let errors = {};
+	
 	if (!values.Email) {
 		errors.Email = formContent.empty_data_alert;
 	} else if (
@@ -45,6 +40,14 @@ export function validation(values, formContent) {
 		errors.Address = formContent.empty_data_alert;
 	}
 
+	
+	if (customRules) {
+		errors = {
+			...errors,
+			...customRules(values, formContent)
+		};
+	}
+
 	if (values.MobilePhone) {
 		const phoneReg6 = new RegExp(/^(0|886|\+886)?(9\d{8})$/).test(
 			values.MobilePhone
@@ -56,13 +59,20 @@ export function validation(values, formContent) {
 			values.MobilePhone
 		);
 
-		if (phoneReg6) {
-			return errors;
-		} else {
-			errors.MobilePhone =
-				formContent?.empty_phone_alert || formContent.invalid_format_alert;
-		}
+		if (!phoneReg6) {
+			errors.MobilePhone = formContent.invalid_format_alert;
+		} 
+	}else{
+		errors.MobilePhone = formContent?.empty_phone_alert || formContent.invalid_format_alert;
 	}
+	Object.keys(values).forEach(function (key) {
+		if ((typeof values[key] === 'undefined' || values[key] === '') && !errors[key]) {
+			errors[key] = formContent.empty_data_alert;
+		}
+	});
+	
+	
+	
 
 	return errors;
 }
