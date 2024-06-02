@@ -1,0 +1,34 @@
+{
+	"zh_HK": {
+		"description": "輸入收看密碼",
+		"input_placeholder": "輸入收看密碼",
+		"button_content": "觀看紀錄片",
+		"input_error": "密碼不正確！請重新輸入",
+		"title": "《山海大嶼》生態紀錄片",
+		"info": "片長：25分鐘",
+		"info02": "編導：馮漢城",
+		"info03": "聲音導航：陳志雲",
+		"p": "山海大嶼是由綠色和平歷時大半年製作，與本地得獎製作班底合作出品的大嶼山生態紀錄片。製作團隊曾多次上山下海、通宵逗留野外拍攝物種的珍貴時刻，多角度呈現大嶼生態面貌。",
+		"p2": "我們邀請到本地資深傳媒人陳志雲先生為本片聲音導航，全方位帶領大眾了解大嶼山豐富生物多樣性，也認識發展項目對於環境與生態的嚴重破壞，破壞一旦造成即不可逆轉，或令大嶼山的獨特生態蕩然無存。",
+		"subTitle": "誠邀您一起守護大嶼！",
+		"p3": "綠色和平堅持以紮實研究，說出真相，推動政府妥善發展棕地，撤回嚴重危害海洋生態的「明日大嶼」填海計劃；讓香港人能安居樂業，也能令下一代繼續享有宜居的環境和豐富的自然生態。",
+		"p4": "有您的捐助支持，綠色和平便能有更多資源推動守護大嶼工作，請即伸出援手，捐助綠色和平守護大嶼工作。",
+		"donate": "月捐支持"
+	},
+	"en_HK": {
+		"description": "Please enter the password to watch the documentary",
+		"input_placeholder": "Please key password",
+		"button_content": "Watch now",
+		"input_error": "Password incorrect, please re-enter",
+		"title": "Lantau - The Hidden Treasure of Hong Kong",
+		"info": "Ecology documentary：25 mins | &shy;",
+		"info02": "Director：Fung Hon Shing | &shy;",
+		"info03": "Narrator：Stephen Chan Chi Wan | &shy;",
+		"p": "Lantau's biodiverse habitats are home to us and many species. Greenpeace teamed up with a group of local wildlife photographers and filmmakers to produce this documentary, showcasing the beauty of nature and ecology of Lantau Island in Hong Kong.",
+		"p2": "The documentary sheds light on the daily lives of the Chinese White Dolphin, Eurasian Eagle Owl and other precious species. Pollution and infrastructural development however are threatening the biodiversity and sustainability of the island, the documentary is calling for people's attention to protect local biodiversity and the ecosystem services that people depend on.",
+		"subTitle": "We're taking action. Support Us.",
+		"p3": "​​In Hong Kong, Greenpeace has been based on scientific research to advocate to prioritize the development of brownfield sites, as a way to avoid the ecological crisis of the &#34;Lantau Tomorrow&#34; reclamation project and at the same time satisfy the housing needs of the locals.",
+		"p4": "With your generous donation, Greenpeace will have more resources to research and document environmental problems. Please help us to continue protecting our nature and Lantau.",
+		"donate": "Donate now"
+	}
+}
