@@ -1,18 +1,15 @@
 import { useVideoContext } from '../../context/video';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AspectRatio } from '@chakra-ui/react';
-
+import { useRouter } from 'next/router';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 
-import { fill } from '@cloudinary/url-gen/actions/resize';
-import { byRadius } from '@cloudinary/url-gen/actions/roundCorners';
-import { FocusOn } from '@cloudinary/url-gen/qualifiers/focusOn';
-import { Gravity } from '@cloudinary/url-gen/qualifiers';
-import { AutoFocus } from '@cloudinary/url-gen/qualifiers/autoFocus';
-
-const Video = () => {
+const Video = ({ defaultEp }) => {
 	const value = useVideoContext();
+	const router = useRouter();
+	const urlParams = new URLSearchParams(router.asPath);
+	const [videoURL, setVideoURL] = useState(null);
 
 	const cld = new Cloudinary({
 		cloud: {
@@ -20,12 +17,23 @@ const Video = () => {
 		}
 	});
 
-	const { selectedEp } = value;
-	const videoRef = useRef(null);
+	useEffect(() => {
+		let video = '';
+		if (urlParams.get('ep')) {
+			const selectedEP = value.EPISODES.find(
+				(episode) => episode.ep === parseInt(urlParams.get('ep'))
+			);
+			video = selectedEP.url;
+		} else if (defaultEp) {
+			video = defaultEp;
+		} else {
+			video = value.selectedEp.url;
+		}
 
-	const myVideo = cld.video(
-		'RobertMasterClass/Video/ep0_trailer_20240602_NEW_f1tvis'
-	);
+		setVideoURL(video);
+	}, [urlParams]);
+
+	const myVideo = cld.video(videoURL);
 	return (
 		<AspectRatio ratio={16 / 9}>
 			<AdvancedVideo cldVid={myVideo} controls />

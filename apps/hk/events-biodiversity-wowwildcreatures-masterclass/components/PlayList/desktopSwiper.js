@@ -11,7 +11,6 @@ import 'swiper/css/pagination';
 import { useVideoContext } from '../../context/video';
 import { useGlobalContext } from '../../context/global';
 
-import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
 const DesktopSwiper = ({ isDetail = false }) => {
 	const router = useRouter();
 	// const pathname = usePathname();
@@ -70,10 +69,10 @@ const DesktopSwiper = ({ isDetail = false }) => {
 										setSelectedEp(d);
 
 										router.push(
-											`/?p=episodes`,
-											`${
-												window.location.href.split('?')[0]
-											}/?p=episodes&ep=${d.ep}`,
+											`?p=episodes`,
+											`${window.location.href.split('?')[0]}?p=episodes&ep=${
+												d.ep
+											}`,
 											{
 												shallow: true
 											}

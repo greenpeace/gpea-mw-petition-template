@@ -28,14 +28,6 @@ import HomeSwiper from './HomeSwiper';
 import RobertClassVision from './RobertClassVision';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 import { useIntersection } from '../util';
-// import HeroSection from './HeroSection';
-// import AvatarGroup from './Avatar';
-// import VisionGroup from './Vision';
-// import SwiperGroup from './Swiper';
-// import Information from './Information';
-// import FixedCTA from '../components/FixedCTA';
-// import Support from './Support';
-
 import main01Img from '../images/robert-class/main-01.webp';
 import main02Img from '../images/robert-class/main-02.webp';
 import main03Img from '../images/robert-class/main-03.webp';
@@ -193,40 +185,34 @@ function MainPage({ status, theme, setFormContent, signup }) {
 						className={`${WRAPPER_CLASSES} relative overflow-hidden md:max-w-[960px] md:overflow-visible`}
 					>
 						<div className="absolute -left-40 z-10 hidden max-w-[256px] md:block">
-							<NextImage
-								alt={'hero'}
+							<Image
+								alt={'main03Img'}
 								src={main03Img}
-								width={0}
-								height={0}
-								sizes="100vw"
-								style={{ width: '100%', height: 'auto' }}
-							></NextImage>
+								w={'full'}
+								h={'auto'}
+							></Image>
 						</div>
 
 						<div className="absolute -bottom-36 -right-48 z-10 hidden max-w-[256px] -scale-x-100 md:block">
-							<NextImage
-								alt={'hero'}
+						<Image
+								alt={'main04Img'}
 								src={main04Img}
-								width={0}
-								height={0}
-								sizes="100vw"
-								style={{ width: '100%', height: 'auto' }}
-							></NextImage>
+								w={'full'}
+								h={'auto'}
+							></Image>
 						</div>
 
 						<div className="absolute -right-64 -top-36 z-10 hidden max-w-[360px] -scale-x-100 md:block">
-							<NextImage
-								alt={'hero'}
+						<Image
+								alt={'main02Img'}
 								src={main02Img}
-								width={0}
-								height={0}
-								sizes="100vw"
-								style={{ width: '100%', height: 'auto' }}
-							></NextImage>
+								w={'full'}
+								h={'auto'}
+							></Image>
 						</div>
 						<VideoProvider>
-              <Video />
-            </VideoProvider>
+							<Video defaultEp={'RobertMasterClass/Video/ep0_trailer_20240602_NEW_f1tvis'}/>
+						</VideoProvider>
 					</div>
 				</div>
 

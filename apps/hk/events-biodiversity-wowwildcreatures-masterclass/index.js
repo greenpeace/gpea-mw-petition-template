@@ -20,8 +20,6 @@ import AppProvider from './context/appContext';
 import { GlobalProvider } from './context/global';
 import PetitionFooter from '@containers/petitionFooter';
 import Header from './components/Header';
-import DonationPage from './components/DonationPage';
-import StreamingPage from './components/StreamingPage';
 import MainPage from './components/MainPage';
 import ThanksPage from './components/ThanksPage';
 import LoginPage from './components/LoginPage';

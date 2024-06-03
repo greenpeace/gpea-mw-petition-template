@@ -8,7 +8,9 @@ export default function Episodes() {
 	const value = useVideoContext();
 	const router = useRouter();
 	const { selectedEp } = value;
-	const { p, ep, s } = router.query;
+	const { p, s } = router.query;
+
+	const urlParams = new URLSearchParams(router.asPath);
 
 	const RenderBackgroundVideo = useCallback(() => {
 		return (
@@ -75,8 +77,10 @@ export default function Episodes() {
 							rightIcon={<FaPlay />}
 							onClick={() => {
 								router.push(
-									`/?p=video`,
-									`${window.location.href.split('?')[0]}/?p=video&ep=${ep ?? '1'})}`,
+									`?p=video`,
+									`${window.location.href.split('?')[0]}?p=video&ep=${
+										urlParams.get('ep') ?? '1'
+									}`,
 									{
 										shallow: true
 									}

@@ -1,15 +1,8 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import {
 	Box,
-	Center,
 	Image,
-	Text,
-	Heading,
-	UnorderedList,
-	ListItem,
-	AspectRatio
 } from '@chakra-ui/react';
-import NextImage from 'next/image';
 // import SignupForm from '@components/GP/WebinarForm';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
@@ -30,8 +23,6 @@ import isRGUserTable from '../images/robert-class/list/06_donor_incentive_tier_t
 import noRGUserTable from '../images/robert-class/list/06_non_donor_incentive_tier_t.png';
 
 import logoAnimals from '../images/robert-class/logo-animals.webp';
-
-const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
 function EpisodesPage({
 	status,

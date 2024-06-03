@@ -1,15 +1,8 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import {
 	Box,
-	Center,
 	Image,
-	Text,
-	Heading,
-	UnorderedList,
-	ListItem,
-	AspectRatio
 } from '@chakra-ui/react';
-import NextImage from 'next/image';
 // import SignupForm from '@components/GP/WebinarForm';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
@@ -40,6 +33,7 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 	const value = useGlobalContext();
 	const downloadsRef = useRef(null);
 	const { p, ep, s } = router.query;
+	const urlParams = new URLSearchParams(router.asPath);
 	const { submitted } = status;
 
 	const { FirstName } = signup;

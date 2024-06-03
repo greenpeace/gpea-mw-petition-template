@@ -2,10 +2,10 @@ import React from 'react';
 import { Box, AspectRatio, Image } from '@chakra-ui/react';
 import NextImage from 'next/image';
 
-import download01Image from '../../images/robert-class/list/04a_map.png';
-import download02Image from '../../images/robert-class/list/04a_map.png';
-import download03Image from '../../images/robert-class/list/04a_map.png';
-import download04Image from '../../images/robert-class/list/04a_map.png';
+import download01Image from '../../images/robert-class/list/01_download_cover.png';
+import download02Image from '../../images/robert-class/list/02_download_cover.png';
+import download03Image from '../../images/robert-class/list/03_download_cover.png';
+import download04Image from '../../images/robert-class/list/04_download_cover.png';
 
 import epRobertClass from '../../images/robert-class/ep-robert.webp';
 const Downloads = () => {

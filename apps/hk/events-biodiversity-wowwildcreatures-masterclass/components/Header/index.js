@@ -84,6 +84,11 @@ const Header = ({ nowPage }) => {
                   page: "episodes",
                   refName: "",
                 },
+				{
+					label: "資源下載",
+					page: "episodes",
+					refName: "downloads",
+				  },
               ]
             : []),
 	];
@@ -104,7 +109,7 @@ const Header = ({ nowPage }) => {
 							alt={'Greenpeace 綠色和平'}
 							cursor={'pointer'}
 							onClick={() => {
-								if (nowPage === 'streaming') return;
+								if (nowPage === 'episodes') return;
 								router.push(
 									`/?p=main`,
 									`${window.location.href.split('?')[0]}/?p=main`,
