@@ -1,18 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import {
-	Box,
-	Center,
-	Image,
-	Text,
-	Heading,
-	UnorderedList,
-	ListItem,
-	AspectRatio
-} from '@chakra-ui/react';
-import NextImage from 'next/image';
+import React, { useEffect } from 'react';
+import { Box, Image } from '@chakra-ui/react';
 
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/WebinarForm';
 
 import { connect } from 'react-redux';
 import formContent from '../form';
@@ -20,12 +9,7 @@ import * as formActions from 'store/actions/action-types/form-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 
-import {
-	headingProps,
-	paragraphProps
-} from '@common/styles/components/contentStyle';
 import RobertClassHero from './RobertClassHero';
-import hero from '../images/robert-class/hero.webp';
 import table from '../images/robert-class/list/06_non_donor_incentive_tier_t.png';
 import thanks from '../images/robert-class/thanks/08_thank_you_with_hk_animals.png';
 

@@ -25,7 +25,7 @@ import { VideoProvider } from '../context/video';
 import Episodes from './Episodes';
 import EpisodeContent from './Episodes/content';
 import Downloads from './Downloads';
-
+import Video from './Video';
 import isRGUserTable from '../images/robert-class/list/06_donor_incentive_tier_t.png';
 import noRGUserTable from '../images/robert-class/list/06_non_donor_incentive_tier_t.png';
 
@@ -33,13 +33,7 @@ import logoAnimals from '../images/robert-class/logo-animals.webp';
 
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
-function EpisodesPage({
-	status,
-	setFormContent,
-	theme,
-	resetSubmitted,
-	signup
-}) {
+function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 	const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 	const router = useRouter();
 	const themeInterests = theme.interests;
@@ -105,7 +99,7 @@ function EpisodesPage({
 		<Box>
 			<div className="relative pb-[60px]">
 				<VideoProvider>
-					<Episodes />
+					<Video />
 
 					<div className="bg-[#FFF]" style={{ zIndex: 10 }}>
 						<div className="relative z-10 flex flex-col-reverse gap-8 bg-[#FFF]  lg:flex-row">
@@ -182,4 +176,4 @@ const mapDispatchToProps = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EpisodesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(VideoPage);

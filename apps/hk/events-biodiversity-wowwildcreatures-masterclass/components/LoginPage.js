@@ -1,32 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
 	Box,
-	Center,
-	Image,
-	Text,
-	Heading,
-	UnorderedList,
-	ListItem,
-	AspectRatio
 } from '@chakra-ui/react';
-import NextImage from 'next/image';
-
-import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/WebinarForm';
 
 import { connect } from 'react-redux';
-import formContent from '../form';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
 
-import {
-	headingProps,
-	paragraphProps
-} from '@common/styles/components/contentStyle';
 import bg from '../images/robert-class/hero/01e-background-colour.png';
 
-import LoginForm from "./LoginForm";
+import LoginForm from './LoginForm';
 
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 

@@ -52,7 +52,7 @@ import DonationModule from '@components/GP/DonationModule';
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
 function MainPage({ status, theme, setFormContent, signup }) {
-  const { submitted } = status;
+	const { submitted } = status;
 	const data = useContext(AppContext);
 	const value = useGlobalContext();
 	const router = useRouter();
@@ -67,16 +67,13 @@ function MainPage({ status, theme, setFormContent, signup }) {
 	const courseSection = useRef(null);
 	const ourWorkSection = useRef(null);
 
-  console.log("value==============>", value)
-  console.log("submitted====>", submitted)
-
 	const RenderForm = useCallback(() => {
 		return value.isLoggedIn ? (
 			<DonationModule
 				market={'HK'}
 				language={'zh_HK'}
 				campaign={'elm_infopage'}
-				campaignId={'7012u000000OtKJAA0'}
+				campaignId={'701If000000xF73IAE'}
 				env={'production'}
 			/>
 		) : (
@@ -107,16 +104,16 @@ function MainPage({ status, theme, setFormContent, signup }) {
 		setFormContent(formContent);
 	}, []);
 
-  useEffect(() => {
-    if(submitted){
-      router.push(
+	useEffect(() => {
+		if (submitted) {
+			router.push(
 				`/?p=thankyou`,
 				`${window.location.href.split('?')[0]}/?p=thankyou`,
 				{
 					shallow: true
 				}
 			);
-    }
+		}
 	}, [submitted]);
 
 	return (
@@ -227,9 +224,9 @@ function MainPage({ status, theme, setFormContent, signup }) {
 								style={{ width: '100%', height: 'auto' }}
 							></NextImage>
 						</div>
-						{/* <VideoProvider>
+						<VideoProvider>
               <Video />
-            </VideoProvider> */}
+            </VideoProvider>
 					</div>
 				</div>
 

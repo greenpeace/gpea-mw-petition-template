@@ -19,7 +19,17 @@ export default function Episodes() {
 				h={'100vh'}
 				overflow={'hidden'}
 			>
-				<Box className="bgVideoMask" position={'absolute'} top={0} left={0} width={'full'} height={'100%'} objectFit={'cover'} zIndex={3} background={'rgba(0, 0, 0, 0.6)'}/>
+				<Box
+					className="bgVideoMask"
+					position={'absolute'}
+					top={0}
+					left={0}
+					width={'full'}
+					height={'100%'}
+					objectFit={'cover'}
+					zIndex={3}
+					background={'rgba(0, 0, 0, 0.6)'}
+				/>
 				<Image
 					alt={'bg'}
 					src={selectedEp?.image}
@@ -64,7 +74,13 @@ export default function Episodes() {
 							size={'lg'}
 							rightIcon={<FaPlay />}
 							onClick={() => {
-								router.push(`/episodes/video?ep=${ep}??"1"}`);
+								router.push(
+									`/?p=video`,
+									`${window.location.href.split('?')[0]}/?p=video&ep=${ep ?? '1'})}`,
+									{
+										shallow: true
+									}
+								);
 							}}
 						>
 							播放 Play

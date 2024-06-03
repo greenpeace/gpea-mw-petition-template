@@ -76,7 +76,16 @@ const Header = ({ nowPage }) => {
 			label: '我們的工作',
 			page: 'main',
 			refName: 'ourWorkSection'
-		}
+		},
+		...(isUserLoggedIn
+            ? [
+                {
+                  label: "所有集數",
+                  page: "episodes",
+                  refName: "",
+                },
+              ]
+            : []),
 	];
 
 	return (
