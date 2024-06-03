@@ -69,8 +69,8 @@ const DesktopSwiper = ({ isDetail = false }) => {
 										setSelectedEp(d);
 
 										router.push(
-											`?p=episodes`,
-											`${window.location.href.split('?')[0]}?p=episodes&ep=${
+											`?p=${isDetail ? 'video' : 'episodes'}`,
+											`${window.location.href.split('?')[0]}?p=${isDetail ? 'video' : 'episodes'}&ep=${
 												d.ep
 											}`,
 											{

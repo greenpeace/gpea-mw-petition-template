@@ -17,6 +17,7 @@ import { scrollToRef } from '../util';
 import { VideoProvider } from '../context/video';
 import Episodes from './Episodes';
 import EpisodeContent from './Episodes/content';
+import PlayListGroup from './PlayList';
 import Downloads from './Downloads';
 import Video from './Video';
 import isRGUserTable from '../images/robert-class/list/06_donor_incentive_tier_t.png';
@@ -94,6 +95,10 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 			<div className="relative pb-[60px]">
 				<VideoProvider>
 					<Video />
+
+					<Box pl={4}>
+          <PlayListGroup isDetail={true} />
+        </Box>
 
 					<div className="bg-[#FFF]" style={{ zIndex: 10 }}>
 						<div className="relative z-10 flex flex-col-reverse gap-8 bg-[#FFF]  lg:flex-row">

@@ -15,10 +15,10 @@ export default function Episodes() {
 	const RenderBackgroundVideo = useCallback(() => {
 		return (
 			<Box
-				className="video-container min-h-[80vh] lg:min-h-[860px]"
+				className="video-container min-h-[640px] lg:min-h-[860px]"
 				position={'absolute'}
 				w="full"
-				h={'100vh'}
+				h={{base: '640px', xl: 'auto'}}
 				overflow={'hidden'}
 			>
 				<Box
@@ -32,13 +32,12 @@ export default function Episodes() {
 					zIndex={3}
 					background={'rgba(0, 0, 0, 0.6)'}
 				/>
-				<Image
+				<Box
 					alt={'bg'}
-					src={selectedEp?.image}
-					w="full"
-					h={'auto'}
-					objectFit="cover"
-					className="h-[100%] transition-all duration-300 ease-in-out"
+					backgroundImage={selectedEp?.banner}
+					bgPosition={'center center'}
+					backgroundSize="cover"
+					className="min-h-[640px] lg:min-h-[860px] transition-all duration-300 ease-in-out"
 				/>
 			</Box>
 		);

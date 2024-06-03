@@ -36,6 +36,7 @@ function EpisodesPage({
 	const themeInterests = theme.interests;
 	const value = useGlobalContext();
 	const downloadsRef = useRef(null);
+	const episodesRef = useRef(null);
 	const { p, ep, s } = router.query;
 	const { submitted } = status;
 
@@ -51,7 +52,6 @@ function EpisodesPage({
 	}, []);
 
 	useEffect(() => {
-		console.log('submitted', submitted);
 		window.__greenpeace__ = window.__greenpeace__ || {};
 		if (window.__greenpeace__?.renderDonationModule && submitted) {
 			window.__greenpeace__.renderDonationModule();
@@ -60,7 +60,8 @@ function EpisodesPage({
 
 	useEffect(() => {
 		const REFS = {
-			downloads: downloadsRef
+			downloads: downloadsRef,
+			episodes: episodesRef
 		};
 
 		if (!!s) {
@@ -93,7 +94,7 @@ function EpisodesPage({
 	}, [value.isLoggedIn]);
 
 	return (
-		<Box>
+		<Box ref={episodesRef}>
 			<div className="relative pb-[60px]">
 				<VideoProvider>
 					<Episodes />

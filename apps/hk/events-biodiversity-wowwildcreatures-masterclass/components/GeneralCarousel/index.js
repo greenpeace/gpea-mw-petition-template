@@ -4,12 +4,14 @@ import { Carousel } from "react-responsive-carousel";
 import { BsArrowRightCircleFill, BsArrowLeftCircleFill } from "react-icons/bs";
 import { Box } from "@chakra-ui/react";
 
-import slide01Image from "../../images/robert-class/list/carousel/episodes_carousal_1.jpg";
-import slide02Image from "../../images/robert-class/list/carousel/episodes_carousal_2.jpg";
-import slide03Image from "../../images/robert-class/list/carousel/episodes_carousal_3.jpg";
-import slide04Image from "../../images/robert-class/list/carousel/episodes_carousal_4.jpg";
-import slide05Image from "../../images/robert-class/list/carousel/episodes_carousal_5.jpg";
-import slide06Image from "../../images/robert-class/list/carousel/episodes_carousal_6.jpg";
+import slide01Image from "../../images/robert-class/list/carousel/carousel_1.jpg";
+import slide02Image from "../../images/robert-class/list/carousel/carousel_2.jpg";
+import slide03Image from "../../images/robert-class/list/carousel/carousel_3.jpg";
+import slide04Image from "../../images/robert-class/list/carousel/carousel_4.jpg";
+import slide05Image from "../../images/robert-class/list/carousel/carousel_5.jpg";
+import slide06Image from "../../images/robert-class/list/carousel/carousel_6.jpg";
+import slide07Image from "../../images/robert-class/list/carousel/carousel_7.jpg";
+import slide08Image from "../../images/robert-class/list/carousel/carousel_8.jpg";
 const GeneralCarousel = () => {
   const SLIDES = [
     {
@@ -35,6 +37,14 @@ const GeneralCarousel = () => {
     {
       key: 5,
       image: slide06Image,
+    },
+    {
+      key: 6,
+      image: slide07Image,
+    },
+    {
+      key: 7,
+      image: slide08Image,
     }
   ];
 

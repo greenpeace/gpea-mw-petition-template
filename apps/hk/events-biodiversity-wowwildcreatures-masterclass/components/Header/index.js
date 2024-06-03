@@ -23,38 +23,38 @@ const Header = ({ nowPage }) => {
 	const router = useRouter();
 	const OFFSET = 10;
 	const scrollPosition = useScrollPosition();
+
+	const urlParams = new URLSearchParams(router.asPath);
 	const stickyStyle = {
 		wrap: scrollPosition > OFFSET ? 'bg-[#66CC00]' : '',
 		border: scrollPosition > OFFSET ? '' : 'border-b-[1px]'
 	};
 	const handleMenuOnClick = (main, link, refName, page) => {
-		// let url = new URL(window.location);
-		// console.log('params-',url)
-		// history.pushState({}, null, `${url.origin}/?p=${page}&s=${refName}`)
-		if (nowPage === 'streaming') {
-			window.open(
-				`${window.location.href.split('?')[0]}/?p=${page}&s=${refName}`,
-				'_blank'
-			);
-		} else {
-			router.push(
-				`/?p=${page}&s=${refName}`,
-				`${window.location.href.split('?')[0]}/?p=${page}&s=${refName}`,
-				{
-					shallow: true
-				}
-			);
+		const epParams = urlParams.get('ep') && '&ep=' + urlParams.get('ep')
+		let url = `/?p=${page}&s=${refName}`
+		let as = `${window.location.href.split('?')[0]}/?p=${page}&s=${refName}`
+		if(epParams){
+			url = url + epParams
+			as = as + epParams
 		}
+
+		router.push(
+			url,
+			as,
+			{
+				shallow: true
+			}
+		);
 	};
 
 	const handleLogoutButtonClick = () => {
-		if (typeof window !== "undefined" && window.localStorage) {
-		value.setLoggedIn("");
-		localStorage.removeItem("gpea-project");
-		localStorage.removeItem("gpea-project-passCode");
-		router.push("/");
+		if (typeof window !== 'undefined' && window.localStorage) {
+			value.setLoggedIn('');
+			localStorage.removeItem('gpea-project');
+			localStorage.removeItem('gpea-project-passCode');
+			router.push('/');
 		}
-	  };
+	};
 
 	const MENU = [
 		{
@@ -78,19 +78,19 @@ const Header = ({ nowPage }) => {
 			refName: 'ourWorkSection'
 		},
 		...(isUserLoggedIn
-            ? [
-                {
-                  label: "所有集數",
-                  page: "episodes",
-                  refName: "",
-                },
-				{
-					label: "資源下載",
-					page: "episodes",
-					refName: "downloads",
-				  },
-              ]
-            : []),
+			? [
+					{
+						label: '所有集數',
+						page: 'episodes',
+						refName: 'episodes'
+					},
+					{
+						label: '資源下載',
+						page: 'episodes',
+						refName: 'downloads'
+					}
+			  ]
+			: [])
 	];
 
 	return (
@@ -156,7 +156,9 @@ const Header = ({ nowPage }) => {
 									onClick={() =>
 										router.push(
 											`/?p=main&s=signupSection`,
-											`${window.location.href.split('?')[0]}/?p=main&s=signupSection`,
+											`${
+												window.location.href.split('?')[0]
+											}/?p=main&s=signupSection`,
 											{ shallow: true }
 										)
 									}

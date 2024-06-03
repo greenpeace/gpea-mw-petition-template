@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
-import { Box, Image } from '@chakra-ui/react';
+import {
+	Box,
+	Image,
+} from '@chakra-ui/react';
 
 import DonationModule from '@components/GP/DonationModule';
 
@@ -12,7 +15,7 @@ import * as statusActions from 'store/actions/action-types/status-actions';
 import RobertClassHero from './RobertClassHero';
 import table from '../images/robert-class/list/06_non_donor_incentive_tier_t.png';
 import thanks from '../images/robert-class/thanks/08_thank_you_with_hk_animals.png';
-
+import GeneralCarousel from './GeneralCarousel';
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
 function ThanksPage({ status, setFormContent, theme, resetSubmitted, signup }) {
@@ -108,6 +111,12 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 							<div className="relative w-[100%] flex-1">
 								<Image src={table} alt="06_donor_incentive_tier_t" />
 							</div>
+
+							<Box px={1}>
+							<GeneralCarousel/>
+
+							</Box>
+
 						</div>
 						<div className="relative w-[100%] flex-1">
 							<Box

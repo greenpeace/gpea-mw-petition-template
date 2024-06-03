@@ -1,9 +1,8 @@
-import React, { useRef, useState, useCallback } from 'react';
-// import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Center, Icon } from '@chakra-ui/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, Scrollbar } from 'swiper';
+import { Scrollbar } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/scrollbar';
@@ -64,8 +63,8 @@ const MobileSwiper = ({ isDetail }) => {
 										setSelectedEp(d);
 
 										router.push(
-											`/?p=episodes`,
-											`${window.location.href.split('?')[0]}/?p=episodes&ep=${
+											`?p=${isDetail ? 'video' : 'episodes'}`,
+											`${window.location.href.split('?')[0]}?p=${isDetail ? 'video' : 'episodes'}&ep=${
 												d.ep
 											}`,
 											{

@@ -49,6 +49,22 @@ import ep06Thumbnail from '../images/swiper/gpea-demo-06.jpg';
 import ep07Image from '../images/robert-class/ep-bg-07.webp';
 import ep07Thumbnail from '../images/swiper/gpea-demo-07.jpg';
 
+import epCover01s from '../images/robert-class/episode/episode-cover-01-s.png';
+import epCover02s from '../images/robert-class/episode/episode-cover-02-s.png';
+import epCover03s from '../images/robert-class/episode/episode-cover-03-s.png';
+import epCover04s from '../images/robert-class/episode/episode-cover-04-s.png';
+import epCover05s from '../images/robert-class/episode/episode-cover-05-s.png';
+import epCover06s from '../images/robert-class/episode/episode-cover-06-s.png';
+import epCover07s from '../images/robert-class/episode/episode-cover-07-s.png';
+
+import epCover01l from '../images/robert-class/episode/episode-cover-01-l.png';
+import epCover02l from '../images/robert-class/episode/episode-cover-02-l.png';
+import epCover03l from '../images/robert-class/episode/episode-cover-03-l.png';
+import epCover04l from '../images/robert-class/episode/episode-cover-04-l.png';
+import epCover05l from '../images/robert-class/episode/episode-cover-05-l.png';
+import epCover06l from '../images/robert-class/episode/episode-cover-06-l.png';
+import epCover07l from '../images/robert-class/episode/episode-cover-07-l.png';
+
 const TRAILER = {
 	key: 0,
 	ep: 0,
@@ -59,8 +75,9 @@ const TRAILER = {
 		donor: '',
 		nonDonor: ''
 	},
-	image: ep01Image,
-	thumbnail: ep01Thumbnail
+	image: epCover01s,
+	thumbnail: epCover01s,
+	banner: epCover01l
 };
 
 const EPISODES = [
@@ -75,8 +92,9 @@ const EPISODES = [
 			donor: '',
 			nonDonor: ''
 		},
-		image: ep01Image,
-		thumbnail: ep01Thumbnail
+		image: epCover01s,
+		thumbnail: epCover01s,
+		banner: epCover01l
 	},
 	{
 		key: 1,
@@ -89,8 +107,9 @@ const EPISODES = [
 			donor: '',
 			nonDonor: ''
 		},
-		image: ep02Image,
-		thumbnail: ep02Thumbnail
+		image: epCover02s,
+		thumbnail: epCover02s,
+		banner: epCover02l
 	},
 	{
 		key: 2,
@@ -103,8 +122,9 @@ const EPISODES = [
 			donor: '',
 			nonDonor: ''
 		},
-		image: ep03Image,
-		thumbnail: ep03Thumbnail
+		image: epCover03s,
+		thumbnail: epCover03s,
+		banner: epCover03l
 	},
 	{
 		key: 3,
@@ -118,8 +138,9 @@ const EPISODES = [
 			donor: '',
 			nonDonor: ''
 		},
-		image: ep04Image,
-		thumbnail: ep04Thumbnail
+		image: epCover04s,
+		thumbnail: epCover04s,
+		banner: epCover04l
 	},
 	{
 		key: 4,
@@ -132,8 +153,9 @@ const EPISODES = [
 			donor: '',
 			nonDonor: ''
 		},
-		image: ep05Image,
-		thumbnail: ep05Thumbnail
+		image: epCover05s,
+		thumbnail: epCover05s,
+		banner: epCover05l
 	},
 	{
 		key: 5,
@@ -146,8 +168,9 @@ const EPISODES = [
 			donor: '',
 			nonDonor: ''
 		},
-		image: ep06Image,
-		thumbnail: ep06Thumbnail
+		image: epCover06s,
+		thumbnail: epCover06s,
+		banner: epCover06l
 	},
 	{
 		key: 6,
@@ -162,8 +185,9 @@ const EPISODES = [
 			nonDonor:
 				'* 此為綠色和平捐款會員獨家限定集數，誠邀您捐款支持我們在本地及全球守護生物多樣性的工作，並觀看此隱藏集數。如您已捐款，請查看電郵並以新密碼重新登入。【捐款會員限定】第七集 — 香港「野」繽紛您有想過夜間的香港野外世界是怎樣的嗎？來到最後一集，Robert 帶我們出發夜間探險，細看夜行動物的世界！入夜後的大自然既神秘又刺激，我們更遇到以「香港」命名的物種！來吧，一邊探險，一邊學習夜間拍攝技巧！* This episode is exclusive to Greenpeace’s donors. We would like to invite you to support our work to protect biodiversity locally and globally, and get access to this hidden episode. If you have donated already, please check your email and log in again with the new password.'
 		},
-		image: ep07Image,
-		thumbnail: ep07Thumbnail
+		image: epCover07s,
+		thumbnail: epCover07s,
+		banner: epCover07l
 	}
 ];
 
