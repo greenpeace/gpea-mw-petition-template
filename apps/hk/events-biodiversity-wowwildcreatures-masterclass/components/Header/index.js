@@ -1,14 +1,25 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/appContext';
-import { Image, Button } from '@chakra-ui/react';
+import { useGlobalContext } from '../../context/global';
+import {
+	Image,
+	Button,
+	Menu,
+	MenuButton,
+	MenuList,
+	MenuItem,
+	Avatar,
+	IconButton
+} from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import useScrollPosition from './useScrollPosition';
 import logoChinese from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png';
 
-const Header = ({
-	nowPage
-}) => {
+import { ArrowForwardIcon } from '@chakra-ui/icons';
+const Header = ({ nowPage }) => {
 	const data = useContext(AppContext);
+	const value = useGlobalContext();
+	const isUserLoggedIn = value?.isLoggedIn === 'loggedIn';
 	const router = useRouter();
 	const OFFSET = 10;
 	const scrollPosition = useScrollPosition();
@@ -20,9 +31,12 @@ const Header = ({
 		// let url = new URL(window.location);
 		// console.log('params-',url)
 		// history.pushState({}, null, `${url.origin}/?p=${page}&s=${refName}`)
-		if(nowPage === 'streaming'){
-			window.open(`${window.location.href.split('?')[0]}/?p=${page}&s=${refName}`, "_blank");
-		}else{
+		if (nowPage === 'streaming') {
+			window.open(
+				`${window.location.href.split('?')[0]}/?p=${page}&s=${refName}`,
+				'_blank'
+			);
+		} else {
 			router.push(
 				`/?p=${page}&s=${refName}`,
 				`${window.location.href.split('?')[0]}/?p=${page}&s=${refName}`,
@@ -31,47 +45,37 @@ const Header = ({
 				}
 			);
 		}
-		
 	};
 
-	const {
-		heroSection,
-		visionSection,
-		swiperSection,
-		supportSection,
-		signupSection
-	} = data;
+	const handleLogoutButtonClick = () => {
+		if (typeof window !== "undefined" && window.localStorage) {
+		value.setLoggedIn("");
+		localStorage.removeItem("gpea-project");
+		localStorage.removeItem("gpea-project-passCode");
+		router.push("/");
+		}
+	  };
 
 	const MENU = [
 		{
-			label: '紀錄片介紹',
+			label: '課程一覽',
 			page: 'main',
-			refName: 'heroSection',
-			ref: heroSection
+			refName: 'courseSection'
 		},
 		{
-			label: '我們的理念',
+			label: '預告片',
 			page: 'main',
-			refName: 'visionSection',
-			ref: visionSection
+			refName: 'videoListSection'
 		},
 		{
-			label: '大嶼有我',
+			label: '導師簡介',
 			page: 'main',
-			refName: 'swiperSection',
-			ref: swiperSection
+			refName: 'introSection'
 		},
 		{
-			label: '細看大嶼',
+			label: '我們的工作',
 			page: 'main',
-			refName: 'supportSection',
-			ref: supportSection
-		},
-		{
-			label: '立即聯署',
-			page: 'main',
-			refName: 'signupSection',
-			ref: signupSection
+			refName: 'ourWorkSection'
 		}
 	];
 
@@ -89,8 +93,9 @@ const Header = ({
 							src={logoChinese}
 							maxW="220px"
 							alt={'Greenpeace 綠色和平'}
+							cursor={'pointer'}
 							onClick={() => {
-								if(nowPage === 'streaming') return;
+								if (nowPage === 'streaming') return;
 								router.push(
 									`/?p=main`,
 									`${window.location.href.split('?')[0]}/?p=main`,
@@ -112,36 +117,39 @@ const Header = ({
 									{d.label}
 								</div>
 							))}
-							{
-								nowPage === 'streaming' ? (
-									<Button
-										color="white"
-										bgColor={'orange.500'}
-										_hover={{ bg: 'orange.300' }}
-										onClick={() =>
-											window.open(`https://cloud.greenhk.greenpeace.org/donation-oceans-elm?ref=lantau-documentary-petition-streaming-btn`, "_blank")
-										}
-									>
-										捐款支持
-									</Button>
-								) : (
-									<Button
-										color="white"
-										bgColor={'orange.500'}
-										_hover={{ bg: 'orange.300' }}
-										onClick={() =>
-											router.push(
-												`/?p=petition`,
-												`${window.location.href.split('?')[0]}/?p=petition`,
-												{ shallow: true }
-											)
-										}
-									>
-										立即觀看
-									</Button>
-								)
-							}
-							
+							{isUserLoggedIn ? (
+								<Menu>
+									<MenuButton
+										as={IconButton}
+										aria-label="Options"
+										icon={<Avatar size="sm" bg="#007c00" cursor={'pointer'} />}
+										variant="unstyled"
+									/>
+									<MenuList>
+										<MenuItem
+											icon={<ArrowForwardIcon />}
+											onClick={() => handleLogoutButtonClick()}
+										>
+											登出
+										</MenuItem>
+									</MenuList>
+								</Menu>
+							) : (
+								<Button
+									color="white"
+									bgColor={'orange.500'}
+									_hover={{ bg: 'orange.300' }}
+									onClick={() =>
+										router.push(
+											`/?p=main&s=signupSection`,
+											`${window.location.href.split('?')[0]}/?p=main&s=signupSection`,
+											{ shallow: true }
+										)
+									}
+								>
+									立即登記
+								</Button>
+							)}
 						</div>
 					</div>
 				</div>

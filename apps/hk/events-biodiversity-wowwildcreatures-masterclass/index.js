@@ -23,6 +23,9 @@ import Header from './components/Header';
 import DonationPage from './components/DonationPage';
 import StreamingPage from './components/StreamingPage';
 import MainPage from './components/MainPage';
+import ThanksPage from './components/ThanksPage';
+import LoginPage from './components/LoginPage';
+import EpisodesPage from './components/EpisodesPage';
 
 function Index() {
 	const router = useRouter();
@@ -64,9 +67,18 @@ const SwitchPage = () => {
 
 		case 'petition':
 			return <DonationPage />;
+		
+		case 'thankyou':
+			return <ThanksPage />;
 
 		case 'streaming':
 			return <StreamingPage />;
+
+		case 'login':
+			return <LoginPage />;
+
+			case 'episodes':
+				return <EpisodesPage />;
 
 		default:
 			return <Box minH={'100vh'}></Box>;

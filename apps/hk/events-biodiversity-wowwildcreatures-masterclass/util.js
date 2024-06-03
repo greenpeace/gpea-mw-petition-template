@@ -53,3 +53,15 @@ export const useIntersection = (element, rootMargin) => {
 
 	return isVisible;
 };
+
+
+export const scrollToRef = (ref) => {
+	const headerOffset = 75;
+	const elementPosition = ref?.current?.getBoundingClientRect()?.top;
+	const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+	window.scrollTo({
+	  top: offsetPosition,
+	  behavior: "smooth",
+	});
+  };

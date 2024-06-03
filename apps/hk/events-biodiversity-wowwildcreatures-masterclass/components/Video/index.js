@@ -1,5 +1,5 @@
 import { useVideoContext } from "../../context/video";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { AspectRatio } from "@chakra-ui/react";
 import { CldVideoPlayer, getCldVideoUrl } from "next-cloudinary";
 const Video = () => {

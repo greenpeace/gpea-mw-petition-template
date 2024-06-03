@@ -28,6 +28,27 @@ const videoContext = createContext(undefined);
 
 const VideoContextProvider = videoContext.Provider;
 
+import ep01Image from "../images/robert-class/ep-bg-01.webp";
+import ep01Thumbnail from "../images/swiper/gpea-demo-01.jpg";
+
+import ep02Image from "../images/robert-class/ep-bg-02.webp";
+import ep02Thumbnail from "../images/swiper/gpea-demo-02.jpg";
+
+import ep03Image from "../images/robert-class/ep-bg-03.webp";
+import ep03Thumbnail from "../images/swiper/gpea-demo-03.jpg";
+
+import ep04Image from "../images/robert-class/ep-bg-04.webp";
+import ep04Thumbnail from "../images/swiper/gpea-demo-04.jpg";
+
+import ep05Image from "../images/robert-class/ep-bg-05.webp";
+import ep05Thumbnail from "../images/swiper/gpea-demo-05.jpg";
+
+import ep06Image from "../images/robert-class/ep-bg-06.webp";
+import ep06Thumbnail from "../images/swiper/gpea-demo-06.jpg";
+
+import ep07Image from "../images/robert-class/ep-bg-07.webp";
+import ep07Thumbnail from "../images/swiper/gpea-demo-07.jpg";
+
 const EPISODES = [
   {
     key: 0,
@@ -40,8 +61,8 @@ const EPISODES = [
       donor: "",
       nonDonor: "",
     },
-    image: "/robert-class/ep-bg-01.webp",
-    thumbnail: "/images/swiper/gpea-demo-01.jpg"
+    image: ep01Image,
+    thumbnail: ep01Thumbnail
   },
   {
     key: 1,
@@ -54,8 +75,8 @@ const EPISODES = [
       donor: "",
       nonDonor: "",
     },
-    image: "/robert-class/ep-bg-02.webp",
-    thumbnail: "/images/swiper/gpea-demo-02.jpg"
+    image: ep02Image,
+    thumbnail: ep02Thumbnail
   },
   {
     key: 2,
@@ -68,8 +89,8 @@ const EPISODES = [
       donor: "",
       nonDonor: "",
     },
-    image: "/robert-class/ep-bg-03.webp",
-    thumbnail: "/images/swiper/gpea-demo-03.jpg"
+    image: ep03Image,
+    thumbnail: ep03Thumbnail
   },
   {
     key: 3,
@@ -83,8 +104,8 @@ const EPISODES = [
       donor: "",
       nonDonor: "",
     },
-    image: "/robert-class/ep-bg-04.webp",
-    thumbnail: "/images/swiper/gpea-demo-04.jpg"
+    image: ep04Image,
+    thumbnail: ep04Thumbnail
   },
   {
     key: 4,
@@ -97,8 +118,8 @@ const EPISODES = [
       donor: "",
       nonDonor: "",
     },
-    image: "/robert-class/ep-bg-05.webp",
-    thumbnail: "/images/swiper/gpea-demo-05.jpg"
+    image: ep05Image,
+    thumbnail: ep05Thumbnail
   },
   {
     key: 5,
@@ -111,8 +132,8 @@ const EPISODES = [
       donor: "",
       nonDonor: "",
     },
-    image: "/robert-class/ep-bg-06.webp",
-    thumbnail: "/images/swiper/gpea-demo-06.jpg"
+    image: ep06Image,
+    thumbnail: ep06Thumbnail
   },
   {
     key: 6,
@@ -127,8 +148,8 @@ const EPISODES = [
       nonDonor:
         "* 此為綠色和平捐款會員獨家限定集數，誠邀您捐款支持我們在本地及全球守護生物多樣性的工作，並觀看此隱藏集數。如您已捐款，請查看電郵並以新密碼重新登入。【捐款會員限定】第七集 — 香港「野」繽紛您有想過夜間的香港野外世界是怎樣的嗎？來到最後一集，Robert 帶我們出發夜間探險，細看夜行動物的世界！入夜後的大自然既神秘又刺激，我們更遇到以「香港」命名的物種！來吧，一邊探險，一邊學習夜間拍攝技巧！* This episode is exclusive to Greenpeace’s donors. We would like to invite you to support our work to protect biodiversity locally and globally, and get access to this hidden episode. If you have donated already, please check your email and log in again with the new password.",
     },
-    image: "/robert-class/ep-bg-07.webp",
-    thumbnail: "/images/swiper/gpea-demo-07.jpg"
+    image: ep07Image,
+    thumbnail: ep07Thumbnail
   },
 ];
 

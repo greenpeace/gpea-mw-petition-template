@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Box, Icon, Center } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import CONTENT from "./data";
+import CONTENT from "./swiperData";
 import { Mousewheel, Pagination, Scrollbar } from "swiper";
 // Import Swiper styles
 import "swiper/css";
@@ -30,7 +30,7 @@ const DesktopSwiper = () => {
         preventInteractionOnTransition={true}
         scrollbar={{ el: ".swiper-scrollbar", hide: false, draggable: true }}
       >
-        {(CONTENT.DATA || []).map((d, i) => {
+        {(CONTENT || []).map((d, i) => {
           if (d.type === "group") {
             return (
               <SwiperSlide key={`${d.title}-${i}`} style={{ width: "530px" }}>
@@ -60,12 +60,6 @@ const DesktopSwiper = () => {
                         <div className="absolute left-6 right-6 bottom-6 z-10">
                           <p className="text-[#FFF]">{item.content}</p>
                         </div>
-                        {/* <Box
-                          bgGradient="linear(to-b, black 0%, transparent 50%, black 100%)"
-                          opacity={0.6}
-                          h={"full"}
-                          zIndex={2}
-                        /> */}
                       </Box>
                     </div>
                   ))}

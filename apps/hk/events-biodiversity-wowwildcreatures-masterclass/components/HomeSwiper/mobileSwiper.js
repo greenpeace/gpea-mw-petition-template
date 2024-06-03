@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Box, Image, Icon, Center } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import CONTENT from "./data";
+import CONTENT from "./swiperData";
 import { Scrollbar } from "swiper";
 // Import Swiper styles
 import "swiper/css";
@@ -31,7 +31,7 @@ const MobileSwiper = () => {
           draggable: true,
         }}
       >
-        {(CONTENT.DATA || []).map((d, i) => {
+        {(CONTENT || []).map((d, i) => {
           if (d.type === "group") {
             return d.items.map((item, i) => (
               <SwiperSlide key={`${d.title}-${i}`} style={{ width: "90%" }}>

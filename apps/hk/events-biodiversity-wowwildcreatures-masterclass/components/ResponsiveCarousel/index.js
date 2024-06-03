@@ -1,9 +1,8 @@
-import React, { Component, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { Image } from '@chakra-ui/react';
 
-import NextImage from 'next/image';
 import epCover01s from '../../images/robert-class/episode/episode-cover-01-s.png';
 import epCover02s from '../../images/robert-class/episode/episode-cover-02-s.png';
 import epCover03s from '../../images/robert-class/episode/episode-cover-03-s.png';
