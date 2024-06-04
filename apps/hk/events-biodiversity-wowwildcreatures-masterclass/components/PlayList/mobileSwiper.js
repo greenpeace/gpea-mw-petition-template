@@ -13,13 +13,15 @@ import { useGlobalContext } from '../../context/global';
 import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
 
 const MobileSwiper = ({ isDetail }) => {
+	const router = useRouter();
+	// const pathname = usePathname();
 	const swiperRef = useRef(null);
 	const value = useVideoContext();
 	const globalValue = useGlobalContext;
 
 	const { userType } = globalValue();
 
-	const { setVideo, setSelectedEp, EPISODES } = value;
+	const { setSelectedEp, selectedEp, EPISODES } = value;
 
 	return (
 		<div className="pb-[30px]">

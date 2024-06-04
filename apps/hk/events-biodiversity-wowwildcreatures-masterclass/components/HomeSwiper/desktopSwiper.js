@@ -71,12 +71,12 @@ const DesktopSwiper = () => {
           return (
             <SwiperSlide
               key={`${d.title}-${i}`}
-              style={{ width: d.width === "full" ? "480px" : "360px" }}
+              style={{ width: d.width === "full" ? "480px" : "360px", padding: "10px 0" }}
             >
               <div
                 className={`relative w-full ${
                   d.height === "full" ? "h-[530px]" : "h-[320px]"
-                }  max-w-[100%] overflow-hidden rounded-[20px] shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl`}
+                }  max-w-[100%] overflow-hidden rounded-[20px] shadow-md transition-shadow duration-300 ease-in-out`}
               >
                 <Box
                   backgroundImage={d?.url}
@@ -98,12 +98,6 @@ const DesktopSwiper = () => {
                   <div className="absolute left-6 right-6 bottom-6 z-10">
                     <p className="text-[#FFF]">{d.content}</p>
                   </div>
-                  {/* <Box
-                    bgGradient="linear(to-b, black 0%, transparent 50%, black 100%)"
-                    opacity={0.6}
-                    h={"full"}
-                    zIndex={2}
-                  /> */}
                 </Box>
               </div>
             </SwiperSlide>

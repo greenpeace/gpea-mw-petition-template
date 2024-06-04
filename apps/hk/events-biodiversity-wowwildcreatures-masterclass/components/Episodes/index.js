@@ -54,11 +54,11 @@ export default function Episodes() {
 					<div className="text-left text-[#FFF]">
 						<div>
 							<h2
-								className="text-3xl font-bold md:text-5xl "
+								className="text-2xl font-bold md:text-5xl "
 								style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}
 							>
 								<span className="leading-normal">
-									<span className="block ">{selectedEp?.name}</span>
+									<Text className="block">{selectedEp?.name}</Text>
 								</span>
 							</h2>
 							<Flex gap={2} maxW={480}>
