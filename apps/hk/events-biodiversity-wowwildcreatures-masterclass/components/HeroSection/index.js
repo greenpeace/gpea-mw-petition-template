@@ -34,7 +34,7 @@ function HeroSection({
 
 	const { scrollY, scrollYProgress } = useViewportScroll();
 	const scale = useTransform(scrollYProgress, (value) => 1 + value * 1.25);
-	const scale2 = useTransform(scrollYProgress, (value) => 1 + value * 1.15);
+	const scale2 = useTransform(scrollYProgress, (value) => 1 + value * 1.1);
 	const y = useTransform(scrollY, [0, 100], [0, -50]);
 	const y2 = useTransform(scrollY, [0, 100], [0, 130]);
 	const router = useRouter();
