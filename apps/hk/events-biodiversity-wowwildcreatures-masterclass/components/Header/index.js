@@ -122,7 +122,7 @@ const Header = ({ nowPage }) => {
 						onToggle();
 					}}
 				>
-					<Text fontWeight={600} w="full">
+					<Text fontWeight={600} w="full" color={`${navItem.refName === 'signupSection' ? '#FF8100' : ''}`}>
 						{navItem.label}
 					</Text>
 				</Flex>
@@ -136,12 +136,19 @@ const Header = ({ nowPage }) => {
 				{MENU.map((navItem, index) => (
 					<MobileNavItem
 						key={`${navItem.label}-${index}`}
-						// refName={navItem?.refName}
 						label={navItem?.label}
-						// link={navItem?.link}
 						navItem={navItem}
 					/>
 				))}
+				{!isUserLoggedIn && <MobileNavItem
+						key={`donation`}
+						label={`立即捐款`}
+						navItem={{
+						label: '立即捐款',
+						page: 'main',
+						refName: 'signupSection'
+					}}
+					/>}
 			</Stack>
 		);
 	};
@@ -216,7 +223,7 @@ const Header = ({ nowPage }) => {
 										)
 									}
 								>
-									立即登記
+									立即捐款
 								</Button>
 							)}
 							<IconButton

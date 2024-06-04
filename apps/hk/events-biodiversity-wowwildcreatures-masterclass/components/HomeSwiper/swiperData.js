@@ -11,14 +11,24 @@ import c10 from '../../images/robert-class/carousel/carousel_10.jpg'
 
 const data = [
     {
-        "image": 0,
+        "image": 7,
         "name": "",
         "nameEng": "",
         "role": "",
         "content": "",
         "width": "full",
         "height": "half",
-        "url": c01
+        "url": c08
+    },
+    {
+        "image": 6,
+        "name": "",
+        "nameEng": "",
+        "role": "",
+        "content": "",
+        "width": "full",
+        "height": "half",
+        "url": c07
     },
     {
         "image": 1,
@@ -69,26 +79,6 @@ const data = [
         "width": "full",
         "height": "half",
         "url": c06
-    },
-    {
-        "image": 6,
-        "name": "",
-        "nameEng": "",
-        "role": "",
-        "content": "",
-        "width": "full",
-        "height": "half",
-        "url": c07
-    },
-    {
-        "image": 7,
-        "name": "",
-        "nameEng": "",
-        "role": "",
-        "content": "",
-        "width": "full",
-        "height": "half",
-        "url": c08
     },
     {
         "image": 8,

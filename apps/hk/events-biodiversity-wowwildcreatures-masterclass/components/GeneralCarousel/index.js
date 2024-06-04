@@ -48,17 +48,7 @@ const GeneralCarousel = () => {
     }
   ];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-
   const mainCarousel = useRef(null);
-
-  // const handleOnClick = (key) => {
-  //   setCurrentSlide(key);
-  //   if (mainCarousel.current) {
-  //     mainCarousel.current.moveTo(key);
-  //   }
-  // };
-
   return (
     <div className="w-full  overflow-hidden">
       <Carousel
@@ -99,9 +89,10 @@ const GeneralCarousel = () => {
         {SLIDES.map((slide) => (
           <Box
             key={slide.key}
-            className="aspect-[4/3] md:aspect-[16/9]"
+            className="aspect-[1.41/1]"
             backgroundImage={slide.image}
             bgSize={"cover"}
+            bgPosition={"center"}
           />
         ))}
       </Carousel>

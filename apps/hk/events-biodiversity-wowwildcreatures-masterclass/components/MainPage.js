@@ -27,8 +27,7 @@ import Video from './Video';
 import HomeSwiper from './HomeSwiper';
 import RobertClassVision from './RobertClassVision';
 import { OrangeCTA } from '@common/styles/components/formStyle';
-import { useIntersection } from '../util';
-import main01Img from '../images/robert-class/main-01.webp';
+import animals from '../images/robert-class/home/02a_HK_animals.png';
 import main02Img from '../images/robert-class/main-02.webp';
 import main03Img from '../images/robert-class/main-03.webp';
 import main04Img from '../images/robert-class/main-04.webp';
@@ -64,7 +63,7 @@ function MainPage({ status, theme, setFormContent, signup }) {
 			<DonationModule
 				market={'HK'}
 				language={'zh_HK'}
-				campaign={'elm_infopage'}
+				campaign={'biodiversity'}
 				campaignId={'701If000000xF73IAE'}
 				env={'production'}
 			/>
@@ -160,14 +159,12 @@ function MainPage({ status, theme, setFormContent, signup }) {
 				<div className={`${WRAPPER_CLASSES}`} ref={courseSection}>
 					<div className="flex flex-row items-center justify-center gap-4">
 						<div className="relative w-[40%] overflow-hidden md:w-[20%]">
-							<NextImage
-								alt={'main-01'}
-								src={main01Img}
-								width={0}
-								height={0}
-								sizes="100vw"
-								style={{ width: '100%', height: 'auto' }}
-							></NextImage>
+							<Image
+								alt={'animals'}
+								src={animals}
+								width={'full'}
+								height={'auto'}
+							></Image>
 						</div>
 						<h1 className="text-center text-2xl font-bold text-[#007c00] md:text-3xl">
 							七集豐富內容 走進林木之間 探索香港野
