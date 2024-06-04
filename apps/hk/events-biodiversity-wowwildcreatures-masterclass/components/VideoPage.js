@@ -1,8 +1,5 @@
 import React, { useEffect, useRef, useCallback } from 'react';
-import {
-	Box,
-	Image,
-} from '@chakra-ui/react';
+import { Box, Image } from '@chakra-ui/react';
 // import SignupForm from '@components/GP/WebinarForm';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
@@ -15,7 +12,6 @@ import DonationModule from '@components/GP/DonationModule';
 
 import { scrollToRef } from '../util';
 import { VideoProvider } from '../context/video';
-import Episodes from './Episodes';
 import EpisodeContent from './Episodes/content';
 import PlayListGroup from './PlayList';
 import Downloads from './Downloads';
@@ -91,14 +87,14 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 	}, [value.isLoggedIn]);
 
 	return (
-		<Box>
+		<Box mt={16}>
 			<div className="relative pb-[60px]">
 				<VideoProvider>
 					<Video />
 
 					<Box pl={4}>
-          <PlayListGroup isDetail={true} />
-        </Box>
+						<PlayListGroup isDetail={true} />
+					</Box>
 
 					<div className="bg-[#FFF]" style={{ zIndex: 10 }}>
 						<div className="relative z-10 flex flex-col-reverse gap-8 bg-[#FFF]  lg:flex-row">

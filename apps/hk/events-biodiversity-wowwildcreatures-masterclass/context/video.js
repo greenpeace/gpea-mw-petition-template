@@ -5,8 +5,10 @@ import {
 	createContext,
 	useContext,
 	useState,
-	useRef
+	useRef,
+	useEffect
 } from 'react';
+import { useRouter } from 'next/router';
 /**
  * Provider for global context
  */
@@ -27,27 +29,6 @@ import {
 const videoContext = createContext(undefined);
 
 const VideoContextProvider = videoContext.Provider;
-
-import ep01Image from '../images/robert-class/ep-bg-01.webp';
-import ep01Thumbnail from '../images/swiper/gpea-demo-01.jpg';
-
-import ep02Image from '../images/robert-class/ep-bg-02.webp';
-import ep02Thumbnail from '../images/swiper/gpea-demo-02.jpg';
-
-import ep03Image from '../images/robert-class/ep-bg-03.webp';
-import ep03Thumbnail from '../images/swiper/gpea-demo-03.jpg';
-
-import ep04Image from '../images/robert-class/ep-bg-04.webp';
-import ep04Thumbnail from '../images/swiper/gpea-demo-04.jpg';
-
-import ep05Image from '../images/robert-class/ep-bg-05.webp';
-import ep05Thumbnail from '../images/swiper/gpea-demo-05.jpg';
-
-import ep06Image from '../images/robert-class/ep-bg-06.webp';
-import ep06Thumbnail from '../images/swiper/gpea-demo-06.jpg';
-
-import ep07Image from '../images/robert-class/ep-bg-07.webp';
-import ep07Thumbnail from '../images/swiper/gpea-demo-07.jpg';
 
 import epCover01s from '../images/robert-class/episode/episode-cover-01-s.png';
 import epCover02s from '../images/robert-class/episode/episode-cover-02-s.png';
@@ -94,7 +75,8 @@ const EPISODES = [
 		},
 		image: epCover01s,
 		thumbnail: epCover01s,
-		banner: epCover01l
+		banner: epCover01l,
+		dateMessage: ""
 	},
 	{
 		key: 1,
@@ -109,7 +91,8 @@ const EPISODES = [
 		},
 		image: epCover02s,
 		thumbnail: epCover02s,
-		banner: epCover02l
+		banner: epCover02l,
+		dateMessage: "6月12號推出"
 	},
 	{
 		key: 2,
@@ -124,7 +107,8 @@ const EPISODES = [
 		},
 		image: epCover03s,
 		thumbnail: epCover03s,
-		banner: epCover03l
+		banner: epCover03l,
+		dateMessage: "6月19號推出"
 	},
 	{
 		key: 3,
@@ -140,7 +124,8 @@ const EPISODES = [
 		},
 		image: epCover04s,
 		thumbnail: epCover04s,
-		banner: epCover04l
+		banner: epCover04l,
+		dateMessage: "6月26號推出"
 	},
 	{
 		key: 4,
@@ -155,7 +140,8 @@ const EPISODES = [
 		},
 		image: epCover05s,
 		thumbnail: epCover05s,
-		banner: epCover05l
+		banner: epCover05l,
+		dateMessage: "7月3號推出"
 	},
 	{
 		key: 5,
@@ -170,7 +156,8 @@ const EPISODES = [
 		},
 		image: epCover06s,
 		thumbnail: epCover06s,
-		banner: epCover06l
+		banner: epCover06l,
+		dateMessage: "7月10號推出"
 	},
 	{
 		key: 6,
@@ -187,13 +174,24 @@ const EPISODES = [
 		},
 		image: epCover07s,
 		thumbnail: epCover07s,
-		banner: epCover07l
+		banner: epCover07l,
+		dateMessage: "7月10號推出"
 	}
 ];
 
 export const VideoProvider = (props) => {
 	const videoSection = useRef(null);
+	const router = useRouter();
 	const [selectedEp, setSelectedEp] = useState(EPISODES[0]);
+
+	const urlParams = new URLSearchParams(router.asPath);
+
+	useEffect(() => {
+		if (urlParams.get('ep')) {
+			const ep = Number(urlParams.get('ep'));
+			setSelectedEp(EPISODES[ep - 1]);
+		}
+	}, [urlParams]);
 
 	return (
 		<VideoContextProvider

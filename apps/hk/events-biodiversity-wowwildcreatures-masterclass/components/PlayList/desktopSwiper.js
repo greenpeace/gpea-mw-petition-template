@@ -10,7 +10,6 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/pagination';
 import { useVideoContext } from '../../context/video';
 import { useGlobalContext } from '../../context/global';
-
 const DesktopSwiper = ({ isDetail = false }) => {
 	const router = useRouter();
 	// const pathname = usePathname();
@@ -62,7 +61,7 @@ const DesktopSwiper = ({ isDetail = false }) => {
 									}}
 									onClick={() => {
 										if (i === 6 && userType() === 'user') {
-											alert('Please subscribe to access this content');
+											alert('會員才能觀看完整影片');
 											return;
 										}
 

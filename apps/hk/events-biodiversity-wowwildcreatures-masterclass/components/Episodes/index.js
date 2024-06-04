@@ -15,10 +15,10 @@ export default function Episodes() {
 	const RenderBackgroundVideo = useCallback(() => {
 		return (
 			<Box
-				className="video-container min-h-[640px] lg:min-h-[860px]"
+				className="video-container min-h-[80vh] lg:min-h-[860px]"
 				position={'absolute'}
 				w="full"
-				h={{base: '640px', xl: 'auto'}}
+				h={{ base: '640px', xl: 'auto' }}
 				overflow={'hidden'}
 			>
 				<Box
@@ -37,7 +37,7 @@ export default function Episodes() {
 					backgroundImage={selectedEp?.banner}
 					bgPosition={'center center'}
 					backgroundSize="cover"
-					className="min-h-[640px] lg:min-h-[860px] transition-all duration-300 ease-in-out"
+					className="min-h-[80vh] transition-all duration-300 ease-in-out lg:min-h-[860px]"
 				/>
 			</Box>
 		);
@@ -85,8 +85,9 @@ export default function Episodes() {
 									}
 								);
 							}}
+							disabled={!!selectedEp.dateMessage}
 						>
-							播放 Play
+							{selectedEp.dateMessage ? selectedEp.dateMessage : `播放 Play`}
 						</Button>
 					</HStack>
 				</Flex>

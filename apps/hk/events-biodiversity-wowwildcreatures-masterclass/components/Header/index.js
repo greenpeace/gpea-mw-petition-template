@@ -34,11 +34,12 @@ const Header = ({ nowPage }) => {
 	const scrollPosition = useScrollPosition();
 	const btnRef = useRef();
 	const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
+	const {p, s} = router.query;
 
 	const urlParams = new URLSearchParams(router.asPath);
 	const stickyStyle = {
-		wrap: scrollPosition > OFFSET ? 'bg-[#66CC00]' : '',
-		border: scrollPosition > OFFSET ? '' : 'border-b-[1px]'
+		wrap: scrollPosition > OFFSET ? 'bg-[#66CC00]' : p==='video' ? 'bg-[#66CC00]' : '',
+		border: scrollPosition > OFFSET ? '' : p==='video' ? '' : 'border-b-[1px]'
 	};
 
 	const MENU = [
