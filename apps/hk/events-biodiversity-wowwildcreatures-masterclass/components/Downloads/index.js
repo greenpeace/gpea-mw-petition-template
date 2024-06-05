@@ -14,25 +14,25 @@ const Downloads = () => {
 			id: 1,
 			name: '7 Steps Photography Checklist（只有英文版）',
 			src: download01Image,
-			url: 'https://drive.google.com/file/d/1dLdvNRL4lQOWqbiWKYDN4Qd3s3z3y31P/view?pli=1'
+			url: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2024/06/42e583f2-01-7-steps-photography-checklist.pdf'
 		},
 		{
 			id: 2,
 			name: '本地生態探索地圖（中文版）',
 			src: download02Image,
-			url: 'https://drive.google.com/file/d/1bGADVNyRUYnPNII6iArmz_XG3fvaqo4F/view'
+			url: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2024/06/37c6ec3e-02-hong-kong-nature-photo-walk-map-chinese-version.pdf'
 		},
 		{
 			id: 3,
 			name: 'Hong Kong Nature Photo Walk Map(English version)',
 			src: download03Image,
-			url: 'https://drive.google.com/file/d/1YejDF2rUgGNJdTgRjMdZhNMzmOEbwV4k/view'
+			url: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2024/06/2cf3efb4-03-hong-kong-nature-photo-walk-mapenglish-version.pdf'
 		},
 		{
 			id: 4,
 			name: '《香港怪の生物》本地生態觀賞圖鑑',
 			src: download04Image,
-			url: 'https://drive.google.com/file/d/1p1xaEMRu3gL9RjWhzFoljoyO6QBVOdzj/view'
+			url: 'https://www.greenpeace.org/static/planet4-hongkong-stateless/2024/06/8c4002a0-04-masterclass-hongkonganimalebook.pdf'
 		}
 	];
 

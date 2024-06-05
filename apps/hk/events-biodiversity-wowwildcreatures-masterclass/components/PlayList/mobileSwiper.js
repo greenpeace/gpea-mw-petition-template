@@ -9,7 +9,7 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/pagination';
 import { useVideoContext } from '../../context/video';
 import { useGlobalContext } from '../../context/global';
-
+import MESSAGES from '../../messages.json';
 import { RiArrowLeftLine, RiArrowRightLine } from 'react-icons/ri';
 
 const MobileSwiper = ({ isDetail }) => {
@@ -21,7 +21,7 @@ const MobileSwiper = ({ isDetail }) => {
 
 	const { userType } = globalValue();
 
-	const { setSelectedEp, selectedEp, EPISODES } = value;
+	const { setSelectedEp, EPISODES } = value;
 
 
 	const handleEpOnClick = (ep) => {
@@ -62,7 +62,7 @@ const MobileSwiper = ({ isDetail }) => {
 									w={'full'}
 									onClick={() => {
 										if (i === 6 && userType() === 'user') {
-											alert('會員才能觀看完整影片');
+											alert(MESSAGES.alert);
 											return;
 										}
 

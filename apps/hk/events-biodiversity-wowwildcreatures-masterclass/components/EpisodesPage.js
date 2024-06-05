@@ -33,10 +33,10 @@ function EpisodesPage({
 }) {
 	const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 	const router = useRouter();
-	const themeInterests = theme.interests;
 	const value = useGlobalContext();
 	const downloadsRef = useRef(null);
 	const episodesRef = useRef(null);
+	const donationRef = useRef(null);
 	const { p, ep, s } = router.query;
 	const { submitted } = status;
 
@@ -61,7 +61,8 @@ function EpisodesPage({
 	useEffect(() => {
 		const REFS = {
 			downloads: downloadsRef,
-			episodes: episodesRef
+			episodes: episodesRef,
+			donateSection: donationRef
 		};
 
 		if (!!s) {
@@ -117,7 +118,7 @@ function EpisodesPage({
 												alt="06_donor_incentive_tier_t"
 											/>
 										</div>
-										<div className="relative w-[100%] flex-1">
+										<div className="relative w-[100%] flex-1" ref={donationRef}>
 											<Box
 												className="md:sticky md:top-[70px]"
 												maxW="500px"

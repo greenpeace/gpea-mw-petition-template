@@ -14,11 +14,7 @@ import LoginForm from './LoginForm';
 
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
-function LoginPage({ status, setFormContent, theme, resetSubmitted, signup }) {
-	const themeInterests = theme.interests;
-	const { submitted } = status;
-
-	const { FirstName } = signup;
+function LoginPage({ resetSubmitted }) {
 
 	useEffect(() => {
 		resetSubmitted();

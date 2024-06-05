@@ -12,7 +12,6 @@ import {
 } from '@chakra-ui/react';
 
 import { OrangeCTA } from '@common/styles/components/formStyle';
-import PASS_CODE from '../../passcode.json';
 import { useForm } from 'react-hook-form';
 
 const LoinForm = (props) => {
@@ -38,7 +37,7 @@ const LoinForm = (props) => {
 		const memberType = value.userType();
 
 		if (memberType !== 'guest') {
-			router.push(`/?p=main`, `${window.location.href.split('?')[0]}/?p=main`, {
+			router.push(`/?p=episodes&ep=1`, `${window.location.href.split('?')[0]}/?p=episodes&ep=1`, {
 				shallow: true
 			});
 			return;

@@ -16,6 +16,7 @@ export default function EpisodeContent() {
 	);
 
 	const EPContent = useCallback(() => {
+		const CONTENT = selectedEp ?? videoValue.EPISODES[0]
 		return (
 			<div className={`container relative mx-auto px-4 md:max-w-[1200px]`}>
 				<div className="flex flex-col items-center md:flex-row">
@@ -31,12 +32,12 @@ export default function EpisodeContent() {
 					</div>
 					<div className="flex w-full flex-col gap-4 md:w-1/2">
 						<h1 className="text-2xl font-bold text-[#007c00] md:text-3xl">
-							{selectedEp?.name}
+							{CONTENT?.name}
 						</h1>
-						<p>{selectedEp?.content}</p>
-						{selectedEp?.message && (
+						<p>{CONTENT?.content}</p>
+						{CONTENT?.message && (
 							<p>
-								{selectedEp?.message[value.isRGUser ? 'donor' : 'non-donor']}
+								{CONTENT?.message[value.isRGUser ? 'donor' : 'non-donor']}
 							</p>
 						)}
 					</div>

@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AppContext } from '../../context/appContext';
 import { useGlobalContext } from '../../context/global';
 import {
@@ -26,7 +26,6 @@ import logoChinese from '@common/images/logo/GP-logo-2019-TC-white-[web]-01.png'
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 const Header = ({ nowPage }) => {
-	const data = useContext(AppContext);
 	const value = useGlobalContext();
 	const isUserLoggedIn = value?.isLoggedIn === 'loggedIn';
 	const router = useRouter();
@@ -34,13 +33,7 @@ const Header = ({ nowPage }) => {
 	const scrollPosition = useScrollPosition();
 	const btnRef = useRef();
 	const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
-	const {p, s} = router.query;
-
-	const urlParams = new URLSearchParams(router.asPath);
-	const stickyStyle = {
-		wrap: scrollPosition > OFFSET ? 'bg-[#66CC00]' : p==='video' ? 'bg-[#66CC00]' : '',
-		border: scrollPosition > OFFSET ? '' : p==='video' ? '' : 'border-b-[1px]'
-	};
+	const { p, s } = router.query;
 
 	const MENU = [
 		{
@@ -79,6 +72,41 @@ const Header = ({ nowPage }) => {
 			: [])
 	];
 
+	const EP_MENU = [
+		{
+			label: '所有集數',
+			page: 'episodes',
+			refName: 'episodes'
+		},
+		{
+			label: '資源下載',
+			page: 'episodes',
+			refName: 'downloads'
+		}
+	];
+
+	const [nav, setNav] = useState(MENU);
+
+	const urlParams = new URLSearchParams(router.asPath);
+	const stickyStyle = {
+		wrap:
+			scrollPosition > OFFSET
+				? 'bg-[#66CC00]'
+				: p === 'video'
+				? 'bg-[#66CC00]'
+				: '',
+		border: scrollPosition > OFFSET ? '' : p === 'video' ? '' : 'border-b-[1px]'
+	};
+
+	useEffect(() => {
+		if (p === 'main') {
+			setNav(MENU);
+		}
+		if (p === 'episodes') {
+			setNav(EP_MENU);
+		}
+	}, [p]);
+
 	const handleMenuOnClick = (main, link, refName, page) => {
 		const epParams = urlParams.get('ep') && '&ep=' + urlParams.get('ep');
 		let url = `/?p=${page}&s=${refName}`;
@@ -98,7 +126,7 @@ const Header = ({ nowPage }) => {
 			value.setLoggedIn('');
 			localStorage.removeItem('gpea-project');
 			localStorage.removeItem('gpea-project-passCode');
-			router.push('/');
+			handleMenuOnClick('','','','main');
 		}
 	};
 
@@ -122,7 +150,11 @@ const Header = ({ nowPage }) => {
 						onToggle();
 					}}
 				>
-					<Text fontWeight={600} w="full" color={`${navItem.refName === 'signupSection' ? '#FF8100' : ''}`}>
+					<Text
+						fontWeight={600}
+						w="full"
+						color={navItem.refName === 'signupSection' || navItem.refName === 'donateSection' ? '#FF8100' : ''}
+					>
 						{navItem.label}
 					</Text>
 				</Flex>
@@ -133,22 +165,35 @@ const Header = ({ nowPage }) => {
 	const MobileNav = () => {
 		return (
 			<Stack p={4} display={{ lg: 'none' }}>
-				{MENU.map((navItem, index) => (
+				{nav.map((navItem, index) => (
 					<MobileNavItem
 						key={`${navItem.label}-${index}`}
 						label={navItem?.label}
 						navItem={navItem}
 					/>
 				))}
-				{!isUserLoggedIn && <MobileNavItem
+				{!isUserLoggedIn && (
+					<MobileNavItem
 						key={`donation`}
 						label={`立即捐款`}
 						navItem={{
-						label: '立即捐款',
-						page: 'main',
-						refName: 'signupSection'
-					}}
-					/>}
+							label: '立即捐款',
+							page: 'main',
+							refName: 'signupSection'
+						}}
+					/>
+				)}
+				{(isUserLoggedIn && nowPage === 'episodes') && (
+					<MobileNavItem
+						key={`donation`}
+						label={`立即捐款`}
+						navItem={{
+							label: '立即捐款',
+							page: 'episodes',
+							refName: 'donateSection'
+						}}
+					/>
+				)}
 			</Stack>
 		);
 	};
@@ -180,7 +225,7 @@ const Header = ({ nowPage }) => {
 					</div>
 					<div>
 						<div className="flex flex-row items-center gap-2 lg:gap-8">
-							{(MENU || []).map((d) => (
+							{(nav || []).map((d) => (
 								<div
 									className="hidden cursor-pointer  text-[16px] text-[#FFF] hover:font-bold lg:block"
 									key={d.label}
@@ -191,6 +236,20 @@ const Header = ({ nowPage }) => {
 									{d.label}
 								</div>
 							))}
+							{isUserLoggedIn && nowPage === 'episodes' && (
+								<Button
+									d={{ base: 'none', lg: 'block' }}
+									color="white"
+									bgColor={'orange.500'}
+									_hover={{ bg: 'orange.300' }}
+									onClick={() =>
+										handleMenuOnClick('', '', 'donateSection', 'episodes')
+									}
+								>
+									立即捐款
+								</Button>
+							)}
+
 							{isUserLoggedIn ? (
 								<Menu>
 									<MenuButton
@@ -226,6 +285,7 @@ const Header = ({ nowPage }) => {
 									立即捐款
 								</Button>
 							)}
+
 							<IconButton
 								display={{ lg: 'none' }}
 								color="white"

@@ -92,7 +92,7 @@ const EPISODES = [
 		image: epCover02s,
 		thumbnail: epCover02s,
 		banner: epCover02l,
-		dateMessage: "6月12號推出"
+		dateMessage: "6月12日推出 Releasing on 12 June"
 	},
 	{
 		key: 2,
@@ -108,7 +108,7 @@ const EPISODES = [
 		image: epCover03s,
 		thumbnail: epCover03s,
 		banner: epCover03l,
-		dateMessage: "6月19號推出"
+		dateMessage: "6月19日推出 Releasing on 19 June"
 	},
 	{
 		key: 3,
@@ -125,7 +125,7 @@ const EPISODES = [
 		image: epCover04s,
 		thumbnail: epCover04s,
 		banner: epCover04l,
-		dateMessage: "6月26號推出"
+		dateMessage: "6月26日推出 Releasing on 26 June"
 	},
 	{
 		key: 4,
@@ -141,7 +141,7 @@ const EPISODES = [
 		image: epCover05s,
 		thumbnail: epCover05s,
 		banner: epCover05l,
-		dateMessage: "7月3號推出"
+		dateMessage: "7月3日推出 Releasing on 3 July"
 	},
 	{
 		key: 5,
@@ -157,7 +157,7 @@ const EPISODES = [
 		image: epCover06s,
 		thumbnail: epCover06s,
 		banner: epCover06l,
-		dateMessage: "7月10號推出"
+		dateMessage: "7月10日推出 Releasing on 10 July"
 	},
 	{
 		key: 6,
@@ -175,7 +175,7 @@ const EPISODES = [
 		image: epCover07s,
 		thumbnail: epCover07s,
 		banner: epCover07l,
-		dateMessage: "7月10號推出"
+		dateMessage: "7月10日推出 Releasing on 10 July"
 	}
 ];
 
