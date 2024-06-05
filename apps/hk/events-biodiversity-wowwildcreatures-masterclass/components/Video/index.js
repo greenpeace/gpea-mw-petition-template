@@ -40,6 +40,7 @@ const Video = ({ defaultEp }) => {
 				cldVid={myVideo}
 				controls
 				autoPlay={defaultEp ? false : true}
+				poster={value.selectedEp.banner}
 			/>
 		</AspectRatio>
 	);
