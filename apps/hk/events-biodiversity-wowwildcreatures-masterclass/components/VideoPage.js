@@ -69,6 +69,18 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 		}
 	}, [value, s]);
 
+	useEffect(() => {
+		if(!value.isLoggedIn) {
+			router.push(
+				`/?p=main`,
+				`${window.location.href.split('?')[0]}/?p=main`,
+				{ shallow: true }
+			);
+			
+		}
+
+	}, [value]);
+
 	return (
 		<Box mt={16} ref={episodesRef}>
 			<div className="relative pb-[60px]">

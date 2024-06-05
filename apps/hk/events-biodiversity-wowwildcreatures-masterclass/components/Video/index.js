@@ -47,6 +47,11 @@ const Video = ({ defaultEp }) => {
 			poster={value.selectedEp.banner}
 			webkit-playsinline
 			playsinline
+			style={{
+				width: '100%',
+				height: 'auto',
+				backgroundColor: '#000',
+			}}
 		/>
 	);
 };
