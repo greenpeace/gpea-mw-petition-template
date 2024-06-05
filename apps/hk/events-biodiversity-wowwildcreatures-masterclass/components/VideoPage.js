@@ -29,6 +29,8 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 	const themeInterests = theme.interests;
 	const value = useGlobalContext();
 	const downloadsRef = useRef(null);
+	const episodesRef = useRef(null);
+	const donationRef = useRef(null);
 	const { p, ep, s } = router.query;
 	const urlParams = new URLSearchParams(router.asPath);
 	const { submitted } = status;
@@ -47,14 +49,16 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 	useEffect(() => {
 		console.log('submitted', submitted);
 		window.__greenpeace__ = window.__greenpeace__ || {};
-		if (window.__greenpeace__?.renderDonationModule && submitted) {
+		if (window.__greenpeace__?.renderDonationModule) {
 			window.__greenpeace__.renderDonationModule();
 		}
 	}, [submitted]);
 
 	useEffect(() => {
 		const REFS = {
-			downloads: downloadsRef
+			downloads: downloadsRef,
+			episodes: episodesRef,
+			donateSection: donationRef
 		};
 
 		if (!!s) {
@@ -66,28 +70,8 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 		}
 	}, [value, s]);
 
-	const RenderForm = useCallback(() => {
-		return value.isLoggedIn ? (
-			<DonationModule
-				market={'HK'}
-				language={'zh_HK'}
-				campaign={'elm_infopage'}
-				campaignId={'701If000000xF73IAE'}
-				env={'production'}
-			/>
-		) : (
-			<DonationModule
-				market={'HK'}
-				language={'zh_HK'}
-				campaign={'elm_infopage'}
-				campaignId={'701If000000xF73IAE'}
-				env={'production'}
-			/>
-		);
-	}, [value.isLoggedIn]);
-
 	return (
-		<Box mt={16}>
+		<Box mt={16} ref={episodesRef}>
 			<div className="relative pb-[60px]">
 				<VideoProvider>
 					<Video />
@@ -114,7 +98,7 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 												alt="06_donor_incentive_tier_t"
 											/>
 										</div>
-										<div className="relative w-[100%] flex-1">
+										<div className="relative w-[100%] flex-1" ref={donationRef}>
 											<Box
 												className="md:sticky md:top-[70px]"
 												maxW="500px"
@@ -125,7 +109,13 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 												overflow="hidden"
 												minH={600}
 											>
-												<RenderForm />
+												<DonationModule
+													market={'HK'}
+													language={'zh_HK'}
+													campaign={'biodiversity'}
+													campaignId={'701If000000xF73IAE'}
+													env={'production'}
+												/>
 											</Box>
 										</div>
 									</div>

@@ -53,7 +53,7 @@ function EpisodesPage({
 
 	useEffect(() => {
 		window.__greenpeace__ = window.__greenpeace__ || {};
-		if (window.__greenpeace__?.renderDonationModule && submitted) {
+		if (window.__greenpeace__?.renderDonationModule) {
 			window.__greenpeace__.renderDonationModule();
 		}
 	}, [submitted]);
@@ -74,25 +74,25 @@ function EpisodesPage({
 		}
 	}, [value, s]);
 
-	const RenderForm = useCallback(() => {
-		return value.isLoggedIn ? (
-			<DonationModule
-				market={'HK'}
-				language={'zh_HK'}
-				campaign={'elm_infopage'}
-				campaignId={'701If000000xF73IAE'}
-				env={'production'}
-			/>
-		) : (
-			<DonationModule
-				market={'HK'}
-				language={'zh_HK'}
-				campaign={'elm_infopage'}
-				campaignId={'701If000000xF73IAE'}
-				env={'production'}
-			/>
-		);
-	}, [value.isLoggedIn]);
+	// const RenderForm = useCallback(() => {
+	// 	return value.isLoggedIn ? (
+	// 		<DonationModule
+	// 			market={'HK'}
+	// 			language={'zh_HK'}
+	// 			campaign={'elm_infopage'}
+	// 			campaignId={'701If000000xF73IAE'}
+	// 			env={'production'}
+	// 		/>
+	// 	) : (
+	// 		<DonationModule
+	// 			market={'HK'}
+	// 			language={'zh_HK'}
+	// 			campaign={'elm_infopage'}
+	// 			campaignId={'701If000000xF73IAE'}
+	// 			env={'production'}
+	// 		/>
+	// 	);
+	// }, [value.isLoggedIn]);
 
 	return (
 		<Box ref={episodesRef}>
@@ -129,7 +129,13 @@ function EpisodesPage({
 												overflow="hidden"
 												minH={600}
 											>
-												<RenderForm />
+												<DonationModule
+													market={'HK'}
+													language={'zh_HK'}
+													campaign={'biodiversity'}
+													campaignId={'701If000000xF73IAE'}
+													env={'production'}
+												/>
 											</Box>
 										</div>
 									</div>

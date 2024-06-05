@@ -83,6 +83,7 @@ const DonationModule = (props) => {
 	);
 	// const [status, setStatus] = useState('');
 	console.log('rendered',props);
+	console.log("status=>", status)
 	
 	return (
 		<Box pos="relative">

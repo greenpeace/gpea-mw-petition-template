@@ -85,6 +85,19 @@ const Header = ({ nowPage }) => {
 		}
 	];
 
+	const VIDEO_MENU = [
+		{
+			label: '所有集數',
+			page: 'episodes',
+			refName: 'episodes'
+		},
+		{
+			label: '資源下載',
+			page: 'video',
+			refName: 'downloads'
+		}
+	];
+
 	const [nav, setNav] = useState(MENU);
 
 	const urlParams = new URLSearchParams(router.asPath);
@@ -99,11 +112,12 @@ const Header = ({ nowPage }) => {
 	};
 
 	useEffect(() => {
-		if (p === 'main') {
-			setNav(MENU);
-		}
 		if (p === 'episodes') {
 			setNav(EP_MENU);
+		} else if (p === 'video') {
+			setNav(VIDEO_MENU);
+		} else {
+			setNav(MENU);
 		}
 	}, [p]);
 
@@ -216,8 +230,8 @@ const Header = ({ nowPage }) => {
 							onClick={() => {
 								if (nowPage === 'episodes') return;
 								router.push(
-									`/?p=main`,
-									`${window.location.href.split('?')[0]}/?p=main`,
+									`/?p=${nowPage}`,
+									`${window.location.href.split('?')[0]}/?p=${nowPage}`,
 									{ shallow: true }
 								);
 							}}

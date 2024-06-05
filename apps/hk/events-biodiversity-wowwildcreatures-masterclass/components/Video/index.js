@@ -19,13 +19,13 @@ const Video = ({ defaultEp }) => {
 
 	useEffect(() => {
 		let video = '';
-		if (urlParams.get('ep')) {
+		if (defaultEp) {
+			video = defaultEp;
+		} else if (urlParams.get('ep')) {
 			const selectedEP = value.EPISODES.find(
 				(episode) => episode.ep === parseInt(urlParams.get('ep'))
 			);
 			video = selectedEP.url;
-		} else if (defaultEp) {
-			video = defaultEp;
 		} else {
 			video = value.selectedEp.url;
 		}
@@ -36,7 +36,11 @@ const Video = ({ defaultEp }) => {
 	const myVideo = cld.video(videoURL);
 	return (
 		<AspectRatio ratio={16 / 9}>
-			<AdvancedVideo cldVid={myVideo} controls />
+			<AdvancedVideo
+				cldVid={myVideo}
+				controls
+				autoPlay={defaultEp ? false : true}
+			/>
 		</AspectRatio>
 	);
 };
