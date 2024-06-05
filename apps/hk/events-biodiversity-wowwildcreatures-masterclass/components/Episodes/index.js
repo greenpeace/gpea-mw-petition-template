@@ -18,7 +18,7 @@ export default function Episodes() {
 				className="video-container min-h-[80vh] lg:min-h-[860px]"
 				position={'absolute'}
 				w="full"
-				h={{ base: '640px', xl: 'auto' }}
+				h={{ base: '80vh', xl: 'auto' }}
 				overflow={'hidden'}
 			>
 				<Box
@@ -50,7 +50,7 @@ export default function Episodes() {
 				className="container relative mx-auto px-[20px] md:max-w-[1345px]"
 				style={{ zIndex: 11 }}
 			>
-				<div className="flex flex-col pb-[40px] pt-40 md:py-0 md:pt-[80px] lg:pt-[200px]">
+				<div className="flex flex-col pb-[10px] pt-[100px] md:py-0 md:pt-[80px] lg:pt-[200px]">
 					<div className="text-left text-[#FFF]">
 						<div>
 							<h2
@@ -74,6 +74,7 @@ export default function Episodes() {
 						<Button
 							size={'lg'}
 							rightIcon={<FaPlay />}
+							h={14}
 							onClick={() => {
 								router.push(
 									`?p=video`,
@@ -87,7 +88,10 @@ export default function Episodes() {
 							}}
 							disabled={!!selectedEp.dateMessage}
 						>
-							{selectedEp.dateMessage ? selectedEp.dateMessage : `播放 Play`}
+						<Box as="span" px={6} textAlign={"left"}>
+						{selectedEp.dateMessage ? <span dangerouslySetInnerHTML={{ __html: selectedEp.dateMessage }}/> : `播放 Play`}
+						</Box>
+							
 						</Button>
 					</HStack>
 				</Flex>

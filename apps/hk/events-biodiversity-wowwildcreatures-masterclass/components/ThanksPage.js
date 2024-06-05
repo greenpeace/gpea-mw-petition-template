@@ -1,8 +1,5 @@
-import React, { useEffect } from 'react';
-import {
-	Box,
-	Image,
-} from '@chakra-ui/react';
+import React, { useEffect, useRef } from 'react';
+import { Box, Image } from '@chakra-ui/react';
 
 import DonationModule from '@components/GP/DonationModule';
 
@@ -11,19 +8,19 @@ import formContent from '../form';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
 import * as statusActions from 'store/actions/action-types/status-actions';
-
+import { useRouter } from 'next/router';
 import RobertClassHero from './RobertClassHero';
 import table from '../images/robert-class/list/06_non_donor_incentive_tier_t.png';
 import thanks from '../images/robert-class/thanks/08_thank_you_with_hk_animals.png';
 import GeneralCarousel from './GeneralCarousel';
+import { scrollToRef } from '../util';
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
-function ThanksPage({ status, setFormContent, theme, resetSubmitted, signup }) {
-	const themeInterests = theme.interests;
+function ThanksPage({ status, setFormContent, theme, resetSubmitted }) {
 	const { submitted } = status;
-
-	const { FirstName } = signup;
-
+	const signupSection = useRef(null);
+	const router = useRouter();
+	const { p, ep, s } = router.query;
 	useEffect(() => {
 		setFormContent(formContent);
 		resetSubmitted();
@@ -34,12 +31,25 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 	}, []);
 
 	useEffect(() => {
-		console.log('submitted', submitted);
 		window.__greenpeace__ = window.__greenpeace__ || {};
-		if (window.__greenpeace__?.renderDonationModule && submitted) {
+		if (window.__greenpeace__?.renderDonationModule) {
 			window.__greenpeace__.renderDonationModule();
 		}
 	}, [submitted]);
+
+	useEffect(() => {
+		const REFS = {
+			signupSection: signupSection,
+		};
+
+		if (!!s) {
+			const ref = s;
+			if (ref) {
+				// eslint-disable-next-line react-hooks/exhaustive-deps
+				scrollToRef(REFS[ref]);
+			}
+		}
+	}, [s]);
 
 	return (
 		<Box>
@@ -49,7 +59,7 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 					className={`${WRAPPER_CLASSES} mt-[30px] md:mt-[-240px]`}
 					style={{ zIndex: 10 }}
 				>
-					<div className="relative z-10 flex flex-col-reverse gap-8 md:gap-0 lg:flex-row">
+					<div className="relative z-10 flex flex-col gap-8 md:gap-0 lg:flex-row">
 						<div className="relative flex w-[100%] flex-1 flex-col gap-8 pb-8 md:mt-[270px]">
 							<div className="flex w-full flex-col gap-4">
 								<h1 className="text-2xl font-bold text-[#007c00] md:text-3xl">
@@ -113,12 +123,10 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 							</div>
 
 							<Box px={1}>
-							<GeneralCarousel/>
-
+								<GeneralCarousel />
 							</Box>
-
 						</div>
-						<div className="relative w-[100%] flex-1">
+						<Box className="relative w-[100%] flex-1" ref={signupSection}>
 							<Box
 								className="md:sticky md:top-[70px]"
 								maxW="500px"
@@ -131,12 +139,12 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 								<DonationModule
 									market={'HK'}
 									language={'zh_HK'}
-									campaign={'elm_infopage'}
-									campaignId={'7012u000000OtKJAA0'}
+									campaign={'biodiversity'}
+									campaignId={'701If000000xF73IAE'}
 									env={'production'}
 								/>
 							</Box>
-						</div>
+						</Box>
 					</div>
 				</div>
 			</div>

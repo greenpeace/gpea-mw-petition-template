@@ -11,9 +11,9 @@ import { useViewportScroll, motion, useTransform } from 'framer-motion';
 export default function Hero() {
 	const { scrollY, scrollYProgress } = useViewportScroll();
 	const scale = useTransform(scrollYProgress, (value) => 1 + value * 1.25);
-	const scale2 = useTransform(scrollYProgress, (value) => 1 + value * 1.15);
+	const scale2 = useTransform(scrollYProgress, (value) => 1 + value * 1.1);
 	const y = useTransform(scrollY, [0, 100], [0, -160]);
-	const y2 = useTransform(scrollY, [0, 100], [0, 80]);
+	const y2 = useTransform(scrollY, [0, 100], [0, 30]);
 
 	return (
 		<>
@@ -35,7 +35,7 @@ export default function Hero() {
 				position={'relative'}
 				display={{ base: 'none', lg: 'block' }}
 			>
-				<Box maxW={'8xl'} mx={'auto'} px={4}>
+				<Box maxW={'8xl'} mx={'auto'} px={4} position={'relative'}>
 					<motion.div
 						className="title"
 						style={{
@@ -45,17 +45,21 @@ export default function Hero() {
 							bottom: 0,
 							top: 0,
 							width: '100%',
-							zIndex: 0
+							zIndex: 0,
+							left: 40
 						}}
 					>
 						<Image
 							src={title}
 							alt="title"
-							maxW={{ base: 240, md: 320 }}
+							maxW={{ base: 240, md: 400 }}
 							pt={120}
 						/>
 					</motion.div>
+				
+				</Box>
 
+				<Box maxW={'8xl'} mx={'auto'} px={4}>
 					<motion.div
 						className="butterfly"
 						style={{

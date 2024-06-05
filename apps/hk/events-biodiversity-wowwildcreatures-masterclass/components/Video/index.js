@@ -1,15 +1,20 @@
 import { useVideoContext } from '../../context/video';
-import React, { useEffect, useRef, useState } from 'react';
-import { AspectRatio } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
+import {useMediaQuery} from '@chakra-ui/react';
 
 const Video = ({ defaultEp }) => {
 	const value = useVideoContext();
 	const router = useRouter();
 	const urlParams = new URLSearchParams(router.asPath);
 	const [videoURL, setVideoURL] = useState(null);
+
+	const [isLargerThan960] = useMediaQuery('(min-width: 960px)', {
+		ssr: true,
+		fallback: false, // return false on the server, and re-evaluate on the client side
+	  })
 
 	const cld = new Cloudinary({
 		cloud: {
@@ -35,14 +40,14 @@ const Video = ({ defaultEp }) => {
 
 	const myVideo = cld.video(videoURL);
 	return (
-		<AspectRatio ratio={16 / 9}>
-			<AdvancedVideo
-				cldVid={myVideo}
-				controls
-				autoPlay={defaultEp ? false : true}
-				poster={value.selectedEp.banner}
-			/>
-		</AspectRatio>
+		<AdvancedVideo
+			cldVid={myVideo}
+			controls
+			autoPlay={defaultEp ? false : true}
+			poster={value.selectedEp.banner}
+			webkit-playsinline
+			playsinline
+		/>
 	);
 };
 

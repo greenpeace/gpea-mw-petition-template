@@ -34,6 +34,10 @@ const Header = ({ nowPage }) => {
 	const btnRef = useRef();
 	const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
 	const { p, s } = router.query;
+	const renderDonationText = () => {
+		const content = p === 'main' || !p ? '立即登記' : '立即捐款';
+		return content
+	}
 
 	const MENU = [
 		{
@@ -125,6 +129,14 @@ const Header = ({ nowPage }) => {
 		const epParams = urlParams.get('ep') && '&ep=' + urlParams.get('ep');
 		let url = `/?p=${page}&s=${refName}`;
 		let as = `${window.location.href.split('?')[0]}/?p=${page}&s=${refName}`;
+
+
+		if (p === 'thankyou' && refName === 'signupSection') {
+			url = `/?p=thankyou&s=${refName}`;
+			as = `${window.location.href.split('?')[0]}/?p=thankyou&s=${refName}`;
+		}
+
+
 		if (epParams) {
 			url = url + epParams;
 			as = as + epParams;
@@ -189,9 +201,9 @@ const Header = ({ nowPage }) => {
 				{!isUserLoggedIn && (
 					<MobileNavItem
 						key={`donation`}
-						label={`立即捐款`}
+						label={renderDonationText()}
 						navItem={{
-							label: '立即捐款',
+							label: renderDonationText(),
 							page: 'main',
 							refName: 'signupSection'
 						}}
@@ -200,9 +212,9 @@ const Header = ({ nowPage }) => {
 				{(isUserLoggedIn && nowPage === 'episodes') && (
 					<MobileNavItem
 						key={`donation`}
-						label={`立即捐款`}
+						label={renderDonationText()}
 						navItem={{
-							label: '立即捐款',
+							label: renderDonationText(),
 							page: 'episodes',
 							refName: 'donateSection'
 						}}
@@ -224,7 +236,7 @@ const Header = ({ nowPage }) => {
 					<div className="flex-1">
 						<Image
 							src={logoChinese}
-							maxW="220px"
+							maxW={{base: "200px", md: "220px"}}
 							alt={'Greenpeace 綠色和平'}
 							cursor={'pointer'}
 							onClick={() => {
@@ -260,7 +272,7 @@ const Header = ({ nowPage }) => {
 										handleMenuOnClick('', '', 'donateSection', 'episodes')
 									}
 								>
-									立即捐款
+									{renderDonationText()}
 								</Button>
 							)}
 
@@ -286,17 +298,29 @@ const Header = ({ nowPage }) => {
 									color="white"
 									bgColor={'orange.500'}
 									_hover={{ bg: 'orange.300' }}
-									onClick={() =>
-										router.push(
+									onClick={() => {
+										if(p === 'thankyou'){
+												router.push(
+											`/?p=thankyou&s=signupSection`,
+											`${
+												window.location.href.split('?')[0]
+											}/?p=thankyou&s=signupSection`,
+											{ shallow: true }
+										)
+											} else {
+												router.push(
 											`/?p=main&s=signupSection`,
 											`${
 												window.location.href.split('?')[0]
 											}/?p=main&s=signupSection`,
 											{ shallow: true }
 										)
+											}
+									}
+										
 									}
 								>
-									立即捐款
+									{renderDonationText()}
 								</Button>
 							)}
 

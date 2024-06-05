@@ -47,7 +47,6 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 	}, []);
 
 	useEffect(() => {
-		console.log('submitted', submitted);
 		window.__greenpeace__ = window.__greenpeace__ || {};
 		if (window.__greenpeace__?.renderDonationModule) {
 			window.__greenpeace__.renderDonationModule();
