@@ -12,6 +12,21 @@ export default function Episodes() {
 
 	const urlParams = new URLSearchParams(router.asPath);
 
+	function compareWithISOString(isoString) {
+		// Get the current date
+		const today = new Date();
+		// Remove the time portion for an accurate date comparison
+		today.setHours(0, 0, 0, 0);
+	
+		// Parse the ISO 8601 date string
+		const inputDate = new Date(isoString);
+		// Remove the time portion for an accurate date comparison
+		inputDate.setHours(0, 0, 0, 0);
+	
+		// Compare the dates
+		return today >= inputDate ;
+	}
+
 	const RenderBackgroundVideo = useCallback(() => {
 		return (
 			<Box
@@ -86,10 +101,10 @@ export default function Episodes() {
 									}
 								);
 							}}
-							disabled={!!selectedEp.dateMessage}
+							disabled={!compareWithISOString(selectedEp.publishedAt)}
 						>
 						<Box as="span" px={6} textAlign={"left"}>
-						{selectedEp.dateMessage ? <span dangerouslySetInnerHTML={{ __html: selectedEp.dateMessage }}/> : `播放 Play`}
+						{!compareWithISOString(selectedEp.publishedAt) ? <span dangerouslySetInnerHTML={{ __html: selectedEp.dateMessage }}/> : `播放 Play`}
 						</Box>
 							
 						</Button>

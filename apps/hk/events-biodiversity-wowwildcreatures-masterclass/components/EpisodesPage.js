@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
 	Box,
 	Image,
 } from '@chakra-ui/react';
-// import SignupForm from '@components/GP/WebinarForm';
 import { useRouter } from 'next/router';
 import { connect } from 'react-redux';
 import formContent from '../form';
@@ -27,9 +26,7 @@ import logoAnimals from '../images/robert-class/logo-animals.webp';
 function EpisodesPage({
 	status,
 	setFormContent,
-	theme,
 	resetSubmitted,
-	signup
 }) {
 	const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 	const router = useRouter();
@@ -37,10 +34,8 @@ function EpisodesPage({
 	const downloadsRef = useRef(null);
 	const episodesRef = useRef(null);
 	const donationRef = useRef(null);
-	const { p, ep, s } = router.query;
+	const { s } = router.query;
 	const { submitted } = status;
-
-	const { FirstName } = signup;
 
 	useEffect(() => {
 		setFormContent(formContent);
@@ -73,26 +68,6 @@ function EpisodesPage({
 			}
 		}
 	}, [value, s]);
-
-	// const RenderForm = useCallback(() => {
-	// 	return value.isLoggedIn ? (
-	// 		<DonationModule
-	// 			market={'HK'}
-	// 			language={'zh_HK'}
-	// 			campaign={'elm_infopage'}
-	// 			campaignId={'701If000000xF73IAE'}
-	// 			env={'production'}
-	// 		/>
-	// 	) : (
-	// 		<DonationModule
-	// 			market={'HK'}
-	// 			language={'zh_HK'}
-	// 			campaign={'elm_infopage'}
-	// 			campaignId={'701If000000xF73IAE'}
-	// 			env={'production'}
-	// 		/>
-	// 	);
-	// }, [value.isLoggedIn]);
 
 	return (
 		<Box ref={episodesRef}>

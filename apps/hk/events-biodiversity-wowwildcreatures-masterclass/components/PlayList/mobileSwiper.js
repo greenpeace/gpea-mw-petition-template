@@ -1,9 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Center, Icon } from '@chakra-ui/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Scrollbar } from 'swiper';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import 'swiper/css/pagination';
@@ -14,7 +12,6 @@ import { RiArrowLeftLine, RiArrowRightLine } from 'react-icons/ri';
 
 const MobileSwiper = ({ isDetail }) => {
 	const router = useRouter();
-	// const pathname = usePathname();
 	const swiperRef = useRef(null);
 	const value = useVideoContext();
 	const globalValue = useGlobalContext;

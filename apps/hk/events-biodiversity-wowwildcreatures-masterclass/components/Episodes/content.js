@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { useVideoContext } from '../../context/video';
 import { useGlobalContext } from '../../context/global';
-import { Image, Box } from '@chakra-ui/react';
+import { Image } from '@chakra-ui/react';
 import GeneralCarousel from '../GeneralCarousel';
 import robertIntro from '../../images/robert-class/robert-intro.webp';
 import { useRouter } from 'next/router';

@@ -76,7 +76,8 @@ const EPISODES = [
 		image: epCover01s,
 		thumbnail: epCover01s,
 		banner: epCover01l,
-		dateMessage: ""
+		dateMessage: "",
+		publishedAt: "2024-06-05T00:00:00.000Z"
 	},
 	{
 		key: 1,
@@ -92,7 +93,8 @@ const EPISODES = [
 		image: epCover02s,
 		thumbnail: epCover02s,
 		banner: epCover02l,
-		dateMessage: "6月12日推出<br/>Releasing on 12 June"
+		dateMessage: "6月12日推出<br/>Releasing on 12 June",
+		publishedAt: "2024-06-12T00:00:00.000Z"
 	},
 	{
 		key: 2,
@@ -108,7 +110,8 @@ const EPISODES = [
 		image: epCover03s,
 		thumbnail: epCover03s,
 		banner: epCover03l,
-		dateMessage: "6月19日推出<br/>Releasing on 19 June"
+		dateMessage: "6月19日推出<br/>Releasing on 19 June",
+		publishedAt: "2024-06-19T00:00:00.000Z"
 	},
 	{
 		key: 3,
@@ -125,7 +128,8 @@ const EPISODES = [
 		image: epCover04s,
 		thumbnail: epCover04s,
 		banner: epCover04l,
-		dateMessage: "6月26日推出<br/>Releasing on 26 June"
+		dateMessage: "6月26日推出<br/>Releasing on 26 June",
+		publishedAt: "2024-06-26T00:00:00.000Z"
 	},
 	{
 		key: 4,
@@ -141,7 +145,8 @@ const EPISODES = [
 		image: epCover05s,
 		thumbnail: epCover05s,
 		banner: epCover05l,
-		dateMessage: "7月3日推出<br/>Releasing on 3 July"
+		dateMessage: "7月3日推出<br/>Releasing on 3 July",
+		publishedAt: "2024-07-03T00:00:00.000Z"
 	},
 	{
 		key: 5,
@@ -157,7 +162,8 @@ const EPISODES = [
 		image: epCover06s,
 		thumbnail: epCover06s,
 		banner: epCover06l,
-		dateMessage: "7月10日推出<br/>Releasing on 10 July"
+		dateMessage: "7月10日推出<br/>Releasing on 10 July",
+		publishedAt: "2024-07-10T00:00:00.000Z"
 	},
 	{
 		key: 6,
@@ -175,7 +181,8 @@ const EPISODES = [
 		image: epCover07s,
 		thumbnail: epCover07s,
 		banner: epCover07l,
-		dateMessage: "7月10日推出<br/>Releasing on 10 July"
+		dateMessage: "7月10日推出<br/>Releasing on 10 July",
+		publishedAt: "2024-07-10T00:00:00.000Z"
 	}
 ];
 
