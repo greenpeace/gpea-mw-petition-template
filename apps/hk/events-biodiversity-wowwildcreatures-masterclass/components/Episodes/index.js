@@ -11,19 +11,17 @@ export default function Episodes() {
 	const { p, s } = router.query;
 
 	const urlParams = new URLSearchParams(router.asPath);
+	const isAvailable = compareWithISOString(selectedEp?.publishedAt);
 
 	function compareWithISOString(isoString) {
-		// Get the current date
 		const today = new Date();
-		// Remove the time portion for an accurate date comparison
+
 		today.setHours(0, 0, 0, 0);
 	
-		// Parse the ISO 8601 date string
 		const inputDate = new Date(isoString);
-		// Remove the time portion for an accurate date comparison
+
 		inputDate.setHours(0, 0, 0, 0);
 	
-		// Compare the dates
 		return today >= inputDate ;
 	}
 
@@ -57,6 +55,8 @@ export default function Episodes() {
 			</Box>
 		);
 	}, [selectedEp]);
+
+	console.log("isAvailable=>", isAvailable)
 
 	return (
 		<div className="ep-list">
@@ -101,10 +101,10 @@ export default function Episodes() {
 									}
 								);
 							}}
-							disabled={!compareWithISOString(selectedEp.publishedAt)}
+							disabled={!isAvailable}
 						>
 						<Box as="span" px={6} textAlign={"left"}>
-						{!compareWithISOString(selectedEp.publishedAt) ? <span dangerouslySetInnerHTML={{ __html: selectedEp.dateMessage }}/> : `播放 Play`}
+						{!isAvailable ? <span dangerouslySetInnerHTML={{ __html: selectedEp.dateMessage }}/> : `播放 Play`}
 						</Box>
 							
 						</Button>
