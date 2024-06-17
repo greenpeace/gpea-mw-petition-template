@@ -23,7 +23,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import SignupForm from '@components/GP/HKForm';
 import DonationModule from '@components/GP/DonationModule';
 import { useInView } from 'react-intersection-observer';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch, connect } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
 import ScrollToTargetButton from '@components/ScrollToTargetButton/ScrollToTargetButton';
 // Import helpers
@@ -62,6 +62,11 @@ function Index({ status, theme, setFormContent, signup }) {
 		rootMargin: '-70px 0px 120px 0px'
 	});
 
+	// get utm_source
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
+	const { AsiaPayResult } = hiddenForm?.data;
+
 	useEffect(() => {
 		setFormContent(formContent);
 	}, []);
@@ -99,7 +104,7 @@ function Index({ status, theme, setFormContent, signup }) {
 						<Box flex={1} ref={mobileForm}>
 							<FormContainer>
 								<Box ref={ref}>
-									{submitted ? (
+									{submitted ? utm_source !== 'dd' && (
 										<DonationModule
 											market={'HK'}
 											language={'zh_HK'}

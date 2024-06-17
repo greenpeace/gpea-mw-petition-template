@@ -321,20 +321,22 @@ const MyForm = (props) => {
 									</FormErrorMessage>
 								</FormControl>
 							</Box>
-
-							<Box w={'100%'}>
-								<Field
-									errors={errors.Opinion}
-									touched={touched.Opinion}
-									label={formContent.label_opinion}
-									name={formContent.name_opinion ? formContent.name_opinion : 'CampaignData1__c'}
-									type={'text'}
-									handleChange={handleChange}
-									handleBlur={handleBlur}
-									// value={values.Opinion}
-								/>
-							</Box>
 							
+							{formContent.label_opinion && (
+								<Box w={'100%'}>
+									<Field
+										errors={errors.Opinion}
+										touched={touched.Opinion}
+										label={formContent.label_opinion}
+										name={formContent.name_opinion ? formContent.name_opinion : 'CampaignData1__c'}
+										type={'text'}
+										handleChange={handleChange}
+										handleBlur={handleBlur}
+										// value={values.Opinion}
+									/>
+								</Box>
+							)}
+
 							{formContent.label_concern && (
 								<Box w={'100%'}>
 									<Text

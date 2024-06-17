@@ -11,6 +11,10 @@
 	"label_year_of_birth_optional": "出生年份（選填）",
 	"label_counties": "居住縣市",
 	"label_gender": "性別",
+	"KeyBirthYearSet": {
+		"min": 7,
+		"max": 70
+	},
 	
 
 	"empty_data_alert": "請填寫資料",

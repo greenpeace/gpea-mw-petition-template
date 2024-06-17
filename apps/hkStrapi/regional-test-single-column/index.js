@@ -43,7 +43,6 @@ function Index({ submitted = false, strapi }) {
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
-	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
 
 	const FormRef = useRef(null);
@@ -59,6 +58,12 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0,
 		rootMargin: '-70px 0px 120px 0px'
 	});
+	// const FormRef = useRef(null);
+
+	// get utm_source
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
+	const { AsiaPayResult } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -68,8 +73,6 @@ function Index({ submitted = false, strapi }) {
 
 	// const { FirstName } = signup;
 
-	// get utm_source
-	const { utm_source } = hiddenForm?.data;
 
 	// pass signer / donor name to TY Banner
 	const [TYName, setTYName] = useState();

@@ -1,13 +1,14 @@
 /**
-Deploy Setting:
-PROJECT=hkStrapi/petition-climate-emergency
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/petition-oceans-lantau-documentary-relaunch-b
 MARKET=hk
-PROJECT_NAME=petition-climate-emergency
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/petition-climate-emergency
-ASSETPREFIX=https://api.greenpeace.org.hk/2022/petition-climate-emergency/
-FTP_CONFIG_NAME=api_hk_cloud
+PROJECT_NAME=petition-oceans-lantau-documentary-relaunch-b
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/petition-oceans-lantau-documentary-relaunch-b
+ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-oceans-lantau-documentary-relaunch-b/
+FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=zh-hk.2022.climate.climate_emergency.general.signup.na
+CLOUD_PAGE_NAME=zh-hk.2023.oceans.lantau_documentary_relaunch_b.signup
 */
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -66,10 +67,23 @@ function Index({ submitted = false, strapi }) {
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
-
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
+
+	// pass signer / donor name to TY Banner
+	const [TYName, setTYName] = useState();
+
+	useEffect(() => {
+		// get donation module firstname
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
+			setTYName(data.firstName);
+		};
+	});
+	useEffect(() => {
+		setTYName(signup?.data?.FirstName);
+	}, [signup]);
 
 	return (
 		<>
@@ -131,7 +145,10 @@ function Index({ submitted = false, strapi }) {
 									}
 								]}
 								content={{
-									title: strapi?.thankyouHero?.richContent,
+									// title: strapi?.thankyouHero?.richContent,
+									title: `${TYName ? TYName : '綠色和平支持者'}，${
+										strapi?.thankyouHero?.richContent
+									}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
@@ -177,16 +194,16 @@ function Index({ submitted = false, strapi }) {
 								<>
 									{submitted ? (
 										<StrapiDynamicBlocks
-											blocks={'thankyouBlocks'}
-											strapi={strapi}
-											utm_source={utm_source}
-										/>
+												blocks={'thankyouBlocks'}
+												strapi={strapi}
+												utm_source={utm_source}
+											/>
 									) : (
 										<StrapiDynamicBlocks
-											blocks={'contentBlocks'}
-											strapi={strapi}
-											utm_source={utm_source}
-										/>
+												blocks={'contentBlocks'}
+												strapi={strapi}
+												utm_source={utm_source}
+											/>
 									)}
 								</>
 								<>
@@ -209,7 +226,9 @@ function Index({ submitted = false, strapi }) {
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
 								<Box ref={ref}>
-									{pageType?.toLowerCase() === 'donation' || submitted ? utm_source !== 'dd' && (
+									{pageType?.toLowerCase() === 'donation' ||
+									submitted ||
+									AsiaPayResult ? (
 										<DonationModule
 											market={
 												strapi?.market?.data?.attributes?.market === 'Hong Kong'

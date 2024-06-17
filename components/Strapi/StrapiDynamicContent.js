@@ -30,7 +30,7 @@ const StrapiDynamicBlocks = ({
 
 	return strapi?.[blocks]
 		?.filter((content) => {
-			// filter the content of group a/b
+			// filter the content of group a/b or diff-amount, diff-type, and diff-utm
 			let pass = true;
 			const parser = new DOMParser();
 			const contentHTML = parser.parseFromString(
@@ -43,14 +43,12 @@ const StrapiDynamicBlocks = ({
 						.textContent.toLocaleLowerCase()
 						.includes('group a')
 				: false;
-			// '<div class="raw-html-embed"><p hidden=""> group a </p></div>';
 			const groupB = contentHTML.querySelector('.raw-html-embed *[hidden]')
 				? contentHTML
 						.querySelector('.raw-html-embed *[hidden]')
 						.textContent.toLocaleLowerCase()
 						.includes('group b')
 				: false;
-			// '<div class="raw-html-embed"><p hidden=""> group b </p></div>';
 			const diffAmount = contentHTML.querySelector(
 				'.raw-html-embed *[data-diff-amount]'
 			);
@@ -60,9 +58,9 @@ const StrapiDynamicBlocks = ({
 			const diffUtm = contentHTML.querySelector(
 				'.raw-html-embed *[data-diff-utm_source]'
 			);
-			// '<div class="raw-html-embed"><p data-diff-amount=""></p></div>';
+			
 
-			// a/b test
+			// this is for group A/B content show/hide
 			if (!groupA && !groupB) {
 				pass = true;
 			} else if (groupA && variation === 'A') {
@@ -73,13 +71,14 @@ const StrapiDynamicBlocks = ({
 				pass = false;
 			}
 
-			// diff-amount
-			
+			// this is for diff-amount and diff-type content show/hide
 			if (diffAmount) {
-				console.log(diffAmount.getAttribute("data-diff-amount"), diffAmount.getAttribute("data-diff-type"))
+				// console.log(diffAmount.getAttribute("data-diff-amount"), diffAmount.getAttribute("data-diff-type"))
+				// get type and amount from donationSummary for set condition of content show/hide
 				const { type, amount } = donationSummary || {};
-				console.log(amount >= Number(diffAmount.getAttribute("data-diff-amount")), type == diffAmount.getAttribute("data-diff-type"))
+				// console.log(amount >= Number(diffAmount.getAttribute("data-diff-amount")), type == diffAmount.getAttribute("data-diff-type"))
 				if(!diffType) {
+					// if no specific type, show this content if amount is more than 800 for recurring and 3000 for oneoff, this is default condition
 					if (
 						(type == 'Recurring' && amount >= 800) ||
 						(type == 'Oneoff' && amount >= 3000)
@@ -89,6 +88,7 @@ const StrapiDynamicBlocks = ({
 						pass = false;
 					}
 				}else {
+					// show this content if amount is more than the amount in data-diff-amount and type is same as data-diff-type
 					if(diffAmount.getAttribute("data-diff-amount") && 
 						amount >= Number(diffAmount.getAttribute("data-diff-amount")) &&
 						type == diffAmount.getAttribute("data-diff-type")
@@ -101,6 +101,7 @@ const StrapiDynamicBlocks = ({
 				
 			}
 			if(diffUtm){
+				// show or hide content based on utm_source
 				if(utm_source == 'dd') {
 					pass = false;
 				}else {
