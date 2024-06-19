@@ -3,7 +3,7 @@
  *
 PROJECT=twStrapi/petition-general-vegetarian
 MARKET=tw
-PROJECT_NAME=petition-general-vegetarian
+PROJECT_NAME=download-general-vegetarian
 BASEPATH=/htdocs/2023/petition/petition-general-vegetarian
 ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-general-vegetarian/
 FTP_CONFIG_NAME=ftp_tw
@@ -193,11 +193,13 @@ function Index({ submitted = false, strapi }) {
 											<StrapiDynamicBlocks
 												blocks={'thankyouBlocks'}
 												strapi={strapi}
+												utm_source={utm_source}
 											/>
 										) : (
 											<StrapiDynamicBlocks
 												blocks={'contentBlocks'}
 												strapi={strapi}
+												utm_source={utm_source}
 											/>
 										)}
 									</>

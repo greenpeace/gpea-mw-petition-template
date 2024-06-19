@@ -45,15 +45,15 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0
 	});
 	// mobile sticky btn show ref
-const [FormBtnref, btnInView] = useInView({
+	const [FormBtnref, btnInView] = useInView({
 		threshold: 0,
 		rootMargin: '-70px 0px 120px 0px'
 	});
-
 	const FormRef = useRef(null);
 
 	// get utm_source
 	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
 	const { AsiaPayResult } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
@@ -132,14 +132,16 @@ const [FormBtnref, btnInView] = useInView({
 								<>
 									{submitted ? (
 										<StrapiDynamicBlocks
-											blocks={'thankyouBlocks'}
-											strapi={strapi}
-										/>
+												blocks={'thankyouBlocks'}
+												strapi={strapi}
+												utm_source={utm_source}
+											/>
 									) : (
 										<StrapiDynamicBlocks
-											blocks={'contentBlocks'}
-											strapi={strapi}
-										/>
+												blocks={'contentBlocks'}
+												strapi={strapi}
+												utm_source={utm_source}
+											/>
 									)}
 								</>
 								<>

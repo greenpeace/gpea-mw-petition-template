@@ -82,6 +82,7 @@ async function waitMilliSeconds(ms) {
 		const targetPageName = process.env.CLOUD_PAGE_NAME//'zh-hk.2022.oceans.webinar_antarctic.registration.event.na'
 		// const targetPageName = 'tw-prod-1click_oneoff-landing'
 		// Stop Editing
+		console.log(`starting publish: ${targetMarket} ${targetPageName}`)
 
 		// Perform the login process to generate new session data
 		const browser = await puppeteer.launch({
@@ -185,7 +186,7 @@ async function waitMilliSeconds(ms) {
 		console.log('Waiting the editor panel load')
 		await waitMilliSeconds(10 * 1000);
 		await frame.waitForSelector('iframe[src*="https://content-builder"]');
-		let editorIframEl = await frame.$('div.cp-editor-container iframe.undefined');
+		let editorIframEl = await frame.$('div.cp-editor-container iframe[title="ContentBuilder Editor"]');
 		let editorFrame = await editorIframEl.contentFrame();
 
 		await editorFrame.waitForSelector('.gearpicker-handle-icon-outline');

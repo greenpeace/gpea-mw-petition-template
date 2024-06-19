@@ -193,11 +193,13 @@ function Index({ submitted = false, strapi }) {
 										<StrapiDynamicBlocks
 											blocks={'thankyouBlocks'}
 											strapi={strapi}
+											utm_source={utm_source}
 										/>
 									) : (
 										<StrapiDynamicBlocks
 											blocks={'contentBlocks'}
 											strapi={strapi}
+											utm_source={utm_source}
 										/>
 									)}
 								</>
@@ -234,7 +236,7 @@ function Index({ submitted = false, strapi }) {
 											customEndpoint={
 												'https://counter.greenpeace.org/signups?id=deepseamining'
 											}
-											// customOfTarget={1000000}
+											// customOfTarget={3000000}
 											setSignupBtnRef={setSignupBtnRef}
 										/>
 									)}

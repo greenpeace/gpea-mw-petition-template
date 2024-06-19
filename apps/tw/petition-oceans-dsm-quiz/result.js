@@ -167,7 +167,7 @@ function Index({
 							market={'TW'}
 							language={'zh_TW'}
 							campaign={
-								theme?.params?.donation_module_campaign ?? theme?.interests
+								'oceans_mw'
 							}
 							campaignId={theme?.params?.campaignId ?? theme?.CampaignId ?? ''}
 							env={'production'}

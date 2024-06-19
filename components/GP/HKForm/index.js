@@ -80,7 +80,7 @@ const MyForm = (props) => {
 	}, [formViewed]);
 
 	useEffect(() => {
-		setSignupBtnRef(btnRef);
+		if (setSignupBtnRef) setSignupBtnRef(btnRef);
 	}, [btnRef]);
 
 	useEffect(() => {
@@ -397,14 +397,15 @@ const MyForm = (props) => {
 
 const MyEnhancedForm = withFormik({
 	enableReinitialize: true,
-	mapPropsToValues: ({ signup }) => ({
+	mapPropsToValues: ({ signup, formContent }) => ({
 		Email: signup?.preFill?.Email ?? '',
 		FirstName: signup?.preFill?.FirstName ?? '',
 		LastName: signup?.preFill?.LastName ?? '',
 		MobileCountryCode: '852',
 		MobilePhone: signup?.preFill?.MobilePhone ?? '',
 		OptIn: true,
-		Birthdate: signup?.preFill?.Birthdate ?? ''
+		Birthdate: signup?.preFill?.Birthdate ?? '',
+		...formContent?.custom_default_values
 	}),
 
 	validate: async (values, props) => {
@@ -459,6 +460,9 @@ const MyEnhancedForm = withFormik({
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
+		if(capitalize(theme.interests) === 'General' || capitalize(strapi?.issue?.data?.attributes?.slug) === 'General') {
+			formData.Petition_Interested_In_Health__c = true;
+		}
 
 		if (values.MobilePhone.indexOf("0") == 0) formData.MobilePhone = values.MobilePhone.replace(/^0+/, '')
 

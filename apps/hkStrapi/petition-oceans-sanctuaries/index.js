@@ -1,3 +1,16 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=hkStrapi/petition-oceans-sanctuaries
+MARKET=hk
+PROJECT_NAME=petition-oceans-sanctuaries
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/oceans
+ASSETPREFIX=https://api.greenpeace.org.hk/2022/oceans/
+FTP_CONFIG_NAME=api_hk_cloud 
+# ******** MC Cloud Page Name ********
+CLOUD_PAGE_NAME=zh-hk.2021.oceans.sanctuaries.mindwise_version.signup
+*/
+
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -32,6 +45,11 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0
 	});
 	const FormRef = useRef(null);
+
+	// get utm_source
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
+	const { AsiaPayResult } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -145,14 +163,16 @@ function Index({ submitted = false, strapi }) {
 								<>
 									{submitted ? (
 										<StrapiDynamicBlocks
-											blocks={'thankyouBlocks'}
-											strapi={strapi}
-										/>
+												blocks={'thankyouBlocks'}
+												strapi={strapi}
+												utm_source={utm_source}
+											/>
 									) : (
 										<StrapiDynamicBlocks
-											blocks={'contentBlocks'}
-											strapi={strapi}
-										/>
+												blocks={'contentBlocks'}
+												strapi={strapi}
+												utm_source={utm_source}
+											/>
 									)}
 								</>
 								<>
@@ -175,7 +195,8 @@ function Index({ submitted = false, strapi }) {
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
 								<Box ref={ref}>
-									{pageType?.toLowerCase() === 'donation' || submitted ? (
+									{pageType?.toLowerCase() === 'donation' || submitted ? 
+									utm_source !== 'dd' && (
 										<DonationModule
 											market={
 												strapi?.market?.data?.attributes?.market === 'Hong Kong'

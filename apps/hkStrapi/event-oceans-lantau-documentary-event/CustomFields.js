@@ -29,9 +29,6 @@ const CustomFields = ({
 	setFieldValue
 }) => {
 
-	const [campaignData2, setCampaignData2] = useState("");
-	const [campaignData3, setCampaignData3] = useState("");
-
 	return (
 		<>
 			<Box w={'100%'}>

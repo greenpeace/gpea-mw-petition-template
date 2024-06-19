@@ -47,8 +47,12 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0,
 		rootMargin: '-70px 0px 120px 0px'
 	});
-
 	const FormRef = useRef(null);
+
+	// get utm_source
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
+	const { AsiaPayResult } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -162,14 +166,16 @@ function Index({ submitted = false, strapi }) {
 								<>
 									{submitted ? (
 										<StrapiDynamicBlocks
-											blocks={'thankyouBlocks'}
-											strapi={strapi}
-										/>
+												blocks={'thankyouBlocks'}
+												strapi={strapi}
+												utm_source={utm_source}
+											/>
 									) : (
 										<StrapiDynamicBlocks
-											blocks={'contentBlocks'}
-											strapi={strapi}
-										/>
+												blocks={'contentBlocks'}
+												strapi={strapi}
+												utm_source={utm_source}
+											/>
 									)}
 								</>
 								<>
