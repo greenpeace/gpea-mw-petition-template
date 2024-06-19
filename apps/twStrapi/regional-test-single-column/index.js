@@ -75,11 +75,11 @@ function Index({ submitted = false, strapi }) {
 	const [TYName, setTYName] = useState();
 
 	// set convert experiment ab test default group
-	const [variation, setVariation] = useState('');
-	window.__greenpeace__ = window.__greenpeace__ || {};
-	window.__greenpeace__.setVariation = function(variation){
-		setVariation(variation)
-	}
+	const [variation, setVariation] = useState('A');
+	// window.__greenpeace__ = window.__greenpeace__ || {};
+	// window.__greenpeace__.setVariation = function(variation){
+	// 	setVariation(variation)
+	// }
 
 	useEffect(() => {
 		// get donation module firstname
@@ -90,7 +90,7 @@ function Index({ submitted = false, strapi }) {
 
 		// set convert experiment ab test group
 		if(window?.__greenpeace__?.testSet) {
-			if(variation !== window.__greenpeace__.testSet) setVariation(window.__greenpeace__.testSet);
+			setVariation(window.__greenpeace__.testSet);
 		}
 	});
 	useEffect(() => {
@@ -187,6 +187,7 @@ function Index({ submitted = false, strapi }) {
 								blocks={'thankyouBlocks'}
 								strapi={strapi}
 								variation={variation}
+								utm_source={utm_source}
 							/>
 						) : (
 							<StrapiDynamicBlocks
@@ -194,6 +195,7 @@ function Index({ submitted = false, strapi }) {
 								blocks={'contentBlocks'}
 								strapi={strapi}
 								variation={variation}
+								utm_source={utm_source}
 							/>
 						)}
 

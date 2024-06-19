@@ -153,11 +153,13 @@ function Index({ submitted = false, strapi }) {
 										<StrapiDynamicBlocks
 											blocks={'thankyouBlocks'}
 											strapi={strapi}
+											utm_source={utm_source}
 										/>
 									) : (
 										<StrapiDynamicBlocks
 											blocks={'contentBlocks'}
 											strapi={strapi}
+											utm_source={utm_source}
 										/>
 									)}
 								</>
@@ -195,7 +197,7 @@ function Index({ submitted = false, strapi }) {
 													theme?.params?.donation_module_campaign ??
 													strapi?.donationModuleCampaign
 												}
-												isUAT={false}
+												isUAT={true}
 												campaignId={
 													theme?.params?.campaignId ??
 													strapi?.donationModuleCampaignId ??

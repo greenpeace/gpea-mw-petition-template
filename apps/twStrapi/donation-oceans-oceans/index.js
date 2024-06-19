@@ -67,11 +67,19 @@ function Index({ submitted = false, strapi }) {
 	// pass signer / donor name to TY Banner
 	const [TYName, setTYName] = useState();
 
+	// pass donation type and amount
+	const [donationSummary, setDonationSummary] = useState();
+
 	useEffect(() => {
 		// get donation module firstname
 		window.__greenpeace__ = window.__greenpeace__ || {};
 		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
 			setTYName(data.firstName);
+			// set donation type and amount
+			setDonationSummary({
+				type: data.donationType,
+				amount: data.amountValue
+			});
 		};
 	});
 	useEffect(() => {
@@ -104,10 +112,10 @@ function Index({ submitted = false, strapi }) {
 							}
 						]}
 						content={{
-							title: strapi?.thankyouHero?.richContent,
-							// title: `${
-							// 	TYName ? TYName : '綠色和平支持者'
-							// }，${strapi?.thankyouHero?.richContent}`,
+							// title: strapi?.thankyouHero?.richContent,
+							title: `${
+								TYName ? TYName : '綠色和平支持者'
+							}，${strapi?.thankyouHero?.richContent}`,
 							description: strapi?.thankyouHero?.richContentParagraph
 						}}
 					/>
@@ -153,11 +161,14 @@ function Index({ submitted = false, strapi }) {
 										<StrapiDynamicBlocks
 											blocks={'thankyouBlocks'}
 											strapi={strapi}
+											donationSummary={donationSummary}
+											utm_source={utm_source}
 										/>
 									) : (
 										<StrapiDynamicBlocks
 											blocks={'contentBlocks'}
 											strapi={strapi}
+											utm_source={utm_source}
 										/>
 									)}
 								</>

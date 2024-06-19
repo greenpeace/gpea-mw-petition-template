@@ -9,6 +9,7 @@ ASSETPREFIX=https://api.greenpeace.org.hk/page/petition-oceans-elm/
 FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-hk.2022.general.elm.mindwise_version.signup
+CONV_EXP=//cdn-4.convertexperiments.com/js/10046099-10046519.js
 */
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -58,9 +59,11 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0,
 		rootMargin: '-70px 0px 120px 0px'
 	});
+	// const FormRef = useRef(null);
 
 	// get utm_source
 	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
 	const { AsiaPayResult } = hiddenForm?.data;
 
 	submitted = useSelector((state) => state?.status?.submitted);
@@ -143,10 +146,10 @@ function Index({ submitted = false, strapi }) {
 									}
 								]}
 								content={{
-									// title: strapi?.thankyouHero?.richContent,
-									title: `${TYName ? TYName : '綠色和平支持者'}，${
-										strapi?.thankyouHero?.richContent
-									}`,
+									title: strapi?.thankyouHero?.richContent,
+									// title: `${TYName ? TYName : '綠色和平支持者'}，${
+									// 	strapi?.thankyouHero?.richContent
+									// }`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
@@ -194,11 +197,13 @@ function Index({ submitted = false, strapi }) {
 										<StrapiDynamicBlocks
 											blocks={'thankyouBlocks'}
 											strapi={strapi}
+											utm_source={utm_source}
 										/>
 									) : (
 										<StrapiDynamicBlocks
 											blocks={'contentBlocks'}
 											strapi={strapi}
+											utm_source={utm_source}
 										/>
 									)}
 								</>
@@ -224,7 +229,7 @@ function Index({ submitted = false, strapi }) {
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' ||
 									submitted ||
-									AsiaPayResult ? (
+									AsiaPayResult ? utm_source !== 'dd' && (
 										<DonationModule
 											market={
 												strapi?.market?.data?.attributes?.market === 'Hong Kong'
@@ -241,6 +246,7 @@ function Index({ submitted = false, strapi }) {
 												strapi?.donationModuleCampaignId ??
 												''
 											}
+											isUAT={true}
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (

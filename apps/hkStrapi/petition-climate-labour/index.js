@@ -63,6 +63,12 @@ function Index({ submitted = false, strapi: strapiData }) {
 		threshold: 0,
 		rootMargin: '-70px 0px 120px 0px'
 	});
+	// const FormRef = useRef(null);
+
+	// get utm_source
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
+	const { AsiaPayResult } = hiddenForm?.data;
 
 
 	submitted = useSelector((state) => state?.status?.submitted);

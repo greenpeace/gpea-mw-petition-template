@@ -58,6 +58,8 @@ const MyForm = (props) => {
 		customOfTarget,
 		customMapFields, //an array for copy values to preset CampaignData fileds. ex: [{"from":"BirthDate", "to":"CampaignData3__c"}]
 		setSignupBtnRef,
+		CustomFields,
+		CustomRules,
 		hasMKT = true
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
@@ -90,8 +92,8 @@ const MyForm = (props) => {
 	useEffect(() => {
 		let optionYear = [];
 		function fetchOptionYear() {
-			const minYear = 18;
-			const maxYear = 110;
+			let minYear = formContent?.KeyBirthYearSet?.min || 18;
+			let maxYear = formContent?.KeyBirthYearSet?.max || 110;
 			let nowYear = new Date().getFullYear();
 			let targetYear = nowYear - maxYear;
 			for (var i = nowYear - minYear; i >= targetYear; i--) {
@@ -329,7 +331,7 @@ const MyForm = (props) => {
 								</Box>
 							</Box>
 						</HStack>
-
+						
 						<Box>
 							<FormControl
 								id="Birthdate"
@@ -353,6 +355,19 @@ const MyForm = (props) => {
 								</FormErrorMessage>
 							</FormControl>
 						</Box>
+
+						{CustomFields && (
+							<CustomFields 
+								errors={errors} 
+								touched={touched} 
+								values={values}
+								formContent={formContent}
+								handleChange={handleChange}
+								handleBlur={handleBlur}
+							/>
+						)}					
+
+
 						{/* optional select: county */}
 						{formContent.counties && (
 							<Box>
@@ -543,19 +558,20 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-	mapPropsToValues: () => ({
+	mapPropsToValues: ({formContent}) => ({
 		Email: '',
 		FirstName: '',
 		LastName: '',
 		MobilePhone: '',
 		OptIn: true,
-		Birthdate: ''
+		Birthdate: '',
+		...formContent?.custom_default_values
 	}),
 
 	validate: async (values, props) => {
-		const { formContent } = props;
-		return validation(values, formContent);
-	},
+    const { formContent, CustomRules } = props;
+		return validation(values, formContent, CustomRules);
+  },
 
 	handleSubmit: async (values, { setSubmitting, props }) => {
 		const { submitForm, theme, hiddenFormData, strapi, customMapFields } =
@@ -606,6 +622,9 @@ const MyEnhancedForm = withFormik({
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
+		if(capitalize(theme.interests) === 'General' || capitalize(strapi?.issue?.data?.attributes?.slug) === 'General') {
+			formData.Petition_Interested_In_Health__c = true;
+		}
 
 		if (values.Counties) formData.CampaignData1__c = values.Counties;
 		if (values.Careers) formData.CampaignData1__c = values.Careers;

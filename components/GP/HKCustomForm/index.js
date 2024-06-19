@@ -321,44 +321,49 @@ const MyForm = (props) => {
 									</FormErrorMessage>
 								</FormControl>
 							</Box>
+							
+							{formContent.label_opinion && (
+								<Box w={'100%'}>
+									<Field
+										errors={errors.Opinion}
+										touched={touched.Opinion}
+										label={formContent.label_opinion}
+										name={formContent.name_opinion ? formContent.name_opinion : 'CampaignData1__c'}
+										type={'text'}
+										handleChange={handleChange}
+										handleBlur={handleBlur}
+										// value={values.Opinion}
+									/>
+								</Box>
+							)}
 
-							<Box w={'100%'}>
-								<Field
-									errors={errors.Opinion}
-									touched={touched.Opinion}
-									label={formContent.label_opinion}
-									name={'CampaignData1__c'}
-									type={'text'}
-									handleChange={handleChange}
-									handleBlur={handleBlur}
-									value={values.Opinion}
-								/>
-							</Box>
-
-							<Box w={'100%'}>
-								<Text
-									fontSize={"sm"}
-									marginBottom={'.5em'}
-								>
-									{formContent.label_concern}
-								</Text>
-								<Text
-									fontSize={"sm"}
-									marginBottom={'.5em'}
-									px={2}
-									color="var(--error-900)"
-								>
-									{errors.Options_Concern}
-								</Text>
-								{
-									formContent.options_concern &&
-									formContent.options_concern.map((d) => (
-										<Checkbox name="CampaignData2__c" value={d.value} size={"sm"} w={'100%'} onChange={handleChange}>
-											{d.label}
-										</Checkbox>
-									))
-								}
-							</Box>
+							{formContent.label_concern && (
+								<Box w={'100%'}>
+									<Text
+										fontSize={"sm"}
+										marginBottom={'.5em'}
+									>
+										{formContent.label_concern}
+									</Text>
+									<Text
+										fontSize={"sm"}
+										marginBottom={'.5em'}
+										px={2}
+										color="var(--error-900)"
+									>
+										{errors.Options_Concern}
+									</Text>
+									{
+										formContent.options_concern &&
+										formContent.options_concern.map((d) => (
+											<Checkbox name="CampaignData2__c" value={d.value} size={"sm"} w={'100%'} onChange={handleChange}>
+												{d.label}
+											</Checkbox>
+										))
+									}
+								</Box>
+							)}
+							
 
 							<Box>
 								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
@@ -402,7 +407,8 @@ const MyEnhancedForm = withFormik({
 		MobileCountryCode: '852',
 		MobilePhone: signup?.preFill?.MobilePhone ?? '',
 		OptIn: true,
-		Birthdate: signup?.preFill?.Birthdate ?? ''
+		Birthdate: signup?.preFill?.Birthdate ?? '',
+		Opinion: ''
 	}),
 
 	validate: async (values, props) => {
@@ -441,7 +447,27 @@ const MyEnhancedForm = withFormik({
 			window.location.href,
 			EXCLUDE_URL_PARAMETERS
 		);
-
+		// console.log("values =====",values)
+		// split fileds content length > 255
+		if(props?.formContent?.field_split) {
+			const splitFields = props.formContent.field_split.split(',');
+			const toSplit = values[splitFields[0]];
+			// console.log("splitFields: ", splitFields, "toSplit: ", toSplit)
+			if(toSplit?.length > 255){
+				for(var i = 0; i<splitFields.length; i++) {
+					if(i == 0) {
+						values[splitFields[i]] = toSplit.substr(0, 255);
+					}else if(i == splitFields.length -1){
+						values[splitFields[i]] = toSplit.substr((255 * i));
+					}else{
+						values[splitFields[i]] = toSplit.substr((255 * i), 255);
+					}
+					
+				}
+			}
+			
+			
+		}
 		const formData = {
 			...hiddenFormData,
 			...values,
@@ -458,6 +484,10 @@ const MyEnhancedForm = withFormik({
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
+
+		if(capitalize(theme.interests) === 'General' || capitalize(strapi?.issue?.data?.attributes?.slug) === 'General') {
+			formData.Petition_Interested_In_Health__c = true;
+		}
 
 		setSubmitting(true);
 		submitForm(formData, endpointURL);
