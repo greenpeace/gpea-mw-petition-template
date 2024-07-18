@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Form, withFormik } from 'formik';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { Field } from '@components/Field/fields';
 import { numberFormat, capitalize, clearURL } from '@common/utils';
@@ -52,6 +53,8 @@ const MyForm = (props) => {
 		suggestion,
 		numberOfResponses,
 		numberOfTarget,
+		customEndpoint,
+		customOfTarget,
 		setValues,
 		setSignupBtnRef,
 		CustomFields,
@@ -60,6 +63,7 @@ const MyForm = (props) => {
 	const [birthDateYear, setBirthDateYear] = useState([]);
 	const [progressNumber, setProgressNumber] = useState(0);
 	const themeInterests = theme.interests;
+	const [customNumbers, setCustomNumbers] = useState(null);
 
 	const btnRef = useRef(null);
 	const [formViewed, setFormViewed] = useState(false);
@@ -99,9 +103,32 @@ const MyForm = (props) => {
 		initSuggestion();
 	}, []);
 
+	// get numberOfResponses from custom endpoint
 	useEffect(() => {
-		const currentNumber = numberOfResponses;
-		const currentNumberOfTarget = numberOfTarget ? numberOfTarget : 10000;
+		if (customEndpoint) {
+			axios
+				.get(customEndpoint)
+				.then((response) => {
+					setCustomNumbers(Number(response.data.unique_count));
+					console.log(response.data);
+				})
+				.catch((error) => console.log(error));
+		}
+	}, []);
+
+	useEffect(() => {
+		console.log(
+			'numberOfResponses: ',
+			numberOfResponses,
+			customNumbers,
+			numberOfTarget
+		);
+		const currentNumber = customNumbers ? customNumbers : numberOfResponses;
+		const currentNumberOfTarget = numberOfTarget
+			? numberOfTarget
+			: customOfTarget
+			? customOfTarget
+			: 10000;
 		const number =
 			Math.round((currentNumber / currentNumberOfTarget) * 10000) / 100;
 		if (isNaN(number)) {
@@ -113,7 +140,7 @@ const MyForm = (props) => {
 		return () => {
 			clearTimeout(timerId);
 		};
-	}, [numberOfResponses]);
+	}, [numberOfResponses, customNumbers]);
 
 	useEffect(() => {
 		if (signup.submitted) {
@@ -156,7 +183,9 @@ const MyForm = (props) => {
 			)}
 			<Box py={{ base: 6, md: 8 }} px={{ base: 4, md: 6 }}>
 				<Stack spacing="4">
-					{numberOfResponses && numberOfTarget && (
+					{formContent.signed_number &&
+					(numberOfResponses || customNumbers) &&
+					(numberOfTarget || customOfTarget) && (
 						<Box>
 							<Box
 								borderRadius={'20px'}
@@ -164,7 +193,7 @@ const MyForm = (props) => {
 								h={`14px`}
 								overflow={`hidden`}
 							>
-								{numberOfResponses && (
+								{(numberOfResponses || customNumbers) && (
 									<Box
 										style={{ transition: `width 2s` }}
 										h={`14px`}
@@ -178,9 +207,9 @@ const MyForm = (props) => {
 								<Text color={`theme.${themeInterests}`} fontSize={'sm'} mt={2}>
 									{formContent.signed_number}:{' '}
 									<Text as="span" fontSize={'2xl'} fontWeight="bold">
-										{numberFormat(numberOfResponses)}
+										{numberFormat(customNumbers ? customNumbers : numberOfResponses)}
 									</Text>{' '}
-									/ {numberFormat(numberOfTarget)}
+									/ {numberFormat(customOfTarget ? customOfTarget : numberOfTarget)}
 								</Text>
 							</Box>
 						</Box>

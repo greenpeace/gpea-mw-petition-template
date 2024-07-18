@@ -1,0 +1,34 @@
+{
+	"form_header": "我想收到更多關於「彩虹勇士號」來臺的消息！",
+	"form_description": "登記您的個人資料後，綠色和平將提供更多最新的資訊給您，敬請留意電子郵件。",
+	"signed_number": "",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電子郵件",
+	"label_phone": "行動電話",
+	"label_phone_optional": "行動電話（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_newsletter": "*登記訂閱即代表我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！我同意綠色和平按照<a href='https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>隱私保護政策</u></a>與我聯絡，包括提供環保工作資訊與捐款呼籲等。",
+
+	"empty_data_alert": "請填寫資料",
+	"empty_phone_alert": "請填手機號碼，確保接收專案相關通知",
+	"empty_select_data_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電子郵件",
+	"invalid_format_alert": "請輸入有效格式",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "立即訂閱通知",
+	"donate_button": "立即訂閱通知",
+	"donateURL": "https://cloud.greentw.greenpeace.org/donation-climate-climate?utm_campaign=general&utm_source=greenpeace.org&utm_medium=email&utm_content=tw-lead_conversion-automd-netzeroevent-20230109",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}

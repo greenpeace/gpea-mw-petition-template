@@ -10,7 +10,7 @@
 	"label_phone_optional": "Mobile (Optional)",
 	"label_year_of_birth": "Year of Birth",
 	"label_year_of_birth_optional": "Year of Birth (Optional)",
-	"label_newsletter": "* By signing up to this course, you agree to receive important updates from Greenpeace to stay up to date on our environmental protection work. Greenpeace respects and protects your personal information with <a href='https://www.greenpeace.org/eastasia/privacy-and-cookies/' style='text-decoration:underline;' target='_blank'>Greenpeace's privacy policy</a>.",
+	"form_remind": "* By signing up to this course, you agree to receive important updates from Greenpeace to stay up to date on our environmental protection work. Greenpeace respects and protects your personal information with <a href='https://www.greenpeace.org/eastasia/privacy-and-cookies/' style='text-decoration:underline;' target='_blank'>Greenpeace's privacy policy</a>.",
 	"custom_default_values": {"Preferred_Language__c": "English"},
 
 	"empty_data_alert": "Please complete this field",
