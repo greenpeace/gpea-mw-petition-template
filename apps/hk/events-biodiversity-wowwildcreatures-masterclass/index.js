@@ -14,7 +14,7 @@ CLOUD_PAGE_NAME=events-biodiversity-wowwildcreatures-masterclass
 import React, { useState, useEffect, useContext } from 'react';
 import { Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-
+import { useSelector } from 'react-redux';
 import { AppContext } from './context/appContext';
 import AppProvider from './context/appContext';
 import { GlobalProvider } from './context/global';
@@ -60,17 +60,21 @@ const SwitchHeader = () => {
 };
 
 const SwitchPage = () => {
+	// get utm_source
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
+
 	const data = useContext(AppContext);
 
 	switch (data.page) {
 		case 'main':
-			return <MainPage />;
+			return <MainPage utm_source={utm_source} />;
 
 		case 'petition':
 			return <DonationPage />;
 
 		case 'thankyou':
-			return <ThanksPage />;
+			return <ThanksPage utm_source={utm_source} />;
 
 		case 'streaming':
 			return <StreamingPage />;
@@ -79,10 +83,10 @@ const SwitchPage = () => {
 			return <LoginPage />;
 
 		case 'episodes':
-			return <EpisodesPage />;
+			return <EpisodesPage utm_source={utm_source} />;
 
 		case 'video':
-			return <VideoPage />;
+			return <VideoPage utm_source={utm_source} />;
 
 		default:
 			return <Box minH={'100vh'}></Box>;

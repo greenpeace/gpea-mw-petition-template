@@ -23,7 +23,7 @@ import logoAnimals from '../images/robert-class/logo-animals.webp';
 
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
-function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
+function VideoPage({ status, setFormContent, theme, resetSubmitted, signup, utm_source }) {
 	const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 	const router = useRouter();
 	const themeInterests = theme.interests;
@@ -37,9 +37,6 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 
 	const { FirstName } = signup;
 
-	// get utm_source
-	const hiddenForm = useSelector((state) => state?.hiddenForm);
-	const { utm_source } = hiddenForm?.data;
 
 	useEffect(() => {
 		setFormContent(formContent);

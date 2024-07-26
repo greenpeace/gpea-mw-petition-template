@@ -16,16 +16,12 @@ import GeneralCarousel from './GeneralCarousel';
 import { scrollToRef } from '../util';
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
-function ThanksPage({ status, setFormContent, theme, resetSubmitted }) {
+function ThanksPage({ status, setFormContent, theme, resetSubmitted, utm_source }) {
 	const { submitted } = status;
 	const signupSection = useRef(null);
 	const router = useRouter();
 	const { p, ep, s } = router.query;
 
-	// get utm_source
-	const hiddenForm = useSelector((state) => state?.hiddenForm);
-	const { utm_source } = hiddenForm?.data;
-	console.log('utm_source', utm_source);
 
 	useEffect(() => {
 		setFormContent(formContent);

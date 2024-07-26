@@ -42,16 +42,12 @@ import DonationModule from '@components/GP/DonationModule';
 
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
-function MainPage({ status, theme, setFormContent, signup }) {
+function MainPage({ status, theme, setFormContent, signup, utm_source }) {
 	const { submitted } = status;
 	const data = useContext(AppContext);
 	const value = useGlobalContext();
 	const router = useRouter();
 	const { p, ep, s } = router.query;
-
-	// get utm_source
-	const hiddenForm = useSelector((state) => state?.hiddenForm);
-	const { utm_source } = hiddenForm?.data;
 
 	const [signupBtnRef, setSignupBtnRef] = useState(null);
 
