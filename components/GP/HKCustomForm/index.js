@@ -356,7 +356,7 @@ const MyForm = (props) => {
 									{
 										formContent.options_concern &&
 										formContent.options_concern.map((d) => (
-											<Checkbox name="CampaignData2__c" value={d.value} size={"sm"} w={'100%'} onChange={handleChange}>
+											<Checkbox name={formContent?.name_concern ? formContent?.name_concern : "CampaignData2__c"} value={d.value} size={"sm"} w={'100%'} onChange={handleChange}>
 												{d.label}
 											</Checkbox>
 										))

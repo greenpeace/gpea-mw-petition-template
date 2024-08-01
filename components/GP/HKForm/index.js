@@ -473,6 +473,27 @@ const MyEnhancedForm = withFormik({
 			EXCLUDE_URL_PARAMETERS
 		);
 
+		// split fileds content length > 255
+		if(props?.formContent?.field_split) {
+			const splitFields = props.formContent.field_split.split(',');
+			const toSplit = values[splitFields[0]];
+			// console.log("splitFields: ", splitFields, "toSplit: ", toSplit)
+			if(toSplit?.length > 255){
+				for(var i = 0; i<splitFields.length; i++) {
+					if(i == 0) {
+						values[splitFields[i]] = toSplit.substr(0, 255);
+					}else if(i == splitFields.length -1){
+						values[splitFields[i]] = toSplit.substr((255 * i));
+					}else{
+						values[splitFields[i]] = toSplit.substr((255 * i), 255);
+					}
+					
+				}
+			}
+			
+			
+		}
+
 		const formData = {
 			...hiddenFormData,
 			...values,

@@ -43,7 +43,7 @@ export function validation(values, formContent) {
 
   if (formContent.label_concern){
     let concernFieldName = formContent?.name_concern || 'CampaignData2__c';
-    if (!values[concernFieldName]) {
+    if (!values[concernFieldName] && formContent?.required_concern) {
       errors.Options_Concern = formContent.empty_select_data_alert;
     }
   }

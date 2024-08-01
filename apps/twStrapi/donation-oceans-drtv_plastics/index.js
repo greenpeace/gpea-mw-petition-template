@@ -34,7 +34,6 @@ import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import Contents
 import formContent from './form';
-// Import static
 
 function Index({ submitted = false, strapi }) {
 	const dispatch = useDispatch();
@@ -78,6 +77,11 @@ function Index({ submitted = false, strapi }) {
 
 	return (
 		<>
+			<style jsx global>{`
+        .gpea-donation-module .submit-button:not(.submit-button--link){
+					background-color: rgba(234, 23, 119)!important;
+				}
+      `}</style>
 			<StrapiSEO strapi={strapi} />
 			<Box>
 				{submitted ? (
@@ -215,7 +219,7 @@ function Index({ submitted = false, strapi }) {
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={btnInView} />
+			<StrapiFixedButton target={FormRef} targetInView={btnInView} customColor={'rgba(234, 23, 119)'} />
 		</>
 	);
 }
