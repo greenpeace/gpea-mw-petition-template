@@ -1,3 +1,13 @@
+/**
+ * Deploy setting
+# Project Apps Directory: /apps/{PROJECT}
+PROJECT=twPreview
+MARKET=tw
+PROJECT_NAME=preview
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/app/preview-tw
+ASSETPREFIX=https://api.greenpeace.org.hk/app/preview-tw/
+FTP_CONFIG_NAME=api_hk_cloud 
+*/
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -6,6 +16,7 @@ import * as themeActions from 'store/actions/action-types/theme-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
 import { Box, Flex, Heading } from '@chakra-ui/react';
+import { stringify } from 'qs';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
@@ -53,9 +64,40 @@ function Index({ submitted = false, strapi }) {
 			const { preview } = router?.query;
 			if (preview) {
 				const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
+				const query = stringify(
+					{
+						filters: {
+							market: { slug: 'tw' },
+							campaign: preview
+						},
+						populate: {
+							contentBlocks: {
+								populate: [
+									'CardSlider.image',
+									'TestimonialSlider.avatar',
+									'CarouselSlider.image'
+								]
+							},
+							contentHero: { populate: '*' },
+							issue: { populate: { filters: { name: { $neq: 'pages' } } } },
+							market: { populate: { filters: { name: { $neq: 'pages' } } } },
+							page_type: { populate: { filters: { name: { $neq: 'pages' } } } },
+							seo: { populate: '*' },
+							thankyouBlocks: { populate: [
+								'CardSlider.image',
+								'TestimonialSlider.avatar',
+								'CarouselSlider.image'
+							] },
+							thankyouHero: { populate: '*' }
+						}
+					},
+					{
+						encodeValuesOnly: true // prettify URL
+					}
+				);
 
 				const res = await fetch(
-					`${endpoint}/pages?filters[market][slug]=tw&filters[campaign]=${preview}&populate=deep`
+					`${endpoint}/pages?${query}`
 				).then((response) => response);
 				const themes = await res.json();
 				const theme = themes?.data[0] ?? {};

@@ -34,7 +34,7 @@ Move it here to ensure that meta info is generated in index_mc.html.
 */
 const DynamicSeoComp = dynamic(() =>
 	import(
-		process.env.project.indexOf('Strapi') >= 0
+		(process.env.project.indexOf('Strapi') >= 0 || process.env.project.indexOf('Preview') >= 0)
 			? '@components/Strapi/StrapiSEO'
 			: `apps/${process.env.project}/SEO`
 	)
@@ -305,6 +305,8 @@ export async function getStaticProps(context) {
 	!singleResult && console.warn('PROJECT NAME NOT FOUND');
 
 	const app = envProjectName ?? '';
+	
+	
 
 	const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
 
@@ -349,20 +351,30 @@ export async function getStaticProps(context) {
 	const themes = await res.json();
 	const theme =
 		themes?.data[0] !== undefined ? themes?.data[0]?.attributes : null;
-	return {
-		props: {
-			themeData: singleResult || {
-				CampaignId: theme?.campaignId,
-				EndpointURL: theme?.market?.data?.attributes?.websignEndpointURL,
-				EventLabel: envProjectName,
-				Market: envProjectMarket,
-				ProjectName: envProjectName,
-				Status: 'Open',
-				interests: theme?.issue?.data?.attributes?.name.toLowerCase()
-			},
-			strapi: theme
-		}
-	};
+	if(process.env.project.indexOf('Preview') >= 0) {
+			return {
+				props: {
+					themeData: singleResult || {},
+					strapi: theme
+				}
+			};
+	}else {
+		return {
+			props: {
+				themeData: singleResult || {
+					CampaignId: theme?.campaignId,
+					EndpointURL: theme?.market?.data?.attributes?.websignEndpointURL,
+					EventLabel: envProjectName,
+					Market: envProjectMarket,
+					ProjectName: envProjectName,
+					Status: 'Open',
+					interests: theme?.issue?.data?.attributes?.name.toLowerCase()
+				},
+				strapi: theme
+			}
+		};
+	}
+	
 }
 
 export default connect(null, mapDispatchToProps)(Index);
