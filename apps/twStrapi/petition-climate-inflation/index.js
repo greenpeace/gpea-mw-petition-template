@@ -232,12 +232,7 @@ function Index({ submitted = false, strapi }) {
 											/>
 										)
 									) : (
-										<SignupForm
-											customEndpoint={
-												'https://counter.greenpeace.org/signups?id=globalplasticstreaty'
-											}
-											setSignupBtnRef={setSignupBtnRef}
-										/>
+										<SignupForm	setSignupBtnRef={setSignupBtnRef} />
 									)}
 								</Box>
 								<div ref={FormBtnref}></div>
