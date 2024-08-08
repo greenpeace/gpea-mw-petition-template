@@ -4,9 +4,10 @@ import { Box } from '@chakra-ui/react';
 import Nav from '@components/Header';
 
 function Layout({ children, showHeader }) {
+  console.log('Layout', children?.props?.themeData?.Market);
   return (
     <Box>
-      {showHeader && <Nav />}
+      {showHeader && <Nav zhLogo={children?.props?.themeData?.Market !== 'kr'} />}
       {children}
     </Box>
   );

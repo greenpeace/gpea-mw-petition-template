@@ -99,6 +99,8 @@ function Index({
 		}
 	};
 
+
+
 	/* Set dynamic theme parameters */
 	useEffect(() => {
 		if (router.isReady) {
@@ -236,7 +238,7 @@ function Index({
 			(strapi?.market?.data?.attributes?.market === 'Hong Kong'
 				? 'HK'
 				: 'TW') ||
-			(domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : '');
+			(domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : domain.indexOf('kr') > 0 ? 'KR' : '');
 
 		/* GTM is only applicable for production env */
 
