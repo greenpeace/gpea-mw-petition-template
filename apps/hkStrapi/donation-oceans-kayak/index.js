@@ -1,14 +1,14 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=hkStrapi/donation-general
+PROJECT=hkStrapi/donation-oceans-kayak
 MARKET=hk
-PROJECT_NAME=donation-general
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-general
-ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-general/
+PROJECT_NAME=donation-oceans-kayak
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-oceans-kayak
+ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-oceans-kayak/
 FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=donation-general
+CLOUD_PAGE_NAME=donation-oceans-kayak
 */
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -64,11 +64,6 @@ function Index({ submitted = false, strapi }) {
 
 	return (
 		<>
-			<style jsx global>{`
-        .gpea-donation-module .submit-button:not(.submit-button--link){
-					background-color: #f11777!important;
-				}
-      `}</style>
 			<StrapiSEO strapi={strapi} />
 			<Box>
 				{submitted ? (
@@ -200,7 +195,7 @@ function Index({ submitted = false, strapi }) {
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={ btnInView } customColor={'#f11777'} />
+			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
 		</>
 	);
 }

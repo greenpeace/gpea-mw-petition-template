@@ -78,6 +78,11 @@ function Index({ submitted = false, strapi }) {
 
 	return (
 		<>
+			<style jsx global>{`
+        .gpea-donation-module .submit-button:not(.submit-button--link){
+					background-color: #f11777!important;
+				}
+      `}</style>
 			<StrapiSEO strapi={strapi} />
 			<Box>
 				{submitted ? (
@@ -215,7 +220,7 @@ function Index({ submitted = false, strapi }) {
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={btnInView} />
+			<StrapiFixedButton target={FormRef} targetInView={btnInView} customColor={'#f11777'} />
 		</>
 	);
 }
