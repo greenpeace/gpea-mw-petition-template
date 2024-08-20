@@ -63,14 +63,17 @@ const DonationModule = (props) => {
 	// *******************
 	// If there are any changes, should update the module URL in "_document.js" accordingly for preload script.
 	// *******************
+	console.log('market', market);
 	const moduleUrl =
 		market?.toUpperCase() === 'TW'
 			? `https://change.greenpeace.org.tw/app/donation-module${
 					isUAT ? '-uat' : ''
 			  }/main.js`
-			: `https://api.greenpeace.org.hk/app/donation-module${
-					isUAT ? '-uat' : '-hkmp'
-			  }/main.js`;
+			: market?.toUpperCase() === 'HK'
+				? `https://api.greenpeace.org.hk/app/donation-module${
+						isUAT ? '-uat' : '-hkmp'
+			  	}/main.js`
+				:"https://change.greenpeace.org.tw/2024/test/kr-strapi-donation-module/main.js";
 	// Import module
 	const timestamp = process.env.timeStamp;
 	if (customUrl) console.log('using custom donation module url: ' + customUrl);
@@ -117,7 +120,7 @@ const DonationModule = (props) => {
 			<div
 				data-gpea-module="gpea-donation-module"
 				data-gpea-market={market?.toUpperCase()} //手動填寫← TW 或 HK
-				data-gpea-language={language} //手動填寫← zh_TW 或 zh_HK 或 en_HK
+				data-gpea-language={market?.toUpperCase() === 'KR' ? 'ko_KR' : language} //手動填寫← zh_TW 或 zh_HK 或 en_HK
 				data-gpea-campaign={campaign} //手動填寫，schema原始資料沒有這個設定
 				data-gpea-campaign-id={campaignId || ''} //手動填寫，依 Donation campaign 手動填寫
 				data-gpea-env={env} //手動填寫← test 或 full 或 production

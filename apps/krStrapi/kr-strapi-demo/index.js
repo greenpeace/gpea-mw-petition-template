@@ -1,10 +1,10 @@
 /** 
  * Dploy Setting:
-PROJECT=twStrapi/petition-climate-inflation
-MARKET=tw
-PROJECT_NAME=petition-climate-inflation
-BASEPATH=/htdocs/2024/petition/petition-climate-inflation
-ASSETPREFIX=https://change.greenpeace.org.tw/2024/petition/petition-climate-inflation/
+PROJECT=krStrapi/kr-strapi-demo
+MARKET=kr
+PROJECT_NAME=kr-strapi-demo
+BASEPATH=/htdocs/2024/test/kr-strapi-demo
+ASSETPREFIX=https://change.greenpeace.org.tw/2024/test/kr-strapi-demo/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-tw.2024.climate.inflation.signup
@@ -66,7 +66,7 @@ function Index({ submitted = false, strapi }) {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
 
-	// const { FirstName } = signup;
+	const { LastName } = signup;
 
 	// get utm_source
 	const { utm_source } = hiddenForm?.data;
@@ -78,11 +78,11 @@ function Index({ submitted = false, strapi }) {
 		// get donation module firstname
 		window.__greenpeace__ = window.__greenpeace__ || {};
 		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
-			setTYName(data.firstName);
+			setTYName(data.lastName);
 		};
 	});
 	useEffect(() => {
-		setTYName(signup?.data?.FirstName);
+		setTYName(signup?.data?.LastName);
 	}, [signup]);
 
 	return (
@@ -217,9 +217,11 @@ function Index({ submitted = false, strapi }) {
 													strapi?.market?.data?.attributes?.market ===
 														'Hong Kong'
 														? 'HK'
-														: 'TW'
+														: strapi?.market?.data?.attributes?.market === 'Korea'
+															? 'KR'
+															:'TW'
 												}
-												language={strapi?.donationModuleLanguage}
+												language={'ko_KR'}
 												campaign={
 													theme?.params?.donation_module_campaign ??
 													strapi?.donationModuleCampaign

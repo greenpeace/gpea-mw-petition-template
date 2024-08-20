@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Field } from '@components/Field/fields';
-import { validation } from '@components/GP/TWForm/validation';
+// import { validation } from '@components/GP/TWForm/validation';
 import {
 	FormControl,
 	FormErrorMessage,
@@ -26,29 +26,50 @@ const CustomFields = ({
 	handleChange,
 	handleBlur,
 	handleSubmit,
-	setFieldValue
+	setFieldValue,
+	setTouched
 }) => {
 	if(!formContent.options_mkt) return (<></>);
 	const [checkedItems, setCheckedItems] = React.useState([false, false, false])
 	const allChecked = checkedItems.every(Boolean)
 
-	const handleCheckbox = (e) => {
-		handleChange(e);
-		values[e.target.name] = e.target.checked;
+	const handleCheckbox = async (e) => {
+		// values[e.target.name] = e.target.checked;
 		if (e.target.name === 'OptIn') {
-			setCheckedItems([e.target.checked, e.target.checked, e.target.checked])
+			await setCheckedItems([e.target.checked, e.target.checked, e.target.checked])
+			// setFieldValue(e.target.name, e.target.checked, true);
+			for(let i = 1; i <= 3; i++){
+				setFieldValue(`OptIn${i}`, e.target.checked, false);
+			}
+			setTouched({
+				OptIn1: true,
+				OptIn2: true,
+				OptIn3: true
+			},true);
 		} else {
-			const index = parseInt(e.target.name.replace('OptIn', '')) -1
+			const index = parseInt(e.target.name.replace('OptIn', '')) -1;
 			const newCheckedItems = [...checkedItems];
 			newCheckedItems[index] = e.target.checked;
+			setCheckedItems(newCheckedItems);
+			await setFieldValue(e.target.name, e.target.checked, true);
+			setFieldValue('OptIn', newCheckedItems.every(Boolean), false);
+			setTouched({
+				OptIn1: true,
+				OptIn2: true,
+				OptIn3: true
+			},true);
 		}
+		handleChange(e);
 	}
+	useEffect(() => {
+		
+	}, [values.OptIn]);
 	return (
 		<>
 			<Box>
 				<FormControl
 						id={formContent.OptIn}
-						isInvalid={errors.OptIn && (touched.OptIn || touched.OptIn1 || touched.OptIn2 || touched.OptIn3)}
+						isInvalid={errors.OptIn && touched.OptIn }
 				>
 					<Flex direction={{ base: 'row' }} align={'flex-start'}>
 						<Box flex={0} mr={2} pt={1}>
@@ -70,7 +91,7 @@ const CustomFields = ({
 				</FormControl>
 				<FormControl
 						id={formContent.OptIn1}
-						isInvalid={errors.OptIn1 && (touched.OptIn || touched.OptIn1 || touched.OptIn2 || touched.OptIn3)}
+						isInvalid={errors.OptIn1 && (touched.OptIn1 || touched.OptIn2 || touched.OptIn3) }
 				>
 					<Flex direction={{ base: 'row' }} align={'flex-start'}>
 						<Box flex={0} mr={2} pt={1}>
@@ -95,7 +116,7 @@ const CustomFields = ({
 				</FormControl>
 				<FormControl
 						id={formContent.OptIn2}
-						isInvalid={errors.OptIn2 && (touched.OptIn || touched.OptIn1 || touched.OptIn2 || touched.OptIn3)}
+						isInvalid={errors.OptIn2 && (touched.OptIn1 || touched.OptIn2 || touched.OptIn3) }
 				>
 					<Flex direction={{ base: 'row' }} align={'flex-start'}>
 						<Box flex={0} mr={2} pt={1}>
@@ -120,7 +141,7 @@ const CustomFields = ({
 				</FormControl>
 				<FormControl
 						id={formContent.OptIn3}
-						isInvalid={errors.OptIn3 && (touched.OptIn || touched.OptIn1 || touched.OptIn2 || touched.OptIn3)}
+						isInvalid={errors.OptIn3 && (touched.OptIn1 || touched.OptIn2 || touched.OptIn3) }
 				>
 					<Flex direction={{ base: 'row' }} align={'flex-start'}>
 						<Box flex={0} mr={2} pt={1}>

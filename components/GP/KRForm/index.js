@@ -40,6 +40,7 @@ const MyForm = (props) => {
 		signup,
 		touched,
 		errors,
+		setTouched,
 		handleChange,
 		handleBlur,
 		handleSubmit,
@@ -153,7 +154,14 @@ const MyForm = (props) => {
 				setFieldValue('Namelist', formContent.namelist[0].value);
 			if (formContent.additional)
 				setFieldValue(formContent.additional.fieldName, '');
+
+			if(Object.keys(formContent.custom_default_values).length > 0) {
+				Object.keys(formContent.custom_default_values).map((key) => {
+					setFieldValue(key, formContent.custom_default_values[key]);
+				});
+			}
 		}
+		
 	}, [formContent]);
 
 	useEffect(() => {
@@ -332,29 +340,32 @@ const MyForm = (props) => {
 							</Box>
 						</HStack>
 						
-						<Box>
-							<FormControl
-								id="Birthdate"
-								isInvalid={errors.Birthdate && touched.Birthdate}
-							>
-								<Select
-									onChange={handleChange}
-									placeholder={formContent.label_year_of_birth}
-									fontSize={'16px'}
-									size={'lg'}
+						{formContent.label_year_of_birth && (
+							<Box>
+								<FormControl
+									id="Birthdate"
+									isInvalid={errors.Birthdate && touched.Birthdate}
 								>
-									{birthDateYear &&
-										birthDateYear.map((d) => (
-											<option key={d.value} value={`${d.value}-01-01`}>
-												{d.value}
-											</option>
-										))}
-								</Select>
-								<FormErrorMessage px={2} color="var(--error-900)">
-									{errors.Birthdate}
-								</FormErrorMessage>
-							</FormControl>
-						</Box>
+									<Select
+										onChange={handleChange}
+										placeholder={formContent.label_year_of_birth}
+										fontSize={'16px'}
+										size={'lg'}
+									>
+										{birthDateYear &&
+											birthDateYear.map((d) => (
+												<option key={d.value} value={`${d.value}-01-01`}>
+													{d.value}
+												</option>
+											))}
+									</Select>
+									<FormErrorMessage px={2} color="var(--error-900)">
+										{errors.Birthdate}
+									</FormErrorMessage>
+								</FormControl>
+							</Box>
+						)}
+						
 
 						{CustomFields && formContent && (
 							<CustomFields 
@@ -365,6 +376,8 @@ const MyForm = (props) => {
 								handleChange={handleChange}
 								handleBlur={handleBlur}
 								setFieldValue={setFieldValue}
+								setTouched={setTouched}
+								// setFieldTouched={setFieldTouched}
 							/>
 						)}					
 
@@ -559,15 +572,18 @@ const MyForm = (props) => {
 };
 
 const MyEnhancedForm = withFormik({
-	mapPropsToValues: ({formContent}) => ({
-		Email: '',
-		// FirstName: '',
-		LastName: '',
-		MobilePhone: '',
-		// OptIn: false,
-		Birthdate: '',
-		...formContent.custom_default_values
-	}),
+	mapPropsToValues: (props) => {
+		console.log('props', props);
+		return {
+			Email: '',
+			// FirstName: '',
+			LastName: '',
+			MobilePhone: '',
+			// OptIn: false,
+			// Birthdate: '',
+			// ...formContent.custom_default_values
+		}
+	},
 
 	validate: async (values, props) => {
     const { formContent, CustomRules } = props;
@@ -591,7 +607,7 @@ const MyEnhancedForm = withFormik({
 			? websignEndpointURL !== '' && websignEndpointURL !== undefined
 				? websignEndpointURL
 				: theme.EndpointURL
-			: dummyEndpointURL !== '' && dummyEndpointURL !== undefined
+			: dummyEndpointURL !== '' && dummyEndpointURL !== undefined && !dummyEndpointURL.includes('greenkr')
 			? dummyEndpointURL
 			: process.env.dummyEndpoint;
 

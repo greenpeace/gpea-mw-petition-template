@@ -24,7 +24,7 @@ export function validation(values, formContent, customRules) {
 			formContent?.empty_phone_alert || formContent.empty_data_alert;
 	}
 
-	if (!values.Birthdate) {
+	if (formContent.label_year_of_birth !== "" && !values.Birthdate) {
 		errors.Birthdate = formContent.empty_data_alert;
 	}
 
