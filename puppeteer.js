@@ -160,28 +160,71 @@ async function waitMilliSeconds(ms) {
 		await page.waitForSelector('.mc-canvas-region iframe.mc-app-iframe')
 		let iframeElement = await page.$('.mc-canvas-region iframe.mc-app-iframe');
 		let frame = await iframeElement.contentFrame();
+		await frame.waitForSelector('.cp-objectmanager-iframe')
+		let cbElement = await frame.$('.cp-objectmanager-iframe');
+		let cbFrame = await cbElement.contentFrame();
+		// await cbFrame.waitForSelector('input.slds-input');
+		console.log('Waiting the Cloud Page list to show')
+		await waitMilliSeconds(10 * 1000);
+		await cbFrame.waitForSelector('input.slds-input');
+		await cbFrame.type('input.slds-input', targetPageName, { delay: 100 });
+		console.log('Waitinn for seatch cloud page name')
+		await waitMilliSeconds(5 * 1000);
+		
+		const dropdownHandle = await cbFrame.$(`.slds-truncate[title="${targetPageName}"]`);
 
-		await frame.waitForSelector('div.cp-home-content')
+		if (dropdownHandle) {
+				// 從該元素開始，向上查找最近的 <tr> 元素
+				const trElement = await dropdownHandle.evaluateHandle(element => {
+						return element.closest('tr');
+				});
 
-		console.log('Switch to landing page menu')
-		await frame.click('div.cp-home-content > div.left-col > nav > div > ul > li:nth-child(2)')
+				// 在該 <tr> 元素內查找 <button> 元素
+				const buttonHandle = await trElement.$('button:nth-child(1)');
 
-		// show 1000 results per page
-		console.log('Expand to 1000 results to show all the pages')
-		await frame.waitForSelector('#pageSizeDropdownBTN')
-		await frame.click('#pageSizeDropdownBTN')
-		await frame.waitForSelector('#landingPagesPager-item-4')
-		await frame.click('#landingPagesPager-item-4')
-
-		console.log('Waiting load page list')
-		await frame.waitForSelector('.slds-box.cp-item.published', {timeout: 60*1000});
-
-		// switch to the target page
-		const [elementHandle] = await frame.$x(`//span[text()="${targetPageName}"]`);
-		if ( !elementHandle) {
-			throw new Error(`Cannot find the page "${targetPageName}" in Market "${targetMarket}"`)
+				if (buttonHandle) {
+						// 對 <button> 元素執行操作，例如 click
+						await buttonHandle.evaluateHandle(element => {
+							element.click();
+						});
+						console.log('find buttonHandle: ', Boolean(buttonHandle));
+						// await waitMilliSeconds(1 * 1000);
+						// await buttonHandle.click();
+						await waitMilliSeconds(1 * 1000);
+						await cbFrame.waitForSelector('.absolute-positioned.slds-dropdown')
+						const dropdown = await cbFrame.$('.absolute-positioned.slds-dropdown a[data-index="0"]')
+						await dropdown.evaluateHandle(element => {
+							element.click();
+						});
+						console.log('find dropdown: ', Boolean(dropdown));
+				} else {
+						console.log('Button not found');
+				}
+		} else {
+				console.log('Element with specified title not found');
 		}
-		await elementHandle.evaluate(e => e.click());
+
+		// await frame.waitForSelector('div.cp-home-content')
+
+		// console.log('Switch to landing page menu')
+		// await frame.click('div.cp-home-content > div.left-col > nav > div > ul > li:nth-child(2)')
+
+		// // show 1000 results per page
+		// console.log('Expand to 1000 results to show all the pages')
+		// await frame.waitForSelector('#pageSizeDropdownBTN')
+		// await frame.click('#pageSizeDropdownBTN')
+		// await frame.waitForSelector('#landingPagesPager-item-4')
+		// await frame.click('#landingPagesPager-item-4')
+
+		// console.log('Waiting load page list')
+		// await frame.waitForSelector('.slds-box.cp-item.published', {timeout: 60*1000});
+
+		// // switch to the target page
+		// const [elementHandle] = await frame.$x(`//span[text()="${targetPageName}"]`);
+		// if ( !elementHandle) {
+		// 	throw new Error(`Cannot find the page "${targetPageName}" in Market "${targetMarket}"`)
+		// }
+		// await elementHandle.evaluate(e => e.click());
 
 		console.log('Waiting the editor panel load')
 		await waitMilliSeconds(10 * 1000);
