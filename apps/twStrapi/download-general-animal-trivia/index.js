@@ -250,7 +250,7 @@ function Index({ submitted = false, strapi }) {
 												/>
 											)
 										) : (
-											<SignupForm setSignupBtnRef={setSignupBtnRef} hasMKT={false} />
+											<SignupForm setSignupBtnRef={setSignupBtnRef} />
 										)}
 									</Box>
 									<div ref={FormBtnref}></div>

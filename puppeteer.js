@@ -167,7 +167,7 @@ async function waitMilliSeconds(ms) {
 		console.log('Waiting the Cloud Page list to show')
 		await waitMilliSeconds(10 * 1000);
 		await cbFrame.waitForSelector('input.slds-input');
-		await cbFrame.type('input.slds-input', targetPageName, { delay: 100 });
+		await cbFrame.type('input.slds-input', targetPageName);
 		console.log('Waitinn for seatch cloud page name')
 		await waitMilliSeconds(5 * 1000);
 		

@@ -459,23 +459,34 @@ const MyForm = (props) => {
 						)}
 						{formContent.label_newsletter && hasMKT && (
 							<Box>
-								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-									<Box flex={0} mr={2} pt={1}>
-										<Checkbox
-											id="OptIn"
-											name="OptIn"
-											onChange={handleChange}
-											defaultChecked
-										/>
-									</Box>
-									<Text
-										fontSize="xs"
-										color={'gray.700'}
-										dangerouslySetInnerHTML={{
-											__html: formContent.label_newsletter
-										}}
-									></Text>
-								</Flex>
+								<FormControl
+									id="OptIn"
+									isInvalid={errors.OptIn && touched.OptIn}
+								>
+									<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+										<Box flex={0} mr={2} pt={0.5}>
+											<Checkbox
+												// id="OptIn"
+												name="OptIn"
+												onChange={handleChange}
+												handleBlur={handleBlur}
+												// defaultChecked
+											/>
+										</Box>
+										<Text
+											fontSize="xs"
+											color={'gray.700'}
+											dangerouslySetInnerHTML={{
+												__html: formContent.label_newsletter
+											}}
+										></Text>
+										
+									</Flex>
+									<FormErrorMessage pl={6} color="var(--error-900)" mt={-4} fontSize={'xs'}>
+										{errors.OptIn}
+									</FormErrorMessage>
+								</FormControl>
+								
 							</Box>
 						)}
 
@@ -563,7 +574,7 @@ const MyEnhancedForm = withFormik({
 		FirstName: '',
 		LastName: '',
 		MobilePhone: '',
-		OptIn: true,
+		OptIn: false,
 		Birthdate: '',
 		...formContent?.custom_default_values
 	}),

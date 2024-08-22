@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 const StrapiFixedButton = ({ target, targetInView, status , customColor}) => {
 	const { submitted } = status;
 	const strapi = useSelector((state) => state?.theme?.strapi);
+	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const pinkBtn = (pageType?.toLowerCase() === 'donation' || submitted) && strapi?.market?.data?.attributes?.slug === 'tw';
 	// get utm_source
 	const { utm_source } = hiddenForm?.data;
 
@@ -37,8 +39,8 @@ const StrapiFixedButton = ({ target, targetInView, status , customColor}) => {
 		py: '12px',
 		px: '4px',
 		color: 'white',
-		bg: customColor ? customColor : 'orange.500',
-		_hover: { bg: 'orange.300' }
+		bg: pinkBtn ? '#F11777' : 'orange.500',
+		_hover: { bg: pinkBtn ? '#F11777' : 'orange.300' }
 	};
 
 	const handleScroll = (target) => {

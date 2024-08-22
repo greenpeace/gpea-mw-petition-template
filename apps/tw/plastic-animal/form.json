@@ -18,7 +18,7 @@
 
 	"empty_data_alert": "請填寫資料",
 	"empty_select_data_alert": "請選擇",
-	"empty_phone_alert": "請填手機號碼，確保接收專案相關通知",
+	"empty_phone_alert": "請填寫手機號碼",
 
 	"invalid_email_alert": "請填上有效電子郵件",
 	"invalid_format_alert": "請輸入有效格式",
