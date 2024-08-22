@@ -22,7 +22,8 @@ import {
 	hkDevTagManagerArgs,
 	twDevTagManagerArgs,
 	hkTagManagerArgs,
-	twTagManagerArgs
+	twTagManagerArgs,
+	krTagManagerArgs
 } from '@common/constants/tagManagerArgs';
 
 
@@ -94,6 +95,8 @@ function Index({
 				break;
 			case 'TW':
 				setGtmId(twTagManagerArgs.gtmId);
+			case 'KR':
+				setGtmId(krTagManagerArgs.gtmId);
 			default:
 				break;
 		}

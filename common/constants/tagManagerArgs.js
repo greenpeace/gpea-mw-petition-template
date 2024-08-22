@@ -17,3 +17,6 @@ export const hkTagManagerArgs = {
 export const twTagManagerArgs = {
   gtmId: 'GTM-WRM6WK6',
 };
+export const krTagManagerArgs = {
+  gtmId: 'GTM-N8J9GB',
+};
