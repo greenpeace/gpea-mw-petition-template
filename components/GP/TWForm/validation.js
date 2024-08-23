@@ -40,7 +40,9 @@ export function validation(values, formContent, customRules) {
 		errors.Address = formContent.empty_data_alert;
 	}
 
-	
+	if(!values.OptIn) {
+		errors.OptIn = formContent?.empty_mkt_alert || "您尚未同意隱私權保護政策";
+	}
 	if (customRules) {
 		errors = {
 			...errors,
