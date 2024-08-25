@@ -3,11 +3,11 @@
 PROJECT=krStrapi/kr-strapi-demo
 MARKET=kr
 PROJECT_NAME=kr-strapi-demo
-BASEPATH=/htdocs/2024/test/kr-strapi-demo
-ASSETPREFIX=https://change.greenpeace.org.tw/2024/test/kr-strapi-demo/
+BASEPATH=/web/gpseoulwebserver.co.kr/htdocs/test/kr-strapi-demo
+ASSETPREFIX=https://gpseoulwebserver.co.kr/test/kr-strapi-demo/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=zh-tw.2024.climate.inflation.signup
+CLOUD_PAGE_NAME=kr-strapi-demo
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
