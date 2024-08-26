@@ -12,7 +12,8 @@
 	"label_newsletter": "我已詳細閱讀並同意<a href=\"https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/\" target=\"_blank\"><u>隱私保護政策</u></a>。",
 	
 	"empty_mkt_alert": "您尚未同意隱私權保護政策",
-	"empty_phone_alert": "請填手機號碼",
+	"empty_data_alert": "請填寫資料",
+	"empty_phone_alert": "請填寫手機號碼",
 	"empty_select_data_alert": "請選擇",
 
 	"invalid_email_alert": "請填上有效電子郵件",

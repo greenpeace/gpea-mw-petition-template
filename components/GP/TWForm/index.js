@@ -469,7 +469,7 @@ const MyForm = (props) => {
 												// id="OptIn"
 												name="OptIn"
 												onChange={handleChange}
-												handleBlur={handleBlur}
+												onBlur={handleBlur}
 												// defaultChecked
 											/>
 										</Box>
