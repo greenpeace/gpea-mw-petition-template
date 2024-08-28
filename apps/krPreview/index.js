@@ -1,20 +1,23 @@
 /** 
  * Dploy Setting:
-PROJECT=krStrapi/kr-strapi-demo
+PROJECT=krPreview
 MARKET=kr
-PROJECT_NAME=kr-strapi-demo
-BASEPATH=/web/gpseoulwebserver.co.kr/htdocs/test/kr-strapi-demo
-ASSETPREFIX=https://gpseoulwebserver.co.kr/test/kr-strapi-demo/
-FTP_CONFIG_NAME=ftp_kr
+PROJECT_NAME=preview
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/app/preview-kr
+ASSETPREFIX=https://api.greenpeace.org.hk/app/preview-kr/
+FTP_CONFIG_NAME=api_hk_cloud
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=kr-strapi-demo
+CLOUD_PAGE_NAME=preview
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import * as formActions from 'store/actions/action-types/form-actions';
+import * as themeActions from 'store/actions/action-types/theme-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
 import { Box, Flex } from '@chakra-ui/react';
+import { stringify } from 'qs';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
 import OverflowWrapper from '@containers/overflowWrapper';
@@ -39,6 +42,8 @@ import formContent from './form';
 // Import static
 
 function Index({ submitted = false, strapi }) {
+	strapi = useSelector((state) => state?.theme?.strapi);
+	const router = useRouter();
 	const dispatch = useDispatch();
 	const theme = useSelector((state) => state?.theme);
 	const signup = useSelector((state) => state?.signup);
@@ -59,15 +64,71 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0,
 		rootMargin: '-70px 0px 120px 0px'
 	});
+	const [isLoaded, setIsLoaded] = useState(false);
+
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
-	}, [dispatch]);
+		if (pageType !== undefined) {
+			setIsLoaded(true);
+		}
+	}, [dispatch, pageType]);
 
 	const { LastName } = signup;
 	
+	useEffect(async () => {
+		if (router?.isReady) {
+			const { preview } = router?.query;
+			if (preview) {
+				const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
+				const query = stringify(
+					{
+						filters: {
+							market: { slug: 'kr' },
+							campaign: preview
+						},
+						populate: {
+							contentBlocks: {
+								populate: [
+									'CardSlider.image',
+									'TestimonialSlider.avatar',
+									'CarouselSlider.image'
+								]
+							},
+							contentHero: { populate: '*' },
+							issue: { populate: { filters: { name: { $neq: 'pages' } } } },
+							market: { populate: { filters: { name: { $neq: 'pages' } } } },
+							page_type: { populate: { filters: { name: { $neq: 'pages' } } } },
+							seo: { populate: '*' },
+							thankyouBlocks: { populate: [
+								'CardSlider.image',
+								'TestimonialSlider.avatar',
+								'CarouselSlider.image'
+							] },
+							thankyouHero: { populate: '*' }
+						}
+					},
+					{
+						encodeValuesOnly: true // prettify URL
+					}
+				);
+
+				const res = await fetch(
+					`${endpoint}/pages?${query}`
+				).then((response) => response);
+				const themes = await res.json();
+				const theme = themes?.data[0] ?? {};
+
+				dispatch({
+					type: themeActions.SET_STRAPI_DATA,
+					data: theme?.attributes
+				});
+			}
+		}
+	}, [router]);
+
 	// get utm_source
 	const { utm_source } = hiddenForm?.data;
 
@@ -89,41 +150,9 @@ function Index({ submitted = false, strapi }) {
 		<>
 			<StrapiSEO strapi={strapi} />
 			<Box>
-				{(() => {
-					if (pageType?.toLowerCase() === 'donation') {
-						return (
-							<HeroBanner
-								removeMask={strapi?.contentHero?.removeMask}
-								defaultImage={
-									theme?.params?.hero_image_desktop ||
-									strapi?.contentHero?.desktopImageURL
-								}
-								imageSrcset={[
-									{
-										media: '(min-width: 48em)',
-										srcset:
-											theme?.params?.hero_image_desktop ||
-											strapi?.contentHero?.desktopImageURL
-									},
-									{
-										media: '',
-										srcset:
-											theme?.params?.hero_image_mobile ||
-											strapi?.contentHero?.mobileImageURL
-									}
-								]}
-								content={{
-									title: theme?.params?.headline_prefix
-										? theme?.params?.headline_prefix +
-										'<br/>' +
-										strapi?.contentHero?.richContent
-										: strapi?.contentHero?.richContent,
-									description: strapi?.contentHero?.richContentParagraph
-								}}
-							/>
-						);
-					} else {
-						return submitted ? (
+				{isLoaded && (
+					<>
+						{submitted ? (
 							<ThanksBanner
 								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
@@ -181,15 +210,16 @@ function Index({ submitted = false, strapi }) {
 									description: strapi?.contentHero?.richContentParagraph
 								}}
 							/>
-						);
-					}
-				})()}
+						)}
+					</>
+				)}
 			</Box>
 			<PageContainer>
 				<OverflowWrapper>
 					<Flex flexDirection={{ base: 'column-reverse', md: 'row' }}>
 						<Box minWidth={0} flex={1} mt={{ base: 10, sm: 60 }}>
 							<ContentContainer issue={strapi?.issue?.data?.attributes?.slug}>
+							{isLoaded && (
 								<>
 									{submitted ? (
 										<StrapiDynamicBlocks
@@ -205,9 +235,28 @@ function Index({ submitted = false, strapi }) {
 										/>
 									)}
 								</>
+								)}
+								{isLoaded && (
+									<>
+										{pageType?.toLowerCase() === 'donation' && !submitted && (
+											<>
+												<Heading
+													as="p"
+													textAlign="center"
+													py="6"
+													fontSize={{ base: 'xl', md: '2xl' }}
+												>
+													常見問題
+												</Heading>
+												<DonateFAQ locale="TWChinese" />
+											</>
+										)}
+									</>
+								)}
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
+							{isLoaded && (
 							<FormContainer>
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
@@ -241,6 +290,7 @@ function Index({ submitted = false, strapi }) {
 								</Box>
 								<div ref={FormBtnref}></div>
 							</FormContainer>
+							)}
 						</Box>
 					</Flex>
 				</OverflowWrapper>
