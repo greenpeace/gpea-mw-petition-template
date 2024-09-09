@@ -470,7 +470,7 @@ const MyForm = (props) => {
 												name="OptIn"
 												onChange={handleChange}
 												onBlur={handleBlur}
-												// defaultChecked
+												defaultChecked
 											/>
 										</Box>
 										<Text
@@ -574,7 +574,7 @@ const MyEnhancedForm = withFormik({
 		FirstName: '',
 		LastName: '',
 		MobilePhone: '',
-		OptIn: false,
+		OptIn: true,
 		Birthdate: '',
 		...formContent?.custom_default_values
 	}),

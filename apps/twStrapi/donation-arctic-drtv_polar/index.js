@@ -195,7 +195,6 @@ function Index({ submitted = false, strapi }) {
 													strapi?.donationModuleCampaign
 												}
 												isUAT={false}
-												customUrl={'https://change.greenpeace.org.tw/2024/test/param-pop/main.js'}
 												campaignId={
 													theme?.params?.campaignId ??
 													strapi?.donationModuleCampaignId ??
