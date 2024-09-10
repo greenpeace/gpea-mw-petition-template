@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Slide, Center, Button } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 
-const StrapiFixedButton = ({ target, targetInView, status , customColor}) => {
+const StrapiFixedButton = ({ target, targetInView, status , customColor, hideFixedButton=false }) => {
 	const { submitted } = status;
 	const strapi = useSelector((state) => state?.theme?.strapi);
 	const pageType = strapi?.page_type?.data?.attributes?.name;
@@ -51,7 +51,7 @@ const StrapiFixedButton = ({ target, targetInView, status , customColor}) => {
 	};
 
 	return (
-		(!(utm_source == 'dd' && submitted)) && (
+		(!(utm_source == 'dd' && submitted) && !hideFixedButton) && (
 			<Slide direction="bottom" in={!targetInView} style={{ zIndex: 10 }}>
 				<Center {...styleProps}>
 					<Button {...buttonStyleProps} onClick={() => handleScroll(target)}>

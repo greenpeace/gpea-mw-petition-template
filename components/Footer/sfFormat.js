@@ -16,7 +16,7 @@ import logo from '@common/images/logo/GP-logo-2019-white-[web].png';
 
 const SFFormat = ({ locale }) => {
   const [content, setContent] = useState(HKChinese);
-
+  const [footerLayout, setFooterLayout] = useState('');
   useEffect(() => {
     if (locale) {
       switch (locale) {
@@ -31,6 +31,9 @@ const SFFormat = ({ locale }) => {
           break;
           case 'Korean':
             setContent(Korean);
+            setFooterLayout({
+              flex: { base: '1 1 100%', md: '0 0 65%'},
+            });
             break;
         default:
           break;
@@ -49,13 +52,11 @@ const SFFormat = ({ locale }) => {
           direction={{ base: 'column-reverse', md: 'row' }}
           color={'white'}
         >
-          <Stack direction="column" spacing={4} mb={8}>
+          <Stack direction="column" spacing={4} mb={8} {...footerLayout} >
             <Box>
               {content.leftContent.map((d, i) => (
                 <Box key={i}>
-                  <Text as="p" mb="4">
-                    {d}
-                  </Text>
+                  <Text as="p" mb="4" dangerouslySetInnerHTML={{ __html: d }} />
                 </Box>
               ))}
             </Box>

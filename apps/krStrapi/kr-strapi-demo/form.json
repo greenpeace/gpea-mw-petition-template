@@ -45,8 +45,8 @@
 	"options_mkt": [
 		{	"label": "모든 항목 선택하기", "value": true},
 		{ "label": "(필수) 그린피스 후원안내 수신동의", "value": true },
-		{ "label": "(필수) 개인정보 수집/이용에 동의 내용 보기", "value": true },
-		{ "label": "(필수) 개인정보 제3자 제공동의 내용 보기", "value": true }
+		{ "label": "(필수) 개인정보 수집/이용에 동의 <a href=\"https://www.greenpeace.org/korea/personal-info-agreement-petition\" target=\"_blank\" rel=\"noopener\"><u>내용 보기</u></a>", "value": true },
+		{ "label": "(필수) 개인정보 제3자 제공동의 <a href=\"https://www.greenpeace.org/korea/personal-info-agreement-3rd\" target=\"_blank\" rel=\"noopener\"><u>내용 보기</u></a>", "value": true }
 	],
 	"unchecked_alert": "필수 입력 입니다."
 }

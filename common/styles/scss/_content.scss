@@ -1,4 +1,4 @@
-.content {
+body:not(.kr) .content {
 	h1,
 	h2,
 	h3,
@@ -8,6 +8,19 @@
 		color: var(--thematic-color) !important;
 		span {
 			color: var(--thematic-color) !important;
+		}
+	}
+}
+.kr .strapi-content {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: var(--thematic-color);
+		span {
+			color: var(--thematic-color);
 		}
 	}
 }

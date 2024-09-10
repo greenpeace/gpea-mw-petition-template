@@ -359,7 +359,10 @@ export async function getStaticProps(context) {
 	if(process.env.project.indexOf('Preview') >= 0) {
 			return {
 				props: {
-					themeData: singleResult || {},
+					themeData: singleResult || {
+						Market: envProjectMarket,
+						ProjectName: envProjectName,
+					},
 					strapi: theme
 				}
 			};

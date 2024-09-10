@@ -238,6 +238,7 @@ const MyForm = (props) => {
 							as="h2"
 							{...headingProps}
 							mb="0"
+							lineHeight={1.7}
 							dangerouslySetInnerHTML={{ __html: formContent.form_header }}
 						/>
 					</Box>
@@ -248,6 +249,7 @@ const MyForm = (props) => {
 							as="p"
 							{...paragraphProps}
 							mb="0"
+							lineHeight={1.7}
 							dangerouslySetInnerHTML={{ __html: formContent.form_description }}
 						/>
 					</Box>
@@ -630,7 +632,7 @@ const MyEnhancedForm = withFormik({
 			UtmCampaign: fallbackValue(hiddenFormData.utm_campaign),
 			UtmContent: fallbackValue(hiddenFormData.utm_content),
 			UtmTerm: fallbackValue(hiddenFormData.utm_term),
-			MobileCountryCode: '886',
+			MobileCountryCode: '82',
 			CampaignId: campaignId,
 			LeadSource: LeadSource,
 			[`Petition_Interested_In_${

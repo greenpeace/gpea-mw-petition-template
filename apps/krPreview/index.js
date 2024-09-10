@@ -54,6 +54,7 @@ function Index({ submitted = false, strapi }) {
 
 	const [signupBtnRef, setSignupBtnRef] = useState(null);
 	const signupBtnRootMargin = useSignupBtnRootMargin(FormRef, signupBtnRef);
+	const [hideFixedButton, setHideFixedButton] = useState(false);
 
 	const [ref, inView] = useInView({
 		threshold: 0,
@@ -141,10 +142,17 @@ function Index({ submitted = false, strapi }) {
 		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
 			setTYName(data.lastName);
 		};
+		if(window?.__greenpeace__?.currentStep > 1 && document.querySelector('.step--15')) {
+			setHideFixedButton(window.getComputedStyle(document.querySelector('.step--15')).display !== 'none');
+		}else {
+			setHideFixedButton(false);
+		}
 	});
 	useEffect(() => {
 		setTYName(signup?.data?.LastName);
 	}, [signup]);
+
+
 
 	return (
 		<>
@@ -175,7 +183,7 @@ function Index({ submitted = false, strapi }) {
 								]}
 								content={{
 									//title: strapi?.thankyouHero?.richContent,
-									title: `${TYName ? TYName : '綠色和平支持者'}，${strapi?.thankyouHero?.richContent
+									title: `${TYName ? TYName : '綠色和平支持者'}님，${strapi?.thankyouHero?.richContent
 										}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
@@ -303,6 +311,7 @@ function Index({ submitted = false, strapi }) {
 						? btnInView
 						: inView
 				}
+				hideFixedButton={hideFixedButton}
 			/>
 		</>
 	);

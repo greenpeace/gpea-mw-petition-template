@@ -15,7 +15,7 @@ export function validation(values, formContent, customRules) {
 	// 	errors.FirstName = formContent.empty_data_alert;
 	// }
 
-	if (!values.LastName) {
+	if (!values.LastName || /\s/.test(values.LastName)) {
 		errors.LastName = formContent.empty_data_alert;
 	}
 
@@ -49,7 +49,7 @@ export function validation(values, formContent, customRules) {
 	}
 
 	if (values.MobilePhone) {
-		const phoneReg = new RegExp(/^010-\d{4}-\d{4}$|^010\d{8}$/).test(
+		const phoneReg = new RegExp(/^01[0-9]-\d{3,4}-\d{4}$/).test(
 			values.MobilePhone
 		);
 		if (!phoneReg) {
