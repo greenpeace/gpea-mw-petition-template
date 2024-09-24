@@ -22,7 +22,8 @@ import {
 	hkDevTagManagerArgs,
 	twDevTagManagerArgs,
 	hkTagManagerArgs,
-	twTagManagerArgs
+	twTagManagerArgs,
+	krTagManagerArgs
 } from '@common/constants/tagManagerArgs';
 
 
@@ -94,10 +95,14 @@ function Index({
 				break;
 			case 'TW':
 				setGtmId(twTagManagerArgs.gtmId);
+			case 'KR':
+				setGtmId(krTagManagerArgs.gtmId);
 			default:
 				break;
 		}
 	};
+
+
 
 	/* Set dynamic theme parameters */
 	useEffect(() => {
@@ -236,7 +241,7 @@ function Index({
 			(strapi?.market?.data?.attributes?.market === 'Hong Kong'
 				? 'HK'
 				: 'TW') ||
-			(domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : '');
+			(domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : domain.indexOf('kr') > 0 ? 'KR' : '');
 
 		/* GTM is only applicable for production env */
 
@@ -354,7 +359,10 @@ export async function getStaticProps(context) {
 	if(process.env.project.indexOf('Preview') >= 0) {
 			return {
 				props: {
-					themeData: singleResult || {},
+					themeData: singleResult || {
+						Market: envProjectMarket,
+						ProjectName: envProjectName,
+					},
 					strapi: theme
 				}
 			};

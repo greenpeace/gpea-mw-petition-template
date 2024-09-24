@@ -123,9 +123,10 @@ async function waitMilliSeconds(ms) {
 		console.log('Waiting for BU name appear')
 		await page.waitForSelector('.mc-header-menu.mc-header-accounts .value');
 		elements = await page.$$('.mc-account-switcher-name');
+		const BULang = targetMarket === "KR" ? "Korea" : targetMarket;
 		for (const element of elements) {
 			const text = await page.evaluate(el => el.textContent, element);
-			if (text.includes(targetMarket)) {
+			if (text.includes(BULang)) {
 				console.log('Switching to BU', text)
 				await page.evaluate(el => el.click(), element);
 				await waitMilliSeconds(3 * 1000);
@@ -135,13 +136,13 @@ async function waitMilliSeconds(ms) {
 		// wait changing BU, wait the target el contains the given text
 		console.log('Waiting target market name shows on the menu')
 		await page.waitForFunction(
-			(selector, targetMarket) => {
+			(selector, BULang) => {
 				const element = document.querySelector(selector);
-				return element && element.textContent.includes(targetMarket);
+				return element && element.textContent.includes(BULang);
 			},
 			{},
 			'.mc-header-menu.mc-header-accounts .value',
-			targetMarket
+			BULang
 		);
 
 		// resole the current BizUnit name

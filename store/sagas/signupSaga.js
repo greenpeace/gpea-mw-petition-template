@@ -7,7 +7,7 @@ import objFilter from '@common/utils/objFilter';
 
 export function* submitForm(actions) {
   const state = yield select();
-  const { ProjectName, EventLabel } = state.theme.data;
+  const { ProjectName, EventLabel, market } = state.theme.data;
   try {
     const response = yield call(() =>
       fetch(`${actions.endPoint}`, {
@@ -59,19 +59,22 @@ export function* submitForm(actions) {
           'event_label': actions.data?.CampaignId
         })
 
-        // web event history
-        helper.sendWebEventHistory({
-          ...actions.data,
-          'ua': window.navigator.userAgent,
-          'url': window.location.href,
-          'event': {
-            'event': 'custom_event',
-            'event_name' : 'petition_signup',
-            'event_category': 'petitions',
-            'event_action': 'signup',
-            'event_label': actions.data?.CampaignId
-          }
-        });
+        if(market !== 'kr'){
+          // web event history
+          helper.sendWebEventHistory({
+            ...actions.data,
+            'ua': window.navigator.userAgent,
+            'url': window.location.href,
+            'event': {
+              'event': 'custom_event',
+              'event_name' : 'petition_signup',
+              'event_category': 'petitions',
+              'event_action': 'signup',
+              'event_label': actions.data?.CampaignId
+            }
+          });
+        }
+        
         
       } else {
         console.log('Project undefined');
