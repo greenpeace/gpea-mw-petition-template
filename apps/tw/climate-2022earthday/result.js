@@ -27,7 +27,9 @@ import {
   paragraphProps,
 } from '@common/styles/components/contentStyle';
 
-const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+// const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+import DonationModule from '@components/GP/DonationModule';
+// const DonationModule = dynamic(() => import('@components/GP/DonationModule'));
 const SignupForm = dynamic(() => import('@components/GP/TWForm'));
 
 const ThankyouContent = dynamic(() => import('./resultContent/resultContent'));
@@ -124,7 +126,16 @@ function Index({
     });
   }, [result]);
 
-  const RenderForm = () => (submitted ? <DonateForm /> : <SignupForm />);
+  const RenderForm = () => (submitted ? 
+    <DonationModule
+      market={'TW'}
+      language={'zh_TW'}
+      campaign={
+        'general_mw'
+      }
+      campaignId={theme?.params?.campaignId ?? theme?.CampaignId ?? ''}
+      env={'production'}
+    /> : <SignupForm />);
 
   return (
     <>
@@ -201,8 +212,8 @@ function Index({
                   </Box>
                 </Stack>
               </Box>
-              <Box flex={1} position="relative" zIndex={3}>
-                <Box py={2} d={{ base: 'block', md: 'none' }}>
+              <Box >
+                {/* <Box py={2} d={{ base: 'block', md: 'none' }}>
                   <Container>
                     <Box
                       maxW="100%"
@@ -216,21 +227,23 @@ function Index({
                       <RenderForm />
                     </Box>
                   </Container>
-                </Box>
+                </Box> */}
 
                 {submitted && (
-                  <ContentContainer theme={theme} py={4}>
-                    <Box>
-                      <ThankyouContent />
-                    </Box>
-                  </ContentContainer>
+                  <Box display={{ base: 'none', md: 'block' }}>
+                    <ContentContainer theme={theme} py={4}>
+                      <Box>
+                        <ThankyouContent />
+                      </Box>
+                    </ContentContainer>
+                  </Box>
                 )}
               </Box>
             </GridItem>
-            <GridItem w="100%" d={{ base: 'none', md: 'block' }}>
-              {submitted && (
+            <GridItem>
+              {/* {submitted && (
                 <Box h={`${bgElementHeight - bgElementHeight / 2}px`} />
-              )}
+              )} */}
               <Box
                 zIndex={9}
                 position={{ md: 'sticky' }}
@@ -240,10 +253,28 @@ function Index({
               >
                 <FormContainer>
                   <Box>
-                    <RenderForm />
+                    {(submitted ? 
+                      <DonationModule
+                        market={'TW'}
+                        language={'zh_TW'}
+                        campaign={
+                          'general_mw'
+                        }
+                        campaignId={theme?.params?.campaignId ?? theme?.CampaignId ?? ''}
+                        env={'production'}
+                      /> : <SignupForm />)}
                   </Box>
                 </FormContainer>
               </Box>
+              {submitted && (
+                <Box display={{ base: 'block', md: 'none' }}>
+                  <ContentContainer theme={theme} py={4}>
+                    <Box>
+                      <ThankyouContent />
+                    </Box>
+                  </ContentContainer>
+                </Box>
+              )}
             </GridItem>
           </Grid>
         </PageContainer>
