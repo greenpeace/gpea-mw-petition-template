@@ -23,7 +23,7 @@
 	"invalid_email_alert": "이메일 형식이 유효하지 않습니다",
 	"invalid_format_alert": "올바른 형식을 입력하세요.",
 	"minimum_8_characters": "請輸入8位數字",
-	"suggestion_message": "您是否想輸入",
+	"suggestion_message": "이 주소가 맞습니까 ",
 
 	"submit_text": "청원하기",
 	"thanks_title": "",
@@ -41,12 +41,11 @@
 		{ "label": "否", "value": false }
 	],
 
-	"custom_default_values": {"OptIn": "", "OptIn1": "", "OptIn2": "", "OptIn3": ""},
+	"custom_default_values": {"OptIn": "", "OptIn1": "", "OptIn2": ""},
 	"options_mkt": [
 		{	"label": "모든 항목 선택하기", "value": true},
 		{ "label": "(필수) 그린피스 후원안내 수신동의", "value": true },
-		{ "label": "(필수) 개인정보 수집/이용에 동의 <a href=\"https://www.greenpeace.org/korea/personal-info-agreement-petition\" target=\"_blank\" rel=\"noopener\"><u>내용 보기</u></a>", "value": true },
-		{ "label": "(필수) 개인정보 제3자 제공동의 <a href=\"https://www.greenpeace.org/korea/personal-info-agreement-3rd\" target=\"_blank\" rel=\"noopener\"><u>내용 보기</u></a>", "value": true }
+		{ "label": "(필수) 개인정보 수집/이용에 동의 <a href=\"https://www.greenpeace.org/korea/personal-info-agreement-petition\" target=\"_blank\" rel=\"noopener\"><u>내용 보기</u></a>", "value": true }
 	],
 	"unchecked_alert": "필수 입력 입니다."
 }

@@ -432,8 +432,8 @@ const MyForm = (props) => {
 						</Box>
 
 						<Box>
-							<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-								<Box flex={1} mr={2} pt={1}>
+							<Flex py="2" direction={{ base: 'row' }} align={'start'}>
+								<Box mr={2} >
 									<Checkbox
 										id="OptIn"
 										name="OptIn"
@@ -441,8 +441,11 @@ const MyForm = (props) => {
 										defaultChecked
 									/>
 								</Box>
-								<Text fontSize="xs" color={'gray.700'}>
-									{formContent.label_newsletter}
+								<Text fontSize="xs" 
+									color={'gray.700'} 
+									dangerouslySetInnerHTML={{
+										__html: formContent.label_newsletter
+									}} >
 								</Text>
 							</Flex>
 						</Box>

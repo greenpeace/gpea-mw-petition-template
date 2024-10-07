@@ -89,14 +89,17 @@ function Index({
 
 	const [gtmId, setGtmId] = useState('');
 	const initTagManager = (marketName) => {
+		console.log('gtmId', marketName);
 		switch (marketName) {
 			case 'HK':
 				setGtmId(hkTagManagerArgs.gtmId);
 				break;
 			case 'TW':
 				setGtmId(twTagManagerArgs.gtmId);
+				break;
 			case 'KR':
 				setGtmId(krTagManagerArgs.gtmId);
+				break;
 			default:
 				break;
 		}
