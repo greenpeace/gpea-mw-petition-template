@@ -28,17 +28,12 @@ export function validation(values, formContent, customRules) {
 		errors.Birthdate = formContent.empty_data_alert;
 	}
 
-	if (!values.Counties && typeof formContent.counties != 'undefined') {
-		errors.Counties = formContent.empty_data_alert;
-	}
-
-	if (!values.Careers && typeof formContent.careers != 'undefined') {
-		errors.Careers = formContent.empty_data_alert;
-	}
-
-	if (!values.Address && typeof formContent.address != 'undefined') {
-		errors.Address = formContent.empty_data_alert;
-	}
+	if (!values.OptIn1) {
+    errors.OptIn1 = formContent.unchecked_alert;
+  } 
+  if (!values.OptIn2) {
+    errors.OptIn2 = formContent.unchecked_alert;
+  } 
 
 	
 	if (customRules) {

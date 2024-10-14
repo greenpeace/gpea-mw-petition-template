@@ -189,6 +189,35 @@ const MyForm = (props) => {
 			});
 		}
 	};
+	const [checkedItems, setCheckedItems] = React.useState([false, false])
+	const allChecked = checkedItems.every(Boolean)
+
+	const handleCheckbox = async (e) => {
+		// values[e.target.name] = e.target.checked;
+		if (e.target.name === 'OptIn') {
+			await setCheckedItems([e.target.checked, e.target.checked])
+			// setFieldValue(e.target.name, e.target.checked, true);
+			for(let i = 1; i <= 3; i++){
+				setFieldValue(`OptIn${i}`, e.target.checked, false);
+			}
+			setTouched({
+				OptIn1: true,
+				OptIn2: true
+			},true);
+		} else {
+			const index = parseInt(e.target.name.replace('OptIn', '')) -1;
+			const newCheckedItems = [...checkedItems];
+			newCheckedItems[index] = e.target.checked;
+			setCheckedItems(newCheckedItems);
+			await setFieldValue(e.target.name, e.target.checked, true);
+			setFieldValue('OptIn', newCheckedItems.every(Boolean), false);
+			setTouched({
+				OptIn1: true,
+				OptIn2: true
+			},true);
+		}
+		handleChange(e);
+	}
 	return (
 		<Box py="8" px="4">
 			<Stack spacing="4">
@@ -238,7 +267,7 @@ const MyForm = (props) => {
 							as="h2"
 							{...headingProps}
 							mb="0"
-							lineHeight={1.7}
+							lineHeight={1.4}
 							dangerouslySetInnerHTML={{ __html: formContent.form_header }}
 						/>
 					</Box>
@@ -330,7 +359,22 @@ const MyForm = (props) => {
 									touched={touched.MobilePhone}
 									label={formContent.label_phone}
 									name={'MobilePhone'}
-									handleChange={handleChange}
+									handleChange={function(e){
+										const formatPhoneNumber = (value) => {
+											const cleaned = ('' + value).replace(/\D/g, '');
+											const match = cleaned.match(/^(\d{3})(\d{0,4})(\d{0,4})$/);
+											if (match) {
+												return [match[1], match[2], match[3]].filter(Boolean).join('-');
+											}
+											return value;
+										};
+
+										
+										setFieldValue('MobilePhone', formatPhoneNumber(e.target.value));
+										e.target.value = formatPhoneNumber(e.target.value);
+										console.log(e.target.value, values.MobilePhone);
+										handleChange(e);
+									}}
 									handleBlur={handleBlur}
 									value={values.MobilePhone}
 								/>
@@ -383,166 +427,83 @@ const MyForm = (props) => {
 							/>
 						)}					
 
-
-						{/* optional select: county */}
-						{formContent.counties && (
+						{formContent?.options_mkt && (
 							<Box>
 								<FormControl
-									id={
-										formContent.counties.fieldName
-											? formContent.counties.fieldName
-											: 'Counties'
-									}
-									isInvalid={errors.Counties && touched.Counties}
+										id={formContent.OptIn}
+										isInvalid={errors.OptIn && touched.OptIn }
 								>
-									<Select
-										onChange={handleChange}
-										fontSize={'16px'}
-										placeholder={formContent.label_counties}
-										size={'lg'}
-									>
-										{formContent.counties.options.map((d, index) => (
-											<option
-												key={index}
-												value={`${d.value}`}
-												disabled={d.disabled ? true : null}
-											>
-												{d.value}
-											</option>
-										))}
-									</Select>
-									<FormErrorMessage px={2} color="var(--error-900)">
-										{errors.Counties}
-									</FormErrorMessage>
-								</FormControl>
-							</Box>
-						)}
-						{/* optional select: careers */}
-						{formContent.careers && (
-							<Box>
-								<FormControl
-									id={
-										formContent.careers.fieldName
-											? formContent.careers.fieldName
-											: 'Careers'
-									}
-									isInvalid={errors.Careers && touched.Careers}
-								>
-									<Select
-										onChange={handleChange}
-										fontSize={'16px'}
-										placeholder={formContent.label_careers}
-										size={'lg'}
-									>
-										{formContent.careers.options.map((d, index) => (
-											<option
-												key={index}
-												value={`${d.value}`}
-												disabled={d.disabled ? true : null}
-											>
-												{d.value}
-											</option>
-										))}
-									</Select>
-									<FormErrorMessage px={2} color="var(--error-900)">
-										{errors.Careers}
-									</FormErrorMessage>
-								</FormControl>
-							</Box>
-						)}
-						{/* optional field */}
-						{formContent.additional && (
-							<HStack align="flex-end">
-								<Box flex={1}>
-									<Field
-										errors={errors[formContent.additional.fieldName]}
-										touched={touched[formContent.additional.fieldName]}
-										label={formContent.label_additional}
-										name={formContent.additional.fieldName}
-										type={formContent.additional.type}
-										handleChange={handleChange}
-										handleBlur={handleBlur}
-									/>
-									{formContent.additional.note && (
-										<Box pt="1" pl="2">
-											<Text color="gray.700" fontSize="sm" as="span">
-												{formContent.additional.note}
-											</Text>
+									<Flex direction={{ base: 'row' }} align={'flex-start'}>
+										<Box flex={0} mr={2} pt={1}>
+											<Checkbox
+												id="OptIn"
+												name="OptIn"
+												onChange={handleCheckbox}
+												onBlur={handleBlur}
+												isChecked={allChecked}
+											/>
 										</Box>
-									)}
-								</Box>
-							</HStack>
-						)}
-						{formContent.label_newsletter && hasMKT && (
-							<Box>
-								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-									<Box flex={0} mr={2} pt={1}>
-										<Checkbox
-											id="OptIn"
-											name="OptIn"
-											onChange={handleChange}
-											defaultChecked
-										/>
-									</Box>
-									<Text
-										fontSize="xs"
-										color={'gray.700'}
-										dangerouslySetInnerHTML={{
-											__html: formContent.label_newsletter
-										}}
-									></Text>
-								</Flex>
+										<Text
+											fontSize="xs"
+											dangerouslySetInnerHTML={{
+												__html: formContent?.options_mkt[0].label
+											}}
+										></Text>
+									</Flex>	
+								</FormControl>
+								<FormControl
+										id={formContent.OptIn1}
+										isInvalid={errors.OptIn1 && (touched.OptIn1 || touched.OptIn2) }
+								>
+									<Flex direction={{ base: 'row' }} align={'flex-start'}>
+										<Box flex={0} mr={2} pt={1}>
+											<Checkbox
+												id="OptIn1"
+												name="OptIn1"
+												onChange={handleCheckbox}
+												onBlur={handleBlur}
+												isChecked={checkedItems[0]}
+											/>
+										</Box>
+										<Text
+											fontSize="xs"
+											dangerouslySetInnerHTML={{
+												__html: formContent.options_mkt[1].label
+											}}
+										></Text>
+										<FormErrorMessage px={2} mt={0} fontSize="xs" color="var(--error-900)">
+											{errors.OptIn1}
+										</FormErrorMessage>
+									</Flex>
+								</FormControl>
+								<FormControl
+										id={formContent.OptIn2}
+										isInvalid={errors.OptIn2 && (touched.OptIn1 || touched.OptIn2) }
+								>
+									<Flex direction={{ base: 'row' }} align={'flex-start'}>
+										<Box flex={0} mr={2} pt={1}>
+											<Checkbox
+												id="OptIn2"
+												name="OptIn2"
+												onChange={handleCheckbox}
+												onBlur={handleBlur}
+												isChecked={checkedItems[1]}
+											/>
+										</Box>
+										<Text
+											fontSize="xs"
+											dangerouslySetInnerHTML={{
+												__html: formContent.options_mkt[2].label
+											}}
+										></Text>
+										<FormErrorMessage px={2} mt={0} fontSize="xs" color="var(--error-900)">
+											{errors.OptIn2}
+										</FormErrorMessage>
+									</Flex>
+								</FormControl>
 							</Box>
-						)}
-
-						{formContent.label_newsletter && !hasMKT && (
-							<Box>
-								<Checkbox
-									id="OptIn"
-									name="OptIn"
-									onChange={handleChange}
-									defaultChecked
-									display={'none'}
-								/>
-								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-									<Text
-										fontSize="xs"
-										color={'gray.700'}
-										dangerouslySetInnerHTML={{
-											__html: formContent.label_newsletter
-										}}
-									/>
-								</Flex>
-							</Box>
-						)}
-
-						{formContent.namelist && (
-							<Box>
-								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-									<Box flex={1} mr={2} pt={1}>
-										<Checkbox
-											id="Namelist"
-											name={
-												formContent.namelist.fieldName
-													? formContent.namelist.fieldName
-													: 'Namelist'
-											}
-											onChange={handleChange}
-											defaultChecked
-											value={formContent.namelist[0].value}
-										/>
-									</Box>
-									<Text
-										fontSize="xs"
-										color={'gray.700'}
-										dangerouslySetInnerHTML={{
-											__html: formContent.label_namelist
-										}}
-									></Text>
-								</Flex>
-							</Box>
-						)}
-
+			
+					)}
 						<Box>
 							<Button
 								{...OrangeCTA}
@@ -581,7 +542,7 @@ const MyEnhancedForm = withFormik({
 			// FirstName: '',
 			LastName: '',
 			MobilePhone: '',
-			// OptIn: false,
+			OptIn: false,
 			// Birthdate: '',
 			// ...formContent.custom_default_values
 		}

@@ -40,7 +40,7 @@ const styles = {
 			fontWeight: 'bold'
 		},
 		'.kr .strapi-content h2': {
-			lineHeight: 1.7,
+			lineHeight: 1.4,
 		},
 		'.layout-1col .strapi-content h2': {
 			lineHeight: 1.2,

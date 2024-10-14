@@ -33,8 +33,8 @@ import StrapiFixedButton from '@components/Strapi/StrapiFixedButtonFull';
 // Import helpers
 import { useSignupBtnRootMargin } from '@common/utils';
 // Import Contents
-import CustomFields from './CustomFields';
-import CustomRules from './CustomRules';
+// import CustomFields from './CustomFields';
+// import CustomRules from './CustomRules';
 import formContent from './form';
 // Import static
 
@@ -132,7 +132,7 @@ function Index({ submitted = false, strapi }) {
 					} else {
 						return submitted ? (
 							<ThanksBanner
-								setDonationChange={setDonationChange}
+								
 								removeMask={strapi?.thankyouHero?.removeMask}
 								defaultImage={
 									theme?.params?.hero_image_desktop ||
@@ -154,7 +154,7 @@ function Index({ submitted = false, strapi }) {
 								]}
 								content={{
 									//title: strapi?.thankyouHero?.richContent,
-									title: `${TYName ? TYName : '綠色和平支持者'}님，${strapi?.thankyouHero?.richContent
+									title: `${TYName ? TYName : '綠色和平支持者'} 님,${strapi?.thankyouHero?.richContent
 										}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
@@ -245,7 +245,7 @@ function Index({ submitted = false, strapi }) {
 											/>
 										)
 									) : (
-										<SignupForm hasMKT={false} setSignupBtnRef={setSignupBtnRef} CustomFields={CustomFields} CustomRules={CustomRules} />
+										<SignupForm setSignupBtnRef={setSignupBtnRef} />
 									)}
 								</Box>
 								<div ref={FormBtnref}></div>
