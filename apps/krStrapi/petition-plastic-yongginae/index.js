@@ -1,13 +1,13 @@
 /** 
  * Dploy Setting:
-PROJECT=krStrapi/kr-strapi-demo
+PROJECT=krStrapi/petition-plastic-yongginae
 MARKET=kr
-PROJECT_NAME=kr-strapi-demo
-BASEPATH=/web/gpseoulwebserver.co.kr/htdocs/test/kr-strapi-demo
-ASSETPREFIX=https://gpseoulwebserver.co.kr/test/kr-strapi-demo/
+PROJECT_NAME=petition-plastic-yongginae
+BASEPATH=/web/gpseoulwebserver.co.kr/htdocs/petition/petition-plastic-yongginae
+ASSETPREFIX=https://gpseoulwebserver.co.kr/petition/petition-plastic-yongginae/
 FTP_CONFIG_NAME=ftp_kr
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=kr-strapi-demo
+CLOUD_PAGE_NAME=api-plastic-yongginae
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
