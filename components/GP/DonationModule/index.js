@@ -73,7 +73,7 @@ const DonationModule = (props) => {
 				? `https://api.greenpeace.org.hk/app/donation-module${
 						isUAT ? '-uat' : '-hkmp'
 			  	}/main.js`
-				:"https://change.greenpeace.org.tw/2024/test/kr-strapi-donation-module/main.js";
+				:"https://gpseoulwebserver.co.kr/app/donation-module/main.js";
 	// Import module
 	const timestamp = process.env.timeStamp;
 	if (customUrl) console.log('using custom donation module url: ' + customUrl);

@@ -12,7 +12,7 @@ class NextDocument extends Document {
 		? `https://change.greenpeace.org.tw/app/donation-module/main.js`
 		: process.env.projectMarket?.toUpperCase() === 'HK'
     ? `https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js`
-    : `https://change.greenpeace.org.tw/2024/test/kr-strapi-donation-module/main.js`;
+    : `https://gpseoulwebserver.co.kr/app/donation-module/main.js`;
     // preload the production version only.
     return (
       <Html lang={process.env.projectMarket?.toUpperCase() === ('KR') ? 'ko-KR' : 'zh'}>
