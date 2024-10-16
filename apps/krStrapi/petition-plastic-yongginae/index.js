@@ -3,7 +3,7 @@
 PROJECT=krStrapi/petition-plastic-yongginae
 MARKET=kr
 PROJECT_NAME=petition-plastic-yongginae
-BASEPATH=/web/gpseoulwebserver.co.kr/htdocs/petition/petition-plastic-yongginae
+BASEPATH=/web/gpseoulwebserver.co.kr/htdocs/petitions/petition-plastic-yongginae
 ASSETPREFIX=https://gpseoulwebserver.co.kr/petition/petition-plastic-yongginae/
 FTP_CONFIG_NAME=ftp_kr
 # ******** MC Cloud Page Name ********
