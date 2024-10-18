@@ -127,10 +127,10 @@ const MyForm = (props) => {
 		);
 
 		const currentNumber = customNumbers ? customNumbers : numberOfResponses;
-		const currentNumberOfTarget = numberOfTarget
-			? numberOfTarget
-			: customOfTarget
+		const currentNumberOfTarget = customOfTarget
 			? customOfTarget
+			: numberOfTarget
+			? numberOfTarget
 			: 10000;
 		const number =
 			Math.round((currentNumber / currentNumberOfTarget) * 10000) / 100;

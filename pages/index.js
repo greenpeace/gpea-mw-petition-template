@@ -310,10 +310,9 @@ export async function getStaticProps(context) {
 
 	console.log('Building from ' + envProjectMarket + ':' + envProjectName);
 
-	!singleResult && console.warn('PROJECT NAME NOT FOUND');
+	!singleResult && console.warn('PROJECT NAME NOT FOUND IN FORMER SCHEMA DOC');
 
 	const app = envProjectName ?? '';
-	
 	
 
 	const endpoint = 'https://strapi.small-service.gpeastasia.org/api';

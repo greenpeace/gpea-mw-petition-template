@@ -233,7 +233,7 @@ function Index({ submitted = false, strapi }) {
 										)
 									) : (
 										<SignupForm
-											customOfTarget={10000}
+											// customOfTarget={10000}
 											setSignupBtnRef={setSignupBtnRef}
 										/>
 									)}
