@@ -78,9 +78,10 @@ const MyForm = (props) => {
 
 			window.dataLayer.push({
 				event: 'custom_event',
-				event_name: 'view_form',
+				event_name: 'petition_load',
 				event_category: 'petitions',
-				event_action: 'load'
+				event_action: 'load',
+				custom_metric: 'petition_load'
 			});
 			setFormViewed(true);
 		}
