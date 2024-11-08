@@ -34,6 +34,7 @@ import {
 	headingProps,
 	paragraphProps
 } from '@common/styles/components/contentStyle';
+import { custom } from '@cloudinary/url-gen/qualifiers/region';
 
 const MyForm = (props) => {
 	const {
@@ -60,6 +61,7 @@ const MyForm = (props) => {
 		setSignupBtnRef,
 		CustomFields,
 		CustomRules,
+		customCampaignId,
 		hasMKT = true
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
@@ -116,6 +118,30 @@ const MyForm = (props) => {
 				.catch((error) => console.log(error));
 		}
 	}, []);
+
+	// get sign numbers from custom campaignId
+	const signupNumbersTWURL = process.env.signupNumbersTW;
+	useEffect(() => {
+		let isMounted = true;
+		if (customCampaignId) {
+			axios
+				.get(signupNumbersTWURL)
+				.then((response) => {
+					if (isMounted) {
+						const customData = response.data.find((d) => d.Id === customCampaignId)
+
+						setCustomNumbers(Math.max(
+							parseInt(customData.NumberOfResponses),
+							parseInt(customData.NumberOfLeads) + parseInt(customData.NumberOfContacts)
+						));
+					}
+				})
+				.catch((error) => console.log(error));
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, [])
 
 	useEffect(() => {
 		console.log(
@@ -590,9 +616,11 @@ const MyEnhancedForm = withFormik({
 		const isProd = process.env.NODE_ENV === 'production';
 		const fallbackValue = (d) => (d ? d : '');
 		const LeadSource = `Petition - ${
-			capitalize(strapi?.issue?.data?.attributes?.slug) ??
+			strapi?.issue?.data?.attributes?.slug ? capitalize(strapi?.issue?.data?.attributes?.slug) :
 			capitalize(theme.interests)
 		}`;
+		console.log(theme)
+		console.log('LeadSource: ', LeadSource, theme.interests, strapi?.issue?.data?.attributes?.slug);
 
 		const { dummyEndpointURL, websignEndpointURL } =
 			strapi?.market?.data?.attributes;
@@ -628,8 +656,8 @@ const MyEnhancedForm = withFormik({
 			CampaignId: campaignId,
 			LeadSource: LeadSource,
 			[`Petition_Interested_In_${
-				capitalize(strapi?.issue?.data?.attributes?.slug) ??
-				capitalize(theme.interests)
+				strapi?.issue?.data?.attributes?.slug ? capitalize(strapi?.issue?.data?.attributes?.slug) :
+			capitalize(theme.interests)
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
