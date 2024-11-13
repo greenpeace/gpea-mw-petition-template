@@ -61,7 +61,6 @@ const MyForm = (props) => {
 		setSignupBtnRef,
 		CustomFields,
 		CustomRules,
-		customCampaignId,
 		hasMKT = true
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
@@ -107,41 +106,7 @@ const MyForm = (props) => {
 		initSuggestion();
 	}, []);
 
-	// get numberOfResponses from custom endpoint
-	useEffect(() => {
-		if (customEndpoint) {
-			axios
-				.get(customEndpoint)
-				.then((response) => {
-					setCustomNumbers(Number(response.data.unique_count));
-				})
-				.catch((error) => console.log(error));
-		}
-	}, []);
-
-	// get sign numbers from custom campaignId
-	const signupNumbersTWURL = process.env.signupNumbersTW;
-	useEffect(() => {
-		let isMounted = true;
-		if (customCampaignId) {
-			axios
-				.get(signupNumbersTWURL)
-				.then((response) => {
-					if (isMounted) {
-						const customData = response.data.find((d) => d.Id === customCampaignId)
-
-						setCustomNumbers(Math.max(
-							parseInt(customData.NumberOfResponses),
-							parseInt(customData.NumberOfLeads) + parseInt(customData.NumberOfContacts)
-						));
-					}
-				})
-				.catch((error) => console.log(error));
-		}
-		return () => {
-			isMounted = false;
-		};
-	}, [])
+	
 
 	useEffect(() => {
 		console.log(
@@ -169,6 +134,18 @@ const MyForm = (props) => {
 			clearTimeout(timerId);
 		};
 	}, [numberOfResponses, customNumbers]);
+
+	// get numberOfResponses from custom endpoint
+	useEffect(() => {
+		if (customEndpoint) {
+			axios
+				.get(customEndpoint)
+				.then((response) => {
+					setCustomNumbers(Number(response.data.unique_count));
+				})
+				.catch((error) => console.log(error));
+		}
+	}, []);
 
 	//setting additional fileds for formik
 	useEffect(() => {

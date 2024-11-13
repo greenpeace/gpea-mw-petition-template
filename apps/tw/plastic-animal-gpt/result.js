@@ -34,7 +34,8 @@ import {
 import { OrangeCTA } from '@common/styles/components/formStyle';
 
 const SignContent = dynamic(() => import('./content/signContent'));
-const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+// const DonateForm = dynamic(() => import('@components/GP/DonateForm'));
+import DonationModule from '@components/GP/DonationModule';
 const SignupForm = dynamic(() => import('@components/GP/TWForm'));
 const ResultContent = dynamic(() => import('./content/resultContent'));
 
@@ -50,7 +51,7 @@ function Index({
   setAnswerToSubmitForm,
 }) {
   const { submitted } = status;
-  const [isLargerThan768] = useMediaQuery('(min-width: 48em)'); // follow Chakra UI default md break point
+  // const [isLargerThan768] = useMediaQuery('(min-width: 48em)'); // follow Chakra UI default md break point
   const [result, setResult] = useState([]);
   const [score, setScore] = useState(0);
   const [dynamicImageHeight, setDynamicImage] = useState(null);
@@ -59,7 +60,7 @@ function Index({
   const photo = useImage(RESULT[result]?.photo);
   const topSection = useRef(null);
   // const dynamicContent = RESULT[result]?.content;
-  const [supportType, setSupportType] = useState('');
+  const [supportType, setSupportType] = useState('support');
 
   const handleOpenLink = (targetDonateURL) => {
     //
@@ -77,7 +78,7 @@ function Index({
 
   useEffect(() => {
     setFormContent(formContent);
-    setSupportType('support');
+    // setSupportType('support');
     // if(Number(hiddenForm?.ad_landing_page) === 1) setSupportType('support');
   }, []); // init Form
 
@@ -170,27 +171,37 @@ function Index({
 
   
 
-  const RenderForm = () => (
-    <>
-    { (submitted ? (
-        <>
-          <DonateForm />
-          <div
-            dangerouslySetInnerHTML={{
-              __html: `<iframe style="overflow: hidden;" src="https://counter.greenpeace.org/count?id=globalplasticstreaty" width="1" height="1" frameborder="0" scrolling="no"></iframe>`
-            }}
-          ></div>
-        </>
-      ) : ( 
-        <SignupForm 
-          customOfTarget={200000}
-          customCampaignId={'7012u000000hMiJAAU'}
-        />
-      )
-      
-    ) }
+  const RenderForm = () => {
+    console.log('=====> RenderForm');
+		return (
+      <>
+        { (submitted ? (
+          <>
+            <DonationModule
+              market={'TW'}
+              language={'zh_TW'}
+              campaign={
+                'gpt-plastics_plastics-animal'
+              }
+              campaignId={theme?.params?.campaignId ?? theme?.CampaignId ?? ''}
+              env={'production'}
+            />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `<iframe style="overflow: hidden;" src="https://counter.greenpeace.org/count?id=globalplasticstreaty" width="1" height="1" frameborder="0" scrolling="no"></iframe>`
+              }}
+            ></div>
+          </>
+        ) : ( 
+          <SignupForm 
+            customOfTarget={200000}
+            // customCampaignId={'7012u000000hMiJAAU'}
+          />
+        )
+      )}
     </>
   );
+  }
 
 
 
@@ -200,9 +211,9 @@ function Index({
         <PageContainer>
           <Grid
             templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
-            gap={0}
-            zIndex={2}
-            flexDirection={'column-reverse'}
+						gap={0}
+						zIndex={2}
+						flexDirection={'column-reverse'}
           >
             <GridItem w="100%">
               {submitted ? (
@@ -217,7 +228,7 @@ function Index({
                 minH={{ base: 'auto', md: '550px' }}
               >
                 <Stack py={4}>
-                  { ( <>
+                  
                   <Box pt={6}>
                     <Heading
                       {...headingProps}
@@ -281,10 +292,10 @@ function Index({
                     />
                   </Box> 
                 
-                </>) }
+                
                 </Stack>
               </Box>)}
-              <Box flex={1} position="relative" zIndex={3}>
+              {/* <Box flex={1} position="relative" zIndex={3}>
                 <Box py={2} d={{ base: 'block', md: 'none' }}>
                   <Container>
                     <Box
@@ -302,9 +313,9 @@ function Index({
                 </Box>
 
                 
-              </Box>
+              </Box> */}
             </GridItem>
-            <GridItem w="100%" d={{ base: 'none', md: 'block' }}>
+            <GridItem>
               <Box
                 zIndex={9}
                 position={{ md: 'sticky' }}
