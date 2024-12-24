@@ -1,14 +1,13 @@
 /**
- * Deploy setting
-# Project Apps Directory: /apps/{PROJECT}
-PROJECT=hkStrapi/donation-plastics-cesium_fallout
+ * Deploy Setting:
+PROJECT=hkStrapi/donation-general-yearend
 MARKET=hk
-PROJECT_NAME=donation-plastic-cesium_fallout
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-plastics-cesium_fallout
-ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-plastics-cesium_fallout/
-FTP_CONFIG_NAME=api_hk_cloud 
+PROJECT_NAME=donation-general-yearend
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-general-yearend
+ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-general-yearend/
+FTP_CONFIG_NAME=api_hk_cloud
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=donation-plastics-cesium_fallout
+CLOUD_PAGE_NAME=donation-general-yearend
 */
 
 import React, { useEffect, useRef } from 'react';
@@ -182,7 +181,6 @@ function Index({ submitted = false, strapi }) {
 												strapi?.donationModuleCampaignId ??
 												''
 											}
-											isUAT={false}
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (

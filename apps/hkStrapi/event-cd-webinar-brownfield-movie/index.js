@@ -228,29 +228,29 @@ function Index({ submitted = false, strapi: strapiData }) {
 								<FormContainer>
 									<Box ref={ref}>
 										{pageType?.toLowerCase() === 'donation' || submitted || AsiaPayResult ? utm_source !== 'dd' && (
-											<></>
-											// <DonationModule
-											// 	market={
-											// 		strapi?.market?.data?.attributes?.market ===
-											// 		'Hong Kong'
-											// 			? 'HK'
-											// 			: 'TW'
-											// 	}
-											// 	language={strapi?.donationModuleLanguage}
-											// 	campaign={
-											// 		theme?.params?.donation_module_campaign ??
-											// 		strapi?.donationModuleCampaign
-											// 	}
-											// 	campaignId={
-											// 		theme?.params?.campaignId ??
-											// 		strapi?.donationModuleCampaignId ??
-											// 		''
-											// 	}
-											// 	isUAT={false}
-											// 	env={strapi?.donationModuleEnv}
-											// />
+											
+											<DonationModule
+												market={
+													strapi?.market?.data?.attributes?.market ===
+													'Hong Kong'
+														? 'HK'
+														: 'TW'
+												}
+												language={strapi?.donationModuleLanguage}
+												campaign={
+													theme?.params?.donation_module_campaign ??
+													strapi?.donationModuleCampaign
+												}
+												campaignId={
+													theme?.params?.campaignId ??
+													strapi?.donationModuleCampaignId ??
+													''
+												}
+												isUAT={false}
+												env={strapi?.donationModuleEnv}
+											/>
 										) : (
-											<SignupForm setSignupBtnRef={ setSignupBtnRef } />
+											<SignupForm setSignupBtnRef={ setSignupBtnRef } hasMKT={false} />
 										)}
 									</Box>
 									<div ref={FormBtnref}></div>

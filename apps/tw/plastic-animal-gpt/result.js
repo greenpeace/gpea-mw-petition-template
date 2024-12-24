@@ -183,7 +183,7 @@ function Index({
               campaign={
                 'gpt-plastics_plastics-animal'
               }
-              campaignId={theme?.params?.campaignId ?? theme?.CampaignId ?? ''}
+              campaignId={"7012u000000OtKOAA0"}
               env={'production'}
             />
             <div

@@ -1,13 +1,13 @@
 /** 
  * Dploy Setting:
-PROJECT=krStrapi/petition-plastic-yongginae
+PROJECT=krStrapi/api-ocean
 MARKET=kr
-PROJECT_NAME=yonggitest
-BASEPATH=/web/gpseoulwebserver.co.kr/htdocs/petitions/petition-plastic-yongginae
-ASSETPREFIX=https://gpseoulwebserver.co.kr/petitions/petition-plastic-yongginae/
+PROJECT_NAME=ocean
+BASEPATH=/web/gpseoulwebserver.co.kr/htdocs/petitions/api-ocean
+ASSETPREFIX=https://gpseoulwebserver.co.kr/petitions/api-ocean/
 FTP_CONFIG_NAME=ftp_kr
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=api-plastic-yongginae
+CLOUD_PAGE_NAME=api-ocean
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

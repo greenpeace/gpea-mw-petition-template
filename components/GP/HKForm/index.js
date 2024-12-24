@@ -58,7 +58,8 @@ const MyForm = (props) => {
 		setValues,
 		setSignupBtnRef,
 		CustomFields,
-		CustomRules
+		CustomRules,
+		hasMKT = true
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
 	const [progressNumber, setProgressNumber] = useState(0);
@@ -380,6 +381,7 @@ const MyForm = (props) => {
 												name="OptIn"
 												defaultChecked
 												// colorScheme={`${theme.ProjectName}`}
+												hidden={!hasMKT}
 												onChange={handleChange}
 											/>
 										</Box>

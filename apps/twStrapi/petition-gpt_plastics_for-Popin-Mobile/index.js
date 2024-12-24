@@ -237,6 +237,13 @@ function Index({ submitted = false, strapi }) {
 											setSignupBtnRef={setSignupBtnRef}
 										/>
 									)}
+									{submitted && pageType?.toLowerCase() === 'petition' && (
+										<div
+											dangerouslySetInnerHTML={{
+												__html: `<iframe style="overflow: hidden;" src="https://counter.greenpeace.org/count?id=globalplasticstreaty" width="1" height="1" frameborder="0" scrolling="no"></iframe>`
+											}}
+										></div>
+									)}
 								</Box>
 								<div ref={FormBtnref}></div>
 							</FormContainer>

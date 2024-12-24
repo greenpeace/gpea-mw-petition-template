@@ -12,6 +12,10 @@ const initState = {
       NumberOfResponses: '',
       Petition_Signup_Target__c: '',
     },
+    kr: {
+      NumberOfResponses: '',
+      Petition_Signup_Target__c: '',
+    }
   },
   suggestion: '',
   showMessage: false,

@@ -14,10 +14,11 @@ const nextConfig = {
     themeEndpoint: process.env.THEME_ENDPOINT,
     signupNumbersHK: process.env.SIGN_UP_NUMBERS_HK,
     signupNumbersTW: process.env.SIGN_UP_NUMBERS_TW,
+    signupNumbersKR: process.env.SIGN_UP_NUMBERS_KR,
     donateModule: process.env.DONATE_MODULE,
     timeStamp: String(Date.now()),
     dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.green${process.env.MARKET == 'kr' ? 'tw' : process.env.MARKET}.greenpeace.org/websign-dummy`,
-    convExp: process.env.MARKET == 'tw' ? process.env.TW_CONV_EXP : process.env.HK_CONV_EXP,
+    convExp: process.env.MARKET == 'tw' ? process.env.TW_CONV_EXP : (process.env.MARKET == 'hk' ? process.env.HK_CONV_EXP : process.env.KR_CONV_EXP),
     webEventHistoryEndpoint: process.env.MARKET == 'tw' ? process.env.TW_WEB_EVENT_ENDPOINT : process.env.HK_WEB_EVENT_ENDPOINT,
   },
   // Use the CDN in production and localhost for development.

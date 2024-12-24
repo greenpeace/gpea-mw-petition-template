@@ -631,15 +631,12 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
 		hiddenFormData: hiddenForm.data,
 		isLoading: signup.lastAction === signupActions.SIGN_UP,
 		formContent: form.content,
-		numberOfResponses:
-			theme.data.ProjectName === 'oceans'
-				? form.signupNumbers.tw?.NumberOfResponses
-				: Math.max(
-						parseInt(form.signupNumbers.tw?.NumberOfResponses),
-						parseInt(form.signupNumbers.tw?.NumberOfLeads) +
-							parseInt(form.signupNumbers.tw?.NumberOfContacts)
-				  ),
-		numberOfTarget: form.signupNumbers.tw?.Petition_Signup_Target__c,
+		numberOfResponses:Math.max(
+			parseInt(form.signupNumbers.kr?.NumberOfResponses),
+			parseInt(form.signupNumbers.kr?.NumberOfLeads) +
+			parseInt(form.signupNumbers.kr?.NumberOfContacts)
+		),
+		numberOfTarget: form.signupNumbers.kr?.Petition_Signup_Target__c,
 		theme: theme.data,
 		suggestion: form.suggestion,
 		strapi: theme.strapi

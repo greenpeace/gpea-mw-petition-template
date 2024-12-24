@@ -47,6 +47,7 @@ const envProjectMarket = process.env.projectMarket;
 const themeEndpointURL = process.env.themeEndpoint;
 const signupNumbersHKURL = process.env.signupNumbersHK;
 const signupNumbersTWURL = process.env.signupNumbersTW;
+const signupNumbersKRURL = process.env.signupNumbersKR;
 
 // Pending
 const schemaEndpoint = `${themeEndpointURL}?q={"Market":"${envProjectMarket}"}`;
@@ -151,11 +152,12 @@ function Index({
 		async function fetchSignupData() {
 			const fetchURLs = {
 				hk: signupNumbersHKURL,
-				tw: signupNumbersTWURL
+				tw: signupNumbersTWURL,
+				kr: signupNumbersKRURL
 			};
-
+			console.log(fetchURLs[themeData?.Market.toLowerCase()])
 			const signupData = await axios
-				.get(fetchURLs[themeData?.Market])
+				.get(fetchURLs[themeData?.Market.toLowerCase()])
 				.then((response) => {
 					return response.data.find((d) => d.Id === themeData?.CampaignId);
 				})

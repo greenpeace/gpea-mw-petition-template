@@ -233,9 +233,9 @@ function Index({ submitted = false, strapi }) {
 										)
 									) : (
 										<SignupForm
-											customEndpoint={
-												'https://counter.greenpeace.org/signups?id=globalplasticstreaty'
-											}
+											// customEndpoint={
+											// 	'https://counter.greenpeace.org/signups?id=globalplasticstreaty'
+											// }
 											setSignupBtnRef={setSignupBtnRef}
 										/>
 									)}
