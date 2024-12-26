@@ -169,7 +169,7 @@ function Index({
 							campaign={
 								'oceans_mw'
 							}
-							campaignId={theme?.params?.campaignId ?? theme?.CampaignId ?? ''}
+							campaignId={'7012u000000OtKOAA0'}
 							env={'production'}
 						/>
 					) : (

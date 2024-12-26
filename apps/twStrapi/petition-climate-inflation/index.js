@@ -62,6 +62,7 @@ function Index({ submitted = false, strapi }) {
 
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
+		
 	}, [dispatch]);
 
 	// const { FirstName } = signup;
@@ -78,6 +79,7 @@ function Index({ submitted = false, strapi }) {
 		window.__greenpeace__.onDonationModulePaymentCompleted = function (data) {
 			setTYName(data.firstName);
 		};
+		console.log('cid', theme.params, strapi)
 	});
 	useEffect(() => {
 		setTYName(signup?.data?.FirstName);

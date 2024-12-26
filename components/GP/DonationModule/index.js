@@ -63,7 +63,7 @@ const DonationModule = (props) => {
 	// *******************
 	// If there are any changes, should update the module URL in "_document.js" accordingly for preload script.
 	// *******************
-	console.log('market', market);
+	console.log('market', market, 'campaignId', campaignId);
 	const moduleUrl =
 		market?.toUpperCase() === 'TW'
 			? `https://change.greenpeace.org.tw/app/donation-module${
