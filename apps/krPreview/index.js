@@ -16,7 +16,7 @@ import * as formActions from 'store/actions/action-types/form-actions';
 import * as themeActions from 'store/actions/action-types/theme-actions';
 // Import library
 import { useInView } from 'react-intersection-observer';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 import { stringify } from 'qs';
 // Import custom containers
 import PageContainer from '@containers/pageContainer';
@@ -29,6 +29,7 @@ import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
 import SignupForm from '@components/GP/KRForm';
+import DonateFAQ from '@components/DonateFAQ';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';

@@ -20,6 +20,7 @@
 	"invalid_format_alert": "請輸入有效格式",
 	"invalid_phone_alert_852": "手提號碼應為8位數字,首位數字應為 4 - 9",
 	"invalid_phone_alert_853": "手提號碼應為8位數字,首位數字應為 6",
+	"invalid_phone_alert_86": "手提號碼應為11位數字,首位數字應為 1",
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 
@@ -33,7 +34,8 @@
 
 	"mobile_country_code": [
 		{ "label": "+852", "value": 852 },
-		{ "label": "+853", "value": 853 }
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
 	],
 	"new_letter": [
 		{ "label": "是", "value": true },

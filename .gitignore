@@ -40,3 +40,4 @@ yarn-error.log*
 mc-deploy.js
 # package.json
 gpokta.json
+public/footer-content.json

@@ -94,8 +94,8 @@ const MyForm = (props) => {
 	useEffect(() => {
 		let optionYear = [];
 		function fetchOptionYear() {
-			let minYear = formContent?.KeyBirthYearSet?.min || 18;
-			let maxYear = formContent?.KeyBirthYearSet?.max || 110;
+			let minYear = 18;
+			let maxYear = 90;
 			let nowYear = new Date().getFullYear();
 			let targetYear = nowYear - maxYear;
 			for (var i = nowYear - minYear; i >= targetYear; i--) {

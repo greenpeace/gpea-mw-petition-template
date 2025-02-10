@@ -92,7 +92,7 @@ const MyForm = (props) => {
 		let optionYear = [];
 		function fetchOptionYear() {
 			const minYear = 18;
-			const maxYear = 110;
+			const maxYear = 90;
 			let nowYear = new Date().getFullYear();
 			let targetYear = nowYear - maxYear;
 			for (var i = nowYear - minYear; i >= targetYear; i--) {

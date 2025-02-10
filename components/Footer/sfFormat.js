@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSelector } from 'react';
+import axios from 'axios';
 import {
   Box,
   Container,
@@ -15,10 +16,37 @@ import { HKChinese, TWChinese, HKEnglish, Korean } from './footerContent';
 import logo from '@common/images/logo/GP-logo-2019-white-[web].png';
 
 const SFFormat = ({ locale }) => {
-  const [content, setContent] = useState(HKChinese);
+  const isProd = process.env.NODE_ENV === 'production';
+  let market = process.env.projectMarket.toLocaleLowerCase();
+  // console.log("-----market", market);
+  if(market === 'kr'){
+    market = 'sk';
+    
+  }
+  const defaultContents = {
+    'HKChinese': HKChinese,
+    'TWChinese': TWChinese,
+    'HKEnglish': HKEnglish,
+    'Korean': Korean,
+  };
+  const contentUrl = isProd ? `https://cloud.green${market}.greenpeace.org/footer-content` : `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.green${market}.greenpeace.org/footer-content`;
+
+  const [content, setContent] = useState(defaultContents[locale]);
   const [footerLayout, setFooterLayout] = useState('');
   useEffect(() => {
-    if (locale) {
+    const footerContent = axios.get(contentUrl).then((response) => {
+      // console.log(contentUrl,response.data[locale]);
+      setContent(response.data[locale]);
+      if(market === 'sk') {
+        setFooterLayout({
+          flex: { base: '1 1 100%', md: '0 0 65%'},
+        });
+      }
+      return response.data;
+    }).catch((error) => { console.log(error); });
+
+    if (locale && !footerContent) {
+      console.log('get default footer content.')
       switch (locale) {
         case 'HKChinese':
           setContent(HKChinese);

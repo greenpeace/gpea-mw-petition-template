@@ -232,7 +232,7 @@ function Index({ submitted = false, strapi }) {
 											/>
 										)
 									) : (
-										<SignupForm setSignupBtnRef={setSignupBtnRef} />
+										<SignupForm setSignupBtnRef={setSignupBtnRef} customBtnColor={'#F11777'} />
 									)}
 								</Box>
 								<div ref={FormBtnref}></div>
@@ -244,6 +244,7 @@ function Index({ submitted = false, strapi }) {
 			<PetitionFooter locale={'TWChinese'} />
 			<StrapiFixedButton
 				target={FormRef}
+				customBtnColor={'#F11777'}
 				targetInView={
 					pageType?.toLowerCase() === 'donation' || submitted
 						? btnInView

@@ -61,6 +61,7 @@ const MyForm = (props) => {
 		setSignupBtnRef,
 		CustomFields,
 		CustomRules,
+		customBtnColor,// custom submit button color
 		hasMKT = true
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
@@ -94,7 +95,7 @@ const MyForm = (props) => {
 		let optionYear = [];
 		function fetchOptionYear() {
 			let minYear = formContent?.KeyBirthYearSet?.min || 18;
-			let maxYear = formContent?.KeyBirthYearSet?.max || 110;
+			let maxYear = formContent?.KeyBirthYearSet?.max || 90;
 			let nowYear = new Date().getFullYear();
 			let targetYear = nowYear - maxYear;
 			for (var i = nowYear - minYear; i >= targetYear; i--) {
@@ -544,6 +545,7 @@ const MyForm = (props) => {
 						<Box>
 							<Button
 								{...OrangeCTA}
+								{...customBtnColor && { bg: customBtnColor, _hover: { bg: customBtnColor } }}
 								isLoading={isLoading}
 								type={'submit'}
 								ref={btnRef}

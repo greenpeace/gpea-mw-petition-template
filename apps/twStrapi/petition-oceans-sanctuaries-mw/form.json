@@ -2,7 +2,7 @@
 	"form_header": "海洋保育我＋1",
 	"form_description": "我支持綠色和平正在推行的海洋保育專案！<br>請將我列入連署人名單，幫助綠色和平推動守護海洋相關的環保與倡議工作。",
 	"form_remind": "",
-	"signed_number": "訂閱人數",
+	"signed_number": "連署人數",
 
 	"label_yes": "是",
 	"label_no": "否",
@@ -35,7 +35,8 @@
 
 	"mobile_country_code": [
 		{ "label": "+852", "value": 852 },
-		{ "label": "+853", "value": 853 }
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
 	],
 	"new_letter": [
 		{ "label": "是", "value": true },

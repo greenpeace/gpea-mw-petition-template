@@ -4,8 +4,8 @@
 PROJECT=tw/plastic-animal-gpt
 MARKET=tw
 PROJECT_NAME=plastic-animal
-BASEPATH=/htdocs/2024/petition/zh-TW.2024.plastics.gpt-plastics_plastic-animal.signup
-ASSETPREFIX=https://change.greenpeace.org.tw/2024/petition/zh-TW.2024.gpt-plastics_plastics.plastic-animal.signup/
+BASEPATH=/htdocs/2024/petition/zh-TW.2024.plastics.plastic-animal-gpt.signup
+ASSETPREFIX=https://change.greenpeace.org.tw/2024/petition/zh-TW.2024.plastics.plastic-animal-gpt.signup/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-tw.2022.plastics.plastics-animal.signup
