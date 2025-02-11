@@ -29,24 +29,26 @@ const SFFormat = ({ locale }) => {
     'HKEnglish': HKEnglish,
     'Korean': Korean,
   };
-  const contentUrl = isProd ? `https://cloud.green${market}.greenpeace.org/footer-content` : `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.green${market}.greenpeace.org/footer-content`;
+  // const contentUrl = isProd ? `https://cloud.green${market}.greenpeace.org/footer-content` : `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.green${market}.greenpeace.org/footer-content`;
 
   const [content, setContent] = useState(defaultContents[locale]);
   const [footerLayout, setFooterLayout] = useState('');
   useEffect(() => {
-    const footerContent = axios.get(contentUrl).then((response) => {
-      // console.log(contentUrl,response.data[locale]);
-      setContent(response.data[locale]);
-      if(market === 'sk') {
-        setFooterLayout({
-          flex: { base: '1 1 100%', md: '0 0 65%'},
-        });
-      }
-      return response.data;
-    }).catch((error) => { console.log(error); });
+    // const footerContent = axios.get(contentUrl).then((response) => {
+    //   // console.log(contentUrl,response.data[locale]);
+    //   setContent(response.data[locale]);
+      
+    //   return response.data;
+    // }).catch((error) => { console.log(error); });
 
-    if (locale && !footerContent) {
-      console.log('get default footer content.')
+    if(market === 'sk') {
+      setFooterLayout({
+        flex: { base: '1 1 100%', md: '0 0 65%'},
+      });
+    }
+
+    if (locale) {
+      console.log('set default footer content.')
       switch (locale) {
         case 'HKChinese':
           setContent(HKChinese);
