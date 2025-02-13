@@ -17,7 +17,9 @@ import { connect } from 'react-redux';
 import { Box, Container, Image, useMediaQuery, Slide } from '@chakra-ui/react';
 import HeroSection from './components/HeroSection';
 import MainSection from './components/MainSection';
-import Form from './components/Form';
+// import Form from './components/Form';
+import DonateForm from '@components/GP/DonateForm';
+import SignupForm from '@components/GP/WebinarForm';
 import formContent from './form';
 import SEO from './SEO';
 import * as formActions from 'store/actions/action-types/form-actions';
@@ -87,24 +89,46 @@ function Index({ setFormContent, status }) {
 				</Box>
 			</Box>
 
-			{/** Mobile form */}
-			<Box ref={mobileForm}>
-				<Box d={{ base: 'block', lg: 'none' }} mt={-4} ref={ref}>
-					<Form />
-					<div ref={FormBtnref}></div>
-				</Box>
-			</Box>
-			{/** Mobile form End */}
+			
 
-			<Container maxW={`${maxWSize}px`}>
+			<Container maxW={`${maxWSize}px`} display={'flex'} flexDirection={{ base: 'column-reverse', md: 'row' }} alignItems={'flex-start'} pb={4} mt={{ base: -20, md: -60 }}>
+
 				<Box
-					w={{ base: '100%', lg: 'md', xl: maxWSize / 2 }}
+					flex={'1 1 50%'}
 					py={10}
-					pr={{ xl: 10 }}
+					pr={{ md:4, xl: 10 }}
 					pb={16}
+					mt={{ base: 10, md: 60 }}
 				>
 					<MainSection speaker1Ref={speaker1Ref} />
 				</Box>
+				{/** Mobile form */}
+				<Box ref={mobileForm} 
+					zIndex="2"
+					position={{base: 'relative', md: "sticky"}}
+					top="4px"
+					flex={'1 1 50%'}
+					pl={{ md: 4, xl: 10 }}
+				>
+					<Box 
+						maxW="500px"
+						mx="auto"
+						bgColor="white"
+						borderRadius="var(--radius-xl)"
+						boxShadow="lg"
+						overflow="hidden"
+						transform="translateZ(0)"
+						ref={ref}
+					>
+						{status?.submitted ? (
+							<DonateForm />
+						) : (
+							<SignupForm setSignupBtnRef={function () {}} />
+						)}
+						<div ref={FormBtnref}></div>
+					</Box>
+				</Box>
+				{/** Mobile form End */}
 			</Container>
 
 			<PetitionFooter locale={'HKChinese'} />

@@ -28,14 +28,14 @@ function Content({ children }) {
   const getSize = useWindowSize();
   const formProps = inView // switch form position when TITLE inView
     ? {
-        position: 'absolute',
-        left: '100%',
+        position: 'relative',
+        // left: '100%',
         top: 0,
         width: `${formWidth}px`,
       }
     : {
-        position: 'fixed',
-        left: `${getSize?.width / 2}px`,
+        position: 'sticky',
+        // left: `${getSize?.width / 2}px`,
         top: '0px',
         width: `${formWidth}px`,
       };
@@ -77,11 +77,11 @@ function Content({ children }) {
             />
           </AvatarGroup>
         </Flex>
-        {readyToShow && (
+        {/* {readyToShow && (
           <Box {...formProps} d={{ base: 'none', lg: 'block' }}>
             <Form />
           </Box>
-        )}
+        )} */}
       </Box>
     </Stack>
   );
