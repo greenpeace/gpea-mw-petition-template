@@ -31,6 +31,11 @@ const StrapiSEO = ({ strapi }) => {
 					<link rel="canonical" href={strapi?.seo?.canonicalURL} />
 				)
 			}
+			{
+				(strapi?.seo?.metaRobots) && (
+					<meta name="robots" content={strapi?.seo?.metaRobots} />
+				)
+			}
 		</Head>
 	);
 };
