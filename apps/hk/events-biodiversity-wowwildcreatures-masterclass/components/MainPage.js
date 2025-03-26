@@ -28,13 +28,13 @@ import HomeSwiper from './HomeSwiper';
 import RobertClassVision from './RobertClassVision';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 import animals from '../images/robert-class/home/02a_HK_animals.png';
-import main02Img from '../images/robert-class/main-02.webp';
-import main03Img from '../images/robert-class/main-03.webp';
-import main04Img from '../images/robert-class/main-04.webp';
-import lovingAnimals from '../images/robert-class/loving-animals.webp';
+import main02Img from '../images/robert-class/main-02.png';
+import main03Img from '../images/robert-class/main-03.png';
+import main04Img from '../images/robert-class/main-04.png';
+import lovingAnimals from '../images/robert-class/loving-animals.png';
 import logoAnimals from '../images/robert-class/logo-animals.webp';
 
-import robertClassIntro from '../images/robert-class/robert-intro.webp';
+import robertClassIntro from '../images/robert-class/robert-intro.png';
 import { scrollToRef } from '../util';
 
 import SignupForm from '@components/GP/HKForm';
