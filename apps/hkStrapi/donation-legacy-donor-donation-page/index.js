@@ -162,7 +162,7 @@ const [FormBtnref, btnInView] = useInView({
 									)}
 								</>
 								<>
-									{/* {pageType?.toLowerCase() === 'donation' && !submitted && (
+									{pageType?.toLowerCase() === 'donation' && !submitted && (
 										<>
 											<Heading
 												as="p"
@@ -174,7 +174,7 @@ const [FormBtnref, btnInView] = useInView({
 											</Heading>
 											<DonateFAQ locale="HKChinese" />
 										</>
-									)} */}
+									)}
 								</>
 							</ContentContainer>
 						</Box>
