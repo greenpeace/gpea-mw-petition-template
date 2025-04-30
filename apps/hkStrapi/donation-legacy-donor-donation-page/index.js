@@ -164,15 +164,15 @@ const [FormBtnref, btnInView] = useInView({
 								<>
 									{pageType?.toLowerCase() === 'donation' && !submitted && (
 										<>
-											<Heading
+											{/* <Heading
 												as="p"
 												textAlign="center"
 												py="6"
 												fontSize={{ base: 'xl', md: '2xl' }}
 											>
 												常見問題
-											</Heading>
-											<DonateFAQ locale="HKChinese" />
+											</Heading> */}
+											{/* <DonateFAQ locale="HKChinese" /> */}
 										</>
 									)}
 								</>
