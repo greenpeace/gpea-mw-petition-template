@@ -1,16 +1,17 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=hkStrapi/donation-legacy-donor-donation-page
+PROJECT=hkStrapi/donation-oceans-donor
 MARKET=hk
-PROJECT_NAME=donation-legacy-donor-donation-page
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-legacy-donor-donation-page
-ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-legacy-donor-donation-page/
-FTP_CONFIG_NAME=api_hk_cloud
+PROJECT_NAME=donation-oceans-donor
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/donation-oceans-donor
+ASSETPREFIX=https://api.greenpeace.org.hk/page/donation-oceans-donor/
+FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=donation-legacy-donor-donation-page
+CLOUD_PAGE_NAME=donation-oceans-donor
 */
-import React, { useEffect, useRef, useState } from 'react';
+
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -45,7 +46,7 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0
 	});
 	// mobile sticky btn show ref
-const [FormBtnref, btnInView] = useInView({
+	const [FormBtnref, btnInView] = useInView({
 		threshold: 0,
 		rootMargin: '-70px 0px 120px 0px'
 	});
@@ -55,20 +56,6 @@ const [FormBtnref, btnInView] = useInView({
 	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const { utm_source } = hiddenForm?.data;
 	const { AsiaPayResult } = hiddenForm?.data;
-
-	// pass signer / donor name to TY Banner
-  const [TYName, setTYName] = useState();
-	
-	useEffect(() => {
-		// get donation module firstname
-		window.__greenpeace__ = window.__greenpeace__ || {};
-		window.__greenpeace__.onDonationModulePaymentCompleted = function( data ) {
-			setTYName(data.firstName);
-		}
-	});
-	useEffect(() => {
-		setTYName(signup?.data?.FirstName);
-	}, [signup]);
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -102,10 +89,7 @@ const [FormBtnref, btnInView] = useInView({
 							}
 						]}
 						content={{
-							// title: strapi?.thankyouHero?.richContent,
-							// title: `${
-							// 	TYName ? TYName : '綠色和平支持者'
-							// }，${strapi?.thankyouHero?.richContent}`,
+							title: strapi?.thankyouHero?.richContent,
 							description: strapi?.thankyouHero?.richContentParagraph
 						}}
 					/>
@@ -164,15 +148,15 @@ const [FormBtnref, btnInView] = useInView({
 								<>
 									{pageType?.toLowerCase() === 'donation' && !submitted && (
 										<>
-											{/* <Heading
+											<Heading
 												as="p"
 												textAlign="center"
 												py="6"
 												fontSize={{ base: 'xl', md: '2xl' }}
 											>
 												常見問題
-											</Heading> */}
-											{/* <DonateFAQ locale="HKChinese" /> */}
+											</Heading>
+											<DonateFAQ locale="HKChinese" />
 										</>
 									)}
 								</>
@@ -181,7 +165,7 @@ const [FormBtnref, btnInView] = useInView({
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
 								<Box ref={ref}>
-									{pageType?.toLowerCase() === 'donation' || submitted || AsiaPayResult ? (
+									{pageType?.toLowerCase() === 'donation' || submitted ? (
 										<DonationModule
 											market={
 												strapi?.market?.data?.attributes?.market === 'Hong Kong'
