@@ -10,6 +10,7 @@
 	"label_phone_optional": "手提號碼（選填）",
 	"label_year_of_birth": "出生年份",
 	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_opinion": "請輸入你的個人意見，令每一封意見書有更獨特的聲音。",
 	"label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障您的個人資料，您隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
 
 	"empty_data_alert": "請填寫資料",
@@ -25,6 +26,11 @@
 
 	"submit_text": "立即助你生成意見書",
 	"mobile_fixed_cta": "立即助你生成意見書",
+
+	"field_split": "CampaignData3__c,CampaignData4__c",
+	"name_opinion": "CampaignData3__c",
+	"max_opinion_length": 500,
+	"max_opinion_alert": "個人意見長度上限為 500 字元",
 
 	"mobile_country_code": [
 		{ "label": "+852", "value": 852 },
