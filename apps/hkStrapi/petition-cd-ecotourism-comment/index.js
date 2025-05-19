@@ -11,7 +11,7 @@ FTP_CONFIG_NAME=api_hk_cloud
 CLOUD_PAGE_NAME=petition-cd-ecotourism-comment
 */
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as formActions from 'store/actions/action-types/form-actions';
 // Import library
@@ -33,6 +33,8 @@ import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
 import StrapiFixedButton from '@components/Strapi/StrapiFixedButton';
 // Import Contents
+import CustomFields from './CustomFields';
+import CustomRules from './CustomRules';
 import formContent from './form';
 // Import static
 
@@ -50,6 +52,8 @@ function Index({ submitted = false, strapi }) {
 	const hiddenForm = useSelector((state) => state?.hiddenForm);
 	const { utm_source } = hiddenForm?.data;
 	const { AsiaPayResult } = hiddenForm?.data;
+
+	const [signupBtnRef, setSignupBtnRef] = useState(null);
 
 	submitted = useSelector((state) => state?.status?.submitted);
 
@@ -215,7 +219,7 @@ function Index({ submitted = false, strapi }) {
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (
-										<SignupForm />
+										<SignupForm setSignupBtnRef={setSignupBtnRef} CustomFields={CustomFields} CustomRules={CustomRules}  />
 									)}
 								</Box>
 							</FormContainer>
