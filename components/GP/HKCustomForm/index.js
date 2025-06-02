@@ -52,7 +52,9 @@ const MyForm = (props) => {
 		suggestion,
 		numberOfResponses,
 		numberOfTarget,
-		setValues
+		setValues,
+		CustomFields,
+		CustomRules
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
 	const [progressNumber, setProgressNumber] = useState(0);
@@ -106,11 +108,19 @@ const MyForm = (props) => {
 		};
 	}, [numberOfResponses]);
 
+
+
 	useEffect(() => {
 		if (signup.submitted) {
 			setWebStatus(true);
 		}
-	}, [signup.submitted]);
+		// whether signup success or failed, scroll to top
+		if(signup.lastAction === signupActions.SIGN_UP_SUCCESS || signup.lastAction === signupActions.SIGN_UP_FAILED) {
+			window.scrollTo({
+				top: 0,
+			});
+		}
+	}, [signup.lastAction]);
 
 	const mailSuggestion = (value) => {
 		const domains = MAIL_DOMAINS;
@@ -321,14 +331,30 @@ const MyForm = (props) => {
 									</FormErrorMessage>
 								</FormControl>
 							</Box>
-							
+
+							{CustomFields && (
+								<CustomFields
+									errors={errors}
+									touched={touched}
+									values={values}
+									formContent={formContent}
+									handleChange={handleChange}
+									handleBlur={handleBlur}
+									setFieldValue={setFieldValue}
+								/>
+							)}
+
 							{formContent.label_opinion && (
 								<Box w={'100%'}>
+									{formContent.label_opinion_optional &&<Text fontSize={'sm'} marginBottom={'.5em'}>
+										{formContent.label_opinion_optional}
+									</Text>}
 									<Field
 										errors={errors.Opinion}
 										touched={touched.Opinion}
 										label={formContent.label_opinion}
 										name={formContent.name_opinion ? formContent.name_opinion : 'CampaignData1__c'}
+
 										type={'text'}
 										handleChange={handleChange}
 										handleBlur={handleBlur}
@@ -363,7 +389,7 @@ const MyForm = (props) => {
 									}
 								</Box>
 							)}
-							
+
 
 							<Box>
 								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
@@ -412,9 +438,9 @@ const MyEnhancedForm = withFormik({
 	}),
 
 	validate: async (values, props) => {
-		const { formContent } = props;
+		const { formContent, CustomRules } = props;
 
-		return validation(values, formContent);
+		return validation(values, formContent, CustomRules);
 	},
 
 	handleSubmit: async (values, { setSubmitting, props }) => {
@@ -486,6 +512,7 @@ const MyEnhancedForm = withFormik({
 		};
 
 		if(capitalize(theme.interests) === 'General' || capitalize(strapi?.issue?.data?.attributes?.slug) === 'General') {
+
 			formData.Petition_Interested_In_Health__c = true;
 		}
 

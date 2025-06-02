@@ -1,5 +1,5 @@
-export function validation(values, formContent) {
-  const errors = {};
+export function validation(values, formContent, customRules) {
+  let errors = {};
 
   if (!values.Email) {
     errors.Email = formContent.empty_data_alert;
@@ -56,10 +56,15 @@ export function validation(values, formContent) {
       if (values[opinionFieldName].length > opinionMaxLength) {
         errors.Opinion = formContent.max_opinion_alert;
       }
-    }
-    
+    } 
   }
-  
 
+  if (customRules) {
+		errors = {
+			...errors,
+			...customRules(values, formContent)
+		};
+	}
+  
   return errors;
 }
