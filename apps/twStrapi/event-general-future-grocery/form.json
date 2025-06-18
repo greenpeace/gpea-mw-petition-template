@@ -10,7 +10,7 @@
 	"label_year_of_birth": "出生年份",
 	"label_year_of_birth_optional": "出生年份（選填）",
 	"label_newsletter": "我已詳細閱讀並同意<a href=\"https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/\" target=\"_blank\"><u>隱私保護政策</u></a>。",
-	"label_products": "請選擇您最想購買的 3 件商品，送出加入搶先預購隊伍！",
+	"label_products": "請選擇最希望緊急撤離包中包含的 3 件物品！",
 	"options_products": [
 		{ "label": "魚味膠囊", "value": "魚味膠囊" },
 		{ "label": "昆蟲蛋白棒", "value": "昆蟲蛋白棒" },
