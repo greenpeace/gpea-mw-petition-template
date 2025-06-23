@@ -133,10 +133,6 @@ function MainPage({ status, theme, setFormContent, signup, utm_source }) {
 										Robert
 										的無私分享中加深對香港自然環境及生態攝影的了解。立即登記，一起認識、賞識香港「野」！
 									</p>
-
-									<p className="">
-										* 2024 年 6 月 5 日起，逢星期三更新最新集數
-									</p>
 								</div>
 							</>
 						</div>
