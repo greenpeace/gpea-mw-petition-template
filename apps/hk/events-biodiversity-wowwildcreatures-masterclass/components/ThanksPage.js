@@ -75,11 +75,21 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted, utm_source 
 								<p className="font-bold">
 									好消息！若您已是綠色和平捐款會員，您更可額外欣賞會員限定的第七集精彩內容！
 								</p>
-
-								<p className="">* 2024 年 6 月 5 日起，逢星期三更新最新集數</p>
 							</div>
 
+							<style>
+									{`.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }`}
+								</style>
+								<div className='embed-container'>
+									<iframe 
+										src='https://www.youtube.com/embed//_8b6zesMP24' 
+										frameBorder='0' 
+										allowFullScreen
+									/>
+								</div>
+
 							<div className="flex w-full flex-col gap-4">
+
 								<h1 className="text-2xl font-bold text-[#007c00] md:text-3xl">
 									影片連結正發送至您的電子郵箱
 								</h1>
