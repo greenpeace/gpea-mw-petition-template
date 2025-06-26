@@ -34,6 +34,9 @@ export function validation(values, formContent, customRules) {
   if (!values.OptIn2) {
     errors.OptIn2 = formContent.unchecked_alert;
   } 
+	if (!values.OptIn3) {
+    errors.OptIn3 = formContent.unchecked_alert;
+  } 
 
 	
 	if (customRules) {

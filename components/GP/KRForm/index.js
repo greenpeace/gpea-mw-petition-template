@@ -190,20 +190,21 @@ const MyForm = (props) => {
 			});
 		}
 	};
-	const [checkedItems, setCheckedItems] = React.useState([false, false])
+	const [checkedItems, setCheckedItems] = React.useState([false, false, false])
 	const allChecked = checkedItems.every(Boolean)
 
 	const handleCheckbox = async (e) => {
 		// values[e.target.name] = e.target.checked;
 		if (e.target.name === 'OptIn') {
-			await setCheckedItems([e.target.checked, e.target.checked])
+			await setCheckedItems([e.target.checked, e.target.checked, e.target.checked])
 			// setFieldValue(e.target.name, e.target.checked, true);
 			for(let i = 1; i <= 3; i++){
 				setFieldValue(`OptIn${i}`, e.target.checked, false);
 			}
 			setTouched({
 				OptIn1: true,
-				OptIn2: true
+				OptIn2: true,
+				OptIn3: true
 			},true);
 		} else {
 			const index = parseInt(e.target.name.replace('OptIn', '')) -1;
@@ -214,7 +215,8 @@ const MyForm = (props) => {
 			setFieldValue('OptIn', newCheckedItems.every(Boolean), false);
 			setTouched({
 				OptIn1: true,
-				OptIn2: true
+				OptIn2: true,
+				OptIn3: true
 			},true);
 		}
 		handleChange(e);
@@ -454,7 +456,7 @@ const MyForm = (props) => {
 								</FormControl>
 								<FormControl
 										id={formContent.OptIn1}
-										isInvalid={errors.OptIn1 && (touched.OptIn1 || touched.OptIn2) }
+										isInvalid={errors.OptIn1 && (touched.OptIn1 || touched.OptIn2 || touched.OptIn3) }
 								>
 									<Flex direction={{ base: 'row' }} align={'flex-start'}>
 										<Box flex={0} mr={2} pt={1}>
@@ -479,7 +481,7 @@ const MyForm = (props) => {
 								</FormControl>
 								<FormControl
 										id={formContent.OptIn2}
-										isInvalid={errors.OptIn2 && (touched.OptIn1 || touched.OptIn2) }
+										isInvalid={errors.OptIn2 && (touched.OptIn1 || touched.OptIn2 || touched.OptIn3) }
 								>
 									<Flex direction={{ base: 'row' }} align={'flex-start'}>
 										<Box flex={0} mr={2} pt={1}>
@@ -499,6 +501,31 @@ const MyForm = (props) => {
 										></Text>
 										<FormErrorMessage px={2} mt={0} fontSize="xs" color="var(--error-900)">
 											{errors.OptIn2}
+										</FormErrorMessage>
+									</Flex>
+								</FormControl>
+								<FormControl
+										id={formContent.OptIn3}
+										isInvalid={errors.OptIn3 && (touched.OptIn1 || touched.OptIn2 || touched.OptIn3) }
+								>
+									<Flex direction={{ base: 'row' }} align={'flex-start'}>
+										<Box flex={0} mr={2} pt={1}>
+											<Checkbox
+												id="OptIn3"
+												name="OptIn3"
+												onChange={handleCheckbox}
+												onBlur={handleBlur}
+												isChecked={checkedItems[2]}
+											/>
+										</Box>
+										<Text
+											fontSize="xs"
+											dangerouslySetInnerHTML={{
+												__html: formContent.options_mkt[3].label
+											}}
+										></Text>
+										<FormErrorMessage px={2} mt={0} fontSize="xs" color="var(--error-900)">
+											{errors.OptIn3}
 										</FormErrorMessage>
 									</Flex>
 								</FormControl>
