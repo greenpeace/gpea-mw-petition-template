@@ -42,9 +42,10 @@
 		{ "label": "否", "value": false }
 	],
 
-	"custom_default_values": {"OptIn": "", "OptIn1": "", "OptIn2": ""},
+	"custom_default_values": {"OptIn": "", "OptIn3": "", "OptIn1": "", "OptIn2": ""},
 	"options_mkt": [
 		{	"label": "모든 항목 선택하기", "value": true},
+		{ "label": "(필수) 만 14세 이상입니다", "value": true },
 		{ "label": "(필수) 그린피스 후원안내 수신동의", "value": true },
 		{ "label": "(필수) 개인정보 수집/이용에 동의 <a href=\"https://www.greenpeace.org/korea/personal-info-agreement-petition\" target=\"_blank\" rel=\"noopener\"><u>내용 보기</u></a>", "value": true }
 	],

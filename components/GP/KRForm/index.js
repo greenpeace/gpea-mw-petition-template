@@ -207,7 +207,9 @@ const MyForm = (props) => {
 				OptIn3: true
 			},true);
 		} else {
-			const index = parseInt(e.target.name.replace('OptIn', '')) -1;
+			// const index = parseInt(e.target.name.replace('OptIn', '')) -1;
+			const index = Object.keys(formContent.custom_default_values).indexOf(e.target.name) -1;
+			console.log('index', index, e.target.name);
 			const newCheckedItems = [...checkedItems];
 			newCheckedItems[index] = e.target.checked;
 			setCheckedItems(newCheckedItems);
@@ -454,7 +456,38 @@ const MyForm = (props) => {
 										></Text>
 									</Flex>	
 								</FormControl>
-								<FormControl
+								{Object.keys(formContent.custom_default_values).map((key, index) => {
+									if(key !== 'OptIn') {
+										return (
+											<FormControl
+												id={formContent[key]}
+												isInvalid={errors[key] && (touched.OptIn1 || touched.OptIn2 || touched.OptIn3) }
+											>
+												<Flex direction={{ base: 'row' }} align={'flex-start'}>
+													<Box flex={0} mr={2} pt={1}>
+														<Checkbox
+															id={key}
+															name={key}
+															onChange={handleCheckbox}
+															onBlur={handleBlur}
+															isChecked={checkedItems[index-1]}
+														/>
+													</Box>
+													<Text
+														fontSize="xs"
+														dangerouslySetInnerHTML={{
+															__html: formContent.options_mkt[index].label
+														}}
+													></Text>
+													<FormErrorMessage px={2} mt={0} fontSize="xs" color="var(--error-900)">
+														{errors[key]}
+													</FormErrorMessage>
+												</Flex>
+											</FormControl>
+										)
+									}
+								})}
+								{/* <FormControl
 										id={formContent.OptIn1}
 										isInvalid={errors.OptIn1 && (touched.OptIn1 || touched.OptIn2 || touched.OptIn3) }
 								>
@@ -528,7 +561,7 @@ const MyForm = (props) => {
 											{errors.OptIn3}
 										</FormErrorMessage>
 									</Flex>
-								</FormControl>
+								</FormControl> */}
 							</Box>
 			
 					)}
