@@ -27,7 +27,7 @@ import PetitionFooter from '@containers/petitionFooter';
 import HeroBanner from '@components/ResponsiveBanner/hero';
 import ThanksBanner from '@components/ResponsiveBanner/thanks';
 import DonationModule from '@components/GP/DonationModule';
-import SignupForm from '@components/GP/HKCustomForm';
+import SignupForm from '@components/GP/HKForm';
 // Import Strapi content components
 import StrapiSEO from '@components/Strapi/StrapiSEO';
 import StrapiDynamicBlocks from '@components/Strapi/StrapiDynamicContent';
@@ -225,7 +225,7 @@ function Index({ submitted = false, strapi }) {
 					</Flex>
 				</OverflowWrapper>
 			</PageContainer>
-			<PetitionFooter locale={'HKChinese'} />
+			<PetitionFooter locale={'HKEnglish'} />
 			<StrapiFixedButton target={FormRef} targetInView={inView} />
 		</>
 	);
