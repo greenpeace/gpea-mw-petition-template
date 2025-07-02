@@ -226,7 +226,7 @@ function Index({ submitted = false, strapi }) {
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKEnglish'} />
-			<StrapiFixedButton target={FormRef} targetInView={inView} />
+			{ !submitted && (<StrapiFixedButton target={FormRef} targetInView={inView} />) }
 		</>
 	);
 }

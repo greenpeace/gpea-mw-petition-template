@@ -1,5 +1,5 @@
 {
-	"form_header": "Becoming an Environmental Changemaker",
+	"form_header": "Become an Environmental Changemaker",
 	"form_description": "Together, we'll be the gamechangers to safeguard our environment.",
 	"signed_number": "",
 	"label_name": "",
@@ -11,7 +11,7 @@
 	"label_year_of_birth": "Year of Birth",
 	"label_year_of_birth_optional": "Year of Birth (Optional)",
 	"label_newsletter": "",
-	"form_remind": "* By signing up to this course, you agree to receive important updates from Greenpeace to stay up to date on our environmental protection work. Greenpeace respects and protects your personal information with <a href='https://www.greenpeace.org/eastasia/privacy-and-cookies/' style='text-decoration:underline;' target='_blank'>Greenpeace's privacy policy</a>.",
+	"form_remind": "* By signing up, you agree to receive important updates from Greenpeace to stay up to date on our environmental protection work. Greenpeace respects and protects your personal information with <a href='https://www.greenpeace.org/eastasia/privacy-and-cookies/' style='text-decoration:underline;' target='_blank'>Greenpeace's privacy policy</a>.",
 
 	"empty_data_alert": "Please complete this field",
 	"empty_select_data_alert": "Please complete this field",
