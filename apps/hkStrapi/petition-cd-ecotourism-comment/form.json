@@ -13,7 +13,6 @@
 	"label_opinion": "",
 	"label_newsletter": "我願意收到綠色和平發送的通訊，讓我能掌握環保工作的最新脈動！綠色和平尊重並保障你的個人資料，你隨時可取消訂閱，請參考<a href='https://www.greenpeace.org/hongkong/policies/privacy-and-cookies/' target='_blank' rel='noopener'><u>私隱政策</u></a>。",
 	"label_question_01": "你同意政府發展生態旅遊應有以下的原則嗎？（可多選）",
-	"label_question_02": "在生態旅遊發展中，請根據你認為的重要程度對以下類別進行排序（請輸入數字，1為最重要，4為最不重要）:",
 	"label_opinion_optional": "你對生態旅遊發展的原則有何看法，或你對政府的生態旅遊政策發展有其他意見，歡迎在此補充",
 	"question_01_options": [
 		{ "label": "保育生態為優先", "value": "保育生態為優先" },
@@ -22,15 +21,7 @@
 		{ "label": "收入回饋當地生態保育", "value": "收入回饋當地生態保育" },
 		{ "label": "結合當地文化與生態保育的教育", "value": "結合當地文化與生態保育的教育" }
 	],
-	"question_02_options": [
-		{ "label": "自然環境及生態", "value": "" },
-		{ "label": "私人住宅", "value": "" },
-		{ "label": "酒店及度假村", "value": "" },
-		{ "label": "康樂（例如斜坡滑車、高山過山車及飛索等）", "value": "" }
-	],
 	"question_01_error": "請最少選擇一項",
-	"question_02_error": "請輸入數字1至4",
-	"question_02_duplicate_values_alert": "請勿重覆輸入相同數字，按排序輸入1至4",
 	"empty_data_alert": "請填寫資料",
 	"empty_select_data_alert": "請選擇",
 
