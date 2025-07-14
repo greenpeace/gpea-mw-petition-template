@@ -122,15 +122,15 @@ export const Korean = {
     },
     {
       label: '연락처',
-      value: 'https://www.greenpeace.org/taiwan/about/contact/',
+      value: 'https://www.greenpeace.org/korea/about/contact/',
     },
     {
       label: '보도자료와 미디어',
-      value: 'https://www.greenpeace.org/taiwan/press-media/press-releases/',
+      value: 'https://www.greenpeace.org/korea/press-media/press-releases/',
     },
     {
       label: '그린피스 소개',
-      value: 'https://www.greenpeace.org/taiwan/about/overview/',
+      value: 'https://www.greenpeace.org/korea/about/overview/',
     },
   ],
   rightContent: [
