@@ -28,13 +28,13 @@ export function validation(values, formContent, customRules) {
 		errors.Birthdate = formContent.empty_data_alert;
 	}
 
-	if (!values.OptIn1) {
+	if (formContent?.custom_default_values?.OptIn1 && !values.OptIn1) {
     errors.OptIn1 = formContent.unchecked_alert;
   } 
-  if (!values.OptIn2) {
+  if (formContent?.custom_default_values?.OptIn2 && !values.OptIn2) {
     errors.OptIn2 = formContent.unchecked_alert;
   } 
-	if (!values.OptIn3) {
+	if (formContent?.custom_default_values?.OptIn3 && !values.OptIn3) {
     errors.OptIn3 = formContent.unchecked_alert;
   } 
 
