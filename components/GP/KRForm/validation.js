@@ -27,14 +27,15 @@ export function validation(values, formContent, customRules) {
 	if (formContent.label_year_of_birth !== "" && !values.Birthdate) {
 		errors.Birthdate = formContent.empty_data_alert;
 	}
-
-	if (formContent?.custom_default_values?.OptIn1 && !values.OptIn1) {
+	console.log('values', values);
+	console.log('formContent', formContent);
+	if (typeof formContent?.custom_default_values?.OptIn1 != 'undefined' && !values.OptIn1) {
     errors.OptIn1 = formContent.unchecked_alert;
   } 
-  if (formContent?.custom_default_values?.OptIn2 && !values.OptIn2) {
+  if (typeof formContent?.custom_default_values?.OptIn2 != 'undefined' && !values.OptIn2) {
     errors.OptIn2 = formContent.unchecked_alert;
   } 
-	if (formContent?.custom_default_values?.OptIn3 && !values.OptIn3) {
+	if (typeof formContent?.custom_default_values?.OptIn3 != 'undefined' && !values.OptIn3) {
     errors.OptIn3 = formContent.unchecked_alert;
   } 
 
