@@ -41,6 +41,7 @@ const MyForm = (props) => {
 		touched,
 		errors,
 		setTouched,
+		setFieldTouched,
 		handleChange,
 		handleBlur,
 		handleSubmit,
@@ -146,24 +147,7 @@ const MyForm = (props) => {
 		};
 	}, [numberOfResponses, customNumbers]);
 
-	//setting additional fileds for formik
-	useEffect(() => {
-		if (Object.keys(formContent).length > 0) {
-			if (formContent.counties) setFieldValue('Counties', '');
-			if (formContent.careers) setFieldValue('Careers', '');
-			if (formContent.namelist)
-				setFieldValue('Namelist', formContent.namelist[0].value);
-			if (formContent.additional)
-				setFieldValue(formContent.additional.fieldName, '');
-
-			if(Object.keys(formContent.custom_default_values).length > 0) {
-				Object.keys(formContent.custom_default_values).map((key) => {
-					setFieldValue(key, formContent.custom_default_values[key]);
-				});
-			}
-		}
-		
-	}, [formContent]);
+	
 
 	useEffect(() => {
 		if (signup.submitted) {
@@ -190,36 +174,69 @@ const MyForm = (props) => {
 			});
 		}
 	};
-	const [checkedItems, setCheckedItems] = React.useState([false, false, false])
+	const [checkedItems, setCheckedItems] = React.useState([]);
+	
+	//setting additional fileds for formik
+	useEffect(() => {
+		if (Object.keys(formContent).length > 0) {
+			if (formContent.counties) setFieldValue('Counties', '');
+			if (formContent.careers) setFieldValue('Careers', '');
+			if (formContent.namelist)
+				setFieldValue('Namelist', formContent.namelist[0].value);
+			if (formContent.additional)
+				setFieldValue(formContent.additional.fieldName, '');
+
+			if(Object.keys(formContent.custom_default_values).length > 0) {
+				Object.keys(formContent.custom_default_values).map((key, i) => {
+					setFieldValue(key, formContent.custom_default_values[key]);
+					if(i>0) setCheckedItems((prev) => [...prev, false]);
+				});
+			}
+		}
+		
+	}, [formContent]);
+
 	const allChecked = checkedItems.every(Boolean)
 
 	const handleCheckbox = async (e) => {
 		// values[e.target.name] = e.target.checked;
 		if (e.target.name === 'OptIn') {
-			await setCheckedItems([e.target.checked, e.target.checked, e.target.checked])
+			// await setCheckedItems([e.target.checked, e.target.checked, e.target.checked])
+			await setCheckedItems(checkedItems.map(() => e.target.checked));
 			// setFieldValue(e.target.name, e.target.checked, true);
-			for(let i = 1; i <= 3; i++){
+			for(let i = 1; i <= checkedItems.length; i++){
+				
 				setFieldValue(`OptIn${i}`, e.target.checked, false);
+				setFieldTouched(`OptIn${i}`);
+				// console.log(`OptIn${i}`, e.target.checked);
 			}
-			setTouched({
-				OptIn1: true,
-				OptIn2: true,
-				OptIn3: true
-			},true);
+			// console.log('allChecked', allChecked, checkedItems);
+			
+			
+			
+			// setTouched({
+			// 	OptIn1: true,
+			// 	OptIn2: true,
+			// 	OptIn3: true
+			// },true);
 		} else {
 			// const index = parseInt(e.target.name.replace('OptIn', '')) -1;
 			const index = Object.keys(formContent.custom_default_values).indexOf(e.target.name) -1;
-			console.log('index', index, e.target.name);
+			
 			const newCheckedItems = [...checkedItems];
 			newCheckedItems[index] = e.target.checked;
 			setCheckedItems(newCheckedItems);
 			await setFieldValue(e.target.name, e.target.checked, true);
 			setFieldValue('OptIn', newCheckedItems.every(Boolean), false);
-			setTouched({
-				OptIn1: true,
-				OptIn2: true,
-				OptIn3: true
-			},true);
+			for(let i = 1; i <= checkedItems.length; i++){
+				setFieldTouched(`OptIn${i}`);
+			}
+			// setTouched({
+			// 	OptIn1: true,
+			// 	OptIn2: true,
+			// 	OptIn3: true
+			// },true);
+			// console.log('index', index, e.target.name);
 		}
 		handleChange(e);
 	}
@@ -462,6 +479,7 @@ const MyForm = (props) => {
 											<FormControl
 												id={formContent[key]}
 												isInvalid={errors[key] && (touched.OptIn1 || touched.OptIn2 || touched.OptIn3) }
+												key={key}
 											>
 												<Flex direction={{ base: 'row' }} align={'flex-start'}>
 													<Box flex={0} mr={2} pt={1}>
