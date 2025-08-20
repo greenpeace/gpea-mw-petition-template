@@ -46,6 +46,7 @@ const MyForm = (props) => {
 		handleSubmit,
 		isLoading,
 		setFieldValue,
+		setFieldTouched,
 		setWebStatus,
 		values,
 		formContent,
@@ -590,6 +591,7 @@ const MyEnhancedForm = withFormik({
   },
 
 	handleSubmit: async (values, { setSubmitting, props }) => {
+		
 		const { submitForm, theme, hiddenFormData, strapi, customMapFields } =
 			props;
 		const isProd = process.env.NODE_ENV === 'production';
@@ -663,6 +665,7 @@ const MyEnhancedForm = withFormik({
 })(MyForm);
 
 const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
+	console.log(form)
 	return {
 		signup,
 		hiddenFormData: hiddenForm.data,
