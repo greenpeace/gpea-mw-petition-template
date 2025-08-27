@@ -1,13 +1,13 @@
 /** 
  * Dploy Setting:
-PROJECT=twStrapi/guardians-of-the-wind-ocean-trilogy
+PROJECT=twStrapi/guardians-of-the-wind-portraits-of-advocacy
 MARKET=tw
-PROJECT_NAME=guardians-of-the-wind-ocean-trilogy
-BASEPATH=/htdocs/2025/petition/guardians-of-the-wind-ocean-trilogy
-ASSETPREFIX=https://change.greenpeace.org.tw/2025/petition/guardians-of-the-wind-ocean-trilogy/
+PROJECT_NAME=guardians-of-the-wind-portraits-of-advocacy
+BASEPATH=/htdocs/2025/petition/guardians-of-the-wind-portraits-of-advocacy
+ASSETPREFIX=https://change.greenpeace.org.tw/2025/petition/guardians-of-the-wind-portraits-of-advocacy/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=zh-tw.2025.guardians-of-the-wind-ocean-trilogy
+CLOUD_PAGE_NAME=zh-tw.2025.guardians-of-the-wind-portraits-of-advocacy
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -254,6 +254,7 @@ function Index({ submitted = false, strapi }) {
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
 			{ !submitted && (<StrapiFixedButton target={FormRef} targetInView={inView} />)}
+			
 		</>
 	);
 }
