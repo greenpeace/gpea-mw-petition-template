@@ -3,8 +3,8 @@
 PROJECT=twStrapi/petition-gpt_plastics
 MARKET=tw
 PROJECT_NAME=petition-gpt_plastics
-BASEPATH=/htdocs/2023/petition/petition-gpt_plastics
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-gpt_plastics/
+BASEPATH=/htdocs/migrate/petition/petition-gpt_plastics
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/petition/petition-gpt_plastics/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-tw.2023.plastics.plastics_gpt.general.signup.na

@@ -4,8 +4,8 @@
 PROJECT=twStrapi/donation-oceans-deepseamining
 MARKET=tw
 PROJECT_NAME=donation-oceans-deepseamining
-BASEPATH=/htdocs/2023/donation/donation-oceans-deepseamining
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-oceans-deepseamining/
+BASEPATH=/htdocs/migrate/donation/donation-oceans-deepseamining
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/donation/donation-oceans-deepseamining/
 FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=donation-oceans-deepseamining

@@ -4,8 +4,8 @@
 PROJECT=twStrapi/petition-oceans-sanctuaries-mw
 MARKET=tw
 PROJECT_NAME=petition-oceans-sanctuaries-mw
-BASEPATH=/htdocs/2023/petition/petition-oceans-sanctuaries-mw
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-oceans-sanctuaries-mw/
+BASEPATH=/htdocs/migrate/petition/petition-oceans-sanctuaries-mw
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/petition/petition-oceans-sanctuaries-mw/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-tw.2021.oceans.sanctuaries.mindwise_version.signup

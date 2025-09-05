@@ -51,7 +51,7 @@ const signupNumbersKRURL = process.env.signupNumbersKR;
 
 // Pending
 const schemaEndpoint = `${themeEndpointURL}?q={"Market":"${envProjectMarket}"}`;
-
+const hubspotWebsignProxy = (process.env.NODE_ENV === 'production') ? `https://web-api.gpeastasia.org/api/${envProjectMarket.toLowerCase()}/petition/websign-proxy` : `https://web-api-stage.gpeastasia.org/api/${envProjectMarket.toLowerCase()}/petition/websign-proxy`;
 /*const initTagManager = (marketName) => {
 	if (process.env.NODE_ENV === 'production') {
 		switch (marketName) {
@@ -190,7 +190,18 @@ function Index({
 
 	/* Pre-fill signup data */
 	useEffect(() => {
-		setTheme(themeData);
+
+		// get HubSpot UTK cookie and set to hidden form
+		const hubspotUtk = helper.getHubSpotUtk();
+		if (hubspotUtk) {
+			dispatch({
+				type: hiddenFormActions.SET_HIDDEN_FORM,
+				data: { hubspotUtk: hubspotUtk }
+			});
+		}
+		
+
+		console.log('ThemeData:', themeData);
 
 		let FormObj = {};
 		const selectForm = document.forms['mc-form'];
@@ -252,6 +263,13 @@ function Index({
 
 		initTagManager(market);
 		setPrepared(true);
+		// get page title and set to hidden form
+		if(strapi?.seo?.metaTitle){
+			dispatch({
+				type: hiddenFormActions.SET_HIDDEN_FORM,
+				data: { pageTitle: strapi.seo.metaTitle }
+			});
+		}
 	}, []);
 
 	return (
@@ -301,6 +319,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export async function getStaticProps(context) {
+	
 	const singleResult = await axios
 		.get(schemaEndpoint)
 		.then((response) => {
@@ -360,6 +379,13 @@ export async function getStaticProps(context) {
 	const themes = await res.json();
 	const theme =
 		themes?.data[0] !== undefined ? themes?.data[0]?.attributes : null;
+	// setting hubspot websign proxy endpoint replace the one in strapi
+	if(singleResult){
+		singleResult.EndpointURL = hubspotWebsignProxy;
+	}
+	if(theme?.market?.data?.attributes?.websignEndpointURL) {
+		theme.market.data.attributes.websignEndpointURL = hubspotWebsignProxy;
+	}
 	if(process.env.project.indexOf('Preview') >= 0) {
 			return {
 				props: {
@@ -375,7 +401,7 @@ export async function getStaticProps(context) {
 			props: {
 				themeData: singleResult || {
 					CampaignId: theme?.campaignId,
-					EndpointURL: theme?.market?.data?.attributes?.websignEndpointURL,
+					EndpointURL: hubspotWebsignProxy || theme?.market?.data?.attributes?.websignEndpointURL,
 					EventLabel: envProjectName,
 					Market: envProjectMarket,
 					ProjectName: envProjectName,
