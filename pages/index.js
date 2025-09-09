@@ -157,12 +157,12 @@ function Index({
 			};
 			console.log(fetchURLs[themeData?.Market.toLowerCase()])
 			const signupData = await axios
-				.get(fetchURLs[themeData?.Market.toLowerCase()])
+				.get(fetchURLs[themeData?.Market.toLowerCase()] + `?campaignIds=${themeData?.CampaignId}`)
 				.then((response) => {
 					return response.data.find((d) => d.Id === themeData?.CampaignId);
 				})
 				.catch((error) => console.log(error));
-
+			console.log('sign up no', signupData)
 			setSignupNumbers({ [themeData?.Market]: signupData });
 		}
 		fetchSignupData();
@@ -190,7 +190,7 @@ function Index({
 
 	/* Pre-fill signup data */
 	useEffect(() => {
-
+    setTheme(themeData);
 		// get HubSpot UTK cookie and set to hidden form
 		const hubspotUtk = helper.getHubSpotUtk();
 		if (hubspotUtk) {
