@@ -24,9 +24,21 @@ const CustomFields = ({
 	handleChange,
 	handleBlur,
 	handleSubmit,
+	setFieldTouched,
 	setFieldValue
 }) => {
-
+	// console.log('touched', touched);
+	useEffect(() => {
+		formContent?.custom_default_values &&
+			Object.keys(formContent.custom_default_values).forEach((key) => {
+				if (touched[key] !== true && key == 'CampaignData3__c') {
+					console.log('set default', key, formContent.custom_default_values[key]);
+					setFieldTouched(key, true, false);
+					values[key] = formContent.custom_default_values[key];
+					// values[key] = formContent.custom_default_values[key];
+				}
+			});
+	}, [formContent, touched]);
 	return (
 		<>
 			<Box w={'100%'}>
@@ -67,7 +79,19 @@ const CustomFields = ({
 						{errors.Options_viewers}
 					</FormErrorMessage>
 				</FormControl>
-
+				<FormControl
+					id='CampaignData3__c'
+					isInvalid={errors.CampaignData3__c}
+				>
+					<Input
+						// type='hidden'
+						hidden={true}
+						name='CampaignData3__c'
+						value={values.CampaignData3__c || ''}
+						onChange={handleChange}
+						onBlur={handleBlur}
+					/>
+				</FormControl>
 				{/*<Flex flexWrap={'wrap'}>
 					{
 						formContent.options_viewers &&

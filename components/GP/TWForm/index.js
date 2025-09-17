@@ -366,6 +366,8 @@ const MyForm = (props) => {
 								errors={errors} 
 								touched={touched} 
 								values={values}
+								setFieldTouched={setFieldTouched}
+								setFieldValue={setFieldValue}
 								formContent={formContent}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
