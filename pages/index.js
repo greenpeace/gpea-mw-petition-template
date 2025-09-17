@@ -51,7 +51,7 @@ const signupNumbersKRURL = process.env.signupNumbersKR;
 
 // Pending
 const schemaEndpoint = `${themeEndpointURL}?q={"Market":"${envProjectMarket}"}`;
-const hubspotWebsignProxy = (process.env.NODE_ENV === 'production') ? `https://web-api.gpeastasia.org/api/${envProjectMarket.toLowerCase()}/petition/websign-proxy` : `https://web-api-stage.gpeastasia.org/api/${envProjectMarket.toLowerCase()}/petition/websign-proxy`;
+const hubspotWebsignProxy = (process.env.NODE_ENV === 'production') ? `https://web-api.gpeastasia.org/api/${envProjectMarket.toLowerCase()}/petition/websign-proxy` : `//localhost:3000/api/${envProjectMarket.toLowerCase()}/petition/websign-proxy`;
 /*const initTagManager = (marketName) => {
 	if (process.env.NODE_ENV === 'production') {
 		switch (marketName) {
@@ -157,13 +157,19 @@ function Index({
 			};
 			console.log(fetchURLs[themeData?.Market.toLowerCase()])
 			const signupData = await axios
-				.get(fetchURLs[themeData?.Market.toLowerCase()] + `?campaignIds=${themeData?.CampaignId}`)
+				.get(fetchURLs[themeData?.Market.toLowerCase()] + '?campaignIds=' + themeData?.CampaignId)
 				.then((response) => {
-					return response.data.find((d) => d.Id === themeData?.CampaignId);
+					//return response.data.find((d) => d.Id === themeData?.CampaignId);
+					return {
+						NumberOfResponses: response.data?.data?.campaignCounts?.[themeData?.CampaignId],
+						NumberOfLeads: 0,
+						NumberOfContacts: 0,
+						Petition_Signup_Target__c: response.data?.data?.campaignTargets?.[themeData?.CampaignId],
+					}
 				})
 				.catch((error) => console.log(error));
-			console.log('sign up no', signupData)
-			setSignupNumbers({ [themeData?.Market]: signupData });
+			console.log('SignupData:', signupData);
+			setSignupNumbers({ [themeData?.Market]: signupData});
 		}
 		fetchSignupData();
 	}, []);
@@ -382,9 +388,11 @@ export async function getStaticProps(context) {
 	// setting hubspot websign proxy endpoint replace the one in strapi
 	if(singleResult){
 		singleResult.EndpointURL = hubspotWebsignProxy;
+		// singleResult.dummyEndpointURL = process.env.dummyEndpoint;
 	}
 	if(theme?.market?.data?.attributes?.websignEndpointURL) {
 		theme.market.data.attributes.websignEndpointURL = hubspotWebsignProxy;
+		// theme.market.data.attributes.dummyEndpointURL = process.env.dummyEndpoint;
 	}
 	if(process.env.project.indexOf('Preview') >= 0) {
 			return {

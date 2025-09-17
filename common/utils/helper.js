@@ -45,7 +45,7 @@ export const pushDataLayer = (props) => {
 }
 
 export const sendWebEventHistory = (params) => {
-
+  console.log('sendWebEventHistory', params)
   let formData = new FormData();
   formData.append('Campaign__c', params?.CampaignId);
   formData.append('Event_Name__c', params?.event?.event_name);
