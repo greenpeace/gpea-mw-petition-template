@@ -72,21 +72,21 @@ export function* submitForm(actions) {
           })
         }
 
-        if(Market !== 'kr'){
-          // web event history
-          helper.sendWebEventHistory({
-            ...actions.data,
-            'ua': window.navigator.userAgent,
-            'url': window.location.href,
-            'event': {
-              'event': 'custom_event',
-              'event_name' : 'petition_signup',
-              'event_category': 'petitions',
-              'event_action': 'signup',
-              'event_label': actions.data?.CampaignId
-            }
-          });
-        }
+        // if(Market !== 'kr'){
+        //   // web event history
+        //   helper.sendWebEventHistory({
+        //     ...actions.data,
+        //     'ua': window.navigator.userAgent,
+        //     'url': window.location.href,
+        //     'event': {
+        //       'event': 'custom_event',
+        //       'event_name' : 'petition_signup',
+        //       'event_category': 'petitions',
+        //       'event_action': 'signup',
+        //       'event_label': actions.data?.CampaignId
+        //     }
+        //   });
+        // }
         
         
       } else {
