@@ -24,9 +24,21 @@ const CustomFields = ({
 	handleChange,
 	handleBlur,
 	handleSubmit,
+	setFieldTouched,
 	setFieldValue
 }) => {
-
+	// console.log('touched', touched);
+	useEffect(() => {
+		formContent?.custom_default_values &&
+			Object.keys(formContent.custom_default_values).forEach((key) => {
+				if (touched[key] !== true && key == 'CampaignData3__c') {
+					console.log('set default', key, formContent.custom_default_values[key]);
+					setFieldTouched(key, true, false);
+					values[key] = formContent.custom_default_values[key];
+					// values[key] = formContent.custom_default_values[key];
+				}
+			});
+	}, [formContent, touched]);
 	return (
 		<>
 			<Box w={'100%'}>
