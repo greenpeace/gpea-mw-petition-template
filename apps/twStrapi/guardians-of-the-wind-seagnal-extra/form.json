@@ -1,5 +1,5 @@
 {
-	"form_header": "我想報名 《SEAgnal：大海的信號》加映場",
+	"form_header": "我想候補 《SEAgnal：大海的信號》",
 	"form_description": "填寫以下資訊，和我們一起走進風的旅程",
 	"signed_number": "",
 	"label_first_name": "名字",
@@ -19,7 +19,7 @@
 		{ "label": "5", "value": "5" }
 	],
 	"name_viewers": "CampaignData1__c",
-	"custom_default_values": {"CampaignData1__c": ""},
+	"custom_default_values": {"CampaignData1__c": "", "CampaignData3__c": "waiting"},
 
 	"empty_mkt_alert": "您尚未同意隱私權保護政策",
 	"empty_data_alert": "請填寫資料",
