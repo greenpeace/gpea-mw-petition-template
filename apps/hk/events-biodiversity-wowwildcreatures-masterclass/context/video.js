@@ -169,7 +169,7 @@ const EPISODES = [
 		key: 6,
 		ep: 7,
 		name: '【捐款會員獨家限定】EP7 香港「野」繽紛',
-		url: 'RobertMasterClass/Video/ep6_dummy_20240527_l17erz',
+		url: 'RobertMasterClass/Video/ep7_dummy_20240527_aqwtws',
 		content:
 			'您有想過夜間的香港野外世界是怎樣的嗎？來到最後一集，Robert 帶我們出發夜間探險，細看夜行動物的世界！入夜後的大自然既神秘又刺激，我們更遇到以「香港」命名的物種！來吧，一邊探險，一邊學習夜間拍攝技巧！* 此集為綠色和平捐款會員獨家限定集數。',
 		message: {
