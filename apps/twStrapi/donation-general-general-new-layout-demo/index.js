@@ -1,14 +1,14 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=twStrapi/donation-drtv_climate
+PROJECT=twStrapi/donation-general-general-new-layout-demo
 MARKET=tw
-PROJECT_NAME=donation-drtv_climate
-BASEPATH=/htdocs/migrate/donation/donation-drtv_climate
-ASSETPREFIX=https://change.greenpeace.org.tw/migrate/donation/donation-drtv_climate/
+PROJECT_NAME=donation-general-general-new-layout-demo
+BASEPATH=/htdocs/migrate/donation/donation-general-general-new-layout-demo
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/donation/donation-general-general-new-layout-demo/
 FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=Donation - drtv_climate
+CLOUD_PAGE_NAME=donation-general-general-new-layout-demo
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -49,6 +49,7 @@ function Index({ submitted = false, strapi }) {
 		threshold: 0,
 		rootMargin: '-70px 0px 120px 0px'
 	});
+
 	const FormRef = useRef(null);
 
 	submitted = useSelector((state) => state?.status?.submitted);
@@ -180,7 +181,7 @@ function Index({ submitted = false, strapi }) {
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
-							<FormContainer>
+							<FormContainer styleFix={false}>
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
 										utm_source !== 'dd' && (
@@ -202,7 +203,9 @@ function Index({ submitted = false, strapi }) {
 													strapi?.donationModuleCampaignId ??
 													''
 												}
+												linepay={true}
 												env={strapi?.donationModuleEnv}
+												// customUrl="https://144636797.fs1.hubspotusercontent-eu1.net/hubfs/144636797/hub_generated/template_assets/1/251272903879/1758788031026/template_main.min.js"
 											/>
 										)
 									) : (

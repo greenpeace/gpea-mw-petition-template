@@ -25,6 +25,7 @@ import {
 	twTagManagerArgs,
 	krTagManagerArgs
 } from '@common/constants/tagManagerArgs';
+import { theme } from 'tailwind.config';
 
 
 /* Determine the returned project index by env variable */
@@ -280,6 +281,13 @@ function Index({
 
 	return (
 		<>
+			{(process.env.NODE_ENV === 'production' && envProjectName.includes('new-layout')) && (
+				 <script 
+						dangerouslySetInnerHTML={{
+							__html: `this.moduleUrl='{{get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js")}}';`
+						}}
+					/>
+			)}
 			<DynamicSeoComp strapi={strapi} theme={themeData} />
 			{/* <Script strategy="lazyOnload">
             {`console.log("================ GTM ================");`}
@@ -388,10 +396,12 @@ export async function getStaticProps(context) {
 	// setting hubspot websign proxy endpoint replace the one in strapi
 	if(singleResult){
 		singleResult.EndpointURL = hubspotWebsignProxy;
+		singleResult.dummyEndpointURL = hubspotWebsignProxy;
 		// singleResult.dummyEndpointURL = process.env.dummyEndpoint;
 	}
 	if(theme?.market?.data?.attributes?.websignEndpointURL) {
 		theme.market.data.attributes.websignEndpointURL = hubspotWebsignProxy;
+		theme.market.data.attributes.dummyEndpointURL = hubspotWebsignProxy;
 		// theme.market.data.attributes.dummyEndpointURL = process.env.dummyEndpoint;
 	}
 	if(process.env.project.indexOf('Preview') >= 0) {

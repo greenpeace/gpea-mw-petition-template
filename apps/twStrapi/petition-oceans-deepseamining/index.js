@@ -3,8 +3,8 @@
 PROJECT=twStrapi/petition-oceans-deepseamining
 MARKET=tw
 PROJECT_NAME=petition-oceans-deepseamining
-BASEPATH=/htdocs/2023/petition/petition-oceans-deepseamining
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-oceans-deepseamining/
+BASEPATH=/htdocs/migrate/petition/petition-oceans-deepseamining
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/petition/petition-oceans-deepseamining/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-tw.2023.oceans.deepseamining.signup

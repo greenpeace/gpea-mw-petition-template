@@ -4,8 +4,8 @@
 PROJECT=twStrapi/donation-gpt_plastics
 MARKET=tw
 PROJECT_NAME=donation-gpt_plastics
-BASEPATH=/htdocs/2023/donation/donation-gpt_plastics
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-gpt_plastics/
+BASEPATH=/htdocs/migrate/donation/donation-gpt_plastics
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/donation/donation-gpt_plastics/
 FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=donation-gpt_plastics

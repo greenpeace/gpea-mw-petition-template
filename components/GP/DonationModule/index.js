@@ -56,7 +56,8 @@ const DonationModule = (props) => {
 		signup,
 		preFill,
 		customUrl,
-		isUAT = false
+		isUAT = false,
+		linepay = false,
 	} = props;
 
 	// Define constant module url
@@ -64,7 +65,7 @@ const DonationModule = (props) => {
 	// If there are any changes, should update the module URL in "_document.js" accordingly for preload script.
 	// *******************
 	console.log('market', market, 'campaignId', campaignId);
-	const moduleUrl =
+	let moduleUrl =
 		market?.toUpperCase() === 'TW'
 			? `https://change.greenpeace.org.tw/app/donation-module${
 					isUAT ? '-uat' : ''
@@ -76,6 +77,8 @@ const DonationModule = (props) => {
 				:`https://gpseoulwebserver.co.kr/app/donation-module${
 						isUAT ? '-uat' : ''
 			  	}/main.js`;
+	if(linepay) moduleUrl = window?.moduleUrl;
+	console.log('moduleUrl', moduleUrl);
 	// Import module
 	const timestamp = process.env.timeStamp;
 	if (customUrl) console.log('using custom donation module url: ' + customUrl);

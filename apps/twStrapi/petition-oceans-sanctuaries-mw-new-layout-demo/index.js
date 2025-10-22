@@ -1,13 +1,14 @@
 /** 
-Dploy Setting:
-PROJECT=twStrapi/petition-mitigate-climatechange
+ * Dploy Setting:
+ *
+PROJECT=twStrapi/petition-oceans-sanctuaries-mw-new-layout-demo
 MARKET=tw
-PROJECT_NAME=petition-mitigate-climatechange
-BASEPATH=/htdocs/2023/petition/petition-mitigate-climatechange
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/petition-mitigate-climatechange/
+PROJECT_NAME=petition-oceans-sanctuaries-mw-new-layout-demo
+BASEPATH=/htdocs/migrate/petition/petition-oceans-sanctuaries-mw-new-layout-demo
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/petition/petition-oceans-sanctuaries-mw-new-layout-demo/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=zh-tw.2022.climate.mitigate-climatechange.signup
+CLOUD_PAGE_NAME=zh-tw.2021.oceans.sanctuaries.mindwise_version.signup
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -64,8 +65,6 @@ function Index({ submitted = false, strapi }) {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
 	}, [dispatch]);
 
-	// const { FirstName } = signup;
-
 	// get utm_source
 	const { utm_source } = hiddenForm?.data;
 
@@ -113,8 +112,8 @@ function Index({ submitted = false, strapi }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										'<br/>' +
-										strapi?.contentHero?.richContent
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}
@@ -144,8 +143,9 @@ function Index({ submitted = false, strapi }) {
 								]}
 								content={{
 									//title: strapi?.thankyouHero?.richContent,
-									title: `${TYName ? TYName : '綠色和平支持者'}，${strapi?.thankyouHero?.richContent
-										}`,
+									title: `${TYName ? TYName : '綠色和平支持者'}，${
+										strapi?.thankyouHero?.richContent
+									}`,
 									description: strapi?.thankyouHero?.richContentParagraph
 								}}
 							/>
@@ -173,8 +173,8 @@ function Index({ submitted = false, strapi }) {
 								content={{
 									title: theme?.params?.headline_prefix
 										? theme?.params?.headline_prefix +
-										'<br/>' +
-										strapi?.contentHero?.richContent
+										  '<br/>' +
+										  strapi?.contentHero?.richContent
 										: strapi?.contentHero?.richContent,
 									description: strapi?.contentHero?.richContentParagraph
 								}}
@@ -206,14 +206,14 @@ function Index({ submitted = false, strapi }) {
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
-							<FormContainer>
+							<FormContainer styleFix={!submitted}>
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
 										utm_source !== 'dd' && (
 											<DonationModule
 												market={
 													strapi?.market?.data?.attributes?.market ===
-														'Hong Kong'
+													'Hong Kong'
 														? 'HK'
 														: 'TW'
 												}
@@ -227,15 +227,13 @@ function Index({ submitted = false, strapi }) {
 													strapi?.donationModuleCampaignId ??
 													''
 												}
+												linepay={true}
 												isUAT={false}
 												env={strapi?.donationModuleEnv}
 											/>
 										)
 									) : (
-										<SignupForm
-											// customOfTarget={10000}
-											setSignupBtnRef={setSignupBtnRef}
-										/>
+										<SignupForm setSignupBtnRef={setSignupBtnRef} />
 									)}
 								</Box>
 								<div ref={FormBtnref}></div>
