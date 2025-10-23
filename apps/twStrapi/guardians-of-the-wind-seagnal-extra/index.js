@@ -1,13 +1,13 @@
 /** 
  * Dploy Setting:
-PROJECT=twStrapi/guardians-of-the-wind-portraits-of-advocacy
+PROJECT=twStrapi/guardians-of-the-wind-seagnal-extra
 MARKET=tw
-PROJECT_NAME=guardians-of-the-wind-portraits-of-advocacy
-BASEPATH=/htdocs/2025/petition/guardians-of-the-wind-portraits-of-advocacy
-ASSETPREFIX=https://change.greenpeace.org.tw/2025/petition/guardians-of-the-wind-portraits-of-advocacy/
+PROJECT_NAME=guardians-of-the-wind-seagnal-extra
+BASEPATH=/htdocs/2025/petition/guardians-of-the-wind-seagnal-extra
+ASSETPREFIX=https://change.greenpeace.org.tw/2025/petition/guardians-of-the-wind-seagnal-extra/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=zh-tw.2025.guardians-of-the-wind-portraits-of-advocacy
+CLOUD_PAGE_NAME=zh-tw.2025.guardians-of-the-wind-seagnal-extra
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -235,9 +235,8 @@ function Index({ submitted = false, strapi }) {
 										// 	/>
 										// )
 									) : (
-										<></>
-										// <SignupForm setSignupBtnRef={setSignupBtnRef} CustomFields={CustomFields} CustomRules={CustomRules}
-										// />
+										<SignupForm setSignupBtnRef={setSignupBtnRef} CustomFields={CustomFields} CustomRules={CustomRules}
+										/>
 									)}
 									{/* {submitted && pageType?.toLowerCase() === 'petition' && (
 										<div
@@ -254,8 +253,7 @@ function Index({ submitted = false, strapi }) {
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			{/* { !submitted && (<StrapiFixedButton target={FormRef} targetInView={inView} />)} */}
-			
+			{ !submitted && (<StrapiFixedButton target={FormRef} targetInView={inView} />)}
 		</>
 	);
 }

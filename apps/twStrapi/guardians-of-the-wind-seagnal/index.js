@@ -235,8 +235,9 @@ function Index({ submitted = false, strapi }) {
 										// 	/>
 										// )
 									) : (
-										<SignupForm setSignupBtnRef={setSignupBtnRef} CustomFields={CustomFields} CustomRules={CustomRules}
-										/>
+										<></>
+										// <SignupForm setSignupBtnRef={setSignupBtnRef} CustomFields={CustomFields} CustomRules={CustomRules}
+										// />
 									)}
 									{/* {submitted && pageType?.toLowerCase() === 'petition' && (
 										<div
@@ -253,7 +254,7 @@ function Index({ submitted = false, strapi }) {
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'TWChinese'} />
-			{ !submitted && (<StrapiFixedButton target={FormRef} targetInView={inView} />)}
+			{/* { !submitted && (<StrapiFixedButton target={FormRef} targetInView={inView} />)} */}
 		</>
 	);
 }

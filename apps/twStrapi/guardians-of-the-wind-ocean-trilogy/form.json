@@ -19,7 +19,7 @@
 		{ "label": "5", "value": "5" }
 	],
 	"name_viewers": "CampaignData1__c",
-	"custom_default_values": {"CampaignData1__c": "2", "CampaignData3__c": "waiting"},
+	"custom_default_values": {"CampaignData1__c": "", "CampaignData3__c": "waiting"},
 
 	"empty_mkt_alert": "您尚未同意隱私權保護政策",
 	"empty_data_alert": "請填寫資料",
