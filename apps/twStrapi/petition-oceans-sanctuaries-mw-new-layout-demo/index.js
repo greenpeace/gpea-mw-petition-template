@@ -59,7 +59,7 @@ function Index({ submitted = false, strapi }) {
 		rootMargin: '-70px 0px 120px 0px'
 	});
 
-	submitted = useSelector((state) => state?.status?.submitted);
+	
 
 	useEffect(() => {
 		dispatch({ type: formActions.SET_FORM, data: formContent }); // set form content from form.json
@@ -67,6 +67,9 @@ function Index({ submitted = false, strapi }) {
 
 	// get utm_source
 	const { utm_source } = hiddenForm?.data;
+	const { transactionId } = hiddenForm?.data; // 3rd party payment transactionId
+
+	submitted = Boolean(transactionId) || useSelector((state) => state?.status?.submitted);
 
 	// pass signer / donor name to TY Banner
 	const [TYName, setTYName] = useState();
