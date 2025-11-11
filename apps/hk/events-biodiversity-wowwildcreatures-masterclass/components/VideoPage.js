@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useCallback } from 'react';
 import { Box, Image } from '@chakra-ui/react';
 // import SignupForm from '@components/GP/WebinarForm';
 import { useRouter } from 'next/router';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import formContent from '../form';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
@@ -23,7 +23,7 @@ import logoAnimals from '../images/robert-class/logo-animals.webp';
 
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
-function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
+function VideoPage({ status, setFormContent, theme, resetSubmitted, signup, utm_source }) {
 	const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 	const router = useRouter();
 	const themeInterests = theme.interests;
@@ -36,6 +36,7 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 	const { submitted } = status;
 
 	const { FirstName } = signup;
+
 
 	useEffect(() => {
 		setFormContent(formContent);
@@ -110,6 +111,7 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 											/>
 										</div>
 										<div className="relative w-[100%] flex-1" ref={donationRef}>
+										{utm_source !== 'dd' && (
 											<Box
 												className="md:sticky md:top-[70px]"
 												maxW="500px"
@@ -128,6 +130,7 @@ function VideoPage({ status, setFormContent, theme, resetSubmitted, signup }) {
 													env={'production'}
 												/>
 											</Box>
+											)}
 										</div>
 									</div>
 

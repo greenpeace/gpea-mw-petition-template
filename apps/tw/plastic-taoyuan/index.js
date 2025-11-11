@@ -22,7 +22,8 @@ import PetitionFooter from '@containers/petitionFooter';
 import Content from './Content';
 import Thankyou from './Thankyou';
 import SignupForm from '@components/GP/TWForm';
-import DonateForm from '@components/GP/DonateForm';
+// import DonateForm from '@components/GP/DonateForm';
+import DonationModule from '@components/GP/DonationModule';
 import { useInView } from 'react-intersection-observer';
 import { connect } from 'react-redux';
 import { Box, Flex, Icon } from '@chakra-ui/react';
@@ -101,7 +102,17 @@ function Index({ status, theme, setFormContent, signup }) {
             <Box flex={1} ref={myRef}>
               <FormContainer>
                 <Box ref={ref}>
-                  {submitted ? <DonateForm /> : <SignupForm setSignupBtnRef={ setSignupBtnRef } />}
+                  {submitted ? 
+                    <DonationModule
+                      market={'TW'}
+                      language={'zh_TW'}
+                      campaign={
+                        'general_mw'
+                      }
+                      campaignId={theme?.params?.campaignId ?? theme?.CampaignId ?? ''}
+                      env={'production'}
+                    />
+                   : <SignupForm setSignupBtnRef={ setSignupBtnRef } />}
                 </Box>
                 <div ref={ FormBtnref }></div>
               </FormContainer>

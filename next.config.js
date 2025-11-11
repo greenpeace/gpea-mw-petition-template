@@ -1,6 +1,7 @@
 // next.config.js
 const withPlugins = require('next-compose-plugins');
 const optimizedImages = require('next-optimized-images');
+const styledJsx = require('styled-jsx/webpack');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -13,10 +14,12 @@ const nextConfig = {
     themeEndpoint: process.env.THEME_ENDPOINT,
     signupNumbersHK: process.env.SIGN_UP_NUMBERS_HK,
     signupNumbersTW: process.env.SIGN_UP_NUMBERS_TW,
+    signupNumbersKR: process.env.SIGN_UP_NUMBERS_KR,
     donateModule: process.env.DONATE_MODULE,
     timeStamp: String(Date.now()),
-    dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.green${process.env.MARKET}.greenpeace.org/websign-dummy`,
-    convExp: process.env.MARKET == 'tw' ? process.env.TW_CONV_EXP : process.env.HK_CONV_EXP
+    dummyEndpoint: `https://cors-anywhere.small-service.gpeastasia.org/https://cloud.green${process.env.MARKET == 'kr' ? 'tw' : process.env.MARKET}.greenpeace.org/websign-dummy`,
+    convExp: process.env.MARKET == 'tw' ? process.env.TW_CONV_EXP : (process.env.MARKET == 'hk' ? process.env.HK_CONV_EXP : process.env.KR_CONV_EXP),
+    webEventHistoryEndpoint: process.env.MARKET == 'tw' ? process.env.TW_WEB_EVENT_ENDPOINT : process.env.HK_WEB_EVENT_ENDPOINT,
   },
   // Use the CDN in production and localhost for development.
   assetPrefix: isProd ? process.env.ASSETPREFIX : '',
@@ -43,8 +46,8 @@ const nextConfig = {
 };
 
 module.exports = withPlugins(
-  [
-    optimizedImages,
+  [ [styledJsx, {vendorPrefixes: false}],
+    [optimizedImages,
     {
       // these are the default values so you don't have to provide them if they are good enough for your use-case.
       // but you can overwrite them here with any valid value you want.
@@ -73,7 +76,7 @@ module.exports = withPlugins(
         preset: 'default',
         quality: 75,
       },
-    },
+    }],
   ],
   nextConfig,
 );

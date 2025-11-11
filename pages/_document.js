@@ -10,10 +10,12 @@ class NextDocument extends Document {
   render() {
     const moduleUrl = process.env.projectMarket?.toUpperCase() === 'TW' 
 		? `https://change.greenpeace.org.tw/app/donation-module/main.js`
-		: `https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js`;
+		: process.env.projectMarket?.toUpperCase() === 'HK'
+    ? `https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js`
+    : `https://gpseoulwebserver.co.kr/app/donation-module/main.js`;
     // preload the production version only.
     return (
-      <Html lang="zh">
+      <Html lang={process.env.projectMarket?.toUpperCase() === ('KR') ? 'ko-KR' : 'zh'}>
         <Head>
           <link
             rel="shortcut icon"
@@ -28,19 +30,19 @@ class NextDocument extends Document {
           {/* Load google fonts */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap"
+          <link rel="stylesheet"
+            href={`https://fonts.googleapis.com/css2?family=Noto+Sans+${process.env.projectMarket?.toUpperCase() === ('KR') ? 'KR' : 'TC'}:wght@300;400;700&display=swap`}
             media="print"
             onLoad="this.onload=null;this.removeAttribute('media');"
           />
+          
           {/* <!-- begin Convert Experiences code--> */}
           {(process.env?.convExp) && (
             <script type="text/javascript" src={process.env?.convExp}></script>
           )}
           {/* <!-- end Convert Experiences code --> */}
         </Head>
-        <body>
+        <body className={process.env.projectMarket?.toUpperCase() === ('KR') ? 'kr' : ''}>
           <Main />
           <NextScript />
           {/** MC_FORM_STARTS  */}

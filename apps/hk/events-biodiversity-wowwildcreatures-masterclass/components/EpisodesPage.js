@@ -4,7 +4,7 @@ import {
 	Image,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import formContent from '../form';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
@@ -27,6 +27,7 @@ function EpisodesPage({
 	status,
 	setFormContent,
 	resetSubmitted,
+	utm_source,
 }) {
 	const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 	const router = useRouter();
@@ -37,6 +38,8 @@ function EpisodesPage({
 	const { s } = router.query;
 	const { submitted } = status;
 
+	
+	
 	useEffect(() => {
 		setFormContent(formContent);
 		resetSubmitted();
@@ -94,6 +97,7 @@ function EpisodesPage({
 											/>
 										</div>
 										<div className="relative w-[100%] flex-1" ref={donationRef}>
+										{utm_source !== 'dd' && (
 											<Box
 												className="md:sticky md:top-[70px]"
 												maxW="500px"
@@ -112,6 +116,7 @@ function EpisodesPage({
 													env={'production'}
 												/>
 											</Box>
+										)}
 										</div>
 									</div>
 

@@ -38,7 +38,14 @@ export function validation(values, formContent) {
       if (!regex.test(values.MobilePhone)) {
         errors.MobilePhone = formContent.invalid_format_alert;
       }
-    }
+    } else if (values.MobileCountryCode === '86'){
+			const regex = /^[1]{1}[0-9]{10}$/i;
+			if (!regex.test(values.MobilePhone)) {
+				errors.MobilePhone =
+					formContent?.invalid_phone_alert_86 ||
+					formContent.invalid_format_alert;
+			}
+		}
   }
 
   return errors;

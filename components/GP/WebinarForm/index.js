@@ -86,7 +86,7 @@ const MyForm = (props) => {
     let optionYear = [];
     function fetchOptionYear() {
       const minYear = 18;
-      const maxYear = 110;
+      const maxYear = 90;
       let nowYear = new Date().getFullYear();
       let targetYear = nowYear - maxYear;
       for (var i = nowYear - minYear; i >= targetYear; i--) {
@@ -368,7 +368,7 @@ const MyEnhancedForm = withFormik({
 
   handleSubmit: async (values, { setSubmitting, props }) => {
     console.log(values)
-    const { submitForm, theme, hiddenFormData } = props;
+    const { submitForm, theme, strapi, hiddenFormData } = props;
     const isProd = process.env.NODE_ENV === 'production';
     const fallbackValue = (d) => (d ? d : '');
     const LeadSource = `Petition - ${capitalize(theme.interests)}`;
@@ -378,6 +378,13 @@ const MyEnhancedForm = withFormik({
       window?.location.href,
       EXCLUDE_URL_PARAMETERS,
     );
+    console.log(strapi)
+
+    const campaignId = isProd
+			? strapi?.campaignId !== '' && strapi.campaignId !== undefined
+				? strapi?.campaignId
+				: theme.CampaignId
+			: '7012u000000OxDYAA0';
     
     
     const formData = {
@@ -388,7 +395,7 @@ const MyEnhancedForm = withFormik({
       UtmCampaign: fallbackValue(hiddenFormData.utm_campaign),
       UtmContent: fallbackValue(hiddenFormData.utm_content),
       UtmTerm: fallbackValue(hiddenFormData.utm_term),
-      CampaignId: isProd ? theme.CampaignId : '7012u000000OxDYAA0',
+      CampaignId: campaignId,
       LeadSource: LeadSource,
       [`Petition_Interested_In_${capitalize(theme.interests)}__c`]: true,
       CompletionURL: completionURL,
@@ -420,6 +427,7 @@ const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
     numberOfTarget: form.signupNumbers.hk?.Petition_Signup_Target__c,
     theme: theme.data,
     suggestion: form.suggestion,
+    strapi: theme.strapi
   };
 };
 

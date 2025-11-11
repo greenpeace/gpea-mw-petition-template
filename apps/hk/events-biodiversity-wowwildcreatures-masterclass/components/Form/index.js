@@ -1,13 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Box } from '@chakra-ui/react';
 import DonateForm from '@components/GP/DonateForm';
 import SignupForm from '@components/GP/WebinarForm';
 import DonationModule from '@components/GP/DonationModule';
 
 const Index = ({ status }) => {
+	// get utm_source
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
+
 	const RenderForm = () =>
-		status?.submitted ? <DonateForm /> : <SignupForm />;
+		status?.submitted ? utm_source !== 'dd' && <DonateForm /> : <SignupForm />;
 	return (
 		<Box
 			mx="auto"

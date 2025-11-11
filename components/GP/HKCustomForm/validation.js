@@ -1,5 +1,5 @@
-export function validation(values, formContent) {
-  const errors = {};
+export function validation(values, formContent, customRules) {
+  let errors = {};
 
   if (!values.Email) {
     errors.Email = formContent.empty_data_alert;
@@ -43,7 +43,7 @@ export function validation(values, formContent) {
 
   if (formContent.label_concern){
     let concernFieldName = formContent?.name_concern || 'CampaignData2__c';
-    if (!values[concernFieldName]) {
+    if (!values[concernFieldName] && formContent?.required_concern) {
       errors.Options_Concern = formContent.empty_select_data_alert;
     }
   }
@@ -56,10 +56,15 @@ export function validation(values, formContent) {
       if (values[opinionFieldName].length > opinionMaxLength) {
         errors.Opinion = formContent.max_opinion_alert;
       }
-    }
-    
+    } 
   }
-  
 
+  if (customRules) {
+		errors = {
+			...errors,
+			...customRules(values, formContent)
+		};
+	}
+  
   return errors;
 }

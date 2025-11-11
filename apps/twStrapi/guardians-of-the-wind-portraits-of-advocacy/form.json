@@ -1,0 +1,47 @@
+{
+	"form_header": "我想候補 《倡議的樣貌》",
+	"form_description": "填寫以下資訊，和我們一起走進風的旅程",
+	"signed_number": "",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電子郵件",
+	"label_phone": "行動電話",
+	"label_phone_optional": "行動電話（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_newsletter": "我已詳細閱讀並同意<a href=\"https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/\" target=\"_blank\"><u>隱私保護政策</u></a>。",
+	"label_viewers": "觀影人數",
+	"options_viewers": [
+		{ "label": "1", "value": "1" },
+		{ "label": "2", "value": "2" },
+		{ "label": "3", "value": "3" },
+		{ "label": "4", "value": "4" },
+		{ "label": "5", "value": "5" }
+	],
+	"name_viewers": "CampaignData1__c",
+	"custom_default_values":  {"CampaignData1__c": "", "CampaignData3__c": "waiting"},
+
+	"empty_mkt_alert": "您尚未同意隱私權保護政策",
+	"empty_data_alert": "請填寫資料",
+	"empty_phone_alert": "請填寫手機號碼",
+	"empty_select_data_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電子郵件",
+	"invalid_format_alert": "請輸入有效格式",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "立即報名",
+	"mobile_fixed_cta": "立即報名",
+	"donate_button": "下一步",
+	"donateURL": "https://cloud.greentw.greenpeace.org/donation-climate-climate?utm_campaign=general&utm_source=greenpeace.org&utm_medium=email&utm_content=tw-lead_conversion-automd-netzeroevent-20230109",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}

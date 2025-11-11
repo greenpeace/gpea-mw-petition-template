@@ -34,6 +34,7 @@ import {
 	headingProps,
 	paragraphProps
 } from '@common/styles/components/contentStyle';
+import { custom } from '@cloudinary/url-gen/qualifiers/region';
 
 const MyForm = (props) => {
 	const {
@@ -45,6 +46,7 @@ const MyForm = (props) => {
 		handleSubmit,
 		isLoading,
 		setFieldValue,
+		setFieldTouched,
 		setWebStatus,
 		values,
 		formContent,
@@ -60,6 +62,7 @@ const MyForm = (props) => {
 		setSignupBtnRef,
 		CustomFields,
 		CustomRules,
+		customBtnColor,// custom submit button color
 		hasMKT = true
 	} = props;
 	const [birthDateYear, setBirthDateYear] = useState([]);
@@ -93,7 +96,7 @@ const MyForm = (props) => {
 		let optionYear = [];
 		function fetchOptionYear() {
 			let minYear = formContent?.KeyBirthYearSet?.min || 18;
-			let maxYear = formContent?.KeyBirthYearSet?.max || 110;
+			let maxYear = formContent?.KeyBirthYearSet?.max || 90;
 			let nowYear = new Date().getFullYear();
 			let targetYear = nowYear - maxYear;
 			for (var i = nowYear - minYear; i >= targetYear; i--) {
@@ -105,17 +108,7 @@ const MyForm = (props) => {
 		initSuggestion();
 	}, []);
 
-	// get numberOfResponses from custom endpoint
-	useEffect(() => {
-		if (customEndpoint) {
-			axios
-				.get(customEndpoint)
-				.then((response) => {
-					setCustomNumbers(Number(response.data.unique_count));
-				})
-				.catch((error) => console.log(error));
-		}
-	}, []);
+	
 
 	useEffect(() => {
 		console.log(
@@ -126,10 +119,10 @@ const MyForm = (props) => {
 		);
 
 		const currentNumber = customNumbers ? customNumbers : numberOfResponses;
-		const currentNumberOfTarget = numberOfTarget
-			? numberOfTarget
-			: customOfTarget
+		const currentNumberOfTarget = customOfTarget
 			? customOfTarget
+			: numberOfTarget
+			? numberOfTarget
 			: 10000;
 		const number =
 			Math.round((currentNumber / currentNumberOfTarget) * 10000) / 100;
@@ -143,6 +136,18 @@ const MyForm = (props) => {
 			clearTimeout(timerId);
 		};
 	}, [numberOfResponses, customNumbers]);
+
+	// get numberOfResponses from custom endpoint
+	useEffect(() => {
+		if (customEndpoint) {
+			axios
+				.get(customEndpoint)
+				.then((response) => {
+					setCustomNumbers(Number(response.data.unique_count));
+				})
+				.catch((error) => console.log(error));
+		}
+	}, []);
 
 	//setting additional fileds for formik
 	useEffect(() => {
@@ -361,6 +366,8 @@ const MyForm = (props) => {
 								errors={errors} 
 								touched={touched} 
 								values={values}
+								setFieldTouched={setFieldTouched}
+								setFieldValue={setFieldValue}
 								formContent={formContent}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
@@ -459,23 +466,34 @@ const MyForm = (props) => {
 						)}
 						{formContent.label_newsletter && hasMKT && (
 							<Box>
-								<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
-									<Box flex={0} mr={2} pt={1}>
-										<Checkbox
-											id="OptIn"
-											name="OptIn"
-											onChange={handleChange}
-											defaultChecked
-										/>
-									</Box>
-									<Text
-										fontSize="xs"
-										color={'gray.700'}
-										dangerouslySetInnerHTML={{
-											__html: formContent.label_newsletter
-										}}
-									></Text>
-								</Flex>
+								<FormControl
+									id="OptIn"
+									isInvalid={errors.OptIn && touched.OptIn}
+								>
+									<Flex py="2" direction={{ base: 'row' }} align={'flex-start'}>
+										<Box flex={0} mr={2} pt={0.5}>
+											<Checkbox
+												// id="OptIn"
+												name="OptIn"
+												onChange={handleChange}
+												onBlur={handleBlur}
+												defaultChecked
+											/>
+										</Box>
+										<Text
+											fontSize="xs"
+											color={'gray.700'}
+											dangerouslySetInnerHTML={{
+												__html: formContent.label_newsletter
+											}}
+										></Text>
+										
+									</Flex>
+									<FormErrorMessage pl={6} color="var(--error-900)" mt={-4} fontSize={'xs'}>
+										{errors.OptIn}
+									</FormErrorMessage>
+								</FormControl>
+								
 							</Box>
 						)}
 
@@ -530,6 +548,7 @@ const MyForm = (props) => {
 						<Box>
 							<Button
 								{...OrangeCTA}
+								{...customBtnColor && { bg: customBtnColor, _hover: { bg: customBtnColor } }}
 								isLoading={isLoading}
 								type={'submit'}
 								ref={btnRef}
@@ -574,14 +593,17 @@ const MyEnhancedForm = withFormik({
   },
 
 	handleSubmit: async (values, { setSubmitting, props }) => {
+		
 		const { submitForm, theme, hiddenFormData, strapi, customMapFields } =
 			props;
 		const isProd = process.env.NODE_ENV === 'production';
 		const fallbackValue = (d) => (d ? d : '');
 		const LeadSource = `Petition - ${
-			capitalize(strapi?.issue?.data?.attributes?.slug) ??
+			strapi?.issue?.data?.attributes?.slug ? capitalize(strapi?.issue?.data?.attributes?.slug) :
 			capitalize(theme.interests)
 		}`;
+		console.log(theme)
+		console.log('LeadSource: ', LeadSource, theme.interests, strapi?.issue?.data?.attributes?.slug);
 
 		const { dummyEndpointURL, websignEndpointURL } =
 			strapi?.market?.data?.attributes;
@@ -617,8 +639,8 @@ const MyEnhancedForm = withFormik({
 			CampaignId: campaignId,
 			LeadSource: LeadSource,
 			[`Petition_Interested_In_${
-				capitalize(strapi?.issue?.data?.attributes?.slug) ??
-				capitalize(theme.interests)
+				strapi?.issue?.data?.attributes?.slug ? capitalize(strapi?.issue?.data?.attributes?.slug) :
+			capitalize(theme.interests)
 			}__c`]: true,
 			CompletionURL: completionURL
 		};
@@ -645,6 +667,7 @@ const MyEnhancedForm = withFormik({
 })(MyForm);
 
 const mapStateToProps = ({ signup, hiddenForm, form, theme, status }) => {
+	console.log(form)
 	return {
 		signup,
 		hiddenFormData: hiddenForm.data,

@@ -3,14 +3,45 @@ import { useSelector } from 'react-redux';
 import { Slide, Center, Button } from '@chakra-ui/react';
 import { connect } from 'react-redux';
 
-const StrapiFixedButton = ({ target, targetInView, status }) => {
+const StrapiFixedButton = ({ target, targetInView, status , customColor, hideFixedButton=false, customBtnColor }) => {
 	const { submitted } = status;
 	const strapi = useSelector((state) => state?.theme?.strapi);
+	const pageType = strapi?.page_type?.data?.attributes?.name;
 	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const pinkBtn = (pageType?.toLowerCase() === 'donation' || submitted) && strapi?.market?.data?.attributes?.slug === 'tw';
 	// get utm_source
 	const { utm_source } = hiddenForm?.data;
 
 	const buttonText = submitted ? strapi?.fixedThankyouCta : strapi?.fixedCta;
+	
+	const styleProps = {
+		zIndex: 99,
+		left: '0',
+		bottom: '0',
+		borderTopRightRadius: '0',
+		borderTopLeftRadius: '0',
+		borderBottomLeftRadius: '0',
+		borderBottomRightRadius: '0',
+		bg: 'white',
+		width: '100%',
+		p: '4',
+		padding: '0',
+		paddingBottom: `0`,
+		d: { md: 'none' }
+	};
+	
+	const buttonStyleProps = {
+		width: '100%',
+		borderRadius: '4px 4px 0 0 ',
+		fontSize: '20px',
+		fontWeight: '400',
+		minHeight: '48px',
+		py: '12px',
+		px: '4px',
+		color: 'white',
+		bg: customBtnColor ? customBtnColor : ( pinkBtn ? '#F11777' : 'orange.500'),
+		_hover: { bg: customBtnColor ? customBtnColor : (pinkBtn ? '#F11777' : 'orange.300') }
+	};
 
 	const handleScroll = (target) => {
 		if (!target) {
@@ -20,7 +51,7 @@ const StrapiFixedButton = ({ target, targetInView, status }) => {
 	};
 
 	return (
-		(!(utm_source == 'dd' && submitted)) && (
+		(!(utm_source == 'dd' && submitted) && !hideFixedButton) && (
 			<Slide direction="bottom" in={!targetInView} style={{ zIndex: 10 }}>
 				<Center {...styleProps}>
 					<Button {...buttonStyleProps} onClick={() => handleScroll(target)}>
@@ -32,34 +63,7 @@ const StrapiFixedButton = ({ target, targetInView, status }) => {
 	);
 };
 
-const styleProps = {
-	zIndex: 99,
-	left: '0',
-	bottom: '0',
-	borderTopRightRadius: '0',
-	borderTopLeftRadius: '0',
-	borderBottomLeftRadius: '0',
-	borderBottomRightRadius: '0',
-	bg: 'white',
-	width: '100%',
-	p: '4',
-	padding: '0',
-	paddingBottom: `0`,
-	d: { md: 'none' }
-};
 
-const buttonStyleProps = {
-	width: '100%',
-	borderRadius: '4px 4px 0 0 ',
-	fontSize: '20px',
-	fontWeight: '400',
-	minHeight: '48px',
-	py: '12px',
-	px: '4px',
-	color: 'white',
-	bg: 'orange.500',
-	_hover: { bg: 'orange.300' }
-};
 
 const mapStateToProps = ({ status }) => {
 	return { status };

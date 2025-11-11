@@ -64,6 +64,11 @@ function Index({ submitted = false, strapi }) {
 
 	return (
 		<>
+			<style jsx global>{`
+        .gpea-donation-module .submit-button:not(.submit-button--link){
+					background-color: #f11777!important;
+				}
+      `}</style>
 			<StrapiSEO strapi={strapi} />
 			<Box>
 				{submitted ? (
@@ -164,7 +169,7 @@ function Index({ submitted = false, strapi }) {
 						<Box flex={1} ref={FormRef}>
 							<FormContainer>
 								<Box ref={ref}>
-									{pageType?.toLowerCase() === 'donation' || submitted || AsiaPayResult ? (
+									{pageType?.toLowerCase() === 'donation' || submitted || AsiaPayResult ? utm_source !== 'dd' && (
 										<DonationModule
 											market={
 												strapi?.market?.data?.attributes?.market === 'Hong Kong'
@@ -181,7 +186,7 @@ function Index({ submitted = false, strapi }) {
 												strapi?.donationModuleCampaignId ??
 												''
 											}
-											isUAT={true}
+											isUAT={false}
 											env={strapi?.donationModuleEnv}
 										/>
 									) : (
@@ -195,7 +200,7 @@ function Index({ submitted = false, strapi }) {
 				</OverflowWrapper>
 			</PageContainer>
 			<PetitionFooter locale={'HKChinese'} />
-			<StrapiFixedButton target={FormRef} targetInView={ btnInView } />
+			<StrapiFixedButton target={FormRef} targetInView={ btnInView }/>
 		</>
 	);
 }

@@ -1,0 +1,39 @@
+{
+	"form_header": "Become an Environmental Changemaker",
+	"form_description": "Together, we'll be the gamechangers to safeguard our environment.",
+	"signed_number": "",
+	"label_name": "",
+	"label_first_name": "First Name",
+	"label_last_name": "Last Name",
+	"label_email": "Email",
+	"label_phone": "Mobile",
+	"label_phone_optional": "Mobile (Optional)",
+	"label_year_of_birth": "Year of Birth",
+	"label_year_of_birth_optional": "Year of Birth (Optional)",
+	"label_newsletter": "",
+	"form_remind": "* By signing up, you agree to receive important updates from Greenpeace to stay up to date on our environmental protection work. Greenpeace respects and protects your personal information with <a href='https://www.greenpeace.org/eastasia/privacy-and-cookies/' style='text-decoration:underline;' target='_blank'>Greenpeace's privacy policy</a>.",
+
+	"empty_data_alert": "Please complete this field",
+	"empty_select_data_alert": "Please complete this field",
+
+	"invalid_email_alert": "Please enter a valid e-mail",
+	"invalid_format_alert": "Please enter a valid value",
+	"invalid_phone_alert_852": "Mobile numbers should consist of 8 digits, with the first digit ranging from 4 to 9.",
+	"invalid_phone_alert_853": "Mobile number should consist of 8 digits, with the first digit being 6.",
+	"invalid_phone_alert_86": "Mobile number should consist of 11 digits, with the first digit being 1.",
+	"minimum_8_characters": "Should consist of 8 digits",
+	"suggestion_message": "Do you want to input",
+
+	"submit_text": "Learn More",
+	"mobile_fixed_cta": "Learn More",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
+	],
+	"new_letter": [
+		{ "label": "Yes", "value": true },
+		{ "label": "No", "value": false }
+	]
+}

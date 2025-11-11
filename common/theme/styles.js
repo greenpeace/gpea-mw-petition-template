@@ -39,6 +39,9 @@ const styles = {
 			fontSize: { base: 'xl', md: '2xl' },
 			fontWeight: 'bold'
 		},
+		'.kr .strapi-content h2': {
+			lineHeight: 1.4,
+		},
 		'.layout-1col .strapi-content h2': {
 			lineHeight: 1.2,
 			mb: 6,
@@ -61,12 +64,18 @@ const styles = {
 			fontSize: { base: 'lg', md: 'xl' },
 			fontWeight: 'bold'
 		},
+		'.kr .strapi-content h3': {
+			lineHeight: 1.7,
+		},
 		'.strapi-content p': {
 			lineHeight: 1.7,
 			mb: 6,
 			fontSize: { base: '16px' },
 			whiteSpace: 'pre-line',
 			textAlign: 'justify'
+		},
+		'.kr .strapi-content p': {
+			lineHeight: 1.6,
 		},
 		'.layout-1col .strapi-content': {
 			p: {

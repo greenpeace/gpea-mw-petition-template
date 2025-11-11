@@ -1,0 +1,38 @@
+{
+	"form_header": "Sign up now and start your journey to explore Hong Kong's nature",
+	"form_description": "Streaming link and password will be sent to you via email in 15 - 20 minutes after sign-up.",
+	"signed_number": "已聯署人數",
+	"label_name": "稱謂",
+	"label_first_name": "First Name",
+	"label_last_name": "Last Name",
+	"label_email": "Email",
+	"label_phone": "Mobile",
+	"label_phone_optional": "Mobile (Optional)",
+	"label_year_of_birth": "Year of Birth",
+	"label_year_of_birth_optional": "Year of Birth (Optional)",
+	"form_remind": "* By signing up to this course, you agree to receive important updates from Greenpeace to stay up to date on our environmental protection work. Greenpeace respects and protects your personal information with <a href='https://www.greenpeace.org/eastasia/privacy-and-cookies/' style='text-decoration:underline;' target='_blank'>Greenpeace's privacy policy</a>.",
+	"custom_default_values": {"Preferred_Language__c": "English"},
+
+	"empty_data_alert": "Please complete this field",
+	"empty_select_data_alert": "Please complete this field",
+
+	"invalid_email_alert": "Please enter a valid e-mail",
+	"invalid_format_alert": "Please enter a valid value",
+	"invalid_phone_alert_852": "Mobile numbers should consist of 8 digits, with the first digit ranging from 4 to 9.",
+	"invalid_phone_alert_853": "Mobile number should consist of 8 digits, with the first digit being 6.",
+	"minimum_8_characters": "Should consist of 8 digits",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "Sign Up Now",
+	"mobile_fixed_cta": "Sign Up Now",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}

@@ -4,7 +4,7 @@ import { useVideoContext } from '../../context/video';
 import { useGlobalContext } from '../../context/global';
 import { Image } from '@chakra-ui/react';
 import GeneralCarousel from '../GeneralCarousel';
-import robertIntro from '../../images/robert-class/robert-intro.webp';
+import robertIntro from '../../images/robert-class/robert-intro.png';
 import { useRouter } from 'next/router';
 export default function EpisodeContent() {
 	const value = useGlobalContext();

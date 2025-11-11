@@ -44,6 +44,43 @@ export const pushDataLayer = (props) => {
   window.dataLayer.push(props);
 }
 
+export const sendWebEventHistory = (params) => {
+
+  let formData = new FormData();
+  formData.append('Campaign__c', params?.CampaignId);
+  formData.append('Event_Name__c', params?.event?.event_name);
+  formData.append('Event_Category__c', params?.event?.event_category);
+  formData.append('Event_URL__c', params.url);
+  formData.append('EventData1__c', '');
+  formData.append('EventData2__c', '');
+  formData.append('EventData3__c', '');
+  formData.append('EventData4__c', '');
+  formData.append('EventData5__c', '');
+  formData.append('Remark__c', '');
+  formData.append('UserAgent__c', params.ua);
+  formData.append('UTM_Campaign__c', params?.UtmCampaign);
+  formData.append('UTM_Content__c', params?.UtmContent);
+  formData.append('UTM_Medium__c', params?.UtmMedium);
+  formData.append('UTM_Source__c', params?.UtmSource);
+  formData.append('UTM_Term__c', params?.UtmTerm);
+
+  fetch('https://api.ipify.org/?format=json').then((response) => {
+    return response.json();
+  }).then((ip) => {
+    formData.append('IP__c', ip?.ip);
+    fetch(process.env.webEventHistoryEndpoint, {
+      method: 'POST',
+      body: formData,
+    }).then((response) => {
+      return response.json();
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
+  }).catch((error) => {
+    console.error('Error:', error);
+  });
+}
+
 export const getUrlParams = () => {
   const { searchParams } = new URL(window.location.href);
   let p = {};

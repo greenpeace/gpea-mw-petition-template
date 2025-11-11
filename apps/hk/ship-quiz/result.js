@@ -174,7 +174,7 @@ function Index({
                 ) : (
                   <FormContainer>
                     <Box ref={ref}>
-                      <SignupForm />
+                      <SignupForm setSignupBtnRef={function(){}} />
                     </Box>
                   </FormContainer>
                 )}

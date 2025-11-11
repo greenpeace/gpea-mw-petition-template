@@ -4,11 +4,12 @@
 PROJECT=hkStrapi/petition-oceans-elm-generator
 MARKET=hk
 PROJECT_NAME=petition-oceans-elm-generator
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/2022/test/petition-oceans-elm-uat
-ASSETPREFIX=https://api.greenpeace.org.hk/2022/test/petition-oceans-elm-uat/
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/pages/petition-oceans-elm-generator
+ASSETPREFIX=https://api.greenpeace.org.hk/pages/petition-oceans-elm-generator/
 FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=zh-hk.2022.general.elm.mindwise_version.signup
+CLOUD_PAGE_NAME=zh-hk.2022.general.elm.mindwise_version.signup 
+# ******** 此版本已棄用 ********
 */
 
 import React, { useEffect, useRef } from 'react';

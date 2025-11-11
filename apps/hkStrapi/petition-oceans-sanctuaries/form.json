@@ -1,6 +1,6 @@
 {
-	"form_header": "攜手成立全球海洋保護區 訂立《全球海洋公約》",
-	"form_description": "我願意聯署加入守護海洋行列！",
+	"form_header": "聯署推動守護海洋",
+	"form_description": "聯署支持 2030 年前成立至少 30% 海洋保護區",
 	"signed_number": "已聯署人數",
 	"label_name": "稱謂",
 	"label_first_name": "名字",
@@ -19,6 +19,7 @@
 	"invalid_format_alert": "請輸入有效格式",
 	"invalid_phone_alert_852": "手提號碼應為8位數字,首位數字應為 4 - 9",
 	"invalid_phone_alert_853": "手提號碼應為8位數字,首位數字應為 6",
+	"invalid_phone_alert_86": "手提號碼應為11位數字,首位數字應為 1",
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 
@@ -27,7 +28,8 @@
 
 	"mobile_country_code": [
 		{ "label": "+852", "value": 852 },
-		{ "label": "+853", "value": 853 }
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
 	],
 	"new_letter": [
 		{ "label": "是", "value": true },

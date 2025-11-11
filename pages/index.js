@@ -22,7 +22,8 @@ import {
 	hkDevTagManagerArgs,
 	twDevTagManagerArgs,
 	hkTagManagerArgs,
-	twTagManagerArgs
+	twTagManagerArgs,
+	krTagManagerArgs
 } from '@common/constants/tagManagerArgs';
 
 
@@ -34,7 +35,7 @@ Move it here to ensure that meta info is generated in index_mc.html.
 */
 const DynamicSeoComp = dynamic(() =>
 	import(
-		process.env.project.indexOf('Strapi') >= 0
+		(process.env.project.indexOf('Strapi') >= 0 || process.env.project.indexOf('Preview') >= 0)
 			? '@components/Strapi/StrapiSEO'
 			: `apps/${process.env.project}/SEO`
 	)
@@ -46,6 +47,7 @@ const envProjectMarket = process.env.projectMarket;
 const themeEndpointURL = process.env.themeEndpoint;
 const signupNumbersHKURL = process.env.signupNumbersHK;
 const signupNumbersTWURL = process.env.signupNumbersTW;
+const signupNumbersKRURL = process.env.signupNumbersKR;
 
 // Pending
 const schemaEndpoint = `${themeEndpointURL}?q={"Market":"${envProjectMarket}"}`;
@@ -88,16 +90,23 @@ function Index({
 
 	const [gtmId, setGtmId] = useState('');
 	const initTagManager = (marketName) => {
+		console.log('gtmId', marketName);
 		switch (marketName) {
 			case 'HK':
 				setGtmId(hkTagManagerArgs.gtmId);
 				break;
 			case 'TW':
 				setGtmId(twTagManagerArgs.gtmId);
+				break;
+			case 'KR':
+				setGtmId(krTagManagerArgs.gtmId);
+				break;
 			default:
 				break;
 		}
 	};
+
+
 
 	/* Set dynamic theme parameters */
 	useEffect(() => {
@@ -143,11 +152,12 @@ function Index({
 		async function fetchSignupData() {
 			const fetchURLs = {
 				hk: signupNumbersHKURL,
-				tw: signupNumbersTWURL
+				tw: signupNumbersTWURL,
+				kr: signupNumbersKRURL
 			};
-
+			console.log(fetchURLs[themeData?.Market.toLowerCase()])
 			const signupData = await axios
-				.get(fetchURLs[themeData?.Market])
+				.get(fetchURLs[themeData?.Market.toLowerCase()])
 				.then((response) => {
 					return response.data.find((d) => d.Id === themeData?.CampaignId);
 				})
@@ -236,7 +246,7 @@ function Index({
 			(strapi?.market?.data?.attributes?.market === 'Hong Kong'
 				? 'HK'
 				: 'TW') ||
-			(domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : '');
+			(domain.indexOf('hk') > 0 ? 'HK' : domain.indexOf('tw') > 0 ? 'TW' : domain.indexOf('kr') > 0 ? 'KR' : '');
 
 		/* GTM is only applicable for production env */
 
@@ -302,9 +312,10 @@ export async function getStaticProps(context) {
 
 	console.log('Building from ' + envProjectMarket + ':' + envProjectName);
 
-	!singleResult && console.warn('PROJECT NAME NOT FOUND');
+	!singleResult && console.warn('PROJECT NAME NOT FOUND IN FORMER SCHEMA DOC');
 
 	const app = envProjectName ?? '';
+	
 
 	const endpoint = 'https://strapi.small-service.gpeastasia.org/api';
 
@@ -330,7 +341,11 @@ export async function getStaticProps(context) {
 				market: { populate: { filters: { name: { $neq: 'pages' } } } },
 				page_type: { populate: { filters: { name: { $neq: 'pages' } } } },
 				seo: { populate: '*' },
-				thankyouBlocks: { populate: '*' },
+				thankyouBlocks: { populate: [
+					'CardSlider.image',
+					'TestimonialSlider.avatar',
+					'CarouselSlider.image'
+				] },
 				thankyouHero: { populate: '*' }
 			}
 		},
@@ -345,20 +360,33 @@ export async function getStaticProps(context) {
 	const themes = await res.json();
 	const theme =
 		themes?.data[0] !== undefined ? themes?.data[0]?.attributes : null;
-	return {
-		props: {
-			themeData: singleResult || {
-				CampaignId: theme?.campaignId,
-				EndpointURL: theme?.market?.data?.attributes?.websignEndpointURL,
-				EventLabel: envProjectName,
-				Market: envProjectMarket,
-				ProjectName: envProjectName,
-				Status: 'Open',
-				interests: theme?.issue?.data?.attributes?.name.toLowerCase()
-			},
-			strapi: theme
-		}
-	};
+	if(process.env.project.indexOf('Preview') >= 0) {
+			return {
+				props: {
+					themeData: singleResult || {
+						Market: envProjectMarket,
+						ProjectName: envProjectName,
+					},
+					strapi: theme
+				}
+			};
+	}else {
+		return {
+			props: {
+				themeData: singleResult || {
+					CampaignId: theme?.campaignId,
+					EndpointURL: theme?.market?.data?.attributes?.websignEndpointURL,
+					EventLabel: envProjectName,
+					Market: envProjectMarket,
+					ProjectName: envProjectName,
+					Status: 'Open',
+					interests: theme?.issue?.data?.attributes?.name.toLowerCase()
+				},
+				strapi: theme
+			}
+		};
+	}
+	
 }
 
 export default connect(null, mapDispatchToProps)(Index);

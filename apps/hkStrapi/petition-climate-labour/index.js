@@ -193,11 +193,13 @@ function Index({ submitted = false, strapi: strapiData }) {
 											<StrapiDynamicBlocks
 												blocks={'thankyouBlocks'}
 												strapi={strapi}
+												utm_source={utm_source}
 											/>
 										) : (
 											<StrapiDynamicBlocks
 												blocks={'contentBlocks'}
 												strapi={strapi}
+												utm_source={utm_source}
 											/>
 										)}
 									</>
@@ -225,7 +227,8 @@ function Index({ submitted = false, strapi: strapiData }) {
 							{isLoaded && (
 								<FormContainer>
 									<Box ref={ref}>
-										{pageType?.toLowerCase() === 'donation' || submitted ? (
+										{pageType?.toLowerCase() === 'donation' || submitted || AsiaPayResult ? 
+											utm_source !== 'dd' && (
 											<DonationModule
 												market={
 													strapi?.market?.data?.attributes?.market ===

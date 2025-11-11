@@ -1,8 +1,8 @@
 {
-	"form_header": "海洋保育我＋1",
-	"form_description": "我支持綠色和平正在推行的海洋保育專案！<br>請將我列入連署人名單，幫助綠色和平推動守護海洋相關的環保與倡議工作。",
+	"form_header": "我支持向破壞海洋的企業與財團問責！",
+	"form_description": "請將我列入連署人名單，幫助綠色和平推動守護海洋相關的環保與倡議工作。",
 	"form_remind": "",
-	"signed_number": "訂閱人數",
+	"signed_number": "連署人數",
 
 	"label_yes": "是",
 	"label_no": "否",
@@ -14,10 +14,11 @@
 	"label_phone_optional": "手提號碼（選填）",
 	"label_year_of_birth": "出生年份",
 	"label_year_of_birth_optional": "出生年份（選填）",
-	"label_newsletter": "我要即時收到最新專案訊息，知道更多參與和協助的方法！綠色和平尊重並保障您的個人隱私資料，您隨時可取消訂閱，請參考隱私保護政策。",
-
+	"label_newsletter": "我已詳細閱讀並同意<a href=\"https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/\" target=\"_blank\"><u>隱私保護政策</u></a>。",
+	
+	"empty_mkt_alert": "您尚未同意隱私權保護政策",
 	"empty_data_alert": "請填寫資料",
-	"empty_phone_alert": "請填手機號碼，確保接收專案相關通知",
+	"empty_phone_alert": "請填寫手機號碼",
 	"empty_select_data_alert": "請選擇",
 
 	"invalid_email_alert": "請填上有效電子郵件",
@@ -25,7 +26,7 @@
 	"minimum_8_characters": "請輸入8位數字",
 	"suggestion_message": "您是否想輸入",
 
-	"submit_text": "立即訂閱",
+	"submit_text": "立即連署",
 	"thanks_title": "",
 	"thanks_ask": "",
 	"thanks_content": "",
@@ -34,7 +35,8 @@
 
 	"mobile_country_code": [
 		{ "label": "+852", "value": 852 },
-		{ "label": "+853", "value": 853 }
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
 	],
 	"new_letter": [
 		{ "label": "是", "value": true },

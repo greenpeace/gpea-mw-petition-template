@@ -1,10 +1,11 @@
 import { Box, Flex, Image, Container, Link } from '@chakra-ui/react';
 import React from 'react';
+import logo from '@common/images/logo/GP-logo-2019-white-[web].png';
 
-const WithSubnavigation = ({ href }) => {
+const WithSubnavigation = ({ href, zhLogo }) => {
 	const logoChinese =
 		'https://www.greenpeace.org/static/planet4-hongkong-stateless/2020/05/aa123dcd-gp-logo-2019-tc-white-web-01.png';
-
+	
 	return (
 		<Box
 			bgColor={'brand.500'}
@@ -25,12 +26,19 @@ const WithSubnavigation = ({ href }) => {
 									alt={'Greenpeace 綠色和平'}
 								/>
 							</Link>
-						) : (
-							<Image
+						) : zhLogo ? (
+						<Image
 								src={logoChinese}
 								maxW="220px"
 								padding="2px"
 								alt={'Greenpeace 綠色和平'}
+							/>
+						) : (
+							<Image
+								src={logo}
+								maxW="220px"
+								padding="2px"
+								alt={'Greenpeace'}
 							/>
 						)}
 					</Box>

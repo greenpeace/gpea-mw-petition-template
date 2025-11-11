@@ -233,11 +233,18 @@ function Index({ submitted = false, strapi }) {
 										)
 									) : (
 										<SignupForm
-											customEndpoint={
-												'https://counter.greenpeace.org/signups?id=globalplasticstreaty'
-											}
+											// customEndpoint={
+											// 	'https://counter.greenpeace.org/signups?id=globalplasticstreaty'
+											// }
 											setSignupBtnRef={setSignupBtnRef}
 										/>
+									)}
+									{submitted && pageType?.toLowerCase() === 'petition' && (
+										<div
+											dangerouslySetInnerHTML={{
+												__html: `<iframe style="overflow: hidden;" src="https://counter.greenpeace.org/count?id=globalplasticstreaty" width="1" height="1" frameborder="0" scrolling="no"></iframe>`
+											}}
+										></div>
 									)}
 								</Box>
 								<div ref={FormBtnref}></div>

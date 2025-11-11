@@ -37,6 +37,12 @@ const StrapiDynamicBlocks = ({
 				content?.richContent,
 				'text/html'
 			);
+			// add target="_blank" to all <a> tag
+			contentHTML.querySelectorAll('a').forEach((a) => {
+				a.setAttribute('target', '_blank');
+			});
+			
+			content.richContent = contentHTML.body.innerHTML;
 			const groupA = contentHTML.querySelector('.raw-html-embed *[hidden]')
 				? contentHTML
 						.querySelector('.raw-html-embed *[hidden]')

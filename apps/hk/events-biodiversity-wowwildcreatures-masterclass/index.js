@@ -1,20 +1,20 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=hk/lantau-documentary
+PROJECT=hk/events-biodiversity-wowwildcreatures-masterclass
 MARKET=hk
-PROJECT_NAME=lantau-documentary
-BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/lantau-documentary
-ASSETPREFIX=https://api.greenpeace.org.hk/page/lantau-documentary/
+PROJECT_NAME=events-biodiversity-wowwildcreatures-masterclass
+BASEPATH=/web/api.greenpeace.org.hk/htdocs/page/events-biodiversity-wowwildcreatures-masterclass
+ASSETPREFIX=https://api.greenpeace.org.hk/page/events-biodiversity-wowwildcreatures-masterclass/
 FTP_CONFIG_NAME=api_hk_cloud 
 # ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=Web - Donation Form - HK - Lantau Documentary
+CLOUD_PAGE_NAME=events-biodiversity-wowwildcreatures-masterclass
 */
 
 import React, { useState, useEffect, useContext } from 'react';
 import { Box } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-
+import { useSelector } from 'react-redux';
 import { AppContext } from './context/appContext';
 import AppProvider from './context/appContext';
 import { GlobalProvider } from './context/global';
@@ -29,6 +29,8 @@ import VideoPage from './components/VideoPage';
 function Index() {
 	const router = useRouter();
 	const [language, setLanguage] = useState('zh_HK');
+
+	
 
 	useEffect(() => {
 		const { language } = router.query;
@@ -58,17 +60,21 @@ const SwitchHeader = () => {
 };
 
 const SwitchPage = () => {
+	// get utm_source
+	const hiddenForm = useSelector((state) => state?.hiddenForm);
+	const { utm_source } = hiddenForm?.data;
+
 	const data = useContext(AppContext);
 
 	switch (data.page) {
 		case 'main':
-			return <MainPage />;
+			return <MainPage utm_source={utm_source} />;
 
 		case 'petition':
 			return <DonationPage />;
 
 		case 'thankyou':
-			return <ThanksPage />;
+			return <ThanksPage utm_source={utm_source} />;
 
 		case 'streaming':
 			return <StreamingPage />;
@@ -77,10 +83,10 @@ const SwitchPage = () => {
 			return <LoginPage />;
 
 		case 'episodes':
-			return <EpisodesPage />;
+			return <EpisodesPage utm_source={utm_source} />;
 
 		case 'video':
-			return <VideoPage />;
+			return <VideoPage utm_source={utm_source} />;
 
 		default:
 			return <Box minH={'100vh'}></Box>;

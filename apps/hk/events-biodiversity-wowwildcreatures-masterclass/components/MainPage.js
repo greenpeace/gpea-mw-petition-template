@@ -13,7 +13,7 @@ import {
 	useMediaQuery,
 	Slide
 } from '@chakra-ui/react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import NextImage from 'next/image';
 import { useRouter } from 'next/router';
 import { AppContext } from '../context/appContext';
@@ -28,13 +28,13 @@ import HomeSwiper from './HomeSwiper';
 import RobertClassVision from './RobertClassVision';
 import { OrangeCTA } from '@common/styles/components/formStyle';
 import animals from '../images/robert-class/home/02a_HK_animals.png';
-import main02Img from '../images/robert-class/main-02.webp';
-import main03Img from '../images/robert-class/main-03.webp';
-import main04Img from '../images/robert-class/main-04.webp';
-import lovingAnimals from '../images/robert-class/loving-animals.webp';
+import main02Img from '../images/robert-class/main-02.png';
+import main03Img from '../images/robert-class/main-03.png';
+import main04Img from '../images/robert-class/main-04.png';
+import lovingAnimals from '../images/robert-class/loving-animals.png';
 import logoAnimals from '../images/robert-class/logo-animals.webp';
 
-import robertClassIntro from '../images/robert-class/robert-intro.webp';
+import robertClassIntro from '../images/robert-class/robert-intro.png';
 import { scrollToRef } from '../util';
 
 import SignupForm from '@components/GP/HKForm';
@@ -42,7 +42,7 @@ import DonationModule from '@components/GP/DonationModule';
 
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
-function MainPage({ status, theme, setFormContent, signup }) {
+function MainPage({ status, theme, setFormContent, signup, utm_source }) {
 	const { submitted } = status;
 	const data = useContext(AppContext);
 	const value = useGlobalContext();
@@ -59,7 +59,7 @@ function MainPage({ status, theme, setFormContent, signup }) {
 	const ourWorkSection = useRef(null);
 
 	const RenderForm = useCallback(() => {
-		return value.isLoggedIn ? (
+		return value.isLoggedIn ? utm_source !== 'dd' && (
 			<DonationModule
 				market={'HK'}
 				language={'zh_HK'}
@@ -132,10 +132,6 @@ function MainPage({ status, theme, setFormContent, signup }) {
 										為大家製作免費網上課程：相識香港野——生態探索及攝影大師班，一連七集精彩內容教你認識香港自然生態，由淺入深分享拍攝大小野外生物冷知識！不論是只有手機在手的自然愛好者，抑或是略有經驗的攝影師，都可從
 										Robert
 										的無私分享中加深對香港自然環境及生態攝影的了解。立即登記，一起認識、賞識香港「野」！
-									</p>
-
-									<p className="">
-										* 2024 年 6 月 5 日起，逢星期三更新最新集數
 									</p>
 								</div>
 							</>

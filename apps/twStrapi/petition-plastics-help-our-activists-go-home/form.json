@@ -1,0 +1,45 @@
+{
+	"form_header": "連署支持，向韓國政府請願<br>讓行動者回家過年！",
+	"form_description": "您的連署將成為他們異鄉寒冬中回家的希望，聲援綠色和平，呼籲韓國政府盡快解除境管",
+	"form_remind": "",
+	"signed_number": "已連署人數",
+
+	"label_yes": "是",
+	"label_no": "否",
+	"label_name": "稱謂",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電子郵件",
+	"label_phone": "行動電話",
+	"label_phone_optional": "手提號碼（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_newsletter": "我已詳細閱讀並同意<a href=\"https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/\" target=\"_blank\"><u>隱私保護政策</u></a>。",
+	
+	"empty_mkt_alert": "您尚未同意隱私權保護政策",
+  "empty_data_alert": "請填寫資料",
+	"empty_phone_alert": "請填寫手機號碼",
+	"empty_select_data_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電子郵件",
+	"invalid_format_alert": "請輸入有效格式",
+	"minimum_8_characters": "請輸入8位數字",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "立即連署",
+	"thanks_title": "",
+	"thanks_ask": "",
+	"thanks_content": "",
+	"share_button": "分享出去",
+	"donate_button": "立即捐助",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}

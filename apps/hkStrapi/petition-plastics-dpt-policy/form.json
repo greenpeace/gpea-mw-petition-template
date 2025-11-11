@@ -1,6 +1,6 @@
 {
-	"form_header": "請即聯署，爭取 2025 年全面管制即棄餐具，並落實重用餐具系統推行時間表！",
-	"form_description": "",
+	"form_header": "聯署促政府帶頭，盛事、社區走即棄，發展重用餐具系統。",
+	"form_description": "我願意聯署加入推動重用代替即棄行列！",
 	"signed_number": "已聯署人數",
 	"label_name": "稱謂",
 	"label_first_name": "名字",
@@ -19,7 +19,7 @@
 	"invalid_format_alert": "請輸入有效格式",
 	"invalid_phone_alert_852": "手提號碼應為8位數字,首位數字應為 4 - 9",
 	"invalid_phone_alert_853": "手提號碼應為8位數字,首位數字應為 6",
-	"minimum_8_characters": "請輸入8位數字",
+	"invalid_phone_alert_86": "手提號碼應為11位數字,首位數字應為 1",
 	"suggestion_message": "您是否想輸入",
 
 	"submit_text": "立即聯署",
@@ -27,7 +27,8 @@
 
 	"mobile_country_code": [
 		{ "label": "+852", "value": 852 },
-		{ "label": "+853", "value": 853 }
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
 	],
 	"new_letter": [
 		{ "label": "是", "value": true },

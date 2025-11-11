@@ -1,0 +1,53 @@
+{
+	"form_header": "2040년까지 전세계 플라스틱 생산량의 75% 감축을 위해, 강력한 플라스틱 협약이 필요합니다. 지금 바로 서명해주세요!",
+	"form_description": "그린피스는 300만 명의 세계 시민들의 서명을 모아 각 국 리더들에게 전달할 것입니다. <b>지금까지 250만 명의 세계 시민들이 플라스틱 생산 감축을 위해 서명해주셨습니다. 함께 해주세요!</b>",
+	"form_remind": "",
+	"signed_number": "",
+
+	"label_yes": "是",
+	"label_no": "否",
+	"label_name": "稱謂",
+	"label_first_name": "",
+	"label_last_name": "이름",
+	"label_email": "이메일 주소",
+	"label_phone": "전화번호",
+	"label_phone_optional": "手提號碼（選填）",
+	"label_year_of_birth": "",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_newsletter": "",
+
+	"empty_data_alert": "필수 입력 입니다.(공백불가)",
+	"empty_phone_alert": "필수 입력 입니다.(공백불가)",
+	"empty_select_data_alert": "필수 입력 입니다.(공백불가)",
+
+	"invalid_email_alert": "이메일 형식이 유효하지 않습니다",
+	"invalid_format_alert": "올바른 형식을 입력하세요.",
+	"minimum_8_characters": "請輸入8位數字",
+	"suggestion_message": "이 주소가 맞습니까 ",
+
+	"submit_text": "청원하기",
+	"thanks_title": "",
+	"thanks_ask": "",
+	"thanks_content": "",
+	"share_button": "分享出去",
+	"donate_button": "立即捐助",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	],
+
+	"custom_default_values": {"OptIn": "", "OptIn3": "", "OptIn1": "", "OptIn2": ""},
+	"options_mkt": [
+		{	"label": "모든 항목 선택하기", "value": true},
+		{ "label": "(필수) 만 14세 이상입니다", "value": true },
+		{ "label": "(필수) 그린피스 후원안내 수신동의", "value": true },
+		{ "label": "(필수) 개인정보 수집/이용에 동의 <a href=\"https://www.greenpeace.org/korea/personal-info-agreement-petition\" target=\"_blank\" rel=\"noopener\"><u>내용 보기</u></a>", "value": true }
+	],
+	"unchecked_alert": "필수 입력 입니다."
+}

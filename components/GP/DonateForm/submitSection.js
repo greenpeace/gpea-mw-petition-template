@@ -20,7 +20,7 @@ const SubmitSection = (props) => {
 		donateType
 	} = props;
 
-	// const [isCustomPrice, setIsCustomPrice] = useState(submitType === 'other');
+	const [isCustomPrice, setIsCustomPrice] = useState(submitType === 'other');
 
 	const targetDonateURL = donateURL;
 	const donating = true;
@@ -68,7 +68,7 @@ const SubmitSection = (props) => {
 					></Text>
 				</Box>
 				<Box>
-					<Button {...OrangeCTA} type={'submit'}>
+					<Button {...OrangeCTA} onClick={handleOpenLink}>
 						{donate_button}
 					</Button>
 				</Box>
@@ -87,7 +87,7 @@ const MyEnhancedForm = withFormik({
 		const { formContent, donateType } = props;
 
 		// Set error if empty value
-		if (!values.Donate) {
+		if (!values.Donate && isCustomPrice) {
 			errors.Donate = formContent.empty_data_alert;
 		}
 

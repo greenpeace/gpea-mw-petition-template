@@ -29,6 +29,9 @@ body {
 	font-size: var(--text-base);
 	line-height: var(--body-line-height);
 	letter-spacing: 0.022em;
+	&.kr {
+		font-family: 'Noto Sans KR', sans-serif !important;
+	}
 }
 
 h1,
@@ -40,7 +43,8 @@ h6 {
 	line-height: var(--heading-line-height);
 }
 
-a {
+a,
+.strapi-content a {
 	color: #1890ff;
 	&:hover {
 		color: #40a9ff;

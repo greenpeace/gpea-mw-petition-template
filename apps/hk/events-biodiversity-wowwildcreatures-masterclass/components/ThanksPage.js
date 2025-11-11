@@ -3,7 +3,7 @@ import { Box, Image } from '@chakra-ui/react';
 
 import DonationModule from '@components/GP/DonationModule';
 
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import formContent from '../form';
 import * as formActions from 'store/actions/action-types/form-actions';
 import * as signupActions from 'store/actions/action-types/signup-actions';
@@ -16,11 +16,13 @@ import GeneralCarousel from './GeneralCarousel';
 import { scrollToRef } from '../util';
 const WRAPPER_CLASSES = 'container px-4 relative mx-auto md:max-w-[1345px]';
 
-function ThanksPage({ status, setFormContent, theme, resetSubmitted }) {
+function ThanksPage({ status, setFormContent, theme, resetSubmitted, utm_source }) {
 	const { submitted } = status;
 	const signupSection = useRef(null);
 	const router = useRouter();
 	const { p, ep, s } = router.query;
+
+
 	useEffect(() => {
 		setFormContent(formContent);
 		resetSubmitted();
@@ -73,11 +75,21 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted }) {
 								<p className="font-bold">
 									好消息！若您已是綠色和平捐款會員，您更可額外欣賞會員限定的第七集精彩內容！
 								</p>
-
-								<p className="">* 2024 年 6 月 5 日起，逢星期三更新最新集數</p>
 							</div>
 
+							<style>
+									{`.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }`}
+								</style>
+								<div className='embed-container'>
+									<iframe 
+										src='https://www.youtube.com/embed//_8b6zesMP24' 
+										frameBorder='0' 
+										allowFullScreen
+									/>
+								</div>
+
 							<div className="flex w-full flex-col gap-4">
+
 								<h1 className="text-2xl font-bold text-[#007c00] md:text-3xl">
 									影片連結正發送至您的電子郵箱
 								</h1>
@@ -127,6 +139,7 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted }) {
 							</Box>
 						</div>
 						<Box className="relative w-[100%] flex-1" ref={signupSection}>
+						{utm_source !== 'dd' && (
 							<Box
 								className="md:sticky md:top-[70px]"
 								maxW="500px"
@@ -136,6 +149,7 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted }) {
 								boxShadow="lg"
 								overflow="hidden"
 							>
+								
 								<DonationModule
 									market={'HK'}
 									language={'zh_HK'}
@@ -144,6 +158,7 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted }) {
 									env={'production'}
 								/>
 							</Box>
+						)}
 						</Box>
 					</div>
 				</div>

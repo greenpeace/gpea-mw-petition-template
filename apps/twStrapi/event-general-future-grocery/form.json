@@ -1,0 +1,48 @@
+{
+	"form_header": "歡慶開幕抽獎！",
+	"form_description": "登記資料即有機會獲得緊急撤離包，活動即日起至 8/31，共抽出 5 名幸運兒。",
+	"signed_number": "",
+	"label_first_name": "名字",
+	"label_last_name": "姓氏",
+	"label_email": "電子郵件",
+	"label_phone": "行動電話",
+	"label_phone_optional": "行動電話（選填）",
+	"label_year_of_birth": "出生年份",
+	"label_year_of_birth_optional": "出生年份（選填）",
+	"label_newsletter": "我已詳細閱讀並同意<a href=\"https://www.greenpeace.org/taiwan/policies/privacy-and-cookies/\" target=\"_blank\"><u>隱私保護政策</u></a>。",
+	"label_products": "請選擇最希望緊急撤離包中包含的 3 件物品！",
+	"options_products": [
+		{ "label": "魚味膠囊", "value": "魚味膠囊" },
+		{ "label": "昆蟲蛋白棒", "value": "昆蟲蛋白棒" },
+		{ "label": "限量用電儲值卡", "value": "限量用電儲值卡" },
+		{ "label": "瓶裝水", "value": "瓶裝水" },
+		{ "label": "防霧霾面具", "value": "防霧霾面具" }
+	],
+	"name_products": "CampaignData1__c",
+	"too_less_products_alert": "請至少選擇 3 件商品",
+	"required_products": true,
+
+	"empty_mkt_alert": "您尚未同意隱私權保護政策",
+	"empty_data_alert": "請填寫資料",
+	"empty_phone_alert": "請填寫手機號碼",
+	"empty_select_data_alert": "請選擇",
+
+	"invalid_email_alert": "請填上有效電子郵件",
+	"invalid_format_alert": "請輸入有效格式",
+	"suggestion_message": "您是否想輸入",
+
+	"submit_text": "立即登記",
+	"mobile_fixed_cta": "立即登記",
+	"donate_button": "下一步",
+	"donateURL": "https://cloud.greentw.greenpeace.org/donation-climate-climate?utm_campaign=general&utm_source=greenpeace.org&utm_medium=email&utm_content=tw-lead_conversion-automd-netzeroevent-20230109",
+
+	"mobile_country_code": [
+		{ "label": "+852", "value": 852 },
+		{ "label": "+853", "value": 853 },
+		{ "label": "+86", "value": 86 }
+	],
+	"new_letter": [
+		{ "label": "是", "value": true },
+		{ "label": "否", "value": false }
+	]
+}
