@@ -8,14 +8,14 @@ class NextDocument extends Document {
   }
   
   render() {
-    let moduleUrl = process.env.projectMarket?.toUpperCase() === 'TW' 
-		? `https://change.greenpeace.org.tw/app/donation-module/main.js?ts=${process.env.timeStamp}`
-		: process.env.projectMarket?.toUpperCase() === 'HK'
-    ? `https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js?ts=${process.env.timeStamp}`
-    : `https://gpseoulwebserver.co.kr/app/donation-module/main.js?ts=${process.env.timeStamp}`;
-    // if(process.env.NODE_ENV === 'production') {
-    //   moduleUrl = `{{ get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js") }}`;
-    // }
+    // let moduleUrl = process.env.projectMarket?.toUpperCase() === 'TW' 
+		// ? `https://change.greenpeace.org.tw/app/donation-module/main.js?ts=${process.env.timeStamp}`
+		// : process.env.projectMarket?.toUpperCase() === 'HK'
+    // ? `https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js?ts=${process.env.timeStamp}`
+    // : `https://gpseoulwebserver.co.kr/app/donation-module/main.js?ts=${process.env.timeStamp}`;
+
+    const  moduleUrl = `'{{get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js")}}'`;
+    
      return ( 
       <Html lang={process.env.projectMarket?.toUpperCase() === ('KR') ? 'ko-KR' : 'zh'}>
         <Head>
@@ -25,11 +25,11 @@ class NextDocument extends Document {
             href="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/01aca3df-favicon-96x96-1.png"
           />
           
-          {(process.env.NODE_ENV !== 'production') && (
+          {(process.env.NODE_ENV === 'production') && (
             <link
               data-donation-module="true"
               rel="preload"
-              href={moduleUrl}
+              href='{{get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js")}}'
               as="script"
             />  
           )}

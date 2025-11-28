@@ -57,7 +57,7 @@ const DonationModule = (props) => {
 		preFill,
 		customUrl,
 		isUAT = false,
-		linepay = false,
+		linepay = true,
 	} = props;
 
 	// Define constant module url
