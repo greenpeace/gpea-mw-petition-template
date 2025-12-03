@@ -14,7 +14,8 @@ class NextDocument extends Document {
     // ? `https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js?ts=${process.env.timeStamp}`
     // : `https://gpseoulwebserver.co.kr/app/donation-module/main.js?ts=${process.env.timeStamp}`;
 
-    const  moduleUrl = `'{{get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js")}}'`;
+    // const  moduleUrl = `'{{get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js")}}'`;
+    const moduleUrl = 'https://144636797.fs1.hubspotusercontent-eu1.net/hubfs/144636797/donation-module/main.js'; // module with linepay 
     
      return ( 
       <Html lang={process.env.projectMarket?.toUpperCase() === ('KR') ? 'ko-KR' : 'zh'}>
@@ -29,7 +30,8 @@ class NextDocument extends Document {
             <link
               data-donation-module="true"
               rel="preload"
-              href='{{get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js")}}'
+              // href='{{get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js")}}'
+              href={moduleUrl}
               as="script"
             />  
           )}

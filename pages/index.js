@@ -281,13 +281,13 @@ function Index({
 
 	return (
 		<>
-			{(process.env.NODE_ENV === 'production' && envProjectName.includes('new-layout')) && (
-				 <script 
+			
+				<script 
 						dangerouslySetInnerHTML={{
-							__html: `this.moduleUrl='{{get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js")}}';`
+							__html: `this.moduleUrl='https://144636797.fs1.hubspotusercontent-eu1.net/hubfs/144636797/donation-module/main.js';// setting module url here`
 						}}
 					/>
-			)}
+			
 			<DynamicSeoComp strapi={strapi} theme={themeData} />
 			{/* <Script strategy="lazyOnload">
             {`console.log("================ GTM ================");`}

@@ -25,6 +25,10 @@ const nextConfig = {
   // Use the CDN in production and localhost for development.
   assetPrefix: isProd ? process.env.ASSETPREFIX : '',
   trailingSlash: true,
+  generateBuildId: async () => {
+    // 使用當前的時間戳作為 build ID
+    return String(new Date().getTime());
+  },
   exportPathMap: async () => ({
     '/': { page: '/' },
   }),

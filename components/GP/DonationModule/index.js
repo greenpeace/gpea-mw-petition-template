@@ -65,19 +65,19 @@ const DonationModule = (props) => {
 	// If there are any changes, should update the module URL in "_document.js" accordingly for preload script.
 	// *******************
 	console.log('market', market, 'campaignId', campaignId);
-	let moduleUrl =
-		market?.toUpperCase() === 'TW'
-			? `https://change.greenpeace.org.tw/app/donation-module${
-					isUAT ? '-uat' : ''
-			  }/main.js`
-			: market?.toUpperCase() === 'HK'
-				? `https://api.greenpeace.org.hk/app/donation-module${
-						isUAT ? '-uat' : '-hkmp'
-			  	}/main.js`
-				:`https://gpseoulwebserver.co.kr/app/donation-module${
-						isUAT ? '-uat' : ''
-			  	}/main.js`;
-	if(linepay) moduleUrl = window?.moduleUrl;
+	// let moduleUrl =
+	// 	market?.toUpperCase() === 'TW'
+	// 		? `https://change.greenpeace.org.tw/app/donation-module${
+	// 				isUAT ? '-uat' : ''
+	// 		  }/main.js`
+	// 		: market?.toUpperCase() === 'HK'
+	// 			? `https://api.greenpeace.org.hk/app/donation-module${
+	// 					isUAT ? '-uat' : '-hkmp'
+	// 		  	}/main.js`
+	// 			:`https://gpseoulwebserver.co.kr/app/donation-module${
+	// 					isUAT ? '-uat' : ''
+	// 		  	}/main.js`;
+	let moduleUrl = window?.moduleUrl;
 	console.log('moduleUrl', moduleUrl);
 	// Import module
 	const timestamp = process.env.timeStamp;

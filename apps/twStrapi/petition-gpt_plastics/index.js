@@ -206,7 +206,7 @@ function Index({ submitted = false, strapi }) {
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
-							<FormContainer>
+							<FormContainer styleFix={!submitted}>
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
 										utm_source !== 'dd' && (
