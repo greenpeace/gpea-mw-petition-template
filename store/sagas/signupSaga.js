@@ -9,6 +9,7 @@ export function* submitForm(actions) {
   const state = yield select();
   const { ProjectName, EventLabel, Market } = state.theme.data;
   const { campaign } = state.theme.strapi;
+  if(!actions.data?.pageTitle) actions.data.pageTitle = document.title;
   try {
     const response = yield call(() =>
       fetch(`${actions.endPoint}`, {
@@ -30,9 +31,9 @@ export function* submitForm(actions) {
         'fields' : objFilter(actions.data, ['Email', 'FirstName', 'LastName','MobilePhone'])
       })
     }
-    //const responseBody = yield call(() => response.json());
-
-    if (response.statusText === 'OK') {
+    const responseBody = yield call(() => response.json());
+    // console.log('response', responseBody);
+    if (responseBody.success) {
       // if(responseBody.Status === 201){
       //   yield put({
       //     type: signupActions.SIGN_UP_SUCCESS,
@@ -50,7 +51,7 @@ export function* submitForm(actions) {
       yield put({ type: statusActions.SET_FORM_SUBMITTED, data: true });
       // Tracking
       if (ProjectName || EventLabel) {
-        helper.sendPetitionTracking(`${EventLabel ? EventLabel : ProjectName}`);
+        // helper.sendPetitionTracking(`${EventLabel ? EventLabel : ProjectName}`);
         // ga4 event
         if(Market !== 'kr'){
           helper.pushDataLayer({

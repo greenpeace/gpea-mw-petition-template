@@ -4,8 +4,8 @@
 PROJECT=tw/activist-recruitment
 MARKET=tw
 PROJECT_NAME=activist-recruitment
-BASEPATH=/htdocs/2022/zh-TW.2022.activist-recruitment.signup
-ASSETPREFIX=https://change.greenpeace.org.tw/2022/zh-TW.2022.activist-recruitment.signup/
+BASEPATH=/htdocs/migrate/zh-TW.2022.activist-recruitment.signup
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/zh-TW.2022.activist-recruitment.signup/
 FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-TW.2022.activist-recruitment.signup

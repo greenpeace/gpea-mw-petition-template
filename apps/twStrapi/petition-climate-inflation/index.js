@@ -3,8 +3,8 @@
 PROJECT=twStrapi/petition-climate-inflation
 MARKET=tw
 PROJECT_NAME=petition-climate-inflation
-BASEPATH=/htdocs/2024/petition/petition-climate-inflation
-ASSETPREFIX=https://change.greenpeace.org.tw/2024/petition/petition-climate-inflation/
+BASEPATH=/htdocs/migrate/petition/petition-climate-inflation
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/petition/petition-climate-inflation/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-tw.2024.climate.inflation.signup

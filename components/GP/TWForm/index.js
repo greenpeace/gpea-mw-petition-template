@@ -126,15 +126,19 @@ const MyForm = (props) => {
 			: 10000;
 		const number =
 			Math.round((currentNumber / currentNumberOfTarget) * 10000) / 100;
+			console.log('progressNumber: ', currentNumber + ' / ' + currentNumberOfTarget);
 		if (isNaN(number)) {
 			return;
 		}
+		
 
 		const timer = () => setTimeout(() => setProgressNumber(`${number}%`), 1000);
 		const timerId = timer();
 		return () => {
 			clearTimeout(timerId);
 		};
+
+		
 	}, [numberOfResponses, customNumbers]);
 
 	// get numberOfResponses from custom endpoint
@@ -359,6 +363,7 @@ const MyForm = (props) => {
 									{errors.Birthdate}
 								</FormErrorMessage>
 							</FormControl>
+							
 						</Box>
 
 						{CustomFields && (

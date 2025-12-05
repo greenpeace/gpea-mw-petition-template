@@ -1,7 +1,10 @@
 const styles = {
 	global: {
 		'html, #__next': {
-			height: '100%'
+			height: 'auto !important' // fix hubspot height issue
+		},
+		'.gpea-donation-module .issue__text': {
+			height: 'auto !important' // fix hubspot height issue
 		},
 		'#__next': {
 			display: 'flex',

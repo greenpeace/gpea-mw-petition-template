@@ -4,8 +4,8 @@
 PROJECT=twStrapi/donation-oceans-oceans
 MARKET=tw
 PROJECT_NAME=donation-oceans-oceans
-BASEPATH=/htdocs/2022/donation/donation-oceans-oceans
-ASSETPREFIX=https://change.greenpeace.org.tw/2022/donation/donation-oceans-oceans/
+BASEPATH=/htdocs/migrate/donation/donation-oceans-oceans
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/donation/donation-oceans-oceans/
 FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=donation-oceans-oceans

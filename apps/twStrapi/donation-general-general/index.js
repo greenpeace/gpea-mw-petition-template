@@ -4,8 +4,8 @@
 PROJECT=twStrapi/donation-general-general
 MARKET=tw
 PROJECT_NAME=donation-general-general
-BASEPATH=/htdocs/2023/donation/donation-general-general
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/donation/donation-general-general/
+BASEPATH=/htdocs/migrate/donation/donation-general-general
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/donation/donation-general-general/
 FTP_CONFIG_NAME=ftp_tw 
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=donation-general-general
