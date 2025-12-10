@@ -25,6 +25,7 @@ import {
 	twTagManagerArgs,
 	krTagManagerArgs
 } from '@common/constants/tagManagerArgs';
+import { theme } from 'tailwind.config';
 
 
 /* Determine the returned project index by env variable */
@@ -51,7 +52,7 @@ const signupNumbersKRURL = process.env.signupNumbersKR;
 
 // Pending
 const schemaEndpoint = `${themeEndpointURL}?q={"Market":"${envProjectMarket}"}`;
-
+const hubspotWebsignProxy = (process.env.NODE_ENV === 'production') ? `https://web-api.gpeastasia.org/api/${envProjectMarket.toLowerCase()}/petition/websign-proxy` : `//localhost:3000/api/${envProjectMarket.toLowerCase()}/petition/websign-proxy`;
 /*const initTagManager = (marketName) => {
 	if (process.env.NODE_ENV === 'production') {
 		switch (marketName) {
@@ -157,13 +158,19 @@ function Index({
 			};
 			console.log(fetchURLs[themeData?.Market.toLowerCase()])
 			const signupData = await axios
-				.get(fetchURLs[themeData?.Market.toLowerCase()])
+				.get(fetchURLs[themeData?.Market.toLowerCase()] + '?campaignIds=' + themeData?.CampaignId)
 				.then((response) => {
-					return response.data.find((d) => d.Id === themeData?.CampaignId);
+					//return response.data.find((d) => d.Id === themeData?.CampaignId);
+					return {
+						NumberOfResponses: response.data?.data?.campaignCounts?.[themeData?.CampaignId],
+						NumberOfLeads: 0,
+						NumberOfContacts: 0,
+						Petition_Signup_Target__c: response.data?.data?.campaignTargets?.[themeData?.CampaignId],
+					}
 				})
 				.catch((error) => console.log(error));
-
-			setSignupNumbers({ [themeData?.Market]: signupData });
+			console.log('SignupData:', signupData);
+			setSignupNumbers({ [themeData?.Market]: signupData});
 		}
 		fetchSignupData();
 	}, []);
@@ -190,7 +197,18 @@ function Index({
 
 	/* Pre-fill signup data */
 	useEffect(() => {
-		setTheme(themeData);
+    setTheme(themeData);
+		// get HubSpot UTK cookie and set to hidden form
+		const hubspotUtk = helper.getHubSpotUtk();
+		if (hubspotUtk) {
+			dispatch({
+				type: hiddenFormActions.SET_HIDDEN_FORM,
+				data: { hubspotUtk: hubspotUtk }
+			});
+		}
+		
+
+		console.log('ThemeData:', themeData);
 
 		let FormObj = {};
 		const selectForm = document.forms['mc-form'];
@@ -252,10 +270,24 @@ function Index({
 
 		initTagManager(market);
 		setPrepared(true);
+		// get page title and set to hidden form
+		if(strapi?.seo?.metaTitle){
+			dispatch({
+				type: hiddenFormActions.SET_HIDDEN_FORM,
+				data: { pageTitle: strapi.seo.metaTitle }
+			});
+		}
 	}, []);
 
 	return (
 		<>
+			
+				<script 
+						dangerouslySetInnerHTML={{
+							__html: `this.moduleUrl='https://144636797.fs1.hubspotusercontent-eu1.net/hubfs/144636797/donation-module/main.js';// setting module url here`
+						}}
+					/>
+			
 			<DynamicSeoComp strapi={strapi} theme={themeData} />
 			{/* <Script strategy="lazyOnload">
             {`console.log("================ GTM ================");`}
@@ -301,6 +333,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export async function getStaticProps(context) {
+	
 	const singleResult = await axios
 		.get(schemaEndpoint)
 		.then((response) => {
@@ -360,6 +393,17 @@ export async function getStaticProps(context) {
 	const themes = await res.json();
 	const theme =
 		themes?.data[0] !== undefined ? themes?.data[0]?.attributes : null;
+	// setting hubspot websign proxy endpoint replace the one in strapi
+	if(singleResult){
+		singleResult.EndpointURL = hubspotWebsignProxy;
+		singleResult.dummyEndpointURL = hubspotWebsignProxy;
+		// singleResult.dummyEndpointURL = process.env.dummyEndpoint;
+	}
+	if(theme?.market?.data?.attributes?.websignEndpointURL) {
+		theme.market.data.attributes.websignEndpointURL = hubspotWebsignProxy;
+		theme.market.data.attributes.dummyEndpointURL = hubspotWebsignProxy;
+		// theme.market.data.attributes.dummyEndpointURL = process.env.dummyEndpoint;
+	}
 	if(process.env.project.indexOf('Preview') >= 0) {
 			return {
 				props: {
@@ -375,7 +419,7 @@ export async function getStaticProps(context) {
 			props: {
 				themeData: singleResult || {
 					CampaignId: theme?.campaignId,
-					EndpointURL: theme?.market?.data?.attributes?.websignEndpointURL,
+					EndpointURL: hubspotWebsignProxy || theme?.market?.data?.attributes?.websignEndpointURL,
 					EventLabel: envProjectName,
 					Market: envProjectMarket,
 					ProjectName: envProjectName,

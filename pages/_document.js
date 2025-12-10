@@ -8,13 +8,16 @@ class NextDocument extends Document {
   }
   
   render() {
-    const moduleUrl = process.env.projectMarket?.toUpperCase() === 'TW' 
-		? `https://change.greenpeace.org.tw/app/donation-module/main.js`
-		: process.env.projectMarket?.toUpperCase() === 'HK'
-    ? `https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js`
-    : `https://gpseoulwebserver.co.kr/app/donation-module/main.js`;
-    // preload the production version only.
-    return (
+    // let moduleUrl = process.env.projectMarket?.toUpperCase() === 'TW' 
+		// ? `https://change.greenpeace.org.tw/app/donation-module/main.js?ts=${process.env.timeStamp}`
+		// : process.env.projectMarket?.toUpperCase() === 'HK'
+    // ? `https://api.greenpeace.org.hk/app/donation-module-hkmp/main.js?ts=${process.env.timeStamp}`
+    // : `https://gpseoulwebserver.co.kr/app/donation-module/main.js?ts=${process.env.timeStamp}`;
+
+    // const  moduleUrl = `'{{get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js")}}'`;
+    const moduleUrl = 'https://144636797.fs1.hubspotusercontent-eu1.net/hubfs/144636797/donation-module/main.js'; // module with linepay 
+    
+     return ( 
       <Html lang={process.env.projectMarket?.toUpperCase() === ('KR') ? 'ko-KR' : 'zh'}>
         <Head>
           <link
@@ -22,11 +25,16 @@ class NextDocument extends Document {
             type="image/png"
             href="https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/09/01aca3df-favicon-96x96-1.png"
           />
-          <link
-            rel="preload"
-            href={moduleUrl + "?ts=" + process.env.timeStamp}
-            as="script"
-          />
+          
+          {(process.env.NODE_ENV === 'production') && (
+            <link
+              data-donation-module="true"
+              rel="preload"
+              // href='{{get_asset_url("/gpea-hubspot-design-manager/landing-page-module/donation-form/donation-module-line-pay/main.js")}}'
+              href={moduleUrl}
+              as="script"
+            />  
+          )}
           {/* Load google fonts */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
@@ -51,31 +59,31 @@ class NextDocument extends Document {
               placeholder="FirstName"
               name="FirstName"
               type="text"
-              defaultValue="DemoFirstName"
+              defaultValue=""
             />
             <input
               placeholder="LastNameName"
               name="LastName"
               type="text"
-              defaultValue="DemoLastName"
+              defaultValue=""
             />
             <input
               placeholder="Email"
               name="Email"
               type="email"
-              defaultValue="test@test.com"
+              defaultValue=""
             />
             <input
               placeholder="MobilePhone"
               name="MobilePhone"
               type="tel"
-              defaultValue="+852 91234567"
+              defaultValue=""
             />
             <input
               placeholder="Birthdate"
               name="Birthdate"
               type="text"
-              defaultValue="1/1/1999 12:00:00 AM"
+              defaultValue=""
             />
             <input
               placeholder="OptIn"

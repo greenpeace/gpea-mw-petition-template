@@ -3,9 +3,9 @@
  *
 PROJECT=twStrapi/event-volunteer-signup
 MARKET=tw
-PROJECT_NAME=event-volunteer-signup
-BASEPATH=/htdocs/2024/petition/event-volunteer-signup
-ASSETPREFIX=https://change.greenpeace.org.tw/2024/petition/event-volunteer-signup/
+PROJECT_NAME=volunteer-general
+BASEPATH=/htdocs/migrate/petition/volunteer-general
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/petition/volunteer-general/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-tw.2024.general.event-volunteer.signup

@@ -45,7 +45,7 @@ export const pushDataLayer = (props) => {
 }
 
 export const sendWebEventHistory = (params) => {
-
+  console.log('sendWebEventHistory', params)
   let formData = new FormData();
   formData.append('Campaign__c', params?.CampaignId);
   formData.append('Event_Name__c', params?.event?.event_name);
@@ -115,4 +115,18 @@ export const h1Group = (richContent, group) =>{
   }
   // console.log('===========',h1Groups,h1DOM)
   return new XMLSerializer().serializeToString(h1DOM);
+}
+
+// Get HubSpot UTK cookie
+export const getHubSpotUtk = () => {
+    // Look for HubSpot UTK cookie
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+        const [name, value] = cookie.trim().split('=');
+        if (name === 'hubspotutk' || name === '__hsutk') {
+            console.log('HubSpot UTK found:', decodeURIComponent(value));
+            return decodeURIComponent(value);
+        }
+    }
+    return null;
 }

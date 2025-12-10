@@ -4,8 +4,8 @@
 PROJECT=twStrapi/petition-oceans-dwf
 MARKET=tw
 PROJECT_NAME=petition-oceans-dwf
-BASEPATH=/htdocs/2023/petition/zh-tw.2023.oceans.dwf.signup.na
-ASSETPREFIX=https://change.greenpeace.org.tw/2023/petition/zh-tw.2023.oceans.dwf.signup.na/
+BASEPATH=/htdocs/migrate/petition/zh-tw.2023.oceans.dwf.signup.na
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/petition/zh-tw.2023.oceans.dwf.signup.na/
 FTP_CONFIG_NAME=ftp_tw
 # ******** MC Cloud Page Name ********
 CLOUD_PAGE_NAME=zh-tw.2020.oceans.dwf.general.signup
