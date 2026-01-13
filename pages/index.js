@@ -120,11 +120,12 @@ function Index({
 				donation_module_campaign,
 				headline_prefix,
 				hero_image_desktop,
-				hero_image_mobile
+				hero_image_mobile,
+				transactionId,
 			} = router.query;
 
 			/* page=2 force to result page */
-			if (page === '2') {
+			if (page === '2' || transactionId) {
 				setWebStatus(true);
 			}
 
