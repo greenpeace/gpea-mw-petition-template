@@ -78,6 +78,7 @@ const DonationModule = (props) => {
 	// 					isUAT ? '-uat' : ''
 	// 		  	}/main.js`;
 	let moduleUrl = window?.moduleUrl;
+	if(moduleUrl && isUAT) moduleUrl = moduleUrl.replace('.js', '-uat.js');
 	console.log('moduleUrl', moduleUrl);
 	// Import module
 	const timestamp = process.env.timeStamp;

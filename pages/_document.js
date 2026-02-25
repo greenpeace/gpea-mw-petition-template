@@ -43,12 +43,14 @@ class NextDocument extends Document {
             media="print"
             onLoad="this.onload=null;this.removeAttribute('media');"
           />
-          
+          {/* <!-- keep & restore utm params --> */}
+          <script type="text/javascript" src="https://144636797.fs1.hubspotusercontent-eu1.net/hubfs/144636797/utm-keeper.js"></script>
           {/* <!-- begin Convert Experiences code--> */}
           {(process.env?.convExp) && (
             <script type="text/javascript" src={process.env?.convExp}></script>
           )}
           {/* <!-- end Convert Experiences code --> */}
+          
         </Head>
         <body className={process.env.projectMarket?.toUpperCase() === ('KR') ? 'kr' : ''}>
           <Main />
@@ -93,6 +95,7 @@ class NextDocument extends Document {
             />
           </form>
           {/** MC_FORM_ENDS  */}
+          
         </body>
       </Html>
     );

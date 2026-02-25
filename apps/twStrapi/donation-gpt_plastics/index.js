@@ -201,7 +201,7 @@ function Index({ submitted = false, strapi }) {
 													strapi?.donationModuleCampaignId ??
 													''
 												}
-												env={strapi?.donationModuleEnv}
+												env={'strapi?.donationModuleEnv'}
 											/>
 										)
 									) : (
