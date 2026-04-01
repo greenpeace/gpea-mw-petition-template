@@ -3,7 +3,7 @@
 # Project Apps Directory: /apps/{PROJECT}
 PROJECT=twStrapi/donation-drtv_climate
 MARKET=tw
-PROJECT_NAME=donation-drtv_climate
+PROJECT_NAME=donation-climate-climate
 BASEPATH=/htdocs/migrate/donation/donation-drtv_climate
 ASSETPREFIX=https://change.greenpeace.org.tw/migrate/donation/donation-drtv_climate/
 FTP_CONFIG_NAME=ftp_tw 
