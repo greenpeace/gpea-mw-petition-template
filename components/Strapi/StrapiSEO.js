@@ -18,7 +18,7 @@ const StrapiSEO = ({ strapi }) => {
 				}}
 			/>
 			{/* title */}
-			<title>{strapi?.seo?.metaTitle}</title>
+			{/* <title>{strapi?.seo?.metaTitle}</title>
 			<meta property="og:title" content={strapi?.seo?.metaTitle} />
 			<meta name="description" content={strapi?.seo?.metaDescription} />
 			<meta property="og:description" content={strapi?.seo?.metaDescription} />
@@ -35,7 +35,7 @@ const StrapiSEO = ({ strapi }) => {
 				(strapi?.seo?.metaRobots) && (
 					<meta name="robots" content={strapi?.seo?.metaRobots} />
 				)
-			}
+			} */}
 		</Head>
 	);
 };
