@@ -1,14 +1,14 @@
 /**
  * Deploy setting
 # Project Apps Directory: /apps/{PROJECT}
-PROJECT=twStrapi/donation-drtv_climate
+PROJECT=twStrapi/donation-arctic-drtv-arctic
 MARKET=tw
-PROJECT_NAME=donation-climate-climate
-BASEPATH=/htdocs/migrate/donation/donation-drtv_climate
-ASSETPREFIX=https://change.greenpeace.org.tw/migrate/donation/donation-drtv_climate/
+PROJECT_NAME=donation-arctic-arctic
+BASEPATH=/htdocs/migrate/donation/donation-arctic-drtv-arctic
+ASSETPREFIX=https://change.greenpeace.org.tw/migrate/donation/donation-arctic-drtv-arctic/
 FTP_CONFIG_NAME=ftp_tw 
-# ******** MC Cloud Page Name ********
-CLOUD_PAGE_NAME=Donation - drtv_climate
+# ******** Hubspot Page Name ********
+HUBSPOT_PAGE_NAME=tw-202602-donation-arctic-drtv-arctic-strapi-layout
 */
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';

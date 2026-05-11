@@ -46,6 +46,7 @@ const DynamicSeoComp = dynamic(() =>
 const envProjectName = process.env.projectName;
 const envProjectMarket = process.env.projectMarket;
 const themeEndpointURL = process.env.themeEndpoint;
+const dummyEndpoint = process.env.dummyEndpoint;
 const signupNumbersHKURL = process.env.signupNumbersHK;
 const signupNumbersTWURL = process.env.signupNumbersTW;
 const signupNumbersKRURL = process.env.signupNumbersKR;
@@ -120,11 +121,12 @@ function Index({
 				donation_module_campaign,
 				headline_prefix,
 				hero_image_desktop,
-				hero_image_mobile
+				hero_image_mobile,
+				transactionId,
 			} = router.query;
 
 			/* page=2 force to result page */
-			if (page === '2') {
+			if (page === '2' || transactionId) {
 				setWebStatus(true);
 			}
 
@@ -178,6 +180,7 @@ function Index({
 	/* Set parameters to hiddenForm data */
 	useEffect(() => {
 		let params = {};
+		let storedUtm = window?.__greenpeace__?.utmKeeper?.params || {};
 
 		window.location.search
 			.slice(1)
@@ -188,11 +191,25 @@ function Index({
 				const d = decodeURIComponent;
 				params[d(spl[0])] = spl.length >= 2 ? d(spl[1]) : true;
 			});
-
+		params = { ...params, ...storedUtm };
+		console.log('URL Params merge storedUtm:', params);
 		dispatch({
 			type: hiddenFormActions.SET_HIDDEN_FORM,
 			data: params
 		});
+	}, []);
+	useEffect(() => {
+		// update hiddenform with UTM from utm-keeper.js
+		window.__greenpeace__ = window.__greenpeace__ || {};
+		if(!window?.__greenpeace__?.utmKeeper?.onReady) return;
+		window.__greenpeace__.utmKeeper.onReady = function(utmData) {
+			let UtmParams = utmData.params || {};
+			console.log('UtmParams from utm-keeper.js:', UtmParams);
+			dispatch({
+				type: hiddenFormActions.SET_HIDDEN_FORM,
+				data: UtmParams
+			});
+		}
 	}, []);
 
 	/* Pre-fill signup data */
@@ -396,12 +413,12 @@ export async function getStaticProps(context) {
 	// setting hubspot websign proxy endpoint replace the one in strapi
 	if(singleResult){
 		singleResult.EndpointURL = hubspotWebsignProxy;
-		singleResult.dummyEndpointURL = hubspotWebsignProxy;
+		singleResult.dummyEndpointURL = dummyEndpoint;
 		// singleResult.dummyEndpointURL = process.env.dummyEndpoint;
 	}
 	if(theme?.market?.data?.attributes?.websignEndpointURL) {
 		theme.market.data.attributes.websignEndpointURL = hubspotWebsignProxy;
-		theme.market.data.attributes.dummyEndpointURL = hubspotWebsignProxy;
+		theme.market.data.attributes.dummyEndpointURL = dummyEndpoint;
 		// theme.market.data.attributes.dummyEndpointURL = process.env.dummyEndpoint;
 	}
 	if(process.env.project.indexOf('Preview') >= 0) {

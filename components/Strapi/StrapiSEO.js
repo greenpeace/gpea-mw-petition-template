@@ -3,8 +3,7 @@ import Script from 'next/script';
 
 const StrapiSEO = ({ strapi }) => {
 	return (
-		<Head>
-			{/* campaign dataLayer */}
+		
 			<Script
 				strategy="afterInteractive"
 				dangerouslySetInnerHTML={{
@@ -17,26 +16,7 @@ const StrapiSEO = ({ strapi }) => {
         `
 				}}
 			/>
-			{/* title */}
-			<title>{strapi?.seo?.metaTitle}</title>
-			<meta property="og:title" content={strapi?.seo?.metaTitle} />
-			<meta name="description" content={strapi?.seo?.metaDescription} />
-			<meta property="og:description" content={strapi?.seo?.metaDescription} />
-			<meta property="og:image" content={strapi?.seo?.metaImageURL} />
-			<meta property="og:type" content="website" />
-			<meta property="og:url" content={strapi?.seo?.canonicalURL} />
-			<meta name="keywords" content={strapi?.seo?.keywords} />
-			{
-				(strapi?.seo?.canonicalURL) && (
-					<link rel="canonical" href={strapi?.seo?.canonicalURL} />
-				)
-			}
-			{
-				(strapi?.seo?.metaRobots) && (
-					<meta name="robots" content={strapi?.seo?.metaRobots} />
-				)
-			}
-		</Head>
+		
 	);
 };
 

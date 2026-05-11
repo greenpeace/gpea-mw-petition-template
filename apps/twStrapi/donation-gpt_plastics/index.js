@@ -179,7 +179,7 @@ function Index({ submitted = false, strapi }) {
 							</ContentContainer>
 						</Box>
 						<Box flex={1} ref={FormRef}>
-							<FormContainer>
+							<FormContainer styleFix={false}>
 								<Box ref={ref}>
 									{pageType?.toLowerCase() === 'donation' || submitted ? (
 										utm_source !== 'dd' && (
@@ -201,7 +201,7 @@ function Index({ submitted = false, strapi }) {
 													strapi?.donationModuleCampaignId ??
 													''
 												}
-												env={strapi?.donationModuleEnv}
+												env={'strapi?.donationModuleEnv'}
 											/>
 										)
 									) : (

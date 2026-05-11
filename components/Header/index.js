@@ -18,7 +18,7 @@ const WithSubnavigation = ({ href, zhLogo }) => {
 				<Container maxW={'1200px'}>
 					<Box>
 						{href ? (
-							<Link href={href} isExternal="true">
+							<Link href={href} isExternal="true" display={'inline-block'}>
 								<Image
 									src={logoChinese}
 									maxW="220px"
