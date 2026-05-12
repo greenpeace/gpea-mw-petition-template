@@ -82,7 +82,7 @@ function Index({ submitted = false, strapi }) {
 					background-color: rgba(234, 23, 119)!important;
 				}
       `}</style>
-			<StrapiSEO strapi={strapi} />
+			{/* <StrapiSEO strapi={strapi} /> */}
 			<Box>
 				{submitted ? (
 					<ThanksBanner
