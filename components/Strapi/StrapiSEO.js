@@ -10,8 +10,8 @@ const StrapiSEO = ({ strapi }) => {
 					__html: `
           var dataLayer = (window.dataLayer = window.dataLayer || []);
           dataLayer.push({
-            gCampaign: ${strapi?.issue?.data?.attributes?.slug},
-            gBasket: ${strapi?.campaign},
+            gCampaign: "${strapi?.issue?.data?.attributes?.slug}",
+            gBasket: "${strapi?.campaign}",
           });
         `
 				}}
