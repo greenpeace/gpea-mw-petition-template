@@ -100,7 +100,7 @@ function ThanksPage({ status, setFormContent, theme, resetSubmitted }) {
 									<li>
 										進行科學研究和調查，深入了解野生動物的生態習性和棲息地狀況，為保育策略提供堅實的科學基礎
 									</li>
-									<li>推動與環境相關的政策倡議，為保護香港的自然資源發聲</li>
+									<li>推動與環境相關的政策改變，為保護香港的自然資源發聲</li>
 								</ul>
 
 								<p className="underline-offset-3 underline">
